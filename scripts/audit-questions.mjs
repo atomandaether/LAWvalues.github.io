@@ -119,10 +119,13 @@ assert.ok(
   `Independent-response simulation created excessive off-axis correlation: ${maxOffAxisCorrelation}`
 );
 
-const htmlFiles = ["index.html", "instructions.html", "quiz.html", "results.html", "methodology.html"];
+const htmlFiles = ["index.html", "instructions.html", "quiz.html", "results.html"];
+const htmlByFile = {};
 for (const filename of htmlFiles) {
   const html = fs.readFileSync(path.join(root, filename), "utf8");
+  htmlByFile[filename] = html;
   assert.ok(!/adsbygoogle|statcounter/i.test(html), `${filename} contains legacy tracking code`);
+  assert.ok(!/methodology\.html/i.test(html), `${filename} links to the removed methodology page`);
   for (const match of html.matchAll(/(?:src|href)="([^"]+)"/g)) {
     const target = match[1];
     if (/^(?:https?:|#|mailto:)/.test(target)) continue;
@@ -131,8 +134,22 @@ for (const filename of htmlFiles) {
   }
 }
 
+assert.ok(!fs.existsSync(path.join(root, "methodology.html")), "methodology.html should be removed");
+assert.ok(!fs.existsSync(path.join(root, "methodology.js")), "methodology.js should be removed");
+assert.ok(htmlByFile["index.html"].includes("Version 0.5 Beta"), "Front page must show Version 0.5 Beta");
+assert.ok(htmlByFile["index.html"].includes("European Napoleonic"), "Original comparative-law footer must remain");
+assert.ok(htmlByFile["index.html"].includes("Soviet socialist law contexts"), "Original comparative-law footer must remain");
+assert.ok(!htmlByFile["quiz.html"].includes("Seven-point response scale"), "Quiz should not show the scale label");
+assert.ok(!htmlByFile["quiz.html"].includes("saved-note"), "Quiz should not show a progress-saved label");
+assert.ok(!htmlByFile["results.html"].includes("Print / PDF"), "Results should not show Print / PDF");
+assert.ok(!htmlByFile["results.html"].includes(">Retake<"), "Results should not show Retake");
+assert.ok(htmlByFile["results.html"].includes("Download JSON"), "Results should label the JSON download correctly");
+assert.ok(!htmlByFile["results.html"].includes("axis-caption"), "Results should not show axis descriptions");
+assert.ok(!htmlByFile["results.html"].includes("axis-scoreline"), "Results should not repeat scores under axis labels");
+
 console.table(axisRows);
 console.log(`PASS: 48 items, balanced 3/3 on every axis.`);
 console.log(`PASS: constant-response, endpoint, and score-symmetry tests.`);
 console.log(`PASS: maximum simulated off-axis correlation = ${maxOffAxisCorrelation.toFixed(4)}.`);
+console.log(`PASS: original visible copy and requested controls are preserved.`);
 console.log(`PASS: local asset references and no legacy ad/tracking scripts.`);

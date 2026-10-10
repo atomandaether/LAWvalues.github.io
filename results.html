@@ -12,7 +12,6 @@
 <body>
 <h1>LAWvalues</h1>
 <hr>
-<div class="site-links"><a href="index.html">Home</a> · <a href="methodology.html">Methodology &amp; sources</a></div>
 
 <section class="error-box" id="results-error" hidden>
     <h2>No complete result found</h2>
@@ -25,88 +24,93 @@
 <div class="center results-summary">
     <h2>Your jurisprudential profile</h2>
     <p id="result-summary"></p>
-    <p style="font-size:13pt;color:#6B5B42" id="result-version"></p>
 </div>
 <div class="result-actions">
     <button class="small_button" id="copy-link" type="button">Copy Link</button>
     <button class="small_button" id="copy-summary" type="button">Copy Summary</button>
-    <button class="small_button" id="print-results" type="button">Print / PDF</button>
-    <button class="small_button" id="download-record" type="button" hidden>Download Pilot Record</button>
-    <button class="small_button" id="retake-quiz" type="button">Retake</button>
+    <button class="small_button" id="download-record" type="button" hidden>Download JSON</button>
 </div>
 <p class="coverage-note" id="coverage-note" hidden></p>
 
-<h2>Source Axis: <span class="weight-300" id="source-label"></span><span class="axis-scoreline" id="source-score"></span></h2>
+<h2>Source Axis: <span class="weight-300" id="source-label"></span></h2>
 <div class="axis">
     <img src="value_images/positivist.svg" alt="Positivist">
-    <div class="bar positivist" id="bar-positivist"><div class="text-wrapper" id="positivist"></div></div>
-    <div class="bar nonpositivist" id="bar-nonpositivist"><div class="text-wrapper" id="nonpositivist"></div></div>
+    <div class="axis-bars">
+        <div class="bar positivist" id="bar-positivist"><div class="text-wrapper" id="positivist"></div></div>
+        <div class="bar nonpositivist" id="bar-nonpositivist"><div class="text-wrapper" id="nonpositivist"></div></div>
+    </div>
     <img src="value_images/non-positivist.svg" alt="Non-positivist">
 </div>
-<p class="axis-caption" id="source-caption"></p>
 
-<h2>Constraint Axis: <span class="weight-300" id="constraint-label"></span><span class="axis-scoreline" id="constraint-score"></span></h2>
+<h2>Constraint Axis: <span class="weight-300" id="constraint-label"></span></h2>
 <div class="axis">
     <img src="value_images/textualist.svg" alt="Textualist">
-    <div class="bar textualist" id="bar-textualist"><div class="text-wrapper" id="textualist"></div></div>
-    <div class="bar openconstruction" id="bar-openconstruction"><div class="text-wrapper" id="openconstruction"></div></div>
+    <div class="axis-bars">
+        <div class="bar textualist" id="bar-textualist"><div class="text-wrapper" id="textualist"></div></div>
+        <div class="bar openconstruction" id="bar-openconstruction"><div class="text-wrapper" id="openconstruction"></div></div>
+    </div>
     <img src="value_images/open-construction.svg" alt="Open construction">
 </div>
-<p class="axis-caption" id="constraint-caption"></p>
 
-<h2>Time Axis: <span class="weight-300" id="time-label"></span><span class="axis-scoreline" id="time-score"></span></h2>
+<h2>Time Axis: <span class="weight-300" id="time-label"></span></h2>
 <div class="axis">
     <img src="value_images/historical.svg" alt="Historical">
-    <div class="bar historical" id="bar-historical"><div class="text-wrapper" id="historical"></div></div>
-    <div class="bar living" id="bar-living"><div class="text-wrapper" id="living"></div></div>
+    <div class="axis-bars">
+        <div class="bar historical" id="bar-historical"><div class="text-wrapper" id="historical"></div></div>
+        <div class="bar living" id="bar-living"><div class="text-wrapper" id="living"></div></div>
+    </div>
     <img src="value_images/living.svg" alt="Living">
 </div>
-<p class="axis-caption" id="time-caption"></p>
 
-<h2>Precedent Axis: <span class="weight-300" id="precedent-label"></span><span class="axis-scoreline" id="precedent-score"></span></h2>
+<h2>Precedent Axis: <span class="weight-300" id="precedent-label"></span></h2>
 <div class="axis">
     <img src="value_images/stability.svg" alt="Stability">
-    <div class="bar stability" id="bar-stability"><div class="text-wrapper" id="stability"></div></div>
-    <div class="bar overruling" id="bar-overruling"><div class="text-wrapper" id="overruling"></div></div>
+    <div class="axis-bars">
+        <div class="bar stability" id="bar-stability"><div class="text-wrapper" id="stability"></div></div>
+        <div class="bar overruling" id="bar-overruling"><div class="text-wrapper" id="overruling"></div></div>
+    </div>
     <img src="value_images/overruling.svg" alt="Overruling">
 </div>
-<p class="axis-caption" id="precedent-caption"></p>
 
-<h2>Remedies Axis: <span class="weight-300" id="remedies-label"></span><span class="axis-scoreline" id="remedies-score"></span></h2>
+<h2>Remedies Axis: <span class="weight-300" id="remedies-label"></span></h2>
 <div class="axis">
     <img src="value_images/narrow.svg" alt="Narrow">
-    <div class="bar narrow" id="bar-narrow"><div class="text-wrapper" id="narrow"></div></div>
-    <div class="bar systemic" id="bar-systemic"><div class="text-wrapper" id="systemic"></div></div>
+    <div class="axis-bars">
+        <div class="bar narrow" id="bar-narrow"><div class="text-wrapper" id="narrow"></div></div>
+        <div class="bar systemic" id="bar-systemic"><div class="text-wrapper" id="systemic"></div></div>
+    </div>
     <img src="value_images/systemic.svg" alt="Systemic">
 </div>
-<p class="axis-caption" id="remedies-caption"></p>
 
-<h2>Posture Axis: <span class="weight-300" id="posture-label"></span><span class="axis-scoreline" id="posture-score"></span></h2>
+<h2>Posture Axis: <span class="weight-300" id="posture-label"></span></h2>
 <div class="axis">
     <img src="value_images/majoritarian.svg" alt="Majoritarian">
-    <div class="bar majoritarian" id="bar-majoritarian"><div class="text-wrapper" id="majoritarian"></div></div>
-    <div class="bar countermajoritarian" id="bar-countermajoritarian"><div class="text-wrapper" id="countermajoritarian"></div></div>
+    <div class="axis-bars">
+        <div class="bar majoritarian" id="bar-majoritarian"><div class="text-wrapper" id="majoritarian"></div></div>
+        <div class="bar countermajoritarian" id="bar-countermajoritarian"><div class="text-wrapper" id="countermajoritarian"></div></div>
+    </div>
     <img src="value_images/counter-majoritarian.svg" alt="Counter-majoritarian">
 </div>
-<p class="axis-caption" id="posture-caption"></p>
 
-<h2>Separation Axis: <span class="weight-300" id="separation-label"></span><span class="axis-scoreline" id="separation-score"></span></h2>
+<h2>Separation Axis: <span class="weight-300" id="separation-label"></span></h2>
 <div class="axis">
     <img src="value_images/formalist.svg" alt="Formalist">
-    <div class="bar formalist" id="bar-formalist"><div class="text-wrapper" id="formalist"></div></div>
-    <div class="bar functionalist" id="bar-functionalist"><div class="text-wrapper" id="functionalist"></div></div>
+    <div class="axis-bars">
+        <div class="bar formalist" id="bar-formalist"><div class="text-wrapper" id="formalist"></div></div>
+        <div class="bar functionalist" id="bar-functionalist"><div class="text-wrapper" id="functionalist"></div></div>
+    </div>
     <img src="value_images/functionalist.svg" alt="Functionalist">
 </div>
-<p class="axis-caption" id="separation-caption"></p>
 
-<h2>Form Axis: <span class="weight-300" id="form-label"></span><span class="axis-scoreline" id="form-score"></span></h2>
+<h2>Form Axis: <span class="weight-300" id="form-label"></span></h2>
 <div class="axis">
     <img src="value_images/rules.svg" alt="Rules">
-    <div class="bar rules" id="bar-rules"><div class="text-wrapper" id="rules"></div></div>
-    <div class="bar balancing" id="bar-balancing"><div class="text-wrapper" id="balancing"></div></div>
+    <div class="axis-bars">
+        <div class="bar rules" id="bar-rules"><div class="text-wrapper" id="rules"></div></div>
+        <div class="bar balancing" id="bar-balancing"><div class="text-wrapper" id="balancing"></div></div>
+    </div>
     <img src="value_images/balancing.svg" alt="Balancing">
 </div>
-<p class="axis-caption" id="form-caption"></p>
 
 <div class="classification-placeholder">
     <h2>Profile Classification</h2>

@@ -1,8 +1,8 @@
 {
   "name": "lawvalues.github.io",
-  "version": "2.0.0",
+  "version": "0.5.0",
   "private": true,
-  "description": "A transparent legal-philosophy instrument across eight jurisprudential dimensions.",
+  "description": "A legal-philosophy quiz across eight jurisprudential dimensions.",
   "scripts": {
     "test": "node scripts/audit-questions.mjs"
   }

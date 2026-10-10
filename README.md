@@ -1,6 +1,6 @@
 # LAWvalues
 
-LAWvalues is a static, client-side legal-philosophy instrument. Version 2 maps respondents across eight bipolar dimensions:
+LAWvalues is a static, client-side legal-philosophy quiz. The current public label is **Version 0.5 Beta**. It maps respondents across eight bipolar dimensions:
 
 - Source: Positivist ↔ Non-positivist
 - Constraint: Textualist ↔ Open construction
@@ -21,7 +21,7 @@ The scoring formula is:
 axis score = 50 + 50 × Σ(item key × response) / (3 × answered items)
 ```
 
-A score of 100 is the first pole, 0 is the second, and 50 is the midpoint. The results page intentionally withholds jurist, movement, and champion matches until pilot data support calibrated profiles. `profiles.js` contains the future profile schema.
+A score of 100 is the first pole, 0 is the second, and 50 is the midpoint. The results page intentionally withholds jurist, movement, and champion matches until pilot data support calibrated profiles. `profiles.js` contains the future profile schema, and `sources.js` records the item bank's academic and doctrinal grounding.
 
 ## Local use
 
@@ -45,4 +45,4 @@ It checks item counts, balanced keying, source references, constant-response neu
 
 ## Validation status
 
-Version 2 is content-grounded and structurally audited, not empirically validated. Factor structure, reliability, test–retest stability, convergent/discriminant validity, subgroup invariance, and profile locations require pilot response data. The methodology page describes the intended validation sequence and publishes the complete item bank and bibliography.
+The item bank is content-grounded and structurally audited, not empirically validated. Factor structure, reliability, test–retest stability, convergent and discriminant validity, subgroup invariance, and profile locations require pilot response data.

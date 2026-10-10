@@ -11,7 +11,6 @@
         number: document.getElementById('question-number'),
         prompt: document.getElementById('question-text'),
         progress: document.getElementById('quiz-progress'),
-        saved: document.getElementById('saved-note'),
         back: document.getElementById('back_button'),
         backOff: document.getElementById('back_button_off'),
         skip: document.getElementById('skip_button'),
@@ -81,9 +80,8 @@
     function saveState() {
         try {
             sessionStorage.setItem(STORAGE_KEY, JSON.stringify(state));
-            elements.saved.textContent = 'Progress saved in this tab';
         } catch (_) {
-            elements.saved.textContent = '';
+            // The quiz still works when session storage is unavailable.
         }
     }
 
