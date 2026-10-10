@@ -2,6 +2,8 @@
     'use strict';
 
     const LATEST_KEY = `lawvalues-latest-${globalThis.LAW_VERSION}`;
+    const itemsPerAxis = globalThis.LAW_ITEMS_PER_AXIS;
+    const questionCount = globalThis.LAW_QUESTION_COUNT;
     const params = new URLSearchParams(window.location.search);
     const error = document.getElementById('results-error');
     const main = document.getElementById('results-main');
@@ -31,11 +33,11 @@
     function parseCoverage() {
         const encoded = params.get('n');
         if (!encoded || encoded.length !== globalThis.LAW_AXES.length) {
-            return Object.fromEntries(globalThis.LAW_AXES.map((axis) => [axis.id, 6]));
+            return Object.fromEntries(globalThis.LAW_AXES.map((axis) => [axis.id, itemsPerAxis]));
         }
         return Object.fromEntries(globalThis.LAW_AXES.map((axis, index) => {
             const value = Number(encoded[index]);
-            return [axis.id, Number.isInteger(value) && value >= 0 && value <= 6 ? value : 6];
+            return [axis.id, Number.isInteger(value) && value >= 0 && value <= itemsPerAxis ? value : itemsPerAxis];
         }));
     }
 
@@ -78,12 +80,12 @@
     });
     document.getElementById('result-summary').textContent = `Your most distinctive results are ${top.join(', ').replace(/, ([^,]*)$/, ', and $1')}.`;
 
-    const incomplete = globalThis.LAW_AXES.filter((axis) => coverage[axis.id] < 6);
+    const incomplete = globalThis.LAW_AXES.filter((axis) => coverage[axis.id] < itemsPerAxis);
     if (incomplete.length > 0) {
         const answered = globalThis.LAW_AXES.reduce((sum, axis) => sum + coverage[axis.id], 0);
         const note = document.getElementById('coverage-note');
         note.hidden = false;
-        note.textContent = `These scores use ${answered} of 48 questions because “not sure” responses are excluded. Axes with fewer answered questions are less precise.`;
+        note.textContent = `These scores use ${answered} of ${questionCount} questions because “not sure” responses are excluded. Axes with fewer answered questions are less precise.`;
     }
 
     function textSummary() {
