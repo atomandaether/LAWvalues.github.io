@@ -1,4 +1,4 @@
-/* LAWvalues 2.0 additions. The original visual system remains in style.css. */
+/* Additions needed for the expanded question bank while retaining the original LAWvalues design. */
 
 * {
     box-sizing: border-box;
@@ -6,28 +6,6 @@
 
 [hidden] {
     display: none !important;
-}
-
-.site-links {
-    text-align: center;
-    margin: 8pt 0 18pt;
-    font-family: 'Equity', serif;
-    font-size: 15pt;
-}
-
-.site-links a {
-    margin: 0 8pt;
-}
-
-.quiz-status {
-    width: 50%;
-    min-width: 500pt;
-    margin: 0 auto 8pt;
-    display: flex;
-    justify-content: space-between;
-    color: #6B5B42;
-    font-family: 'Equity', serif;
-    font-size: 13pt;
 }
 
 .quiz-progress-track {
@@ -101,7 +79,7 @@
 
 .results-summary {
     margin-top: 12pt !important;
-    margin-bottom: 24pt !important;
+    margin-bottom: 18pt !important;
 }
 
 .results-summary h2 {
@@ -115,7 +93,7 @@
 
 .coverage-note {
     width: 70%;
-    margin: 10pt auto 20pt;
+    margin: 10pt auto 18pt;
     padding: 10pt;
     border: 2px solid #B49455;
     border-radius: 8pt;
@@ -123,20 +101,13 @@
     text-align: center;
 }
 
-.axis-caption {
-    width: 78%;
-    margin: 2pt auto 18pt;
-    color: #6B5B42;
-    font-size: 14pt;
-    text-align: center;
+#results-main > h2 {
+    margin-bottom: 4pt;
 }
 
-.axis-scoreline {
-    display: block;
-    font-size: 14pt;
-    line-height: 1.15;
-    color: #5D4E37;
-    margin-top: 2pt;
+div.axis {
+    gap: 0;
+    margin: 0 0 14pt;
 }
 
 div.axis img {
@@ -146,97 +117,42 @@ div.axis img {
     flex: 0 0 auto;
 }
 
-div.bar {
+.axis-bars {
+    display: flex;
+    align-items: stretch;
+    flex: 1 1 auto;
     min-width: 0;
-    overflow: hidden;
+    gap: 0;
 }
 
-div.text-wrapper {
+.axis-bars div.bar {
+    flex: 0 0 50%;
+    width: 50%;
+    min-width: 0;
+    height: 52pt;
+    margin: 0;
+    padding: 0 8pt;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+}
+
+.axis-bars div.text-wrapper {
+    display: block;
+    width: 100%;
+    height: auto;
+    line-height: 1;
+    font-size: 30pt;
     white-space: nowrap;
 }
 
 .classification-placeholder {
     width: 70%;
-    margin: 28pt auto 12pt;
+    margin: 24pt auto 12pt;
     padding: 12pt;
     border-radius: 8pt;
     background: rgba(254, 252, 249, 0.45);
     text-align: center;
-}
-
-.method-section {
-    margin: 20pt 0 30pt;
-}
-
-.method-card,
-.method-axis-card,
-.item-bank-axis,
-.formula-card,
-.status-card {
-    background: rgba(254, 252, 249, 0.45);
-    border-radius: 12pt;
-    padding: 14pt;
-    margin: 10pt 0;
-}
-
-.method-axis-grid {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 10pt;
-}
-
-.method-axis-card {
-    margin: 0;
-    border-top: 6px solid #7CA2B8;
-}
-
-.method-axis-card h3,
-.method-card h3 {
-    margin: 0 0 6pt;
-    color: #4A3C1D;
-    font-family: 'Equity', serif;
-    font-size: 22pt;
-}
-
-.method-axis-card p,
-.method-card p,
-.formula-card p,
-.status-card p,
-.item-bank-axis p,
-.item-bank-axis li,
-.bibliography li {
-    font-size: 15pt;
-    line-height: 1.25;
-}
-
-.item-count,
-.item-sources {
-    color: #6B5B42;
-    font-size: 12pt !important;
-}
-
-.item-bank-axis summary {
-    cursor: pointer;
-    color: #4A3C1D;
-    font-family: 'Equity', serif;
-    font-size: 20pt;
-    font-weight: bold;
-}
-
-.item-bank-axis li {
-    text-indent: 0;
-    margin-bottom: 12pt;
-}
-
-.formula-card code {
-    display: block;
-    margin: 10pt 0;
-    padding: 10pt;
-    border-radius: 8pt;
-    background: #5D4E37;
-    color: #FFFDF8;
-    overflow-x: auto;
-    font-size: 13pt;
 }
 
 .error-box {
@@ -272,7 +188,6 @@ div.text-wrapper {
     p.question,
     .button,
     div.center,
-    .quiz-status,
     .quiz-progress-track,
     .quiz-nav,
     .result-actions {
@@ -283,10 +198,6 @@ div.text-wrapper {
     p.question {
         min-height: 125pt;
         font-size: 27pt;
-    }
-
-    .method-axis-grid {
-        grid-template-columns: 1fr;
     }
 
     .spacer {
@@ -307,14 +218,15 @@ div.text-wrapper {
         max-width: 16%;
     }
 
-    div.bar,
-    div.text-wrapper {
-        height: 28pt;
-        line-height: 28pt;
-        font-size: 23pt;
+    .axis-bars div.bar {
+        height: 40pt;
+        padding: 0 5pt;
     }
 
-    .axis-caption,
+    .axis-bars div.text-wrapper {
+        font-size: 22pt;
+    }
+
     .coverage-note,
     .classification-placeholder,
     .error-box {
@@ -343,29 +255,19 @@ div.text-wrapper {
         font-size: 19pt;
     }
 
-    .site-links {
-        font-size: 13pt;
-    }
-
     div.axis img {
         width: 48px;
         max-width: 15%;
     }
 
-    div.bar {
-        padding: 5pt 2pt;
+    .axis-bars div.bar {
+        height: 32pt;
+        padding: 0 3pt;
         border-width: 2px;
     }
 
-    div.bar,
-    div.text-wrapper {
-        height: 24pt;
-        line-height: 24pt;
+    .axis-bars div.text-wrapper {
         font-size: 16pt;
-    }
-
-    .axis-caption {
-        font-size: 12pt;
     }
 
     .spacer {
@@ -400,9 +302,7 @@ div.text-wrapper {
         padding: 0;
     }
 
-    .site-links,
-    .result-actions,
-    .classification-placeholder .small_button {
+    .result-actions {
         display: none !important;
     }
 
