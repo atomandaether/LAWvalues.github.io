@@ -1,93 +1,78 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="LAWvalues methodology, scoring model, item provenance, and academic sources.">
-  <title>Methodology — LAWvalues</title>
-  <link rel="icon" href="icon.png">
-  <link rel="stylesheet" href="style.css">
-  <script defer src="axes.js"></script>
-  <script defer src="sources.js"></script>
-  <script defer src="questions.js"></script>
-  <script defer src="methodology.js"></script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="LAWvalues methodology, item bank, scoring, and academic sources.">
+<link href="style.css" rel="stylesheet" type="text/css">
+<link href="v2.css" rel="stylesheet" type="text/css">
+<title>LAWvalues Methodology</title>
+<link rel="icon" type="image/png" href="value_images/atomandaether.png">
 </head>
 <body>
-  <header class="site-header">
-    <div class="header-inner">
-      <a class="brand" href="index.html"><img src="flag.png" alt="">LAWvalues</a>
-      <nav class="site-nav" aria-label="Primary navigation">
-        <a class="nav-link" href="index.html">About</a>
-        <a class="nav-link" aria-current="page" href="methodology.html">Methodology</a>
-        <a class="nav-link" href="https://github.com/atomandaether/LAWvalues.github.io">Source</a>
-      </nav>
-    </div>
-  </header>
+<h1>LAWvalues</h1>
+<hr>
+<div class="site-links"><a href="index.html">Home</a> · <a href="instructions.html">Take the quiz</a> · <a href="https://github.com/atomandaether/LAWvalues.github.io">GitHub</a></div>
 
-  <main class="page-shell prose-page">
-    <header>
-      <span class="eyebrow">Instrument 2.0</span>
-      <h1>Methodology and sources</h1>
-      <p>LAWvalues is a transparent, content-grounded beta instrument. It improves structural separation among the eight dimensions; empirical validation requires pilot data and is not claimed yet.</p>
-    </header>
+<h2 style="text-align:center">Methodology &amp; Sources</h2>
+<p class="question">LAWvalues 2.0 is a transparent, research-grounded beta instrument. Its eight categories are preserved. The scoring structure has been rebuilt so that each question measures one category rather than moving several scores at once.</p>
 
-    <section class="prose-section">
-      <h2>Construct map</h2>
-      <p>The dimensions are defined before the items. Each question is assigned to one dimension and cannot directly move any other score.</p>
-      <div class="method-axis-grid" id="method-axis-grid"></div>
-    </section>
+<section class="method-section">
+<h2>Construct Map</h2>
+<p>Each axis represents a distinct jurisprudential disagreement. The dimensions are defined before the questions, and every question is assigned to exactly one dimension.</p>
+<div class="method-axis-grid" id="method-axis-grid"></div>
+</section>
 
-    <section class="prose-section formula-card">
-      <span class="eyebrow">Scoring</span>
-      <h2>Balanced single-axis scoring</h2>
-      <p>Each axis has six items. Three are keyed toward the first pole and three toward the second. Responses run from −3 to +3. “Not sure” is missing rather than zero.</p>
-      <code>axis score = 50 + 50 × Σ(item key × response) / (3 × answered items)</code>
-      <p>A score of 100 is the first pole, 0 is the second, and 50 is the midpoint. Because keying is balanced, giving the same agreement response to every item produces 50 rather than an artificial directional result.</p>
-    </section>
+<section class="method-section formula-card">
+<h2>Scoring</h2>
+<p>Each axis has six questions: three keyed toward the first pole and three toward the second. Responses run from −3 to +3. “Not sure / skip” is missing rather than a midpoint answer.</p>
+<code>axis score = 50 + 50 × Σ(item key × response) / (3 × answered items)</code>
+<p>A score of 100 is the first pole, 0 is the second, and 50 is the midpoint. Balanced keying means that giving the same agreement response to every question produces 50 rather than an artificial direction.</p>
+</section>
 
-    <section class="prose-section">
-      <h2>Structural safeguards</h2>
-      <div class="principles-grid">
-        <article class="principle-card">
-          <h3>No cross-loading by fiat</h3>
-          <p>The prior instrument let one answer add points to many axes. Version 2 gives every item one axis and one key, so a source-of-law response cannot mechanically alter remedies or separation of powers.</p>
-        </article>
-        <article class="principle-card">
-          <h3>Opposite-pole wording</h3>
-          <p>Half of each scale is written from each pole. The items state rival propositions rather than merely inserting negations, reducing acquiescence without making the wording needlessly confusing.</p>
-        </article>
-        <article class="principle-card">
-          <h3>Interleaved administration</h3>
-          <p>Question order is randomized in six rounds, with one item from every axis per round. Respondents are not told which dimension a question measures while answering.</p>
-        </article>
-      </div>
-    </section>
+<section class="method-section">
+<h2>Why the Scores Separate</h2>
+<div class="method-axis-grid">
+    <article class="method-card">
+        <h3>One axis per question</h3>
+        <p>A response about legal validity no longer changes remedies, precedent, institutional posture, and form by assumption. Cross-axis relationships must come from respondents, not from the scoring key.</p>
+    </article>
+    <article class="method-card">
+        <h3>Balanced pole wording</h3>
+        <p>Half of each scale is stated from each pole. This reduces simple agreement bias while avoiding confusing double negatives.</p>
+    </article>
+    <article class="method-card">
+        <h3>Interleaved administration</h3>
+        <p>The quiz randomizes six rounds containing one question from every axis. Respondents are not shown the measured category while answering.</p>
+    </article>
+    <article class="method-card">
+        <h3>Calibration before classification</h3>
+        <p>Jurist, school, and champion labels remain disabled until pilot data show how the questions behave and where defensible profiles belong.</p>
+    </article>
+</div>
+</section>
 
-    <section class="prose-section status-card">
-      <span class="eyebrow">Validation status</span>
-      <h2>What is established, and what remains</h2>
-      <p><strong>Established now:</strong> balanced coverage, source provenance, one-axis loading, scoring symmetry, midpoint neutrality under indiscriminate agreement, and automated audit tests.</p>
-      <p><strong>Not established yet:</strong> factor structure in actual respondents, internal reliability, test–retest stability, convergent and discriminant validity, subgroup measurement invariance, or calibrated locations for jurists and movements.</p>
-      <p>Scale-development research treats item generation, pretesting, factor extraction, reliability, and validity as distinct stages. The next defensible step is expert review and cognitive interviewing, followed by a heterogeneous pilot sample and item-level analysis. Profile labels should follow, not precede, that work.</p>
-    </section>
+<section class="method-section status-card">
+<h2>Validation Status</h2>
+<p><b>Established:</b> balanced coverage, source provenance, one-axis loading, scoring symmetry, midpoint neutrality under indiscriminate agreement, and automated structural tests.</p>
+<p><b>Not yet established:</b> factor structure in actual respondents, internal reliability, test–retest stability, convergent and discriminant validity, subgroup measurement invariance, or calibrated jurist and movement locations.</p>
+<p>The next stage is expert review and cognitive interviewing, followed by a heterogeneous pilot sample and item-level analysis. Classification should follow that evidence rather than being invented in advance.</p>
+</section>
 
-    <section class="prose-section">
-      <h2>Published item bank</h2>
-      <p>Every prompt and its intellectual grounding are listed below. Source links identify the doctrine or scholarship used to operationalize the disagreement; they do not imply that the author endorsed the keyed answer.</p>
-      <div id="item-bank"></div>
-    </section>
+<section class="method-section">
+<h2>Published Item Bank</h2>
+<p>Every prompt and its intellectual grounding are listed below. A citation identifies the doctrine or scholarship used to operationalize the disagreement; it does not imply that the author endorsed the keyed answer.</p>
+<div id="item-bank"></div>
+</section>
 
-    <section class="prose-section">
-      <h2>Bibliography</h2>
-      <ol class="bibliography" id="bibliography"></ol>
-    </section>
-  </main>
+<section class="method-section">
+<h2>Bibliography</h2>
+<ol class="bibliography" id="bibliography"></ol>
+</section>
 
-  <footer class="site-footer">
-    <div class="footer-inner">
-      <p>LAWvalues 2.0 · Item bank and scoring are public.</p>
-      <p><a href="instructions.html">Take the quiz</a></p>
-    </div>
-  </footer>
+<script src="axes.js"></script>
+<script src="sources.js"></script>
+<script src="questions.js"></script>
+<script src="methodology.js"></script>
 </body>
 </html>

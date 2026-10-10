@@ -1,250 +1,179 @@
 (function renderResults() {
-  "use strict";
+    'use strict';
 
-  const LATEST_KEY = `lawvalues-latest-${globalThis.LAW_VERSION}`;
-  const params = new URLSearchParams(window.location.search);
-  const elements = {
-    error: document.getElementById("results-error"),
-    content: document.getElementById("results-content"),
-    version: document.getElementById("result-version"),
-    summary: document.getElementById("result-summary"),
-    commitments: document.getElementById("commitment-grid"),
-    axes: document.getElementById("axis-results"),
-    coverage: document.getElementById("coverage-note"),
-    profiles: document.getElementById("profile-panel"),
-    profileName: document.getElementById("profile-name"),
-    profileDescription: document.getElementById("profile-description"),
-    profileImage: document.getElementById("profile-image"),
-    copyLink: document.getElementById("copy-link"),
-    copySummary: document.getElementById("copy-summary"),
-    print: document.getElementById("print-results"),
-    retake: document.getElementById("retake-quiz"),
-    download: document.getElementById("download-record")
-  };
+    const LATEST_KEY = `lawvalues-latest-${globalThis.LAW_VERSION}`;
+    const params = new URLSearchParams(window.location.search);
+    const error = document.getElementById('results-error');
+    const main = document.getElementById('results-main');
 
-  function parseScores() {
-    const scores = {};
-    for (const axis of globalThis.LAW_AXES) {
-      const raw = params.get(axis.id);
-      const value = Number(raw);
-      if (raw === null || !Number.isFinite(value) || value < 0 || value > 100) {
-        return null;
-      }
-      scores[axis.id] = Math.round(value);
-    }
-    return scores;
-  }
-
-  function parseCoverage() {
-    const encoded = params.get("n");
-    if (!encoded || encoded.length !== globalThis.LAW_AXES.length) {
-      return Object.fromEntries(globalThis.LAW_AXES.map((axis) => [axis.id, 6]));
-    }
-    return Object.fromEntries(
-      globalThis.LAW_AXES.map((axis, index) => {
-        const value = Number(encoded[index]);
-        return [axis.id, Number.isInteger(value) && value >= 0 && value <= 6 ? value : 6];
-      })
-    );
-  }
-
-  const scores = parseScores();
-  const coverage = parseCoverage();
-
-  if (!scores) {
-    elements.error.hidden = false;
-    elements.content.hidden = true;
-    return;
-  }
-
-  const ranked = globalThis.LAW_AXES.map((axis) => ({
-    axis,
-    score: scores[axis.id],
-    distance: Math.abs(scores[axis.id] - 50),
-    pole: globalThis.LAW_SCORING.dominantPole(axis, scores[axis.id])
-  })).sort((a, b) => b.distance - a.distance || a.axis.name.localeCompare(b.axis.name));
-
-  function resultPhrase(entry) {
-    if (entry.pole.direction === "mixed") return `mixed on ${entry.axis.name.toLowerCase()}`;
-    return `${entry.pole.percent}% ${entry.pole.name}`;
-  }
-
-  function commitmentCard(entry) {
-    const article = document.createElement("article");
-    article.className = "commitment-card";
-    article.style.setProperty("--accent", entry.pole.direction === "right" ? entry.axis.rightColor : entry.axis.leftColor);
-    article.innerHTML = `
-      <span class="eyebrow">${entry.axis.name}</span>
-      <strong>${entry.pole.direction === "mixed" ? "Mixed" : `${entry.pole.percent}% ${entry.pole.name}`}</strong>
-      <p>${entry.axis.question}</p>
-    `;
-    return article;
-  }
-
-  function axisCard(axis) {
-    const score = scores[axis.id];
-    const pole = globalThis.LAW_SCORING.dominantPole(axis, score);
-    const label = globalThis.LAW_SCORING.axisLabel(axis, score);
-    const markerPosition = 100 - score;
-    const article = document.createElement("article");
-    article.className = "axis-result-card";
-    article.style.setProperty("--left", axis.leftColor);
-    article.style.setProperty("--right", axis.rightColor);
-    article.innerHTML = `
-      <div class="axis-result-header">
-        <div>
-          <span class="eyebrow">${axis.name}</span>
-          <h3>${label}</h3>
-        </div>
-        <div class="axis-score" aria-label="${score} toward ${axis.left}; ${100 - score} toward ${axis.right}">
-          <strong>${pole.direction === "mixed" ? "50 / 50" : `${pole.percent}%`}</strong>
-          <span>${pole.direction === "mixed" ? "mixed" : pole.name}</span>
-        </div>
-      </div>
-      <p class="axis-question">${axis.question}</p>
-      <div class="scale-labels" aria-hidden="true">
-        <span>${axis.left}</span>
-        <span>${axis.right}</span>
-      </div>
-      <div class="result-track" role="img" aria-label="${axis.left} ${score} percent; ${axis.right} ${100 - score} percent">
-        <span class="result-midline"></span>
-        <span class="result-marker" style="left:${markerPosition}%"></span>
-      </div>
-      <div class="scale-values" aria-hidden="true">
-        <span>${score}%</span>
-        <span>${100 - score}%</span>
-      </div>
-      <details>
-        <summary>What this result means</summary>
-        <div class="axis-explanation">
-          <p><strong>${axis.left}:</strong> ${axis.leftDescription}</p>
-          <p><strong>${axis.right}:</strong> ${axis.rightDescription}</p>
-        </div>
-      </details>
-    `;
-    return article;
-  }
-
-  function plainTextSummary() {
-    const lines = [
-      `LAWvalues ${globalThis.LAW_VERSION}`,
-      ...globalThis.LAW_AXES.map((axis) => {
-        const score = scores[axis.id];
-        return `${axis.name}: ${score}% ${axis.left} / ${100 - score}% ${axis.right}`;
-      }),
-      window.location.href
+    const display = [
+        { axisId: 'sorc', label: 'source-label', score: 'source-score', caption: 'source-caption', leftId: 'positivist', rightId: 'nonpositivist' },
+        { axisId: 'cons', label: 'constraint-label', score: 'constraint-score', caption: 'constraint-caption', leftId: 'textualist', rightId: 'openconstruction' },
+        { axisId: 'time', label: 'time-label', score: 'time-score', caption: 'time-caption', leftId: 'historical', rightId: 'living' },
+        { axisId: 'prec', label: 'precedent-label', score: 'precedent-score', caption: 'precedent-caption', leftId: 'stability', rightId: 'overruling' },
+        { axisId: 'remed', label: 'remedies-label', score: 'remedies-score', caption: 'remedies-caption', leftId: 'narrow', rightId: 'systemic' },
+        { axisId: 'post', label: 'posture-label', score: 'posture-score', caption: 'posture-caption', leftId: 'majoritarian', rightId: 'countermajoritarian' },
+        { axisId: 'separ', label: 'separation-label', score: 'separation-score', caption: 'separation-caption', leftId: 'formalist', rightId: 'functionalist' },
+        { axisId: 'form', label: 'form-label', score: 'form-score', caption: 'form-caption', leftId: 'rules', rightId: 'balancing' }
     ];
-    return lines.join("\n");
-  }
 
-  async function copyText(text, button, successText) {
-    const original = button.textContent;
-    try {
-      await navigator.clipboard.writeText(text);
-    } catch (_) {
-      const textarea = document.createElement("textarea");
-      textarea.value = text;
-      textarea.setAttribute("readonly", "");
-      textarea.style.position = "fixed";
-      textarea.style.opacity = "0";
-      document.body.appendChild(textarea);
-      textarea.select();
-      document.execCommand("copy");
-      textarea.remove();
+    function parseScores() {
+        const scores = {};
+        for (const axis of globalThis.LAW_AXES) {
+            const raw = params.get(axis.id);
+            const value = Number(raw);
+            if (raw === null || !Number.isFinite(value) || value < 0 || value > 100) return null;
+            scores[axis.id] = Math.round(value);
+        }
+        return scores;
     }
-    button.textContent = successText;
-    window.setTimeout(() => {
-      button.textContent = original;
-    }, 1600);
-  }
 
-  function loadLocalRecord() {
-    try {
-      const record = JSON.parse(sessionStorage.getItem(LATEST_KEY));
-      if (record?.version !== globalThis.LAW_VERSION || !record.responses) return null;
-      const sameScores = globalThis.LAW_AXES.every(
-        (axis) => Number(record.scores?.[axis.id]) === Number(scores[axis.id])
-      );
-      return sameScores ? record : null;
-    } catch (_) {
-      return null;
+    function parseCoverage() {
+        const encoded = params.get('n');
+        if (!encoded || encoded.length !== globalThis.LAW_AXES.length) {
+            return Object.fromEntries(globalThis.LAW_AXES.map((axis) => [axis.id, 6]));
+        }
+        return Object.fromEntries(globalThis.LAW_AXES.map((axis, index) => {
+            const value = Number(encoded[index]);
+            return [axis.id, Number.isInteger(value) && value >= 0 && value <= 6 ? value : 6];
+        }));
     }
-  }
 
-  function enableDownload(record) {
-    if (!record) return;
-    elements.download.hidden = false;
-    elements.download.addEventListener("click", () => {
-      const exportRecord = {
-        instrument: "LAWvalues",
-        version: globalThis.LAW_VERSION,
-        completedAt: record.completedAt,
-        scores: record.scores,
-        coverage: record.coverage,
-        strength: record.strength,
-        responses: record.responses
-      };
-      const blob = new Blob([JSON.stringify(exportRecord, null, 2)], {
-        type: "application/json"
-      });
-      const link = document.createElement("a");
-      link.href = URL.createObjectURL(blob);
-      link.download = `lawvalues-${globalThis.LAW_VERSION}-pilot-record.json`;
-      document.body.appendChild(link);
-      link.click();
-      link.remove();
-      URL.revokeObjectURL(link.href);
+    const scores = parseScores();
+    const coverage = parseCoverage();
+    if (!scores) {
+        error.hidden = false;
+        main.hidden = true;
+        return;
+    }
+
+    function setBarValue(name, value) {
+        const inner = document.getElementById(name);
+        const outer = document.getElementById(`bar-${name}`);
+        outer.style.width = 'auto';
+        outer.style.flexBasis = '0';
+        outer.style.flexGrow = String(Math.max(value, 0.001));
+        inner.textContent = `${value}%`;
+        outer.setAttribute('aria-label', `${value} percent`);
+        if (value < 12) inner.style.visibility = 'hidden';
+    }
+
+    display.forEach((entry) => {
+        const axis = globalThis.LAW_AXIS_MAP[entry.axisId];
+        const left = scores[entry.axisId];
+        const right = 100 - left;
+        document.getElementById(entry.label).textContent = globalThis.LAW_SCORING.axisLabel(axis, left);
+        document.getElementById(entry.score).textContent = `${left}% ${axis.left} · ${right}% ${axis.right}`;
+        document.getElementById(entry.caption).textContent = `${axis.left}: ${axis.leftDescription} ${axis.right}: ${axis.rightDescription}`;
+        setBarValue(entry.leftId, left);
+        setBarValue(entry.rightId, right);
     });
-  }
 
-  function renderProfile() {
-    if (!Array.isArray(globalThis.LAW_PROFILES) || globalThis.LAW_PROFILES.length === 0) return;
-    const profileScores = Object.fromEntries(globalThis.LAW_AXES.map((axis) => [axis.id, scores[axis.id]]));
-    const closest = [...globalThis.LAW_PROFILES]
-      .map((profile) => ({
-        profile,
-        distance: globalThis.LAW_SCORING.profileDistance(profileScores, profile)
-      }))
-      .sort((a, b) => a.distance - b.distance)[0]?.profile;
-    if (!closest) return;
+    const ranked = globalThis.LAW_AXES.map((axis) => {
+        const pole = globalThis.LAW_SCORING.dominantPole(axis, scores[axis.id]);
+        return { axis, pole, distance: Math.abs(scores[axis.id] - 50) };
+    }).sort((a, b) => b.distance - a.distance || a.axis.name.localeCompare(b.axis.name));
 
-    elements.profileName.textContent = closest.name;
-    elements.profileDescription.textContent = closest.description || "";
-    if (closest.image) {
-      elements.profileImage.src = closest.image;
-      elements.profileImage.alt = closest.name;
-      elements.profileImage.hidden = false;
+    const top = ranked.slice(0, 3).map(({ axis, pole }) => {
+        if (pole.direction === 'mixed') return `mixed on ${axis.name.toLowerCase()}`;
+        return `${pole.percent}% ${pole.name}`;
+    });
+    document.getElementById('result-summary').textContent = `Your most distinctive results are ${top.join(', ').replace(/, ([^,]*)$/, ', and $1')}.`;
+    document.getElementById('result-version').textContent = `Instrument ${globalThis.LAW_VERSION}`;
+
+    const incomplete = globalThis.LAW_AXES.filter((axis) => coverage[axis.id] < 6);
+    if (incomplete.length > 0) {
+        const answered = globalThis.LAW_AXES.reduce((sum, axis) => sum + coverage[axis.id], 0);
+        const note = document.getElementById('coverage-note');
+        note.hidden = false;
+        note.textContent = `These scores use ${answered} of 48 questions because “not sure” responses are excluded. Axes with fewer answered questions are less precise.`;
     }
-    elements.profiles.hidden = false;
-  }
 
-  elements.version.textContent = `Instrument ${globalThis.LAW_VERSION}`;
-  const top = ranked.slice(0, 3);
-  elements.summary.textContent = `Your most distinctive results are ${top.map(resultPhrase).join(", ").replace(/, ([^,]*)$/, ", and $1")}.`;
-  top.forEach((entry) => elements.commitments.appendChild(commitmentCard(entry)));
-  globalThis.LAW_AXES.forEach((axis) => elements.axes.appendChild(axisCard(axis)));
-
-  const incomplete = globalThis.LAW_AXES.filter((axis) => coverage[axis.id] < 6);
-  if (incomplete.length > 0) {
-    const count = globalThis.LAW_AXES.reduce((sum, axis) => sum + coverage[axis.id], 0);
-    elements.coverage.hidden = false;
-    elements.coverage.textContent = `These scores use ${count} of 48 items because “not sure” responses are excluded. Axes with fewer answered items are less precise.`;
-  }
-
-  elements.copyLink.addEventListener("click", () => copyText(window.location.href, elements.copyLink, "Link copied"));
-  elements.copySummary.addEventListener("click", () => copyText(plainTextSummary(), elements.copySummary, "Summary copied"));
-  elements.print.addEventListener("click", () => window.print());
-  elements.retake.addEventListener("click", () => {
-    try {
-      sessionStorage.removeItem(`lawvalues-quiz-${globalThis.LAW_VERSION}`);
-      sessionStorage.removeItem(LATEST_KEY);
-    } catch (_) {
-      // Navigation still works without storage access.
+    function textSummary() {
+        return [
+            `LAWvalues ${globalThis.LAW_VERSION}`,
+            ...globalThis.LAW_AXES.map((axis) => `${axis.name}: ${scores[axis.id]}% ${axis.left} / ${100 - scores[axis.id]}% ${axis.right}`),
+            window.location.href
+        ].join('\n');
     }
-    window.location.assign("quiz.html");
-  });
 
-  enableDownload(loadLocalRecord());
-  renderProfile();
-  elements.content.hidden = false;
+    async function copyText(text, button, success) {
+        const original = button.textContent;
+        try {
+            await navigator.clipboard.writeText(text);
+        } catch (_) {
+            const textarea = document.createElement('textarea');
+            textarea.value = text;
+            textarea.setAttribute('readonly', '');
+            textarea.style.position = 'fixed';
+            textarea.style.opacity = '0';
+            document.body.appendChild(textarea);
+            textarea.select();
+            document.execCommand('copy');
+            textarea.remove();
+        }
+        button.textContent = success;
+        window.setTimeout(() => { button.textContent = original; }, 1500);
+    }
+
+    function loadLocalRecord() {
+        try {
+            const record = JSON.parse(sessionStorage.getItem(LATEST_KEY));
+            const matches = record?.version === globalThis.LAW_VERSION &&
+                record.responses &&
+                globalThis.LAW_AXES.every((axis) => Number(record.scores?.[axis.id]) === scores[axis.id]);
+            return matches ? record : null;
+        } catch (_) {
+            return null;
+        }
+    }
+
+    const record = loadLocalRecord();
+    const download = document.getElementById('download-record');
+    if (record) {
+        download.hidden = false;
+        download.addEventListener('click', () => {
+            const exportRecord = {
+                instrument: 'LAWvalues',
+                version: globalThis.LAW_VERSION,
+                completedAt: record.completedAt,
+                scores: record.scores,
+                coverage: record.coverage,
+                strength: record.strength,
+                responses: record.responses
+            };
+            const blob = new Blob([JSON.stringify(exportRecord, null, 2)], { type: 'application/json' });
+            const url = URL.createObjectURL(blob);
+            const link = document.createElement('a');
+            link.href = url;
+            link.download = `lawvalues-${globalThis.LAW_VERSION}-pilot-record.json`;
+            document.body.appendChild(link);
+            link.click();
+            link.remove();
+            URL.revokeObjectURL(url);
+        });
+    }
+
+    if (Array.isArray(globalThis.LAW_PROFILES) && globalThis.LAW_PROFILES.length > 0) {
+        const closest = [...globalThis.LAW_PROFILES]
+            .map((profile) => ({ profile, distance: globalThis.LAW_SCORING.profileDistance(scores, profile) }))
+            .sort((a, b) => a.distance - b.distance)[0]?.profile;
+        if (closest) document.getElementById('classification-label').textContent = closest.name;
+    }
+
+    document.getElementById('copy-link').addEventListener('click', (event) => copyText(window.location.href, event.currentTarget, 'Copied'));
+    document.getElementById('copy-summary').addEventListener('click', (event) => copyText(textSummary(), event.currentTarget, 'Copied'));
+    document.getElementById('print-results').addEventListener('click', () => window.print());
+    document.getElementById('retake-quiz').addEventListener('click', () => {
+        try {
+            sessionStorage.removeItem(`lawvalues-quiz-${globalThis.LAW_VERSION}`);
+            sessionStorage.removeItem(LATEST_KEY);
+        } catch (_) {
+            // Navigation still works without storage access.
+        }
+        window.location.assign('quiz.html');
+    });
+
+    error.hidden = true;
+    main.hidden = false;
 })();
