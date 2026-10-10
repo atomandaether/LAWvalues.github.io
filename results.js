@@ -7,14 +7,14 @@
     const main = document.getElementById('results-main');
 
     const display = [
-        { axisId: 'sorc', label: 'source-label', score: 'source-score', caption: 'source-caption', leftId: 'positivist', rightId: 'nonpositivist' },
-        { axisId: 'cons', label: 'constraint-label', score: 'constraint-score', caption: 'constraint-caption', leftId: 'textualist', rightId: 'openconstruction' },
-        { axisId: 'time', label: 'time-label', score: 'time-score', caption: 'time-caption', leftId: 'historical', rightId: 'living' },
-        { axisId: 'prec', label: 'precedent-label', score: 'precedent-score', caption: 'precedent-caption', leftId: 'stability', rightId: 'overruling' },
-        { axisId: 'remed', label: 'remedies-label', score: 'remedies-score', caption: 'remedies-caption', leftId: 'narrow', rightId: 'systemic' },
-        { axisId: 'post', label: 'posture-label', score: 'posture-score', caption: 'posture-caption', leftId: 'majoritarian', rightId: 'countermajoritarian' },
-        { axisId: 'separ', label: 'separation-label', score: 'separation-score', caption: 'separation-caption', leftId: 'formalist', rightId: 'functionalist' },
-        { axisId: 'form', label: 'form-label', score: 'form-score', caption: 'form-caption', leftId: 'rules', rightId: 'balancing' }
+        { axisId: 'sorc', label: 'source-label', leftId: 'positivist', rightId: 'nonpositivist' },
+        { axisId: 'cons', label: 'constraint-label', leftId: 'textualist', rightId: 'openconstruction' },
+        { axisId: 'time', label: 'time-label', leftId: 'historical', rightId: 'living' },
+        { axisId: 'prec', label: 'precedent-label', leftId: 'stability', rightId: 'overruling' },
+        { axisId: 'remed', label: 'remedies-label', leftId: 'narrow', rightId: 'systemic' },
+        { axisId: 'post', label: 'posture-label', leftId: 'majoritarian', rightId: 'countermajoritarian' },
+        { axisId: 'separ', label: 'separation-label', leftId: 'formalist', rightId: 'functionalist' },
+        { axisId: 'form', label: 'form-label', leftId: 'rules', rightId: 'balancing' }
     ];
 
     function parseScores() {
@@ -50,12 +50,12 @@
     function setBarValue(name, value) {
         const inner = document.getElementById(name);
         const outer = document.getElementById(`bar-${name}`);
-        outer.style.width = 'auto';
-        outer.style.flexBasis = '0';
-        outer.style.flexGrow = String(Math.max(value, 0.001));
+        outer.style.display = value === 0 ? 'none' : 'flex';
+        outer.style.width = `${value}%`;
+        outer.style.flex = `0 0 ${value}%`;
         inner.textContent = `${value}%`;
+        inner.style.visibility = value < 11 ? 'hidden' : 'visible';
         outer.setAttribute('aria-label', `${value} percent`);
-        if (value < 12) inner.style.visibility = 'hidden';
     }
 
     display.forEach((entry) => {
@@ -63,8 +63,6 @@
         const left = scores[entry.axisId];
         const right = 100 - left;
         document.getElementById(entry.label).textContent = globalThis.LAW_SCORING.axisLabel(axis, left);
-        document.getElementById(entry.score).textContent = `${left}% ${axis.left} · ${right}% ${axis.right}`;
-        document.getElementById(entry.caption).textContent = `${axis.left}: ${axis.leftDescription} ${axis.right}: ${axis.rightDescription}`;
         setBarValue(entry.leftId, left);
         setBarValue(entry.rightId, right);
     });
@@ -79,7 +77,6 @@
         return `${pole.percent}% ${pole.name}`;
     });
     document.getElementById('result-summary').textContent = `Your most distinctive results are ${top.join(', ').replace(/, ([^,]*)$/, ', and $1')}.`;
-    document.getElementById('result-version').textContent = `Instrument ${globalThis.LAW_VERSION}`;
 
     const incomplete = globalThis.LAW_AXES.filter((axis) => coverage[axis.id] < 6);
     if (incomplete.length > 0) {
@@ -91,7 +88,7 @@
 
     function textSummary() {
         return [
-            `LAWvalues ${globalThis.LAW_VERSION}`,
+            'LAWvalues',
             ...globalThis.LAW_AXES.map((axis) => `${axis.name}: ${scores[axis.id]}% ${axis.left} / ${100 - scores[axis.id]}% ${axis.right}`),
             window.location.href
         ].join('\n');
@@ -146,7 +143,7 @@
             const url = URL.createObjectURL(blob);
             const link = document.createElement('a');
             link.href = url;
-            link.download = `lawvalues-${globalThis.LAW_VERSION}-pilot-record.json`;
+            link.download = 'lawvalues-results.json';
             document.body.appendChild(link);
             link.click();
             link.remove();
@@ -163,16 +160,6 @@
 
     document.getElementById('copy-link').addEventListener('click', (event) => copyText(window.location.href, event.currentTarget, 'Copied'));
     document.getElementById('copy-summary').addEventListener('click', (event) => copyText(textSummary(), event.currentTarget, 'Copied'));
-    document.getElementById('print-results').addEventListener('click', () => window.print());
-    document.getElementById('retake-quiz').addEventListener('click', () => {
-        try {
-            sessionStorage.removeItem(`lawvalues-quiz-${globalThis.LAW_VERSION}`);
-            sessionStorage.removeItem(LATEST_KEY);
-        } catch (_) {
-            // Navigation still works without storage access.
-        }
-        window.location.assign('quiz.html');
-    });
 
     error.hidden = true;
     main.hidden = false;
