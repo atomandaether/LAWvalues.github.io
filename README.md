@@ -13,7 +13,9 @@ LAWvalues is a static, client-side legal-philosophy quiz. The current public lab
 
 ## Instrument design
 
-The bank contains 48 questions, six per dimension. Every item affects exactly one axis, and every axis has three items keyed toward each pole. Responses use a seven-point scale from −3 to +3. “Not sure” answers are omitted from the relevant denominator.
+The bank contains 64 questions, eight per dimension. Every item affects exactly one axis, and every axis has four items keyed toward each pole. Responses use a seven-point scale from −3 to +3. “Not sure” answers are omitted from the relevant denominator.
+
+The questions are written as plain-language legal problems rather than definitions of the measured categories. They draw on recurring cases, hypotheticals, and disputes from jurisprudence, statutory interpretation, constitutional law, remedies, separation of powers, and rules-versus-standards scholarship. Politically cross-cutting examples are used to reduce the chance that a respondent can infer an answer merely from a school’s partisan reputation.
 
 The scoring formula is:
 
@@ -41,7 +43,7 @@ The repository includes a dependency-free structural and scoring audit:
 npm test
 ```
 
-It checks item counts, balanced keying, source references, constant-response neutrality, endpoint behavior, scoring symmetry, simulated off-axis independence, local asset references, and removal of legacy advertising/tracking code. GitHub Actions runs the same audit on pull requests and pushes to `main`.
+It checks item counts, balanced keying, source references, question length and terminology, constant-response neutrality, endpoint behavior, scoring symmetry, simulated off-axis independence, local asset references, and preservation of the original visible interface. GitHub Actions runs the same audit on pull requests and pushes to `main`.
 
 ## Validation status
 

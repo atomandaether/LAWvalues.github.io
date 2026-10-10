@@ -7,6 +7,11 @@
     return Math.min(max, Math.max(min, value));
   }
 
+  function roundAwayFromZero(value) {
+    if (value === 0) return 0;
+    return Math.sign(value) * Math.round(Math.abs(value));
+  }
+
   function hasResponse(responses, id) {
     return Object.prototype.hasOwnProperty.call(responses, id);
   }
@@ -26,7 +31,8 @@
       0
     );
     const maximum = RESPONSE_MAX * answered.length;
-    const score = Math.round(clamp(50 + (50 * raw) / maximum, 0, 100));
+    const offset = (50 * raw) / maximum;
+    const score = clamp(50 + roundAwayFromZero(offset), 0, 100);
     const strength = Math.round(
       (100 * answered.reduce((sum, item) => sum + Math.abs(Number(responses[item.id])), 0)) /
         maximum
@@ -91,6 +97,7 @@
     RESPONSE_MIN,
     RESPONSE_MAX,
     clamp,
+    roundAwayFromZero,
     scoreAxis,
     scoreAll,
     axisLabel,
