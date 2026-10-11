@@ -26,10 +26,12 @@ assert.ok(Array.isArray(identities) && identities.length >= 20, "Need a substant
 assert.ok(Array.isArray(champions) && champions.length >= 25, "Need a substantial champion catalog");
 assert.ok(Array.isArray(diagnostics) && diagnostics.length >= 10, "Need an adaptive diagnostic bank");
 assert.ok(Array.isArray(profiles) && profiles.length >= 30, "Need broad sparse personality coverage");
-assert.ok(resultContent && Array.isArray(resultContent.MODIFIERS) && resultContent.MODIFIERS.length >= 20,
-  "Need machine-readable modifier vocabulary");
-assert.ok(Array.isArray(resultContent.PHRASES) && resultContent.PHRASES.length >= 20,
-  "Need machine-readable phrase vocabulary");
+assert.ok(resultContent && Array.isArray(resultContent.FEATURES) && resultContent.FEATURES.length >= 25,
+  "Need one machine-readable residual-feature pool");
+assert.equal(resultContent.MODIFIERS.length, resultContent.FEATURES.length,
+  "Every residual feature needs a modifier rendering");
+assert.equal(resultContent.PHRASES.length, resultContent.FEATURES.length,
+  "Every residual feature needs a phrase rendering");
 assert.equal(classifier.MAX_DIAGNOSTICS, 7, "Adaptive phase must cap the quiz at 100 total questions");
 
 assert.equal(new Set(identities.map((x) => x.id)).size, identities.length, "Identity IDs must be unique");
@@ -145,6 +147,17 @@ assert.equal(rules.doNotForceChampion, true, "Champion matching must permit no s
 assert.equal(rules.requireMarginalExplanatoryValue, true, "Champions must add marginal explanatory coverage");
 assert.equal(rules.pruneRedundantChampions, true, "Redundant champions must be pruned");
 
+assert.equal(identities.find((x) => x.id === "moral_impact_theorist").label, "Greenbergian",
+  "Moral Impact Theory should use the punchier public noun Greenbergian");
+assert.equal(identities.find((x) => x.id === "legal_process_theorist").label, "Legal Process Jurist",
+  "Legal Process should use a jurist identity rather than a generic Theorist suffix");
+assert.equal(identities.find((x) => x.id === "proportionalist").label, "Proportionalist",
+  "Structured proportionality should retain the established Proportionalist label");
+assert.equal(identities.find((x) => x.id === "interpretivist").public, false,
+  "Interpretivist should remain an internal parent, not a competing public noun");
+assert.equal(identities.find((x) => x.id === "nonpositivist").broadFallback, true,
+  "Non-positivist should be marked as a broad last-resort fallback");
+
 const profileById = Object.fromEntries(profiles.map((x) => [x.id, x]));
 assert.equal(profileById.finnis.tier, "main", "Finnis must remain a first-class Natural Law result");
 assert.equal(profileById.greenberg.tier, "specialist",
@@ -204,18 +217,43 @@ const spamResponses = Object.fromEntries(Array.from({length:93}, (_,i)=>[`Q${i}`
 const spam = classifier.classify(neutralScores, spamResponses, { "D-RLS1": -2, "D-QC1": -2 }, { elapsedMs: 30000 });
 assert.equal(spam.identity.id, "unusable_response", "Implausibly fast completion must suppress personality matching");
 
-// The public result grammar must actually assemble modifier + real identity + phrase from distinct information.
-const syntheticIdentity = identities.find((x) => x.id === "originalist");
+// The public result grammar ranks one residual-feature pool: noun first, phrase second,
+// modifier third. The phrase must take the strongest unspent feature and the modifier
+// should then add a genuinely different next-best feature.
+const syntheticIdentity = identities.find((x) => x.id === "public_meaning_originalist");
+const syntheticScores = { sorc: 86, cons: 68, time: 92, prec: 82, remed: 55, post: 61, separ: 54, form: 70 };
+const syntheticTraits = {
+  "source.positive_sources": 0.72,
+  "time.public_meaning": 0.9,
+  "time.fixation": 0.84,
+  "precedent.stability": 0.82,
+  "precedent.reliance": 0.85,
+  "constraint.textual": 0.35,
+  "form.rules": 0.4
+};
 const assembled = resultContent.assemble(
   { identity: syntheticIdentity },
-  { sorc: 50, cons: 86, time: 90, prec: 18, remed: 82, post: 72, separ: 50, form: 88 },
-  { "precedent.correctness_first": 0.9, "remedies.incremental": 0.65, "form.rules": 0.76 }
+  syntheticScores,
+  syntheticTraits
 );
-assert.ok(assembled.title.includes("Originalist"), "Assembled title must preserve the real jurisprudential noun");
-assert.ok(assembled.modifier, "Assembled title should select a nonredundant modifier when strong evidence exists");
-assert.ok(assembled.phrase, "Assembled title should select a nonredundant trailing phrase when strong evidence exists");
-assert.notEqual(assembled.modifier.axis, assembled.phrase.axis,
-  "Modifier and phrase should normally communicate different axes");
+assert.ok(assembled.title.includes("Public-Meaning Originalist"),
+  "Assembled title must preserve the real jurisprudential noun");
+assert.equal(assembled.phrase.id, "precedent_stability",
+  "The strongest residual feature should become the phrase");
+assert.equal(assembled.modifier.id, "source_positive",
+  "The next strongest distinct residual feature should become the modifier");
+assert.equal(assembled.phrase.text, "who thinks being wrong for 50 years counts for something",
+  "Precedent-stability phrase should use the current critic-rib wording");
+assert.equal(assembled.modifier.text, "Morality-“blind”",
+  "Positive-source modifier should use the current critic-rib wording");
+assert.notEqual(
+  resultContent.FEATURES.find((x) => x.id === assembled.phrase.id).group,
+  resultContent.FEATURES.find((x) => x.id === assembled.modifier.id).group,
+  "Phrase and modifier should normally compress different substantive dimensions"
+);
+const ranked = resultContent.rankFeatures(syntheticIdentity, syntheticScores, syntheticTraits);
+assert.equal(ranked[0].feature.id, assembled.phrase.id,
+  "Phrase selection must follow the common residual-feature ranking rather than a separate phrase list");
 
 const greenbergDiagnostic = classifier.diagnosticBank().find((x) => x.id === "D-NP4");
 assert.ok(greenbergDiagnostic && greenbergDiagnostic.relatedIdentityIds.includes("moral_impact_theorist"),
@@ -228,7 +266,9 @@ const greenberg = classifier.classify(
   { "D-RLS1": -2, "D-QC1": -2, "D-NP4": 3 }
 );
 assert.equal(greenberg.identity.id, "moral_impact_theorist",
-  "Direct Moral Impact evidence should resolve to Moral Impact Theorist");
+  "Direct Moral Impact evidence should resolve to Greenbergian/Moral Impact identity");
+assert.equal(greenberg.identity.label, "Greenbergian",
+  "Moral Impact identity should display as Greenbergian");
 assert.ok(greenberg.champions.some((x) => x.id === "greenberg"),
   "Mark Greenberg should be available as the closest thinker for a clean Moral Impact profile");
 
@@ -237,4 +277,5 @@ console.log(`PASS: ${profiles.length} sparse thinker profiles across main, speci
 console.log(`PASS: ${allDiagnostics.length} adaptive diagnostics with a seven-question cap.`);
 console.log("PASS: Natural Law remains first-class; Pound is specialist; Savigny is lineage; O'Connor is catch-all.");
 console.log("PASS: sparse profiles ignore unmodeled axes and diagnostic specialists require evidence.");
-console.log("PASS: public modifier + identity + phrase titles are machine assembled with redundancy controls.");
+console.log("PASS: public titles use one ranked residual-feature pool: phrase gets #2, modifier gets #3.");
+console.log("PASS: critic-rib wording is presentation only; neutral feature IDs drive the ranking.");
