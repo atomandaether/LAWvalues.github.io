@@ -112,17 +112,24 @@
     <img src="value_images/balancing.svg" alt="Balancing">
 </div>
 
-<div class="classification-placeholder">
-    <h2>Profile Classification</h2>
-    <p id="classification-label">Not yet calibrated.</p>
-    <p style="font-size:14pt">Jurist, movement, and champion matches will be added after pilot responses establish where the profiles belong.</p>
+<div class="classification-placeholder" id="classification-panel">
+    <h2>Your jurisprudential fit</h2>
+    <p class="classification-identity" id="classification-label">No classification stored.</p>
+    <p id="classification-reason"></p>
+    <p class="classification-champion" id="champion-line"></p>
+    <p id="champion-description"></p>
+    <p id="related-line"></p>
+    <p class="classification-note" id="classification-note"></p>
 </div>
 </main>
 
 <script src="axes.js"></script>
 <script src="questions.js"></script>
 <script src="scoring.js"></script>
+<script src="result_catalog.js"></script>
+<script src="diagnostics.js"></script>
 <script src="profiles.js"></script>
+<script src="classification.js"></script>
 <script src="results.js"></script>
 </body>
 </html>
