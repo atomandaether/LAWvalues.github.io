@@ -153,9 +153,12 @@
     let score=Math.max(a,t*1.08) + 0.12*Math.min(a,t || a);
     if(component.axis && component.axis===familyAxis(identity) && t<0.45) score*=0.62;
     const identityTags=identityCoverage(identity);
-    const redundancy=Math.max(overlapRatio(component.adds,identityTags),overlapRatio(component.adds,usedTags));
-    if(redundancy>=0.999 && t<0.6) score*=0.2;
-    else score*=1-0.55*redundancy;
+    const identityRedundancy=overlapRatio(component.adds,identityTags);
+    const usedRedundancy=overlapRatio(component.adds,usedTags);
+    if(identityRedundancy>=0.999) score*=0.08;
+    else score*=1-0.65*identityRedundancy;
+    if(usedRedundancy>=0.999) score*=0.05;
+    else score*=1-0.7*usedRedundancy;
     if(component.axis && usedAxes.has(component.axis)) score*=0.28;
     return clamp01(score);
   }
