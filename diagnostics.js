@@ -126,6 +126,19 @@ globalThis.LAW_DIAGNOSTIC_QUESTIONS = Object.freeze([
     note: "Close to S8; ask only if the existing Dworkin evidence is genuinely ambiguous."
   },
   {
+    id: "D-NP4",
+    family: "nonpositivism",
+    priority: "high",
+    unlock: "Nonpositivist is clear but Natural Law and Dworkinian interpretivism do not fully explain why institutional action changes legal obligations.",
+    prompt: "When legislatures and courts act, what matters legally is the change those institutional actions make to people's actual moral rights and obligations. Those resulting moral obligations are the law; they are not merely moral reasons for obeying a separate source-based legal rule.",
+    agreeTraits: ["source.moral_impact", "source.one_system"],
+    disagreeTraits: [],
+    nextOnAgree: [],
+    nextOnDisagree: [],
+    relatedIdentityIds: ["moral_impact_theorist", "nonpositivist"],
+    note: "Greenberg-style Moral Impact Theory diagnostic. Distinguishes institutional moral impact from Dworkinian fit/justification and classical Natural Law."
+  },
+  {
     id: "D-NP3",
     family: "nonpositivism",
     priority: "medium",
