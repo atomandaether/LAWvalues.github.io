@@ -16,47 +16,42 @@
     return Object.prototype.hasOwnProperty.call(responses, id);
   }
 
-  function scoreWeight(item) {
-    const value = Number(item.scoreWeight ?? 1);
-    return Number.isFinite(value) && value > 0 ? value : 0;
+  function weightForAxis(item, axisId) {
+    const value = Number(item?.weights?.[axisId] ?? 0);
+    return Number.isFinite(value) ? value : 0;
   }
 
-  function weightedMean(items, responses, transform = (value) => value) {
-    const totalWeight = items.reduce((sum, item) => sum + scoreWeight(item), 0);
-    if (totalWeight === 0) return null;
-    return items.reduce(
-      (sum, item) => sum + transform(Number(responses[item.id]), item) * scoreWeight(item),
+  function weightedResponseMean(items, responses, axisId) {
+    const denominator = items.reduce(
+      (sum, item) => sum + Math.abs(weightForAxis(item, axisId)),
       0
-    ) / totalWeight;
+    );
+    if (denominator === 0) return null;
+    return items.reduce(
+      (sum, item) => sum + Number(responses[item.id]) * Math.abs(weightForAxis(item, axisId)),
+      0
+    ) / denominator;
   }
 
   function scoreAxis(axisId, responses, questions = global.LAW_QUESTIONS) {
-    const axisItems = questions.filter((item) => item.axis === axisId);
-    const scoredItems = axisItems.filter((item) => scoreWeight(item) > 0);
-    const answered = scoredItems.filter(
+    const items = questions.filter((item) => weightForAxis(item, axisId) !== 0);
+    const answered = items.filter(
       (item) => hasResponse(responses, item.id) && responses[item.id] !== null
     );
 
     if (answered.length === 0) {
-      return {
-        score: 50,
-        answered: 0,
-        total: scoredItems.length,
-        diagnosticTotal: axisItems.length - scoredItems.length,
-        strength: 0,
-        raw: 0
-      };
+      return { score: 50, answered: 0, total: items.length, strength: 0, raw: 0 };
     }
 
-    const positive = answered.filter((item) => item.key === 1);
-    const negative = answered.filter((item) => item.key === -1);
-    const positiveMean = weightedMean(positive, responses);
-    const negativeMean = weightedMean(negative, responses);
+    const positive = answered.filter((item) => weightForAxis(item, axisId) > 0);
+    const negative = answered.filter((item) => weightForAxis(item, axisId) < 0);
+    const positiveMean = weightedResponseMean(positive, responses, axisId);
+    const negativeMean = weightedResponseMean(negative, responses, axisId);
 
     let raw;
     if (positiveMean !== null && negativeMean !== null) {
-      // Give first-pole- and second-pole-keyed item families equal influence even when
-      // the working bank currently contains different numbers of each.
+      // Equalize the two directional families so response-style agreement does not
+      // push an axis merely because the working bank contains more items on one side.
       raw = (positiveMean - negativeMean) / 2;
     } else if (positiveMean !== null) {
       raw = positiveMean;
@@ -65,10 +60,14 @@
     }
 
     const score = clamp(50 + roundAwayFromZero((50 * raw) / RESPONSE_MAX), 0, 100);
-    const totalWeight = answered.reduce((sum, item) => sum + scoreWeight(item), 0);
+    const totalWeight = answered.reduce(
+      (sum, item) => sum + Math.abs(weightForAxis(item, axisId)),
+      0
+    );
     const strength = totalWeight === 0 ? 0 : Math.round(
       (100 * answered.reduce(
-        (sum, item) => sum + Math.abs(Number(responses[item.id])) * scoreWeight(item),
+        (sum, item) => sum + Math.abs(Number(responses[item.id])) *
+          Math.abs(weightForAxis(item, axisId)),
         0
       )) / (RESPONSE_MAX * totalWeight)
     );
@@ -76,8 +75,7 @@
     return {
       score,
       answered: answered.length,
-      total: scoredItems.length,
-      diagnosticTotal: axisItems.length - scoredItems.length,
+      total: items.length,
       strength,
       raw
     };
@@ -134,6 +132,7 @@
     RESPONSE_MAX,
     clamp,
     roundAwayFromZero,
+    weightForAxis,
     scoreAxis,
     scoreAll,
     axisLabel,
