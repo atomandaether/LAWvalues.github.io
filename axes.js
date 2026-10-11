@@ -1,27 +1,6 @@
 /* LAWvalues axis definitions. The first pole is scored toward 100; the second toward 0. */
 globalThis.LAW_VERSION = "0.5 Beta";
 globalThis.LAW_QUESTION_COUNT = 93;
-globalThis.LAW_SCORED_QUESTION_COUNT = 86;
-globalThis.LAW_AXIS_ITEM_COUNTS = Object.freeze({
-  sorc: 11,
-  cons: 18,
-  time: 12,
-  prec: 12,
-  remed: 11,
-  post: 13,
-  separ: 7,
-  form: 9
-});
-globalThis.LAW_AXIS_SCORED_COUNTS = Object.freeze({
-  sorc: 11,
-  cons: 16,
-  time: 8,
-  prec: 12,
-  remed: 11,
-  post: 13,
-  separ: 7,
-  form: 8
-});
 
 globalThis.LAW_AXES = Object.freeze([
   {
