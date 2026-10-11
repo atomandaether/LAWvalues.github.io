@@ -23,12 +23,12 @@ The questions are written as plain-language legal problems rather than definitio
 
 After the 93-question core, LAWvalues may ask up to seven adaptive tie-breakers, keeping the full quiz at 100 questions or fewer. These follow-ups **do not change the eight headline scores**. The first two are a soft Realism probe and a response check; remaining questions are routed only when they can refine a live jurisprudential distinction.
 
-Public results use the three-part grammar **[modifier] [real jurisprudential identity] [phrase]**. The identity is a real school or recognized descriptor; the modifier and phrase are selected from the strongest remaining nonredundant axis or question-level traits. High-value cross-axis combinations can add a short bridge paragraph, and the closest thinker is selected separately afterward.
+Public results use the three-part grammar **[modifier] [real jurisprudential identity] [phrase]**. The identity is the nearest real jurisprudential neighbor. After the information already conveyed by that noun is treated as spent, one common pool of axis and question-level traits is ranked by residual importance: the strongest remaining feature becomes the longer trailing phrase (the respondent's #2 characteristic), and the next genuinely different feature becomes the compact modifier (#3). The joke wording is a presentation layer over neutral internal traits, usually phrased as an intelligent critic's affectionate caricature. High-value cross-axis combinations can add a short bridge paragraph, and the closest thinker is selected separately afterward.
 
 The matching model is deliberately sparse:
 
 - a thinker has positions only on axes that meaningfully characterize that thinker; an unmodeled axis is ignored rather than treated as a neutral 50;
-- major jurisprudential families remain first-class results, including Legal Positivism, Natural Law, Dworkinian Interpretivism, Moral Impact Theory, Legal Process, Originalism, Purposivism, Living/Common-Law Constitutionalism, judicial-restraint traditions, popular/weak-form constitutionalism, and proportionality;
+- major jurisprudential families remain first-class results, including Legal Positivism, Natural Law, Dworkinian jurisprudence, Greenbergian Moral Impact Theory, Legal Process, Originalism, Purposivism, Living/Common-Law Constitutionalism, judicial-restraint traditions, popular/weak-form constitutionalism, and proportionality;
 - specialist thinkers can win only when their distinctive proposition is affirmatively supported;
 - lineage/further-reading figures can enrich a result without being eligible to win it;
 - anti-traits and minimum-salience gates prevent a numerically nearby thinker from being selected when the respondent rejects the idea that makes that thinker distinctive;

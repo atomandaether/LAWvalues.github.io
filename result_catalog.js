@@ -28,9 +28,10 @@ globalThis.LAW_RESULT_IDENTITIES = Object.freeze([
     label: "Non-positivist",
     family: "source",
     status: "fallback",
+    broadFallback: true,
     parentId: null,
     covers: ["source.nonpositive_sources"],
-    notes: "Broad fallback when social-source positivism is rejected but a narrower non-positivist theory cannot yet be diagnosed honestly."
+    notes: "Broad last-resort fallback when social-source positivism is rejected but no narrower non-positivist theory or comparably strong middle-level identity can be diagnosed honestly."
   },
   {
     id: "positivist",
@@ -64,9 +65,10 @@ globalThis.LAW_RESULT_IDENTITIES = Object.freeze([
     label: "Interpretivist",
     family: "source",
     status: "fallback",
+    public: false,
     parentId: null,
     covers: ["source.principles_are_law"],
-    notes: "Broader real label when principle-based nonpositivism is clear but the specifically Dworkinian package is not."
+    notes: "Internal parent for principle-based nonpositivism. Public results should prefer Dworkinian or another genuine middle-level neighbor rather than showing Interpretivist as a competing noun."
   },
   {
     id: "dworkinian",
@@ -79,7 +81,7 @@ globalThis.LAW_RESULT_IDENTITIES = Object.freeze([
   },
   {
     id: "moral_impact_theorist",
-    label: "Moral Impact Theorist",
+    label: "Greenbergian",
     family: "source",
     status: "adaptive",
     parentId: null,
@@ -171,7 +173,7 @@ globalThis.LAW_RESULT_IDENTITIES = Object.freeze([
   },
   {
     id: "legal_process_theorist",
-    label: "Legal-Process Theorist",
+    label: "Legal Process Jurist",
     family: "method",
     status: "adaptive",
     parentId: null,
@@ -184,7 +186,7 @@ globalThis.LAW_RESULT_IDENTITIES = Object.freeze([
     family: "method",
     status: "fallback",
     parentId: null,
-    covers: ["method.pluralism"],
+    covers: ["method.pluralism", "method.modal_pluralism"],
     notes: "Real fallback when no single interpretive methodology dominates but the pattern is coherent rather than chaotic."
   },
 
@@ -278,7 +280,7 @@ globalThis.LAW_RESULT_IDENTITIES = Object.freeze([
     family: "posture",
     status: "adaptive",
     parentId: null,
-    covers: ["posture.democratic_legitimacy", "posture.reasonable_disagreement"],
+    covers: ["posture.majoritarian", "posture.democratic_legitimacy", "posture.reasonable_disagreement"],
     notes: "Use when the objection to strong judicial review is specifically democratic legitimacy under functioning institutions and good-faith rights disagreement."
   },
   {

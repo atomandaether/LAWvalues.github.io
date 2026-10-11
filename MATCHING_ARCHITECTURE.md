@@ -27,8 +27,8 @@ Current protected families include:
 
 - Legal Positivism
 - Natural Law
-- Dworkinian Interpretivism
-- Moral Impact Theory / Greenberg-style one-system nonpositivism
+- Dworkinian jurisprudence (with Interpretivism retained only as an internal parent where useful)
+- Greenbergian Moral Impact Theory / one-system nonpositivism
 - Legal Realism
 - Pragmatism
 - Textualism / Intentionalism / Purposivism
@@ -95,7 +95,7 @@ The router stops when no remaining diagnostic is materially useful or after seve
 
 ## Public result grammar
 
-After identity selection, the public result is assembled as **[modifier] [real jurisprudential identity] [phrase]**. The identity spends the information it already communicates. Modifier and phrase candidates are then ranked by marginal information value from the remaining axes and question-level traits, with redundancy penalties and a preference for using different dimensions. High-value cross-cutting combinations can add an explanatory bridge paragraph. Closest-thinker matching remains a later, separate step.
+After identity selection, the public result is assembled as **[modifier] [real jurisprudential identity] [phrase]**. The identity is the respondent's nearest jurisprudential neighbor and spends the information it already communicates. All remaining axis tendencies and question-level traits enter one common residual-feature ranking. The **strongest** unspent feature gets the more expressive trailing phrase (the respondent's #2 characteristic); that feature is then spent, and the strongest genuinely different remaining feature gets the compact modifier (#3). The public jokes do not drive scoring: each is merely a critic-flavored rendering of a neutral internal feature. High-value cross-cutting combinations can add an explanatory bridge paragraph. Closest-thinker matching remains a later, separate step.
 
 ## False-match rule
 
