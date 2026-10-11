@@ -9,7 +9,7 @@ const root = path.resolve(here, "..");
 const context = vm.createContext({ console });
 context.globalThis = context;
 
-for (const filename of ["axes.js", "result_catalog.js", "diagnostics.js", "profiles.js", "classification.js"]) {
+for (const filename of ["axes.js", "result_catalog.js", "diagnostics.js", "profiles.js", "result_content.js", "classification.js"]) {
   vm.runInContext(fs.readFileSync(path.join(root, filename), "utf8"), context, { filename });
 }
 
@@ -19,12 +19,17 @@ const rules = context.LAW_CHAMPION_MATCHING_RULES;
 const diagnostics = context.LAW_DIAGNOSTIC_QUESTIONS;
 const profiles = context.LAW_PROFILES;
 const classifier = context.LAW_CLASSIFIER;
+const resultContent = context.LAW_RESULT_CONTENT;
 const allDiagnostics = classifier.diagnosticBank();
 
 assert.ok(Array.isArray(identities) && identities.length >= 20, "Need a substantial identity catalog");
 assert.ok(Array.isArray(champions) && champions.length >= 25, "Need a substantial champion catalog");
 assert.ok(Array.isArray(diagnostics) && diagnostics.length >= 10, "Need an adaptive diagnostic bank");
 assert.ok(Array.isArray(profiles) && profiles.length >= 30, "Need broad sparse personality coverage");
+assert.ok(resultContent && Array.isArray(resultContent.MODIFIERS) && resultContent.MODIFIERS.length >= 20,
+  "Need machine-readable modifier vocabulary");
+assert.ok(Array.isArray(resultContent.PHRASES) && resultContent.PHRASES.length >= 20,
+  "Need machine-readable phrase vocabulary");
 assert.equal(classifier.MAX_DIAGNOSTICS, 7, "Adaptive phase must cap the quiz at 100 total questions");
 
 assert.equal(new Set(identities.map((x) => x.id)).size, identities.length, "Identity IDs must be unique");
@@ -111,7 +116,7 @@ assert.equal(
   "Legal Realist should remain the approved non-axis override identity"
 );
 for (const id of [
-  "positivist", "dworkinian", "natural_lawyer", "legal_process_theorist",
+  "positivist", "nonpositivist", "dworkinian", "natural_lawyer", "legal_process_theorist",
   "originalist", "purposivist", "common_law_constitutionalist",
   "thayerian", "waldronian", "popular_constitutionalist", "proportionalist"
 ]) {
@@ -165,16 +170,19 @@ const neutral = classifier.classify(neutralScores, {}, {});
 assert.ok(!neutral.champions.some((x) => ["solum", "pound", "alexy", "vermeule"].includes(x.id)),
   "Diagnostic specialists must not win a neutral profile without their distinctive evidence");
 
-// The router starts with Realism, then quality-checks a low-salience profile before
-// allowing O'Connor/pluralist fallback logic to interpret random clicking as a worldview.
+// The router starts with Realism and then gives everyone one explicit response check.
 const firstDiagnostic = classifier.nextDiagnostic(neutralScores, {}, {});
 assert.equal(firstDiagnostic.id, "D-RLS1", "Realism soft probe should remain the universal first diagnostic");
-const secondDiagnostic = classifier.nextDiagnostic(neutralScores, {}, { "D-RLS1": -2 });
-assert.equal(secondDiagnostic.id, "D-QC1", "Low-salience profiles need a response-quality check before catch-all matching");
+const secondDiagnostic = classifier.nextDiagnostic(
+  { sorc: 90, cons: 90, time: 90, prec: 90, remed: 90, post: 90, separ: 90, form: 90 },
+  {},
+  { "D-RLS1": -2 }
+);
+assert.equal(secondDiagnostic.id, "D-QC1", "The response check should be universal before specialist routing");
 
 const failedQuality = classifier.classify(neutralScores, {}, { "D-RLS1": -2, "D-QC1": 2 });
 assert.equal(failedQuality.identity.id, "unusable_response",
-  "Missing the explicit response check must suppress a low-confidence jurisprudential match");
+  "Missing the explicit response check must suppress a jurisprudential match");
 assert.equal(failedQuality.champions.length, 0,
   "A failed response check must never manufacture a thinker match");
 
@@ -182,8 +190,27 @@ const passedQuality = classifier.classify(neutralScores, {}, { "D-RLS1": -2, "D-
 assert.notEqual(passedQuality.identity.id, "unusable_response",
   "Selecting the instructed response should allow ordinary classification to continue");
 
+// Very fast or straight-line completion should be withheld even if the response check happened to be passed.
+const spamResponses = Object.fromEntries(Array.from({length:93}, (_,i)=>[`Q${i}`, 2]));
+const spam = classifier.classify(neutralScores, spamResponses, { "D-RLS1": -2, "D-QC1": -2 }, { elapsedMs: 30000 });
+assert.equal(spam.identity.id, "unusable_response", "Implausibly fast completion must suppress personality matching");
+
+// The public result grammar must actually assemble modifier + real identity + phrase from distinct information.
+const syntheticIdentity = identities.find((x) => x.id === "originalist");
+const assembled = resultContent.assemble(
+  { identity: syntheticIdentity },
+  { sorc: 50, cons: 86, time: 90, prec: 18, remed: 82, post: 72, separ: 50, form: 88 },
+  { "precedent.correctness_first": 0.9, "remedies.incremental": 0.65, "form.rules": 0.76 }
+);
+assert.ok(assembled.title.includes("Originalist"), "Assembled title must preserve the real jurisprudential noun");
+assert.ok(assembled.modifier, "Assembled title should select a nonredundant modifier when strong evidence exists");
+assert.ok(assembled.phrase, "Assembled title should select a nonredundant trailing phrase when strong evidence exists");
+assert.notEqual(assembled.modifier.axis, assembled.phrase.axis,
+  "Modifier and phrase should normally communicate different axes");
+
 console.log(`PASS: ${identities.length} real/fallback identities audited.`);
 console.log(`PASS: ${profiles.length} sparse thinker profiles across main, specialist, catch-all, and lineage tiers.`);
 console.log(`PASS: ${allDiagnostics.length} adaptive diagnostics with a seven-question cap.`);
 console.log("PASS: Natural Law remains first-class; Pound is specialist; Savigny is lineage; O'Connor is catch-all.");
 console.log("PASS: sparse profiles ignore unmodeled axes and diagnostic specialists require evidence.");
+console.log("PASS: public modifier + identity + phrase titles are machine assembled with redundancy controls.");
