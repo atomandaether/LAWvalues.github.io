@@ -119,6 +119,26 @@
         }
     }
 
+    function fitQuestionText() {
+        const prompt = elements.prompt;
+        if (!prompt) return;
+
+        const width = window.innerWidth;
+        let size = width <= 540 ? 18 : width <= 900 ? 22 : 36;
+        const minimum = width <= 540 ? 9.5 : width <= 900 ? 11 : 16;
+        prompt.style.fontSize = `${size}pt`;
+
+        // The question panel itself never scrolls. Shrink only as much as needed
+        // to keep the complete prompt visible inside the stable viewport.
+        while (
+            size > minimum &&
+            (prompt.scrollHeight > prompt.clientHeight + 1 || prompt.scrollWidth > prompt.clientWidth + 1)
+        ) {
+            size -= 0.5;
+            prompt.style.fontSize = `${size}pt`;
+        }
+    }
+
     function render() {
         const question = currentQuestion();
         if (!question) {
@@ -133,6 +153,7 @@
             ? `Question ${CORE_TOTAL + diagnosticNumber} · result refinement`
             : `Question ${state.index + 1} of ${CORE_TOTAL}`;
         elements.prompt.textContent = question.prompt;
+        fitQuestionText();
         elements.progress.style.width = `${Math.min(100, (completed / DISPLAY_MAX) * 100)}%`;
         elements.progress.parentElement.setAttribute('aria-valuenow', String(completed));
         elements.progress.parentElement.setAttribute('aria-valuemax', String(DISPLAY_MAX));
@@ -154,7 +175,6 @@
         elements.skip.classList.toggle('selected', skipped);
         elements.skip.setAttribute('aria-pressed', skipped ? 'true' : 'false');
         saveState();
-        window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 
     function coreScores() {
@@ -237,10 +257,20 @@
 
     function finish() {
         const scored = coreScores();
+        const completedAt = new Date().toISOString();
+        const startedMs = Date.parse(state.startedAt);
+        const completedMs = Date.parse(completedAt);
         const classification = globalThis.LAW_CLASSIFIER.classify(
             scored,
             state.responses,
-            state.diagnosticResponses
+            state.diagnosticResponses,
+            {
+                startedAt: state.startedAt,
+                completedAt,
+                elapsedMs: Number.isFinite(startedMs) && Number.isFinite(completedMs)
+                    ? completedMs - startedMs
+                    : null
+            }
         );
         const params = new URLSearchParams({ v: globalThis.LAW_VERSION });
         globalThis.LAW_AXES.forEach((axis) => params.set(axis.id, String(scored[axis.id].score)));
@@ -249,6 +279,9 @@
         if (classification.champions.length > 0) {
             params.set('c', classification.champions.map((item) => item.id).join(','));
         }
+        if (classification.resultTitle?.modifier?.id) params.set('m', classification.resultTitle.modifier.id);
+        if (classification.resultTitle?.phrase?.id) params.set('p', classification.resultTitle.phrase.id);
+        if (classification.resultTitle?.bridge?.id) params.set('b', classification.resultTitle.bridge.id);
         params.set('d', String(classification.diagnosticCount));
 
         const record = {
@@ -269,7 +302,7 @@
             diagnosticOrder: state.diagnosticOrder,
             classification,
             order: state.order,
-            completedAt: new Date().toISOString()
+            completedAt
         };
 
         try {
@@ -294,5 +327,8 @@
         if (event.key === 'ArrowLeft') goBack();
     });
 
+    window.addEventListener('resize', () => window.requestAnimationFrame(fitQuestionText));
+
     render();
+    window.requestAnimationFrame(fitQuestionText);
 })();
