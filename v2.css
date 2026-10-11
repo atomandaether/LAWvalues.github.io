@@ -26,12 +26,41 @@
     transition: width 0.18s ease;
 }
 
-/* Keep the response controls anchored while question length varies. */
-p.question {
+
+/* Quiz layout: the question gets a stable viewport and text shrinks to fit it.
+   Nothing inside the question scrolls, so answer controls stay put. */
+.quiz-screen {
+    width: 100%;
+}
+
+.quiz-question-slot {
+    width: 100%;
     height: 215pt;
     min-height: 215pt;
-    max-height: 215pt;
-    overflow-y: auto;
+    display: flex;
+    align-items: stretch;
+}
+
+.quiz-question-slot p.question {
+    width: 70%;
+    min-width: 500pt;
+    height: 100%;
+    min-height: 0;
+    max-height: none;
+    margin: 16pt auto;
+    overflow: hidden;
+}
+
+.quiz-response-stack {
+    width: 100%;
+}
+
+.quiz-response-stack .button {
+    margin: 4pt auto;
+}
+
+.quiz-header h2 {
+    text-align: center;
 }
 
 .slightlyAgree {
@@ -179,6 +208,116 @@ div.axis img {
         border-width: 8px;
     }
 
+    html,
+    body.quiz-page {
+        width: 100%;
+        height: 100%;
+        min-height: 0;
+        overflow: hidden;
+    }
+
+    body.quiz-page {
+        height: 100dvh;
+        margin: 0;
+        padding: max(6px, env(safe-area-inset-top)) 8px max(6px, env(safe-area-inset-bottom));
+        border-width: 4px;
+    }
+
+    .quiz-screen {
+        height: 100%;
+        min-height: 0;
+        display: grid;
+        grid-template-rows: auto minmax(0, 1fr) auto auto;
+        gap: 5px;
+    }
+
+    .quiz-header {
+        min-height: 0;
+    }
+
+    .quiz-header h1 {
+        font-size: 28pt;
+        line-height: 30pt;
+        margin: 0;
+    }
+
+    .quiz-header hr {
+        margin: 2px 0 3px;
+    }
+
+    .quiz-header h2 {
+        font-size: 15pt;
+        line-height: 17pt;
+        margin: 0 0 3px;
+    }
+
+    .quiz-progress-track {
+        width: 100%;
+        min-width: 0;
+        height: 7px;
+        margin: 0;
+        border-width: 1px;
+    }
+
+    .quiz-question-slot {
+        width: 100%;
+        height: auto;
+        min-height: 0;
+        display: flex;
+    }
+
+    .quiz-question-slot p.question {
+        width: 100%;
+        min-width: 0;
+        height: 100%;
+        min-height: 0;
+        margin: 0;
+        padding: 10px;
+        border-radius: 12px;
+        overflow: hidden;
+        font-size: 22pt;
+        line-height: 1.08;
+    }
+
+    .quiz-response-stack {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 3px;
+        min-height: 0;
+    }
+
+    .quiz-response-stack .button {
+        width: 100%;
+        min-width: 0;
+        min-height: 34px;
+        margin: 0;
+        padding: 4px 8px;
+        border-radius: 6px;
+        font-size: 16pt;
+        line-height: 1;
+    }
+
+    .quiz-nav {
+        width: 100%;
+        min-width: 0;
+        margin: 0;
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 4px;
+    }
+
+    .quiz-nav .small_button,
+    .quiz-nav .small_button_off {
+        width: 100%;
+        min-width: 0;
+        min-height: 30px;
+        margin: 0;
+        padding: 3px 4px;
+        border-radius: 6px;
+        font-size: 12pt;
+        line-height: 1.05;
+    }
+
     h1 {
         font-size: 48pt;
         line-height: 50pt;
@@ -203,12 +342,6 @@ div.axis img {
         min-width: 0;
     }
 
-    p.question {
-        height: 190pt;
-        min-height: 190pt;
-        max-height: 190pt;
-        font-size: 27pt;
-    }
 
     .spacer {
         align-items: center;
@@ -250,18 +383,43 @@ div.axis img {
         line-height: 38pt;
     }
 
+    .quiz-header h1 {
+        font-size: 24pt;
+        line-height: 25pt;
+    }
+
+    .quiz-header h2 {
+        font-size: 13pt;
+        line-height: 14pt;
+    }
+
+    .quiz-question-slot p.question {
+        padding: 8px;
+        font-size: 18pt;
+        line-height: 1.06;
+    }
+
+    .quiz-response-stack {
+        gap: 2px;
+    }
+
+    .quiz-response-stack .button {
+        min-height: 31px;
+        padding: 3px 6px;
+        font-size: 14pt;
+    }
+
+    .quiz-nav .small_button,
+    .quiz-nav .small_button_off {
+        min-height: 28px;
+        font-size: 10.5pt;
+    }
+
     h2 {
         font-size: 23pt;
         line-height: 26pt;
     }
 
-    p.question {
-        height: 170pt;
-        min-height: 170pt;
-        max-height: 170pt;
-        padding: 12pt;
-        font-size: 22pt;
-    }
 
     .button {
         font-size: 19pt;
@@ -367,5 +525,35 @@ div.axis img {
 
     .classification-note {
         font-size: 11pt;
+    }
+}
+
+
+@media (max-width: 900px) and (max-height: 700px) {
+    .quiz-header h1 {
+        font-size: 21pt;
+        line-height: 22pt;
+    }
+
+    .quiz-header h2 {
+        font-size: 11pt;
+        line-height: 12pt;
+    }
+
+    .quiz-question-slot p.question {
+        padding: 6px;
+    }
+
+    .quiz-response-stack .button {
+        min-height: 28px;
+        font-size: 12.5pt;
+        padding: 2px 5px;
+    }
+
+    .quiz-nav .small_button,
+    .quiz-nav .small_button_off {
+        min-height: 26px;
+        font-size: 9.5pt;
+        padding: 2px 3px;
     }
 }
