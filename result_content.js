@@ -150,6 +150,7 @@
   function componentScore(component,scores,traits,identity,usedAxes,usedTags) {
     const a=component.axis ? directionStrength(scores,component.axis,component.direction) : 0;
     const t=traitStrength(traits,component.adds);
+    if(!component.axis && t<0.4) return 0;
     let score=Math.max(a,t*1.08) + 0.12*Math.min(a,t || a);
     if(component.axis && component.axis===familyAxis(identity) && t<0.45) score*=0.62;
     const identityTags=identityCoverage(identity);
