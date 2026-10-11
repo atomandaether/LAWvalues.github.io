@@ -1,9 +1,9 @@
 /* 93-item LAWvalues working bank.
-   axis/key identify the question's nominal section and primary direction.
-   weights is the actual scoring vector: a question may contribute to multiple axes.
-   Fractional cross-loadings capture secondary jurisprudential signals without letting them
-   outweigh questions written specifically for that axis. An empty weights object records
-   a subtype diagnostic without forcing it onto a headline axis. */
+   axis/key identify the nominal section and primary direction.
+   signals are asymmetric scoring vectors. Agreement and disagreement are modeled
+   separately because rejecting a proposition does not always imply its opposite.
+   Signed values point toward the first (+) or second (-) pole of an axis; fractional
+   cross-loadings capture secondary jurisprudential implications. */
 globalThis.LAW_QUESTIONS = Object.freeze([
   {
     "id": "S1",
@@ -13,8 +13,13 @@ globalThis.LAW_QUESTIONS = Object.freeze([
     "sourceIds": [
       "hart1958"
     ],
-    "weights": {
-      "sorc": 1
+    "signals": {
+      "agree": {
+        "sorc": 1
+      },
+      "disagree": {
+        "sorc": -1
+      }
     }
   },
   {
@@ -26,8 +31,13 @@ globalThis.LAW_QUESTIONS = Object.freeze([
       "radbruch2006",
       "dworkin1967"
     ],
-    "weights": {
-      "sorc": -1
+    "signals": {
+      "agree": {
+        "sorc": -1
+      },
+      "disagree": {
+        "sorc": 1
+      }
     }
   },
   {
@@ -38,9 +48,14 @@ globalThis.LAW_QUESTIONS = Object.freeze([
     "sourceIds": [
       "hart1958"
     ],
-    "weights": {
-      "sorc": 1,
-      "cons": 0.3
+    "signals": {
+      "agree": {
+        "sorc": 1,
+        "cons": 0.3
+      },
+      "disagree": {
+        "sorc": -1
+      }
     }
   },
   {
@@ -51,8 +66,13 @@ globalThis.LAW_QUESTIONS = Object.freeze([
     "sourceIds": [
       "hart1958"
     ],
-    "weights": {
-      "sorc": 1
+    "signals": {
+      "agree": {
+        "sorc": 1
+      },
+      "disagree": {
+        "sorc": -1
+      }
     }
   },
   {
@@ -63,10 +83,15 @@ globalThis.LAW_QUESTIONS = Object.freeze([
     "sourceIds": [
       "hart1994"
     ],
-    "weights": {
-      "sorc": 1,
-      "prec": 0.3,
-      "time": 0.15
+    "signals": {
+      "agree": {
+        "sorc": 1,
+        "prec": 0.3,
+        "time": 0.15
+      },
+      "disagree": {
+        "sorc": -1
+      }
     }
   },
   {
@@ -78,8 +103,13 @@ globalThis.LAW_QUESTIONS = Object.freeze([
       "hart1958",
       "dworkin1967"
     ],
-    "weights": {
-      "sorc": -1
+    "signals": {
+      "agree": {
+        "sorc": -1
+      },
+      "disagree": {
+        "sorc": 1
+      }
     }
   },
   {
@@ -90,8 +120,13 @@ globalThis.LAW_QUESTIONS = Object.freeze([
     "sourceIds": [
       "hart1958"
     ],
-    "weights": {
-      "sorc": 1
+    "signals": {
+      "agree": {
+        "sorc": 1
+      },
+      "disagree": {
+        "sorc": -1
+      }
     }
   },
   {
@@ -102,8 +137,13 @@ globalThis.LAW_QUESTIONS = Object.freeze([
     "sourceIds": [
       "dworkin1967"
     ],
-    "weights": {
-      "sorc": -1
+    "signals": {
+      "agree": {
+        "sorc": -1
+      },
+      "disagree": {
+        "sorc": 1
+      }
     }
   },
   {
@@ -115,8 +155,13 @@ globalThis.LAW_QUESTIONS = Object.freeze([
       "radbruch2006",
       "dworkin1967"
     ],
-    "weights": {
-      "sorc": -1
+    "signals": {
+      "agree": {
+        "sorc": -1
+      },
+      "disagree": {
+        "sorc": 1
+      }
     }
   },
   {
@@ -128,8 +173,13 @@ globalThis.LAW_QUESTIONS = Object.freeze([
       "radbruch2006",
       "dworkin1967"
     ],
-    "weights": {
-      "sorc": -1
+    "signals": {
+      "agree": {
+        "sorc": -1
+      },
+      "disagree": {
+        "sorc": 1
+      }
     }
   },
   {
@@ -141,8 +191,13 @@ globalThis.LAW_QUESTIONS = Object.freeze([
       "radbruch2006",
       "dworkin1967"
     ],
-    "weights": {
-      "sorc": -1
+    "signals": {
+      "agree": {
+        "sorc": -1
+      },
+      "disagree": {
+        "sorc": 1
+      }
     }
   },
   {
@@ -153,8 +208,13 @@ globalThis.LAW_QUESTIONS = Object.freeze([
     "sourceIds": [
       "manning2005"
     ],
-    "weights": {
-      "cons": 1
+    "signals": {
+      "agree": {
+        "cons": 1
+      },
+      "disagree": {
+        "cons": -1
+      }
     }
   },
   {
@@ -166,9 +226,15 @@ globalThis.LAW_QUESTIONS = Object.freeze([
       "eskridge1987",
       "manning2005"
     ],
-    "weights": {
-      "cons": 1,
-      "form": 0.3
+    "signals": {
+      "agree": {
+        "cons": 1,
+        "form": 0.3
+      },
+      "disagree": {
+        "cons": -1,
+        "form": -0.3
+      }
     }
   },
   {
@@ -179,8 +245,13 @@ globalThis.LAW_QUESTIONS = Object.freeze([
     "sourceIds": [
       "manning2005"
     ],
-    "weights": {
-      "cons": 1
+    "signals": {
+      "agree": {
+        "cons": 1
+      },
+      "disagree": {
+        "cons": -1
+      }
     }
   },
   {
@@ -191,8 +262,13 @@ globalThis.LAW_QUESTIONS = Object.freeze([
     "sourceIds": [
       "manning2005"
     ],
-    "weights": {
-      "cons": 1
+    "signals": {
+      "agree": {
+        "cons": 1
+      },
+      "disagree": {
+        "cons": -1
+      }
     }
   },
   {
@@ -204,8 +280,11 @@ globalThis.LAW_QUESTIONS = Object.freeze([
       "hart1958",
       "fuller1958"
     ],
-    "weights": {
-      "cons": 0.35
+    "signals": {
+      "agree": {
+        "cons": 0.35
+      },
+      "disagree": {}
     }
   },
   {
@@ -217,9 +296,15 @@ globalThis.LAW_QUESTIONS = Object.freeze([
       "hart1958",
       "fuller1958"
     ],
-    "weights": {
-      "cons": -1,
-      "form": -0.35
+    "signals": {
+      "agree": {
+        "cons": -1,
+        "form": -0.35
+      },
+      "disagree": {
+        "cons": 1,
+        "form": 0.35
+      }
     }
   },
   {
@@ -230,8 +315,13 @@ globalThis.LAW_QUESTIONS = Object.freeze([
     "sourceIds": [
       "manning2005"
     ],
-    "weights": {
-      "cons": 1
+    "signals": {
+      "agree": {
+        "cons": 1
+      },
+      "disagree": {
+        "cons": -1
+      }
     }
   },
   {
@@ -243,8 +333,13 @@ globalThis.LAW_QUESTIONS = Object.freeze([
       "holytrinity1892",
       "eskridge1987"
     ],
-    "weights": {
-      "cons": -1
+    "signals": {
+      "agree": {
+        "cons": -1
+      },
+      "disagree": {
+        "cons": 1
+      }
     }
   },
   {
@@ -256,9 +351,15 @@ globalThis.LAW_QUESTIONS = Object.freeze([
       "tva1978",
       "manning2005"
     ],
-    "weights": {
-      "cons": 1,
-      "form": 0.35
+    "signals": {
+      "agree": {
+        "cons": 1,
+        "form": 0.35
+      },
+      "disagree": {
+        "cons": -1,
+        "form": -0.35
+      }
     }
   },
   {
@@ -270,9 +371,15 @@ globalThis.LAW_QUESTIONS = Object.freeze([
       "hart1958",
       "fuller1958"
     ],
-    "weights": {
-      "cons": -1,
-      "form": -0.35
+    "signals": {
+      "agree": {
+        "cons": -1,
+        "form": -0.35
+      },
+      "disagree": {
+        "cons": 1,
+        "form": 0.35
+      }
     }
   },
   {
@@ -283,9 +390,15 @@ globalThis.LAW_QUESTIONS = Object.freeze([
     "sourceIds": [
       "manning2005"
     ],
-    "weights": {
-      "cons": 1,
-      "form": 0.3
+    "signals": {
+      "agree": {
+        "cons": 1,
+        "form": 0.3
+      },
+      "disagree": {
+        "cons": -1,
+        "form": -0.3
+      }
     }
   },
   {
@@ -297,9 +410,15 @@ globalThis.LAW_QUESTIONS = Object.freeze([
       "hart1958",
       "fuller1958"
     ],
-    "weights": {
-      "cons": -1,
-      "form": -0.35
+    "signals": {
+      "agree": {
+        "cons": -1,
+        "form": -0.35
+      },
+      "disagree": {
+        "cons": 1,
+        "form": 0.35
+      }
     }
   },
   {
@@ -310,7 +429,12 @@ globalThis.LAW_QUESTIONS = Object.freeze([
     "sourceIds": [
       "manning2005"
     ],
-    "weights": {}
+    "signals": {
+      "agree": {},
+      "disagree": {
+        "cons": 1
+      }
+    }
   },
   {
     "id": "C14",
@@ -321,9 +445,15 @@ globalThis.LAW_QUESTIONS = Object.freeze([
       "eskridge1987",
       "manning2005"
     ],
-    "weights": {
-      "cons": -1,
-      "form": -0.3
+    "signals": {
+      "agree": {
+        "cons": -1,
+        "form": -0.3
+      },
+      "disagree": {
+        "cons": 1,
+        "form": 0.3
+      }
     }
   },
   {
@@ -335,8 +465,13 @@ globalThis.LAW_QUESTIONS = Object.freeze([
       "eskridge1987",
       "manning2005"
     ],
-    "weights": {
-      "cons": -1
+    "signals": {
+      "agree": {
+        "cons": -1
+      },
+      "disagree": {
+        "cons": 1
+      }
     }
   },
   {
@@ -347,8 +482,13 @@ globalThis.LAW_QUESTIONS = Object.freeze([
     "sourceIds": [
       "manning2005"
     ],
-    "weights": {
-      "cons": 1
+    "signals": {
+      "agree": {
+        "cons": 1
+      },
+      "disagree": {
+        "cons": -1
+      }
     }
   },
   {
@@ -360,9 +500,14 @@ globalThis.LAW_QUESTIONS = Object.freeze([
       "eskridge1987",
       "manning2005"
     ],
-    "weights": {
-      "cons": 1,
-      "post": 0.2
+    "signals": {
+      "agree": {
+        "cons": 1,
+        "post": 0.2
+      },
+      "disagree": {
+        "cons": -1
+      }
     }
   },
   {
@@ -374,9 +519,15 @@ globalThis.LAW_QUESTIONS = Object.freeze([
       "eskridge1987",
       "manning2005"
     ],
-    "weights": {
-      "cons": 1,
-      "form": 0.35
+    "signals": {
+      "agree": {
+        "cons": 1,
+        "form": 0.35
+      },
+      "disagree": {
+        "cons": -1,
+        "form": -0.35
+      }
     }
   },
   {
@@ -388,8 +539,13 @@ globalThis.LAW_QUESTIONS = Object.freeze([
       "solum2010",
       "balkin2009"
     ],
-    "weights": {
-      "time": 1
+    "signals": {
+      "agree": {
+        "time": 1
+      },
+      "disagree": {
+        "time": -1
+      }
     }
   },
   {
@@ -401,9 +557,14 @@ globalThis.LAW_QUESTIONS = Object.freeze([
       "solum2010",
       "balkin2009"
     ],
-    "weights": {
-      "time": 1,
-      "post": 0.2
+    "signals": {
+      "agree": {
+        "time": 1,
+        "post": 0.2
+      },
+      "disagree": {
+        "time": -1
+      }
     }
   },
   {
@@ -415,9 +576,15 @@ globalThis.LAW_QUESTIONS = Object.freeze([
       "solum2010",
       "balkin2009"
     ],
-    "weights": {
-      "time": 1,
-      "form": 0.3
+    "signals": {
+      "agree": {
+        "time": 1,
+        "form": 0.3
+      },
+      "disagree": {
+        "time": -1,
+        "form": -0.3
+      }
     }
   },
   {
@@ -428,9 +595,14 @@ globalThis.LAW_QUESTIONS = Object.freeze([
     "sourceIds": [
       "strauss1996"
     ],
-    "weights": {
-      "time": -1,
-      "sorc": -0.2
+    "signals": {
+      "agree": {
+        "time": -1,
+        "sorc": -0.2
+      },
+      "disagree": {
+        "time": 1
+      }
     }
   },
   {
@@ -441,10 +613,16 @@ globalThis.LAW_QUESTIONS = Object.freeze([
     "sourceIds": [
       "strauss1996"
     ],
-    "weights": {
-      "time": -1,
-      "sorc": -0.2,
-      "post": -0.3
+    "signals": {
+      "agree": {
+        "time": -1,
+        "sorc": -0.2,
+        "post": -0.3
+      },
+      "disagree": {
+        "time": 1,
+        "post": 0.3
+      }
     }
   },
   {
@@ -456,10 +634,16 @@ globalThis.LAW_QUESTIONS = Object.freeze([
       "trop1958",
       "strauss1996"
     ],
-    "weights": {
-      "time": -1,
-      "sorc": -0.2,
-      "post": -0.35
+    "signals": {
+      "agree": {
+        "time": -1,
+        "sorc": -0.2,
+        "post": -0.35
+      },
+      "disagree": {
+        "time": 1,
+        "post": 0.35
+      }
     }
   },
   {
@@ -471,9 +655,12 @@ globalThis.LAW_QUESTIONS = Object.freeze([
       "solum2010",
       "balkin2009"
     ],
-    "weights": {
-      "time": 0.4,
-      "cons": 0.3
+    "signals": {
+      "agree": {
+        "time": 0.4,
+        "cons": 0.3
+      },
+      "disagree": {}
     }
   },
   {
@@ -485,8 +672,11 @@ globalThis.LAW_QUESTIONS = Object.freeze([
       "solum2010",
       "balkin2009"
     ],
-    "weights": {
-      "time": 0.5
+    "signals": {
+      "agree": {
+        "time": 0.5
+      },
+      "disagree": {}
     }
   },
   {
@@ -498,9 +688,14 @@ globalThis.LAW_QUESTIONS = Object.freeze([
       "solum2010",
       "strauss1996"
     ],
-    "weights": {
-      "time": -0.35,
-      "form": -0.2
+    "signals": {
+      "agree": {
+        "time": -0.35,
+        "form": -0.2
+      },
+      "disagree": {
+        "time": 0.35
+      }
     }
   },
   {
@@ -512,9 +707,12 @@ globalThis.LAW_QUESTIONS = Object.freeze([
       "solum2010",
       "balkin2009"
     ],
-    "weights": {
-      "time": 0.4,
-      "cons": 0.25
+    "signals": {
+      "agree": {
+        "time": 0.4,
+        "cons": 0.25
+      },
+      "disagree": {}
     }
   },
   {
@@ -526,9 +724,15 @@ globalThis.LAW_QUESTIONS = Object.freeze([
       "solum2010",
       "balkin2009"
     ],
-    "weights": {
-      "time": 1,
-      "prec": 0.25
+    "signals": {
+      "agree": {
+        "time": 1,
+        "prec": 0.25
+      },
+      "disagree": {
+        "time": -1,
+        "prec": -0.25
+      }
     }
   },
   {
@@ -539,9 +743,15 @@ globalThis.LAW_QUESTIONS = Object.freeze([
     "sourceIds": [
       "strauss1996"
     ],
-    "weights": {
-      "time": -1,
-      "prec": 0.4
+    "signals": {
+      "agree": {
+        "time": -1,
+        "prec": 0.4
+      },
+      "disagree": {
+        "time": 1,
+        "prec": -0.4
+      }
     }
   },
   {
@@ -552,8 +762,13 @@ globalThis.LAW_QUESTIONS = Object.freeze([
     "sourceIds": [
       "kozel2010"
     ],
-    "weights": {
-      "prec": 1
+    "signals": {
+      "agree": {
+        "prec": 1
+      },
+      "disagree": {
+        "prec": -1
+      }
     }
   },
   {
@@ -565,9 +780,14 @@ globalThis.LAW_QUESTIONS = Object.freeze([
       "kimble2015",
       "kozel2010"
     ],
-    "weights": {
-      "prec": 1,
-      "post": 0.3
+    "signals": {
+      "agree": {
+        "prec": 1,
+        "post": 0.3
+      },
+      "disagree": {
+        "prec": -1
+      }
     }
   },
   {
@@ -579,10 +799,15 @@ globalThis.LAW_QUESTIONS = Object.freeze([
       "strauss1996",
       "kozel2010"
     ],
-    "weights": {
-      "prec": 1,
-      "sorc": 0.4,
-      "time": -0.35
+    "signals": {
+      "agree": {
+        "prec": 1,
+        "sorc": 0.4,
+        "time": -0.35
+      },
+      "disagree": {
+        "prec": -1
+      }
     }
   },
   {
@@ -593,9 +818,14 @@ globalThis.LAW_QUESTIONS = Object.freeze([
     "sourceIds": [
       "kozel2010"
     ],
-    "weights": {
-      "prec": 1,
-      "sorc": 0.3
+    "signals": {
+      "agree": {
+        "prec": 1,
+        "sorc": 0.3
+      },
+      "disagree": {
+        "prec": -1
+      }
     }
   },
   {
@@ -606,8 +836,13 @@ globalThis.LAW_QUESTIONS = Object.freeze([
     "sourceIds": [
       "kozel2010"
     ],
-    "weights": {
-      "prec": 1
+    "signals": {
+      "agree": {
+        "prec": 1
+      },
+      "disagree": {
+        "prec": -1
+      }
     }
   },
   {
@@ -618,8 +853,13 @@ globalThis.LAW_QUESTIONS = Object.freeze([
     "sourceIds": [
       "kozel2010"
     ],
-    "weights": {
-      "prec": -1
+    "signals": {
+      "agree": {
+        "prec": -1
+      },
+      "disagree": {
+        "prec": 1
+      }
     }
   },
   {
@@ -630,8 +870,13 @@ globalThis.LAW_QUESTIONS = Object.freeze([
     "sourceIds": [
       "kozel2010"
     ],
-    "weights": {
-      "prec": 1
+    "signals": {
+      "agree": {
+        "prec": 1
+      },
+      "disagree": {
+        "prec": -1
+      }
     }
   },
   {
@@ -642,8 +887,13 @@ globalThis.LAW_QUESTIONS = Object.freeze([
     "sourceIds": [
       "kozel2010"
     ],
-    "weights": {
-      "prec": -1
+    "signals": {
+      "agree": {
+        "prec": -1
+      },
+      "disagree": {
+        "prec": 1
+      }
     }
   },
   {
@@ -655,10 +905,15 @@ globalThis.LAW_QUESTIONS = Object.freeze([
       "miranda1966",
       "kozel2010"
     ],
-    "weights": {
-      "prec": 1,
-      "sorc": 0.35,
-      "form": 0.25
+    "signals": {
+      "agree": {
+        "prec": 1,
+        "sorc": 0.35,
+        "form": 0.25
+      },
+      "disagree": {
+        "prec": -1
+      }
     }
   },
   {
@@ -669,9 +924,14 @@ globalThis.LAW_QUESTIONS = Object.freeze([
     "sourceIds": [
       "kozel2010"
     ],
-    "weights": {
-      "prec": -1,
-      "remed": 0.35
+    "signals": {
+      "agree": {
+        "prec": -1,
+        "remed": 0.35
+      },
+      "disagree": {
+        "prec": 1
+      }
     }
   },
   {
@@ -682,11 +942,16 @@ globalThis.LAW_QUESTIONS = Object.freeze([
     "sourceIds": [
       "kozel2010"
     ],
-    "weights": {
-      "prec": -1,
-      "remed": 0.4,
-      "separ": 0.3,
-      "post": 0.15
+    "signals": {
+      "agree": {
+        "prec": -1,
+        "remed": 0.4,
+        "separ": 0.3,
+        "post": 0.15
+      },
+      "disagree": {
+        "prec": 1
+      }
     }
   },
   {
@@ -698,9 +963,14 @@ globalThis.LAW_QUESTIONS = Object.freeze([
       "kimble2015",
       "kozel2010"
     ],
-    "weights": {
-      "prec": 1,
-      "post": 0.3
+    "signals": {
+      "agree": {
+        "prec": 1,
+        "post": 0.3
+      },
+      "disagree": {
+        "prec": -1
+      }
     }
   },
   {
@@ -712,9 +982,15 @@ globalThis.LAW_QUESTIONS = Object.freeze([
       "bray2017",
       "fiss1979"
     ],
-    "weights": {
-      "remed": -1,
-      "post": -0.35
+    "signals": {
+      "agree": {
+        "remed": -1,
+        "post": -0.35
+      },
+      "disagree": {
+        "remed": 1,
+        "post": 0.35
+      }
     }
   },
   {
@@ -726,9 +1002,15 @@ globalThis.LAW_QUESTIONS = Object.freeze([
       "bray2017",
       "fiss1979"
     ],
-    "weights": {
-      "remed": -1,
-      "post": -0.25
+    "signals": {
+      "agree": {
+        "remed": -1,
+        "post": -0.25
+      },
+      "disagree": {
+        "remed": 1,
+        "post": 0.25
+      }
     }
   },
   {
@@ -740,9 +1022,15 @@ globalThis.LAW_QUESTIONS = Object.freeze([
       "plata2011",
       "fiss1979"
     ],
-    "weights": {
-      "remed": -1,
-      "post": -0.4
+    "signals": {
+      "agree": {
+        "remed": -1,
+        "post": -0.4
+      },
+      "disagree": {
+        "remed": 1,
+        "post": 0.4
+      }
     }
   },
   {
@@ -754,9 +1042,15 @@ globalThis.LAW_QUESTIONS = Object.freeze([
       "fiss1979",
       "levinson1999"
     ],
-    "weights": {
-      "remed": -1,
-      "post": -0.4
+    "signals": {
+      "agree": {
+        "remed": -1,
+        "post": -0.4
+      },
+      "disagree": {
+        "remed": 1,
+        "post": 0.4
+      }
     }
   },
   {
@@ -768,10 +1062,16 @@ globalThis.LAW_QUESTIONS = Object.freeze([
       "fiss1979",
       "levinson1999"
     ],
-    "weights": {
-      "remed": -1,
-      "post": -0.4,
-      "separ": -0.3
+    "signals": {
+      "agree": {
+        "remed": -1,
+        "post": -0.4,
+        "separ": -0.3
+      },
+      "disagree": {
+        "remed": 1,
+        "post": 0.4
+      }
     }
   },
   {
@@ -783,9 +1083,14 @@ globalThis.LAW_QUESTIONS = Object.freeze([
       "ayotte2006",
       "levinson1999"
     ],
-    "weights": {
-      "remed": 1,
-      "form": 0.3
+    "signals": {
+      "agree": {
+        "remed": 1,
+        "form": 0.3
+      },
+      "disagree": {
+        "remed": -1
+      }
     }
   },
   {
@@ -797,9 +1102,14 @@ globalThis.LAW_QUESTIONS = Object.freeze([
       "ayotte2006",
       "levinson1999"
     ],
-    "weights": {
-      "remed": 1,
-      "form": 0.3
+    "signals": {
+      "agree": {
+        "remed": 1,
+        "form": 0.3
+      },
+      "disagree": {
+        "remed": -1
+      }
     }
   },
   {
@@ -811,9 +1121,15 @@ globalThis.LAW_QUESTIONS = Object.freeze([
       "swann1971",
       "fiss1979"
     ],
-    "weights": {
-      "remed": -1,
-      "post": -0.35
+    "signals": {
+      "agree": {
+        "remed": -1,
+        "post": -0.35
+      },
+      "disagree": {
+        "remed": 1,
+        "post": 0.35
+      }
     }
   },
   {
@@ -825,10 +1141,15 @@ globalThis.LAW_QUESTIONS = Object.freeze([
       "fiss1979",
       "levinson1999"
     ],
-    "weights": {
-      "remed": -1,
-      "post": -0.3,
-      "form": 0.35
+    "signals": {
+      "agree": {
+        "remed": -1,
+        "post": -0.3,
+        "form": 0.35
+      },
+      "disagree": {
+        "remed": 1
+      }
     }
   },
   {
@@ -840,10 +1161,15 @@ globalThis.LAW_QUESTIONS = Object.freeze([
       "fiss1979",
       "levinson1999"
     ],
-    "weights": {
-      "remed": -1,
-      "post": -0.3,
-      "form": 0.35
+    "signals": {
+      "agree": {
+        "remed": -1,
+        "post": -0.3,
+        "form": 0.35
+      },
+      "disagree": {
+        "remed": 1
+      }
     }
   },
   {
@@ -855,9 +1181,14 @@ globalThis.LAW_QUESTIONS = Object.freeze([
       "ayotte2006",
       "levinson1999"
     ],
-    "weights": {
-      "remed": 1,
-      "form": 0.25
+    "signals": {
+      "agree": {
+        "remed": 1,
+        "form": 0.25
+      },
+      "disagree": {
+        "remed": -1
+      }
     }
   },
   {
@@ -869,8 +1200,13 @@ globalThis.LAW_QUESTIONS = Object.freeze([
       "thayer1893",
       "waldron2006"
     ],
-    "weights": {
-      "post": 1
+    "signals": {
+      "agree": {
+        "post": 1
+      },
+      "disagree": {
+        "post": -1
+      }
     }
   },
   {
@@ -882,8 +1218,13 @@ globalThis.LAW_QUESTIONS = Object.freeze([
       "thayer1893",
       "waldron2006"
     ],
-    "weights": {
-      "post": 1
+    "signals": {
+      "agree": {
+        "post": 1
+      },
+      "disagree": {
+        "post": -1
+      }
     }
   },
   {
@@ -895,8 +1236,13 @@ globalThis.LAW_QUESTIONS = Object.freeze([
       "barnette1943",
       "ely1980"
     ],
-    "weights": {
-      "post": -1
+    "signals": {
+      "agree": {
+        "post": -1
+      },
+      "disagree": {
+        "post": 1
+      }
     }
   },
   {
@@ -908,8 +1254,13 @@ globalThis.LAW_QUESTIONS = Object.freeze([
       "barnette1943",
       "ely1980"
     ],
-    "weights": {
-      "post": -1
+    "signals": {
+      "agree": {
+        "post": -1
+      },
+      "disagree": {
+        "post": 1
+      }
     }
   },
   {
@@ -921,8 +1272,13 @@ globalThis.LAW_QUESTIONS = Object.freeze([
       "thayer1893",
       "waldron2006"
     ],
-    "weights": {
-      "post": 1
+    "signals": {
+      "agree": {
+        "post": 1
+      },
+      "disagree": {
+        "post": -1
+      }
     }
   },
   {
@@ -934,8 +1290,13 @@ globalThis.LAW_QUESTIONS = Object.freeze([
       "waldron2006",
       "barnette1943"
     ],
-    "weights": {
-      "post": 1
+    "signals": {
+      "agree": {
+        "post": 1
+      },
+      "disagree": {
+        "post": -1
+      }
     }
   },
   {
@@ -947,9 +1308,14 @@ globalThis.LAW_QUESTIONS = Object.freeze([
       "waldron2006",
       "barnette1943"
     ],
-    "weights": {
-      "post": 1,
-      "remed": 0.3
+    "signals": {
+      "agree": {
+        "post": 1,
+        "remed": 0.3
+      },
+      "disagree": {
+        "post": -1
+      }
     }
   },
   {
@@ -961,8 +1327,13 @@ globalThis.LAW_QUESTIONS = Object.freeze([
       "thayer1893",
       "waldron2006"
     ],
-    "weights": {
-      "post": 1
+    "signals": {
+      "agree": {
+        "post": 1
+      },
+      "disagree": {
+        "post": -1
+      }
     }
   },
   {
@@ -974,8 +1345,13 @@ globalThis.LAW_QUESTIONS = Object.freeze([
       "thayer1893",
       "waldron2006"
     ],
-    "weights": {
-      "post": 1
+    "signals": {
+      "agree": {
+        "post": 1
+      },
+      "disagree": {
+        "post": -1
+      }
     }
   },
   {
@@ -987,8 +1363,13 @@ globalThis.LAW_QUESTIONS = Object.freeze([
       "barnette1943",
       "ely1980"
     ],
-    "weights": {
-      "post": -1
+    "signals": {
+      "agree": {
+        "post": -1
+      },
+      "disagree": {
+        "post": 1
+      }
     }
   },
   {
@@ -1000,8 +1381,13 @@ globalThis.LAW_QUESTIONS = Object.freeze([
       "barnette1943",
       "ely1980"
     ],
-    "weights": {
-      "post": -1
+    "signals": {
+      "agree": {
+        "post": -1
+      },
+      "disagree": {
+        "post": 1
+      }
     }
   },
   {
@@ -1013,8 +1399,13 @@ globalThis.LAW_QUESTIONS = Object.freeze([
       "waldron2006",
       "barnette1943"
     ],
-    "weights": {
-      "post": 1
+    "signals": {
+      "agree": {
+        "post": 1
+      },
+      "disagree": {
+        "post": -1
+      }
     }
   },
   {
@@ -1026,8 +1417,13 @@ globalThis.LAW_QUESTIONS = Object.freeze([
       "barnette1943",
       "ely1980"
     ],
-    "weights": {
-      "post": -1
+    "signals": {
+      "agree": {
+        "post": -1
+      },
+      "disagree": {
+        "post": 1
+      }
     }
   },
   {
@@ -1039,9 +1435,15 @@ globalThis.LAW_QUESTIONS = Object.freeze([
       "chadha1983",
       "strauss1987"
     ],
-    "weights": {
-      "separ": -1,
-      "form": -0.35
+    "signals": {
+      "agree": {
+        "separ": -1,
+        "form": -0.35
+      },
+      "disagree": {
+        "separ": 1,
+        "form": 0.35
+      }
     }
   },
   {
@@ -1053,8 +1455,13 @@ globalThis.LAW_QUESTIONS = Object.freeze([
       "morrison1988",
       "strauss1987"
     ],
-    "weights": {
-      "separ": -1
+    "signals": {
+      "agree": {
+        "separ": -1
+      },
+      "disagree": {
+        "separ": 1
+      }
     }
   },
   {
@@ -1065,10 +1472,15 @@ globalThis.LAW_QUESTIONS = Object.freeze([
     "sourceIds": [
       "strauss1987"
     ],
-    "weights": {
-      "separ": 1,
-      "post": 0.3,
-      "form": 0.3
+    "signals": {
+      "agree": {
+        "separ": 1,
+        "post": 0.3,
+        "form": 0.3
+      },
+      "disagree": {
+        "separ": -1
+      }
     }
   },
   {
@@ -1079,9 +1491,15 @@ globalThis.LAW_QUESTIONS = Object.freeze([
     "sourceIds": [
       "strauss1987"
     ],
-    "weights": {
-      "separ": 1,
-      "form": 0.3
+    "signals": {
+      "agree": {
+        "separ": 1,
+        "form": 0.3
+      },
+      "disagree": {
+        "separ": -1,
+        "form": -0.3
+      }
     }
   },
   {
@@ -1092,9 +1510,15 @@ globalThis.LAW_QUESTIONS = Object.freeze([
     "sourceIds": [
       "strauss1987"
     ],
-    "weights": {
-      "separ": -1,
-      "form": -0.3
+    "signals": {
+      "agree": {
+        "separ": -1,
+        "form": -0.3
+      },
+      "disagree": {
+        "separ": 1,
+        "form": 0.3
+      }
     }
   },
   {
@@ -1106,9 +1530,15 @@ globalThis.LAW_QUESTIONS = Object.freeze([
       "youngstown1952",
       "strauss1987"
     ],
-    "weights": {
-      "separ": 1,
-      "form": 0.35
+    "signals": {
+      "agree": {
+        "separ": 1,
+        "form": 0.35
+      },
+      "disagree": {
+        "separ": -1,
+        "form": -0.35
+      }
     }
   },
   {
@@ -1119,9 +1549,15 @@ globalThis.LAW_QUESTIONS = Object.freeze([
     "sourceIds": [
       "strauss1987"
     ],
-    "weights": {
-      "separ": -1,
-      "form": -0.35
+    "signals": {
+      "agree": {
+        "separ": -1,
+        "form": -0.35
+      },
+      "disagree": {
+        "separ": 1,
+        "form": 0.35
+      }
     }
   },
   {
@@ -1133,8 +1569,13 @@ globalThis.LAW_QUESTIONS = Object.freeze([
       "schauer1988",
       "sullivan1992"
     ],
-    "weights": {
-      "form": 1
+    "signals": {
+      "agree": {
+        "form": 1
+      },
+      "disagree": {
+        "form": -1
+      }
     }
   },
   {
@@ -1146,8 +1587,13 @@ globalThis.LAW_QUESTIONS = Object.freeze([
       "schauer1988",
       "sullivan1992"
     ],
-    "weights": {
-      "form": -0.35
+    "signals": {
+      "agree": {
+        "form": -0.35
+      },
+      "disagree": {
+        "form": 0.25
+      }
     }
   },
   {
@@ -1159,8 +1605,13 @@ globalThis.LAW_QUESTIONS = Object.freeze([
       "schauer1988",
       "sullivan1992"
     ],
-    "weights": {
-      "form": 1
+    "signals": {
+      "agree": {
+        "form": 1
+      },
+      "disagree": {
+        "form": -1
+      }
     }
   },
   {
@@ -1172,8 +1623,13 @@ globalThis.LAW_QUESTIONS = Object.freeze([
       "schauer1988",
       "sullivan1992"
     ],
-    "weights": {
-      "form": 1
+    "signals": {
+      "agree": {
+        "form": 1
+      },
+      "disagree": {
+        "form": -1
+      }
     }
   },
   {
@@ -1185,9 +1641,14 @@ globalThis.LAW_QUESTIONS = Object.freeze([
       "schauer1988",
       "sullivan1992"
     ],
-    "weights": {
-      "form": -1,
-      "post": -0.15
+    "signals": {
+      "agree": {
+        "form": -1,
+        "post": -0.15
+      },
+      "disagree": {
+        "form": 1
+      }
     }
   },
   {
@@ -1199,8 +1660,13 @@ globalThis.LAW_QUESTIONS = Object.freeze([
       "schauer1988",
       "sullivan1992"
     ],
-    "weights": {
-      "form": -1
+    "signals": {
+      "agree": {
+        "form": -1
+      },
+      "disagree": {
+        "form": 1
+      }
     }
   },
   {
@@ -1212,8 +1678,13 @@ globalThis.LAW_QUESTIONS = Object.freeze([
       "schauer1988",
       "sullivan1992"
     ],
-    "weights": {
-      "form": 1
+    "signals": {
+      "agree": {
+        "form": 1
+      },
+      "disagree": {
+        "form": -1
+      }
     }
   },
   {
@@ -1225,8 +1696,13 @@ globalThis.LAW_QUESTIONS = Object.freeze([
       "schauer1988",
       "sullivan1992"
     ],
-    "weights": {
-      "form": 1
+    "signals": {
+      "agree": {
+        "form": 1
+      },
+      "disagree": {
+        "form": -1
+      }
     }
   },
   {
@@ -1238,8 +1714,13 @@ globalThis.LAW_QUESTIONS = Object.freeze([
       "schauer1988",
       "sullivan1992"
     ],
-    "weights": {
-      "form": -1
+    "signals": {
+      "agree": {
+        "form": -1
+      },
+      "disagree": {
+        "form": 1
+      }
     }
   }
 ]);
