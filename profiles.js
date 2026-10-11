@@ -52,6 +52,18 @@ globalThis.LAW_PROFILES = Object.freeze([
     related: ["Lon Fuller", "Robert Alexy"]
   },
   {
+    id: "greenberg",
+    name: "Mark Greenberg",
+    tier: "specialist",
+    identityIds: ["moral_impact_theorist", "nonpositivist"],
+    axisSignature: { sorc: { target: 8, weight: 0.8 } },
+    signatureTraits: ["source.moral_impact", "source.one_system"],
+    requiredTraits: [{ all: ["source.moral_impact"], min: 0.5 }],
+    antiTraits: ["source.source_thesis", "source.fit_and_justification"],
+    description: "A Moral Impact Theory fit: legal institutions change people's moral rights and obligations, and those resulting moral obligations constitute the law rather than merely sitting beside a separate source-based legal system.",
+    related: ["Scott Hershovitz", "Ronald Dworkin", "John Finnis"]
+  },
+  {
     id: "finnis",
     name: "John Finnis",
     tier: "main",
