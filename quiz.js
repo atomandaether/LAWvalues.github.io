@@ -124,8 +124,9 @@
         if (!prompt) return;
 
         const width = window.innerWidth;
-        let size = width <= 540 ? 18 : width <= 900 ? 22 : 36;
-        const minimum = width <= 540 ? 9.5 : width <= 900 ? 11 : 16;
+        const shortViewport = window.innerHeight <= 620;
+        let size = width <= 540 ? (shortViewport ? 16 : 18) : width <= 900 ? 22 : 36;
+        const minimum = width <= 540 ? (shortViewport ? 8.5 : 9.5) : width <= 900 ? 11 : 16;
         prompt.style.fontSize = `${size}pt`;
 
         // The question panel itself never scrolls. Shrink only as much as needed
