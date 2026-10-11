@@ -28,6 +28,7 @@ Current protected families include:
 - Legal Positivism
 - Natural Law
 - Dworkinian Interpretivism
+- Moral Impact Theory / Greenberg-style one-system nonpositivism
 - Legal Realism
 - Pragmatism
 - Textualism / Intentionalism / Purposivism
@@ -81,7 +82,7 @@ The first follow-up is a soft Legal Realism probe because Realism is intentional
 
 - Public Meaning vs Original Intent vs Original Methods vs Framework Originalism
 - Inclusive vs Exclusive Positivism
-- Natural Law vs Dworkinian Interpretivism vs Fuller/Radbruch edge cases
+- Natural Law vs Dworkinian Interpretivism vs Moral Impact Theory vs Fuller/Radbruch edge cases
 - Thayerian deference vs Waldronian democratic legitimacy
 - Popular Constitutionalism vs Departmentalism
 - Intentionalism vs Purposivism
