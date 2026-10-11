@@ -127,10 +127,20 @@ assert.ok(htmlByFile["instructions.html"].includes("You will be presented with a
 assert.ok(htmlByFile["quiz.html"].includes('aria-valuemax="100"'), "Quiz progress maximum must allow 93 core plus up to 7 diagnostics");
 assert.ok(htmlByFile["results.html"].includes('<script src="questions.js"></script>'),
   "Results must load question signals");
+assert.ok(htmlByFile["quiz.html"].includes('<script src="result_content.js"></script>'),
+  "Quiz must load the public result-content grammar");
 assert.ok(htmlByFile["quiz.html"].includes('<script src="classification.js"></script>'),
   "Quiz must load the adaptive jurisprudence classifier");
+assert.ok(htmlByFile["quiz.html"].includes('class="quiz-page"'),
+  "Quiz page must use the fixed mobile-screen layout");
+assert.ok(htmlByFile["quiz.html"].includes('class="quiz-response-stack"'),
+  "Quiz answers must live in a stable response stack");
+assert.ok(htmlByFile["results.html"].includes('<script src="result_content.js"></script>'),
+  "Results must load the public result-content grammar");
 assert.ok(htmlByFile["results.html"].includes('<script src="classification.js"></script>'),
   "Results must load the jurisprudence classifier");
+assert.ok(htmlByFile["results.html"].includes('id="result-title"'),
+  "Results must expose the assembled modifier + identity + phrase title");
 assert.ok(!htmlByFile["results.html"].includes("Print / PDF"), "Results should not show Print / PDF");
 assert.ok(!htmlByFile["results.html"].includes(">Retake<"), "Results should not show Retake");
 
