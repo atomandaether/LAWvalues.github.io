@@ -328,7 +328,7 @@
     if (l.time >= 0.3) add("originalist", 0.56 + 0.34 * s.time, "Historical fixation is a dominant feature.");
     if (r.time >= 0.3) add("living_constitutionalist", 0.56 + 0.34 * s.time, "Evolving constitutional content is a dominant feature.");
     if (l.sorc >= 0.3) add("positivist", 0.56 + 0.34 * s.sorc, "Positive legal sources dominate the Source axis.");
-    if (r.sorc >= 0.3) add("nonpositivist", 0.54 + 0.32 * s.sorc, "Non-positivism is clear but the narrower theory is not yet established.", "Non-positivist");
+    if (r.sorc >= 0.3) add("nonpositivist", 0.46 + 0.18 * s.sorc, "Non-positivism is clear but the narrower theory is not yet established.", "Non-positivist");
     if (l.cons >= 0.3) add("textualist", 0.56 + 0.34 * s.cons, "Textual constraint is a dominant feature.");
     if (r.cons >= 0.3) add("purposivist", 0.54 + 0.32 * s.cons, "Purpose/open construction dominates and no narrower method is established.");
     if (l.separ >= 0.4) add("formalist", 0.55 + 0.32 * s.separ, "Formal separation of powers is highly distinctive.");
