@@ -283,7 +283,7 @@
     },
     {
       id:"pragmatic_consequences", group:"method",
-      broadTag:"method.consequences",
+      broadTag:"method.consequences", broadStandalone:true,
       primaryTag:"method.consequences", tags:["method.consequences","method.workability"],
       modifier:"Policy-playing",
       phrase:"who keeps asking what happens after the opinion",
@@ -443,7 +443,7 @@
       ((direct.coreCount>=2 || direct.diagnosticCount>=1) &&
         independentKinds>=2 &&
         effectiveBreadth>=3) ||
-      (feature.broadTag && broad>=0.5);
+      (feature.broadStandalone && broad>=0.4);
 
     return {
       eligible,
