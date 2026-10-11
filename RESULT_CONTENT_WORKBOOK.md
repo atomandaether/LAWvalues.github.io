@@ -2,7 +2,7 @@
 
 This file is the editorial control panel for the result system. The machine-readable implementation now lives in `result_content.js`; this workbook remains the place to review or rename the public wording.
 
-The goal is **not** to assign one fixed axis to each title slot. The goal is to compress the respondent's most important jurisprudential information into three nonredundant pieces. Thinker matching is now separately implemented through sparse signatures in `profiles.js` / `classification.js`; see `MATCHING_ARCHITECTURE.md`:
+The goal is **not** to assign one fixed axis to each title slot. The goal is to compress the respondent's three most important jurisprudential characteristics into three nonredundant pieces. Thinker matching is separately implemented through sparse signatures in `profiles.js` / `classification.js`; see `MATCHING_ARCHITECTURE.md`:
 
 > **[modifier] [real anchor] [phrase]**
 
@@ -10,7 +10,7 @@ Example structure only:
 
 > **Precedent-preserving Originalist who lets democracy decide**
 
-The middle slot is the **best real jurisprudential identity we can honestly justify**—including established eponymous labels such as Dworkinian, Thayerian, or Waldronian when the evidence is genuinely that specific. The front modifier and phrase are chosen from the respondent's strongest **unrepresented** traits. They can come from any of the eight axes or from question-level subtypes. The engine should prefer the three pieces that communicate the most information about that person.
+The middle slot is the **best real jurisprudential nearest neighbor we can honestly justify**—including established eponymous labels such as Dworkinian, Thayerian, or Waldronian when the evidence is genuinely that specific. The noun is the person's #1 characteristic. After its coverage is spent, every remaining axis or question-level trait competes in one pool. The strongest residual feature gets the longer phrase (#2); after spending that information, the next genuinely different feature gets the compact modifier (#3). The funny wording is allowed to be a slightly unfair critic's caricature because the backend feature being scored remains neutral and precise.
 
 ---
 
@@ -104,26 +104,17 @@ It does **not** automatically communicate:
 
 Those remain available.
 
-## 5. Choose the front modifier
+## 5. Choose the phrase (#2)
 
-Among important traits not already communicated by the anchor, choose the modifier with the greatest **marginal information value**.
+Among important traits not already communicated by the anchor, choose the feature with the greatest **marginal information value**. This gets the longer trailing phrase because it is the second-most important thing about the respondent.
 
-The modifier can come from any axis or subtype and may be an adjective, participle, compound, or short descriptive phrase. It does not need to end in -ing.
+The feature can come from any axis or subtype. The engine should not force Posture, Remedies, or any other fixed axis into this slot.
 
-Examples:
+## 6. Choose the front modifier (#3)
 
-- `principle-applying Originalist`
-- `precedent-preserving Originalist`
-- `rule-following Originalist`
-- `morality-grounding Originalist`
+Spend the phrase's information and rank the same feature pool again. The strongest genuinely different remaining feature gets the compact front modifier.
 
-The engine should not force Source, Constraint, or any other fixed axis into this slot.
-
-## 6. Choose the phrase
-
-Repeat the same process after the anchor + modifier are represented.
-
-The phrase should communicate the strongest important thing still missing.
+The modifier can be an adjective, participle, compound, metaphor, or short critic-flavored joke; it does not need to end in -ing.
 
 It can describe:
 - judicial role,
@@ -1657,11 +1648,11 @@ For each respondent:
    - evidence breadth,
    - information explained.
 7. Mark anchor coverage tags as represented.
-8. Score modifier candidates by **marginal information value** after redundancy discount.
-9. Select the best natural modifier.
-10. Mark modifier tags as represented.
-11. Score phrase candidates the same way.
-12. Select the strongest remaining nonredundant trait.
+8. Rank one common residual-feature pool by **marginal information value** after noun redundancy.
+9. Give the strongest residual feature the trailing phrase (#2).
+10. Mark that feature's tags and conceptual group as represented.
+11. Rank the same pool again with phrase redundancy discounted.
+12. Give the strongest genuinely different remaining feature the modifier (#3).
 13. Run grammar / redundancy / incompatibility checks.
 14. If a high-value bridge applies, insert its bridge paragraph.
 15. Use remaining strong traits for secondary body copy, not the title.
