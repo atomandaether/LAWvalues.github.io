@@ -3,7 +3,13 @@
 
     const STORAGE_KEY = `lawvalues-quiz-${globalThis.LAW_VERSION}`;
     const LATEST_KEY = `lawvalues-latest-${globalThis.LAW_VERSION}`;
+    const CORE_TOTAL = globalThis.LAW_QUESTIONS.length;
+    const MAX_DIAGNOSTICS = globalThis.LAW_CLASSIFIER?.MAX_DIAGNOSTICS ?? 7;
+    const DISPLAY_MAX = CORE_TOTAL + MAX_DIAGNOSTICS;
     const questionById = Object.fromEntries(globalThis.LAW_QUESTIONS.map((question) => [question.id, question]));
+    const diagnosticById = Object.fromEntries(
+        (globalThis.LAW_CLASSIFIER?.diagnosticBank?.() || []).map((question) => [question.id, question])
+    );
     const responseButtons = Array.from(document.querySelectorAll('[data-response]'));
     const keyboardValues = [3, 2, 1, 0, -1, -2, -3];
 
@@ -48,6 +54,10 @@
             order: buildOrder(),
             index: 0,
             responses: {},
+            phase: 'core',
+            diagnosticOrder: [],
+            diagnosticIndex: 0,
+            diagnosticResponses: {},
             startedAt: new Date().toISOString()
         };
     }
@@ -64,7 +74,20 @@
                 stored.index >= 0 &&
                 stored.index < stored.order.length &&
                 stored.responses && typeof stored.responses === 'object';
-            if (valid) return stored;
+            if (valid) {
+                stored.phase = stored.phase === 'diagnostic' ? 'diagnostic' : 'core';
+                stored.diagnosticOrder = Array.isArray(stored.diagnosticOrder)
+                    ? stored.diagnosticOrder.filter((id) => diagnosticById[id])
+                    : [];
+                stored.diagnosticResponses = stored.diagnosticResponses && typeof stored.diagnosticResponses === 'object'
+                    ? stored.diagnosticResponses
+                    : {};
+                stored.diagnosticIndex = Number.isInteger(stored.diagnosticIndex)
+                    ? Math.max(0, Math.min(stored.diagnosticIndex, Math.max(0, stored.diagnosticOrder.length - 1)))
+                    : 0;
+                if (stored.phase === 'diagnostic' && stored.diagnosticOrder.length === 0) stored.phase = 'core';
+                return stored;
+            }
         } catch (_) {
             // Start fresh when storage is unavailable or malformed.
         }
@@ -73,62 +96,134 @@
 
     let state = loadState();
 
+    function currentQuestion() {
+        if (state.phase === 'diagnostic') {
+            return diagnosticById[state.diagnosticOrder[state.diagnosticIndex]];
+        }
+        return questionById[state.order[state.index]];
+    }
+
+    function activeResponses() {
+        return state.phase === 'diagnostic' ? state.diagnosticResponses : state.responses;
+    }
+
     function hasResponse(questionId) {
-        return Object.prototype.hasOwnProperty.call(state.responses, questionId);
+        return Object.prototype.hasOwnProperty.call(activeResponses(), questionId);
     }
 
     function saveState() {
         try {
             sessionStorage.setItem(STORAGE_KEY, JSON.stringify(state));
         } catch (_) {
-            // The quiz still works when session storage is unavailable.
+            // The quiz still works when session storage is unavailable or malformed.
         }
-    }
-
-    function currentQuestion() {
-        return questionById[state.order[state.index]];
     }
 
     function render() {
         const question = currentQuestion();
-        const total = state.order.length;
-        const completed = state.index;
+        if (!question) {
+            finish();
+            return;
+        }
 
-        elements.number.textContent = `Question ${state.index + 1} of ${total}`;
+        const diagnosticNumber = state.phase === 'diagnostic' ? state.diagnosticIndex + 1 : 0;
+        const completed = state.phase === 'diagnostic' ? CORE_TOTAL + state.diagnosticIndex : state.index;
+
+        elements.number.textContent = state.phase === 'diagnostic'
+            ? `Question ${CORE_TOTAL + diagnosticNumber} · result refinement`
+            : `Question ${state.index + 1} of ${CORE_TOTAL}`;
         elements.prompt.textContent = question.prompt;
-        elements.progress.style.width = `${(completed / total) * 100}%`;
+        elements.progress.style.width = `${Math.min(100, (completed / DISPLAY_MAX) * 100)}%`;
         elements.progress.parentElement.setAttribute('aria-valuenow', String(completed));
-        elements.progress.parentElement.setAttribute('aria-valuemax', String(total));
-        elements.back.hidden = state.index === 0;
-        elements.backOff.hidden = state.index !== 0;
+        elements.progress.parentElement.setAttribute('aria-valuemax', String(DISPLAY_MAX));
 
+        const atAbsoluteStart = state.phase === 'core' && state.index === 0;
+        elements.back.hidden = atAbsoluteStart;
+        elements.backOff.hidden = !atAbsoluteStart;
+
+        const responses = activeResponses();
         responseButtons.forEach((button) => {
-            const selected = hasResponse(question.id) &&
-                state.responses[question.id] !== null &&
-                Number(button.dataset.response) === Number(state.responses[question.id]);
+            const selected = Object.prototype.hasOwnProperty.call(responses, question.id) &&
+                responses[question.id] !== null &&
+                Number(button.dataset.response) === Number(responses[question.id]);
             button.classList.toggle('selected', selected);
             button.setAttribute('aria-pressed', selected ? 'true' : 'false');
         });
 
-        const skipped = hasResponse(question.id) && state.responses[question.id] === null;
+        const skipped = Object.prototype.hasOwnProperty.call(responses, question.id) && responses[question.id] === null;
         elements.skip.classList.toggle('selected', skipped);
         elements.skip.setAttribute('aria-pressed', skipped ? 'true' : 'false');
         saveState();
         window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 
-    function answer(value) {
+    function coreScores() {
+        return globalThis.LAW_SCORING.scoreAll(state.responses);
+    }
+
+    function beginOrContinueDiagnostics() {
+        const next = globalThis.LAW_CLASSIFIER.nextDiagnostic(
+            coreScores(),
+            state.responses,
+            state.diagnosticResponses
+        );
+        if (!next) {
+            finish();
+            return;
+        }
+
+        state.phase = 'diagnostic';
+        state.diagnosticOrder.push(next.id);
+        state.diagnosticIndex = state.diagnosticOrder.length - 1;
+        render();
+    }
+
+    function answerCore(value) {
         const question = currentQuestion();
         state.responses[question.id] = value;
         if (state.index === state.order.length - 1) {
-            finish();
+            // A changed final core answer can change the entire adaptive path.
+            state.diagnosticOrder = [];
+            state.diagnosticResponses = {};
+            state.diagnosticIndex = 0;
+            beginOrContinueDiagnostics();
             return;
         }
         state.index += 1;
         render();
     }
 
+    function answerDiagnostic(value) {
+        const question = currentQuestion();
+
+        // Revising an earlier diagnostic invalidates every later branch.
+        if (state.diagnosticIndex < state.diagnosticOrder.length - 1) {
+            const removed = state.diagnosticOrder.slice(state.diagnosticIndex + 1);
+            for (const id of removed) delete state.diagnosticResponses[id];
+            state.diagnosticOrder = state.diagnosticOrder.slice(0, state.diagnosticIndex + 1);
+        }
+
+        state.diagnosticResponses[question.id] = value;
+        beginOrContinueDiagnostics();
+    }
+
+    function answer(value) {
+        if (state.phase === 'diagnostic') answerDiagnostic(value);
+        else answerCore(value);
+    }
+
     function goBack() {
+        if (state.phase === 'diagnostic') {
+            if (state.diagnosticIndex > 0) {
+                state.diagnosticIndex -= 1;
+                render();
+                return;
+            }
+            state.phase = 'core';
+            state.index = state.order.length - 1;
+            render();
+            return;
+        }
         if (state.index === 0) return;
         state.index -= 1;
         render();
@@ -141,10 +236,20 @@
     }
 
     function finish() {
-        const scored = globalThis.LAW_SCORING.scoreAll(state.responses);
+        const scored = coreScores();
+        const classification = globalThis.LAW_CLASSIFIER.classify(
+            scored,
+            state.responses,
+            state.diagnosticResponses
+        );
         const params = new URLSearchParams({ v: globalThis.LAW_VERSION });
         globalThis.LAW_AXES.forEach((axis) => params.set(axis.id, String(scored[axis.id].score)));
         params.set('n', globalThis.LAW_AXES.map((axis) => scored[axis.id].answered).join(','));
+        params.set('i', classification.identity.id);
+        if (classification.champions.length > 0) {
+            params.set('c', classification.champions.map((item) => item.id).join(','));
+        }
+        params.set('d', String(classification.diagnosticCount));
 
         const record = {
             version: globalThis.LAW_VERSION,
@@ -160,6 +265,9 @@
                 }
             ])),
             responses: state.responses,
+            diagnosticResponses: state.diagnosticResponses,
+            diagnosticOrder: state.diagnosticOrder,
+            classification,
             order: state.order,
             completedAt: new Date().toISOString()
         };
