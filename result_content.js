@@ -73,7 +73,16 @@
       explanation:"You sharply separate legal validity from moral merit; the joke is the non-positivist complaint that this quarantines morality from the question of what law is."
     },
     {
+      id:"law_runs_out", group:"source",
+      primaryTag:"source.law_runs_out", tags:["source.law_runs_out"],
+      supportAxis:{axis:"sorc",direction:"left"},
+      modifier:"Gap-friendly",
+      phrase:"who thinks judges sometimes have to make it up",
+      explanation:"You think genuinely novel cases can exhaust the existing law, leaving judges to create a rule rather than discover an already-existing legal answer."
+    },
+    {
       id:"principles_as_law", group:"source",
+      supportAxis:{axis:"sorc",direction:"right"},
       primaryTag:"source.principles_are_law", tags:["source.principles_are_law","source.fit_and_justification","source.right_answer"],
       modifier:"Principle-smuggling",
       phrase:"who keeps finding law nobody enacted",
@@ -81,17 +90,11 @@
     },
     {
       id:"objective_morality", group:"source",
+      supportAxis:{axis:"sorc",direction:"right"},
       primaryTag:"source.objective_morality", tags:["source.objective_morality","source.moral_constraint"],
       modifier:"Bench-moralizing",
       phrase:"who brought moral philosophy to a legal-text fight",
       explanation:"You are unusually willing to treat objective moral requirements as part of the legal question itself."
-    },
-    {
-      id:"practice_authority", group:"source",
-      primaryTag:"source.social_practice", tags:["source.social_practice"],
-      modifier:"Custom-addicted",
-      phrase:"who thinks doing it long enough starts to make it law",
-      explanation:"Settled institutional practice itself carries unusual legal authority for you."
     },
     {
       id:"textual_constraint", group:"constraint", axis:"cons", direction:"left",
@@ -102,6 +105,7 @@
     },
     {
       id:"contextual_text", group:"constraint",
+      supportAxis:{axis:"cons",direction:"left"},
       primaryTag:"constraint.contextual_textualism", tags:["constraint.contextual_textualism"],
       modifier:"Dictionary-dodging",
       phrase:"who thinks the dictionary forgot context exists",
@@ -109,6 +113,7 @@
     },
     {
       id:"enacted_bargain", group:"constraint",
+      supportAxis:{axis:"cons",direction:"left"},
       primaryTag:"constraint.enacted_bargain", tags:["constraint.enacted_bargain"],
       modifier:"Fine-print-loving",
       phrase:"who makes Congress live with the loophole it wrote",
@@ -123,6 +128,7 @@
     },
     {
       id:"intent", group:"constraint",
+      supportAxis:{axis:"cons",direction:"right"},
       primaryTag:"constraint.intent", tags:["constraint.intent"],
       modifier:"Mind-reading",
       phrase:"who wants to know what Congress was thinking",
@@ -143,14 +149,8 @@
       explanation:"You accept genuine constitutional development without requiring every change in constitutional content to pass through formal amendment."
     },
     {
-      id:"principle_application", group:"time",
-      primaryTag:"time.principle_originalism", tags:["time.principle_originalism"],
-      modifier:"Rubber-principled",
-      phrase:"who says the rule never changed, just everything it applies to",
-      explanation:"You distinguish fixed legal principles from the specific applications earlier generations happened to expect."
-    },
-    {
       id:"historical_practice", group:"time",
+      supportAxis:{axis:"time",direction:"left"},
       primaryTag:"time.early_practice", tags:["time.early_practice","time.expected_applications"],
       modifier:"Ouija-board-guided",
       phrase:"who asks the dead how they did it",
@@ -172,6 +172,7 @@
     },
     {
       id:"statutory_precedent", group:"precedent",
+      supportAxis:{axis:"prec",direction:"left"},
       primaryTag:"precedent.statutory", tags:["precedent.statutory"],
       modifier:"Congress-can-fix-it",
       phrase:"who makes Congress clean up the Court\u2019s old mistakes",
@@ -193,6 +194,7 @@
     },
     {
       id:"universal_relief", group:"remedies",
+      supportAxis:{axis:"remed",direction:"right"},
       primaryTag:"remedies.universal", tags:["remedies.universal"],
       modifier:"One-lawsuit-fixes-all",
       phrase:"who refuses to make everyone sue separately",
@@ -200,6 +202,7 @@
     },
     {
       id:"severability", group:"remedies",
+      supportAxis:{axis:"remed",direction:"left"},
       primaryTag:"remedies.severability", tags:["remedies.severability"],
       modifier:"Statute-surgery",
       phrase:"who amputates the bad part and sends the rest home",
@@ -207,6 +210,7 @@
     },
     {
       id:"prophylactic", group:"remedies",
+      supportAxis:{axis:"remed",direction:"right"},
       primaryTag:"remedies.prophylactic", tags:["remedies.prophylactic"],
       modifier:"Extra-rule-writing",
       phrase:"who writes an extra rule because the right needs backup",
@@ -220,32 +224,11 @@
       explanation:"You give elected government unusually broad room when constitutional meaning is reasonably contestable."
     },
     {
-      id:"clear_error", group:"posture",
-      primaryTag:"posture.clear_error", tags:["posture.clear_error"],
-      modifier:"Really-wrong-only",
-      phrase:"who needs the legislature to be really, really wrong",
-      explanation:"Your deference turns specifically on uncertainty: judicial intervention is for clear constitutional error, not ordinary disagreement."
-    },
-    {
       id:"countermajoritarian", group:"posture", axis:"post", direction:"right",
       primaryTag:"posture.countermajoritarian", tags:["posture.countermajoritarian","posture.rights_trumps"],
       modifier:"Democracy-vetoing",
       phrase:"who trusts judges with democracy\u2019s emergency brake",
       explanation:"You are unusually willing to have courts enforce constitutional rights against sustained majority opposition."
-    },
-    {
-      id:"judicial_independence", group:"posture",
-      primaryTag:"posture.judicial_independence", tags:["posture.judicial_independence"],
-      modifier:"Robe-shielding",
-      phrase:"who does not want judges answering to the crowd",
-      explanation:"You put unusual weight on insulating judges from electoral retaliation for unpopular legal decisions."
-    },
-    {
-      id:"electoral_accountability", group:"posture",
-      primaryTag:"posture.electoral_accountability", tags:["posture.electoral_accountability"],
-      modifier:"Voter-leashed",
-      phrase:"who thinks judges should eventually face the music",
-      explanation:"You are unusually comfortable with democratic accountability for judges exercising public power."
     },
     {
       id:"separation_formal", group:"separation", axis:"separ", direction:"left",
@@ -284,6 +267,7 @@
     },
     {
       id:"equitable_exceptions", group:"form",
+      supportAxis:{axis:"form",direction:"right"},
       primaryTag:"form.equitable_exception", tags:["form.equitable_exception","form.cliff_skepticism"],
       modifier:"Exception-addicted",
       phrase:"who thinks every hard case deserves a loophole",
@@ -291,6 +275,7 @@
     },
     {
       id:"proportionality", group:"form",
+      supportAxis:{axis:"form",direction:"right"},
       primaryTag:"form.proportionality", tags:["form.proportionality"],
       modifier:"Balancing-with-homework",
       phrase:"who makes balancing wear a checklist",
@@ -298,6 +283,7 @@
     },
     {
       id:"pragmatic_consequences", group:"method",
+      broadTag:"method.consequences",
       primaryTag:"method.consequences", tags:["method.consequences","method.workability"],
       modifier:"Policy-playing",
       phrase:"who keeps asking what happens after the opinion",
@@ -305,20 +291,15 @@
     },
     {
       id:"legal_process", group:"method",
+      supportAxis:{axis:"cons",direction:"right"},
       primaryTag:"method.institutional_competence", tags:["method.institutional_competence","method.reasoned_elaboration"],
       modifier:"Process-pilled",
       phrase:"who asks whose job it is before asking who is right",
       explanation:"Institutional role and competence are part of the legal answer for you, not merely afterthoughts."
     },
     {
-      id:"pluralism", group:"method",
-      primaryTag:"method.modal_pluralism", tags:["method.modal_pluralism"],
-      modifier:"Kitchen-sink",
-      phrase:"who brought every method to the argument",
-      explanation:"You regard several established forms of legal argument as legitimately available rather than insisting on a single master method."
-    },
-    {
       id:"low_theory", group:"method",
+      broadTag:"method.low_theory_space",
       primaryTag:"method.case_by_case", tags:["method.case_by_case","method.anti_grand_theory","method.low_theory_space"],
       modifier:"Vibes-based",
       phrase:"who calls it case-by-case because \u201cI know it when I see it\u201d sounded worse",
@@ -407,11 +388,72 @@
     const breadth=values.length>1
       ? values.reduce((sum,value)=>sum+value,0)/values.length
       : direct;
-
-    // Axis distance supplies broad importance; question-level/diagnostic traits can
-    // outrank it when they provide a more specific and strongly evidenced distinction.
     const base=Math.max(axis,direct);
     return clamp01(base + 0.09*corroboration + 0.05*Math.min(base,breadth));
+  }
+
+  function aggregateFeatureEvidence(feature,traitEvidence={}) {
+    const coreSupport={};
+    const diagnosticSupport={};
+    for (const tag of feature.tags || []) {
+      const evidence=traitEvidence?.[tag];
+      if(!evidence) continue;
+      for (const [id,value] of Object.entries(evidence.coreSupport || {})) {
+        coreSupport[id]=Math.max(Number(coreSupport[id])||0,Number(value)||0);
+      }
+      for (const [id,value] of Object.entries(evidence.diagnosticSupport || {})) {
+        diagnosticSupport[id]=Math.max(Number(diagnosticSupport[id])||0,Number(value)||0);
+      }
+    }
+    return {
+      coreCount:Object.keys(coreSupport).length,
+      diagnosticCount:Object.keys(diagnosticSupport).length,
+      coreUnits:Object.values(coreSupport).reduce((sum,value)=>sum+(Number(value)||0),0),
+      diagnosticUnits:Object.values(diagnosticSupport).reduce((sum,value)=>sum+(Number(value)||0),0)
+    };
+  }
+
+  function evidenceQuality(feature,scores,traits,traitEvidence={}) {
+    if(feature.axis) {
+      return {eligible:true,confidence:1,effectiveBreadth:8,coreCount:null,diagnosticCount:null};
+    }
+
+    const direct=aggregateFeatureEvidence(feature,traitEvidence);
+    const supportAxis=feature.supportAxis
+      ? directionStrength(scores,feature.supportAxis.axis,feature.supportAxis.direction)
+      : 0;
+    const broad=feature.broadTag ? clamp01(traits?.[feature.broadTag]) : 0;
+
+    const effectiveBreadth=
+      direct.coreUnits +
+      2*direct.diagnosticUnits +
+      (supportAxis>=0.25 ? 2*supportAxis : 0) +
+      (broad>=0.4 ? 2*broad : 0);
+
+    const independentKinds=[
+      direct.coreCount>0,
+      direct.diagnosticCount>0,
+      supportAxis>=0.25,
+      broad>=0.4
+    ].filter(Boolean).length;
+
+    const eligible=
+      (direct.coreCount>=4 && direct.coreUnits>=2.5) ||
+      (direct.diagnosticCount>=2 && direct.diagnosticUnits>=1.25) ||
+      ((direct.coreCount>=2 || direct.diagnosticCount>=1) &&
+        independentKinds>=2 &&
+        effectiveBreadth>=3) ||
+      (feature.broadTag && broad>=0.5);
+
+    return {
+      eligible,
+      confidence:eligible ? clamp01(effectiveBreadth/5) : 0,
+      effectiveBreadth,
+      coreCount:direct.coreCount,
+      diagnosticCount:direct.diagnosticCount,
+      supportAxis:Number(supportAxis.toFixed(3)),
+      broad:Number(broad.toFixed(3))
+    };
   }
 
   function overlapRatio(tags,used) {
@@ -419,15 +461,18 @@
     return tags.filter(tag=>used.has(tag)).length/tags.length;
   }
 
-  function featureScore(feature,scores,traits,identity,spentFeature=null) {
+  function featureScore(feature,scores,traits,identity,spentFeature=null,traitEvidence={}) {
     let score=featureEvidence(feature,scores,traits);
     if(score<=0) return 0;
+
+    const quality=evidenceQuality(feature,scores,traits,traitEvidence);
+    if(!quality.eligible) return 0;
+    score*=0.55+0.45*quality.confidence;
 
     const coverage=identityCoverage(identity);
     const primarySpent=feature.primaryTag && coverage.has(feature.primaryTag);
     const nounOverlap=overlapRatio(feature.tags,coverage);
 
-    // If the noun already says the central thing, don't use a joke slot to repeat it.
     if(primarySpent) score*=0.06;
     else score*=1-0.68*nounOverlap;
 
@@ -436,22 +481,23 @@
       const overlap=overlapRatio(feature.tags,spentTags);
       if(overlap>=0.999) score*=0.04;
       else score*=1-0.78*overlap;
-
-      // The goal is compression, so prefer the third-most-important thing to add a
-      // new dimension rather than another shade of the second-most-important thing.
       if(feature.group===spentFeature.group) score*=0.22;
     }
 
     return clamp01(score);
   }
 
-  function rankFeatures(identity,scores,traits,spentFeature=null) {
+  function rankFeatures(identity,scores,traits,spentFeature=null,traitEvidence={}) {
     return FEATURES
-      .map(feature=>({
-        feature,
-        evidence:featureEvidence(feature,scores,traits),
-        score:featureScore(feature,scores,traits,identity,spentFeature)
-      }))
+      .map(feature=>{
+        const quality=evidenceQuality(feature,scores,traits,traitEvidence);
+        return {
+          feature,
+          evidence:featureEvidence(feature,scores,traits),
+          quality,
+          score:featureScore(feature,scores,traits,identity,spentFeature,traitEvidence)
+        };
+      })
       .filter(item=>item.score>0)
       .sort((a,b)=>b.score-a.score || b.evidence-a.evidence || a.feature.id.localeCompare(b.feature.id));
   }
@@ -487,7 +533,7 @@
     return null;
   }
 
-  function assemble(classification,scores,traits={}) {
+  function assemble(classification,scores,traits={},traitEvidence={}) {
     const special=specialTitle(classification);
     if(special) {
       return {
@@ -504,12 +550,12 @@
     const identity=classification?.identity || {id:"interpretive_pluralist",label:"Interpretive Pluralist",family:"method"};
 
     // Second-most-important information gets the more expressive trailing phrase.
-    const phraseRanking=rankFeatures(identity,scores,traits);
+    const phraseRanking=rankFeatures(identity,scores,traits,null,traitEvidence);
     const phrasePick=phraseRanking.find(item=>item.score>=0.18) || null;
 
     // Third-most-important information gets the compact modifier, after spending the
     // phrase's conceptual information and strongly preferring another dimension.
-    const modifierRanking=rankFeatures(identity,scores,traits,phrasePick?.feature||null);
+    const modifierRanking=rankFeatures(identity,scores,traits,phrasePick?.feature||null,traitEvidence);
     const modifierPick=modifierRanking.find(item=>item.score>=0.14) || null;
 
     const phrase=asPhrase(phrasePick?.feature||null);
@@ -528,7 +574,11 @@
         id:item.feature.id,
         group:item.feature.group,
         evidence:Number(item.evidence.toFixed(3)),
-        score:Number(item.score.toFixed(3))
+        score:Number(item.score.toFixed(3)),
+        confidence:Number(item.quality.confidence.toFixed(3)),
+        effectiveBreadth:Number(item.quality.effectiveBreadth.toFixed(3)),
+        coreCount:item.quality.coreCount,
+        diagnosticCount:item.quality.diagnosticCount
       })),
       special:false
     };
@@ -591,7 +641,7 @@
   }
 
   function fromIds(identity,scores,traits,ids={}) {
-    const assembled=assemble({identity},scores,traits||{});
+    const assembled=assemble({identity},scores,traits||{},{});
     if(ids.phraseId) {
       const feature=featureByAnyId(ids.phraseId);
       if(feature) assembled.phrase=asPhrase(feature);
@@ -613,6 +663,7 @@
     PHRASES,
     BRIDGES,
     featureEvidence,
+    evidenceQuality,
     featureScore,
     rankFeatures,
     assemble,
