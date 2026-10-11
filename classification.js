@@ -467,8 +467,10 @@
     const skipped = values.filter((value) => value === null).length;
     if (answered.length === 0) return "no-answers";
 
+    const coreElapsedMs = Number(meta.coreElapsedMs);
     const elapsedMs = Number(meta.elapsedMs);
-    if (answered.length >= 80 && Number.isFinite(elapsedMs) && elapsedMs > 0 && elapsedMs < 90000) {
+    const timingMs = Number.isFinite(coreElapsedMs) && coreElapsedMs > 0 ? coreElapsedMs : elapsedMs;
+    if (answered.length >= 80 && Number.isFinite(timingMs) && timingMs > 0 && timingMs < 90000) {
       return "implausibly-fast";
     }
 
