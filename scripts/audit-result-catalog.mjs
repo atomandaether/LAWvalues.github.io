@@ -224,7 +224,7 @@ assert.ok(greenbergDiagnostic && greenbergDiagnostic.relatedIdentityIds.includes
 const greenbergScores = { sorc: 12, cons: 50, time: 50, prec: 50, remed: 50, post: 50, separ: 50, form: 50 };
 const greenberg = classifier.classify(
   greenbergScores,
-  {},
+  variedResponses,
   { "D-RLS1": -2, "D-QC1": -2, "D-NP4": 3 }
 );
 assert.equal(greenberg.identity.id, "moral_impact_theorist",
