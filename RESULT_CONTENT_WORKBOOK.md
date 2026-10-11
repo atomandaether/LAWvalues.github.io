@@ -2,6 +2,8 @@
 
 This file is the editorial control panel for the result system. The machine-readable implementation now lives in `result_content.js`; this workbook remains the place to review or rename the public wording.
 
+The **current live draft wording** for every residual feature is summarized in `RESULT_WORDING_DRAFT.md`. The older modifier/phrase worksheets below are retained as design history until the wording pass is finalized; `result_content.js` and `RESULT_WORDING_DRAFT.md` are authoritative for what the site currently displays.
+
 The goal is **not** to assign one fixed axis to each title slot. The goal is to compress the respondent's three most important jurisprudential characteristics into three nonredundant pieces. Thinker matching is separately implemented through sparse signatures in `profiles.js` / `classification.js`; see `MATCHING_ARCHITECTURE.md`:
 
 > **[modifier] [real anchor] [phrase]**
