@@ -114,9 +114,13 @@ for (const filename of htmlFiles) {
 assert.ok(htmlByFile["index.html"].includes("Version 0.5 Beta"), "Front page must show Version 0.5 Beta");
 assert.ok(htmlByFile["instructions.html"].includes("You will be presented with a series of statements about legal interpretation and judicial philosophy. For each one, click the button with your opinion on it."),
   "Instructions must retain the original wording");
-assert.ok(htmlByFile["quiz.html"].includes('aria-valuemax="93"'), "Quiz progress maximum must be 93");
+assert.ok(htmlByFile["quiz.html"].includes('aria-valuemax="100"'), "Quiz progress maximum must allow 93 core plus up to 7 diagnostics");
 assert.ok(htmlByFile["results.html"].includes('<script src="questions.js"></script>'),
   "Results must load question signals");
+assert.ok(htmlByFile["quiz.html"].includes('<script src="classification.js"></script>'),
+  "Quiz must load the adaptive jurisprudence classifier");
+assert.ok(htmlByFile["results.html"].includes('<script src="classification.js"></script>'),
+  "Results must load the jurisprudence classifier");
 assert.ok(!htmlByFile["results.html"].includes("Print / PDF"), "Results should not show Print / PDF");
 assert.ok(!htmlByFile["results.html"].includes(">Retake<"), "Results should not show Retake");
 
