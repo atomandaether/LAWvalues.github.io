@@ -186,9 +186,16 @@ assert.equal(failedQuality.identity.id, "unusable_response",
 assert.equal(failedQuality.champions.length, 0,
   "A failed response check must never manufacture a thinker match");
 
-const passedQuality = classifier.classify(neutralScores, {}, { "D-RLS1": -2, "D-QC1": -2 });
+const variedResponses = Object.fromEntries(
+  Array.from({length:93}, (_,i)=>[`Q${i}`, [-2,-1,0,1,2][i % 5]])
+);
+const passedQuality = classifier.classify(
+  neutralScores,
+  variedResponses,
+  { "D-RLS1": -2, "D-QC1": -2 }
+);
 assert.notEqual(passedQuality.identity.id, "unusable_response",
-  "Selecting the instructed response should allow ordinary classification to continue");
+  "Selecting the instructed response should allow ordinary classification to continue when a usable core response pattern exists");
 
 // Very fast or straight-line completion should be withheld even if the response check happened to be passed.
 const spamResponses = Object.fromEntries(Array.from({length:93}, (_,i)=>[`Q${i}`, 2]));
