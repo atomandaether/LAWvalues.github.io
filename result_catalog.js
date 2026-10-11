@@ -78,6 +78,15 @@ globalThis.LAW_RESULT_IDENTITIES = Object.freeze([
     notes: "Requires more than generic moral reasoning: existing-law principles, fit/justification, and discovery rather than free creation in hard cases."
   },
   {
+    id: "moral_impact_theorist",
+    label: "Moral Impact Theorist",
+    family: "source",
+    status: "adaptive",
+    parentId: null,
+    covers: ["source.moral_impact", "source.one_system"],
+    notes: "Greenberg-style nonpositivism: legal institutions change the moral rights and obligations of people, and the resulting moral obligations are the legal obligations."
+  },
+  {
     id: "natural_lawyer",
     label: "Natural Lawyer",
     family: "source",
@@ -389,6 +398,16 @@ globalThis.LAW_CHAMPIONS = Object.freeze([
     signatureTraits: ["source.principles_are_law", "source.fit_and_justification", "source.right_answer", "posture.rights_trumps"],
     antiTraits: ["source.law_runs_out"],
     note: "Best champion when principles-as-existing-law and fit/justification are specifically present."
+  },
+  {
+    id: "greenberg",
+    name: "Mark Greenberg",
+    kind: "person",
+    role: "primary",
+    eligibleIdentityIds: ["moral_impact_theorist", "nonpositivist"],
+    signatureTraits: ["source.moral_impact", "source.one_system"],
+    antiTraits: ["source.source_thesis", "source.fit_and_justification"],
+    note: "Primary champion of Moral Impact Theory: institutional legal actions matter because of the moral rights and obligations they generate."
   },
   {
     id: "finnis",
