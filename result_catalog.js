@@ -31,7 +31,7 @@ globalThis.LAW_RESULT_IDENTITIES = Object.freeze([
     broadFallback: true,
     parentId: null,
     covers: ["source.nonpositive_sources"],
-    notes: "Broad fallback when social-source positivism is rejected but a narrower non-positivist theory cannot yet be diagnosed honestly."
+    notes: "Broad last-resort fallback when social-source positivism is rejected but no narrower non-positivist theory or comparably strong middle-level identity can be diagnosed honestly."
   },
   {
     id: "positivist",
@@ -68,7 +68,7 @@ globalThis.LAW_RESULT_IDENTITIES = Object.freeze([
     public: false,
     parentId: null,
     covers: ["source.principles_are_law"],
-    notes: "Broader real label when principle-based nonpositivism is clear but the specifically Dworkinian package is not."
+    notes: "Internal parent for principle-based nonpositivism. Public results should prefer Dworkinian or another genuine middle-level neighbor rather than showing Interpretivist as a competing noun."
   },
   {
     id: "dworkinian",
