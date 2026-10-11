@@ -97,6 +97,16 @@ for (const id of ["D-RLS1", "D-RLS2", "D-RLS3", "D-POS1", "D-NP1", "D-MAJ1", "D-
 
 assert.equal(rules.selectAfterIdentity, true, "Champion selection must happen after identity selection");
 assert.equal(rules.doNotForceChampion, true, "Champion matching must permit no single winner");
+assert.equal(rules.requireMarginalExplanatoryValue, true, "Champions must add marginal explanatory coverage");
+assert.equal(rules.pruneRedundantChampions, true, "Redundant champions must be pruned");
+
+const championIds = new Set(champions.map((x) => x.id));
+for (const requiredChampion of ["scalia", "hugo_black", "llewellyn", "leiter", "posner"]) {
+  assert.ok(championIds.has(requiredChampion), `Missing high-value cross-profile champion ${requiredChampion}`);
+}
+const frank = champions.find((x) => x.id === "frank");
+assert.equal(frank.role, "historical", "Frank should remain lineage until fact/psychology diagnostics exist");
+assert.equal(frank.selectable, false, "Frank should not be selectable without subtype diagnostics");
 
 // Naming guardrails.
 const forbiddenIdentityLabels = new Set([

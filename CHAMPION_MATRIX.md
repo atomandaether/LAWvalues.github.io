@@ -10,9 +10,13 @@ There should **not** be one permanent champion per identity. A champion is a sec
 
 1. Pick the **narrowest real middle identity** the evidence supports.
 2. Only then compare champions that are compatible with that identity or with the respondent's strongest remaining traits.
-3. Prefer the champion whose **whole signature** matches the respondent, not the most famous name.
-4. Do not force a champion when the fit is weak or tied.
-5. A historical ancestor can appear as lineage without being the closest champion.
+3. Prefer the champion whose **whole measured signature** matches the respondent, not the most famous name.
+4. Require **marginal explanatory value**: a champion belongs in the selectable pool only if they cover a region of LAWvalues space that the real identity and existing champions do not already cover just as well.
+5. Prune redundancy. If Thayer already names the deference theory, Frankfurter/Hand/Brandeis do not each need equal champion status unless another measured trait makes one of them uniquely informative.
+6. Do not force a champion when the fit is weak or tied.
+7. A historical ancestor can appear as lineage without being the closest champion.
+
+This is a **set-cover problem, not a fame contest**. The pool should be as small as possible while still covering genuinely different measured combinations.
 
 This is why:
 - Solum is not "the Originalist."
@@ -67,7 +71,7 @@ Examples:
 | Radbruchian | Radbruch | extreme-injustice threshold |
 | Fullerian | Fuller | internal morality / legality conditions |
 | Alexyan | Alexy | claim to correctness + nonpositivism + proportionality |
-| Legal Realist | Llewellyn; Frank; Holmes as precursor | empirical underdetermination; law in action; Frank if psychology/fact skepticism |
+| Legal Realist | Llewellyn; Leiter for Realist+Positivist/Naturalist; Holmes as precursor | Llewellyn = broad mature Realism; Leiter = modern naturalized/positivist reconstruction; Holmes = precursor + deference; Frank remains lineage until fact/psychology diagnostics exist |
 | Pragmatist | Posner; Breyer as judicial relative | consequences/workability; Breyer when purposivism/functionalism is stronger |
 | Textualist | Manning; Scalia when broader bundle fits | Scalia needs public meaning/rules/formalism, not text alone |
 | Intentionalist | no default yet | diagnose actual legislative/enactor intent before choosing a champion |
@@ -101,7 +105,22 @@ Blackstone is canonically important, but the current quiz does not isolate one "
 Kelsen is a central positivist architect, but the Pure Theory's distinctive normative hierarchy/basic-norm structure is not measured. Keep him in the canon, not as a default respondent label.
 
 ### Holmes
-Holmes is a crucial precursor to Realism and a practicing Thayerian, but mature American Legal Realism is better represented by Llewellyn/Frank when the actual identity is Legal Realist.
+Holmes is a crucial precursor to Realism and a practicing Thayerian. He stays useful only because the **cross-combination** Realism + strong democratic deference is measurable. He should not occupy a separate slot merely as another Thayer follower.
+
+### Hugo Black
+Black earns consideration for a different reason from Frankfurter or Brandeis: he occupies a distinctive measured bundle that Thayer does not absorb. His constitutional style paired unusually literal/text-bound reasoning and categorical rights with aggressive enforcement of enumerated rights. LAWvalues can see much of that through Text/Rules/anti-discretion plus Counter-majoritarian rights protection. Total incorporation is historically central to Black but is not a LAWvalues matching trait unless a future diagnostic directly tests it.
+
+### Brian Leiter
+Leiter belongs in the champion pool because he adds **marginal conceptual coverage**, not because he is another famous Realist. His work reconstructs American Legal Realism as a descriptive theory of adjudication tied to naturalized jurisprudence and argues for a close relationship between Realism and hard/positivist theories of law. A respondent who is both a confirmed Legal Realist and strongly Positivist is therefore meaningfully closer to Leiter than to a generic Llewellyn champion.
+
+### Frankfurter / Hand / Brandeis
+Important judicial exemplars of restraint, but mostly **lineage rather than selectable champions** for present purposes. Thayer already names the clear-error/deference theory. Add one of these judges back only if a second measured dimension creates a distinctive profile that Thayer does not already explain.
+
+### Bork
+Bork matters historically to old originalism and democratic restraint, especially original-intent rhetoric. But he should not be added merely as another famous Originalist. If LAWvalues affirmatively identifies Original-Intent Originalism and needs a champion, Bork is a plausible historical/subtype candidate; otherwise he adds little beyond the theory label and the existing Originalist champion set.
+
+### Easterbrook
+Do not add by default. Once Law & Economics is deliberately outside scope, Easterbrook's remaining text/rules/constraint profile is largely redundant with Scalia/Manning for the dimensions LAWvalues measures.
 
 ### Scalia
 Scalia is highly useful precisely because his signature crosses multiple LAWvalues axes: textualism, public-meaning originalism, rules, democratic anti-discretion, and separation formalism. That makes him a **great champion for a specific bundle and a bad universal champion for any one component**.
@@ -169,3 +188,20 @@ The design is:
 4. the front modifier and trailing phrase still carry the respondent's normative commitments.
 
 That allows results such as a rule-oriented Legal Realist or a rights-protective Legal Realist without pretending Realism settles those questions.
+
+
+## Redundancy examples
+
+The following illustrates the marginal-coverage rule:
+
+- **Thayer** can absorb generic Frankfurter/Hand/Brandeis-style deference.
+- **Scalia** stays because Textualism + public meaning + Rules + structural formalism is a distinctive cross-axis bundle.
+- **Hugo Black** stays because text/rule absolutism + aggressive enumerated-rights enforcement occupies a very different region from Thayer and Scalia.
+- **Llewellyn** stays as the broad mature Legal Realist.
+- **Leiter** stays because Realism + Positivism/Naturalism is a distinctive modern theoretical combination.
+- **Frank** is lineage unless LAWvalues adds fact-skepticism / psychology diagnostics.
+- **Posner** stays because Pragmatism is a direct identity; his Law & Economics work is not what earns the slot.
+- **Bork** is only useful if Original Intent is actually diagnosed.
+- **Easterbrook** is presently redundant after excluding Law & Economics.
+
+This is the answer to "why this person and not the next famous judge?" The burden is on every additional champion to explain a **new measured region**, not merely to deserve a place in a jurisprudence textbook.

@@ -24,6 +24,7 @@ A candidate middle identity must pass all of these:
 4. **Naming fit:** the public-facing label is not something LAWvalues invented.
 5. **Coverage value:** it explains a real region of the existing result space.
 6. **No-overclaim rule:** when subtype evidence is insufficient, fall back to the broader real label.
+7. **Marginal-coverage rule for champions:** a famous figure does not earn a selectable champion slot unless they explain a measured combination that the identity label and existing champion pool do not already explain just as well.
 
 Historical importance by itself is not enough.
 
@@ -98,8 +99,9 @@ Therefore Realism gets one universal soft probe and two follow-ups only if unloc
 
 Champions:
 - **Karl Llewellyn** = best general mature-American-Realist champion.
-- **Jerome Frank** = more psychological / fact-skeptical version.
-- **Oliver Wendell Holmes Jr.** = crucial precursor and predictive/experience lineage, not the whole school.
+- **Brian Leiter** = modern champion for the distinctive Realist + Positivist/Naturalist combination; his reconstruction of Realism and naturalized jurisprudence gives him marginal coverage the historical figures do not.
+- **Jerome Frank** = important psychological/fact-skeptical lineage, but not selectable until LAWvalues actually diagnoses that subtype.
+- **Oliver Wendell Holmes Jr.** = crucial precursor; potentially informative specifically when Realism combines with strong democratic deference.
 
 ## Pragmatist
 **Core direct identity.**
@@ -122,6 +124,7 @@ Core identity. Contextual textualism counts; literalism does not define the scho
 Champions:
 - **John Manning** = cleaner pure-theory champion.
 - **Antonin Scalia** = better only when the respondent also matches public-meaning originalism, Rules, and/or structural formalism.
+- **Hugo Black** = cross-axis judicial champion when text/language-bound, categorical anti-discretion reasoning combines with unusually strong enforcement of enumerated rights; do not treat total incorporation as measured unless LAWvalues later asks it directly.
 
 ## Intentionalist
 **Added by this audit.**
@@ -365,3 +368,30 @@ Examples:
 - Blackstone/Aquinas as lineage rather than automatic closest champion.
 
 If the top champion is not materially better than the next one, do not force a single person. Show multiple intellectual relatives or just the identity.
+
+
+# 11. Champion-pool pruning
+
+The champion pool should be **sparse**.
+
+A candidate is not added because:
+- the person is famous,
+- the person appears in a survey,
+- the person influenced another champion,
+- or the person is a good example of an already-named school.
+
+A candidate is added when their whole jurisprudential signature gives LAWvalues **marginal explanatory coverage**.
+
+Current implications:
+
+- Thayer makes generic Frankfurter/Hand/Brandeis restraint largely redundant.
+- Scalia remains useful because his combination of textualism, public-meaning originalism, Rules, and structural formalism is distinctive and directly measurable.
+- Hugo Black adds a different measurable combination: text/rule absolutism plus strong enumerated-rights enforcement.
+- Llewellyn remains the general mature-Realist champion.
+- Brian Leiter adds a modern Realist + Positivist/Naturalist combination and therefore fills a different region.
+- Frank remains lineage until fact/psychology diagnostics exist.
+- Posner remains because Pragmatism itself is a direct identity; Law & Economics is irrelevant to why he is included.
+- Bork should be considered only if Original-Intent Originalism is affirmatively diagnosed; he is not needed as another generic Originalist.
+- Easterbrook is presently redundant once Law & Economics is excluded.
+
+This rule should be applied to every future suggestion, including names supplied by the user or the model.
