@@ -445,14 +445,25 @@ globalThis.LAW_CHAMPIONS = Object.freeze([
     note: "Best general champion of mature American Legal Realism."
   },
   {
+    id: "leiter",
+    name: "Brian Leiter",
+    kind: "person",
+    role: "subtype",
+    eligibleIdentityIds: ["legal_realist", "positivist", "exclusive_positivist"],
+    signatureTraits: ["realism.underdetermination", "realism.empirical_prediction", "realism.naturalism", "source.positive_sources"],
+    antiTraits: ["source.objective_morality"],
+    note: "Modern theorist of naturalized jurisprudence and American Legal Realism. Especially informative for a Realist profile that is also strongly positivist/naturalistic; not the generic stand-in for all Realists."
+  },
+  {
     id: "frank",
     name: "Jerome Frank",
     kind: "person",
-    role: "subtype",
+    role: "historical",
     eligibleIdentityIds: ["legal_realist"],
     signatureTraits: ["realism.extra_doctrinal", "realism.psychological", "realism.fact_skepticism"],
     antiTraits: [],
-    note: "Use when realism is especially judge/psychology/fact-skeptical rather than mainly rule-skeptical."
+    selectable: false,
+    note: "Important Realist subtype/lineage, but the current diagnostics do not test Frank's psychological/fact-skepticism closely enough to select him as a closest champion. Promote only if those diagnostics are later added."
   },
   {
     id: "holmes",
@@ -495,6 +506,16 @@ globalThis.LAW_CHAMPIONS = Object.freeze([
     signatureTraits: ["constraint.textual", "time.public_meaning", "form.rules", "separation.formalist"],
     antiTraits: ["constraint.purpose", "form.balancing"],
     note: "Excellent champion for the combined text/rules/public-meaning/formalist bundle; never the generic stand-in for all Originalists."
+  },
+  {
+    id: "hugo_black",
+    name: "Hugo Black",
+    kind: "person",
+    role: "subtype",
+    eligibleIdentityIds: ["textualist", "formalist", "originalist"],
+    signatureTraits: ["constraint.textual", "form.rules", "form.anti_discretion", "posture.countermajoritarian", "posture.rights_trumps"],
+    antiTraits: ["form.balancing", "constraint.purpose"],
+    note: "Distinctive judicial bundle: unusually text/language-bound and rule/absolutism-oriented while also strongly rights-protective. His total-incorporation theory is historically important but is not itself directly measured by LAWvalues, so it should not be used as a matching trait."
   },
   {
     id: "manning",
@@ -792,7 +813,10 @@ globalThis.LAW_CHAMPION_MATCHING_RULES = Object.freeze({
   allowTraitOnlyChampions: true,
   minimumDistinctiveTraits: 2,
   preferSpecificChampionOverFamousChampion: true,
+  requireMarginalExplanatoryValue: true,
+  pruneRedundantChampions: true,
   doNotForceChampion: true,
   ambiguityRule: "If the leading champion is not materially better supported than the next eligible champion, show multiple intellectual relatives or no single champion.",
-  explanationRule: "A champion illustrates a respondent's version of an identity; it does not define the identity itself."
+  explanationRule: "A champion illustrates a respondent's version of an identity; it does not define the identity itself.",
+  marginalCoverageRule: "Do not add or select a champion merely because the figure is canonical. The champion must explain a measurable combination not already captured as well by the respondent's real identity and the existing champion pool. If another champion covers the same measured region more directly, keep the redundant figure as lineage rather than a selectable match."
 });
