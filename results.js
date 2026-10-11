@@ -2,8 +2,14 @@
     'use strict';
 
     const LATEST_KEY = `lawvalues-latest-${globalThis.LAW_VERSION}`;
-    const axisScoredCounts = globalThis.LAW_AXIS_SCORED_COUNTS;
-    const scoredQuestionCount = globalThis.LAW_SCORED_QUESTION_COUNT;
+    const axisContributingCounts = Object.fromEntries(
+        globalThis.LAW_AXES.map((axis) => [
+            axis.id,
+            globalThis.LAW_QUESTIONS.filter(
+                (item) => globalThis.LAW_SCORING.weightForAxis(item, axis.id) !== 0
+            ).length
+        ])
+    );
     const params = new URLSearchParams(window.location.search);
     const error = document.getElementById('results-error');
     const main = document.getElementById('results-main');
@@ -33,7 +39,7 @@
     function parseCoverage() {
         const encoded = params.get('n');
         const fullCoverage = Object.fromEntries(
-            globalThis.LAW_AXES.map((axis) => [axis.id, axisScoredCounts[axis.id]])
+            globalThis.LAW_AXES.map((axis) => [axis.id, axisContributingCounts[axis.id]])
         );
         if (!encoded) return fullCoverage;
 
@@ -41,7 +47,7 @@
         if (parts.length !== globalThis.LAW_AXES.length) return fullCoverage;
 
         return Object.fromEntries(globalThis.LAW_AXES.map((axis, index) => {
-            const maximum = axisScoredCounts[axis.id];
+            const maximum = axisContributingCounts[axis.id];
             const value = Number(parts[index]);
             return [axis.id, Number.isInteger(value) && value >= 0 && value <= maximum ? value : maximum];
         }));
@@ -86,12 +92,13 @@
     });
     document.getElementById('result-summary').textContent = `Your most distinctive results are ${top.join(', ').replace(/, ([^,]*)$/, ', and $1')}.`;
 
-    const incomplete = globalThis.LAW_AXES.filter((axis) => coverage[axis.id] < axisScoredCounts[axis.id]);
+    const incomplete = globalThis.LAW_AXES.filter(
+        (axis) => coverage[axis.id] < axisContributingCounts[axis.id]
+    );
     if (incomplete.length > 0) {
-        const answered = globalThis.LAW_AXES.reduce((sum, axis) => sum + coverage[axis.id], 0);
         const note = document.getElementById('coverage-note');
         note.hidden = false;
-        note.textContent = `These scores use ${answered} of ${scoredQuestionCount} scored questions because “not sure” responses are excluded. Diagnostic questions are recorded but do not move the headline axis score.`;
+        note.textContent = '“Not sure” responses are excluded from any axis they would have informed. Some questions contribute to more than one axis.';
     }
 
     function textSummary() {
