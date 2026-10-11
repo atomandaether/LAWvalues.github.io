@@ -1,8 +1,17 @@
 /* Internal result-identity and champion catalog.
-   This file is not yet loaded by the public results page. It defines the vocabulary
-   and champion pool that a future adaptive classifier can use after the 93-item core. */
+   The public classifier uses these real jurisprudential identities after the 93-item
+   core; personality matching is separate and deliberately sparse. */
 
 globalThis.LAW_RESULT_IDENTITIES = Object.freeze([
+  {
+    id: "incoherent_response",
+    label: "Inconsistent response pattern",
+    family: "meta",
+    status: "override",
+    parentId: null,
+    covers: ["quality.incoherence"],
+    notes: "Not a jurisprudential school. Used conservatively when direct contradictions appear across distinct jurisprudential domains."
+  },
   {
     id: "unusable_response",
     label: "Unclear response pattern",
@@ -14,6 +23,15 @@ globalThis.LAW_RESULT_IDENTITIES = Object.freeze([
   },
 
   // Nature / source of law
+  {
+    id: "nonpositivist",
+    label: "Non-positivist",
+    family: "source",
+    status: "fallback",
+    parentId: null,
+    covers: ["source.nonpositive_sources"],
+    notes: "Broad fallback when social-source positivism is rejected but a narrower non-positivist theory cannot yet be diagnosed honestly."
+  },
   {
     id: "positivist",
     label: "Positivist",
