@@ -58,7 +58,8 @@
             diagnosticOrder: [],
             diagnosticIndex: 0,
             diagnosticResponses: {},
-            startedAt: new Date().toISOString()
+            startedAt: new Date().toISOString(),
+            coreCompletedAt: null
         };
     }
 
@@ -76,6 +77,7 @@
                 stored.responses && typeof stored.responses === 'object';
             if (valid) {
                 stored.phase = stored.phase === 'diagnostic' ? 'diagnostic' : 'core';
+                stored.coreCompletedAt = stored.coreCompletedAt || null;
                 stored.diagnosticOrder = Array.isArray(stored.diagnosticOrder)
                     ? stored.diagnosticOrder.filter((id) => diagnosticById[id])
                     : [];
@@ -203,6 +205,7 @@
         const question = currentQuestion();
         state.responses[question.id] = value;
         if (state.index === state.order.length - 1) {
+            state.coreCompletedAt = new Date().toISOString();
             // A changed final core answer can change the entire adaptive path.
             state.diagnosticOrder = [];
             state.diagnosticResponses = {};
@@ -260,6 +263,7 @@
         const scored = coreScores();
         const completedAt = new Date().toISOString();
         const startedMs = Date.parse(state.startedAt);
+        const coreCompletedMs = Date.parse(state.coreCompletedAt || '');
         const completedMs = Date.parse(completedAt);
         const classification = globalThis.LAW_CLASSIFIER.classify(
             scored,
@@ -267,7 +271,11 @@
             state.diagnosticResponses,
             {
                 startedAt: state.startedAt,
+                coreCompletedAt: state.coreCompletedAt,
                 completedAt,
+                coreElapsedMs: Number.isFinite(startedMs) && Number.isFinite(coreCompletedMs)
+                    ? coreCompletedMs - startedMs
+                    : null,
                 elapsedMs: Number.isFinite(startedMs) && Number.isFinite(completedMs)
                     ? completedMs - startedMs
                     : null
@@ -288,6 +296,7 @@
         const record = {
             version: globalThis.LAW_VERSION,
             startedAt: state.startedAt,
+            coreCompletedAt: state.coreCompletedAt,
             scores: Object.fromEntries(globalThis.LAW_AXES.map((axis) => [axis.id, scored[axis.id].score])),
             coverage: Object.fromEntries(globalThis.LAW_AXES.map((axis) => [axis.id, scored[axis.id].answered])),
             strength: Object.fromEntries(globalThis.LAW_AXES.map((axis) => [axis.id, scored[axis.id].strength])),
