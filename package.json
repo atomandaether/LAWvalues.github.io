@@ -4,6 +4,6 @@
   "private": true,
   "description": "A legal-philosophy quiz across eight jurisprudential dimensions.",
   "scripts": {
-    "test": "node scripts/audit-questions.mjs"
+    "test": "node scripts/audit-questions.mjs && node scripts/audit-result-catalog.mjs"
   }
 }
