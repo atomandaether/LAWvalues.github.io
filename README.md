@@ -36,7 +36,7 @@ Legal Realism remains a special meta-position because it asks how determinative 
 
 Current specialist examples include Lawrence Solum for principle/construction-sensitive originalism, Roscoe Pound for sociological jurisprudence, Frederick Schauer for unusually rule-centered judging, James Bradley Thayer for clear-error deference, Robert Alexy for structured proportionality, and Owen Fiss for structural remedies. Friedrich Carl von Savigny is retained as Historical School lineage rather than forced into the modern Historical/Living axis. Sandra Day O'Connor is available conservatively as a low-theory, contextual catch-all when no grand jurisprudential theory explains an otherwise moderate case-by-case profile.
 
-Thinker signatures are theory-derived prototypes, not empirical estimates. Pilot data should later calibrate thresholds, profile locations, diagnostic routing, and the confidence needed to display a single thinker.
+Thinker signatures are theory-derived prototypes, not empirical estimates. Pilot data should later calibrate thresholds, profile locations, diagnostic routing, and the confidence needed to display a single thinker. See `MATCHING_ARCHITECTURE.md` for the matching rules.
 
 ## Local use
 
