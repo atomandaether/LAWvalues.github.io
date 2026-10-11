@@ -165,6 +165,7 @@
         if (record?.classification) return record.classification;
         if (record && globalThis.LAW_CLASSIFIER) {
             const startedMs = Date.parse(record.startedAt || '');
+            const coreCompletedMs = Date.parse(record.coreCompletedAt || '');
             const completedMs = Date.parse(record.completedAt || '');
             return globalThis.LAW_CLASSIFIER.classify(
                 record.scores,
@@ -172,7 +173,11 @@
                 record.diagnosticResponses || {},
                 {
                     startedAt: record.startedAt || null,
+                    coreCompletedAt: record.coreCompletedAt || null,
                     completedAt: record.completedAt || null,
+                    coreElapsedMs: Number.isFinite(startedMs) && Number.isFinite(coreCompletedMs)
+                        ? coreCompletedMs - startedMs
+                        : null,
                     elapsedMs: Number.isFinite(startedMs) && Number.isFinite(completedMs)
                         ? completedMs - startedMs
                         : null
@@ -304,6 +309,8 @@
             const exportRecord = {
                 instrument: 'LAWvalues',
                 version: globalThis.LAW_VERSION,
+                startedAt: record.startedAt || null,
+                coreCompletedAt: record.coreCompletedAt || null,
                 completedAt: record.completedAt,
                 scores: record.scores,
                 coverage: record.coverage,
