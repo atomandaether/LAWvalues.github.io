@@ -111,7 +111,7 @@ for (const filename of htmlFiles) {
   }
 }
 
-assert.ok(htmlByFile["index.html"].includes("Version 0.5 Beta"), "Front page must show Version 0.5 Beta");
+assert.ok(htmlByFile["index.html"].includes("Version 0.6 Beta"), "Front page must show Version 0.6 Beta");
 assert.ok(htmlByFile["instructions.html"].includes("You will be presented with a series of statements about legal interpretation and judicial philosophy. For each one, click the button with your opinion on it."),
   "Instructions must retain the original wording");
 assert.ok(htmlByFile["quiz.html"].includes('aria-valuemax="100"'), "Quiz progress maximum must allow 93 core plus up to 7 diagnostics");
@@ -130,4 +130,4 @@ console.log("All-disagree scores:", Object.fromEntries(axes.map((axis)=>[axis.id
 console.log("PASS: all 93 questions inform at least one axis in at least one response direction.");
 console.log("PASS: C13 now scores disagreement toward contextual textualism.");
 console.log("PASS: asymmetric pole evidence; no forced acquiescence normalization.");
-console.log("PASS: original visible copy and Version 0.5 Beta preserved.");
+console.log("PASS: original visible copy and Version 0.6 Beta preserved.");
