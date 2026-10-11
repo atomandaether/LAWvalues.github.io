@@ -152,6 +152,8 @@
                 scores: record.scores,
                 coverage: record.coverage,
                 strength: record.strength,
+                conflict: record.conflict,
+                poleSupport: record.poleSupport,
                 responses: record.responses
             };
             const blob = new Blob([JSON.stringify(exportRecord, null, 2)], { type: 'application/json' });

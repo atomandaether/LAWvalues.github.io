@@ -16,67 +16,63 @@
     return Object.prototype.hasOwnProperty.call(responses, id);
   }
 
-  function weightForAxis(item, axisId) {
-    const value = Number(item?.weights?.[axisId] ?? 0);
+  function signalFor(item, direction, axisId) {
+    const value = Number(item?.signals?.[direction]?.[axisId] ?? 0);
     return Number.isFinite(value) ? value : 0;
   }
 
-  function weightedResponseMean(items, responses, axisId) {
-    const denominator = items.reduce(
-      (sum, item) => sum + Math.abs(weightForAxis(item, axisId)),
-      0
-    );
-    if (denominator === 0) return null;
-    return items.reduce(
-      (sum, item) => sum + Number(responses[item.id]) * Math.abs(weightForAxis(item, axisId)),
-      0
-    ) / denominator;
+  function contributesToAxis(item, axisId) {
+    return signalFor(item, "agree", axisId) !== 0 ||
+      signalFor(item, "disagree", axisId) !== 0;
   }
 
   function scoreAxis(axisId, responses, questions = global.LAW_QUESTIONS) {
-    const items = questions.filter((item) => weightForAxis(item, axisId) !== 0);
+    const items = questions.filter((item) => contributesToAxis(item, axisId));
     const answered = items.filter(
       (item) => hasResponse(responses, item.id) && responses[item.id] !== null
     );
 
-    if (answered.length === 0) {
-      return { score: 50, answered: 0, total: items.length, strength: 0, raw: 0 };
+    let leftPotential = 0;
+    let rightPotential = 0;
+    for (const item of items) {
+      const possible = [
+        signalFor(item, "agree", axisId),
+        signalFor(item, "disagree", axisId)
+      ];
+      leftPotential += Math.max(0, ...possible);
+      rightPotential += Math.max(0, ...possible.map((value) => -value));
     }
 
-    const positive = answered.filter((item) => weightForAxis(item, axisId) > 0);
-    const negative = answered.filter((item) => weightForAxis(item, axisId) < 0);
-    const positiveMean = weightedResponseMean(positive, responses, axisId);
-    const negativeMean = weightedResponseMean(negative, responses, axisId);
-
-    let raw;
-    if (positiveMean !== null && negativeMean !== null) {
-      // Equalize the two directional families so response-style agreement does not
-      // push an axis merely because the working bank contains more items on one side.
-      raw = (positiveMean - negativeMean) / 2;
-    } else if (positiveMean !== null) {
-      raw = positiveMean;
-    } else {
-      raw = -negativeMean;
+    let leftEvidence = 0;
+    let rightEvidence = 0;
+    for (const item of answered) {
+      const response = Number(responses[item.id]);
+      if (!Number.isFinite(response) || response === 0) continue;
+      const direction = response > 0 ? "agree" : "disagree";
+      const signal = signalFor(item, direction, axisId);
+      const contribution = Math.abs(response) / RESPONSE_MAX * signal;
+      if (contribution > 0) leftEvidence += contribution;
+      if (contribution < 0) rightEvidence += -contribution;
     }
 
-    const score = clamp(50 + roundAwayFromZero((50 * raw) / RESPONSE_MAX), 0, 100);
-    const totalWeight = answered.reduce(
-      (sum, item) => sum + Math.abs(weightForAxis(item, axisId)),
-      0
-    );
-    const strength = totalWeight === 0 ? 0 : Math.round(
-      (100 * answered.reduce(
-        (sum, item) => sum + Math.abs(Number(responses[item.id])) *
-          Math.abs(weightForAxis(item, axisId)),
-        0
-      )) / (RESPONSE_MAX * totalWeight)
-    );
+    const leftSupport = leftPotential > 0 ? leftEvidence / leftPotential : 0;
+    const rightSupport = rightPotential > 0 ? rightEvidence / rightPotential : 0;
+
+    // The two poles are estimated separately. An answer that is evidence for one pole
+    // need not be treated as evidence for the other when the proposition is asymmetric.
+    const raw = leftSupport - rightSupport;
+    const score = clamp(50 + roundAwayFromZero(50 * raw), 0, 100);
+    const strength = Math.round(100 * Math.max(leftSupport, rightSupport));
+    const conflict = Math.round(100 * Math.min(leftSupport, rightSupport));
 
     return {
       score,
       answered: answered.length,
       total: items.length,
       strength,
+      conflict,
+      leftSupport: Math.round(100 * leftSupport),
+      rightSupport: Math.round(100 * rightSupport),
       raw
     };
   }
@@ -104,19 +100,9 @@
       return { name: "Mixed", percent: 50, opposite: 50, direction: "mixed" };
     }
     if (value > 50) {
-      return {
-        name: axis.left,
-        percent: value,
-        opposite: 100 - value,
-        direction: "left"
-      };
+      return { name: axis.left, percent: value, opposite: 100 - value, direction: "left" };
     }
-    return {
-      name: axis.right,
-      percent: 100 - value,
-      opposite: value,
-      direction: "right"
-    };
+    return { name: axis.right, percent: 100 - value, opposite: value, direction: "right" };
   }
 
   function profileDistance(scores, profile, axes = global.LAW_AXES) {
@@ -132,7 +118,8 @@
     RESPONSE_MAX,
     clamp,
     roundAwayFromZero,
-    weightForAxis,
+    signalFor,
+    contributesToAxis,
     scoreAxis,
     scoreAll,
     axisLabel,
