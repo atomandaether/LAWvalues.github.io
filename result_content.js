@@ -20,6 +20,7 @@
     nonpositivist: "You reject the idea that recognized social sources alone exhaust what counts as law.",
     interpretivist: "You treat legal principles and the best justification of legal practice as part of determining what the law already is.",
     dworkinian: "You resemble Dworkinian interpretivism: hard cases can have legal answers in principles that best fit and justify the legal system rather than requiring fresh judicial legislation.",
+    moral_impact_theorist: "You fit Moral Impact Theory: legislation, adjudication, and other institutional legal actions matter because of the moral rights and obligations they generate, and those resulting obligations constitute the law.",
     natural_lawyer: "You fit the natural-law tradition: objective practical morality is relevant to law itself, while positive law can still settle many questions authoritatively.",
     fullerian: "You treat basic conditions of legality—publicity, prospectivity, clarity, consistency, and congruent administration—as internal requirements of law rather than mere conveniences.",
     radbruchian: "You ordinarily respect positive law but allow sufficiently extreme injustice to defeat its claim to legal validity.",
