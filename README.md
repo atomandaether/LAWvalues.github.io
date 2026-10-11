@@ -13,7 +13,7 @@ LAWvalues is a static, client-side legal-philosophy quiz. The current public lab
 
 ## Instrument design
 
-The working bank contains 93 questions across eight dimensions. Axis banks currently range from 7 to 18 items. Most items are scored; a small set of subtype diagnostics is recorded without moving the headline axis score. Because the working banks contain unequal numbers of first-pole- and second-pole-keyed items, scoring gives the two keyed families equal influence within each axis. Responses use a seven-point scale from −3 to +3. “Not sure” answers are omitted from the relevant denominator.
+The working bank contains 93 questions across eight dimensions. Questions are grouped by a nominal section for presentation, but scoring is multidimensional: an item may contribute to any axis it materially informs, with smaller fractional weights for secondary signals. Directional item families are normalized separately within each axis so a respondent who simply agrees with everything is not pushed toward the side with more keyed items. One literalism/context diagnostic is currently recorded without moving a headline axis. Responses use a seven-point scale from −3 to +3, and “Not sure” answers are omitted from each affected axis.
 
 The questions are written as plain-language legal problems rather than definitions of the measured categories. They draw on recurring cases, hypotheticals, and disputes from jurisprudence, statutory interpretation, constitutional law, remedies, separation of powers, and rules-versus-standards scholarship. Politically cross-cutting examples are used to reduce the chance that a respondent can infer an answer merely from a school’s partisan reputation.
 
