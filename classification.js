@@ -254,6 +254,9 @@
     if (r.sorc >= 0.2 && (traits["source.principles_are_law"] || 0) >= 0.5) {
       add("dworkinian", 0.78 + 0.16 * s.sorc, "Principles-as-existing-law pattern.");
     }
+    if (r.sorc >= 0.2 && (traits["source.moral_impact"] || 0) >= 0.5) {
+      add("moral_impact_theorist", 0.86 + 0.08 * s.sorc, "Institutional action understood through the moral rights and obligations it generates.");
+    }
     if (r.sorc >= 0.2 &&
         (traits["source.objective_morality"] || 0) >= 0.45 &&
         ((traits["source.positive_law_settlement"] || 0) >= 0.35 ||
@@ -541,6 +544,7 @@
       const naturalPlausible = (traits["source.objective_morality"] || 0) >= 0.25;
       const dworkinPlausible = (traits["source.principles_are_law"] || 0) >= 0.25;
       if (naturalPlausible || dworkinPlausible || source <= 28) offer("D-NP1", 88);
+      if ((traits["source.moral_impact"] || 0) < 0.5) offer("D-NP4", 84);
       if ((traits["source.principles_are_law"] || 0) < 0.5) offer("D-NP2", 80);
       if (!naturalPlausible && !dworkinPlausible) offer("D-NP3", 48);
     }
