@@ -28,7 +28,7 @@ Public results use the three-part grammar **[modifier] [real jurisprudential ide
 The matching model is deliberately sparse:
 
 - a thinker has positions only on axes that meaningfully characterize that thinker; an unmodeled axis is ignored rather than treated as a neutral 50;
-- major jurisprudential families remain first-class results, including Legal Positivism, Natural Law, Dworkinian Interpretivism, Legal Process, Originalism, Purposivism, Living/Common-Law Constitutionalism, judicial-restraint traditions, popular/weak-form constitutionalism, and proportionality;
+- major jurisprudential families remain first-class results, including Legal Positivism, Natural Law, Dworkinian Interpretivism, Moral Impact Theory, Legal Process, Originalism, Purposivism, Living/Common-Law Constitutionalism, judicial-restraint traditions, popular/weak-form constitutionalism, and proportionality;
 - specialist thinkers can win only when their distinctive proposition is affirmatively supported;
 - lineage/further-reading figures can enrich a result without being eligible to win it;
 - anti-traits and minimum-salience gates prevent a numerically nearby thinker from being selected when the respondent rejects the idea that makes that thinker distinctive;
