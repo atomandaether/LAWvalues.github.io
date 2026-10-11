@@ -4,13 +4,13 @@ This file is the editorial control panel for the result system.
 
 The goal is **not** to assign one fixed axis to each title slot. The goal is to compress the respondent's most important jurisprudential information into three nonredundant pieces:
 
-> **[–ing modifier] [real anchor] [phrase]**
+> **[modifier] [real anchor] [phrase]**
 
 Example structure only:
 
 > **Precedent-preserving Originalist who lets democracy decide**
 
-The middle slot is a real jurisprudential identity, school, method, or recognized family. The modifier and phrase are chosen from the respondent's strongest **unrepresented** traits. They can come from any of the eight axes or from question-level subtypes. The engine should prefer the three pieces that communicate the most information about that person.
+The middle slot is the **best real jurisprudential identity we can honestly justify**—including established eponymous labels such as Dworkinian, Thayerian, or Waldronian when the evidence is genuinely that specific. The front modifier and phrase are chosen from the respondent's strongest **unrepresented** traits. They can come from any of the eight axes or from question-level subtypes. The engine should prefer the three pieces that communicate the most information about that person.
 
 ---
 
@@ -104,11 +104,11 @@ It does **not** automatically communicate:
 
 Those remain available.
 
-## 5. Choose the –ing modifier
+## 5. Choose the front modifier
 
 Among important traits not already communicated by the anchor, choose the modifier with the greatest **marginal information value**.
 
-The modifier can come from any axis.
+The modifier can come from any axis or subtype and may be an adjective, participle, compound, or short descriptive phrase. It does not need to end in -ing.
 
 Examples:
 
@@ -184,6 +184,39 @@ After the title:
 Do not force all eight axes into the prose.
 
 ---
+
+## 10. Adaptive diagnostics refine the middle identity
+
+The 93-item core should not ask everyone every specialist distinction.
+
+After the core:
+- one soft Realism probe may be asked universally because Realism is not discoverable from the eight axes;
+- otherwise, extra questions are unlocked only when they can distinguish live middle-identity candidates;
+- a respondent already cleanly classified should see no redundant specialist questions;
+- if a subtype remains unresolved, fall back to the broader real label rather than guess.
+
+Examples:
+- Originalist -> Public Meaning vs Original Intent -> Original Methods / Framework only if still relevant.
+- Positivist -> Inclusive vs Exclusive only if precision matters.
+- Nonpositivist -> Dworkinian vs Natural Lawyer only if both remain plausible.
+- Extreme Majoritarian -> Popular Constitutionalist / Departmentalist only after anti-judicial-supremacy evidence.
+- Open-construction statutory profile -> Intentionalist vs Purposivist when actual intent and objective purpose remain ambiguous.
+
+See `diagnostics.js` for the proposed bank.
+
+## 11. Champions are selected after the identity
+
+The champion is not the definition of the middle label.
+
+Examples:
+- a Public-Meaning Originalist may be closest to Solum, Scalia, Barrett, or Thomas depending on the rest of the profile;
+- a Textualist may be closer to Manning than Scalia if Rules / Originalism / structural Formalism are absent;
+- a confirmed Legal Realist may be closer to Llewellyn than Holmes;
+- a Purposivist may be closest to Hart & Sacks, Breyer, or Barak depending on institutional competence, pragmatism, and proportionality.
+
+A champion should be omitted or pluralized when the fit is not clearly better than alternatives.
+
+See `result_catalog.js` and `CHAMPION_MATRIX.md`.
 
 # II. TRAIT TAG DICTIONARY
 
