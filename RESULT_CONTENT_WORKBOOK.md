@@ -1,6 +1,6 @@
 # LAWvalues Result Content Workbook
 
-This file is the editorial control panel for the result system.
+This file is the editorial control panel for the result system. The machine-readable implementation now lives in `result_content.js`; this workbook remains the place to review or rename the public wording.
 
 The goal is **not** to assign one fixed axis to each title slot. The goal is to compress the respondent's most important jurisprudential information into three nonredundant pieces. Thinker matching is now separately implemented through sparse signatures in `profiles.js` / `classification.js`; see `MATCHING_ARCHITECTURE.md`:
 
@@ -1695,4 +1695,4 @@ Recommended review order:
 5. **Overrides**  
    Rename Partisan / Dummy only after the normal vocabulary feels right.
 
-Once this pass is complete, the next step is to convert the approved workbook into machine-readable result-content data and generate a full combination coverage report.
+The workbook has now been converted into machine-readable result content. Future editorial changes should update both this workbook and `result_content.js`; automated audits verify that the public modifier/identity/phrase assembly remains live.
