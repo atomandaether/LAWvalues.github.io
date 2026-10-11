@@ -186,7 +186,7 @@ globalThis.LAW_RESULT_IDENTITIES = Object.freeze([
     family: "method",
     status: "fallback",
     parentId: null,
-    covers: ["method.pluralism"],
+    covers: ["method.pluralism", "method.modal_pluralism"],
     notes: "Real fallback when no single interpretive methodology dominates but the pattern is coherent rather than chaotic."
   },
 
@@ -280,7 +280,7 @@ globalThis.LAW_RESULT_IDENTITIES = Object.freeze([
     family: "posture",
     status: "adaptive",
     parentId: null,
-    covers: ["posture.democratic_legitimacy", "posture.reasonable_disagreement"],
+    covers: ["posture.majoritarian", "posture.democratic_legitimacy", "posture.reasonable_disagreement"],
     notes: "Use when the objection to strong judicial review is specifically democratic legitimacy under functioning institutions and good-faith rights disagreement."
   },
   {
