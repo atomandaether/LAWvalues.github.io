@@ -151,6 +151,14 @@
             scores: Object.fromEntries(globalThis.LAW_AXES.map((axis) => [axis.id, scored[axis.id].score])),
             coverage: Object.fromEntries(globalThis.LAW_AXES.map((axis) => [axis.id, scored[axis.id].answered])),
             strength: Object.fromEntries(globalThis.LAW_AXES.map((axis) => [axis.id, scored[axis.id].strength])),
+            conflict: Object.fromEntries(globalThis.LAW_AXES.map((axis) => [axis.id, scored[axis.id].conflict])),
+            poleSupport: Object.fromEntries(globalThis.LAW_AXES.map((axis) => [
+                axis.id,
+                {
+                    left: scored[axis.id].leftSupport,
+                    right: scored[axis.id].rightSupport
+                }
+            ])),
             responses: state.responses,
             order: state.order,
             completedAt: new Date().toISOString()
