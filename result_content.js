@@ -392,11 +392,6 @@
     return new Set(catalog?.covers||[]);
   }
 
-  function familyAxis(identity) {
-    const family=identity?.family;
-    return ({source:"sorc",method:"cons",time:"time",posture:"post",structure:"separ",form:"form"})[family] || null;
-  }
-
   function traitValues(feature,traits) {
     return (feature.tags||[])
       .map(tag=>clamp01(traits?.[tag]))
@@ -435,10 +430,6 @@
     // If the noun already says the central thing, don't use a joke slot to repeat it.
     if(primarySpent) score*=0.06;
     else score*=1-0.68*nounOverlap;
-
-    // A broad axis tendency from the same conceptual family is usually partly spent
-    // even when the catalog's coverage tags are narrower.
-    if(feature.axis && feature.axis===familyAxis(identity) && nounOverlap===0) score*=0.72;
 
     if(spentFeature) {
       const spentTags=new Set(spentFeature.tags||[]);
