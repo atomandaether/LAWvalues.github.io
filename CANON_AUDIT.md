@@ -1,4 +1,4 @@
-# LAWvalues Canon Audit — Revised Identity Map
+\nImplementation note: this canon is now classified through sparse thinker signatures and adaptive diagnostics rather than full eight-axis coordinates. See `MATCHING_ARCHITECTURE.md`.\n# LAWvalues Canon Audit — Revised Identity Map
 
 This audit governs the **middle identity** in the result title.
 
