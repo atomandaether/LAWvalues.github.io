@@ -39,8 +39,15 @@ for (const item of questions) {
   assert.ok(item.prompt.trim().split(/\s+/).length <= 125, `${item.id} is too long`);
 }
 
-const unscored = questions.filter((item) => Object.keys(item.weights).length === 0).map((item) => item.id);
-assert.deepEqual(unscored, ["C13"], "Only the literalism/context subtype item should be headline-unscored");
+const unscored = Array.from(
+  questions.filter((item) => Object.keys(item.weights).length === 0),
+  (item) => String(item.id)
+);
+assert.equal(
+  unscored.join(","),
+  "C13",
+  "Only the literalism/context subtype item should be headline-unscored"
+);
 
 const axisRows = [];
 for (const axis of axes) {
