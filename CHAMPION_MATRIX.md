@@ -1,4 +1,4 @@
-# LAWvalues Champion Matrix and Identity Resolution
+\nImplementation note: the live sparse-profile rules are in `profiles.js` and `classification.js`; see `MATCHING_ARCHITECTURE.md` for the family → specialist → further-reading hierarchy and false-match safeguards.\n# LAWvalues Champion Matrix and Identity Resolution
 
 This document answers a different question from the axis definitions:
 

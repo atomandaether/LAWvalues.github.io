@@ -319,3 +319,41 @@ div.axis img {
         break-inside: avoid;
     }
 }
+
+
+.classification-identity {
+    margin-bottom: 6pt;
+    font-size: 24pt;
+    font-weight: 700;
+}
+
+.classification-champion {
+    margin-top: 14pt;
+    margin-bottom: 4pt;
+    font-weight: 700;
+}
+
+.classification-note {
+    margin-top: 14pt;
+    font-size: 12pt;
+    line-height: 1.35;
+    opacity: 0.78;
+}
+
+#classification-reason,
+#champion-description,
+#related-line {
+    max-width: 760pt;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+@media (max-width: 540px) {
+    .classification-identity {
+        font-size: 20pt;
+    }
+
+    .classification-note {
+        font-size: 11pt;
+    }
+}

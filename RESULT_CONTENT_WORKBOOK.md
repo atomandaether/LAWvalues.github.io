@@ -2,7 +2,7 @@
 
 This file is the editorial control panel for the result system.
 
-The goal is **not** to assign one fixed axis to each title slot. The goal is to compress the respondent's most important jurisprudential information into three nonredundant pieces:
+The goal is **not** to assign one fixed axis to each title slot. The goal is to compress the respondent's most important jurisprudential information into three nonredundant pieces. Thinker matching is now separately implemented through sparse signatures in `profiles.js` / `classification.js`; see `MATCHING_ARCHITECTURE.md`:
 
 > **[modifier] [real anchor] [phrase]**
 
