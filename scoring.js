@@ -16,32 +16,68 @@
     return Object.prototype.hasOwnProperty.call(responses, id);
   }
 
+  function scoreWeight(item) {
+    const value = Number(item.scoreWeight ?? 1);
+    return Number.isFinite(value) && value > 0 ? value : 0;
+  }
+
+  function weightedMean(items, responses, transform = (value) => value) {
+    const totalWeight = items.reduce((sum, item) => sum + scoreWeight(item), 0);
+    if (totalWeight === 0) return null;
+    return items.reduce(
+      (sum, item) => sum + transform(Number(responses[item.id]), item) * scoreWeight(item),
+      0
+    ) / totalWeight;
+  }
+
   function scoreAxis(axisId, responses, questions = global.LAW_QUESTIONS) {
-    const items = questions.filter((item) => item.axis === axisId);
-    const answered = items.filter(
+    const axisItems = questions.filter((item) => item.axis === axisId);
+    const scoredItems = axisItems.filter((item) => scoreWeight(item) > 0);
+    const answered = scoredItems.filter(
       (item) => hasResponse(responses, item.id) && responses[item.id] !== null
     );
 
     if (answered.length === 0) {
-      return { score: 50, answered: 0, total: items.length, strength: 0, raw: 0 };
+      return {
+        score: 50,
+        answered: 0,
+        total: scoredItems.length,
+        diagnosticTotal: axisItems.length - scoredItems.length,
+        strength: 0,
+        raw: 0
+      };
     }
 
-    const raw = answered.reduce(
-      (sum, item) => sum + Number(responses[item.id]) * item.key,
-      0
-    );
-    const maximum = RESPONSE_MAX * answered.length;
-    const offset = (50 * raw) / maximum;
-    const score = clamp(50 + roundAwayFromZero(offset), 0, 100);
-    const strength = Math.round(
-      (100 * answered.reduce((sum, item) => sum + Math.abs(Number(responses[item.id])), 0)) /
-        maximum
+    const positive = answered.filter((item) => item.key === 1);
+    const negative = answered.filter((item) => item.key === -1);
+    const positiveMean = weightedMean(positive, responses);
+    const negativeMean = weightedMean(negative, responses);
+
+    let raw;
+    if (positiveMean !== null && negativeMean !== null) {
+      // Give first-pole- and second-pole-keyed item families equal influence even when
+      // the working bank currently contains different numbers of each.
+      raw = (positiveMean - negativeMean) / 2;
+    } else if (positiveMean !== null) {
+      raw = positiveMean;
+    } else {
+      raw = -negativeMean;
+    }
+
+    const score = clamp(50 + roundAwayFromZero((50 * raw) / RESPONSE_MAX), 0, 100);
+    const totalWeight = answered.reduce((sum, item) => sum + scoreWeight(item), 0);
+    const strength = totalWeight === 0 ? 0 : Math.round(
+      (100 * answered.reduce(
+        (sum, item) => sum + Math.abs(Number(responses[item.id])) * scoreWeight(item),
+        0
+      )) / (RESPONSE_MAX * totalWeight)
     );
 
     return {
       score,
       answered: answered.length,
-      total: items.length,
+      total: scoredItems.length,
+      diagnosticTotal: axisItems.length - scoredItems.length,
       strength,
       raw
     };
