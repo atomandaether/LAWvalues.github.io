@@ -28,6 +28,7 @@ globalThis.LAW_RESULT_IDENTITIES = Object.freeze([
     label: "Non-positivist",
     family: "source",
     status: "fallback",
+    broadFallback: true,
     parentId: null,
     covers: ["source.nonpositive_sources"],
     notes: "Broad fallback when social-source positivism is rejected but a narrower non-positivist theory cannot yet be diagnosed honestly."
@@ -64,6 +65,7 @@ globalThis.LAW_RESULT_IDENTITIES = Object.freeze([
     label: "Interpretivist",
     family: "source",
     status: "fallback",
+    public: false,
     parentId: null,
     covers: ["source.principles_are_law"],
     notes: "Broader real label when principle-based nonpositivism is clear but the specifically Dworkinian package is not."
@@ -79,7 +81,7 @@ globalThis.LAW_RESULT_IDENTITIES = Object.freeze([
   },
   {
     id: "moral_impact_theorist",
-    label: "Moral Impact Theorist",
+    label: "Greenbergian",
     family: "source",
     status: "adaptive",
     parentId: null,
@@ -171,7 +173,7 @@ globalThis.LAW_RESULT_IDENTITIES = Object.freeze([
   },
   {
     id: "legal_process_theorist",
-    label: "Legal-Process Theorist",
+    label: "Legal Process Jurist",
     family: "method",
     status: "adaptive",
     parentId: null,
