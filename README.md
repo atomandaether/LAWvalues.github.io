@@ -21,7 +21,9 @@ The questions are written as plain-language legal problems rather than definitio
 
 ## Jurisprudential matching
 
-After the 93-question core, LAWvalues may ask up to seven adaptive tie-breakers, keeping the full quiz at 100 questions or fewer. These follow-ups **do not change the eight headline scores**. They only refine the jurisprudential identity and thinker match when the core compresses an important distinction.
+After the 93-question core, LAWvalues may ask up to seven adaptive tie-breakers, keeping the full quiz at 100 questions or fewer. These follow-ups **do not change the eight headline scores**. The first two are a soft Realism probe and a response check; remaining questions are routed only when they can refine a live jurisprudential distinction.
+
+Public results use the three-part grammar **[modifier] [real jurisprudential identity] [phrase]**. The identity is a real school or recognized descriptor; the modifier and phrase are selected from the strongest remaining nonredundant axis or question-level traits. High-value cross-axis combinations can add a short bridge paragraph, and the closest thinker is selected separately afterward.
 
 The matching model is deliberately sparse:
 
@@ -56,7 +58,7 @@ The repository includes dependency-free structural, scoring, and profile audits:
 npm test
 ```
 
-They check the 93-item core, asymmetric scoring, source references, local asset references, sparse profile validity, specialist gates, major jurisprudential-family coverage, the seven-question diagnostic cap, and several explicit failure-mode tests such as preventing a positivist from winning a strong Natural Law profile.
+They check the 93-item core, asymmetric scoring, source references, local asset references, sparse profile validity, specialist gates, major jurisprudential-family coverage, modifier/identity/phrase assembly, the seven-question diagnostic cap, explicit response-quality safeguards, and several false-match tests such as preventing a positivist from winning a strong Natural Law profile.
 
 ## Validation status
 
