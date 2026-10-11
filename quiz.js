@@ -144,7 +144,7 @@
         const scored = globalThis.LAW_SCORING.scoreAll(state.responses);
         const params = new URLSearchParams({ v: globalThis.LAW_VERSION });
         globalThis.LAW_AXES.forEach((axis) => params.set(axis.id, String(scored[axis.id].score)));
-        params.set('n', globalThis.LAW_AXES.map((axis) => scored[axis.id].answered).join(''));
+        params.set('n', globalThis.LAW_AXES.map((axis) => scored[axis.id].answered).join(','));
 
         const record = {
             version: globalThis.LAW_VERSION,
