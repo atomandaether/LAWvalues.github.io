@@ -6,7 +6,7 @@
         globalThis.LAW_AXES.map((axis) => [
             axis.id,
             globalThis.LAW_QUESTIONS.filter(
-                (item) => globalThis.LAW_SCORING.weightForAxis(item, axis.id) !== 0
+                (item) => globalThis.LAW_SCORING.contributesToAxis(item, axis.id)
             ).length
         ])
     );
