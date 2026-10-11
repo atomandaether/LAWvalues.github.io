@@ -557,3 +557,40 @@ div.axis img {
         padding: 2px 3px;
     }
 }
+
+
+.result-title {
+    margin: 8pt auto 12pt;
+    max-width: 900pt;
+    color: #4A3C1D;
+    font-family: 'Equity', serif;
+    font-size: 30pt;
+    line-height: 1.08;
+    font-weight: 700;
+    text-align: center;
+}
+
+.result-bridge {
+    margin: 12pt auto;
+    max-width: 760pt;
+    padding: 9pt 12pt;
+    border-left: 4px solid #B49455;
+    text-align: left;
+}
+
+#anchor-explanation,
+#modifier-explanation,
+#phrase-explanation {
+    max-width: 760pt;
+    margin: 7pt auto;
+}
+
+@media (max-width: 540px) {
+    .result-title {
+        font-size: 22pt;
+    }
+
+    .result-bridge {
+        padding: 7pt 9pt;
+    }
+}
