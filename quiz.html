@@ -2,31 +2,42 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="robots" content="noindex">
 <link href="style.css" rel="stylesheet" type="text/css">
 <link href="v2.css" rel="stylesheet" type="text/css">
 <title>LAWvalues Quiz</title>
 <link rel="icon" type="image/png" href="value_images/atomandaether.png">
 </head>
-<body>
-<h1>LAWvalues</h1>
-<hr>
-<h2 style="text-align:center" id="question-number">Loading...</h2>
-<div class="quiz-progress-track" role="progressbar" aria-label="Quiz progress" aria-valuemin="0" aria-valuenow="0" aria-valuemax="100"><div class="quiz-progress-fill" id="quiz-progress"></div></div>
-<p class="question" id="question-text"></p>
-<button class="button stronglyAgree" data-response="3">Strongly Agree</button><br>
-<button class="button agree" data-response="2">Agree</button><br>
-<button class="button slightlyAgree" data-response="1">Slightly Agree</button><br>
-<button class="button neutral" data-response="0">Neither Agree nor Disagree</button><br>
-<button class="button slightlyDisagree" data-response="-1">Slightly Disagree</button><br>
-<button class="button disagree" data-response="-2">Disagree</button><br>
-<button class="button stronglyDisagree" data-response="-3">Strongly Disagree</button><br>
-<div class="quiz-nav">
-    <button class="small_button" id="back_button" type="button">Back</button>
-    <button class="small_button_off" id="back_button_off" type="button" disabled>Back</button>
-    <button class="small_button skip-button" id="skip_button" type="button">Not sure / skip</button>
-    <button class="small_button" id="restart_button" type="button">Restart</button>
+<body class="quiz-page">
+<div class="quiz-screen">
+    <header class="quiz-header">
+        <h1>LAWvalues</h1>
+        <hr>
+        <h2 id="question-number">Loading...</h2>
+        <div class="quiz-progress-track" role="progressbar" aria-label="Quiz progress" aria-valuemin="0" aria-valuenow="0" aria-valuemax="100"><div class="quiz-progress-fill" id="quiz-progress"></div></div>
+    </header>
+
+    <div class="quiz-question-slot">
+        <p class="question" id="question-text"></p>
+    </div>
+
+    <div class="quiz-response-stack" aria-label="Answer choices">
+        <button class="button stronglyAgree" data-response="3">Strongly Agree</button>
+        <button class="button agree" data-response="2">Agree</button>
+        <button class="button slightlyAgree" data-response="1">Slightly Agree</button>
+        <button class="button neutral" data-response="0">Neither Agree nor Disagree</button>
+        <button class="button slightlyDisagree" data-response="-1">Slightly Disagree</button>
+        <button class="button disagree" data-response="-2">Disagree</button>
+        <button class="button stronglyDisagree" data-response="-3">Strongly Disagree</button>
+    </div>
+
+    <div class="quiz-nav">
+        <button class="small_button" id="back_button" type="button">Back</button>
+        <button class="small_button_off" id="back_button_off" type="button" disabled>Back</button>
+        <button class="small_button skip-button" id="skip_button" type="button">Not sure / skip</button>
+        <button class="small_button" id="restart_button" type="button">Restart</button>
+    </div>
 </div>
 <script src="axes.js"></script>
 <script src="questions.js"></script>
@@ -34,6 +45,7 @@
 <script src="result_catalog.js"></script>
 <script src="diagnostics.js"></script>
 <script src="profiles.js"></script>
+<script src="result_content.js"></script>
 <script src="classification.js"></script>
 <script src="quiz.js"></script>
 </body>

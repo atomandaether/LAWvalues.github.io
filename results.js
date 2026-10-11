@@ -142,12 +142,21 @@
                 related: profile.related || []
             }));
 
+        const resultTitle = globalThis.LAW_RESULT_CONTENT?.fromIds
+            ? globalThis.LAW_RESULT_CONTENT.fromIds(identity, scores, {}, {
+                modifierId: params.get('m'),
+                phraseId: params.get('p'),
+                bridgeId: params.get('b')
+            })
+            : null;
+
         return {
             identity,
             identityReason: '',
             champions,
             championConfidence: champions.length === 1 ? 'shared' : champions.length > 1 ? 'ambiguous' : 'low',
             diagnosticCount: Number(params.get('d')) || 0,
+            resultTitle,
             calibration: 'theory-derived'
         };
     }
@@ -155,10 +164,24 @@
     function getClassification() {
         if (record?.classification) return record.classification;
         if (record && globalThis.LAW_CLASSIFIER) {
+            const startedMs = Date.parse(record.startedAt || '');
+            const coreCompletedMs = Date.parse(record.coreCompletedAt || '');
+            const completedMs = Date.parse(record.completedAt || '');
             return globalThis.LAW_CLASSIFIER.classify(
                 record.scores,
                 record.responses,
-                record.diagnosticResponses || {}
+                record.diagnosticResponses || {},
+                {
+                    startedAt: record.startedAt || null,
+                    coreCompletedAt: record.coreCompletedAt || null,
+                    completedAt: record.completedAt || null,
+                    coreElapsedMs: Number.isFinite(startedMs) && Number.isFinite(coreCompletedMs)
+                        ? coreCompletedMs - startedMs
+                        : null,
+                    elapsedMs: Number.isFinite(startedMs) && Number.isFinite(completedMs)
+                        ? completedMs - startedMs
+                        : null
+                }
             );
         }
         return classificationFromUrl();
@@ -167,16 +190,26 @@
     const classification = getClassification();
 
     function displayClassification(result) {
+        const title = document.getElementById('result-title');
         const label = document.getElementById('classification-label');
         const reason = document.getElementById('classification-reason');
+        const anchorExplanation = document.getElementById('anchor-explanation');
+        const modifierExplanation = document.getElementById('modifier-explanation');
+        const phraseExplanation = document.getElementById('phrase-explanation');
+        const bridge = document.getElementById('result-bridge');
         const championLine = document.getElementById('champion-line');
         const championDescription = document.getElementById('champion-description');
         const relatedLine = document.getElementById('related-line');
         const note = document.getElementById('classification-note');
 
         if (!result?.identity) {
-            label.textContent = 'No jurisprudential classification is stored with this result.';
+            title.textContent = 'No jurisprudential classification is stored with this result.';
+            label.textContent = '';
             reason.textContent = '';
+            anchorExplanation.textContent = '';
+            modifierExplanation.textContent = '';
+            phraseExplanation.textContent = '';
+            bridge.textContent = '';
             championLine.textContent = '';
             championDescription.textContent = '';
             relatedLine.textContent = '';
@@ -184,12 +217,24 @@
             return;
         }
 
-        label.textContent = result.identity.label;
+        const assembled = result.resultTitle || (
+            globalThis.LAW_RESULT_CONTENT?.assemble
+                ? globalThis.LAW_RESULT_CONTENT.assemble(result, scores, result.traits || {})
+                : null
+        );
+        title.textContent = assembled?.title || result.identity.label;
+        label.textContent = assembled?.special ? '' : `Core identity: ${result.identity.label}`;
         reason.textContent = result.identityReason ? result.identityReason : '';
+        anchorExplanation.textContent = assembled?.nounExplanation || '';
+        modifierExplanation.textContent = assembled?.modifier?.explanation || '';
+        phraseExplanation.textContent = assembled?.phrase?.explanation || '';
+        bridge.textContent = assembled?.bridge?.text || '';
 
-        if (result.identity.id === 'unusable_response') {
+        if (result.identity.id === 'unusable_response' || result.identity.id === 'incoherent_response') {
             championLine.textContent = 'Thinker match withheld.';
-            championDescription.textContent = 'Your eight axis scores are still shown above, but the response pattern did not clear the result-refinement quality check.';
+            championDescription.textContent = result.identity.id === 'incoherent_response'
+                ? 'Your eight axis scores are still shown above, but direct contradictions across different jurisprudential domains make a personal match misleading.'
+                : 'Your eight axis scores are still shown above, but the response pattern did not clear the result-refinement quality checks.';
             relatedLine.textContent = '';
             note.textContent = 'This safeguard prevents rapid or inattentive clicking from being mistaken for a genuine low-theory or centrist jurisprudential profile.';
             return;
@@ -222,7 +267,7 @@
     function textSummary() {
         const classificationLines = classification?.identity
             ? [
-                `Jurisprudential fit: ${classification.identity.label}`,
+                `Jurisprudential fit: ${classification.resultTitle?.title || classification.identity.label}`,
                 classification.champions?.length
                     ? `Closest thinker${classification.champions.length === 1 ? '' : 's'}: ${classification.champions.map((item) => item.name).join(', ')}`
                     : null
@@ -264,6 +309,8 @@
             const exportRecord = {
                 instrument: 'LAWvalues',
                 version: globalThis.LAW_VERSION,
+                startedAt: record.startedAt || null,
+                coreCompletedAt: record.coreCompletedAt || null,
                 completedAt: record.completedAt,
                 scores: record.scores,
                 coverage: record.coverage,

@@ -77,7 +77,7 @@ Philip Bobbitt covers a different apparent-middle case: principled methodologica
 
 The core always determines the eight displayed scores. Adaptive questions only preserve distinctions compressed by those eight aggregates.
 
-The first follow-up is a soft Legal Realism probe because Realism is intentionally outside the normative axes. Later questions are routed only when they can discriminate live candidates. Examples include:
+The first follow-up is a soft Legal Realism probe because Realism is intentionally outside the normative axes. The second is a simple response check that never affects jurisprudential scores. Later questions are routed only when they can discriminate live candidates. Extremely fast completion, straight-line responding, excessive skipping, or a failed response check withholds the thinker/result classification rather than turning low-information clicking into a centrist or low-theory match. Examples include:
 
 - Public Meaning vs Original Intent vs Original Methods vs Framework Originalism
 - Inclusive vs Exclusive Positivism
@@ -91,6 +91,10 @@ The first follow-up is a soft Legal Realism probe because Realism is intentional
 - Bobbitt-style pluralism vs O'Connor-style low theory
 
 The router stops when no remaining diagnostic is materially useful or after seven adaptive questions.
+
+## Public result grammar
+
+After identity selection, the public result is assembled as **[modifier] [real jurisprudential identity] [phrase]**. The identity spends the information it already communicates. Modifier and phrase candidates are then ranked by marginal information value from the remaining axes and question-level traits, with redundancy penalties and a preference for using different dimensions. High-value cross-cutting combinations can add an explanatory bridge paragraph. Closest-thinker matching remains a later, separate step.
 
 ## False-match rule
 
