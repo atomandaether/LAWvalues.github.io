@@ -221,7 +221,7 @@ globalThis.LAW_QUESTIONS = Object.freeze([
     "id": "C2",
     "axis": "cons",
     "key": 1,
-    "prompt": "A clean-water law’s stated purpose is to prevent river pollution, but it expressly exempts farms smaller than fifty acres. A forty-nine-acre farm causes exactly vastly disproportionate pollution the law was written to prevent. The court should enforce the exemption in favor of the farm.",
+    "prompt": "A clean-water law’s stated purpose is to prevent river pollution, but it expressly exempts farms smaller than fifty acres. A forty-nine-acre farm causes vastly disproportionate pollution the law was written to prevent. The court should enforce the exemption in favor of the farm.",
     "sourceIds": [
       "eskridge1987",
       "manning2005"
@@ -758,7 +758,7 @@ globalThis.LAW_QUESTIONS = Object.freeze([
     "id": "P1",
     "axis": "prec",
     "key": 1,
-    "prompt": "For eighty years, courts have used the same rule for determining property boundaries, and thousands of people have bought and sold land relying on it. Now, its clear that original decision was legally wrong. The Court should keep the old rule because changing it would unsettle deeply entrenched ownership across the country.",
+    "prompt": "For eighty years, courts have used the same rule for determining property boundaries, and thousands of people have bought and sold land relying on it. Now, it's clear that original decision was legally wrong. The Court should keep the old rule because changing it would unsettle deeply entrenched ownership across the country.",
     "sourceIds": [
       "kozel2010"
     ],
@@ -1037,7 +1037,7 @@ globalThis.LAW_QUESTIONS = Object.freeze([
     "id": "R4",
     "axis": "remed",
     "key": -1,
-    "prompt": "A police department repeatedly uses unconstitutional stops and searches. Earlier court orders simply telling officers to stop have failed. Unelected judges and court-appointed officials should effectively supervise major parts of the police department for years until its fixed.",
+    "prompt": "A police department repeatedly uses unconstitutional stops and searches. Earlier court orders simply telling officers to stop have failed. Unelected judges and court-appointed officials should effectively supervise major parts of the police department for years until it's fixed.",
     "sourceIds": [
       "fiss1979",
       "levinson1999"
@@ -1618,7 +1618,7 @@ globalThis.LAW_QUESTIONS = Object.freeze([
     "id": "F4",
     "axis": "form",
     "key": 1,
-    "prompt": "Legal questions are more about categories than balancing: you fight over whether facts fit a category and know you're answer from which side it falls on, rather than fighting over how to weigh specific values at hand.",
+    "prompt": "Legal questions are more about categories than balancing: you fight over whether facts fit a category and know your answer from which side it falls on, rather than fighting over how to weigh specific values at hand.",
     "sourceIds": [
       "schauer1988",
       "sullivan1992"

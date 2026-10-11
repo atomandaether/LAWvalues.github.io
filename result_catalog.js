@@ -3,6 +3,16 @@
    and champion pool that a future adaptive classifier can use after the 93-item core. */
 
 globalThis.LAW_RESULT_IDENTITIES = Object.freeze([
+  {
+    id: "unusable_response",
+    label: "Unclear response pattern",
+    family: "meta",
+    status: "override",
+    parentId: null,
+    covers: ["quality.response_check"],
+    notes: "Not a jurisprudential identity. Used only when an explicit response-quality check is missed, so the system withholds a thinker match rather than manufacture false precision."
+  },
+
   // Nature / source of law
   {
     id: "positivist",

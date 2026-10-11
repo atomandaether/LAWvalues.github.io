@@ -26,6 +26,14 @@
     transition: width 0.18s ease;
 }
 
+/* Keep the response controls anchored while question length varies. */
+p.question {
+    height: 215pt;
+    min-height: 215pt;
+    max-height: 215pt;
+    overflow-y: auto;
+}
+
 .slightlyAgree {
     background: #81C784;
 }
@@ -196,7 +204,9 @@ div.axis img {
     }
 
     p.question {
-        min-height: 125pt;
+        height: 190pt;
+        min-height: 190pt;
+        max-height: 190pt;
         font-size: 27pt;
     }
 
@@ -246,7 +256,9 @@ div.axis img {
     }
 
     p.question {
-        min-height: 105pt;
+        height: 170pt;
+        min-height: 170pt;
+        max-height: 170pt;
         padding: 12pt;
         font-size: 22pt;
     }

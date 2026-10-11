@@ -130,7 +130,7 @@ for (const required of [
 
 for (const id of [
   "D-RLS1", "D-RLS2", "D-RLS3", "D-POS1", "D-NP1", "D-MAJ1", "D-MAJ2",
-  "D-INT1", "D-LP1", "D-SOC1", "D-PLU1", "D-OCO1"
+  "D-INT1", "D-LP1", "D-QC1", "D-SOC1", "D-PLU1", "D-OCO1"
 ]) {
   assert.ok(diagnosticIds.has(id), `Missing high-value diagnostic ${id}`);
 }
@@ -165,9 +165,22 @@ const neutral = classifier.classify(neutralScores, {}, {});
 assert.ok(!neutral.champions.some((x) => ["solum", "pound", "alexy", "vermeule"].includes(x.id)),
   "Diagnostic specialists must not win a neutral profile without their distinctive evidence");
 
-// The router always begins with Realism and never exceeds seven adaptive questions.
+// The router starts with Realism, then quality-checks a low-salience profile before
+// allowing O'Connor/pluralist fallback logic to interpret random clicking as a worldview.
 const firstDiagnostic = classifier.nextDiagnostic(neutralScores, {}, {});
-assert.equal(firstDiagnostic.id, "D-RLS1", "Realism soft probe should be the universal first diagnostic");
+assert.equal(firstDiagnostic.id, "D-RLS1", "Realism soft probe should remain the universal first diagnostic");
+const secondDiagnostic = classifier.nextDiagnostic(neutralScores, {}, { "D-RLS1": -2 });
+assert.equal(secondDiagnostic.id, "D-QC1", "Low-salience profiles need a response-quality check before catch-all matching");
+
+const failedQuality = classifier.classify(neutralScores, {}, { "D-RLS1": -2, "D-QC1": 2 });
+assert.equal(failedQuality.identity.id, "unusable_response",
+  "Missing the explicit response check must suppress a low-confidence jurisprudential match");
+assert.equal(failedQuality.champions.length, 0,
+  "A failed response check must never manufacture a thinker match");
+
+const passedQuality = classifier.classify(neutralScores, {}, { "D-RLS1": -2, "D-QC1": -2 });
+assert.notEqual(passedQuality.identity.id, "unusable_response",
+  "Selecting the instructed response should allow ordinary classification to continue");
 
 console.log(`PASS: ${identities.length} real/fallback identities audited.`);
 console.log(`PASS: ${profiles.length} sparse thinker profiles across main, specialist, catch-all, and lineage tiers.`);

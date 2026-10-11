@@ -18,6 +18,16 @@ const sources = context.LAW_SOURCES;
 const questions = context.LAW_QUESTIONS;
 const scoring = context.LAW_SCORING;
 
+const questionText = questions.map((item) => item.prompt).join("\n");
+for (const typo of [
+  "exactly vastly",
+  "Now, its clear",
+  "until its fixed",
+  "know you're answer"
+]) {
+  assert.ok(!questionText.includes(typo), `Question bank still contains literal typo: ${typo}`);
+}
+
 assert.equal(axes.length, 8, "There must be exactly eight axes");
 assert.equal(context.LAW_QUESTION_COUNT, 93, "The configured question count must be 93");
 assert.equal(questions.length, 93, "The question bank must contain 93 questions");

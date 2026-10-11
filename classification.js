@@ -7,6 +7,20 @@
 
   const EXTRA_DIAGNOSTICS = Object.freeze([
     {
+      id: "D-QC1",
+      family: "quality",
+      priority: "high",
+      unlock: "Broadly low-salience profile before a pluralist or low-theory fallback is considered.",
+      prompt: "Response check: please select Disagree for this item.",
+      agreeTraits: [],
+      disagreeTraits: [],
+      nextOnAgree: [],
+      nextOnDisagree: [],
+      relatedIdentityIds: ["interpretive_pluralist"],
+      qualityCheckExpected: -2,
+      note: "Does not affect any jurisprudential axis or trait. Missing it suppresses a low-confidence personality result rather than turning random clicking into an O'Connor-style catch-all."
+    },
+    {
       id: "D-SOC1",
       family: "sociological",
       priority: "medium",
@@ -429,6 +443,15 @@
     const byId = Object.fromEntries(diagnosticBank().map((item) => [item.id, item]));
 
     if (!hasAsked(diagnosticResponses, "D-RLS1")) return byId["D-RLS1"];
+
+    const maxSalienceEarly = Math.max(...AXIS_IDS.map((id) => salience(scores, id)));
+    if (maxSalienceEarly <= 0.38 && !hasAsked(diagnosticResponses, "D-QC1")) {
+      return byId["D-QC1"];
+    }
+    if (hasAsked(diagnosticResponses, "D-QC1") && Number(diagnosticResponses["D-QC1"]) !== -2) {
+      return null;
+    }
+
     if (Number(diagnosticResponses["D-RLS1"]) > 0) {
       if (!hasAsked(diagnosticResponses, "D-RLS2")) return byId["D-RLS2"];
       if (!hasAsked(diagnosticResponses, "D-RLS3")) return byId["D-RLS3"];
@@ -446,7 +469,7 @@
     const constraint = axisValue(scores, "cons");
     const form = axisValue(scores, "form");
     const precedent = axisValue(scores, "prec");
-    const maxSalience = Math.max(...AXIS_IDS.map((id) => salience(scores, id)));
+    const maxSalience = maxSalienceEarly;
 
     if (time >= 60) {
       if ((traits["time.public_meaning"] || 0) < 0.5) offer("D-ORI1", 92);
@@ -497,6 +520,25 @@
   function classify(scored, responses = {}, diagnosticResponses = {}) {
     const scores = Object.fromEntries(AXIS_IDS.map((id) => [id, axisValue(scored, id)]));
     const traits = buildTraits(scores, responses, diagnosticResponses);
+
+    const qualityCheckFailed =
+      hasAsked(diagnosticResponses, "D-QC1") &&
+      Number(diagnosticResponses["D-QC1"]) !== -2;
+    if (qualityCheckFailed) {
+      return {
+        identity: identityFromCatalog("unusable_response", "Unclear response pattern"),
+        identityScore: 1,
+        identityReason: "The result-refinement response check was missed, so LAWvalues is withholding a jurisprudential identity and thinker match rather than forcing a low-confidence result.",
+        identityAlternatives: [],
+        champions: [],
+        championConfidence: "withheld",
+        traits,
+        diagnosticCount: Object.keys(diagnosticResponses || {}).length,
+        responseQuality: "attention-check-failed",
+        calibration: "theory-derived"
+      };
+    }
+
     const identityResolution = resolveIdentity(scores, traits);
     const championResolution = resolveChampions(scores, traits, identityResolution.best.identity);
     return {
