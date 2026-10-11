@@ -90,7 +90,8 @@
         if (pole.direction === 'mixed') return `mixed on ${axis.name.toLowerCase()}`;
         return `${pole.percent}% ${pole.name}`;
     });
-    document.getElementById('result-summary').textContent = `Your most distinctive results are ${top.join(', ').replace(/, ([^,]*)$/, ', and $1')}.`;
+    document.getElementById('result-summary').textContent =
+        `Your most distinctive results are ${top.join(', ').replace(/, ([^,]*)$/, ', and $1')}.`;
 
     const incomplete = globalThis.LAW_AXES.filter(
         (axis) => coverage[axis.id] < axisContributingCounts[axis.id]
@@ -101,10 +102,130 @@
         note.textContent = '“Not sure” responses are excluded from any axis they would have informed. Some questions contribute to more than one axis.';
     }
 
+    function loadLocalRecord() {
+        try {
+            const record = JSON.parse(sessionStorage.getItem(LATEST_KEY));
+            const matches = record?.version === globalThis.LAW_VERSION &&
+                record.responses &&
+                globalThis.LAW_AXES.every((axis) => Number(record.scores?.[axis.id]) === scores[axis.id]);
+            return matches ? record : null;
+        } catch (_) {
+            return null;
+        }
+    }
+
+    const record = loadLocalRecord();
+
+    function classificationFromUrl() {
+        const identityId = params.get('i');
+        if (!identityId) return null;
+
+        const catalogIdentity = (globalThis.LAW_RESULT_IDENTITIES || []).find((item) => item.id === identityId);
+        const identity = catalogIdentity
+            ? { id: catalogIdentity.id, label: catalogIdentity.label, family: catalogIdentity.family, status: catalogIdentity.status }
+            : identityId === 'nonpositivist'
+                ? { id: 'nonpositivist', label: 'Non-positivist', family: 'source', status: 'fallback' }
+                : null;
+        if (!identity) return null;
+
+        const profileMap = Object.fromEntries((globalThis.LAW_PROFILES || []).map((profile) => [profile.id, profile]));
+        const champions = (params.get('c') || '')
+            .split(',')
+            .filter(Boolean)
+            .map((id) => profileMap[id])
+            .filter(Boolean)
+            .map((profile) => ({
+                id: profile.id,
+                name: profile.name,
+                tier: profile.tier,
+                description: profile.description,
+                related: profile.related || []
+            }));
+
+        return {
+            identity,
+            identityReason: '',
+            champions,
+            championConfidence: champions.length === 1 ? 'shared' : champions.length > 1 ? 'ambiguous' : 'low',
+            diagnosticCount: Number(params.get('d')) || 0,
+            calibration: 'theory-derived'
+        };
+    }
+
+    function getClassification() {
+        if (record?.classification) return record.classification;
+        if (record && globalThis.LAW_CLASSIFIER) {
+            return globalThis.LAW_CLASSIFIER.classify(
+                record.scores,
+                record.responses,
+                record.diagnosticResponses || {}
+            );
+        }
+        return classificationFromUrl();
+    }
+
+    const classification = getClassification();
+
+    function displayClassification(result) {
+        const label = document.getElementById('classification-label');
+        const reason = document.getElementById('classification-reason');
+        const championLine = document.getElementById('champion-line');
+        const championDescription = document.getElementById('champion-description');
+        const relatedLine = document.getElementById('related-line');
+        const note = document.getElementById('classification-note');
+
+        if (!result?.identity) {
+            label.textContent = 'No jurisprudential classification is stored with this result.';
+            reason.textContent = '';
+            championLine.textContent = '';
+            championDescription.textContent = '';
+            relatedLine.textContent = '';
+            note.textContent = 'The eight axis scores above remain complete. Older shared result links may not contain the newer personality classification.';
+            return;
+        }
+
+        label.textContent = result.identity.label;
+        reason.textContent = result.identityReason ? result.identityReason : '';
+
+        const champions = Array.isArray(result.champions) ? result.champions : [];
+        if (champions.length === 1) {
+            championLine.textContent = `Closest thinker: ${champions[0].name}`;
+            championDescription.textContent = champions[0].description || '';
+        } else if (champions.length > 1) {
+            championLine.textContent = `Closest thinkers: ${champions.map((item) => item.name).join(' · ')}`;
+            championDescription.textContent =
+                'The measured evidence does not justify forcing one of these nearby jurisprudential personalities over the other.';
+        } else {
+            championLine.textContent = 'No single thinker is a clean enough fit to force.';
+            championDescription.textContent = '';
+        }
+
+        const related = [...new Set(champions.flatMap((item) => item.related || []))].slice(0, 6);
+        relatedLine.textContent = related.length ? `Related reading: ${related.join(' · ')}` : '';
+
+        const diagnosticCount = Number(result.diagnosticCount) || 0;
+        note.textContent = diagnosticCount > 0
+            ? `The thinker match uses the eight-axis profile plus ${diagnosticCount} adaptive tie-breaker question${diagnosticCount === 1 ? '' : 's'}. The eight axis scores themselves come only from the 93-question core. Thinker locations are theory-derived prototypes pending empirical calibration.`
+            : 'The thinker match uses sparse theory-derived signatures: unmodeled axes are ignored rather than treated as moderate. The eight axis scores themselves come from the 93-question core. Thinker locations remain provisional pending empirical calibration.';
+    }
+
+    displayClassification(classification);
+
     function textSummary() {
+        const classificationLines = classification?.identity
+            ? [
+                `Jurisprudential fit: ${classification.identity.label}`,
+                classification.champions?.length
+                    ? `Closest thinker${classification.champions.length === 1 ? '' : 's'}: ${classification.champions.map((item) => item.name).join(', ')}`
+                    : null
+            ].filter(Boolean)
+            : [];
         return [
             'LAWvalues',
-            ...globalThis.LAW_AXES.map((axis) => `${axis.name}: ${scores[axis.id]}% ${axis.left} / ${100 - scores[axis.id]}% ${axis.right}`),
+            ...classificationLines,
+            ...globalThis.LAW_AXES.map((axis) =>
+                `${axis.name}: ${scores[axis.id]}% ${axis.left} / ${100 - scores[axis.id]}% ${axis.right}`
+            ),
             window.location.href
         ].join('\n');
     }
@@ -128,19 +249,6 @@
         window.setTimeout(() => { button.textContent = original; }, 1500);
     }
 
-    function loadLocalRecord() {
-        try {
-            const record = JSON.parse(sessionStorage.getItem(LATEST_KEY));
-            const matches = record?.version === globalThis.LAW_VERSION &&
-                record.responses &&
-                globalThis.LAW_AXES.every((axis) => Number(record.scores?.[axis.id]) === scores[axis.id]);
-            return matches ? record : null;
-        } catch (_) {
-            return null;
-        }
-    }
-
-    const record = loadLocalRecord();
     const download = document.getElementById('download-record');
     if (record) {
         download.hidden = false;
@@ -154,7 +262,10 @@
                 strength: record.strength,
                 conflict: record.conflict,
                 poleSupport: record.poleSupport,
-                responses: record.responses
+                responses: record.responses,
+                diagnosticResponses: record.diagnosticResponses || {},
+                diagnosticOrder: record.diagnosticOrder || [],
+                classification
             };
             const blob = new Blob([JSON.stringify(exportRecord, null, 2)], { type: 'application/json' });
             const url = URL.createObjectURL(blob);
@@ -168,15 +279,12 @@
         });
     }
 
-    if (Array.isArray(globalThis.LAW_PROFILES) && globalThis.LAW_PROFILES.length > 0) {
-        const closest = [...globalThis.LAW_PROFILES]
-            .map((profile) => ({ profile, distance: globalThis.LAW_SCORING.profileDistance(scores, profile) }))
-            .sort((a, b) => a.distance - b.distance)[0]?.profile;
-        if (closest) document.getElementById('classification-label').textContent = closest.name;
-    }
-
-    document.getElementById('copy-link').addEventListener('click', (event) => copyText(window.location.href, event.currentTarget, 'Copied'));
-    document.getElementById('copy-summary').addEventListener('click', (event) => copyText(textSummary(), event.currentTarget, 'Copied'));
+    document.getElementById('copy-link').addEventListener('click', (event) =>
+        copyText(window.location.href, event.currentTarget, 'Copied')
+    );
+    document.getElementById('copy-summary').addEventListener('click', (event) =>
+        copyText(textSummary(), event.currentTarget, 'Copied')
+    );
 
     error.hidden = true;
     main.hidden = false;
