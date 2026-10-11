@@ -388,7 +388,15 @@
     const breadth=values.length>1
       ? values.reduce((sum,value)=>sum+value,0)/values.length
       : direct;
-    const base=Math.max(axis,direct);
+
+    // Axis-backed features are broad characteristics. Specific questions may
+    // corroborate the axis, but they cannot manufacture an extreme axis trait
+    // when the full question bank leaves that axis near the middle.
+    if(feature.axis) {
+      return clamp01(axis * (1 + 0.12*direct + 0.05*corroboration));
+    }
+
+    const base=direct;
     return clamp01(base + 0.09*corroboration + 0.05*Math.min(base,breadth));
   }
 
