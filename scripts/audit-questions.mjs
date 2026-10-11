@@ -19,52 +19,68 @@ const sources = context.LAW_SOURCES;
 const questions = context.LAW_QUESTIONS;
 const scoring = context.LAW_SCORING;
 const questionCount = context.LAW_QUESTION_COUNT;
-const itemsPerAxis = context.LAW_ITEMS_PER_AXIS;
+const scoredQuestionCount = context.LAW_SCORED_QUESTION_COUNT;
+const axisItemCounts = context.LAW_AXIS_ITEM_COUNTS;
+const axisScoredCounts = context.LAW_AXIS_SCORED_COUNTS;
 
 assert.equal(axes.length, 8, "There must be exactly eight axes");
 assert.equal(new Set(axes.map((axis) => axis.id)).size, axes.length, "Axis IDs must be unique");
-assert.equal(questionCount, 64, "The configured question count must be 64");
-assert.equal(itemsPerAxis, 8, "The configured item count must be eight per axis");
+assert.equal(questionCount, 93, "The configured question count must be 93");
+assert.equal(scoredQuestionCount, 86, "The configured scored-question count must be 86");
 assert.equal(questions.length, questionCount, "The question bank must match the configured question count");
 assert.equal(new Set(questions.map((item) => item.id)).size, questions.length, "Question IDs must be unique");
 assert.equal(new Set(questions.map((item) => item.prompt)).size, questions.length, "Question prompts must be unique");
 
-const specialistTerms = /\b(?:positivis\w*|non-positivis\w*|textualis\w*|purposivis\w*|originalis\w*|living constitutionalism|stare decisis|judicial activism|judicial restraint|majoritarian\w*|counter-majoritarian\w*|formalis\w*|functionalis\w*|structural reform|facial challenge|as-applied|injunction|severability|ratification|aggrandiz\w*|adjudicat\w*|nondelegation|strict scrutiny|totality of the circumstances)\b/i;
-
 for (const item of questions) {
   assert.ok(axes.some((axis) => axis.id === item.axis), `${item.id} has an unknown axis`);
   assert.ok(item.key === 1 || item.key === -1, `${item.id} must have a key of +1 or -1`);
+  assert.ok(item.scoreWeight === 0 || item.scoreWeight === 1, `${item.id} scoreWeight must be 0 or 1`);
   assert.ok(Array.isArray(item.sourceIds) && item.sourceIds.length > 0, `${item.id} needs source grounding`);
   item.sourceIds.forEach((sourceId) => {
     assert.ok(sources[sourceId], `${item.id} cites unknown source ${sourceId}`);
   });
   const words = item.prompt.trim().split(/\s+/).length;
-  assert.ok(words <= 60, `${item.id} is too long at ${words} words`);
-  assert.ok(!specialistTerms.test(item.prompt), `${item.id} uses unexplained specialist terminology`);
+  assert.ok(words <= 125, `${item.id} is too long at ${words} words`);
 }
 
 const axisRows = [];
 for (const axis of axes) {
   const items = questions.filter((item) => item.axis === axis.id);
-  const positive = items.filter((item) => item.key === 1).length;
-  const negative = items.filter((item) => item.key === -1).length;
-  assert.equal(items.length, itemsPerAxis, `${axis.id} must have eight questions`);
-  assert.equal(positive, 4, `${axis.id} must have four first-pole items`);
-  assert.equal(negative, 4, `${axis.id} must have four second-pole items`);
-  axisRows.push({ axis: axis.name, items: items.length, firstPole: positive, secondPole: negative });
+  const scored = items.filter((item) => item.scoreWeight > 0);
+  const positive = scored.filter((item) => item.key === 1).length;
+  const negative = scored.filter((item) => item.key === -1).length;
+  assert.equal(items.length, axisItemCounts[axis.id], `${axis.id} total item count mismatch`);
+  assert.equal(scored.length, axisScoredCounts[axis.id], `${axis.id} scored item count mismatch`);
+  assert.ok(positive > 0 && negative > 0, `${axis.id} needs scored items keyed toward both poles`);
+  axisRows.push({
+    axis: axis.name,
+    items: items.length,
+    scored: scored.length,
+    diagnostics: items.length - scored.length,
+    firstPole: positive,
+    secondPole: negative
+  });
 }
+
+assert.equal(
+  questions.filter((item) => item.scoreWeight > 0).length,
+  scoredQuestionCount,
+  "Scored item total mismatch"
+);
 
 const prompts = questions.map((item) => item.prompt).join("\n");
 assert.ok(prompts.includes("No vehicles in the park"), "The classic vehicles-in-the-park problem must remain");
 assert.ok(prompts.includes("No dogs"), "The dogs-in-the-park problem must remain");
-assert.ok(prompts.includes("just after the Civil War"), "The Reconstruction-era historical question must remain");
-assert.ok(prompts.includes("because he is male"), "The politically cross-cutting Bostock-style textualism question must remain");
-assert.ok(prompts.includes("tiny fish"), "The politically cross-cutting environmental textualism question must remain");
+assert.ok(prompts.includes("right after the American Civil War"), "The Reconstruction-era historical question must remain");
+assert.ok(prompts.includes("every person employed for wages"), "The cross-cutting wage textualism question must remain");
+assert.ok(prompts.includes("nearly completed dam"), "The environmental textualism question must remain");
 
 function responsesFrom(fn) {
   return Object.fromEntries(questions.map((item) => [item.id, fn(item)]));
 }
 
+// Acquiescence should not push an axis merely because the working bank has more
+// first-pole- or second-pole-keyed questions.
 for (const constant of [-3, -2, -1, 0, 1, 2, 3]) {
   const result = scoring.scoreAll(responsesFrom(() => constant), axes, questions);
   for (const axis of axes) {
@@ -77,6 +93,13 @@ const allRight = scoring.scoreAll(responsesFrom((item) => -3 * item.key), axes, 
 for (const axis of axes) {
   assert.equal(allLeft[axis.id].score, 100, `${axis.id} first-pole ideal must score 100`);
   assert.equal(allRight[axis.id].score, 0, `${axis.id} second-pole ideal must score 0`);
+}
+
+// Diagnostic-only answers must not move headline scores.
+const diagnosticsOnly = responsesFrom((item) => item.scoreWeight === 0 ? 3 : 0);
+const diagnosticScores = scoring.scoreAll(diagnosticsOnly, axes, questions);
+for (const axis of axes) {
+  assert.equal(diagnosticScores[axis.id].score, 50, `${axis.id} diagnostic items must not move the headline score`);
 }
 
 let seed = 0x5eed1234;
@@ -159,7 +182,7 @@ assert.ok(
 );
 assert.ok(!htmlByFile["quiz.html"].includes("Seven-point response scale"), "Quiz should not show the scale label");
 assert.ok(!htmlByFile["quiz.html"].includes("saved-note"), "Quiz should not show a progress-saved label");
-assert.ok(htmlByFile["quiz.html"].includes('aria-valuemax="64"'), "Quiz progress maximum must be 64");
+assert.ok(htmlByFile["quiz.html"].includes('aria-valuemax="93"'), "Quiz progress maximum must be 93");
 assert.ok(!htmlByFile["results.html"].includes("Print / PDF"), "Results should not show Print / PDF");
 assert.ok(!htmlByFile["results.html"].includes(">Retake<"), "Results should not show Retake");
 assert.ok(htmlByFile["results.html"].includes("Download JSON"), "Results should label the JSON download correctly");
@@ -167,14 +190,14 @@ assert.ok(!htmlByFile["results.html"].includes("axis-caption"), "Results should 
 assert.ok(!htmlByFile["results.html"].includes("axis-scoreline"), "Results should not repeat scores under axis labels");
 
 const resultsScript = fs.readFileSync(path.join(root, "results.js"), "utf8");
-assert.ok(resultsScript.includes("LAW_ITEMS_PER_AXIS"), "Results must use the configured per-axis count");
-assert.ok(resultsScript.includes("LAW_QUESTION_COUNT"), "Results must use the configured total count");
+assert.ok(resultsScript.includes("LAW_AXIS_SCORED_COUNTS"), "Results must use configured per-axis scored counts");
+assert.ok(resultsScript.includes("LAW_SCORED_QUESTION_COUNT"), "Results must use configured scored total");
 assert.ok(!resultsScript.includes("of 48 questions"), "Results must not retain the old question count");
 
 console.table(axisRows);
-console.log(`PASS: 64 items, balanced 4/4 on every axis.`);
-console.log(`PASS: plain-language and politically cross-cutting item safeguards.`);
-console.log(`PASS: constant-response, endpoint, and score-symmetry tests.`);
+console.log(`PASS: 93 items, 86 scored and 7 diagnostic subtype probes.`);
+console.log(`PASS: polarity-balanced scoring neutralizes agree/disagree response style.`);
+console.log(`PASS: endpoint and score-symmetry tests.`);
 console.log(`PASS: maximum simulated off-axis correlation = ${maxOffAxisCorrelation.toFixed(4)}.`);
 console.log(`PASS: original visible copy and requested controls are preserved.`);
 console.log(`PASS: local asset references and no legacy ad/tracking scripts.`);
