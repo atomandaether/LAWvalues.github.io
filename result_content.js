@@ -52,60 +52,304 @@
     proportionalist: "You prefer structured proportionality and contextual weighing to categorical rules when rights or principles conflict."
   });
 
-  const MODIFIERS = Object.freeze([
-    { id:"source_following", text:"source-following", axis:"sorc", direction:"left", adds:["source.positive_sources"], explanation:"Your source answers are unusually positivist: recognized enactment, precedent, and legal practice do substantial work." },
-    { id:"principle_seeking", text:"principle-seeking", adds:["source.principles_are_law","time.principle_originalism"], explanation:"You repeatedly treat legal principles as doing work beyond a bare catalogue of enacted rules." },
-    { id:"morality_grounding", text:"morality-grounding", axis:"sorc", direction:"right", adds:["source.objective_morality","source.moral_constraint"], explanation:"You are unusually willing to treat objective moral constraints as legally relevant." },
-    { id:"practice_following", text:"practice-following", adds:["source.social_practice","time.early_practice"], explanation:"Settled official practice and inherited legal practice carry unusual authority for you." },
-    { id:"text_binding", text:"text-binding", axis:"cons", direction:"left", adds:["constraint.textual"], explanation:"Enacted language strongly constrains what you think judges may do." },
-    { id:"context_reading", text:"context-reading", adds:["constraint.contextual_textualism"], explanation:"You read legal text contextually rather than as a collection of isolated dictionary definitions." },
-    { id:"bargain_respecting", text:"bargain-respecting", adds:["constraint.enacted_bargain"], explanation:"You give unusual weight to express compromises, exceptions, and omissions in the deal that actually became law." },
-    { id:"purpose_seeking", text:"purpose-seeking", axis:"cons", direction:"right", adds:["constraint.purpose","constraint.anti_evasion"], explanation:"You are unusually willing to read legal provisions in light of the problem the law was trying to solve." },
-    { id:"meaning_fixing", text:"meaning-fixing", axis:"time", direction:"left", adds:["time.semantic_fixation","time.public_meaning"], explanation:"You resist allowing old legal language to change meaning merely because modern usage or views have changed." },
-    { id:"principle_applying", text:"principle-applying", adds:["time.principle_originalism"], explanation:"You distinguish an originally fixed principle from the specific applications people at the time happened to expect." },
-    { id:"tradition_following", text:"tradition-following", adds:["time.expected_applications","time.early_practice"], explanation:"Historical applications and early governmental practice carry unusual weight in your constitutional reasoning." },
-    { id:"precedent_preserving", text:"precedent-preserving", axis:"prec", direction:"left", adds:["precedent.stability","precedent.reliance","precedent.settlement"], explanation:"Reliance, continuity, and a stable body of law make you reluctant to discard precedent." },
-    { id:"precedent_breaking", text:"precedent-breaking", axis:"prec", direction:"right", adds:["precedent.correction","precedent.correctness_first"], explanation:"You put unusual weight on correcting serious legal error even when doing so disrupts precedent." },
-    { id:"rule_following", text:"rule-following", axis:"form", direction:"left", adds:["form.rules","form.predictability"], explanation:"You value rules because they constrain discretion and preserve consistency even when an edge case comes out badly." },
-    { id:"discretion_limiting", text:"discretion-limiting", adds:["form.anti_discretion"], explanation:"Your rule preference is especially driven by distrust of subjective or uneven judicial discretion." },
-    { id:"consequence_weighing", text:"consequence-weighing", axis:"form", direction:"right", adds:["form.balancing","method.consequences"], explanation:"You are unusually comfortable asking judges to weigh practical consequences and competing considerations in context." },
-    { id:"exception_making", text:"exception-making", adds:["form.equitable_exception","form.cliff_skepticism"], explanation:"You resist rigid rules when their margins create results you regard as arbitrary or unfair." },
-    { id:"boundary_policing", text:"boundary-policing", axis:"separ", direction:"left", adds:["separation.formalist","separation.prescribed_process"], explanation:"You are unusually strict about constitutionally assigned powers and procedures." },
-    { id:"institution_trusting", text:"institution-trusting", axis:"separ", direction:"right", adds:["separation.functionalist","separation.combined_functions"], explanation:"You tolerate institutional overlap when the arrangement remains accountable and workable." },
-    { id:"rights_protecting", text:"rights-protecting", axis:"post", direction:"right", adds:["posture.countermajoritarian","posture.rights_trumps"], explanation:"You are unusually willing to have courts enforce rights despite sustained majority opposition." },
-    { id:"democracy_deferring", text:"democracy-deferring", axis:"post", direction:"left", adds:["posture.majoritarian","posture.clear_error"], explanation:"You give unusually broad room to elected government when constitutional meaning is genuinely contestable." },
-    { id:"system_reforming", text:"system-reforming", axis:"remed", direction:"right", adds:["remedies.structural","remedies.supervision"], explanation:"Once a violation is established, you are comparatively comfortable with broad institutional remedies." },
-    { id:"remedy_narrowing", text:"remedy-narrowing", axis:"remed", direction:"left", adds:["remedies.party_specific","remedies.incremental","remedies.severability"], explanation:"You generally want judicial relief confined to what is necessary to resolve the proven violation." },
-    { id:"case_by_case", text:"case-by-case", adds:["method.case_by_case","method.anti_grand_theory"], explanation:"You prefer concrete, fact-sensitive judgment to forcing every case through one comprehensive jurisprudential theory." }
+  /*
+    One substantive feature pool feeds both joke slots.
+
+    Selection order is deliberate:
+      1. the classifier chooses the nearest real jurisprudential identity;
+      2. that noun spends the traits it already communicates;
+      3. the strongest remaining feature becomes the trailing phrase;
+      4. the next strongest genuinely different feature becomes the modifier.
+
+    The wording is intentionally a critic's affectionate caricature. The internal
+    feature IDs and evidence remain neutral and precise.
+  */
+  const FEATURES = Object.freeze([
+    {
+      id:"source_positive", group:"source", axis:"sorc", direction:"left",
+      primaryTag:"source.positive_sources", tags:["source.positive_sources"],
+      modifier:"Morality-\u201cblind\u201d",
+      phrase:"who insists \u201cevil\u201d and \u201cillegal\u201d are different complaints",
+      explanation:"You sharply separate legal validity from moral merit; the joke is the non-positivist complaint that this quarantines morality from the question of what law is."
+    },
+    {
+      id:"principles_as_law", group:"source",
+      primaryTag:"source.principles_are_law", tags:["source.principles_are_law","source.fit_and_justification","source.right_answer"],
+      modifier:"Principle-smuggling",
+      phrase:"who keeps finding law nobody enacted",
+      explanation:"You give unwritten legal principles real legal force rather than treating them as merely moral reasons outside the law."
+    },
+    {
+      id:"objective_morality", group:"source",
+      primaryTag:"source.objective_morality", tags:["source.objective_morality","source.moral_constraint"],
+      modifier:"Bench-moralizing",
+      phrase:"who brought moral philosophy to a legal-text fight",
+      explanation:"You are unusually willing to treat objective moral requirements as part of the legal question itself."
+    },
+    {
+      id:"practice_authority", group:"source",
+      primaryTag:"source.social_practice", tags:["source.social_practice"],
+      modifier:"Custom-addicted",
+      phrase:"who thinks doing it long enough starts to make it law",
+      explanation:"Settled institutional practice itself carries unusual legal authority for you."
+    },
+    {
+      id:"textual_constraint", group:"constraint", axis:"cons", direction:"left",
+      primaryTag:"constraint.textual", tags:["constraint.textual","constraint.textual_axis"],
+      modifier:"Text-worshipping",
+      phrase:"who thinks the words are, annoyingly, legally binding",
+      explanation:"Enacted language puts unusually hard limits on what you think judges may do."
+    },
+    {
+      id:"contextual_text", group:"constraint",
+      primaryTag:"constraint.contextual_textualism", tags:["constraint.contextual_textualism"],
+      modifier:"Dictionary-dodging",
+      phrase:"who thinks the dictionary forgot context exists",
+      explanation:"You resist isolated dictionary literalism and read legal language in its linguistic and legal context."
+    },
+    {
+      id:"enacted_bargain", group:"constraint",
+      primaryTag:"constraint.enacted_bargain", tags:["constraint.enacted_bargain"],
+      modifier:"Fine-print-loving",
+      phrase:"who makes Congress live with the loophole it wrote",
+      explanation:"You give unusual weight to enacted compromises, exceptions, and omissions even when they frustrate a broader statutory goal."
+    },
+    {
+      id:"purposive", group:"constraint", axis:"cons", direction:"right",
+      primaryTag:"constraint.open_construction", tags:["constraint.open_construction","constraint.purpose","constraint.anti_evasion"],
+      modifier:"Text-hating",
+      phrase:"who apparently can\u2019t read",
+      explanation:"You are comparatively willing to let statutory purpose and practical sense overcome a rigid reading of enacted words."
+    },
+    {
+      id:"intent", group:"constraint",
+      primaryTag:"constraint.intent", tags:["constraint.intent"],
+      modifier:"Mind-reading",
+      phrase:"who wants to know what Congress was thinking",
+      explanation:"Actual legislative or enactor intent matters to you independently of text and objective statutory purpose."
+    },
+    {
+      id:"fixed_meaning", group:"time", axis:"time", direction:"left",
+      primaryTag:"time.fixation", tags:["time.fixation","time.semantic_fixation"],
+      modifier:"Dead-hand-bound",
+      phrase:"who lets dead people freeze the meaning",
+      explanation:"You treat legal meaning as substantially fixed at adoption rather than updated by later usage or values."
+    },
+    {
+      id:"living_meaning", group:"time", axis:"time", direction:"right",
+      primaryTag:"time.living_content", tags:["time.living_content"],
+      modifier:"Amendment-optional",
+      phrase:"who thinks formal amendment is apparently optional",
+      explanation:"You accept genuine constitutional development without requiring every change in constitutional content to pass through formal amendment."
+    },
+    {
+      id:"principle_application", group:"time",
+      primaryTag:"time.principle_originalism", tags:["time.principle_originalism"],
+      modifier:"Rubber-principled",
+      phrase:"who says the rule never changed, just everything it applies to",
+      explanation:"You distinguish fixed legal principles from the specific applications earlier generations happened to expect."
+    },
+    {
+      id:"historical_practice", group:"time",
+      primaryTag:"time.early_practice", tags:["time.early_practice","time.expected_applications"],
+      modifier:"Ouija-board-guided",
+      phrase:"who asks the dead how they did it",
+      explanation:"Historical applications and longstanding early governmental practice carry unusual evidentiary weight for you."
+    },
+    {
+      id:"precedent_stability", group:"precedent", axis:"prec", direction:"left",
+      primaryTag:"precedent.stability", tags:["precedent.stability","precedent.reliance","precedent.settlement"],
+      modifier:"Error-hoarding",
+      phrase:"who thinks being wrong for 50 years counts for something",
+      explanation:"Reliance, settlement, and legal continuity make you unusually reluctant to discard an established decision even when it was mistaken."
+    },
+    {
+      id:"precedent_correction", group:"precedent", axis:"prec", direction:"right",
+      primaryTag:"precedent.correction", tags:["precedent.correction","precedent.correctness_first"],
+      modifier:"Case-burning",
+      phrase:"who thinks old mistakes deserve no retirement plan",
+      explanation:"You put correctness ahead of preserving precedent and are unusually willing to overrule decisions you think are seriously wrong."
+    },
+    {
+      id:"statutory_precedent", group:"precedent",
+      primaryTag:"precedent.statutory", tags:["precedent.statutory"],
+      modifier:"Congress-can-fix-it",
+      phrase:"who makes Congress clean up the Court\u2019s old mistakes",
+      explanation:"You give extra staying power to statutory precedent because the legislature can amend the statute itself."
+    },
+    {
+      id:"narrow_remedies", group:"remedies", axis:"remed", direction:"left",
+      primaryTag:"remedies.party_specific", tags:["remedies.party_specific","remedies.incremental"],
+      modifier:"Remedy-stingy",
+      phrase:"who brought a Band-Aid to a house fire",
+      explanation:"You generally want judicial relief confined to the parties and violation actually before the court."
+    },
+    {
+      id:"structural_remedies", group:"remedies", axis:"remed", direction:"right",
+      primaryTag:"remedies.structural", tags:["remedies.structural","remedies.supervision"],
+      modifier:"Court-running",
+      phrase:"who thinks the judge should just run the place",
+      explanation:"Once a systemic violation is established, you are comparatively comfortable with restructuring institutions and continuing judicial supervision."
+    },
+    {
+      id:"universal_relief", group:"remedies",
+      primaryTag:"remedies.universal", tags:["remedies.universal"],
+      modifier:"One-lawsuit-fixes-all",
+      phrase:"who refuses to make everyone sue separately",
+      explanation:"You are willing to extend relief beyond the named plaintiff when the same unlawful rule affects many people."
+    },
+    {
+      id:"severability", group:"remedies",
+      primaryTag:"remedies.severability", tags:["remedies.severability"],
+      modifier:"Statute-surgery",
+      phrase:"who amputates the bad part and sends the rest home",
+      explanation:"You prefer cutting out the invalid provision while preserving the remainder of a workable law."
+    },
+    {
+      id:"prophylactic", group:"remedies",
+      primaryTag:"remedies.prophylactic", tags:["remedies.prophylactic"],
+      modifier:"Extra-rule-writing",
+      phrase:"who writes an extra rule because the right needs backup",
+      explanation:"You allow courts to create protective rules beyond the bare constitutional minimum when needed to make the underlying right effective."
+    },
+    {
+      id:"majoritarian", group:"posture", axis:"post", direction:"left",
+      primaryTag:"posture.majoritarian", tags:["posture.majoritarian","posture.democratic_legitimacy"],
+      modifier:"Rights-on-honor-system",
+      phrase:"who lets the majority grade its own rights homework",
+      explanation:"You give elected government unusually broad room when constitutional meaning is reasonably contestable."
+    },
+    {
+      id:"clear_error", group:"posture",
+      primaryTag:"posture.clear_error", tags:["posture.clear_error"],
+      modifier:"Really-wrong-only",
+      phrase:"who needs the legislature to be really, really wrong",
+      explanation:"Your deference turns specifically on uncertainty: judicial intervention is for clear constitutional error, not ordinary disagreement."
+    },
+    {
+      id:"countermajoritarian", group:"posture", axis:"post", direction:"right",
+      primaryTag:"posture.countermajoritarian", tags:["posture.countermajoritarian","posture.rights_trumps"],
+      modifier:"Democracy-vetoing",
+      phrase:"who trusts judges with democracy\u2019s emergency brake",
+      explanation:"You are unusually willing to have courts enforce constitutional rights against sustained majority opposition."
+    },
+    {
+      id:"judicial_independence", group:"posture",
+      primaryTag:"posture.judicial_independence", tags:["posture.judicial_independence"],
+      modifier:"Robe-shielding",
+      phrase:"who does not want judges answering to the crowd",
+      explanation:"You put unusual weight on insulating judges from electoral retaliation for unpopular legal decisions."
+    },
+    {
+      id:"electoral_accountability", group:"posture",
+      primaryTag:"posture.electoral_accountability", tags:["posture.electoral_accountability"],
+      modifier:"Voter-leashed",
+      phrase:"who thinks judges should eventually face the music",
+      explanation:"You are unusually comfortable with democratic accountability for judges exercising public power."
+    },
+    {
+      id:"separation_formal", group:"separation", axis:"separ", direction:"left",
+      primaryTag:"separation.formalist", tags:["separation.formalist","separation.prescribed_process","separation.nondelegation"],
+      modifier:"Org-chart-worshipping",
+      phrase:"who thinks the boxes on the diagram are sacred",
+      explanation:"You are unusually strict about constitutionally assigned institutional powers and prescribed procedures."
+    },
+    {
+      id:"separation_functional", group:"separation", axis:"separ", direction:"right",
+      primaryTag:"separation.functionalist", tags:["separation.functionalist","separation.combined_functions"],
+      modifier:"Separation-\u201coptional\u201d",
+      phrase:"who thinks separation of powers is more of a suggestion",
+      explanation:"You tolerate institutional overlap when the arrangement remains workable, accountable, and preserves each branch\u2019s core role."
+    },
+    {
+      id:"rules", group:"form", axis:"form", direction:"left",
+      primaryTag:"form.rules", tags:["form.rules","form.predictability","form.edge_case_tolerance"],
+      modifier:"Rule-worshipping",
+      phrase:"who would rather be predictably wrong than unpredictably fair",
+      explanation:"You accept some ugly edge cases as the price of general rules that constrain decision-makers."
+    },
+    {
+      id:"anti_discretion", group:"form",
+      primaryTag:"form.anti_discretion", tags:["form.anti_discretion"],
+      modifier:"Judgment-allergic",
+      phrase:"who thinks judges exercising judgment is the problem",
+      explanation:"Your attraction to rules is especially driven by fear of arbitrary, biased, or inconsistent discretion."
+    },
+    {
+      id:"balancing", group:"form", axis:"form", direction:"right",
+      primaryTag:"form.balancing", tags:["form.balancing"],
+      modifier:"Vibes-balancing",
+      phrase:"who turns every rule into a vibes check",
+      explanation:"You prefer contextual weighing of competing considerations over categorical rules in hard cases."
+    },
+    {
+      id:"equitable_exceptions", group:"form",
+      primaryTag:"form.equitable_exception", tags:["form.equitable_exception","form.cliff_skepticism"],
+      modifier:"Exception-addicted",
+      phrase:"who thinks every hard case deserves a loophole",
+      explanation:"You resist rigid rules when their margins create outcomes you regard as arbitrary or unfair."
+    },
+    {
+      id:"proportionality", group:"form",
+      primaryTag:"form.proportionality", tags:["form.proportionality"],
+      modifier:"Balancing-with-homework",
+      phrase:"who makes balancing wear a checklist",
+      explanation:"You favor structured proportionality rather than free-form all-things-considered balancing."
+    },
+    {
+      id:"pragmatic_consequences", group:"method",
+      primaryTag:"method.consequences", tags:["method.consequences","method.workability"],
+      modifier:"Policy-playing",
+      phrase:"who keeps asking what happens after the opinion",
+      explanation:"Practical consequences and institutional workability matter unusually strongly to your legal reasoning."
+    },
+    {
+      id:"legal_process", group:"method",
+      primaryTag:"method.institutional_competence", tags:["method.institutional_competence","method.reasoned_elaboration"],
+      modifier:"Process-pilled",
+      phrase:"who asks whose job it is before asking who is right",
+      explanation:"Institutional role and competence are part of the legal answer for you, not merely afterthoughts."
+    },
+    {
+      id:"pluralism", group:"method",
+      primaryTag:"method.modal_pluralism", tags:["method.modal_pluralism"],
+      modifier:"Kitchen-sink",
+      phrase:"who brought every method to the argument",
+      explanation:"You regard several established forms of legal argument as legitimately available rather than insisting on a single master method."
+    },
+    {
+      id:"low_theory", group:"method",
+      primaryTag:"method.case_by_case", tags:["method.case_by_case","method.anti_grand_theory","method.low_theory_space"],
+      modifier:"Vibes-based",
+      phrase:"who calls it case-by-case because \u201cI know it when I see it\u201d sounded worse",
+      explanation:"You prefer concrete, fact-sensitive judgment over forcing every hard case through one comprehensive theory."
+    },
+    {
+      id:"realism", group:"method",
+      primaryTag:"realism.underdetermination", tags:["realism.underdetermination","realism.extra_doctrinal","realism.empirical_prediction"],
+      modifier:"Doctrine-cynical",
+      phrase:"who thinks the holding is only half the story",
+      explanation:"You think formal legal materials often underdetermine hard cases and that extra-doctrinal facts help explain what courts actually do."
+    }
   ]);
 
-  const PHRASES = Object.freeze([
-    { id:"democracy_decides", text:"who lets democracy decide", axis:"post", direction:"left", adds:["posture.majoritarian","posture.democratic_legitimacy"], explanation:"On genuine constitutional disagreement, you often think representative politics has the stronger claim to decide." },
-    { id:"clear_error_only", text:"who steps in only when the law is clear", adds:["posture.clear_error"], explanation:"Your deference is specifically tied to uncertainty: clear constitutional violations remain judicial business." },
-    { id:"rights_beat_majorities", text:"who thinks rights are supposed to beat majorities", axis:"post", direction:"right", adds:["posture.countermajoritarian","posture.rights_trumps"], explanation:"Democratic popularity does not make you more willing to tolerate a violation of a constitutional right." },
-    { id:"judicial_independence", text:"who does not want judges answering to the crowd", adds:["posture.judicial_independence"], explanation:"You put unusual weight on insulating judges from electoral retaliation for unpopular legal decisions." },
-    { id:"electoral_judges", text:"who thinks judges should answer to voters eventually", adds:["posture.electoral_accountability"], explanation:"You are unusually comfortable with democratic accountability for judges exercising public power." },
-    { id:"preserve_precedent", text:"who leaves settled law alone", axis:"prec", direction:"left", adds:["precedent.stability","precedent.reliance"], explanation:"The costs of legal disruption often matter enough for you to preserve an imperfect precedent." },
-    { id:"correction_first", text:"who wants bad precedent gone", axis:"prec", direction:"right", adds:["precedent.correction","precedent.correctness_first"], explanation:"You would rather correct serious legal error than preserve it solely for continuity." },
-    { id:"statutory_stare_decisis", text:"who makes Congress fix the Court's old mistakes", adds:["precedent.statutory"], explanation:"You give especially strong weight to statutory precedent because the legislature can amend the law if it disagrees." },
-    { id:"plaintiff_specific", text:"who fixes only the case in front of them", axis:"remed", direction:"left", adds:["remedies.party_specific","remedies.incremental"], explanation:"Your remedial instinct is to give the plaintiffs what they are legally owed without unnecessarily governing everyone else." },
-    { id:"systemic_relief", text:"who fixes the whole system", axis:"remed", direction:"right", adds:["remedies.structural","remedies.supervision"], explanation:"You accept structural judicial intervention when narrower orders repeatedly fail to cure a systemic violation." },
-    { id:"universal_relief", text:"who will not make everyone file the same lawsuit", adds:["remedies.universal"], explanation:"You are comparatively willing to extend relief beyond the named plaintiff when the same unlawful rule affects everyone." },
-    { id:"severability", text:"who cuts out only the broken part", adds:["remedies.severability"], explanation:"You favor severing the invalid provision and leaving the rest of a workable law standing." },
-    { id:"prophylactic", text:"who will write an extra rule to make the right real", adds:["remedies.prophylactic"], explanation:"You allow protective judicial rules that go beyond the bare constitutional minimum when needed to stop recurring violations." },
-    { id:"strict_separation", text:"who keeps the branches in their lanes", axis:"separ", direction:"left", adds:["separation.formalist","separation.prescribed_process"], explanation:"Efficiency does not persuade you to blur constitutionally assigned governmental powers." },
-    { id:"functional_institutions", text:"who lets government use the arrangement that works", axis:"separ", direction:"right", adds:["separation.functionalist","separation.combined_functions"], explanation:"Institutional overlap is acceptable to you when accountability and workable checks remain." },
-    { id:"rules", text:"who would rather have a rule than a perfect exception", axis:"form", direction:"left", adds:["form.rules","form.edge_case_tolerance"], explanation:"You accept some ugly edge cases as the price of constraining discretion through general rules." },
-    { id:"balancing", text:"who wants judges to weigh the whole case", axis:"form", direction:"right", adds:["form.balancing"], explanation:"You prefer contextual weighing to categorical answers when important facts and values conflict." },
-    { id:"moral_source", text:"who thinks morality can outrank enacted law", axis:"sorc", direction:"right", adds:["source.moral_constraint","source.objective_morality"], explanation:"For you, positive enactment does not always exhaust the legal question." },
-    { id:"positive_law", text:"who calls it law even when it is awful", axis:"sorc", direction:"left", adds:["source.positive_sources"], explanation:"You distinguish legal validity from moral merit even in deliberately harsh examples." },
-    { id:"fixed_meaning", text:"who thinks old legal meaning stays put", axis:"time", direction:"left", adds:["time.fixation","time.semantic_fixation"], explanation:"Later social change does not itself change the legal meaning you think was adopted." },
-    { id:"evolving_meaning", text:"who lets constitutional meaning change with the country", axis:"time", direction:"right", adds:["time.living_content"], explanation:"You accept genuine constitutional development without requiring a formal amendment every time." },
-    { id:"public_meaning", text:"who cares what the public ratified, not what the drafters secretly meant", adds:["time.public_meaning"], explanation:"Publicly adopted legal meaning matters more to you than uncommunicated drafting intentions." },
-    { id:"enacted_bargain", text:"who makes Congress live with the deal it actually passed", axis:"cons", direction:"left", adds:["constraint.enacted_bargain"], explanation:"You enforce negotiated exceptions and omissions even when they frustrate the statute's broader purpose." },
-    { id:"purpose", text:"who would rather save the law's point than worship its wording", axis:"cons", direction:"right", adds:["constraint.purpose","constraint.open_construction"], explanation:"You allow statutory purpose to shape legal effect when literal application would defeat the law's evident point." },
-    { id:"low_theory", text:"who refuses to make every hard case fit one grand theory", adds:["method.anti_grand_theory","method.case_by_case"], explanation:"You treat the demand for one universal theory of judging with unusual skepticism." }
-  ]);
+  const MODIFIERS = Object.freeze(FEATURES.map((feature) => Object.freeze({
+    id: feature.id,
+    text: feature.modifier,
+    axis: feature.axis || null,
+    direction: feature.direction || null,
+    adds: feature.tags,
+    explanation: feature.explanation
+  })));
+
+  const PHRASES = Object.freeze(FEATURES.map((feature) => Object.freeze({
+    id: feature.id,
+    text: feature.phrase,
+    axis: feature.axis || null,
+    direction: feature.direction || null,
+    adds: feature.tags,
+    explanation: feature.explanation
+  })));
 
   const BRIDGES = Object.freeze([
     { id:"nonpositivist_historical", when:(s,t)=>right(s,"sorc")>=0.35 && left(s,"time")>=0.35, text:"Your combination is important: treating morality as legally relevant does not require you to believe constitutional meaning evolves with contemporary morality." },
@@ -126,76 +370,162 @@
   ]);
 
   function clamp01(value) { return Math.max(0, Math.min(1, Number(value) || 0)); }
+
   function axisScore(scores,id) {
     const raw=scores?.[id];
     const value=typeof raw==="object" && raw!==null ? raw.score : raw;
     return Math.max(0,Math.min(100,Number(value) || 50));
   }
+
   function left(scores,id) { return Math.max(0,(axisScore(scores,id)-50)/50); }
   function right(scores,id) { return Math.max(0,(50-axisScore(scores,id))/50); }
-  function directionStrength(scores,axis,direction) { return direction==="left" ? left(scores,axis) : right(scores,axis); }
-  function traitStrength(traits,adds) { return Math.max(0,...(adds||[]).map(id=>Number(traits?.[id])||0)); }
-  function isOriginalist(identity) { return identity?.id==="originalist" || /originalist$/.test(identity?.id||""); }
+  function directionStrength(scores,axis,direction) {
+    return direction==="left" ? left(scores,axis) : right(scores,axis);
+  }
+
+  function isOriginalist(identity) {
+    return identity?.id==="originalist" || /originalist$/.test(identity?.id||"");
+  }
+
   function identityCoverage(identity) {
     const catalog=(global.LAW_RESULT_IDENTITIES||[]).find(item=>item.id===identity?.id);
     return new Set(catalog?.covers||[]);
   }
+
   function familyAxis(identity) {
     const family=identity?.family;
     return ({source:"sorc",method:"cons",time:"time",posture:"post",structure:"separ",form:"form"})[family] || null;
   }
-  function overlapRatio(adds,used) {
-    if(!adds?.length) return 0;
-    return adds.filter(tag=>used.has(tag)).length/adds.length;
+
+  function traitValues(feature,traits) {
+    return (feature.tags||[])
+      .map(tag=>clamp01(traits?.[tag]))
+      .filter(value=>value>0)
+      .sort((a,b)=>b-a);
   }
-  function componentScore(component,scores,traits,identity,usedAxes,usedTags) {
-    const a=component.axis ? directionStrength(scores,component.axis,component.direction) : 0;
-    const t=traitStrength(traits,component.adds);
-    if(!component.axis && t<0.4) return 0;
-    let score=Math.max(a,t*1.08) + 0.12*Math.min(a,t || a);
-    if(component.axis && component.axis===familyAxis(identity) && t<0.45) score*=0.62;
-    const identityTags=identityCoverage(identity);
-    const identityRedundancy=overlapRatio(component.adds,identityTags);
-    const usedRedundancy=overlapRatio(component.adds,usedTags);
-    if(identityRedundancy>=0.999) score*=0.08;
-    else score*=1-0.65*identityRedundancy;
-    if(usedRedundancy>=0.999) score*=0.05;
-    else score*=1-0.7*usedRedundancy;
-    if(component.axis && usedAxes.has(component.axis)) score*=0.28;
+
+  function featureEvidence(feature,scores,traits) {
+    const axis=feature.axis ? directionStrength(scores,feature.axis,feature.direction) : 0;
+    const values=traitValues(feature,traits);
+    const direct=values[0] || 0;
+    const corroboration=values[1] || 0;
+    const breadth=values.length>1
+      ? values.reduce((sum,value)=>sum+value,0)/values.length
+      : direct;
+
+    // Axis distance supplies broad importance; question-level/diagnostic traits can
+    // outrank it when they provide a more specific and strongly evidenced distinction.
+    const base=Math.max(axis,direct);
+    return clamp01(base + 0.09*corroboration + 0.05*Math.min(base,breadth));
+  }
+
+  function overlapRatio(tags,used) {
+    if(!tags?.length) return 0;
+    return tags.filter(tag=>used.has(tag)).length/tags.length;
+  }
+
+  function featureScore(feature,scores,traits,identity,spentFeature=null) {
+    let score=featureEvidence(feature,scores,traits);
+    if(score<=0) return 0;
+
+    const coverage=identityCoverage(identity);
+    const primarySpent=feature.primaryTag && coverage.has(feature.primaryTag);
+    const nounOverlap=overlapRatio(feature.tags,coverage);
+
+    // If the noun already says the central thing, don't use a joke slot to repeat it.
+    if(primarySpent) score*=0.06;
+    else score*=1-0.68*nounOverlap;
+
+    // A broad axis tendency from the same conceptual family is usually partly spent
+    // even when the catalog's coverage tags are narrower.
+    if(feature.axis && feature.axis===familyAxis(identity) && nounOverlap===0) score*=0.72;
+
+    if(spentFeature) {
+      const spentTags=new Set(spentFeature.tags||[]);
+      const overlap=overlapRatio(feature.tags,spentTags);
+      if(overlap>=0.999) score*=0.04;
+      else score*=1-0.78*overlap;
+
+      // The goal is compression, so prefer the third-most-important thing to add a
+      // new dimension rather than another shade of the second-most-important thing.
+      if(feature.group===spentFeature.group) score*=0.22;
+    }
+
     return clamp01(score);
   }
-  function choose(list,scores,traits,identity,usedAxes,usedTags,minScore) {
-    const ranked=list
-      .map(item=>({item,score:componentScore(item,scores,traits,identity,usedAxes,usedTags)}))
-      .sort((a,b)=>b.score-a.score);
-    return ranked[0] && ranked[0].score>=minScore ? ranked[0] : null;
+
+  function rankFeatures(identity,scores,traits,spentFeature=null) {
+    return FEATURES
+      .map(feature=>({
+        feature,
+        evidence:featureEvidence(feature,scores,traits),
+        score:featureScore(feature,scores,traits,identity,spentFeature)
+      }))
+      .filter(item=>item.score>0)
+      .sort((a,b)=>b.score-a.score || b.evidence-a.evidence || a.feature.id.localeCompare(b.feature.id));
   }
+
+  function asModifier(feature) {
+    return feature ? {
+      id:feature.id,
+      text:feature.modifier,
+      axis:feature.axis||null,
+      direction:feature.direction||null,
+      adds:feature.tags,
+      explanation:feature.explanation
+    } : null;
+  }
+
+  function asPhrase(feature) {
+    return feature ? {
+      id:feature.id,
+      text:feature.phrase,
+      axis:feature.axis||null,
+      direction:feature.direction||null,
+      adds:feature.tags,
+      explanation:feature.explanation
+    } : null;
+  }
+
   function specialTitle(classification) {
     const id=classification?.identity?.id;
     if(id==="unusable_response") return "Unclear response pattern";
-    if(id==="outcome_driven_left") return "Outcome-driven pattern · left-coded outcomes";
-    if(id==="outcome_driven_right") return "Outcome-driven pattern · right-coded outcomes";
+    if(id==="outcome_driven_left") return "Outcome-driven pattern \u00b7 left-coded outcomes";
+    if(id==="outcome_driven_right") return "Outcome-driven pattern \u00b7 right-coded outcomes";
     if(id==="incoherent_response") return "Inconsistent response pattern";
     return null;
   }
 
   function assemble(classification,scores,traits={}) {
     const special=specialTitle(classification);
-    if(special) return { title:special,noun:classification.identity.label,modifier:null,phrase:null,bridge:null,special:true };
+    if(special) {
+      return {
+        title:special,
+        noun:classification.identity.label,
+        modifier:null,
+        phrase:null,
+        bridge:null,
+        rankedFeatures:[],
+        special:true
+      };
+    }
 
     const identity=classification?.identity || {id:"interpretive_pluralist",label:"Interpretive Pluralist",family:"method"};
-    const usedAxes=new Set();
-    const usedTags=new Set(identityCoverage(identity));
-    const modifierPick=choose(MODIFIERS,scores,traits,identity,usedAxes,usedTags,0.24);
-    if(modifierPick) {
-      if(modifierPick.item.axis) usedAxes.add(modifierPick.item.axis);
-      (modifierPick.item.adds||[]).forEach(tag=>usedTags.add(tag));
-    }
-    const phrasePick=choose(PHRASES,scores,traits,identity,usedAxes,usedTags,0.2);
-    const modifier=modifierPick?.item || null;
-    const phrase=phrasePick?.item || null;
+
+    // Second-most-important information gets the more expressive trailing phrase.
+    const phraseRanking=rankFeatures(identity,scores,traits);
+    const phrasePick=phraseRanking.find(item=>item.score>=0.18) || null;
+
+    // Third-most-important information gets the compact modifier, after spending the
+    // phrase's conceptual information and strongly preferring another dimension.
+    const modifierRanking=rankFeatures(identity,scores,traits,phrasePick?.feature||null);
+    const modifierPick=modifierRanking.find(item=>item.score>=0.14) || null;
+
+    const phrase=asPhrase(phrasePick?.feature||null);
+    const modifier=asModifier(modifierPick?.feature||null);
     const title=[modifier?.text,identity.label,phrase?.text].filter(Boolean).join(" ");
     const bridge=BRIDGES.find(item=>item.when(scores,traits,identity)) || null;
+
     return {
       title,
       noun:identity.label,
@@ -203,15 +533,82 @@
       modifier,
       phrase,
       bridge,
+      rankedFeatures:phraseRanking.slice(0,8).map(item=>({
+        id:item.feature.id,
+        group:item.feature.group,
+        evidence:Number(item.evidence.toFixed(3)),
+        score:Number(item.score.toFixed(3))
+      })),
       special:false
     };
   }
 
+  const LEGACY_FEATURE_ALIASES=Object.freeze({
+    source_following:"source_positive",
+    principle_seeking:"principles_as_law",
+    morality_grounding:"objective_morality",
+    practice_following:"practice_authority",
+    text_binding:"textual_constraint",
+    context_reading:"contextual_text",
+    bargain_respecting:"enacted_bargain",
+    purpose_seeking:"purposive",
+    meaning_fixing:"fixed_meaning",
+    principle_applying:"principle_application",
+    tradition_following:"historical_practice",
+    precedent_preserving:"precedent_stability",
+    precedent_breaking:"precedent_correction",
+    rule_following:"rules",
+    discretion_limiting:"anti_discretion",
+    consequence_weighing:"balancing",
+    exception_making:"equitable_exceptions",
+    boundary_policing:"separation_formal",
+    institution_trusting:"separation_functional",
+    rights_protecting:"countermajoritarian",
+    democracy_deferring:"majoritarian",
+    system_reforming:"structural_remedies",
+    remedy_narrowing:"narrow_remedies",
+    case_by_case:"low_theory",
+    democracy_decides:"majoritarian",
+    clear_error_only:"clear_error",
+    rights_beat_majorities:"countermajoritarian",
+    judicial_independence:"judicial_independence",
+    electoral_judges:"electoral_accountability",
+    preserve_precedent:"precedent_stability",
+    correction_first:"precedent_correction",
+    statutory_stare_decisis:"statutory_precedent",
+    plaintiff_specific:"narrow_remedies",
+    systemic_relief:"structural_remedies",
+    universal_relief:"universal_relief",
+    severability:"severability",
+    prophylactic:"prophylactic",
+    strict_separation:"separation_formal",
+    functional_institutions:"separation_functional",
+    balancing:"balancing",
+    moral_source:"objective_morality",
+    positive_law:"source_positive",
+    fixed_meaning:"fixed_meaning",
+    evolving_meaning:"living_meaning",
+    public_meaning:"fixed_meaning",
+    enacted_bargain:"enacted_bargain",
+    purpose:"purposive",
+    low_theory:"low_theory"
+  });
+
+  function featureByAnyId(id) {
+    const resolved=LEGACY_FEATURE_ALIASES[id] || id;
+    return FEATURES.find(feature=>feature.id===resolved) || null;
+  }
+
   function fromIds(identity,scores,traits,ids={}) {
-    const classification={identity};
-    const assembled=assemble(classification,scores,traits||{});
-    if(ids.modifierId) assembled.modifier=MODIFIERS.find(x=>x.id===ids.modifierId) || assembled.modifier;
-    if(ids.phraseId) assembled.phrase=PHRASES.find(x=>x.id===ids.phraseId) || assembled.phrase;
+    const assembled=assemble({identity},scores,traits||{});
+    if(ids.phraseId) {
+      const feature=featureByAnyId(ids.phraseId);
+      if(feature) assembled.phrase=asPhrase(feature);
+    }
+    if(ids.modifierId) {
+      const feature=featureByAnyId(ids.modifierId);
+      if(feature) assembled.modifier=asModifier(feature);
+    }
     if(ids.bridgeId) assembled.bridge=BRIDGES.find(x=>x.id===ids.bridgeId) || assembled.bridge;
     assembled.title=[assembled.modifier?.text,identity.label,assembled.phrase?.text].filter(Boolean).join(" ");
     return assembled;
@@ -220,9 +617,13 @@
   global.LAW_RESULT_CONTENT=Object.freeze({
     AXIS_POLES,
     IDENTITY_COPY,
+    FEATURES,
     MODIFIERS,
     PHRASES,
     BRIDGES,
+    featureEvidence,
+    featureScore,
+    rankFeatures,
     assemble,
     fromIds
   });
