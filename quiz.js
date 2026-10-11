@@ -286,6 +286,7 @@
 
         const record = {
             version: globalThis.LAW_VERSION,
+            startedAt: state.startedAt,
             scores: Object.fromEntries(globalThis.LAW_AXES.map((axis) => [axis.id, scored[axis.id].score])),
             coverage: Object.fromEntries(globalThis.LAW_AXES.map((axis) => [axis.id, scored[axis.id].answered])),
             strength: Object.fromEntries(globalThis.LAW_AXES.map((axis) => [axis.id, scored[axis.id].strength])),
