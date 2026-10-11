@@ -10,7 +10,7 @@
       id: "D-QC1",
       family: "quality",
       priority: "high",
-      unlock: "Broadly low-salience profile before a pluralist or low-theory fallback is considered.",
+      unlock: "Asked once after the universal Realism probe before any other adaptive routing.",
       prompt: "Response check: please select Disagree for this item.",
       agreeTraits: [],
       disagreeTraits: [],
@@ -18,7 +18,7 @@
       nextOnDisagree: [],
       relatedIdentityIds: ["interpretive_pluralist"],
       qualityCheckExpected: -2,
-      note: "Does not affect any jurisprudential axis or trait. Missing it suppresses a low-confidence personality result rather than turning random clicking into an O'Connor-style catch-all."
+      note: "Does not affect any jurisprudential axis or trait. Missing it suppresses personality classification rather than interpreting inattentive clicking as a worldview."
     },
     {
       id: "D-SOC1",
@@ -69,15 +69,39 @@
     "source.objective_morality": [["S10", 1, 1], ["S11", 1, 1], ["S9", 1, 0.6]],
     "constraint.purpose": [["C8", 1, 0.8], ["C12", 1, 0.8], ["C14", 1, 0.9], ["C15", 1, 1]],
     "constraint.textual": [["C1", 1, 0.6], ["C2", 1, 0.7], ["C7", 1, 0.8], ["C9", 1, 0.7], ["C11", 1, 0.7], ["C17", 1, 1], ["C18", 1, 0.8]],
+    "constraint.contextual_textualism": [["C5", 1, 0.8], ["C13", -1, 1]],
+    "constraint.enacted_bargain": [["C2", 1, 0.65], ["C11", 1, 0.8], ["C18", 1, 1]],
+    "constraint.anti_evasion": [["C14", 1, 1]],
     "time.public_meaning": [["T7", 1, 1]],
     "time.principle_originalism": [["T8", 1, 1]],
+    "time.semantic_fixation": [["T10", 1, 1]],
+    "time.expected_applications": [["T3", 1, 0.7], ["T9", -1, 0.8]],
+    "time.early_practice": [["T11", 1, 1]],
     "time.common_law_development": [["T12", 1, 1], ["P3", 1, 1]],
+    "precedent.reliance": [["P1", 1, 1], ["P4", 1, 0.8], ["P12", 1, 1]],
+    "precedent.settlement": [["P5", 1, 0.9], ["P7", 1, 1]],
+    "precedent.statutory": [["P2", 1, 0.8], ["P12", 1, 0.7]],
+    "remedies.universal": [["R1", 1, 0.9], ["R2", 1, 1]],
+    "remedies.severability": [["R6", 1, 0.9], ["R7", 1, 0.9], ["R11", 1, 1]],
+    "remedies.prophylactic": [["R9", 1, 1], ["R10", 1, 1]],
+    "remedies.structural": [["R3", 1, 0.9], ["R5", 1, 0.9], ["R8", 1, 0.8]],
+    "remedies.supervision": [["R4", 1, 1]],
     "posture.clear_error": [["O1", 1, 1]],
     "posture.democratic_legitimacy": [["O2", 1, 0.9], ["O5", 1, 0.75], ["O8", 1, 1]],
     "posture.dialogic": [["O6", 1, 1]],
     "posture.passive_virtues": [["O7", 1, 1]],
     "posture.rights_trumps": [["O4", 1, 0.8], ["O11", 1, 1], ["O13", 1, 0.6]],
-    "form.anti_discretion": [["F1", 1, 0.7], ["F3", 1, 1], ["F7", 1, 0.8], ["F8", 1, 0.8]]
+    "posture.judicial_independence": [["O13", 1, 1]],
+    "posture.electoral_accountability": [["O12", 1, 1]],
+    "separation.nondelegation": [["E3", 1, 1]],
+    "separation.prescribed_process": [["E1", -1, 0.7], ["E4", 1, 1], ["E6", 1, 0.8]],
+    "separation.combined_functions": [["E5", 1, 1]],
+    "form.predictability": [["F1", 1, 1]],
+    "form.anti_discretion": [["F1", 1, 0.7], ["F3", 1, 1], ["F7", 1, 0.8], ["F8", 1, 0.8]],
+    "form.edge_case_tolerance": [["F3", 1, 1], ["F8", 1, 0.6]],
+    "form.categories": [["F4", 1, 1]],
+    "form.equitable_exception": [["F6", 1, 1]],
+    "form.cliff_skepticism": [["F9", 1, 1]]
   });
 
   function clamp(value, min, max) {
@@ -437,20 +461,52 @@
     return diagnosticResponses && Object.prototype.hasOwnProperty.call(diagnosticResponses, id);
   }
 
+  function detectMechanicalPattern(responses, meta = {}) {
+    const values = Object.values(responses || {});
+    const answered = values.filter((value) => value !== null && Number.isFinite(Number(value))).map(Number);
+    const skipped = values.filter((value) => value === null).length;
+    if (answered.length === 0) return "no-answers";
+
+    const elapsedMs = Number(meta.elapsedMs);
+    if (answered.length >= 80 && Number.isFinite(elapsedMs) && elapsedMs > 0 && elapsedMs < 90000) {
+      return "implausibly-fast";
+    }
+
+    const counts = new Map();
+    for (const value of answered) counts.set(value, (counts.get(value) || 0) + 1);
+    const mostCommon = Math.max(...counts.values());
+    if (answered.length >= 80 && mostCommon / answered.length >= 0.9) return "straight-line";
+    if (answered.length >= 80 && answered.filter((value) => value === 0).length / answered.length >= 0.85) return "mostly-neutral";
+    if (values.length >= 80 && skipped / values.length >= 0.5) return "excessive-skips";
+    return null;
+  }
+
+  function detectBroadIncoherence(responses) {
+    const strongAgree = (id) => responseValue(responses, id) >= 2;
+    const sourceContradiction = strongAgree("S7") && strongAgree("S8");
+    const formContradiction =
+      (strongAgree("F1") && strongAgree("F5")) ||
+      (strongAgree("F3") && strongAgree("F5"));
+    return sourceContradiction && formContradiction;
+  }
+
+  function finalizeResult(result, scores, traits) {
+    if (global.LAW_RESULT_CONTENT?.assemble) {
+      result.resultTitle = global.LAW_RESULT_CONTENT.assemble(result, scores, traits);
+    }
+    return result;
+  }
+
   function nextDiagnostic(scores, responses, diagnosticResponses = {}) {
     const askedCount = Object.keys(diagnosticResponses).length;
     if (askedCount >= MAX_DIAGNOSTICS) return null;
     const byId = Object.fromEntries(diagnosticBank().map((item) => [item.id, item]));
 
     if (!hasAsked(diagnosticResponses, "D-RLS1")) return byId["D-RLS1"];
+    if (!hasAsked(diagnosticResponses, "D-QC1")) return byId["D-QC1"];
+    if (Number(diagnosticResponses["D-QC1"]) !== -2) return null;
 
     const maxSalienceEarly = Math.max(...AXIS_IDS.map((id) => salience(scores, id)));
-    if (maxSalienceEarly <= 0.38 && !hasAsked(diagnosticResponses, "D-QC1")) {
-      return byId["D-QC1"];
-    }
-    if (hasAsked(diagnosticResponses, "D-QC1") && Number(diagnosticResponses["D-QC1"]) !== -2) {
-      return null;
-    }
 
     if (Number(diagnosticResponses["D-RLS1"]) > 0) {
       if (!hasAsked(diagnosticResponses, "D-RLS2")) return byId["D-RLS2"];
@@ -517,31 +573,50 @@
     return priorities.length ? byId[priorities[0].id] : null;
   }
 
-  function classify(scored, responses = {}, diagnosticResponses = {}) {
+  function classify(scored, responses = {}, diagnosticResponses = {}, meta = {}) {
     const scores = Object.fromEntries(AXIS_IDS.map((id) => [id, axisValue(scored, id)]));
     const traits = buildTraits(scores, responses, diagnosticResponses);
 
+    const mechanical = detectMechanicalPattern(responses, meta);
     const qualityCheckFailed =
       hasAsked(diagnosticResponses, "D-QC1") &&
       Number(diagnosticResponses["D-QC1"]) !== -2;
-    if (qualityCheckFailed) {
-      return {
+
+    if (mechanical || qualityCheckFailed) {
+      return finalizeResult({
         identity: identityFromCatalog("unusable_response", "Unclear response pattern"),
         identityScore: 1,
-        identityReason: "The result-refinement response check was missed, so LAWvalues is withholding a jurisprudential identity and thinker match rather than forcing a low-confidence result.",
+        identityReason: mechanical
+          ? "The response pattern is too mechanical or fast to interpret reliably, so LAWvalues is withholding a jurisprudential identity and thinker match."
+          : "The result-refinement response check was missed, so LAWvalues is withholding a jurisprudential identity and thinker match.",
         identityAlternatives: [],
         champions: [],
         championConfidence: "withheld",
         traits,
         diagnosticCount: Object.keys(diagnosticResponses || {}).length,
-        responseQuality: "attention-check-failed",
+        responseQuality: mechanical || "attention-check-failed",
         calibration: "theory-derived"
-      };
+      }, scores, traits);
+    }
+
+    if (detectBroadIncoherence(responses)) {
+      return finalizeResult({
+        identity: identityFromCatalog("incoherent_response", "Inconsistent response pattern"),
+        identityScore: 1,
+        identityReason: "Direct contradictions appeared across more than one jurisprudential domain, so LAWvalues is not forcing those answers into a coherent school or thinker.",
+        identityAlternatives: [],
+        champions: [],
+        championConfidence: "withheld",
+        traits,
+        diagnosticCount: Object.keys(diagnosticResponses || {}).length,
+        responseQuality: "broad-incoherence",
+        calibration: "theory-derived"
+      }, scores, traits);
     }
 
     const identityResolution = resolveIdentity(scores, traits);
     const championResolution = resolveChampions(scores, traits, identityResolution.best.identity);
-    return {
+    return finalizeResult({
       identity: identityResolution.best.identity,
       identityScore: identityResolution.best.score,
       identityReason: identityResolution.best.reason,
@@ -558,7 +633,7 @@
       traits,
       diagnosticCount: Object.keys(diagnosticResponses || {}).length,
       calibration: "theory-derived"
-    };
+    }, scores, traits);
   }
 
   global.LAW_PROFILE_EXTRA_DIAGNOSTICS = EXTRA_DIAGNOSTICS;
@@ -567,6 +642,8 @@
     AXIS_IDS,
     diagnosticBank,
     buildTraits,
+    detectMechanicalPattern,
+    detectBroadIncoherence,
     resolveIdentity,
     resolveChampions,
     nextDiagnostic,
