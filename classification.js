@@ -162,9 +162,11 @@
           coreAnswered: [],
           coreSupporting: [],
           coreStrong: [],
+          coreSupport: {},
           coreSupportUnits: 0,
           diagnosticSupporting: [],
           diagnosticStrong: [],
+          diagnosticSupport: {},
           diagnosticSupportUnits: 0
         };
       }
@@ -189,6 +191,7 @@
       item.coreAnswered = [...answered];
       item.coreSupporting = [...supportByQuestion.entries()].filter(([, value]) => value > 0).map(([id]) => id);
       item.coreStrong = [...supportByQuestion.entries()].filter(([, value]) => value >= (2 / 3)).map(([id]) => id);
+      item.coreSupport = Object.fromEntries(supportByQuestion);
       item.coreSupportUnits = [...supportByQuestion.values()].reduce((sum, value) => sum + value, 0);
     }
 
@@ -205,7 +208,8 @@
         const item = ensure(trait);
         if (!item.diagnosticSupporting.includes(id)) item.diagnosticSupporting.push(id);
         if (magnitude >= (2 / 3) && !item.diagnosticStrong.includes(id)) item.diagnosticStrong.push(id);
-        item.diagnosticSupportUnits += magnitude;
+        item.diagnosticSupport[id] = Math.max(Number(item.diagnosticSupport[id]) || 0, magnitude);
+        item.diagnosticSupportUnits = Object.values(item.diagnosticSupport).reduce((sum, support) => sum + support, 0);
       }
     }
 
