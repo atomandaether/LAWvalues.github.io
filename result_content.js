@@ -116,7 +116,7 @@
     },
     {
       id:"purposive", group:"constraint", axis:"cons", direction:"right",
-      primaryTag:"constraint.open_construction", tags:["constraint.open_construction","constraint.purpose","constraint.anti_evasion"],
+      primaryTag:"constraint.purpose", tags:["constraint.purpose","constraint.open_construction","constraint.anti_evasion"],
       modifier:"Text-hating",
       phrase:"who apparently can\u2019t read",
       explanation:"You are comparatively willing to let statutory purpose and practical sense overcome a rigid reading of enacted words."
