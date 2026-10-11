@@ -116,7 +116,7 @@ assert.equal(
   "Legal Realist should remain the approved non-axis override identity"
 );
 for (const id of [
-  "positivist", "nonpositivist", "dworkinian", "natural_lawyer", "legal_process_theorist",
+  "positivist", "nonpositivist", "dworkinian", "moral_impact_theorist", "natural_lawyer", "legal_process_theorist",
   "originalist", "purposivist", "common_law_constitutionalist",
   "thayerian", "waldronian", "popular_constitutionalist", "proportionalist"
 ]) {
@@ -135,7 +135,7 @@ for (const required of [
 
 for (const id of [
   "D-RLS1", "D-RLS2", "D-RLS3", "D-POS1", "D-NP1", "D-MAJ1", "D-MAJ2",
-  "D-INT1", "D-LP1", "D-QC1", "D-SOC1", "D-PLU1", "D-OCO1"
+  "D-INT1", "D-LP1", "D-NP4", "D-QC1", "D-SOC1", "D-PLU1", "D-OCO1"
 ]) {
   assert.ok(diagnosticIds.has(id), `Missing high-value diagnostic ${id}`);
 }
@@ -147,6 +147,8 @@ assert.equal(rules.pruneRedundantChampions, true, "Redundant champions must be p
 
 const profileById = Object.fromEntries(profiles.map((x) => [x.id, x]));
 assert.equal(profileById.finnis.tier, "main", "Finnis must remain a first-class Natural Law result");
+assert.equal(profileById.greenberg.tier, "specialist",
+  "Greenberg should be a diagnosable Moral Impact Theory specialist");
 assert.equal(profileById.pound.tier, "specialist", "Pound should be a diagnosable sociological-jurisprudence specialist");
 assert.equal(profileById.savigny.tier, "lineage", "Savigny should be Historical School lineage/further reading");
 assert.equal(profileById.oconnor.tier, "catchall", "O'Connor should be the low-theory/contextual catch-all");
@@ -214,6 +216,21 @@ assert.ok(assembled.modifier, "Assembled title should select a nonredundant modi
 assert.ok(assembled.phrase, "Assembled title should select a nonredundant trailing phrase when strong evidence exists");
 assert.notEqual(assembled.modifier.axis, assembled.phrase.axis,
   "Modifier and phrase should normally communicate different axes");
+
+const greenbergDiagnostic = classifier.diagnosticBank().find((x) => x.id === "D-NP4");
+assert.ok(greenbergDiagnostic && greenbergDiagnostic.relatedIdentityIds.includes("moral_impact_theorist"),
+  "Moral Impact Theory must have an adaptive diagnostic");
+
+const greenbergScores = { sorc: 12, cons: 50, time: 50, prec: 50, remed: 50, post: 50, separ: 50, form: 50 };
+const greenberg = classifier.classify(
+  greenbergScores,
+  {},
+  { "D-RLS1": -2, "D-QC1": -2, "D-NP4": 3 }
+);
+assert.equal(greenberg.identity.id, "moral_impact_theorist",
+  "Direct Moral Impact evidence should resolve to Moral Impact Theorist");
+assert.ok(greenberg.champions.some((x) => x.id === "greenberg"),
+  "Mark Greenberg should be available as the closest thinker for a clean Moral Impact profile");
 
 console.log(`PASS: ${identities.length} real/fallback identities audited.`);
 console.log(`PASS: ${profiles.length} sparse thinker profiles across main, specialist, catch-all, and lineage tiers.`);
