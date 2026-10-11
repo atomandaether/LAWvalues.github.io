@@ -187,6 +187,14 @@
         label.textContent = result.identity.label;
         reason.textContent = result.identityReason ? result.identityReason : '';
 
+        if (result.identity.id === 'unusable_response') {
+            championLine.textContent = 'Thinker match withheld.';
+            championDescription.textContent = 'Your eight axis scores are still shown above, but the response pattern did not clear the result-refinement quality check.';
+            relatedLine.textContent = '';
+            note.textContent = 'This safeguard prevents rapid or inattentive clicking from being mistaken for a genuine low-theory or centrist jurisprudential profile.';
+            return;
+        }
+
         const champions = Array.isArray(result.champions) ? result.champions : [];
         if (champions.length === 1) {
             championLine.textContent = `Closest thinker: ${champions[0].name}`;
