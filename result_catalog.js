@@ -516,7 +516,7 @@ globalThis.LAW_CHAMPIONS = Object.freeze([
     name: "Brian Leiter",
     kind: "person",
     role: "subtype",
-    eligibleIdentityIds: ["legal_realist", "positivist", "exclusive_positivist"],
+    eligibleIdentityIds: ["legal_realist"],
     signatureTraits: ["realism.underdetermination", "realism.empirical_prediction", "realism.naturalism", "source.positive_sources"],
     antiTraits: ["source.objective_morality"],
     note: "Modern theorist of naturalized jurisprudence and American Legal Realism. Especially informative for a Realist profile that is also strongly positivist/naturalistic; not the generic stand-in for all Realists."
@@ -736,7 +736,7 @@ globalThis.LAW_CHAMPIONS = Object.freeze([
     name: "Jeffrey Pojanowski / Kevin Walsh / J. Joel Alicea / Lee Strang",
     kind: "people",
     role: "subtype",
-    eligibleIdentityIds: ["public_meaning_originalist", "originalist", "natural_lawyer"],
+    eligibleIdentityIds: ["public_meaning_originalist", "originalist"],
     signatureTraits: ["time.fixation", "source.objective_morality", "source.positive_law_settlement"],
     antiTraits: ["time.living_content"],
     note: "Natural-law-grounded originalist unit: classical natural law explains the authority and settlement function of promulgated original constitutional law."
