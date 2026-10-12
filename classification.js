@@ -23,28 +23,41 @@
     {
       id: "D-SOC1",
       family: "sociological",
-      priority: "medium",
-      unlock: "Open, functional, or balancing profile where Pound could materially improve on a generic Pragmatist/Purposivist match.",
+      priority: "high",
+      unlock: "Open, functional, consequence-sensitive judging makes Sociological Jurisprudence a live primary-fixation candidate.",
       prompt: "When legal doctrine leaves real room for judgment, courts should openly identify the competing social interests, examine how the rule actually operates in society, and shape the doctrine so those interests are reconciled as well as the legal materials permit.",
       agreeTraits: ["method.social_interests", "method.law_in_action"],
       disagreeTraits: [],
       nextOnAgree: [],
       nextOnDisagree: [],
-      relatedIdentityIds: ["pragmatist", "purposivist"],
-      note: "Specialist router for Roscoe Pound / sociological jurisprudence, not a new headline family by itself."
+      relatedIdentityIds: ["sociological_jurist"],
+      note: "Noun-level Sociological Jurisprudence router and Roscoe Pound champion evidence."
     },
     {
       id: "D-PLU1",
       family: "pluralism",
       priority: "medium",
-      unlock: "No single jurisprudential axis or family strongly dominates.",
+      unlock: "No single jurisprudential method strongly dominates, or multiple interpretive modalities are already evident.",
       prompt: "Constitutional interpretation legitimately uses several different forms of argument—text, history, precedent, structure, consequences, and broader constitutional principles—and no one of those methods should control every hard case.",
       agreeTraits: ["method.modal_pluralism"],
       disagreeTraits: [],
-      nextOnAgree: [],
+      nextOnAgree: ["D-PLU2"],
       nextOnDisagree: ["D-OCO1"],
       relatedIdentityIds: ["interpretive_pluralist"],
-      note: "Separates principled methodological pluralism from merely deciding cases without a grand theory."
+      note: "Noun-level principled methodological-pluralism router."
+    },
+    {
+      id: "D-PLU2",
+      family: "pluralism",
+      priority: "medium",
+      unlock: "Interpretive Pluralist is established and Practical Reasoning could materially change the modifier/champion.",
+      prompt: "The legitimate interpretive tools do not have a fixed hierarchy. Their weight should shift with the case: text may dominate one dispute, while purpose, legal context, consequences, or policy may legitimately carry more weight in another.",
+      agreeTraits: ["method.practical_reasoning", "method.modal_pluralism"],
+      disagreeTraits: [],
+      nextOnAgree: [],
+      nextOnDisagree: [],
+      relatedIdentityIds: ["interpretive_pluralist"],
+      note: "Practical-Reasoning modifier and Eskridge/Frickey champion discriminator; disagreement leaves Bobbitt-style modal pluralism."
     },
     {
       id: "D-OCO1",
@@ -253,6 +266,14 @@
     ) / 3;
     setMax(traits, "method.consequences", pragmaticCluster);
     setMax(traits, "method.workability", pragmaticCluster);
+
+    // Existing core questions already distinguish enacted-bargain textualism and
+    // contextual textualism. The best-reading diagnostic sharpens the latter only
+    // when champion precision is genuinely useful.
+    setMax(traits, "constraint.best_reading_context",
+      0.7 * (traits["constraint.contextual_textualism"] || 0) +
+      0.3 * Math.max(0, 1 - (traits["constraint.enacted_bargain"] || 0)));
+    setMax(traits, "method.pluralism", traits["method.modal_pluralism"] || 0);
 
     const maxAxisSalience = Math.max(...AXIS_IDS.map((id) => salience(scores, id)));
     setMax(traits, "method.low_theory_space", 1 - maxAxisSalience);
