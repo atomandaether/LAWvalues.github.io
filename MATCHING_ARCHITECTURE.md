@@ -95,11 +95,17 @@ The router stops when no remaining diagnostic is materially useful or after seve
 
 ## Public result grammar
 
-After identity selection, the public result is assembled as **[modifier] [real jurisprudential identity] [phrase]**. The identity is the respondent's nearest jurisprudential neighbor and spends the information it already communicates. All remaining axis tendencies and sufficiently supported question-level traits enter one common residual-feature ranking. The **strongest** unspent feature gets the more expressive trailing phrase (the respondent's #2 characteristic); that feature is then spent, and the strongest genuinely different remaining feature gets the compact modifier (#3).
+After identity selection, the public result is assembled as **[noun-conditioned twist] [real jurisprudential identity] [broad residual phrase]**.
 
-Residual features are confidence-weighted by breadth. An eight-axis tendency is broad by construction. A narrower subtype cannot become a headline because one memorable question happened to receive a strong answer: it must either have a genuinely broad direct pattern, or be corroborated by its corresponding axis, or receive support from an already-existing adaptive diagnostic that was only asked because the broad profile made that distinction live. Features that the current 93-item bank cannot support at that level remain available internally for identity/champion matching but are excluded from modifier/phrase selection.
+The three slots now do different jobs:
 
-The public jokes do not drive scoring: each is merely a critic-flavored rendering of a neutral internal feature. High-value cross-cutting combinations can add an explanatory bridge paragraph. Closest-thinker matching remains a later, separate step.
+1. **Noun:** the respondent's nearest serious jurisprudential identity. This is the primary classification.
+2. **Phrase:** the strongest broad characteristic not already communicated by the noun. Phrase eligibility is deliberately conservative: the public pool consists of the eight axis poles plus `objective_morality` and `anti_discretion`, the two narrower traits that the existing core/diagnostic bank can support with genuine breadth. A one-off answer cannot become a phrase.
+3. **Modifier / twist:** a conditional refinement of the noun, not the third-highest global trait. It asks: *given that this person is a [noun], what is unusually informative about the particular kind of [noun] they are?* Twists may therefore use narrower subtype or adaptive-diagnostic evidence when that evidence genuinely distinguishes variants inside or around the selected noun.
+
+This distinction matters. A Solum-like respondent may be a **Public-Meaning Originalist** whose strongest broad residual characteristic is textual constraint, while the front modifier captures the more specific fixed-meaning / construction-zone package that makes that originalism Solum-like. The title can therefore say something like **Elbow-room Public-Meaning Originalist ...** rather than spending both public joke slots on the respondent's second- and third-largest axis bars.
+
+Phrase selection still spends noun redundancy. Twist selection is noun-conditioned and also suppresses a twist when the trailing phrase already communicates the same concept. High-value cross-axis combinations may additionally produce an explanatory bridge paragraph. Closest-thinker matching remains a separate later step.
 
 ## False-match rule
 
