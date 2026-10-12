@@ -1,5 +1,7 @@
 # LAWvalues Matching Architecture
 
+> **Originalism implementation note (2026-10-12):** see `ORIGINALISM_ENGINE.md` for the locked Originalist classifier. The public noun split is OPM/OI, **New** is the construction modifier, and the locked champion layer contains thirteen units.
+
 The eight public axes remain the instrument. Jurisprudential identities and thinker matches are an interpretive layer built on top of the 93 core responses plus, when useful, no more than seven adaptive tie-breakers.
 
 ## Sparse signatures, not eight-number caricatures
