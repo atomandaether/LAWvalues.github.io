@@ -132,7 +132,7 @@ globalThis.LAW_PROFILES = Object.freeze([
     name: "Gustav Radbruch / Philip Soper",
     tier: "specialist",
     identityIds: ["nonpositivist"],
-    axisSignature: { sorc: { target: 24, weight: 0.75 } },
+    axisSignature: {},
     signatureTraits: ["source.extreme_injustice"],
     requiredTraits: [{ all: ["source.extreme_injustice"], min: 0.5 }],
     antiTraits: ["source.every_injustice_invalidates", "source.objective_morality"],
