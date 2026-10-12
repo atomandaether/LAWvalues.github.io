@@ -158,8 +158,10 @@ assert.equal(
   "Legal Realist should remain the approved non-axis override identity"
 );
 for (const id of [
-  "positivist", "nonpositivist", "interpretivist", "natural_lawyer", "fullerian", "legal_process_theorist",
-  "originalist", "purposivist", "common_law_constitutionalist",
+  "positivist", "nonpositivist", "interpretivist", "natural_lawyer", "fullerian",
+  "textualist", "intentionalist", "purposivist", "legal_process_theorist", "interpretive_pluralist",
+  "pragmatist", "legal_realist", "sociological_jurist",
+  "originalist", "common_law_constitutionalist",
   "thayerian", "waldronian", "popular_constitutionalist", "proportionalist"
 ]) {
   assert.ok(identityIds.has(id), `Missing major jurisprudential family ${id}`);
@@ -177,8 +179,10 @@ assert.equal(identities.find((x) => x.id === "framework_originalist").public, fa
   "Framework Originalism is Balkin champion-level theory inside New OPM, not a public noun");
 
 for (const id of [
-  "D-RLS1", "D-RLS2", "D-RLS3", "D-POS1", "D-POS2", "D-NP1", "D-NP2", "D-NP3", "D-NP4", "D-NP5", "D-NP6",
-  "D-MAJ1", "D-MAJ2", "D-INT1", "D-LP1", "D-QC1", "D-SOC1", "D-PLU1", "D-OCO1",
+  "D-RLS1", "D-RLS2", "D-RLS3", "D-RLS4", "D-RLS5",
+  "D-POS1", "D-POS2", "D-NP1", "D-NP2", "D-NP3", "D-NP4", "D-NP5", "D-NP6",
+  "D-MAJ1", "D-MAJ2", "D-TXT1", "D-TXT2", "D-INT1", "D-INT2", "D-PRAG1",
+  "D-LP1", "D-LP2", "D-QC1", "D-SOC1", "D-PLU1", "D-PLU2", "D-OCO1",
   "D-ORI1", "D-ORI2", "D-ORI3", "D-ORI4", "D-ORI5"
 ]) {
   assert.ok(diagnosticIds.has(id), `Missing high-value diagnostic ${id}`);
@@ -207,6 +211,10 @@ assert.equal(identities.find((x) => x.id === "fullerian").label, "Fullerian",
   "Fullerian remains a public noun");
 assert.equal(identities.find((x) => x.id === "legal_process_theorist").label, "Legal Process Jurist",
   "Legal Process should use a jurist identity rather than a generic Theorist suffix");
+assert.equal(identities.find((x) => x.id === "interpretive_pluralist").status, "adaptive",
+  "Interpretive Pluralist is a real diagnosable noun, not merely a generic fallback");
+assert.equal(identities.find((x) => x.id === "sociological_jurist").label, "Sociological Jurist",
+  "Sociological Jurisprudence should be a public Method noun");
 assert.equal(identities.find((x) => x.id === "proportionalist").label, "Proportionalist",
   "Structured proportionality should retain the established Proportionalist label");
 assert.equal(identities.find((x) => x.id === "alexyan").public, false,
@@ -245,7 +253,11 @@ assert.equal(classifier.championIdentityCompatibility(
 assert.equal(classifier.championIdentityCompatibility(
   profileById.scalia_manning,
   identities.find((x) => x.id === "textualist")
-), "cross-cutting", "Scalia/Manning should remain available to strongly compatible Textualist results");
+), "incompatible", "The locked Originalist Scalia/Manning unit should not duplicate the dedicated Textualist unit");
+assert.equal(classifier.championIdentityCompatibility(
+  profileById.scalia_manning_easterbrook,
+  identities.find((x) => x.id === "textualist")
+), "primary", "Scalia/Manning/Easterbrook should be the dedicated mainline Textualist unit");
 
 assert.equal(profileById.finnis_murphy_george.tier, "main",
   "Finnis/Murphy/George must remain the central modern Natural Law champion unit");
@@ -257,7 +269,7 @@ assert.equal(profileById.hershovitz.tier, "specialist",
   "Hershovitz should be a diagnosable Moral-Practice Non-Positivist specialist");
 assert.equal(profileById.radbruch_soper.tier, "specialist",
   "Radbruch/Soper should be a diagnosable Extreme-Injustice Non-Positivist specialist");
-assert.equal(profileById.pound.tier, "specialist", "Pound should be a diagnosable sociological-jurisprudence specialist");
+assert.equal(profileById.pound.tier, "main", "Pound should be the main Sociological Jurist champion");
 assert.equal(profileById.savigny.tier, "lineage", "Savigny should be Historical School lineage/further reading");
 assert.equal(profileById.oconnor.tier, "catchall", "O'Connor should be the low-theory/contextual catch-all");
 assert.deepEqual(Array.from(profileById.alexy.identityIds), ["proportionalist"],
@@ -276,7 +288,8 @@ const blackScores = { sorc: 50, cons: 94, time: 50, prec: 50, remed: 50, post: 8
 const blackTraits = {
   "constraint.textual": 0.95,
   "form.anti_discretion": 0.95,
-  "posture.rights_trumps": 0.95
+  "posture.rights_trumps": 0.95,
+  "method.categorical_textual_rights": 1
 };
 const blackMatch = classifier.resolveChampions(
   blackScores,
@@ -902,6 +915,166 @@ for (const id of lockedSourceUnits) {
   }
 }
 
+
+// Locked Interpretation / adjudicative-style champion units.
+// The approved roster contains 17 endpoints once the newly promoted
+// Sociological-Jurist/Pound endpoint is counted.
+const lockedMethodUnits = [
+  "hugo_black",
+  "scalia_manning_easterbrook",
+  "kavanaugh_barrett",
+  "ekins_intentionalism",
+  "hand_posner_imaginative",
+  "breyer",
+  "barak",
+  "hart_sacks",
+  "wechsler",
+  "bobbitt",
+  "eskridge_frickey",
+  "posner",
+  "cardozo",
+  "llewellyn",
+  "felix_cohen",
+  "frank",
+  "pound"
+];
+for (const id of lockedMethodUnits) {
+  assert.ok(profileById[id] && profileById[id].selectable !== false,
+    `Locked Method champion unit ${id} must be selectable`);
+}
+
+function literalMethodCore(id) {
+  const profile = profileById[id];
+  const responses = {};
+
+  for (let i = 0; i < questions.length; i += 1) {
+    const item = questions[i];
+    let target = profile.axisSignature?.[item.axis]?.target ?? 50;
+
+    // A Barak-like respondent can still have Purposivism as the primary fixation
+    // without structured proportionality becoming the winning noun.
+    if (id === "barak" && item.axis === "form") target = 34;
+    if (id === "barak" && item.axis === "separ") target = 44;
+
+    const agreeSignal = Number(item.signals?.agree?.[item.axis] || 0);
+    const disagreeSignal = Number(item.signals?.disagree?.[item.axis] || 0);
+    const desired = target > 55 ? 1 : target < 45 ? -1 : 0;
+
+    if (desired !== 0) {
+      const positiveAnswer = desired * agreeSignal >= desired * disagreeSignal;
+      const extremity = Math.abs(target - 50);
+      const magnitude = extremity >= 32 ? 3 : extremity >= 18 ? 2 : 1;
+      responses[item.id] = (positiveAnswer ? 1 : -1) * magnitude;
+    } else {
+      responses[item.id] = i % 2 ? 1 : -1;
+    }
+  }
+
+  if (id === "barak") {
+    responses.O4 = 3;
+    responses.O11 = 3;
+    responses.O13 = 3;
+  }
+
+  return responses;
+}
+
+const METHOD_REALISTS = new Set(["llewellyn", "felix_cohen", "frank"]);
+const METHOD_INTENTIONALISTS = new Set(["ekins_intentionalism", "hand_posner_imaginative"]);
+const METHOD_LEGAL_PROCESS = new Set(["hart_sacks", "wechsler"]);
+const METHOD_PLURALISTS = new Set(["bobbitt", "eskridge_frickey"]);
+const METHOD_PRAGMATISTS = new Set(["posner", "cardozo"]);
+
+function methodDiagnosticAnswer(id, diagnosticId) {
+  if (diagnosticId === "D-RLS1") return METHOD_REALISTS.has(id) ? 3 : -3;
+  if (diagnosticId === "D-QC1") return -2;
+  if (diagnosticId === "D-RLS2" || diagnosticId === "D-RLS3") return METHOD_REALISTS.has(id) ? 3 : -3;
+  if (diagnosticId === "D-RLS4") return id === "frank" ? 3 : -3;
+  if (diagnosticId === "D-RLS5") return id === "felix_cohen" ? 3 : -3;
+
+  if (diagnosticId === "D-TXT1") return id === "kavanaugh_barrett" ? 3 : -3;
+  if (diagnosticId === "D-TXT2") return id === "hugo_black" ? 3 : -3;
+
+  if (diagnosticId === "D-INT1") return METHOD_INTENTIONALISTS.has(id) ? 3 : -3;
+  if (diagnosticId === "D-INT2") return id === "hand_posner_imaginative" ? 3 : -3;
+  if (diagnosticId === "D-PRAG1") return METHOD_PRAGMATISTS.has(id) ? 3 : -3;
+  if (diagnosticId === "D-LP1") return METHOD_LEGAL_PROCESS.has(id) ? 3 : -3;
+  if (diagnosticId === "D-LP2") return id === "wechsler" ? 3 : -3;
+  if (diagnosticId === "D-SOC1") return id === "pound" ? 3 : -3;
+  if (diagnosticId === "D-PLU1") return METHOD_PLURALISTS.has(id) ? 3 : -3;
+  if (diagnosticId === "D-PLU2") return id === "eskridge_frickey" ? 3 : -3;
+
+  // Other-zone diagnostics should not manufacture a different noun in a Method fixture.
+  return -3;
+}
+
+function runLiteralMethodFixture(id) {
+  const responses = literalMethodCore(id);
+  const scores = scoring.scoreAll(responses);
+  const diagnosticResponses = {};
+  const diagnosticOrder = [];
+
+  for (let i = 0; i < classifier.MAX_DIAGNOSTICS; i += 1) {
+    const next = classifier.nextDiagnostic(scores, responses, diagnosticResponses);
+    if (!next) break;
+    diagnosticOrder.push(next.id);
+    diagnosticResponses[next.id] = methodDiagnosticAnswer(id, next.id);
+  }
+
+  return {
+    result: classifier.classify(scores, responses, diagnosticResponses, { coreElapsedMs: 10 * 60 * 1000 }),
+    diagnosticOrder
+  };
+}
+
+const methodExpectedIdentity = {
+  hugo_black:"textualist",
+  scalia_manning_easterbrook:"textualist",
+  kavanaugh_barrett:"textualist",
+  ekins_intentionalism:"intentionalist",
+  hand_posner_imaginative:"intentionalist",
+  breyer:"purposivist",
+  barak:"purposivist",
+  hart_sacks:"legal_process_theorist",
+  wechsler:"legal_process_theorist",
+  bobbitt:"interpretive_pluralist",
+  eskridge_frickey:"interpretive_pluralist",
+  posner:"pragmatist",
+  cardozo:"pragmatist",
+  llewellyn:"legal_realist",
+  felix_cohen:"legal_realist",
+  frank:"legal_realist",
+  pound:"sociological_jurist"
+};
+
+const methodExpectedModifier = {
+  hand_posner_imaginative:"imaginative_reconstruction",
+  eskridge_frickey:"practical_reasoning_pluralism",
+  frank:"fact_skeptical_realism"
+};
+
+for (const id of lockedMethodUnits) {
+  const { result, diagnosticOrder } = runLiteralMethodFixture(id);
+  assert.equal(result.identity.id, methodExpectedIdentity[id],
+    `Literal Method path for ${id} must use the locked public noun; got ${result.identity.id}`);
+  assert.equal(result.champions[0]?.id, id,
+    `Literal 93-answer + adaptive path must reach Method champion ${id}; got ${result.champions.map((x) => x.id).join(",")}`);
+  assert.ok(diagnosticOrder.length <= classifier.MAX_DIAGNOSTICS,
+    `${id} must remain reachable within the seven-diagnostic cap`);
+  if (methodExpectedModifier[id]) {
+    assert.equal(result.resultTitle.modifier?.id, methodExpectedModifier[id],
+      `${id} should surface its locked Method substantive modifier`);
+  }
+}
+
+// The Alexander-v-Bork threshold is executable: these paired units differ by
+// adjudicatively meaningful evidence, not merely by academic rationale.
+assert.notDeepEqual(
+  runLiteralMethodFixture("ekins_intentionalism").diagnosticOrder,
+  runLiteralMethodFixture("hand_posner_imaginative").diagnosticOrder.filter((x) => x !== "D-INT2"),
+  "Imaginative Reconstruction must require distinct adjudicative evidence rather than merely rename mainline Intentionalism"
+);
+
 console.log(`PASS: ${identities.length} real/fallback identities audited.`);
 console.log(`PASS: ${profiles.length} sparse thinker profiles across main, specialist, catch-all, and lineage tiers.`);
 console.log(`PASS: ${allDiagnostics.length} adaptive diagnostics with a seven-question cap.`);
@@ -914,4 +1087,6 @@ console.log("PASS: Alexyan and Bickelian are champion/modifier-level distinction
 console.log("PASS: Formalist and Functionalist public labels remain unchanged.");
 console.log("PASS: generic fit modifiers render Unmistakably a/an / blank / Some kind of, with correct articles and substantive modifiers taking priority.");
 console.log("PASS: all 10 locked Source champion units are reachable end-to-end from literal answers within the seven-diagnostic cap.");
+console.log("PASS: Method nouns/modifiers are locked, including Sociological Jurist and the three substantive Method modifiers.");
+console.log("PASS: all 17 locked Method champion units are reachable end-to-end from literal answers within the seven-diagnostic cap.");
 console.log("PASS: champion matching is noun-conditioned: primary and cross-cutting compatibility are explicit, incompatible champions are excluded.");

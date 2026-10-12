@@ -146,18 +146,16 @@ globalThis.LAW_PROFILES = Object.freeze([
     identityIds: ["textualist"],
     crossCuttingIdentityIds: ["formalist"],
     axisSignature: {
-      cons: { target: 90, weight: 0.9 },
-      form: { target: 97, weight: 1 },
-      post: { target: 10, weight: 0.9 }
+      cons: { target: 94, weight: 0.9 },
+      form: { target: 98, weight: 1 },
+      post: { target: 6, weight: 0.95 }
     },
-    signatureTraits: ["form.anti_discretion", "posture.rights_trumps"],
-    requiredTraits: [],
-    antiTraits: ["form.proportionality"],
-    description: "Distinctive because categorical, text-centered judging is paired with unusually aggressive enforcement of enumerated constitutional rights.",
-    related: ["Antonin Scalia"]
+    signatureTraits: ["constraint.textual", "form.anti_discretion", "posture.rights_trumps", "method.categorical_textual_rights"],
+    requiredTraits: [{ all: ["method.categorical_textual_rights"], min: 0.5 }],
+    antiTraits: ["form.proportionality", "constraint.purpose"],
+    description: "Black-like textualism: unusually categorical, text-centered judging paired with aggressive enforcement of expressly protected rights and deep skepticism of balancing.",
+    related: ["Hugo Black", "Antonin Scalia"]
   },
-
-  // Locked Originalism champion units.
   {
     id: "bork_berger",
     name: "Robert Bork / Raoul Berger",
@@ -248,7 +246,7 @@ globalThis.LAW_PROFILES = Object.freeze([
     name: "Antonin Scalia / John Manning",
     tier: "main",
     identityIds: ["public_meaning_originalist", "originalist"],
-    crossCuttingIdentityIds: ["textualist", "formalist"],
+    crossCuttingIdentityIds: ["formalist"],
     axisSignature: {
       cons: { target: 92, weight: 0.8 },
       time: { target: 90, weight: 0.9 },
@@ -397,17 +395,17 @@ globalThis.LAW_PROFILES = Object.freeze([
     name: "Benjamin Cardozo",
     tier: "main",
     identityIds: ["pragmatist"],
-    crossCuttingIdentityIds: ["common_law_constitutionalist"],
+    crossCuttingIdentityIds: ["common_law_constitutionalist", "sociological_jurist"],
     axisSignature: {
-      cons: { target: 36, weight: 0.55 },
-      prec: { target: 74, weight: 0.7 },
-      form: { target: 40, weight: 0.4 }
+      cons: { target: 36, weight: 0.5 },
+      prec: { target: 80, weight: 0.85 },
+      form: { target: 42, weight: 0.35 }
     },
-    signatureTraits: [],
+    signatureTraits: ["method.pragmatic_priority", "method.consequences", "time.common_law_development", "precedent.settlement"],
     requiredTraits: [],
     antiTraits: [],
-    description: "A bounded common-law creativity fit: hard cases involve genuine law development, but within precedent, history, custom, justice, and social welfare.",
-    related: ["Roscoe Pound", "David Strauss", "Lord Denning"]
+    description: "Bounded common-law Pragmatism: hard cases permit development, but precedent, custom, continuity, and incremental legal growth sharply constrain practical judgment.",
+    related: ["Roscoe Pound", "David Strauss"]
   },
   {
     id: "posner",
@@ -415,16 +413,16 @@ globalThis.LAW_PROFILES = Object.freeze([
     tier: "main",
     identityIds: ["pragmatist"],
     axisSignature: {
-      cons: { target: 35, weight: 0.45 },
-      separ: { target: 24, weight: 0.55 },
-      form: { target: 22, weight: 0.75 },
-      prec: { target: 36, weight: 0.35 }
+      cons: { target: 30, weight: 0.45 },
+      separ: { target: 22, weight: 0.45 },
+      form: { target: 16, weight: 0.8 },
+      prec: { target: 30, weight: 0.55 }
     },
-    signatureTraits: ["method.consequences", "method.workability"],
+    signatureTraits: ["method.pragmatic_priority", "method.consequences", "method.workability"],
     requiredTraits: [],
-    antiTraits: ["form.rules"],
-    description: "A pragmatic fit where consequences, institutional workability, and practical administration matter more than an overarching interpretive theory.",
-    related: ["Oliver Wendell Holmes Jr.", "Roscoe Pound"]
+    antiTraits: ["form.rules", "precedent.settlement"],
+    description: "Forward-looking Pragmatism: consequences, institutional workability, and practical administration can outweigh doctrinal continuity when inherited law performs badly.",
+    related: ["Oliver Wendell Holmes Jr.", "Benjamin Cardozo"]
   },
   {
     id: "breyer",
@@ -433,16 +431,16 @@ globalThis.LAW_PROFILES = Object.freeze([
     identityIds: ["purposivist"],
     crossCuttingIdentityIds: ["pragmatist", "functionalist"],
     axisSignature: {
-      cons: { target: 20, weight: 0.8 },
-      separ: { target: 12, weight: 0.8 },
-      form: { target: 24, weight: 0.65 },
-      post: { target: 58, weight: 0.25 }
+      cons: { target: 16, weight: 0.85 },
+      separ: { target: 16, weight: 0.7 },
+      form: { target: 24, weight: 0.6 },
+      post: { target: 56, weight: 0.2 }
     },
     signatureTraits: ["constraint.purpose", "method.workability"],
     requiredTraits: [],
-    antiTraits: ["constraint.textual"],
-    description: "Purpose, consequences, institutional workability, and democratic functionality form the distinctive Breyer combination.",
-    related: ["Henry Hart & Albert Sacks", "Roscoe Pound"]
+    antiTraits: ["constraint.textual", "form.proportionality"],
+    description: "Practical American Purposivism: statutory purpose, real-world consequences, administrability, and institutional workability reinforce one another.",
+    related: ["Henry Hart", "Albert Sacks", "Robert Katzmann"]
   },
   {
     id: "barak",
@@ -450,18 +448,16 @@ globalThis.LAW_PROFILES = Object.freeze([
     tier: "main",
     identityIds: ["purposivist", "proportionalist"],
     axisSignature: {
-      cons: { target: 12, weight: 0.8 },
-      time: { target: 24, weight: 0.45 },
-      remed: { target: 24, weight: 0.5 },
-      post: { target: 12, weight: 0.8 },
-      separ: { target: 24, weight: 0.35 },
-      form: { target: 8, weight: 1 }
+      cons: { target: 10, weight: 0.8 },
+      post: { target: 10, weight: 0.75 },
+      form: { target: 6, weight: 1 },
+      remed: { target: 24, weight: 0.4 }
     },
-    signatureTraits: ["constraint.purpose", "form.proportionality"],
+    signatureTraits: ["constraint.purpose", "form.proportionality", "posture.rights_trumps"],
     requiredTraits: [],
     antiTraits: ["form.rules"],
-    description: "A broad purposive, proportionality-centered, rights-enforcing judicial philosophy with substantial confidence in the judicial role.",
-    related: ["Robert Alexy", "Michael Kirby", "Albie Sachs"]
+    description: "Systematic objective-purpose judging combined with structured proportionality, balancing, and strong judicial responsibility for rights.",
+    related: ["Robert Alexy", "Stephen Breyer"]
   },
   {
     id: "david_strauss",
@@ -496,35 +492,141 @@ globalThis.LAW_PROFILES = Object.freeze([
   },
   {
     id: "hart_sacks",
-    name: "Henry Hart & Albert Sacks",
-    tier: "specialist",
-    identityIds: ["legal_process_theorist", "purposivist"],
+    name: "Henry Hart / Albert Sacks",
+    tier: "main",
+    identityIds: ["legal_process_theorist"],
+    crossCuttingIdentityIds: ["purposivist"],
     axisSignature: {
-      cons: { target: 28, weight: 0.65 },
-      post: { target: 63, weight: 0.3 },
-      prec: { target: 70, weight: 0.35 }
+      cons: { target: 28, weight: 0.6 },
+      post: { target: 64, weight: 0.25 },
+      prec: { target: 72, weight: 0.45 }
     },
     signatureTraits: ["method.institutional_competence", "method.reasoned_elaboration", "constraint.purpose"],
     requiredTraits: [{ all: ["method.institutional_competence"], min: 0.45 }],
-    antiTraits: [],
-    description: "The Legal Process specialist: respect institutional settlement and competence, then justify decisions through purposive, reasoned elaboration.",
-    related: ["John Hart Ely", "Alexander Bickel"]
+    antiTraits: ["method.neutral_principles"],
+    description: "Core Legal Process: respect institutional settlement and comparative competence, then elaborate the law through reasoned, purposive development.",
+    related: ["Henry Hart", "Albert Sacks", "Herbert Wechsler"]
   },
   {
     id: "pound",
     name: "Roscoe Pound",
-    tier: "specialist",
-    identityIds: ["pragmatist", "purposivist"],
+    tier: "main",
+    identityIds: ["sociological_jurist"],
+    crossCuttingIdentityIds: ["pragmatist", "purposivist"],
     axisSignature: {
-      cons: { target: 28, weight: 0.5 },
-      form: { target: 30, weight: 0.5 },
-      separ: { target: 32, weight: 0.35 }
+      cons: { target: 28, weight: 0.4 },
+      form: { target: 30, weight: 0.45 },
+      separ: { target: 32, weight: 0.3 }
     },
     signatureTraits: ["method.social_interests", "method.law_in_action"],
     requiredTraits: [{ all: ["method.social_interests"], min: 0.5 }],
     antiTraits: [],
-    description: "A sociological-jurisprudence specialist: legal doctrine should be understood in action and shaped with explicit attention to competing social interests and practical social effects.",
+    description: "Sociological Jurisprudence: identify competing social interests, examine law in action, and shape doctrine with explicit attention to its practical social operation.",
     related: ["Eugen Ehrlich", "Benjamin Cardozo"]
+  },
+  {
+    id: "scalia_manning_easterbrook",
+    name: "Antonin Scalia / John Manning / Frank Easterbrook",
+    tier: "main",
+    identityIds: ["textualist"],
+    axisSignature: {
+      cons: { target: 94, weight: 1 },
+      form: { target: 86, weight: 0.55 },
+      separ: { target: 76, weight: 0.3 }
+    },
+    signatureTraits: ["constraint.textual", "constraint.enacted_bargain", "form.anti_discretion"],
+    requiredTraits: [],
+    antiTraits: ["constraint.purpose", "constraint.best_reading_context", "method.categorical_textual_rights"],
+    description: "Mainline New Textualism: enacted language and compromise control, judicial repair is disfavored, and rules constrain interpreters even when the result is awkward.",
+    related: ["Antonin Scalia", "John Manning", "Frank Easterbrook"]
+  },
+  {
+    id: "kavanaugh_barrett",
+    name: "Brett Kavanaugh / Amy Coney Barrett",
+    tier: "specialist",
+    identityIds: ["textualist"],
+    axisSignature: { cons: { target: 90, weight: 1 } },
+    signatureTraits: ["constraint.textual", "constraint.contextual_textualism", "constraint.best_reading_context"],
+    requiredTraits: [{ all: ["constraint.best_reading_context"], min: 0.5 }],
+    antiTraits: ["constraint.intent"],
+    description: "Modern best-reading Textualism: choose the better linguistic reading using ordinary usage and whole-text context rather than atomistic parsing or purposive repair.",
+    related: ["Brett Kavanaugh", "Amy Coney Barrett"]
+  },
+  {
+    id: "ekins_intentionalism",
+    name: "Richard Ekins",
+    tier: "main",
+    identityIds: ["intentionalist"],
+    axisSignature: { cons: { target: 32, weight: 0.55 } },
+    signatureTraits: ["constraint.intent", "constraint.actual_group_intent"],
+    requiredTraits: [{ all: ["constraint.intent"], min: 0.5 }],
+    antiTraits: ["constraint.imaginative_reconstruction"],
+    description: "Modern institutional Intentionalism: the legislature can form a genuine lawmaking intention whose intended meaning is inferred from the enacted choice and its context.",
+    related: ["Richard Ekins", "Steven Knapp", "Walter Benn Michaels"]
+  },
+  {
+    id: "hand_posner_imaginative",
+    name: "Learned Hand / early Richard Posner",
+    tier: "specialist",
+    identityIds: ["intentionalist"],
+    axisSignature: { cons: { target: 28, weight: 0.5 } },
+    signatureTraits: ["constraint.intent", "constraint.imaginative_reconstruction"],
+    requiredTraits: [{ all: ["constraint.imaginative_reconstruction"], min: 0.5 }],
+    antiTraits: ["constraint.actual_group_intent"],
+    description: "Imaginative Reconstruction: when lawmakers never confronted the case, ask what they would have intended had the issue been presented to them.",
+    related: ["Learned Hand", "Richard Posner"]
+  },
+  {
+    id: "wechsler",
+    name: "Herbert Wechsler",
+    tier: "specialist",
+    identityIds: ["legal_process_theorist"],
+    axisSignature: {
+      cons: { target: 34, weight: 0.35 },
+      form: { target: 70, weight: 0.35 }
+    },
+    signatureTraits: ["method.reasoned_elaboration", "method.neutral_principles"],
+    requiredTraits: [{ all: ["method.neutral_principles"], min: 0.5 }],
+    antiTraits: [],
+    description: "Neutral-principles Legal Process: constitutional decisions should rest on generalizable principles capable of application beyond the parties and desired outcome.",
+    related: ["Herbert Wechsler", "Henry Hart", "Albert Sacks"]
+  },
+  {
+    id: "eskridge_frickey",
+    name: "William Eskridge / Philip Frickey",
+    tier: "specialist",
+    identityIds: ["interpretive_pluralist"],
+    crossCuttingIdentityIds: ["purposivist"],
+    axisSignature: { cons: { target: 36, weight: 0.35 } },
+    signatureTraits: ["method.modal_pluralism", "method.practical_reasoning"],
+    requiredTraits: [{ all: ["method.practical_reasoning"], min: 0.5 }],
+    antiTraits: [],
+    description: "Practical-Reasoning pluralism: text, history, purpose, legal context, consequences, and policy receive context-sensitive weight rather than a fixed hierarchy.",
+    related: ["William Eskridge", "Philip Frickey"]
+  },
+  {
+    id: "felix_cohen",
+    name: "Felix S. Cohen",
+    tier: "specialist",
+    identityIds: ["legal_realist"],
+    axisSignature: {},
+    signatureTraits: ["realism.underdetermination", "realism.functional_anti_conceptual"],
+    requiredTraits: [{ all: ["realism.functional_anti_conceptual"], min: 0.5 }],
+    antiTraits: ["realism.fact_skepticism"],
+    description: "Functional Realism: abstract legal concepts should be translated into the concrete conduct, social effects, and normative choices they actually represent.",
+    related: ["Felix S. Cohen", "Karl Llewellyn"]
+  },
+  {
+    id: "frank",
+    name: "Jerome Frank",
+    tier: "specialist",
+    identityIds: ["legal_realist"],
+    axisSignature: {},
+    signatureTraits: ["realism.extra_doctrinal", "realism.fact_skepticism"],
+    requiredTraits: [{ all: ["realism.fact_skepticism"], min: 0.5 }],
+    antiTraits: [],
+    description: "Fact-skeptical Realism: legal uncertainty often originates in witnesses, credibility, trial factfinding, psychology, and the reconstruction of what actually happened.",
+    related: ["Jerome Frank", "Karl Llewellyn"]
   },
   {
     id: "thayer",
@@ -621,14 +723,14 @@ globalThis.LAW_PROFILES = Object.freeze([
   {
     id: "bobbitt",
     name: "Philip Bobbitt",
-    tier: "specialist",
+    tier: "main",
     identityIds: ["interpretive_pluralist"],
     axisSignature: {},
     signatureTraits: ["method.modal_pluralism"],
     requiredTraits: [{ all: ["method.modal_pluralism"], min: 0.5 }],
-    antiTraits: [],
-    description: "A principled pluralist fit: multiple recognized modalities of constitutional argument are legitimate, rather than one interpretive method having to dominate every case.",
-    related: []
+    antiTraits: ["method.practical_reasoning"],
+    description: "Modal constitutional pluralism: text, history, structure, doctrine, prudence, and ethos are distinct legitimate forms of constitutional argument rather than inputs to one master method.",
+    related: ["Philip Bobbitt", "William Eskridge", "Philip Frickey"]
   },
   {
     id: "vermeule",
@@ -708,16 +810,16 @@ globalThis.LAW_PROFILES = Object.freeze([
   {
     id: "llewellyn",
     name: "Karl Llewellyn",
-    tier: "specialist",
+    tier: "main",
     identityIds: ["legal_realist"],
     axisSignature: {},
     signatureTraits: ["realism.underdetermination", "realism.law_in_action", "realism.extra_doctrinal"],
     requiredTraits: [
       { all: ["realism.underdetermination", "realism.extra_doctrinal"], min: 0.45 }
     ],
-    antiTraits: [],
-    description: "The broad mature-American-Realist fit: hard-case doctrine is often underdeterminate, so law in action and actual institutional behavior matter.",
-    related: ["Jerome Frank", "Oliver Wendell Holmes Jr.", "Brian Leiter"]
+    antiTraits: ["realism.fact_skepticism", "realism.functional_anti_conceptual"],
+    description: "Mature American Legal Realism: doctrine often underdetermines hard cases, so situation sense, law in action, and actual institutional behavior matter.",
+    related: ["Jerome Frank", "Felix S. Cohen", "Oliver Wendell Holmes Jr."]
   },
   {
     id: "oconnor",

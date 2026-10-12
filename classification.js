@@ -23,28 +23,41 @@
     {
       id: "D-SOC1",
       family: "sociological",
-      priority: "medium",
-      unlock: "Open, functional, or balancing profile where Pound could materially improve on a generic Pragmatist/Purposivist match.",
+      priority: "high",
+      unlock: "Open, functional, consequence-sensitive judging makes Sociological Jurisprudence a live primary-fixation candidate.",
       prompt: "When legal doctrine leaves real room for judgment, courts should openly identify the competing social interests, examine how the rule actually operates in society, and shape the doctrine so those interests are reconciled as well as the legal materials permit.",
       agreeTraits: ["method.social_interests", "method.law_in_action"],
       disagreeTraits: [],
       nextOnAgree: [],
       nextOnDisagree: [],
-      relatedIdentityIds: ["pragmatist", "purposivist"],
-      note: "Specialist router for Roscoe Pound / sociological jurisprudence, not a new headline family by itself."
+      relatedIdentityIds: ["sociological_jurist"],
+      note: "Noun-level Sociological Jurisprudence router and Roscoe Pound champion evidence."
     },
     {
       id: "D-PLU1",
       family: "pluralism",
       priority: "medium",
-      unlock: "No single jurisprudential axis or family strongly dominates.",
+      unlock: "No single jurisprudential method strongly dominates, or multiple interpretive modalities are already evident.",
       prompt: "Constitutional interpretation legitimately uses several different forms of argument—text, history, precedent, structure, consequences, and broader constitutional principles—and no one of those methods should control every hard case.",
       agreeTraits: ["method.modal_pluralism"],
       disagreeTraits: [],
-      nextOnAgree: [],
+      nextOnAgree: ["D-PLU2"],
       nextOnDisagree: ["D-OCO1"],
       relatedIdentityIds: ["interpretive_pluralist"],
-      note: "Separates principled methodological pluralism from merely deciding cases without a grand theory."
+      note: "Noun-level principled methodological-pluralism router."
+    },
+    {
+      id: "D-PLU2",
+      family: "pluralism",
+      priority: "medium",
+      unlock: "Interpretive Pluralist is established and Practical Reasoning could materially change the modifier/champion.",
+      prompt: "The legitimate interpretive tools do not have a fixed hierarchy. Their weight should shift with the case: text may dominate one dispute, while purpose, legal context, consequences, or policy may legitimately carry more weight in another.",
+      agreeTraits: ["method.practical_reasoning", "method.modal_pluralism"],
+      disagreeTraits: [],
+      nextOnAgree: [],
+      nextOnDisagree: [],
+      relatedIdentityIds: ["interpretive_pluralist"],
+      note: "Practical-Reasoning modifier and Eskridge/Frickey champion discriminator; disagreement leaves Bobbitt-style modal pluralism."
     },
     {
       id: "D-OCO1",
@@ -254,6 +267,10 @@
     setMax(traits, "method.consequences", pragmaticCluster);
     setMax(traits, "method.workability", pragmaticCluster);
 
+    // Contextual-textualist evidence from the core helps champion scoring, but
+    // the narrower modern "best reading" champion gate is diagnostic-only.
+    setMax(traits, "method.pluralism", traits["method.modal_pluralism"] || 0);
+
     const maxAxisSalience = Math.max(...AXIS_IDS.map((id) => salience(scores, id)));
     setMax(traits, "method.low_theory_space", 1 - maxAxisSalience);
 
@@ -364,10 +381,17 @@
     }
 
     if ((traits["method.institutional_competence"] || 0) >= 0.45) {
-      add("legal_process_theorist", 0.88, "Institutional competence and reasoned elaboration.");
+      add("legal_process_theorist", 0.9, "Institutional competence, settlement, and reasoned elaboration establish Legal Process as the primary method.");
     }
     if ((traits["constraint.intent"] || 0) >= 0.5) {
-      add("intentionalist", 0.86, "Actual legislative/enactor intent diagnostic.");
+      add("intentionalist", 0.89, "Legislative/enactor intention is the primary interpretive target.");
+    }
+    if ((traits["method.social_interests"] || 0) >= 0.5 &&
+        (traits["method.law_in_action"] || 0) >= 0.5) {
+      add("sociological_jurist", 0.92, "Law-in-action and explicit social-interest reasoning establish Sociological Jurisprudence.");
+    }
+    if ((traits["method.pragmatic_priority"] || 0) >= 0.5) {
+      add("pragmatist", 0.91, "Consequences and practical workability are independent adjudicative reasons rather than merely evidence of purpose.");
     }
     if ((traits["form.proportionality"] || 0) >= 0.5) {
       add("proportionalist", 0.88, "Structured proportionality rather than generic balancing.");
@@ -646,6 +670,16 @@
       if (byId[id] && !hasAsked(diagnosticResponses, id)) priorities.push({ id, priority });
     };
 
+    const realismConfirmed =
+      (traits["realism.underdetermination"] || 0) >= 0.45 &&
+      (traits["realism.extra_doctrinal"] || 0) >= 0.45 &&
+      ((traits["realism.empirical_prediction"] || 0) >= 0.35 ||
+       (traits["realism.law_in_action"] || 0) >= 0.5);
+    if (realismConfirmed) {
+      if (!hasAsked(diagnosticResponses, "D-RLS4")) offer("D-RLS4", 99);
+      else if (!hasAsked(diagnosticResponses, "D-RLS5")) offer("D-RLS5", 98);
+    }
+
     const time = axisValue(scores, "time");
     const source = axisValue(scores, "sorc");
     const posture = axisValue(scores, "post");
@@ -722,7 +756,7 @@
         }
       }
   
-      if (source <= 58) {
+      if (source <= 38) {
         const naturalCorePlausible = (traits["source.objective_morality"] || 0) >= 0.25;
         const interpretivistCorePlausible = (traits["source.principles_are_law"] || 0) >= 0.25 ||
           (traits["source.fit_and_justification"] || 0) >= 0.25;
@@ -793,19 +827,58 @@
       offer("D-ELY1", 54);
     }
 
-    if (constraint <= 40) {
-      if (precedent >= 52 || posture >= 45) offer("D-LP1", 72);
-      offer("D-SOC1", form <= 50 ? 70 : 58);
-      offer("D-INT1", 64);
+    const provisionalMethodIdentity = resolveIdentity(scores, traits).best.identity.id;
+
+    if (provisionalMethodIdentity === "textualist" && constraint >= 62) {
+      if (!hasAsked(diagnosticResponses, "D-TXT1")) offer("D-TXT1", 74);
+      const blackPlausible =
+        (traits["posture.rights_trumps"] || 0) >= 0.4 &&
+        (traits["form.anti_discretion"] || 0) >= 0.45;
+      if (blackPlausible && !hasAsked(diagnosticResponses, "D-TXT2")) {
+        offer("D-TXT2", 83);
+      }
+    }
+
+    if (constraint <= 42) {
+      const intent = traits["constraint.intent"] || 0;
+      const institutional = traits["method.institutional_competence"] || 0;
+      const social = traits["method.social_interests"] || 0;
+
+      // Resolve actual intent versus objective purpose before champion-level
+      // refinements when Intentionalism is still untested.
+      if (intent < 0.5 && !hasAsked(diagnosticResponses, "D-INT1")) offer("D-INT1", 86);
+      if (intent >= 0.5 && !hasAsked(diagnosticResponses, "D-INT2")) offer("D-INT2", 91);
+
+      if ((traits["method.pragmatic_priority"] || 0) < 0.5 &&
+          !hasAsked(diagnosticResponses, "D-PRAG1")) {
+        offer("D-PRAG1", 82);
+      }
+
+      if ((precedent >= 52 || posture >= 45 || institutional >= 0.25) &&
+          institutional < 0.5 && !hasAsked(diagnosticResponses, "D-LP1")) {
+        offer("D-LP1", 80);
+      }
+      if (institutional >= 0.5 && !hasAsked(diagnosticResponses, "D-LP2")) {
+        offer("D-LP2", 88);
+      }
+
+      if (social < 0.5 && !hasAsked(diagnosticResponses, "D-SOC1")) {
+        offer("D-SOC1", form <= 50 ? 77 : 64);
+      }
     }
 
     if (form <= 28) offer("D-PROP1", 74);
 
     if (source <= 35 && constraint <= 40 && posture >= 55) offer("D-CGC1", 42);
 
-    if (maxSalience <= 0.38) {
-      offer("D-PLU1", 78);
-      if (hasAsked(diagnosticResponses, "D-PLU1") && Number(diagnosticResponses["D-PLU1"]) <= 0) {
+    if (maxSalience <= 0.42 || provisionalMethodIdentity === "interpretive_pluralist") {
+      const pluralism = traits["method.modal_pluralism"] || 0;
+      if (pluralism < 0.5) offer("D-PLU1", 78);
+      if (pluralism >= 0.5 && !hasAsked(diagnosticResponses, "D-PLU2")) {
+        offer("D-PLU2", 87);
+      }
+      if (hasAsked(diagnosticResponses, "D-PLU1") &&
+          Number(diagnosticResponses["D-PLU1"]) <= 0) {
         offer("D-OCO1", 76);
       }
     }

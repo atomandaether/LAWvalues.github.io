@@ -1,5 +1,7 @@
 \nImplementation note: this canon is now classified through sparse thinker signatures and adaptive diagnostics rather than full eight-axis coordinates. See `MATCHING_ARCHITECTURE.md`.\n# LAWvalues Canon Audit — Revised Identity Map
 
+> **Method implementation note (2026-10-12):** `METHOD_ENGINE.md` supersedes older Interpretation/adjudicative-style taxonomy and records the locked seventeen-unit champion layer.
+
 > **Source implementation note (2026-10-12):** `SOURCE_ENGINE.md` supersedes older Source taxonomy. Inclusive/Exclusive are Positivist modifiers; Interpretivist is public; Greenberg/Radbruch theories sit below the Non-Positivist noun; Fullerian remains public.
 
 > **Originalism implementation note (2026-10-12):** `ORIGINALISM_ENGINE.md` supersedes older Originalism taxonomy in this audit. Public Originalist nouns are OPM, OI, and generic Originalist fallback; Framework and Original Methods are no longer public nouns.
