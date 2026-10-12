@@ -314,6 +314,19 @@ globalThis.LAW_DIAGNOSTIC_QUESTIONS = Object.freeze([
     note: "Champion-level Kavanaugh/Barrett versus Scalia/Manning/Easterbrook discriminator; not a public Textualist modifier."
   },
   {
+    id: "D-TXT2",
+    family: "interpretation",
+    priority: "medium",
+    unlock: "Textualist is established and the respondent's rules/rights profile makes Hugo Black materially plausible.",
+    prompt: "When constitutional text states a right in categorical terms, courts should enforce that categorical command rather than convert it into a balancing test against governmental interests, even when doing so invalidates popular laws.",
+    agreeTraits: ["method.categorical_textual_rights", "form.anti_discretion", "posture.rights_trumps"],
+    disagreeTraits: [],
+    nextOnAgree: [],
+    nextOnDisagree: [],
+    relatedIdentityIds: ["textualist"],
+    note: "Champion-level Hugo Black discriminator: categorical text plus anti-balancing rights enforcement."
+  },
+  {
     id: "D-INT1",
     family: "interpretation",
     priority: "high",
