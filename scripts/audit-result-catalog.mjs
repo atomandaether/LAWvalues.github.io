@@ -32,6 +32,17 @@ assert.equal(resultContent.MODIFIERS.length, resultContent.FEATURES.length,
   "Every residual feature needs a modifier rendering");
 assert.equal(resultContent.PHRASES.length, resultContent.FEATURES.length,
   "Every residual feature needs a phrase rendering");
+assert.ok(typeof classifier.buildTraitEvidence === "function",
+  "Classifier must expose breadth/confidence metadata for residual features");
+for (const removed of [
+  "practice_authority", "principle_application", "clear_error",
+  "judicial_independence", "electoral_accountability", "pluralism"
+]) {
+  assert.ok(!resultContent.FEATURES.some((x) => x.id === removed),
+    `${removed} should not be a public residual feature without enough existing-question breadth`);
+}
+assert.ok(resultContent.FEATURES.some((x) => x.id === "law_runs_out"),
+  "Hard-case law-runs-out pattern should remain available because two core items plus the Source axis can corroborate it");
 assert.equal(classifier.MAX_DIAGNOSTICS, 7, "Adaptive phase must cap the quiz at 100 total questions");
 
 assert.equal(new Set(identities.map((x) => x.id)).size, identities.length, "Identity IDs must be unique");
@@ -255,6 +266,58 @@ const ranked = resultContent.rankFeatures(syntheticIdentity, syntheticScores, sy
 assert.equal(ranked[0].feature.id, assembled.phrase.id,
   "Phrase selection must follow the common residual-feature ranking rather than a separate phrase list");
 
+const specificityScoresNeutral = { sorc: 50, cons: 50, time: 50, prec: 50, remed: 50, post: 50, separ: 50, form: 50 };
+const contextResponses = { C5: 3, C13: -3 };
+const contextTraitsNeutral = classifier.buildTraits(specificityScoresNeutral, contextResponses, {});
+const contextEvidenceNeutral = classifier.buildTraitEvidence(contextResponses, {});
+const contextWithoutAxis = resultContent.rankFeatures(
+  identities.find((x) => x.id === "positivist"),
+  specificityScoresNeutral,
+  contextTraitsNeutral,
+  null,
+  contextEvidenceNeutral
+);
+assert.ok(!contextWithoutAxis.some((x) => x.feature.id === "contextual_text"),
+  "Two isolated contextual-text answers must not become a headline feature without broad Constraint corroboration");
+
+const specificityScoresTextual = { ...specificityScoresNeutral, cons: 75 };
+const contextTraitsTextual = classifier.buildTraits(specificityScoresTextual, contextResponses, {});
+const contextEvidenceTextual = classifier.buildTraitEvidence(contextResponses, {});
+const contextWithAxis = resultContent.rankFeatures(
+  identities.find((x) => x.id === "positivist"),
+  specificityScoresTextual,
+  contextTraitsTextual,
+  null,
+  contextEvidenceTextual
+);
+assert.ok(contextWithAxis.some((x) => x.feature.id === "contextual_text"),
+  "A specific two-item pattern may become a headline feature when the full matching axis independently corroborates it");
+
+const lowTheoryTraitsOnly = classifier.buildTraits(specificityScoresNeutral, {}, {});
+const lowTheoryEvidenceOnly = classifier.buildTraitEvidence({}, {});
+const lowTheoryWithoutDiagnostic = resultContent.rankFeatures(
+  identities.find((x) => x.id === "positivist"),
+  specificityScoresNeutral,
+  lowTheoryTraitsOnly,
+  null,
+  lowTheoryEvidenceOnly
+);
+assert.ok(!lowTheoryWithoutDiagnostic.some((x) => x.feature.id === "low_theory"),
+  "A flat eight-axis profile alone must not be called low-theory");
+
+const lowTheoryDiagnostics = { "D-OCO1": 3 };
+const lowTheoryTraitsConfirmed = classifier.buildTraits(specificityScoresNeutral, {}, lowTheoryDiagnostics);
+const lowTheoryEvidenceConfirmed = classifier.buildTraitEvidence({}, lowTheoryDiagnostics);
+const lowTheoryWithDiagnostic = resultContent.rankFeatures(
+  identities.find((x) => x.id === "positivist"),
+  specificityScoresNeutral,
+  lowTheoryTraitsConfirmed,
+  null,
+  lowTheoryEvidenceConfirmed
+);
+assert.ok(lowTheoryWithDiagnostic.some((x) => x.feature.id === "low_theory"),
+  "Low-theory may become a result feature when the broad profile and existing adaptive diagnostic corroborate it");
+
 const greenbergDiagnostic = classifier.diagnosticBank().find((x) => x.id === "D-NP4");
 assert.ok(greenbergDiagnostic && greenbergDiagnostic.relatedIdentityIds.includes("moral_impact_theorist"),
   "Moral Impact Theory must have an adaptive diagnostic");
@@ -279,3 +342,4 @@ console.log("PASS: Natural Law remains first-class; Pound is specialist; Savigny
 console.log("PASS: sparse profiles ignore unmodeled axes and diagnostic specialists require evidence.");
 console.log("PASS: public titles use one ranked residual-feature pool: phrase gets #2, modifier gets #3.");
 console.log("PASS: critic-rib wording is presentation only; neutral feature IDs drive the ranking.");
+console.log("PASS: isolated one-to-three-item subtraits cannot become headline features without independent axis/diagnostic corroboration.");
