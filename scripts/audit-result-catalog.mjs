@@ -315,6 +315,67 @@ assertTopPhrase(
 );
 assertTopPhrase("balancing", textualistIdentity, { ...phraseNeutral, cons: 100, form: 10 });
 
+// Also prove that every phrase survives the real classifier/assembler path, not
+// merely direct result-content ranking. A varied 93-response shell keeps the
+// response-quality checks realistic while score fixtures isolate each target.
+const reachabilityResponses = Object.fromEntries(
+  Array.from({length:93}, (_,i)=>[`Q${i}`, [-2,-1,0,1,2][i % 5]])
+);
+function assertClassifiedPhrase(expectedId, scores, overrides = {}, diagnostics = {}) {
+  const classified = classifier.classify(
+    scores,
+    { ...reachabilityResponses, ...overrides },
+    diagnostics
+  );
+  assert.equal(
+    classified.resultTitle?.phrase?.id,
+    expectedId,
+    `${expectedId} should be reachable through classifier -> assembler, got ${classified.identity.id} / ${classified.resultTitle?.phrase?.id}`
+  );
+}
+assertClassifiedPhrase("source_positive", { ...phraseNeutral, cons: 100, sorc: 90 });
+assertClassifiedPhrase("source_nonpositive", { ...phraseNeutral, cons: 100, sorc: 10 });
+assertClassifiedPhrase(
+  "objective_morality",
+  { ...phraseNeutral, time: 100, sorc: 20 },
+  { S9: 3, S10: 3, S11: 3 },
+  { "D-NP1": 3 }
+);
+assertClassifiedPhrase("textual_constraint", { ...phraseNeutral, time: 100, cons: 90 });
+assertClassifiedPhrase("purposive", { ...phraseNeutral, time: 100, cons: 10 });
+assertClassifiedPhrase("fixed_meaning", { ...phraseNeutral, cons: 100, time: 90 });
+assertClassifiedPhrase("living_meaning", { ...phraseNeutral, cons: 100, time: 10 });
+assertClassifiedPhrase("precedent_stability", { ...phraseNeutral, cons: 100, prec: 90 });
+assertClassifiedPhrase("precedent_correction", { ...phraseNeutral, cons: 100, prec: 10 });
+assertClassifiedPhrase("narrow_remedies", { ...phraseNeutral, cons: 100, remed: 90 });
+assertClassifiedPhrase("structural_remedies", { ...phraseNeutral, cons: 100, remed: 10 });
+assertClassifiedPhrase("majoritarian", { ...phraseNeutral, cons: 100, post: 90 });
+assertClassifiedPhrase("countermajoritarian", { ...phraseNeutral, cons: 100, post: 10 });
+assertClassifiedPhrase("separation_formal", { ...phraseNeutral, cons: 100, separ: 90 });
+assertClassifiedPhrase("separation_functional", { ...phraseNeutral, cons: 100, separ: 10 });
+assertClassifiedPhrase("rules", { ...phraseNeutral, cons: 100, form: 90 });
+assertClassifiedPhrase(
+  "anti_discretion",
+  { ...phraseNeutral, cons: 100, form: 70 },
+  { F1: 3, F3: 3, F7: 3, F8: 3 }
+);
+assertClassifiedPhrase("balancing", { ...phraseNeutral, cons: 100, form: 10 });
+
+// A Solum-like public-meaning + principle/construction respondent must remain
+// Public-Meaning Originalist rather than being auto-promoted to Balkin's
+// Framework Originalism merely for accepting a construction zone.
+const solumLike = classifier.classify(
+  { sorc:52, cons:72, time:92, prec:58, remed:50, post:50, separ:50, form:58 },
+  { ...reachabilityResponses, T7:3, T8:3, T10:3 },
+  { "D-ORI3":3 }
+);
+assert.equal(solumLike.identity.id, "public_meaning_originalist",
+  "Strong historical fixation plus construction-zone evidence should remain Public-Meaning Originalist");
+assert.equal(solumLike.resultTitle.modifier.id, "construction_room",
+  "Solum-like construction should surface as the noun-conditioned twist");
+assert.ok(solumLike.champions.some((x) => x.id === "solum"),
+  "Lawrence Solum should be available as the closest thinker for the clean Solum-like fixture");
+
 // Approved wording is part of the product contract while this editorial pass is active.
 const phraseText = Object.fromEntries(resultContent.PHRASES.map((x) => [x.id, x.text]));
 assert.equal(phraseText.source_positive, "who thinks evil just needs the right paperwork");
