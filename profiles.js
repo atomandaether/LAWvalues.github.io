@@ -339,7 +339,7 @@ globalThis.LAW_PROFILES = Object.freeze([
     id: "natural_law_originalists",
     name: "Pojanowski / Walsh / Alicea / Strang",
     tier: "specialist",
-    identityIds: ["public_meaning_originalist", "originalist", "natural_lawyer"],
+    identityIds: ["public_meaning_originalist", "originalist"],
     axisSignature: {
       sorc: { target: 14, weight: 0.75 },
       time: { target: 88, weight: 0.8 }
@@ -634,7 +634,7 @@ globalThis.LAW_PROFILES = Object.freeze([
     id: "vermeule",
     name: "Adrian Vermeule",
     tier: "specialist",
-    identityIds: ["common_good_constitutionalist", "natural_lawyer"],
+    identityIds: ["common_good_constitutionalist"],
     axisSignature: {
       sorc: { target: 5, weight: 0.85 },
       cons: { target: 18, weight: 0.6 },
