@@ -12,7 +12,7 @@ Example structure only:
 
 > **Precedent-preserving Originalist who lets democracy decide**
 
-The middle slot is the **best real jurisprudential nearest neighbor we can honestly justify**—including established eponymous labels such as Dworkinian, Thayerian, or Waldronian when the evidence is genuinely that specific. The noun is the person's #1 characteristic. After its coverage is spent, every remaining **sufficiently supported** axis or question-level trait competes in one pool. The strongest residual feature gets the longer phrase (#2); after spending that information, the next genuinely different feature gets the compact modifier (#3). Question-level quirks are not enough by themselves: narrow features need breadth from several existing core items or independent corroboration from their matching axis/diagnostic. The funny wording is allowed to be a slightly unfair critic's caricature because the backend feature being scored remains neutral and precise.
+The middle slot is the **best real jurisprudential nearest neighbor we can honestly justify**—including established eponymous labels such as Dworkinian, Thayerian, or Waldronian when the evidence is genuinely that specific. The noun is the primary classification. The trailing phrase is the respondent's strongest **broad** characteristic that the noun does not already communicate; it comes from the eight axis poles plus only the very few narrower characteristics that the existing bank measures with enough independent evidence. The front modifier now has a different job: it is a **noun-conditioned twist**, chosen for how much it explains what is distinctive about this person's particular version of the selected noun. A narrow subtype distinction can therefore be appropriate as a modifier even when it would be too specific to claim as the person's second- or third-largest worldview dimension. The funny wording is allowed to be a slightly unfair critic's caricature because the backend signal remains neutral and precise.
 
 ---
 
@@ -108,33 +108,11 @@ Those remain available.
 
 ## 5. Choose the phrase (#2)
 
-Among important traits not already communicated by the anchor, choose the feature with the greatest **marginal information value**. This gets the longer trailing phrase because it is the second-most important thing about the respondent.
+Choose the strongest broad characteristic that is both well-supported and not already communicated by the noun. The live phrase pool is intentionally small: the eight axis poles plus `objective_morality` and `anti_discretion`. Axis poles inherit breadth from the full core domain; the two narrower traits have explicit multi-item/diagnostic evidence gates.
 
-The feature can come from any axis or subtype. The engine should not force Posture, Remedies, or any other fixed axis into this slot.
+## 6. Choose the front modifier: the noun-conditioned twist
 
-## 6. Choose the front modifier (#3)
-
-Spend the phrase's information and rank the same feature pool again. The strongest genuinely different remaining feature gets the compact front modifier.
-
-The modifier can be an adjective, participle, compound, metaphor, or short critic-flavored joke; it does not need to end in -ing.
-
-It can describe:
-- judicial role,
-- remedies,
-- precedent,
-- separation of powers,
-- source,
-- time,
-- form,
-- or another subtype.
-
-Examples:
-
-- `... who lets democracy decide`
-- `... who wants bad precedent gone`
-- `... who fixes only the case in front of them`
-- `... who thinks morality can outrank enacted law`
-- `... who keeps the branches in their lanes`
+Do **not** simply take the third-highest residual feature. Instead ask which narrower, well-supported feature best distinguishes this respondent from other people who would receive the same noun. Subtype diagnostics, cross-axis combinations, and narrower question clusters can matter here because the claim is conditional ("what kind of Public-Meaning Originalist?"), not global ("what is your third-biggest jurisprudential belief?"). Suppress a twist when the trailing phrase already says the same thing.
 
 ## 7. Redundancy check
 
@@ -1650,11 +1628,11 @@ For each respondent:
    - evidence breadth,
    - information explained.
 7. Mark anchor coverage tags as represented.
-8. Rank one common residual-feature pool by **marginal information value** after noun redundancy.
-9. Give the strongest residual feature the trailing phrase (#2).
-10. Mark that feature's tags and conceptual group as represented.
-11. Rank the same pool again with phrase redundancy discounted.
-12. Give the strongest genuinely different remaining feature the modifier (#3).
+8. Rank the conservative broad phrase pool by marginal information value after noun redundancy.
+9. Give the strongest broad residual feature the trailing phrase (#2).
+10. Build the noun-conditioned twist candidates that actually apply to the selected identity.
+11. Suppress twists that merely repeat the noun or selected phrase.
+12. Give the strongest supported conditional twist the front modifier.
 13. Run grammar / redundancy / incompatibility checks.
 14. If a high-value bridge applies, insert its bridge paragraph.
 15. Use remaining strong traits for secondary body copy, not the title.
