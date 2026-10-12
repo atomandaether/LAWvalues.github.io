@@ -831,10 +831,6 @@
       "direction": "right",
       "min": 0.3,
       "priority": 1.2,
-      "blockedPhraseIds": [
-        "source_nonpositive",
-        "objective_morality"
-      ],
       "explanation": "Within Proportionalism, your balancing sits inside a nonpositivist account of legal principles and moral correctness rather than functioning as a merely practical judicial technique."
     },
     {
@@ -847,9 +843,6 @@
       "direction": "right",
       "min": 0.35,
       "priority": 1.1,
-      "blockedPhraseIds": [
-        "purposive"
-      ],
       "explanation": "Within Proportionalism, your structured balancing is embedded in a broader purposive and open-construction approach to legal interpretation."
     },
     {
