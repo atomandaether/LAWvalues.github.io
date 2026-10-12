@@ -26,23 +26,40 @@ assert.ok(Array.isArray(identities) && identities.length >= 20, "Need a substant
 assert.ok(Array.isArray(champions) && champions.length >= 25, "Need a substantial champion catalog");
 assert.ok(Array.isArray(diagnostics) && diagnostics.length >= 10, "Need an adaptive diagnostic bank");
 assert.ok(Array.isArray(profiles) && profiles.length >= 30, "Need broad sparse personality coverage");
-assert.ok(resultContent && Array.isArray(resultContent.FEATURES) && resultContent.FEATURES.length >= 25,
-  "Need one machine-readable residual-feature pool");
-assert.equal(resultContent.MODIFIERS.length, resultContent.FEATURES.length,
-  "Every residual feature needs a modifier rendering");
-assert.equal(resultContent.PHRASES.length, resultContent.FEATURES.length,
-  "Every residual feature needs a phrase rendering");
+assert.ok(resultContent && Array.isArray(resultContent.PHRASE_FEATURES),
+  "Need a machine-readable broad phrase pool");
+assert.equal(resultContent.PHRASE_FEATURES.length, 18,
+  "Public phrase pool should contain the sixteen axis poles plus objective morality and anti-discretion");
+assert.equal(resultContent.PHRASES.length, resultContent.PHRASE_FEATURES.length,
+  "Every phrase feature needs exactly one public phrase rendering");
+assert.ok(Array.isArray(resultContent.TWISTS) && resultContent.TWISTS.length >= 20,
+  "Need a substantial noun-conditioned twist pool");
+assert.equal(resultContent.MODIFIERS.length, resultContent.TWISTS.length,
+  "Every noun-conditioned twist needs a modifier rendering");
 assert.ok(typeof classifier.buildTraitEvidence === "function",
-  "Classifier must expose breadth/confidence metadata for residual features");
+  "Classifier must expose breadth/confidence metadata for narrow phrase gates");
+assert.ok(typeof resultContent.rankPhrases === "function", "Need separate broad phrase ranking");
+assert.ok(typeof resultContent.rankTwists === "function", "Need separate noun-conditioned twist ranking");
+
+const expectedPhraseIds = [
+  "source_positive", "source_nonpositive", "objective_morality",
+  "textual_constraint", "purposive", "fixed_meaning", "living_meaning",
+  "precedent_stability", "precedent_correction", "narrow_remedies", "structural_remedies",
+  "majoritarian", "countermajoritarian", "separation_formal", "separation_functional",
+  "rules", "anti_discretion", "balancing"
+];
+assert.deepEqual(Array.from(resultContent.PHRASE_FEATURES, (x) => x.id), expectedPhraseIds,
+  "Phrase pool must stay limited to the approved broad, meaningfully supported outcomes");
 for (const removed of [
-  "practice_authority", "principle_application", "clear_error",
-  "judicial_independence", "electoral_accountability", "pluralism"
+  "law_runs_out", "practice_authority", "principles_as_law", "contextual_text",
+  "enacted_bargain", "intent", "historical_practice", "statutory_precedent",
+  "universal_relief", "severability", "prophylactic", "proportionality",
+  "pragmatic_consequences", "legal_process", "pluralism", "low_theory", "realism",
+  "principle_application", "clear_error", "judicial_independence", "electoral_accountability"
 ]) {
-  assert.ok(!resultContent.FEATURES.some((x) => x.id === removed),
-    `${removed} should not be a public residual feature without enough existing-question breadth`);
+  assert.ok(!resultContent.PHRASE_FEATURES.some((x) => x.id === removed),
+    `${removed} is too narrow or indirect to be a stand-alone broad phrase outcome`);
 }
-assert.ok(resultContent.FEATURES.some((x) => x.id === "law_runs_out"),
-  "Hard-case law-runs-out pattern should remain available because two core items plus the Source axis can corroborate it");
 assert.equal(classifier.MAX_DIAGNOSTICS, 7, "Adaptive phase must cap the quiz at 100 total questions");
 
 assert.equal(new Set(identities.map((x) => x.id)).size, identities.length, "Identity IDs must be unique");
@@ -228,95 +245,170 @@ const spamResponses = Object.fromEntries(Array.from({length:93}, (_,i)=>[`Q${i}`
 const spam = classifier.classify(neutralScores, spamResponses, { "D-RLS1": -2, "D-QC1": -2 }, { elapsedMs: 30000 });
 assert.equal(spam.identity.id, "unusable_response", "Implausibly fast completion must suppress personality matching");
 
-// The public result grammar ranks one residual-feature pool: noun first, phrase second,
-// modifier third. The phrase must take the strongest unspent feature and the modifier
-// should then add a genuinely different next-best feature.
+// Public title grammar: noun + broad phrase + noun-conditioned twist.
 const syntheticIdentity = identities.find((x) => x.id === "public_meaning_originalist");
-const syntheticScores = { sorc: 86, cons: 68, time: 92, prec: 92, remed: 55, post: 61, separ: 54, form: 70 };
-const syntheticTraits = {
-  "source.positive_sources": 0.72,
-  "time.public_meaning": 0.9,
-  "time.fixation": 0.84,
-  "precedent.stability": 0.82,
-  "precedent.reliance": 0.85,
-  "constraint.textual": 0.35,
-  "form.rules": 0.4
-};
+const syntheticScores = { sorc: 56, cons: 72, time: 92, prec: 92, remed: 55, post: 61, separ: 54, form: 58 };
+const syntheticResponses = { T8: 3 };
+const syntheticDiagnostics = { "D-ORI3": 3 };
+const syntheticTraits = classifier.buildTraits(syntheticScores, syntheticResponses, syntheticDiagnostics);
+const syntheticEvidence = classifier.buildTraitEvidence(syntheticResponses, syntheticDiagnostics);
 const assembled = resultContent.assemble(
   { identity: syntheticIdentity },
   syntheticScores,
-  syntheticTraits
+  syntheticTraits,
+  syntheticEvidence
 );
 assert.ok(assembled.title.includes("Public-Meaning Originalist"),
   "Assembled title must preserve the real jurisprudential noun");
 assert.equal(assembled.phrase.id, "precedent_stability",
-  "The strongest residual feature should become the phrase");
-assert.equal(assembled.modifier.id, "source_positive",
-  "The next strongest distinct residual feature should become the modifier");
-assert.equal(assembled.phrase.text, "who thinks being wrong for 50 years counts for something",
-  "Precedent-stability phrase should use the current critic-rib wording");
-assert.equal(assembled.modifier.text, "Morality-“blind”",
-  "Positive-source modifier should use the current critic-rib wording");
-assert.notEqual(
-  resultContent.FEATURES.find((x) => x.id === assembled.phrase.id).group,
-  resultContent.FEATURES.find((x) => x.id === assembled.modifier.id).group,
-  "Phrase and modifier should normally compress different substantive dimensions"
-);
-const ranked = resultContent.rankFeatures(syntheticIdentity, syntheticScores, syntheticTraits);
-assert.equal(ranked[0].feature.id, assembled.phrase.id,
-  "Phrase selection must follow the common residual-feature ranking rather than a separate phrase list");
+  "The strongest broad residual characteristic should become the phrase");
+assert.equal(assembled.modifier.id, "construction_room",
+  "A Solum-like construction-zone package should become the noun-conditioned twist");
+assert.equal(assembled.phrase.text, "who thinks being wrong for 50 years makes it right",
+  "Precedent-stability phrase should use the approved critic-rib wording");
+assert.equal(assembled.modifier.text, "Elbow-room",
+  "Solum-like public-meaning originalism should expose the construction-zone twist");
+assert.ok(assembled.rankedTwists.some((x) => x.id === "construction_room"),
+  "Result debug data should expose why the noun-conditioned twist won");
 
-const specificityScoresNeutral = { sorc: 50, cons: 50, time: 50, prec: 50, remed: 50, post: 50, separ: 50, form: 50 };
-const contextResponses = { C5: 3, C13: -3 };
-const contextTraitsNeutral = classifier.buildTraits(specificityScoresNeutral, contextResponses, {});
-const contextEvidenceNeutral = classifier.buildTraitEvidence(contextResponses, {});
-const contextWithoutAxis = resultContent.rankFeatures(
-  identities.find((x) => x.id === "positivist"),
-  specificityScoresNeutral,
-  contextTraitsNeutral,
-  null,
-  contextEvidenceNeutral
-);
-assert.ok(!contextWithoutAxis.some((x) => x.feature.id === "contextual_text"),
-  "Two isolated contextual-text answers must not become a headline feature without broad Constraint corroboration");
+// Every approved phrase must be reachable as the strongest residual outcome under
+// an internally coherent score/evidence fixture. This protects against dead copy.
+const phraseNeutral = { sorc: 50, cons: 50, time: 50, prec: 50, remed: 50, post: 50, separ: 50, form: 50 };
+const textualistIdentity = identities.find((x) => x.id === "textualist");
+const originalistIdentity = identities.find((x) => x.id === "originalist");
+const publicMeaningIdentity = identities.find((x) => x.id === "public_meaning_originalist");
 
-const specificityScoresTextual = { ...specificityScoresNeutral, cons: 75 };
-const contextTraitsTextual = classifier.buildTraits(specificityScoresTextual, contextResponses, {});
-const contextEvidenceTextual = classifier.buildTraitEvidence(contextResponses, {});
-const contextWithAxis = resultContent.rankFeatures(
-  identities.find((x) => x.id === "positivist"),
-  specificityScoresTextual,
-  contextTraitsTextual,
-  null,
-  contextEvidenceTextual
-);
-assert.ok(contextWithAxis.some((x) => x.feature.id === "contextual_text"),
-  "A specific two-item pattern may become a headline feature when the full matching axis independently corroborates it");
+function assertTopPhrase(expectedId, identity, scores, responses = {}, diagnostics = {}) {
+  const traits = classifier.buildTraits(scores, responses, diagnostics);
+  const evidence = classifier.buildTraitEvidence(responses, diagnostics);
+  const top = resultContent.rankPhrases(identity, scores, traits, evidence)[0];
+  assert.equal(top?.feature.id, expectedId, `${expectedId} should be reachable as the top public phrase`);
+}
 
-const lowTheoryTraitsOnly = classifier.buildTraits(specificityScoresNeutral, {}, {});
-const lowTheoryEvidenceOnly = classifier.buildTraitEvidence({}, {});
-const lowTheoryWithoutDiagnostic = resultContent.rankFeatures(
-  identities.find((x) => x.id === "positivist"),
-  specificityScoresNeutral,
-  lowTheoryTraitsOnly,
-  null,
-  lowTheoryEvidenceOnly
+assertTopPhrase("source_positive", textualistIdentity, { ...phraseNeutral, cons: 100, sorc: 90 });
+assertTopPhrase("source_nonpositive", textualistIdentity, { ...phraseNeutral, cons: 100, sorc: 10 });
+assertTopPhrase(
+  "objective_morality",
+  publicMeaningIdentity,
+  { ...phraseNeutral, time: 100, sorc: 20 },
+  { S9: 3, S10: 3, S11: 3 },
+  { "D-NP1": 3 }
 );
-assert.ok(!lowTheoryWithoutDiagnostic.some((x) => x.feature.id === "low_theory"),
-  "A flat eight-axis profile alone must not be called low-theory");
+assertTopPhrase("textual_constraint", originalistIdentity, { ...phraseNeutral, time: 100, cons: 90 });
+assertTopPhrase("purposive", originalistIdentity, { ...phraseNeutral, time: 100, cons: 10 });
+assertTopPhrase("fixed_meaning", textualistIdentity, { ...phraseNeutral, cons: 100, time: 90 });
+assertTopPhrase("living_meaning", textualistIdentity, { ...phraseNeutral, cons: 100, time: 10 });
+assertTopPhrase("precedent_stability", textualistIdentity, { ...phraseNeutral, cons: 100, prec: 90 });
+assertTopPhrase("precedent_correction", textualistIdentity, { ...phraseNeutral, cons: 100, prec: 10 });
+assertTopPhrase("narrow_remedies", textualistIdentity, { ...phraseNeutral, cons: 100, remed: 90 });
+assertTopPhrase("structural_remedies", textualistIdentity, { ...phraseNeutral, cons: 100, remed: 10 });
+assertTopPhrase("majoritarian", textualistIdentity, { ...phraseNeutral, cons: 100, post: 90 });
+assertTopPhrase("countermajoritarian", textualistIdentity, { ...phraseNeutral, cons: 100, post: 10 });
+assertTopPhrase("separation_formal", textualistIdentity, { ...phraseNeutral, cons: 100, separ: 90 });
+assertTopPhrase("separation_functional", textualistIdentity, { ...phraseNeutral, cons: 100, separ: 10 });
+assertTopPhrase("rules", textualistIdentity, { ...phraseNeutral, cons: 100, form: 90 });
+assertTopPhrase(
+  "anti_discretion",
+  textualistIdentity,
+  { ...phraseNeutral, cons: 100, form: 70 },
+  { F1: 3, F3: 3, F7: 3, F8: 3 }
+);
+assertTopPhrase("balancing", textualistIdentity, { ...phraseNeutral, cons: 100, form: 10 });
 
-const lowTheoryDiagnostics = { "D-OCO1": 3 };
-const lowTheoryTraitsConfirmed = classifier.buildTraits(specificityScoresNeutral, {}, lowTheoryDiagnostics);
-const lowTheoryEvidenceConfirmed = classifier.buildTraitEvidence({}, lowTheoryDiagnostics);
-const lowTheoryWithDiagnostic = resultContent.rankFeatures(
-  identities.find((x) => x.id === "positivist"),
-  specificityScoresNeutral,
-  lowTheoryTraitsConfirmed,
-  null,
-  lowTheoryEvidenceConfirmed
+// Also prove that every phrase survives the real classifier/assembler path, not
+// merely direct result-content ranking. A varied 93-response shell keeps the
+// response-quality checks realistic while score fixtures isolate each target.
+const reachabilityResponses = Object.fromEntries(
+  Array.from({length:93}, (_,i)=>[`Q${i}`, [-2,-1,0,1,2][i % 5]])
 );
-assert.ok(lowTheoryWithDiagnostic.some((x) => x.feature.id === "low_theory"),
-  "Low-theory may become a result feature when the broad profile and existing adaptive diagnostic corroborate it");
+function assertClassifiedPhrase(expectedId, scores, overrides = {}, diagnostics = {}) {
+  const classified = classifier.classify(
+    scores,
+    { ...reachabilityResponses, ...overrides },
+    diagnostics
+  );
+  assert.equal(
+    classified.resultTitle?.phrase?.id,
+    expectedId,
+    `${expectedId} should be reachable through classifier -> assembler, got ${classified.identity.id} / ${classified.resultTitle?.phrase?.id}`
+  );
+}
+assertClassifiedPhrase("source_positive", { ...phraseNeutral, cons: 100, sorc: 90 });
+assertClassifiedPhrase("source_nonpositive", { ...phraseNeutral, cons: 100, sorc: 10 });
+assertClassifiedPhrase(
+  "objective_morality",
+  { ...phraseNeutral, time: 100, sorc: 20 },
+  { S9: 3, S10: 3, S11: 3 },
+  { "D-NP1": 3 }
+);
+assertClassifiedPhrase("textual_constraint", { ...phraseNeutral, time: 100, cons: 90 });
+assertClassifiedPhrase("purposive", { ...phraseNeutral, time: 100, cons: 10 });
+assertClassifiedPhrase("fixed_meaning", { ...phraseNeutral, cons: 100, time: 90 });
+assertClassifiedPhrase("living_meaning", { ...phraseNeutral, cons: 100, time: 10 });
+assertClassifiedPhrase("precedent_stability", { ...phraseNeutral, cons: 100, prec: 90 });
+assertClassifiedPhrase("precedent_correction", { ...phraseNeutral, cons: 100, prec: 10 });
+assertClassifiedPhrase("narrow_remedies", { ...phraseNeutral, cons: 100, remed: 90 });
+assertClassifiedPhrase("structural_remedies", { ...phraseNeutral, cons: 100, remed: 10 });
+assertClassifiedPhrase("majoritarian", { ...phraseNeutral, cons: 100, post: 90 });
+assertClassifiedPhrase("countermajoritarian", { ...phraseNeutral, cons: 100, post: 10 });
+assertClassifiedPhrase("separation_formal", { ...phraseNeutral, cons: 100, separ: 90 });
+assertClassifiedPhrase("separation_functional", { ...phraseNeutral, cons: 100, separ: 10 });
+assertClassifiedPhrase("rules", { ...phraseNeutral, cons: 100, form: 90 });
+assertClassifiedPhrase(
+  "anti_discretion",
+  { ...phraseNeutral, cons: 100, form: 70 },
+  { F1: 3, F3: 3, F7: 3, F8: 3 }
+);
+assertClassifiedPhrase("balancing", { ...phraseNeutral, cons: 100, form: 10 });
+
+// A Solum-like public-meaning + principle/construction respondent must remain
+// Public-Meaning Originalist rather than being auto-promoted to Balkin's
+// Framework Originalism merely for accepting a construction zone.
+const solumLike = classifier.classify(
+  { sorc:52, cons:72, time:92, prec:58, remed:50, post:50, separ:50, form:58 },
+  { ...reachabilityResponses, T7:3, T8:3, T10:3 },
+  { "D-ORI3":3 }
+);
+assert.equal(solumLike.identity.id, "public_meaning_originalist",
+  "Strong historical fixation plus construction-zone evidence should remain Public-Meaning Originalist");
+assert.equal(solumLike.resultTitle.modifier.id, "construction_room",
+  "Solum-like construction should surface as the noun-conditioned twist");
+assert.ok(solumLike.champions.some((x) => x.id === "solum"),
+  "Lawrence Solum should be available as the closest thinker for the clean Solum-like fixture");
+
+// The Solum fix must not erase genuine Framework Originalism: a less historically
+// rigid fixed-framework profile with the same construction diagnostic should still
+// be able to resolve to Balkin's framework identity.
+const balkinLike = classifier.classify(
+  { sorc:50, cons:40, time:62, prec:55, remed:50, post:50, separ:50, form:45 },
+  { ...reachabilityResponses, T7:3, T8:3 },
+  { "D-ORI3":3 }
+);
+assert.equal(balkinLike.identity.id, "framework_originalist",
+  "Construction plus a less historically rigid Time profile should still reach Framework Originalism");
+assert.ok(balkinLike.champions.some((x) => x.id === "balkin"),
+  "Jack Balkin should remain available for the clean Framework Originalist fixture");
+
+// Approved wording is part of the product contract while this editorial pass is active.
+const phraseText = Object.fromEntries(resultContent.PHRASES.map((x) => [x.id, x.text]));
+assert.equal(phraseText.source_positive, "who thinks evil just needs the right paperwork");
+assert.equal(phraseText.source_nonpositive, "who thinks the law is haunted, and the ghosts agree with them");
+assert.equal(phraseText.objective_morality, "who says “of course I’m right, here’s an MLK quote”");
+assert.equal(phraseText.textual_constraint, "who’d eat their own Grandma because Congress forgot a comma");
+assert.equal(phraseText.purposive, "who doesn’t let their inability to read hold them down");
+assert.equal(phraseText.fixed_meaning, "who uses an Ouija board as a dictionary");
+assert.equal(phraseText.living_meaning, "who thinks amendments are for suckers");
+assert.equal(phraseText.precedent_stability, "who thinks being wrong for 50 years makes it right");
+assert.equal(phraseText.precedent_correction, "who’ll tell you the opposite tomorrow");
+assert.equal(phraseText.narrow_remedies, "who brought a hand towel to a hurricane");
+assert.equal(phraseText.structural_remedies, "who let themselves in and started knocking down walls");
+assert.equal(phraseText.majoritarian, "who’d let two wolves and a sheep vote on dinner");
+assert.equal(phraseText.countermajoritarian, "who thinks 5 is more than 535");
+assert.equal(phraseText.separation_formal, "who’d fire the lifeguard for getting in the pool");
+assert.equal(phraseText.separation_functional, "who thinks the kitchen can never have too many cooks");
+assert.equal(phraseText.rules, "who’d rather be consistently wrong than occasionally right");
+assert.equal(phraseText.anti_discretion, "who doesn’t trust themselves to decide when to pee");
+assert.equal(phraseText.balancing, "who does whatever they want");
 
 const greenbergDiagnostic = classifier.diagnosticBank().find((x) => x.id === "D-NP4");
 assert.ok(greenbergDiagnostic && greenbergDiagnostic.relatedIdentityIds.includes("moral_impact_theorist"),
@@ -340,6 +432,6 @@ console.log(`PASS: ${profiles.length} sparse thinker profiles across main, speci
 console.log(`PASS: ${allDiagnostics.length} adaptive diagnostics with a seven-question cap.`);
 console.log("PASS: Natural Law remains first-class; Pound is specialist; Savigny is lineage; O'Connor is catch-all.");
 console.log("PASS: sparse profiles ignore unmodeled axes and diagnostic specialists require evidence.");
-console.log("PASS: public titles use one ranked residual-feature pool: phrase gets #2, modifier gets #3.");
-console.log("PASS: critic-rib wording is presentation only; neutral feature IDs drive the ranking.");
-console.log("PASS: isolated one-to-three-item subtraits cannot become headline features without independent axis/diagnostic corroboration.");
+console.log("PASS: public titles split broad phrase ranking from noun-conditioned twist selection.");
+console.log("PASS: all 18 approved phrases are reachable and use the approved critic-rib wording.");
+console.log("PASS: Solum-like construction-zone evidence surfaces as a modifier twist rather than a fake third-place axis.");

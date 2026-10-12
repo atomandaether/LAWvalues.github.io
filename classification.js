@@ -335,8 +335,9 @@
       add("radbruchian", 0.81, "Extreme-injustice threshold without broad moral invalidation.");
     }
 
-    if ((traits["time.framework"] || 0) >= 0.5) {
-      add("framework_originalist", 0.92, "Fixed framework plus legitimate construction.");
+    if ((traits["time.framework"] || 0) >= 0.5 &&
+        (l.time <= 0.55 || (traits["time.common_law_development"] || 0) >= 0.4)) {
+      add("framework_originalist", 0.92, "Fixed framework plus substantial later construction/development.");
     }
     if (l.time >= 0.2 && (traits["time.original_methods"] || 0) >= 0.5) {
       add("original_methods_originalist", 0.9, "Historically accepted interpretive methods.");
