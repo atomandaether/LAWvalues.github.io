@@ -23,7 +23,7 @@ The questions are written as plain-language legal problems rather than definitio
 
 After the 93-question core, LAWvalues may ask up to seven adaptive tie-breakers, keeping the full quiz at 100 questions or fewer. These follow-ups **do not change the eight headline scores**. The first two are a soft Realism probe and a response check; remaining questions are routed only when they can refine a live jurisprudential distinction.
 
-Public results use the three-part grammar **[modifier] [real jurisprudential identity] [phrase]**. The identity is the nearest real jurisprudential neighbor. After the information already conveyed by that noun is treated as spent, one common pool of axis and question-level traits is ranked by residual importance: the strongest remaining feature becomes the longer trailing phrase (the respondent's #2 characteristic), and the next genuinely different feature becomes the compact modifier (#3). Broad axis traits inherit evidence from the full bank; narrower traits are breadth-gated and cannot become a headline from one isolated answer. They need either a broader multi-item pattern or corroboration from the matching axis and/or an existing adaptive diagnostic. The joke wording is a presentation layer over neutral internal traits, usually phrased as an intelligent critic's affectionate caricature. High-value cross-axis combinations can add a short bridge paragraph, and the closest thinker is selected separately afterward.
+Public results use the three-part grammar **[noun-conditioned twist] [real jurisprudential identity] [broad residual phrase]**. The middle noun is the nearest real jurisprudential neighbor. The trailing phrase carries the strongest broad, well-supported characteristic that noun does not already communicate; it is drawn from the eight axis poles plus only the few narrower traits that the existing 93 questions genuinely measure with enough independent evidence. The front modifier is no longer "third place" in the same ranking. It is a **twist on the noun**: a narrower, noun-conditioned feature that explains what is unusual about this respondent's particular version of that jurisprudential identity. This lets a Solum-like Public-Meaning Originalist, for example, surface a construction-zone twist without pretending that one narrow distinction is the person's third-largest worldview axis. Closest-thinker matching remains separate.
 
 The matching model is deliberately sparse:
 
@@ -58,7 +58,7 @@ The repository includes dependency-free structural, scoring, and profile audits:
 npm test
 ```
 
-They check the 93-item core, asymmetric scoring, source references, local asset references, sparse profile validity, specialist gates, major jurisprudential-family coverage, modifier/identity/phrase assembly, the seven-question diagnostic cap, explicit response-quality safeguards, and several false-match tests such as preventing a positivist from winning a strong Natural Law profile.
+They check the 93-item core, asymmetric scoring, source references, local asset references, sparse profile validity, specialist gates, major jurisprudential-family coverage, phrase reachability, noun-conditioned twist assembly, the seven-question diagnostic cap, explicit response-quality safeguards, and several false-match tests such as preventing a positivist from winning a strong Natural Law profile.
 
 ## Validation status
 
