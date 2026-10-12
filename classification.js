@@ -335,13 +335,6 @@
       add("radbruchian", 0.81, "Extreme-injustice threshold without broad moral invalidation.");
     }
 
-    if ((traits["time.framework"] || 0) >= 0.5 &&
-        (l.time <= 0.55 || (traits["time.common_law_development"] || 0) >= 0.4)) {
-      add("framework_originalist", 0.92, "Fixed framework plus substantial later construction/development.");
-    }
-    if (l.time >= 0.2 && (traits["time.original_methods"] || 0) >= 0.5) {
-      add("original_methods_originalist", 0.9, "Historically accepted interpretive methods.");
-    }
     if (l.time >= 0.2 && (traits["time.original_intent"] || 0) >= 0.5) {
       add("original_intent_originalist", 0.88, "Affirmative original-intent evidence.");
     }
@@ -483,8 +476,16 @@
     const profiles = Array.isArray(global.LAW_PROFILES) ? global.LAW_PROFILES : [];
     const normal = [];
     const catchalls = [];
+    const originalistIdentity = ["originalist", "public_meaning_originalist", "original_intent_originalist"].includes(identity.id);
 
     for (const profile of profiles) {
+      if (originalistIdentity) {
+        const ids = profile.identityIds || [];
+        const compatibleOriginalist =
+          ids.includes(identity.id) ||
+          (identity.id !== "originalist" && ids.includes("originalist"));
+        if (!compatibleOriginalist) continue;
+      }
       if (profile.tier === "catchall") {
         catchalls.push(profile);
         continue;
@@ -601,9 +602,47 @@
     const maxSalience = maxSalienceEarly;
 
     if (time >= 60) {
-      if ((traits["time.public_meaning"] || 0) < 0.5) offer("D-ORI1", 92);
-      if ((traits["time.principle_originalism"] || 0) >= 0.35 || constraint <= 55 || time < 78) offer("D-ORI3", 86);
-      offer("D-ORI2", 62);
+      const publicMeaning = traits["time.public_meaning"] || 0;
+      const originalIntent = traits["time.original_intent"] || 0;
+      const construction = traits["time.construction_zone"] || 0;
+      const originalMethods = traits["time.original_methods"] || 0;
+      const intentAsMeaning = traits["time.intent_as_meaning"] || 0;
+      const intratextual = traits["time.intratextualism"] || 0;
+
+      // First resolve the public noun when the core did not already do it.
+      if (Math.max(publicMeaning, originalIntent) < 0.5) offer("D-ORI1", 96);
+
+      // Construction is the only substantive public Originalist modifier ("New").
+      // Ask it once a noun is known or nearly known, because it also identifies
+      // Whittington on the OI side and routes the New-OPM champion cluster.
+      if ((Math.max(publicMeaning, originalIntent) >= 0.4 || hasAsked(diagnosticResponses, "D-ORI1")) &&
+          !hasAsked(diagnosticResponses, "D-ORI3")) {
+        offer("D-ORI3", 90);
+      }
+
+      const provisional = resolveIdentity(scores, traits).best.identity.id;
+      const looksOI = provisional === "original_intent_originalist" || originalIntent >= 0.45;
+      const looksOPM = provisional === "public_meaning_originalist" || publicMeaning >= 0.45;
+
+      // If OI + construction is affirmed, Whittington is already the distinctive
+      // champion; otherwise distinguish modern semantic intentionalism from the
+      // first-generation Bork/Berger restraint package.
+      if (looksOI && hasAsked(diagnosticResponses, "D-ORI3") && construction < 0.5 && intentAsMeaning < 0.5) {
+        offer("D-ORI4", 82);
+      }
+
+      // Original Methods is champion-level evidence, not a noun.  Ask only on
+      // the OPM side, and only when it can materially change the champion.
+      if (looksOPM && originalMethods < 0.5 && !hasAsked(diagnosticResponses, "D-ORI2")) {
+        offer("D-ORI2", 74);
+      }
+
+      // Amar-style intratextualism is a specialist tie-breaker.  It is lower
+      // priority than noun, construction, and Original Methods questions.
+      if (looksOPM && intratextual < 0.5 && constraint >= 55 &&
+          hasAsked(diagnosticResponses, "D-ORI2") && !hasAsked(diagnosticResponses, "D-ORI5")) {
+        offer("D-ORI5", 54);
+      }
     }
 
     if (source >= 65) offer("D-POS1", 76);

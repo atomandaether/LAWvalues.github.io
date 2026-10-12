@@ -224,18 +224,20 @@ globalThis.LAW_RESULT_IDENTITIES = Object.freeze([
     label: "Original-Methods Originalist",
     family: "time",
     status: "adaptive",
+    public: false,
     parentId: "originalist",
     covers: ["time.fixation", "time.original_methods"],
-    notes: "McGinnis/Rappaport theory: use historically accepted legal interpretive methods for a document of the Constitution's type."
+    notes: "Internal/legacy theory label only. Public results use Public-Meaning Originalist; Original Methods evidence routes to the McGinnis/Rappaport champion unit."
   },
   {
     id: "framework_originalist",
     label: "Framework Originalist",
     family: "time",
     status: "adaptive",
+    public: false,
     parentId: "originalist",
     covers: ["time.fixation", "time.construction_zone", "time.framework"],
-    notes: "Balkin's real label: fixed original framework with substantial legitimate later constitutional construction."
+    notes: "Internal/legacy theory label only. Public results use New Public-Meaning Originalist; framework evidence routes to Jack Balkin at champion level."
   },
   {
     id: "living_constitutionalist",
@@ -548,16 +550,7 @@ globalThis.LAW_CHAMPIONS = Object.freeze([
   },
 
   // Interpretation
-  {
-    id: "scalia",
-    name: "Antonin Scalia",
-    kind: "person",
-    role: "subtype",
-    eligibleIdentityIds: ["textualist", "public_meaning_originalist", "formalist"],
-    signatureTraits: ["constraint.textual", "time.public_meaning", "form.rules", "separation.formalist"],
-    antiTraits: ["constraint.purpose", "form.balancing"],
-    note: "Excellent champion for the combined text/rules/public-meaning/formalist bundle; never the generic stand-in for all Originalists."
-  },
+
   {
     id: "hugo_black",
     name: "Hugo Black",
@@ -568,16 +561,7 @@ globalThis.LAW_CHAMPIONS = Object.freeze([
     antiTraits: ["form.balancing", "constraint.purpose"],
     note: "Distinctive judicial bundle: unusually text/language-bound and rule/absolutism-oriented while also strongly rights-protective. His total-incorporation theory is historically important but is not itself directly measured by LAWvalues, so it should not be used as a matching trait."
   },
-  {
-    id: "manning",
-    name: "John Manning",
-    kind: "person",
-    role: "primary",
-    eligibleIdentityIds: ["textualist", "formalist"],
-    signatureTraits: ["constraint.textual", "constraint.enacted_bargain", "separation.formalist"],
-    antiTraits: ["constraint.purpose"],
-    note: "Major modern textualist theorist; cleaner than Scalia when the respondent lacks Scalia's broader bundle."
-  },
+
   {
     id: "hart_sacks",
     name: "Henry Hart & Albert Sacks",
@@ -610,36 +594,141 @@ globalThis.LAW_CHAMPIONS = Object.freeze([
   },
 
   // Originalism / constitutional time
+  // Champion units deliberately group figures whose differences are below the
+  // resolution of a lay judge-type quiz.  Separate units represent materially
+  // different adjudicative styles, not merely separate famous names.
+  {
+    id: "bork_berger",
+    name: "Robert Bork / Raoul Berger",
+    kind: "people",
+    role: "primary",
+    eligibleIdentityIds: ["original_intent_originalist", "originalist"],
+    signatureTraits: ["time.original_intent", "time.no_construction", "posture.majoritarian"],
+    antiTraits: ["time.intent_as_meaning", "time.construction_zone"],
+    note: "First-generation Original Intent: historical intention paired with strong judicial constraint/restraint and little legitimate construction."
+  },
+  {
+    id: "alexander_kay_prakash",
+    name: "Larry Alexander / Richard Kay / Saikrishna Prakash",
+    kind: "people",
+    role: "subtype",
+    eligibleIdentityIds: ["original_intent_originalist", "originalist"],
+    signatureTraits: ["time.original_intent", "time.intent_as_meaning"],
+    antiTraits: ["time.public_meaning"],
+    note: "Modern strong intentionalism: authorial/enactor intention controls because recovering intended communication is what interpretation fundamentally seeks."
+  },
+  {
+    id: "whittington",
+    name: "Keith Whittington",
+    kind: "person",
+    role: "subtype",
+    eligibleIdentityIds: ["original_intent_originalist", "originalist"],
+    signatureTraits: ["time.original_intent", "time.construction_zone"],
+    antiTraits: ["time.public_meaning"],
+    note: "The distinctive Original-Intent plus construction champion; this is the OI branch of the New Originalist movement."
+  },
   {
     id: "solum",
     name: "Lawrence Solum",
     kind: "person",
     role: "subtype",
     eligibleIdentityIds: ["public_meaning_originalist", "originalist"],
-    signatureTraits: ["time.public_meaning", "time.semantic_fixation", "time.principle_originalism", "time.construction_zone"],
-    antiTraits: ["time.original_intent"],
-    note: "Champion for a specific sophisticated public-meaning/fixation/construction account, not for Originalism generally."
+    signatureTraits: ["time.public_meaning", "time.semantic_fixation", "time.construction_zone", "time.principle_originalism"],
+    antiTraits: ["time.original_intent", "time.original_methods"],
+    note: "New OPM champion for semantic fixation and a genuine but constrained interpretation/construction distinction."
   },
   {
-    id: "mcginnis_rappaport",
-    name: "John McGinnis & Michael Rappaport",
+    id: "barnett_bernick",
+    name: "Randy Barnett / Evan Bernick",
     kind: "people",
-    role: "primary",
-    eligibleIdentityIds: ["original_methods_originalist"],
-    signatureTraits: ["time.original_methods", "time.fixation"],
-    antiTraits: [],
-    note: "Primary champion pair for Original-Methods Originalism."
+    role: "subtype",
+    eligibleIdentityIds: ["public_meaning_originalist", "originalist"],
+    signatureTraits: ["time.public_meaning", "time.construction_zone", "posture.rights_trumps"],
+    antiTraits: ["posture.majoritarian"],
+    note: "New OPM champion unit for rights-protective / good-faith constitutional construction."
   },
   {
     id: "balkin",
     name: "Jack Balkin",
     kind: "person",
-    role: "primary",
-    eligibleIdentityIds: ["framework_originalist"],
-    signatureTraits: ["time.fixation", "time.framework", "time.construction_zone", "time.principle_originalism"],
+    role: "subtype",
+    eligibleIdentityIds: ["public_meaning_originalist", "originalist"],
+    signatureTraits: ["time.public_meaning", "time.construction_zone", "time.principle_originalism", "time.common_law_development"],
     antiTraits: ["time.expected_applications"],
-    note: "Primary champion for Framework Originalism / living originalism."
+    note: "New OPM champion for fixed framework plus comparatively extensive legitimate later constitutional construction and development."
   },
+  {
+    id: "scalia_manning",
+    name: "Antonin Scalia / John Manning",
+    kind: "people",
+    role: "primary",
+    eligibleIdentityIds: ["public_meaning_originalist", "originalist", "textualist", "formalist"],
+    signatureTraits: ["time.public_meaning", "constraint.textual", "form.rules", "form.anti_discretion"],
+    antiTraits: ["time.construction_zone", "constraint.purpose"],
+    note: "Mainline text-and-rule OPM unit: public/legal meaning, strong textual constraint, rules, and comparatively low judicial discretion."
+  },
+  {
+    id: "mcginnis_rappaport",
+    name: "John McGinnis / Michael Rappaport",
+    kind: "people",
+    role: "subtype",
+    eligibleIdentityIds: ["public_meaning_originalist", "originalist"],
+    signatureTraits: ["time.original_methods", "time.fixation", "time.no_construction"],
+    antiTraits: ["time.construction_zone"],
+    note: "Original Methods champion unit: historically accepted legal interpretive methods determine original meaning and minimize a free-standing construction zone."
+  },
+  {
+    id: "mcconnell_green",
+    name: "Michael McConnell / Christopher Green",
+    kind: "people",
+    role: "subtype",
+    eligibleIdentityIds: ["public_meaning_originalist", "originalist"],
+    signatureTraits: ["time.public_meaning", "time.principle_originalism"],
+    antiTraits: ["time.expected_applications"],
+    note: "Principle/application champion unit: fixed historical principles can require applications the adopters did not expect."
+  },
+  {
+    id: "amar",
+    name: "Akhil Reed Amar",
+    kind: "person",
+    role: "subtype",
+    eligibleIdentityIds: ["public_meaning_originalist", "originalist"],
+    signatureTraits: ["time.public_meaning", "time.intratextualism", "method.holistic_constitution"],
+    antiTraits: [],
+    note: "Holistic/intratextual OPM champion: read clauses through recurring constitutional language, architecture, and the document as a whole."
+  },
+  {
+    id: "thomas_paulsen",
+    name: "Clarence Thomas / Michael Stokes Paulsen",
+    kind: "people",
+    role: "subtype",
+    eligibleIdentityIds: ["public_meaning_originalist", "originalist", "formalist"],
+    signatureTraits: ["time.fixation", "precedent.correctness_first", "precedent.correction"],
+    antiTraits: ["precedent.stability"],
+    note: "Correction-first/restorationist unit: entrenched precedent yields comparatively readily to the best account of original constitutional law."
+  },
+  {
+    id: "barrett",
+    name: "Amy Coney Barrett",
+    kind: "person",
+    role: "subtype",
+    eligibleIdentityIds: ["public_meaning_originalist", "originalist"],
+    signatureTraits: ["time.fixation", "precedent.stability", "precedent.settlement"],
+    antiTraits: ["precedent.correctness_first"],
+    note: "Precedent-accommodating OPM champion: original meaning remains authoritative while stare decisis and legal settlement retain substantial force."
+  },
+  {
+    id: "natural_law_originalists",
+    name: "Jeffrey Pojanowski / Kevin Walsh / J. Joel Alicea / Lee Strang",
+    kind: "people",
+    role: "subtype",
+    eligibleIdentityIds: ["public_meaning_originalist", "originalist", "natural_lawyer"],
+    signatureTraits: ["time.fixation", "source.objective_morality", "source.positive_law_settlement"],
+    antiTraits: ["time.living_content"],
+    note: "Natural-law-grounded originalist unit: classical natural law explains the authority and settlement function of promulgated original constitutional law."
+  },
+
+  // Adjacent constitutional-time champions
   {
     id: "david_strauss",
     name: "David Strauss",
@@ -659,36 +748,6 @@ globalThis.LAW_CHAMPIONS = Object.freeze([
     signatureTraits: ["time.living_content", "posture.countermajoritarian", "posture.rights_trumps"],
     antiTraits: [],
     note: "Recognizable judicial champion for a strong living-constitution/rights-protective profile, but not a theory-defining scholar."
-  },
-  {
-    id: "thomas",
-    name: "Clarence Thomas",
-    kind: "person",
-    role: "subtype",
-    eligibleIdentityIds: ["originalist", "public_meaning_originalist", "formalist"],
-    signatureTraits: ["time.fixation", "precedent.correctness_first", "precedent.correction", "separation.formalist"],
-    antiTraits: ["precedent.stability"],
-    note: "Champion for correctness-first / precedent-skeptical originalism; not the generic Originalist."
-  },
-  {
-    id: "barrett",
-    name: "Amy Coney Barrett",
-    kind: "person",
-    role: "subtype",
-    eligibleIdentityIds: ["originalist", "public_meaning_originalist"],
-    signatureTraits: ["time.fixation", "precedent.stability", "precedent.settlement"],
-    antiTraits: [],
-    note: "Useful champion for a more stare-decisis-sensitive originalist profile."
-  },
-  {
-    id: "paulsen",
-    name: "Michael Paulsen",
-    kind: "person",
-    role: "subtype",
-    eligibleIdentityIds: ["originalist"],
-    signatureTraits: ["time.fixation", "precedent.correctness_first"],
-    antiTraits: ["precedent.stability"],
-    note: "Theoretical champion for the claim that inconsistent precedent corrupts the underlying interpretive theory."
   },
   {
     id: "vermeule",
@@ -789,7 +848,7 @@ globalThis.LAW_CHAMPIONS = Object.freeze([
     name: "Gary Lawson",
     kind: "person",
     role: "primary",
-    eligibleIdentityIds: ["formalist", "originalist"],
+    eligibleIdentityIds: ["formalist"],
     signatureTraits: ["separation.formalist", "separation.nondelegation", "time.fixation"],
     antiTraits: ["separation.functionalist"],
     note: "Strong champion for structural formalism, especially when paired with originalism."

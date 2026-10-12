@@ -153,19 +153,21 @@ for (const id of [
   assert.ok(identityIds.has(id), `Missing major jurisprudential family ${id}`);
 }
 
-const originalistChildren = identities.filter((x) => x.parentId === "originalist").map((x) => x.id);
-for (const required of [
-  "public_meaning_originalist",
-  "original_intent_originalist",
-  "original_methods_originalist",
-  "framework_originalist"
-]) {
-  assert.ok(originalistChildren.includes(required), `Missing originalist subtype ${required}`);
-}
+const originalistChildren = identities.filter((x) => x.parentId === "originalist" && x.public !== false).map((x) => x.id);
+assert.deepEqual(
+  Array.from(originalistChildren).sort(),
+  ["original_intent_originalist", "public_meaning_originalist"],
+  "Public Originalist nouns should resolve only to Original Intent or Public Meaning; generic Originalist remains the fallback parent"
+);
+assert.equal(identities.find((x) => x.id === "original_methods_originalist").public, false,
+  "Original Methods is champion-level evidence, not a public noun");
+assert.equal(identities.find((x) => x.id === "framework_originalist").public, false,
+  "Framework Originalism is Balkin champion-level theory inside New OPM, not a public noun");
 
 for (const id of [
   "D-RLS1", "D-RLS2", "D-RLS3", "D-POS1", "D-NP1", "D-MAJ1", "D-MAJ2",
-  "D-INT1", "D-LP1", "D-NP4", "D-QC1", "D-SOC1", "D-PLU1", "D-OCO1"
+  "D-INT1", "D-LP1", "D-NP4", "D-QC1", "D-SOC1", "D-PLU1", "D-OCO1",
+  "D-ORI1", "D-ORI2", "D-ORI3", "D-ORI4", "D-ORI5"
 ]) {
   assert.ok(diagnosticIds.has(id), `Missing high-value diagnostic ${id}`);
 }
@@ -274,13 +276,13 @@ assert.ok(assembled.title.includes("Public-Meaning Originalist"),
   "Assembled title must preserve the real jurisprudential noun");
 assert.equal(assembled.phrase.id, "precedent_stability",
   "The strongest broad residual characteristic should become the phrase");
-assert.equal(assembled.modifier.id, "construction_room",
+assert.equal(assembled.modifier.id, "new_originalism",
   "A Solum-like construction-zone package should become the noun-conditioned twist");
 assert.equal(assembled.phrase.text, "who thinks being wrong for 50 years makes it right",
   "Precedent-stability phrase should use the approved critic-rib wording");
-assert.equal(assembled.modifier.text, "Elbow-room",
-  "Solum-like public-meaning originalism should expose the construction-zone twist");
-assert.ok(assembled.rankedTwists.some((x) => x.id === "construction_room"),
+assert.equal(assembled.modifier.text, "New",
+  "Constructionist public-meaning originalism should use the self-described New modifier");
+assert.ok(assembled.rankedTwists.some((x) => x.id === "new_originalism"),
   "Result debug data should expose why the noun-conditioned twist won");
 
 // Every approved phrase must be reachable as the strongest residual outcome under
@@ -373,33 +375,93 @@ assertClassifiedPhrase(
 );
 assertClassifiedPhrase("balancing", { ...phraseNeutral, cons: 100, form: 10 });
 
-// A Solum-like public-meaning + principle/construction respondent must remain
-// Public-Meaning Originalist rather than being auto-promoted to Balkin's
-// Framework Originalism merely for accepting a construction zone.
+// New Originalism is a modifier, not a separate noun.  Both Solum-like and
+// Balkin-like respondents remain Public-Meaning Originalists while champion
+// routing distinguishes their construction theories.
 const solumLike = classifier.classify(
-  { sorc:52, cons:72, time:92, prec:58, remed:50, post:50, separ:50, form:58 },
-  { ...reachabilityResponses, T7:3, T8:3, T10:3 },
+  { sorc:52, cons:72, time:92, prec:50, remed:50, post:50, separ:50, form:58 },
+  { ...reachabilityResponses, T7:3, T8:3, T10:3, T12:-3 },
   { "D-ORI3":3 }
 );
 assert.equal(solumLike.identity.id, "public_meaning_originalist",
-  "Strong historical fixation plus construction-zone evidence should remain Public-Meaning Originalist");
-assert.equal(solumLike.resultTitle.modifier.id, "construction_room",
-  "Solum-like construction should surface as the noun-conditioned twist");
+  "Construction must not create a separate Framework/New noun");
+assert.equal(solumLike.resultTitle.modifier.id, "new_originalism",
+  "Construction should surface publicly as New");
 assert.ok(solumLike.champions.some((x) => x.id === "solum"),
-  "Lawrence Solum should be available as the closest thinker for the clean Solum-like fixture");
+  "Lawrence Solum should remain available for a clean methodological New-OPM profile");
 
-// The Solum fix must not erase genuine Framework Originalism: a less historically
-// rigid fixed-framework profile with the same construction diagnostic should still
-// be able to resolve to Balkin's framework identity.
 const balkinLike = classifier.classify(
-  { sorc:50, cons:40, time:62, prec:55, remed:50, post:50, separ:50, form:45 },
-  { ...reachabilityResponses, T7:3, T8:3 },
+  { sorc:50, cons:50, time:72, prec:66, remed:50, post:50, separ:50, form:50 },
+  { ...reachabilityResponses, T7:3, T8:3, T12:3, P3:3 },
   { "D-ORI3":3 }
 );
-assert.equal(balkinLike.identity.id, "framework_originalist",
-  "Construction plus a less historically rigid Time profile should still reach Framework Originalism");
+assert.equal(balkinLike.identity.id, "public_meaning_originalist",
+  "Balkin-like construction should remain within the Public-Meaning noun");
+assert.equal(balkinLike.resultTitle.modifier.id, "new_originalism",
+  "Balkin-like construction should also display New");
 assert.ok(balkinLike.champions.some((x) => x.id === "balkin"),
-  "Jack Balkin should remain available for the clean Framework Originalist fixture");
+  "Jack Balkin should remain separately reachable at champion level");
+
+// Locked Originalist champion units must all be selectable and separately reachable.
+const lockedOriginalistUnits = [
+  "bork_berger", "alexander_kay_prakash", "whittington",
+  "solum", "barnett_bernick", "balkin",
+  "scalia_manning", "mcginnis_rappaport", "mcconnell_green", "amar",
+  "thomas_paulsen", "barrett", "natural_law_originalists"
+];
+for (const id of lockedOriginalistUnits) {
+  assert.ok(profileById[id] && profileById[id].selectable !== false,
+    `Locked Originalist champion unit ${id} must be selectable`);
+}
+assert.ok(!profileById.lawson.identityIds.includes("originalist"),
+  "Lawson is no longer an Originalist champion unit; fiduciary constitutionalism is handled outside this taxonomy");
+
+function assertOriginalistChampion(expectedId, identityId, scores, traits) {
+  const identity = identities.find((x) => x.id === identityId);
+  const resolved = classifier.resolveChampions(scores, traits, identity);
+  assert.equal(resolved.matches[0]?.profile?.id, expectedId,
+    `${expectedId} should be the leading ${identityId} champion, got ${resolved.matches[0]?.profile?.id}`);
+}
+const OBASE = { sorc:50, cons:50, time:90, prec:50, remed:50, post:50, separ:50, form:50 };
+assertOriginalistChampion("bork_berger", "original_intent_originalist",
+  { ...OBASE, time:94, post:84, form:78 },
+  { "time.original_intent":1, "time.no_construction":1, "posture.majoritarian":0.8 });
+assertOriginalistChampion("alexander_kay_prakash", "original_intent_originalist",
+  { ...OBASE, time:94 },
+  { "time.original_intent":1, "time.intent_as_meaning":1 });
+assertOriginalistChampion("whittington", "original_intent_originalist",
+  { ...OBASE, time:86 },
+  { "time.original_intent":1, "time.construction_zone":1 });
+assertOriginalistChampion("solum", "public_meaning_originalist",
+  { ...OBASE, time:90 },
+  { "time.public_meaning":1, "time.semantic_fixation":1, "time.construction_zone":1, "time.principle_originalism":1 });
+assertOriginalistChampion("barnett_bernick", "public_meaning_originalist",
+  { ...OBASE, time:90, post:18 },
+  { "time.public_meaning":1, "time.construction_zone":1, "posture.rights_trumps":1 });
+assertOriginalistChampion("balkin", "public_meaning_originalist",
+  { ...OBASE, time:72, prec:66 },
+  { "time.public_meaning":1, "time.construction_zone":1, "time.principle_originalism":1, "time.common_law_development":1 });
+assertOriginalistChampion("scalia_manning", "public_meaning_originalist",
+  { ...OBASE, cons:92, time:90, separ:82, form:92 },
+  { "time.public_meaning":1, "constraint.textual":1, "form.anti_discretion":1 });
+assertOriginalistChampion("mcginnis_rappaport", "public_meaning_originalist",
+  { ...OBASE, time:94, cons:86 },
+  { "time.original_methods":1, "time.fixation":1, "time.no_construction":1 });
+assertOriginalistChampion("mcconnell_green", "public_meaning_originalist",
+  { ...OBASE, time:88 },
+  { "time.public_meaning":1, "time.principle_originalism":1 });
+assertOriginalistChampion("amar", "public_meaning_originalist",
+  { ...OBASE, time:84, cons:78 },
+  { "time.public_meaning":1, "time.intratextualism":1, "method.holistic_constitution":1 });
+assertOriginalistChampion("thomas_paulsen", "public_meaning_originalist",
+  { ...OBASE, time:96, prec:10 },
+  { "time.fixation":1, "precedent.correctness_first":1, "precedent.correction":1 });
+assertOriginalistChampion("barrett", "public_meaning_originalist",
+  { ...OBASE, time:90, prec:82 },
+  { "time.fixation":1, "precedent.stability":1, "precedent.settlement":1 });
+assertOriginalistChampion("natural_law_originalists", "public_meaning_originalist",
+  { ...OBASE, sorc:14, time:88 },
+  { "time.public_meaning":0.8, "time.fixation":1, "source.objective_morality":1, "source.positive_law_settlement":1 });
 
 // Alexy and Bickel now live at champion/modifier granularity rather than consuming
 // their own public nouns.
@@ -427,14 +489,33 @@ assert.equal(bickelLike.resultTitle.modifier.id, "passive_virtues_minimalism",
 assert.ok(bickelLike.champions.some((x) => x.id === "bickel"),
   "Alexander Bickel should remain available among the closest thinkers");
 
-const archetypal = resultContent.assemble(
-  { identity: identities.find((x) => x.id === "dworkinian") },
+const fitIdentity = identities.find((x) => x.id === "dworkinian");
+const unmistakable = resultContent.assemble(
+  { identity: fitIdentity, identityScore: 0.91, identityAlternatives: [{ score: 0.73 }] },
   { sorc:20, cons:50, time:50, prec:50, remed:50, post:50, separ:50, form:50 },
   {},
   {}
 );
-assert.equal(archetypal.modifier.id, "archetypal",
-  "Every ordinary jurisprudential result needs an honest archetypal modifier fallback");
+assert.equal(unmistakable.modifier.id, "fit_unmistakable",
+  "Exceptionally clean noun fits should display Unmistakably a/an");
+
+const ordinaryFit = resultContent.assemble(
+  { identity: fitIdentity, identityScore: 0.77, identityAlternatives: [{ score: 0.70 }] },
+  { sorc:20, cons:50, time:50, prec:50, remed:50, post:50, separ:50, form:50 },
+  {},
+  {}
+);
+assert.equal(ordinaryFit.modifier, null,
+  "The deliberately narrow middle fit band should use no modifier");
+
+const weakFit = resultContent.assemble(
+  { identity: fitIdentity, identityScore: 0.69, identityAlternatives: [{ score: 0.67 }] },
+  { sorc:20, cons:50, time:50, prec:50, remed:50, post:50, separ:50, form:50 },
+  {},
+  {}
+);
+assert.equal(weakFit.modifier.id, "fit_some_kind",
+  "Weak nearest-neighbor fits should display Some kind of");
 
 // Approved wording is part of the product contract while this editorial pass is active.
 const phraseText = Object.fromEntries(resultContent.PHRASES.map((x) => [x.id, x.text]));
@@ -481,7 +562,7 @@ console.log("PASS: Natural Law remains first-class; Pound is specialist; Savigny
 console.log("PASS: sparse profiles ignore unmodeled axes and diagnostic specialists require evidence.");
 console.log("PASS: public titles split broad phrase ranking from noun-conditioned twist selection.");
 console.log("PASS: all 18 approved phrases are reachable and use the approved critic-rib wording.");
-console.log("PASS: Solum-like construction-zone evidence surfaces as a modifier twist rather than a fake third-place axis.");
+console.log("PASS: Originalism resolves to OPM/OI nouns, New construction modifier, and the locked 13 champion units.");
 console.log("PASS: Alexyan and Bickelian are champion/modifier-level distinctions, not public nouns.");
 console.log("PASS: Formalist and Functionalist public labels remain unchanged.");
-console.log("PASS: ordinary results always receive a modifier via meaningful twist or archetypal fallback.");
+console.log("PASS: generic fit modifiers use Unmistakably / blank / Some kind of, with substantive modifiers taking priority.");

@@ -1,5 +1,7 @@
 # LAWvalues Result Wording Draft
 
+> **Modifier architecture note (2026-10-12):** generic fallback wording is now fit-based: **Unmistakably a/an**, blank, or **Some kind of**. Originalism uses **New** as its substantive constructionist modifier. The older `Textbook`/archetypal and `Elbow-room` examples below are retained only as editorial history until the broader modifier rewrite.
+
 This is the current live editorial surface for the humorous parts of the public result title.
 
 The grammar is:

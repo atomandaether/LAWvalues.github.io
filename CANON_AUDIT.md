@@ -1,5 +1,7 @@
 \nImplementation note: this canon is now classified through sparse thinker signatures and adaptive diagnostics rather than full eight-axis coordinates. See `MATCHING_ARCHITECTURE.md`.\n# LAWvalues Canon Audit — Revised Identity Map
 
+> **Originalism implementation note (2026-10-12):** `ORIGINALISM_ENGINE.md` supersedes older Originalism taxonomy in this audit. Public Originalist nouns are OPM, OI, and generic Originalist fallback; Framework and Original Methods are no longer public nouns.
+
 This audit governs the **middle identity** in the result title.
 
 > **[modifier] [best real jurisprudential identity] [phrase]**

@@ -1,5 +1,7 @@
 \nImplementation note: the live sparse-profile rules are in `profiles.js` and `classification.js`; see `MATCHING_ARCHITECTURE.md` for the family → specialist → further-reading hierarchy and false-match safeguards.\n# LAWvalues Champion Matrix and Identity Resolution
 
+> **Originalism implementation note (2026-10-12):** `ORIGINALISM_ENGINE.md` now governs Originalist nouns, modifiers, champion units, and adaptive routing. Where older examples below still mention Framework or Original-Methods Originalist as middle identities, treat them as historical design notes; both are now champion-level/internal theories.
+
 This document answers a different question from the axis definitions:
 
 > **Once LAWvalues knows the respondent's best real jurisprudential identity, which actual thinker, judge, court, or tradition is the best exemplar of this particular version of it?**
