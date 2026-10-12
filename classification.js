@@ -477,9 +477,36 @@
     return tags.reduce((sum, trait) => sum + (traits[trait] || 0), 0) / tags.length;
   }
 
+  function identityLineageIds(identityId) {
+    const catalog = Array.isArray(global.LAW_RESULT_IDENTITIES) ? global.LAW_RESULT_IDENTITIES : [];
+    const byId = Object.fromEntries(catalog.map((item) => [item.id, item]));
+    const ids = [];
+    const seen = new Set();
+    let cursor = byId[identityId] || null;
+    while (cursor && !seen.has(cursor.id)) {
+      ids.push(cursor.id);
+      seen.add(cursor.id);
+      cursor = cursor.parentId ? byId[cursor.parentId] || null : null;
+    }
+    return ids;
+  }
+
+  function championIdentityCompatibility(profile, identity) {
+    const lineage = identityLineageIds(identity?.id);
+    const primary = new Set(profile.identityIds || []);
+    const crossCutting = new Set(profile.crossCuttingIdentityIds || []);
+
+    if (lineage.some((id) => primary.has(id))) return "primary";
+    if (lineage.some((id) => crossCutting.has(id))) return "cross-cutting";
+    return "incompatible";
+  }
+
   function scoreProfile(profile, scores, traits, identity) {
     if (profile.selectable === false || profile.tier === "lineage") return null;
     if (!requiredTraitsSatisfied(profile, traits)) return null;
+
+    const compatibility = championIdentityCompatibility(profile, identity);
+    if (compatibility === "incompatible") return null;
 
     for (const [axisId, minimum] of Object.entries(profile.minAxisSalience || {})) {
       if (salience(scores, axisId) < Number(minimum)) return null;
@@ -488,8 +515,13 @@
     const { fit, shape, modeledAxes } = axisProfileFit(profile, scores);
     const traitFit = profileTraitFit(profile, traits);
     const anti = Math.max(0, ...(profile.antiTraits || []).map((trait) => traits[trait] || 0));
-    const compatible = (profile.identityIds || []).includes(identity.id);
-    const identityBonus = compatible ? 0.09 : ((profile.identityIds || []).length === 0 ? 0 : -0.04);
+    // The noun is already resolved from the respondent's primary jurisprudential
+    // fixation. Champion matching is then conditioned on that noun: a thinker
+    // who directly exemplifies it receives the full compatibility bonus, while
+    // a genuinely cross-cutting but less canonical fit remains eligible at a
+    // smaller bonus. Everyone else is excluded rather than rescued by vector
+    // proximity.
+    const identityBonus = compatibility === "primary" ? 0.09 : 0.025;
 
     let score;
     if (modeledAxes === 0) {
@@ -505,20 +537,10 @@
     const profiles = Array.isArray(global.LAW_PROFILES) ? global.LAW_PROFILES : [];
     const normal = [];
     const catchalls = [];
-    const originalistIdentity = ["originalist", "public_meaning_originalist", "original_intent_originalist"].includes(identity.id);
-    const sourceIdentity = ["positivist", "natural_lawyer", "interpretivist", "fullerian", "nonpositivist"].includes(identity.id);
 
     for (const profile of profiles) {
-      if (originalistIdentity) {
-        const ids = profile.identityIds || [];
-        const compatibleOriginalist =
-          ids.includes(identity.id) ||
-          (identity.id !== "originalist" && ids.includes("originalist"));
-        if (!compatibleOriginalist) continue;
-      }
-      if (sourceIdentity && !(profile.identityIds || []).includes(identity.id)) continue;
       if (profile.tier === "catchall") {
-        catchalls.push(profile);
+        if (championIdentityCompatibility(profile, identity) !== "incompatible") catchalls.push(profile);
         continue;
       }
       const score = scoreProfile(profile, scores, traits, identity);
@@ -866,6 +888,7 @@
     detectMechanicalPattern,
     detectBroadIncoherence,
     resolveIdentity,
+    championIdentityCompatibility,
     resolveChampions,
     nextDiagnostic,
     classify
