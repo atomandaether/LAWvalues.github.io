@@ -150,8 +150,8 @@ globalThis.LAW_PROFILES = Object.freeze([
       form: { target: 98, weight: 1 },
       post: { target: 6, weight: 0.95 }
     },
-    signatureTraits: ["constraint.textual", "form.anti_discretion", "posture.rights_trumps"],
-    requiredTraits: [],
+    signatureTraits: ["constraint.textual", "form.anti_discretion", "posture.rights_trumps", "method.categorical_textual_rights"],
+    requiredTraits: [{ all: ["method.categorical_textual_rights"], min: 0.5 }],
     antiTraits: ["form.proportionality", "constraint.purpose"],
     description: "Black-like textualism: unusually categorical, text-centered judging paired with aggressive enforcement of expressly protected rights and deep skepticism of balancing.",
     related: ["Hugo Black", "Antonin Scalia"]
