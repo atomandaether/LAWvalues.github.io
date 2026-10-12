@@ -48,7 +48,7 @@ const expectedPhraseIds = [
   "majoritarian", "countermajoritarian", "separation_formal", "separation_functional",
   "rules", "anti_discretion", "balancing"
 ];
-assert.deepEqual(resultContent.PHRASE_FEATURES.map((x) => x.id), expectedPhraseIds,
+assert.deepEqual(Array.from(resultContent.PHRASE_FEATURES, (x) => x.id), expectedPhraseIds,
   "Phrase pool must stay limited to the approved broad, meaningfully supported outcomes");
 for (const removed of [
   "law_runs_out", "practice_authority", "principles_as_law", "contextual_text",
@@ -375,6 +375,19 @@ assert.equal(solumLike.resultTitle.modifier.id, "construction_room",
   "Solum-like construction should surface as the noun-conditioned twist");
 assert.ok(solumLike.champions.some((x) => x.id === "solum"),
   "Lawrence Solum should be available as the closest thinker for the clean Solum-like fixture");
+
+// The Solum fix must not erase genuine Framework Originalism: a less historically
+// rigid fixed-framework profile with the same construction diagnostic should still
+// be able to resolve to Balkin's framework identity.
+const balkinLike = classifier.classify(
+  { sorc:50, cons:40, time:62, prec:55, remed:50, post:50, separ:50, form:45 },
+  { ...reachabilityResponses, T7:3, T8:3 },
+  { "D-ORI3":3 }
+);
+assert.equal(balkinLike.identity.id, "framework_originalist",
+  "Construction plus a less historically rigid Time profile should still reach Framework Originalism");
+assert.ok(balkinLike.champions.some((x) => x.id === "balkin"),
+  "Jack Balkin should remain available for the clean Framework Originalist fixture");
 
 // Approved wording is part of the product contract while this editorial pass is active.
 const phraseText = Object.fromEntries(resultContent.PHRASES.map((x) => [x.id, x.text]));
