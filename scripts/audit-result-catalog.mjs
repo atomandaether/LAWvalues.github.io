@@ -181,6 +181,14 @@ assert.equal(identities.find((x) => x.id === "legal_process_theorist").label, "L
   "Legal Process should use a jurist identity rather than a generic Theorist suffix");
 assert.equal(identities.find((x) => x.id === "proportionalist").label, "Proportionalist",
   "Structured proportionality should retain the established Proportionalist label");
+assert.equal(identities.find((x) => x.id === "alexyan").public, false,
+  "Alexyan should remain internal/legacy; public Alexy-like results use Proportionalist plus a modifier twist");
+assert.equal(identities.find((x) => x.id === "bickelian").public, false,
+  "Bickelian should remain internal/legacy; public Bickel-like results use Judicial Minimalist plus a modifier twist");
+assert.equal(identities.find((x) => x.id === "formalist").label, "Formalist",
+  "Keep the public noun Formalist exactly as-is");
+assert.equal(identities.find((x) => x.id === "functionalist").label, "Functionalist",
+  "Keep the public noun Functionalist exactly as-is");
 assert.equal(identities.find((x) => x.id === "interpretivist").public, false,
   "Interpretivist should remain an internal parent, not a competing public noun");
 assert.equal(identities.find((x) => x.id === "nonpositivist").broadFallback, true,
@@ -193,6 +201,10 @@ assert.equal(profileById.greenberg.tier, "specialist",
 assert.equal(profileById.pound.tier, "specialist", "Pound should be a diagnosable sociological-jurisprudence specialist");
 assert.equal(profileById.savigny.tier, "lineage", "Savigny should be Historical School lineage/further reading");
 assert.equal(profileById.oconnor.tier, "catchall", "O'Connor should be the low-theory/contextual catch-all");
+assert.deepEqual(Array.from(profileById.alexy.identityIds), ["proportionalist"],
+  "Robert Alexy should match through the public Proportionalist noun, not Alexyan");
+assert.deepEqual(Array.from(profileById.bickel.identityIds), ["minimalist"],
+  "Alexander Bickel should match through the public Judicial Minimalist noun, not Bickelian");
 assert.ok(!profiles.some((x) => /ginsburg/i.test(x.name)), "Ginsburg should not be forced into the main jurisprudential pool");
 
 // Sparse means unmodeled axes stay absent rather than silently becoming 50.
@@ -389,6 +401,41 @@ assert.equal(balkinLike.identity.id, "framework_originalist",
 assert.ok(balkinLike.champions.some((x) => x.id === "balkin"),
   "Jack Balkin should remain available for the clean Framework Originalist fixture");
 
+// Alexy and Bickel now live at champion/modifier granularity rather than consuming
+// their own public nouns.
+const alexyLike = classifier.classify(
+  { sorc:20, cons:50, time:50, prec:50, remed:50, post:45, separ:50, form:8 },
+  reachabilityResponses,
+  { "D-PROP1":3 }
+);
+assert.equal(alexyLike.identity.id, "proportionalist",
+  "Alexy-like evidence should resolve publicly to Proportionalist");
+assert.equal(alexyLike.resultTitle.modifier.id, "nonpositivist_proportionality",
+  "Alexy-like nonpositivist proportionality should surface as the modifier twist");
+assert.ok(alexyLike.champions.some((x) => x.id === "alexy"),
+  "Robert Alexy should remain available as the closest thinker");
+
+const bickelLike = classifier.classify(
+  { sorc:50, cons:50, time:50, prec:60, remed:82, post:67, separ:50, form:50 },
+  { ...reachabilityResponses, O7:3 },
+  {}
+);
+assert.equal(bickelLike.identity.id, "minimalist",
+  "Bickel-like passive-virtues evidence should resolve publicly to Judicial Minimalist");
+assert.equal(bickelLike.resultTitle.modifier.id, "passive_virtues_minimalism",
+  "Bickel-like avoidance should surface as the modifier twist");
+assert.ok(bickelLike.champions.some((x) => x.id === "bickel"),
+  "Alexander Bickel should remain available among the closest thinkers");
+
+const archetypal = resultContent.assemble(
+  { identity: identities.find((x) => x.id === "dworkinian") },
+  { sorc:20, cons:50, time:50, prec:50, remed:50, post:50, separ:50, form:50 },
+  {},
+  {}
+);
+assert.equal(archetypal.modifier.id, "archetypal",
+  "Every ordinary jurisprudential result needs an honest archetypal modifier fallback");
+
 // Approved wording is part of the product contract while this editorial pass is active.
 const phraseText = Object.fromEntries(resultContent.PHRASES.map((x) => [x.id, x.text]));
 assert.equal(phraseText.source_positive, "who thinks evil just needs the right paperwork");
@@ -435,3 +482,6 @@ console.log("PASS: sparse profiles ignore unmodeled axes and diagnostic speciali
 console.log("PASS: public titles split broad phrase ranking from noun-conditioned twist selection.");
 console.log("PASS: all 18 approved phrases are reachable and use the approved critic-rib wording.");
 console.log("PASS: Solum-like construction-zone evidence surfaces as a modifier twist rather than a fake third-place axis.");
+console.log("PASS: Alexyan and Bickelian are champion/modifier-level distinctions, not public nouns.");
+console.log("PASS: Formalist and Functionalist public labels remain unchanged.");
+console.log("PASS: ordinary results always receive a modifier via meaningful twist or archetypal fallback.");
