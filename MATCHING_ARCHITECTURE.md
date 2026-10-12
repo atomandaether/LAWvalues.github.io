@@ -8,6 +8,26 @@ The eight public axes remain the instrument. Jurisprudential identities and thin
 
 ## Sparse signatures, not eight-number caricatures
 
+### Noun-conditioned champion compatibility
+
+The public noun is resolved first from the respondent's **primary jurisprudential fixation**. Champion matching then uses the respondent's whole profile, but a champion may appear only when the winning noun is jurisprudentially compatible.
+
+Profiles may declare:
+
+- **primary compatibility** in `identityIds`: the thinker directly exemplifies that noun. This receives the full champion compatibility bonus.
+- **cross-cutting compatibility** in `crossCuttingIdentityIds`: the thinker can honestly sit beneath that noun when the respondent's full profile is unusually close, but the noun is not the thinker's principal theoretical identity. This receives a smaller compatibility bonus.
+- anything else is **incompatible** and is excluded outright. Axis proximity cannot rescue an intellectually misleading thinker/noun pairing.
+
+Public child identities inherit compatibility from their public parent where appropriate. Thus a champion eligible for generic Originalism can remain eligible beneath Public-Meaning or Original-Intent Originalism, while an unrelated thinker cannot leak into those results.
+
+Examples:
+- Hugo Black is primarily **Textualist**, cross-cutting-compatible with **Formalist**, and incompatible with **Public-Meaning Originalist**.
+- Scalia/Manning are primarily **Originalist** champions while remaining cross-cutting-compatible with **Textualist** and **Formalist**.
+- Stephen Breyer is primarily **Purposivist** while remaining cross-cutting-compatible with **Pragmatist** and **Functionalist**.
+- Benjamin Cardozo is primarily **Pragmatist** while remaining cross-cutting-compatible with **Common-Law Constitutionalist**.
+
+This keeps the causal direction explicit: **respondent → strongest jurisprudential claim → compatible noun → best whole-profile champion**. The system never chooses a noun merely to reach a preferred champion.
+
 A thinker is not assigned a position on every axis. Each selectable thinker has:
 
 - **modeled axes**: only the dimensions that materially characterize the thinker;
