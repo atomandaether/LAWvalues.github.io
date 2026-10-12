@@ -12,71 +12,112 @@
     lineage    - never wins; further reading only
 */
 globalThis.LAW_PROFILES = Object.freeze([
+  // Locked source-of-law champion units.
   {
     id: "hart",
     name: "H. L. A. Hart",
     tier: "main",
-    identityIds: ["positivist", "inclusive_positivist"],
+    identityIds: ["positivist"],
     axisSignature: { sorc: { target: 92, weight: 1 } },
     signatureTraits: ["source.social_practice", "source.law_runs_out"],
     requiredTraits: [{ any: ["source.social_practice", "source.law_runs_out"], min: 0.35 }],
-    antiTraits: ["source.objective_morality"],
-    description: "A strong fit when recognized social sources make law and genuinely novel cases can leave judges with discretion to make new law.",
-    related: ["Joseph Raz", "Hans Kelsen", "John Austin"]
+    antiTraits: ["source.objective_morality", "source.normative_positivism"],
+    description: "Baseline modern positivism: recognized social sources make law, and open texture can leave genuine hard-case discretion.",
+    related: ["Jules Coleman", "Wil Waluchow", "Joseph Raz", "Hans Kelsen"]
   },
   {
-    id: "raz",
-    name: "Joseph Raz",
+    id: "coleman_waluchow_kramer",
+    name: "Jules Coleman / Wil Waluchow / Matthew Kramer",
     tier: "specialist",
-    identityIds: ["exclusive_positivist", "positivist"],
-    axisSignature: { sorc: { target: 97, weight: 1 } },
-    signatureTraits: ["source.source_thesis"],
-    requiredTraits: [{ all: ["source.source_thesis"], min: 0.45 }],
-    antiTraits: ["source.morality_incorporated", "source.objective_morality"],
-    description: "The more source-exclusive positivist fit: legal validity turns on source-based criteria rather than moral merit.",
-    related: ["H. L. A. Hart", "Hans Kelsen"]
+    identityIds: ["positivist"],
+    axisSignature: { sorc: { target: 94, weight: 1 } },
+    signatureTraits: ["source.morality_incorporated", "source.positive_sources"],
+    requiredTraits: [{ all: ["source.morality_incorporated"], min: 0.5 }],
+    antiTraits: ["source.source_thesis"],
+    description: "Inclusive Positivism: a source-grounded legal system can itself make genuine moral correctness a criterion of legal validity.",
+    related: ["H. L. A. Hart", "Kenneth Einar Himma"]
   },
   {
-    id: "dworkin",
-    name: "Ronald Dworkin",
+    id: "raz_shapiro_marmor",
+    name: "Joseph Raz / Scott Shapiro / Andrei Marmor",
+    tier: "specialist",
+    identityIds: ["positivist"],
+    axisSignature: { sorc: { target: 97, weight: 1 } },
+    signatureTraits: ["source.source_thesis", "source.positive_sources"],
+    requiredTraits: [{ all: ["source.source_thesis"], min: 0.5 }],
+    antiTraits: ["source.morality_incorporated", "source.objective_morality"],
+    description: "Exclusive Positivism: legal validity must remain identifiable from social/source facts without making moral merits themselves the test of what law exists.",
+    related: ["Joseph Raz", "Scott Shapiro", "Andrei Marmor", "Leslie Green"]
+  },
+  {
+    id: "campbell_waldron_schauer",
+    name: "Tom Campbell / Jeremy Waldron / Frederick Schauer",
+    tier: "specialist",
+    identityIds: ["positivist"],
+    axisSignature: {
+      sorc: { target: 94, weight: 0.75 },
+      post: { target: 78, weight: 0.45 },
+      form: { target: 82, weight: 0.45 }
+    },
+    signatureTraits: ["source.normative_positivism", "form.anti_discretion"],
+    requiredTraits: [{ all: ["source.normative_positivism"], min: 0.5 }],
+    antiTraits: ["source.objective_morality"],
+    description: "Normative/Ethical Positivism: source-based legality is not just a conceptual fact but a desirable institutional discipline that limits contested merits-based judicial lawmaking.",
+    related: ["Tom Campbell", "Jeremy Waldron", "Frederick Schauer"]
+  },
+  {
+    id: "dworkin_stavropoulos",
+    name: "Ronald Dworkin / Nicos Stavropoulos",
     tier: "main",
-    identityIds: ["dworkinian", "interpretivist"],
+    identityIds: ["interpretivist"],
     axisSignature: {
       sorc: { target: 8, weight: 1 },
-      post: { target: 22, weight: 0.45 }
+      post: { target: 24, weight: 0.35 }
     },
     signatureTraits: ["source.principles_are_law", "source.fit_and_justification", "source.right_answer"],
     requiredTraits: [{ any: ["source.principles_are_law", "source.fit_and_justification"], min: 0.45 }],
     antiTraits: ["source.law_runs_out"],
-    description: "A fit when legal principles are themselves part of law and hard cases call for the interpretation that best fits and justifies legal practice.",
-    related: ["Lon Fuller", "Robert Alexy"]
+    description: "Central legal Interpretivism: institutional practice bears on legal rights through the principles that best fit and justify that practice.",
+    related: ["Ronald Dworkin", "Nicos Stavropoulos", "T.R.S. Allan"]
   },
   {
     id: "greenberg",
     name: "Mark Greenberg",
     tier: "specialist",
-    identityIds: ["moral_impact_theorist", "nonpositivist"],
+    identityIds: ["nonpositivist"],
     axisSignature: { sorc: { target: 8, weight: 0.8 } },
     signatureTraits: ["source.moral_impact", "source.one_system"],
     requiredTraits: [{ all: ["source.moral_impact"], min: 0.5 }],
-    antiTraits: ["source.source_thesis", "source.fit_and_justification"],
-    description: "A Moral Impact Theory fit: legal institutions change people's moral rights and obligations, and those resulting moral obligations constitute the law rather than merely sitting beside a separate source-based legal system.",
-    related: ["Scott Hershovitz", "Ronald Dworkin", "John Finnis"]
+    antiTraits: ["source.source_thesis", "source.fit_and_justification", "source.moral_practice"],
+    description: "Moral Impact Theory: legal institutions change people's moral rights and obligations, and those resulting moral obligations constitute law.",
+    related: ["Scott Hershovitz", "Ronald Dworkin"]
   },
   {
-    id: "finnis",
-    name: "John Finnis",
+    id: "hershovitz",
+    name: "Scott Hershovitz",
+    tier: "specialist",
+    identityIds: ["nonpositivist"],
+    axisSignature: { sorc: { target: 8, weight: 0.8 } },
+    signatureTraits: ["source.one_system", "source.moral_practice"],
+    requiredTraits: [{ all: ["source.moral_practice"], min: 0.5 }],
+    antiTraits: ["source.source_thesis", "source.moral_impact"],
+    description: "Moral-practice nonpositivism: courtroom legal claims ultimately concern genuine moral rights and responsibilities rather than a separate source-generated domain of obligation.",
+    related: ["Mark Greenberg", "Ronald Dworkin"]
+  },
+  {
+    id: "finnis_murphy_george",
+    name: "John Finnis / Mark Murphy / Robert P. George",
     tier: "main",
     identityIds: ["natural_lawyer"],
     axisSignature: { sorc: { target: 6, weight: 1 } },
     signatureTraits: ["source.objective_morality", "source.positive_law_settlement"],
     requiredTraits: [
       { all: ["source.objective_morality"], min: 0.35 },
-      { any: ["source.positive_law_settlement", "source.objective_morality"], min: 0.45 }
+      { all: ["source.positive_law_settlement"], min: 0.35 }
     ],
     antiTraits: ["source.principles_are_law"],
-    description: "The central modern natural-law fit: objective practical morality matters to law, while positive law still performs an important settlement and coordination function.",
-    related: ["Thomas Aquinas", "William Blackstone", "Jeffrey Pojanowski & Kevin Walsh"]
+    description: "Central modern Natural Law: objective practical morality matters to law, while positive law retains an important settlement, coordination, and institutional-authority function.",
+    related: ["Thomas Aquinas", "William Blackstone", "Jonathan Crowe"]
   },
   {
     id: "fuller",
@@ -87,20 +128,20 @@ globalThis.LAW_PROFILES = Object.freeze([
     signatureTraits: ["source.internal_legality"],
     requiredTraits: [{ all: ["source.internal_legality"], min: 0.5 }],
     antiTraits: [],
-    description: "A specialist fit when publicity, prospectivity, clarity, consistency, and congruent administration are treated as constitutive virtues of legality itself.",
-    related: ["H. L. A. Hart", "Ronald Dworkin"]
+    description: "Fullerian legality: publicity, prospectivity, clarity, consistency, stability, possibility of compliance, and congruent administration are constitutive virtues of law.",
+    related: ["H. L. A. Hart", "David Dyzenhaus"]
   },
   {
-    id: "radbruch",
-    name: "Gustav Radbruch",
+    id: "radbruch_soper",
+    name: "Gustav Radbruch / Philip Soper",
     tier: "specialist",
-    identityIds: ["radbruchian"],
-    axisSignature: { sorc: { target: 25, weight: 0.75 } },
+    identityIds: ["nonpositivist"],
+    axisSignature: { sorc: { target: 24, weight: 0.75 } },
     signatureTraits: ["source.extreme_injustice"],
     requiredTraits: [{ all: ["source.extreme_injustice"], min: 0.5 }],
-    antiTraits: ["source.every_injustice_invalidates"],
-    description: "A narrow non-positivist fit for the view that positive law ordinarily governs but sufficiently extreme injustice can destroy its claim to legal validity.",
-    related: ["Lon Fuller", "John Finnis"]
+    antiTraits: ["source.every_injustice_invalidates", "source.objective_morality"],
+    description: "Extreme-Injustice nonpositivism: ordinary injustice does not necessarily erase legal status, but sufficiently grave injustice can defeat a purported norm's claim to be law.",
+    related: ["Gustav Radbruch", "Philip Soper", "Robert Alexy"]
   },
   {
     id: "hugo_black",
