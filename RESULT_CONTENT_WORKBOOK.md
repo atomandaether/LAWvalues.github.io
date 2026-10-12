@@ -12,7 +12,7 @@ Example structure only:
 
 > **Precedent-preserving Originalist who lets democracy decide**
 
-The middle slot is the **best real jurisprudential nearest neighbor we can honestly justify**—including established eponymous labels such as Dworkinian, Thayerian, or Waldronian when the evidence is genuinely that specific. The noun is the person's #1 characteristic. After its coverage is spent, every remaining axis or question-level trait competes in one pool. The strongest residual feature gets the longer phrase (#2); after spending that information, the next genuinely different feature gets the compact modifier (#3). The funny wording is allowed to be a slightly unfair critic's caricature because the backend feature being scored remains neutral and precise.
+The middle slot is the **best real jurisprudential nearest neighbor we can honestly justify**—including established eponymous labels such as Dworkinian, Thayerian, or Waldronian when the evidence is genuinely that specific. The noun is the person's #1 characteristic. After its coverage is spent, every remaining **sufficiently supported** axis or question-level trait competes in one pool. The strongest residual feature gets the longer phrase (#2); after spending that information, the next genuinely different feature gets the compact modifier (#3). Question-level quirks are not enough by themselves: narrow features need breadth from several existing core items or independent corroboration from their matching axis/diagnostic. The funny wording is allowed to be a slightly unfair critic's caricature because the backend feature being scored remains neutral and precise.
 
 ---
 

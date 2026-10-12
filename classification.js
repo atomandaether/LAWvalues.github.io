@@ -152,6 +152,70 @@
     target[trait] = Math.max(Number(target[trait]) || 0, clamp01(value));
   }
 
+  function buildTraitEvidence(responses = {}, diagnosticResponses = {}) {
+    const evidence = {};
+
+    const ensure = (trait) => {
+      if (!evidence[trait]) {
+        evidence[trait] = {
+          coreAvailable: 0,
+          coreAnswered: [],
+          coreSupporting: [],
+          coreStrong: [],
+          coreSupport: {},
+          coreSupportUnits: 0,
+          diagnosticSupporting: [],
+          diagnosticStrong: [],
+          diagnosticSupport: {},
+          diagnosticSupportUnits: 0
+        };
+      }
+      return evidence[trait];
+    };
+
+    for (const [trait, rules] of Object.entries(CORE_TRAIT_RULES)) {
+      const item = ensure(trait);
+      const available = new Set();
+      const answered = new Set();
+      const supportByQuestion = new Map();
+
+      for (const [id, direction] of rules) {
+        available.add(id);
+        if (!Object.prototype.hasOwnProperty.call(responses || {}, id) || responses[id] === null) continue;
+        answered.add(id);
+        const support = responseSupport(responses, id, direction);
+        supportByQuestion.set(id, Math.max(supportByQuestion.get(id) || 0, support));
+      }
+
+      item.coreAvailable = available.size;
+      item.coreAnswered = [...answered];
+      item.coreSupporting = [...supportByQuestion.entries()].filter(([, value]) => value > 0).map(([id]) => id);
+      item.coreStrong = [...supportByQuestion.entries()].filter(([, value]) => value >= (2 / 3)).map(([id]) => id);
+      item.coreSupport = Object.fromEntries(supportByQuestion);
+      item.coreSupportUnits = [...supportByQuestion.values()].reduce((sum, value) => sum + value, 0);
+    }
+
+    const byId = Object.fromEntries(diagnosticBank().map((item) => [item.id, item]));
+    for (const [id, raw] of Object.entries(diagnosticResponses || {})) {
+      const diagnostic = byId[id];
+      if (!diagnostic || raw === null) continue;
+      const value = Number(raw);
+      if (!Number.isFinite(value) || value === 0) continue;
+
+      const magnitude = Math.min(1, Math.abs(value) / 3);
+      const tags = value > 0 ? diagnostic.agreeTraits : diagnostic.disagreeTraits;
+      for (const trait of tags || []) {
+        const item = ensure(trait);
+        if (!item.diagnosticSupporting.includes(id)) item.diagnosticSupporting.push(id);
+        if (magnitude >= (2 / 3) && !item.diagnosticStrong.includes(id)) item.diagnosticStrong.push(id);
+        item.diagnosticSupport[id] = Math.max(Number(item.diagnosticSupport[id]) || 0, magnitude);
+        item.diagnosticSupportUnits = Object.values(item.diagnosticSupport).reduce((sum, support) => sum + support, 0);
+      }
+    }
+
+    return evidence;
+  }
+
   function buildCoreTraits(scores, responses) {
     const traits = {};
     for (const [trait, rules] of Object.entries(CORE_TRAIT_RULES)) {
@@ -495,9 +559,9 @@
     return sourceContradiction && formContradiction;
   }
 
-  function finalizeResult(result, scores, traits) {
+  function finalizeResult(result, scores, traits, traitEvidence) {
     if (global.LAW_RESULT_CONTENT?.assemble) {
-      result.resultTitle = global.LAW_RESULT_CONTENT.assemble(result, scores, traits);
+      result.resultTitle = global.LAW_RESULT_CONTENT.assemble(result, scores, traits, traitEvidence);
     }
     return result;
   }
@@ -582,6 +646,7 @@
   function classify(scored, responses = {}, diagnosticResponses = {}, meta = {}) {
     const scores = Object.fromEntries(AXIS_IDS.map((id) => [id, axisValue(scored, id)]));
     const traits = buildTraits(scores, responses, diagnosticResponses);
+    const traitEvidence = buildTraitEvidence(responses, diagnosticResponses);
 
     const mechanical = detectMechanicalPattern(responses, meta);
     const qualityCheckFailed =
@@ -602,7 +667,7 @@
         diagnosticCount: Object.keys(diagnosticResponses || {}).length,
         responseQuality: mechanical || "attention-check-failed",
         calibration: "theory-derived"
-      }, scores, traits);
+      }, scores, traits, traitEvidence);
     }
 
     if (detectBroadIncoherence(responses)) {
@@ -617,7 +682,7 @@
         diagnosticCount: Object.keys(diagnosticResponses || {}).length,
         responseQuality: "broad-incoherence",
         calibration: "theory-derived"
-      }, scores, traits);
+      }, scores, traits, traitEvidence);
     }
 
     const identityResolution = resolveIdentity(scores, traits);
@@ -639,7 +704,7 @@
       traits,
       diagnosticCount: Object.keys(diagnosticResponses || {}).length,
       calibration: "theory-derived"
-    }, scores, traits);
+    }, scores, traits, traitEvidence);
   }
 
   global.LAW_PROFILE_EXTRA_DIAGNOSTICS = EXTRA_DIAGNOSTICS;
@@ -648,6 +713,7 @@
     AXIS_IDS,
     diagnosticBank,
     buildTraits,
+    buildTraitEvidence,
     detectMechanicalPattern,
     detectBroadIncoherence,
     resolveIdentity,

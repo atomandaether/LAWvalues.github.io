@@ -95,7 +95,11 @@ The router stops when no remaining diagnostic is materially useful or after seve
 
 ## Public result grammar
 
-After identity selection, the public result is assembled as **[modifier] [real jurisprudential identity] [phrase]**. The identity is the respondent's nearest jurisprudential neighbor and spends the information it already communicates. All remaining axis tendencies and question-level traits enter one common residual-feature ranking. The **strongest** unspent feature gets the more expressive trailing phrase (the respondent's #2 characteristic); that feature is then spent, and the strongest genuinely different remaining feature gets the compact modifier (#3). The public jokes do not drive scoring: each is merely a critic-flavored rendering of a neutral internal feature. High-value cross-cutting combinations can add an explanatory bridge paragraph. Closest-thinker matching remains a later, separate step.
+After identity selection, the public result is assembled as **[modifier] [real jurisprudential identity] [phrase]**. The identity is the respondent's nearest jurisprudential neighbor and spends the information it already communicates. All remaining axis tendencies and sufficiently supported question-level traits enter one common residual-feature ranking. The **strongest** unspent feature gets the more expressive trailing phrase (the respondent's #2 characteristic); that feature is then spent, and the strongest genuinely different remaining feature gets the compact modifier (#3).
+
+Residual features are confidence-weighted by breadth. An eight-axis tendency is broad by construction. A narrower subtype cannot become a headline because one memorable question happened to receive a strong answer: it must either have a genuinely broad direct pattern, or be corroborated by its corresponding axis, or receive support from an already-existing adaptive diagnostic that was only asked because the broad profile made that distinction live. Features that the current 93-item bank cannot support at that level remain available internally for identity/champion matching but are excluded from modifier/phrase selection.
+
+The public jokes do not drive scoring: each is merely a critic-flavored rendering of a neutral internal feature. High-value cross-cutting combinations can add an explanatory bridge paragraph. Closest-thinker matching remains a later, separate step.
 
 ## False-match rule
 
