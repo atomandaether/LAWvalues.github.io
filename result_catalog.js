@@ -138,7 +138,7 @@ globalThis.LAW_RESULT_IDENTITIES = Object.freeze([
     status: "override",
     parentId: null,
     covers: ["realism.underdetermination", "realism.extra_doctrinal", "realism.empirical_prediction"],
-    notes: "Special legitimate override. Because Realism is largely descriptive, it can coexist with almost any normative axis profile."
+    notes: "Special legitimate override because American Legal Realism is substantially descriptive/empirical and can coexist with many normative axis positions."
   },
   {
     id: "pragmatist",
@@ -147,7 +147,7 @@ globalThis.LAW_RESULT_IDENTITIES = Object.freeze([
     status: "core",
     parentId: null,
     covers: ["method.consequences", "method.workability"],
-    notes: "Use when forward-looking consequences/workability recur across domains, not from one isolated balancing answer."
+    notes: "Forward-looking consequences and practical workability are the primary adjudicative fixation rather than a single source- or purpose-bound interpretive theory."
   },
   {
     id: "textualist",
@@ -156,7 +156,7 @@ globalThis.LAW_RESULT_IDENTITIES = Object.freeze([
     status: "core",
     parentId: null,
     covers: ["constraint.textual"],
-    notes: "Contextual textualism counts. Textualism is not literalism and does not itself imply originalism, rules, or judicial restraint."
+    notes: "The enacted linguistic text is the primary interpretive fixation. Contextual textualism counts; Textualism does not itself imply Originalism, Formalism, or judicial restraint."
   },
   {
     id: "intentionalist",
@@ -165,7 +165,7 @@ globalThis.LAW_RESULT_IDENTITIES = Object.freeze([
     status: "adaptive",
     parentId: null,
     covers: ["constraint.intent"],
-    notes: "Leading real theory of legal interpretation that the current core does not cleanly separate from purposivism. Add only after an intent-versus-purpose diagnostic."
+    notes: "Interpretation is centrally oriented toward the legislature/enactor's intended meaning. Imaginative Reconstruction is a substantive modifier rather than a separate noun."
   },
   {
     id: "purposivist",
@@ -174,7 +174,7 @@ globalThis.LAW_RESULT_IDENTITIES = Object.freeze([
     status: "core",
     parentId: null,
     covers: ["constraint.purpose", "constraint.open_construction"],
-    notes: "Use when purpose, rather than subjective legislative intent, systematically drives interpretation."
+    notes: "The statute or provision's objective purpose is the primary interpretive fixation rather than subjective intent or text alone."
   },
   {
     id: "legal_process_theorist",
@@ -183,16 +183,25 @@ globalThis.LAW_RESULT_IDENTITIES = Object.freeze([
     status: "adaptive",
     parentId: null,
     covers: ["constraint.purpose", "method.institutional_competence", "method.reasoned_elaboration"],
-    notes: "Hart-and-Sacks-style package: purposive reasoning plus institutional competence, role allocation, settlement, and reasoned elaboration."
+    notes: "Institutional settlement, competence, role allocation, and reasoned elaboration distinguish Legal Process from generic Purposivism."
   },
   {
     id: "interpretive_pluralist",
     label: "Interpretive Pluralist",
     family: "method",
-    status: "fallback",
+    status: "adaptive",
     parentId: null,
     covers: ["method.pluralism", "method.modal_pluralism"],
-    notes: "Real fallback when no single interpretive methodology dominates but the pattern is coherent rather than chaotic."
+    notes: "A real methodological identity: multiple forms of legal argument are legitimately available rather than one method controlling every hard case. Practical Reasoning is a substantive modifier."
+  },
+  {
+    id: "sociological_jurist",
+    label: "Sociological Jurist",
+    family: "method",
+    status: "adaptive",
+    parentId: null,
+    covers: ["method.social_interests", "method.law_in_action"],
+    notes: "Sociological Jurisprudence: judges should attend to law in action, competing social interests, and the actual social operation of legal rules."
   },
 
   // Constitutional time
@@ -500,7 +509,7 @@ globalThis.LAW_CHAMPIONS = Object.freeze([
     note: "Foundational natural-law lineage rather than a closest modern champion."
   },
 
-  // Realism / pragmatism
+  // Interpretation / adjudicative style
   {
     id: "llewellyn",
     name: "Karl Llewellyn",
@@ -508,39 +517,39 @@ globalThis.LAW_CHAMPIONS = Object.freeze([
     role: "primary",
     eligibleIdentityIds: ["legal_realist"],
     signatureTraits: ["realism.underdetermination", "realism.law_in_action", "realism.extra_doctrinal"],
-    antiTraits: [],
-    note: "Best general champion of mature American Legal Realism."
+    antiTraits: ["realism.fact_skepticism", "realism.functional_anti_conceptual"],
+    note: "Main mature-American-Realist champion: rule skepticism, situation sense, law in action, and attention to actual institutional behavior."
   },
   {
-    id: "leiter",
-    name: "Brian Leiter",
+    id: "felix_cohen",
+    name: "Felix S. Cohen",
     kind: "person",
     role: "subtype",
     eligibleIdentityIds: ["legal_realist"],
-    signatureTraits: ["realism.underdetermination", "realism.empirical_prediction", "realism.naturalism", "source.positive_sources"],
-    antiTraits: ["source.objective_morality"],
-    note: "Modern theorist of naturalized jurisprudence and American Legal Realism. Especially informative for a Realist profile that is also strongly positivist/naturalistic; not the generic stand-in for all Realists."
+    signatureTraits: ["realism.underdetermination", "realism.functional_anti_conceptual"],
+    antiTraits: ["realism.fact_skepticism"],
+    note: "Functional/anti-conceptual Realist: strip away abstract doctrinal labels and ask what legal concepts actually do and which normative choices they conceal."
   },
   {
     id: "frank",
     name: "Jerome Frank",
     kind: "person",
-    role: "historical",
+    role: "subtype",
     eligibleIdentityIds: ["legal_realist"],
     signatureTraits: ["realism.extra_doctrinal", "realism.psychological", "realism.fact_skepticism"],
     antiTraits: [],
-    selectable: false,
-    note: "Important Realist subtype/lineage, but the current diagnostics do not test Frank's psychological/fact-skepticism closely enough to select him as a closest champion. Promote only if those diagnostics are later added."
+    note: "Fact-skeptical Realist: uncertainty arises not only from rules but from trial facts, credibility, psychology, and factfinding."
   },
   {
-    id: "holmes",
-    name: "Oliver Wendell Holmes Jr.",
+    id: "leiter",
+    name: "Brian Leiter",
     kind: "person",
     role: "historical",
-    eligibleIdentityIds: ["legal_realist", "thayerian"],
-    signatureTraits: ["realism.empirical_prediction", "method.experience", "posture.majoritarian"],
+    eligibleIdentityIds: ["legal_realist"],
+    signatureTraits: ["realism.underdetermination", "realism.empirical_prediction", "realism.naturalism"],
     antiTraits: [],
-    note: "Foundational precursor and major influence on Realism; not the sole stand-in for the school."
+    selectable: false,
+    note: "Major contemporary interpreter and defender of naturalized Legal Realism; further reading rather than a distinct closest-judge endpoint."
   },
   {
     id: "posner",
@@ -548,63 +557,150 @@ globalThis.LAW_CHAMPIONS = Object.freeze([
     kind: "person",
     role: "primary",
     eligibleIdentityIds: ["pragmatist"],
-    signatureTraits: ["method.consequences", "method.workability", "form.balancing", "precedent.correction"],
+    signatureTraits: ["method.consequences", "method.workability", "precedent.correction"],
     antiTraits: ["form.rules"],
-    note: "Canonical champion of legal pragmatism. Do not equate every Posner-like pragmatist with Law & Economics."
+    note: "Forward-looking consequential/practical Pragmatism."
+  },
+  {
+    id: "cardozo",
+    name: "Benjamin Cardozo",
+    kind: "person",
+    role: "primary",
+    eligibleIdentityIds: ["pragmatist", "common_law_constitutionalist"],
+    signatureTraits: ["method.consequences", "precedent.stability", "time.common_law_development"],
+    antiTraits: [],
+    note: "Bounded common-law Pragmatism: creative hard-case judging constrained by precedent, custom, continuity, and incremental development."
+  },
+  {
+    id: "hugo_black",
+    name: "Hugo Black",
+    kind: "person",
+    role: "primary",
+    eligibleIdentityIds: ["textualist", "formalist"],
+    signatureTraits: ["constraint.textual", "form.rules", "form.anti_discretion", "posture.rights_trumps"],
+    antiTraits: ["form.balancing", "constraint.purpose"],
+    note: "Text-bound categorical judging plus unusually aggressive enforcement of expressly protected rights."
+  },
+  {
+    id: "scalia_manning_easterbrook",
+    name: "Antonin Scalia / John Manning / Frank Easterbrook",
+    kind: "people",
+    role: "primary",
+    eligibleIdentityIds: ["textualist"],
+    signatureTraits: ["constraint.textual", "constraint.enacted_bargain", "form.anti_discretion"],
+    antiTraits: ["constraint.purpose", "constraint.best_reading_context"],
+    note: "Mainline/New Textualist unit: enacted text, enacted compromise, anti-legislative-history instincts, and strong resistance to judicial repair."
+  },
+  {
+    id: "kavanaugh_barrett",
+    name: "Brett Kavanaugh / Amy Coney Barrett",
+    kind: "people",
+    role: "subtype",
+    eligibleIdentityIds: ["textualist"],
+    signatureTraits: ["constraint.textual", "constraint.contextual_textualism", "constraint.best_reading_context"],
+    antiTraits: ["constraint.intent"],
+    note: "Modern best-reading/context-sensitive Textualism: ordinary usage and whole-text context without abandoning enacted text as the governing object."
+  },
+  {
+    id: "ekins_intentionalism",
+    name: "Richard Ekins",
+    kind: "person",
+    role: "primary",
+    eligibleIdentityIds: ["intentionalist"],
+    signatureTraits: ["constraint.intent", "constraint.actual_group_intent"],
+    antiTraits: ["constraint.imaginative_reconstruction"],
+    note: "Main modern Intentionalist champion: legislature as a genuine group agent with an intended meaning inferable from the enacted choice in context."
+  },
+  {
+    id: "hand_posner_imaginative",
+    name: "Learned Hand / early Richard Posner",
+    kind: "people",
+    role: "subtype",
+    eligibleIdentityIds: ["intentionalist"],
+    signatureTraits: ["constraint.intent", "constraint.imaginative_reconstruction"],
+    antiTraits: ["constraint.actual_group_intent"],
+    note: "Imaginative Reconstruction: ask what the legislature would have intended had it confronted the unforeseen case."
   },
   {
     id: "breyer",
     name: "Stephen Breyer",
     kind: "person",
-    role: "subtype",
-    eligibleIdentityIds: ["pragmatist", "purposivist"],
-    signatureTraits: ["constraint.purpose", "method.consequences", "separation.functionalist", "form.balancing"],
-    antiTraits: ["constraint.textual"],
-    note: "Useful judicial champion for purposive/pragmatic interpretation and functional institutional reasoning."
-  },
-
-  // Interpretation
-
-  {
-    id: "hugo_black",
-    name: "Hugo Black",
-    kind: "person",
-    role: "subtype",
-    eligibleIdentityIds: ["textualist", "formalist", "originalist"],
-    signatureTraits: ["constraint.textual", "form.rules", "form.anti_discretion", "posture.countermajoritarian", "posture.rights_trumps"],
-    antiTraits: ["form.balancing", "constraint.purpose"],
-    note: "Distinctive judicial bundle: unusually text/language-bound and rule/absolutism-oriented while also strongly rights-protective. His total-incorporation theory is historically important but is not itself directly measured by LAWvalues, so it should not be used as a matching trait."
-  },
-
-  {
-    id: "hart_sacks",
-    name: "Henry Hart & Albert Sacks",
-    kind: "people",
     role: "primary",
-    eligibleIdentityIds: ["legal_process_theorist", "purposivist"],
-    signatureTraits: ["constraint.purpose", "method.institutional_competence", "method.reasoned_elaboration", "precedent.settlement"],
-    antiTraits: [],
-    note: "Canonical Legal Process champions."
-  },
-  {
-    id: "eskridge",
-    name: "William Eskridge",
-    kind: "person",
-    role: "subtype",
-    eligibleIdentityIds: ["purposivist", "interpretive_pluralist"],
-    signatureTraits: ["constraint.purpose", "method.pluralism", "time.dynamic_statutory"],
-    antiTraits: [],
-    note: "Useful for purposive/pluralist/dynamic statutory interpretation, not a default constitutional-living champion."
+    eligibleIdentityIds: ["purposivist", "pragmatist", "functionalist"],
+    signatureTraits: ["constraint.purpose", "method.workability", "separation.functionalist"],
+    antiTraits: ["constraint.textual"],
+    note: "Practical American Purposivism: purpose, consequences, administrability, and institutional workability."
   },
   {
     id: "barak",
     name: "Aharon Barak",
     kind: "person",
-    role: "subtype",
+    role: "primary",
     eligibleIdentityIds: ["purposivist", "proportionalist"],
-    signatureTraits: ["constraint.purpose", "form.proportionality", "posture.countermajoritarian"],
+    signatureTraits: ["constraint.purpose", "form.proportionality", "posture.rights_trumps"],
     antiTraits: ["form.rules"],
-    note: "Distinctive champion for purposive interpretation plus structured proportionality and robust rights review."
+    note: "Systematic purposive interpretation combined with proportionality and robust rights review."
+  },
+  {
+    id: "hart_sacks",
+    name: "Henry Hart / Albert Sacks",
+    kind: "people",
+    role: "primary",
+    eligibleIdentityIds: ["legal_process_theorist"],
+    signatureTraits: ["method.institutional_competence", "method.reasoned_elaboration", "constraint.purpose"],
+    antiTraits: ["method.neutral_principles"],
+    note: "Core Legal Process: institutional settlement and competence followed by purposive reasoned elaboration."
+  },
+  {
+    id: "wechsler",
+    name: "Herbert Wechsler",
+    kind: "person",
+    role: "subtype",
+    eligibleIdentityIds: ["legal_process_theorist"],
+    signatureTraits: ["method.reasoned_elaboration", "method.neutral_principles"],
+    antiTraits: [],
+    note: "Neutral-principles Legal Process: constitutional decisions should rest on generalizable principles that transcend the immediate parties and desired outcome."
+  },
+  {
+    id: "bobbitt",
+    name: "Philip Bobbitt",
+    kind: "person",
+    role: "primary",
+    eligibleIdentityIds: ["interpretive_pluralist"],
+    signatureTraits: ["method.modal_pluralism"],
+    antiTraits: ["method.practical_reasoning"],
+    note: "Modal constitutional pluralism: several recognized modalities of constitutional argument are legitimately available."
+  },
+  {
+    id: "eskridge_frickey",
+    name: "William Eskridge / Philip Frickey",
+    kind: "people",
+    role: "subtype",
+    eligibleIdentityIds: ["interpretive_pluralist"],
+    signatureTraits: ["method.pluralism", "method.practical_reasoning"],
+    antiTraits: [],
+    note: "Practical-Reasoning pluralism: text, history, purpose, legal context, consequences, and policy receive context-sensitive weight rather than a fixed hierarchy."
+  },
+  {
+    id: "pound",
+    name: "Roscoe Pound",
+    kind: "person",
+    role: "primary",
+    eligibleIdentityIds: ["sociological_jurist"],
+    signatureTraits: ["method.social_interests", "method.law_in_action"],
+    antiTraits: [],
+    note: "Canonical Sociological Jurisprudence champion: law in action, competing social interests, and practical social operation."
+  },
+  {
+    id: "ehrlich",
+    name: "Eugen Ehrlich",
+    kind: "person",
+    role: "historical",
+    eligibleIdentityIds: ["sociological_jurist"],
+    signatureTraits: ["method.law_in_action"],
+    antiTraits: [],
+    selectable: false,
+    note: "Living-law lineage and further reading rather than a separate judicial endpoint."
   },
 
   // Originalism / constitutional time
