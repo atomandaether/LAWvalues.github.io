@@ -43,6 +43,32 @@ globalThis.LAW_DIAGNOSTIC_QUESTIONS = Object.freeze([
     relatedIdentityIds: ["legal_realist"],
     note: "A confirmed Realist should normally agree with the broader pattern across D-RLS1–3, not just one proposition."
   },
+  {
+    id: "D-RLS4",
+    family: "realism",
+    priority: "medium",
+    unlock: "Legal Realism is confirmed and Jerome Frank's fact skepticism could materially change the champion or modifier.",
+    prompt: "Even if appellate legal doctrine became much clearer, court outcomes would remain deeply uncertain because trials depend on contested facts, witness credibility, memory, and the individual psychology of judges and juries.",
+    agreeTraits: ["realism.fact_skepticism", "realism.psychological"],
+    disagreeTraits: [],
+    nextOnAgree: [],
+    nextOnDisagree: [],
+    relatedIdentityIds: ["legal_realist"],
+    note: "Frank-specific champion/modifier discriminator: fact skepticism is distinct from ordinary rule skepticism."
+  },
+  {
+    id: "D-RLS5",
+    family: "realism",
+    priority: "medium",
+    unlock: "Legal Realism is confirmed and Felix Cohen's functional anti-conceptual approach could materially change the champion.",
+    prompt: "When a legal argument turns on an abstract label like 'property,' 'corporation,' or 'jurisdiction,' the judge should translate that label into the concrete conduct, social consequences, and policy choices it represents rather than letting the label itself decide the case.",
+    agreeTraits: ["realism.functional_anti_conceptual"],
+    disagreeTraits: [],
+    nextOnAgree: [],
+    nextOnDisagree: [],
+    relatedIdentityIds: ["legal_realist"],
+    note: "Felix Cohen discriminator: functional analysis of doctrinal concepts rather than generic Realist underdetermination."
+  },
 
   // Originalism router
   // Public noun routing is OPM vs OI.  Named theories below that level are
@@ -273,32 +299,71 @@ globalThis.LAW_DIAGNOSTIC_QUESTIONS = Object.freeze([
     note: "Use only if O1/O2/O5/O8 have not already made the democratic-legitimacy rationale clear."
   },
 
-  // Statutory-method routers
+  // Statutory-method / adjudicative-style routers
+  {
+    id: "D-TXT1",
+    family: "interpretation",
+    priority: "medium",
+    unlock: "Textualist is a leading noun and the modern best-reading/contextual unit remains competitive with mainline enacted-bargain textualism.",
+    prompt: "When two readings of enacted text are linguistically plausible, the court should choose the better reading by asking how the words work in the whole statute and in ordinary usage, rather than treating every awkward omission or compromise as a reason to stop with the more literal-looking reading.",
+    agreeTraits: ["constraint.best_reading_context", "constraint.contextual_textualism"],
+    disagreeTraits: ["constraint.enacted_bargain"],
+    nextOnAgree: [],
+    nextOnDisagree: [],
+    relatedIdentityIds: ["textualist"],
+    note: "Champion-level Kavanaugh/Barrett versus Scalia/Manning/Easterbrook discriminator; not a public Textualist modifier."
+  },
   {
     id: "D-INT1",
     family: "interpretation",
-    priority: "medium",
+    priority: "high",
     unlock: "Open-construction answers are strong but Intentionalist and Purposivist explanations remain both plausible.",
     prompt: "When enacted words are genuinely unclear, the court’s goal should be to recover what the lawmakers who enacted them actually intended, even if that intention differs from the statute’s best objective purpose.",
     agreeTraits: ["constraint.intent"],
     disagreeTraits: ["constraint.objective_purpose"],
-    nextOnAgree: [],
+    nextOnAgree: ["D-INT2"],
     nextOnDisagree: [],
     relatedIdentityIds: ["intentionalist", "purposivist"],
-    note: "Intentionalism is a leading real interpretive theory and should not be silently collapsed into purposivism."
+    note: "Noun-level router: actual legislative/enactor intention versus objective purpose."
+  },
+  {
+    id: "D-INT2",
+    family: "interpretation",
+    priority: "medium",
+    unlock: "Intentionalist is established and imaginative reconstruction could materially change the modifier/champion.",
+    prompt: "If the legislature never considered the precise problem before the court, the judge should ask what the legislature would have intended had it confronted that problem, even though no actual historical intention on the point existed.",
+    agreeTraits: ["constraint.imaginative_reconstruction"],
+    disagreeTraits: ["constraint.actual_group_intent"],
+    nextOnAgree: [],
+    nextOnDisagree: [],
+    relatedIdentityIds: ["intentionalist"],
+    note: "Substantive Imaginative-Reconstruction modifier and Learned Hand/early Posner champion discriminator."
   },
   {
     id: "D-LP1",
     family: "interpretation",
-    priority: "medium",
+    priority: "high",
     unlock: "Purposivist/Pragmatist answers combine with strong institutional-settlement or role-allocation themes.",
     prompt: "In a hard case, one of the first legal questions should be which institution was assigned the decision and is best equipped to make it; courts should then reason from the purposes and principles appropriate to that institution’s role.",
     agreeTraits: ["method.institutional_competence", "method.reasoned_elaboration"],
     disagreeTraits: [],
+    nextOnAgree: ["D-LP2"],
+    nextOnDisagree: [],
+    relatedIdentityIds: ["legal_process_theorist"],
+    note: "Noun-level Legal Process discriminator: institutional competence, settlement, and reasoned elaboration."
+  },
+  {
+    id: "D-LP2",
+    family: "interpretation",
+    priority: "medium",
+    unlock: "Legal Process is established and Wechsler-style neutral principles could materially change the champion.",
+    prompt: "A constitutional ruling should rest on a principle the court is prepared to apply consistently in materially similar cases even when doing so helps a different side; a result-specific rationale is not enough merely because the immediate outcome seems just.",
+    agreeTraits: ["method.neutral_principles", "method.reasoned_elaboration"],
+    disagreeTraits: [],
     nextOnAgree: [],
     nextOnDisagree: [],
     relatedIdentityIds: ["legal_process_theorist"],
-    note: "Distinguishes Legal Process from purpose-seeking alone."
+    note: "Champion-level Herbert Wechsler discriminator."
   },
 
   // Deferred / niche-but-real branches
