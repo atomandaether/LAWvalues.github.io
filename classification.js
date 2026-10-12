@@ -736,10 +736,11 @@
           hasAsked(diagnosticResponses, "D-NP4") && impact < 0.5 && practice < 0.5) {
         offer("D-NP5", 82);
       }
-      if (!naturalEstablished && !interpretivistEstablished &&
+      const oneSystemEstablished = impact >= 0.5 || practice >= 0.5;
+      if (!naturalEstablished && !interpretivistEstablished && !oneSystemEstablished &&
           naturalCleared && interpretivistCleared &&
           hasAsked(diagnosticResponses, "D-NP4") &&
-          (hasAsked(diagnosticResponses, "D-NP5") || practice >= 0.5) &&
+          hasAsked(diagnosticResponses, "D-NP5") &&
           internalLegality < 0.5) {
         offer("D-NP3", 76);
       }
