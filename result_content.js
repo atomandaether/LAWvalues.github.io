@@ -440,6 +440,33 @@
       "explanation": "You think ordinary injustice can coexist with legal validity, but sufficiently extreme injustice can defeat a purported rule's legal status."
     },
     {
+      "id": "imaginative_reconstruction",
+      "text": "Imaginative-Reconstruction",
+      "appliesTo": ["intentionalist"],
+      "traits": ["constraint.imaginative_reconstruction"],
+      "min": 0.5,
+      "priority": 1.55,
+      "explanation": "When lawmakers never confronted the precise problem, you ask what they would have intended had the issue been presented to them."
+    },
+    {
+      "id": "practical_reasoning_pluralism",
+      "text": "Practical-Reasoning",
+      "appliesTo": ["interpretive_pluralist"],
+      "traits": ["method.practical_reasoning"],
+      "min": 0.5,
+      "priority": 1.55,
+      "explanation": "You treat multiple interpretive resources as legitimate and let their relative weight shift with the problem rather than imposing a fixed hierarchy."
+    },
+    {
+      "id": "fact_skeptical_realism",
+      "text": "Fact-Skeptical",
+      "appliesTo": ["legal_realist"],
+      "traits": ["realism.fact_skepticism"],
+      "min": 0.5,
+      "priority": 1.55,
+      "explanation": "Your Realism extends beyond indeterminate rules to the uncertainty of trial facts, witness credibility, factfinding, and judicial psychology."
+    },
+    {
       "id": "hartian_gap",
       "text": "Gap-friendly",
       "appliesTo": [
@@ -1180,6 +1207,13 @@
     return ["positivist","natural_lawyer","interpretivist","fullerian","nonpositivist"].includes(identity?.id);
   }
 
+  function isMethodIdentity(identity) {
+    return [
+      "textualist","intentionalist","purposivist","legal_process_theorist",
+      "interpretive_pluralist","pragmatist","legal_realist","sociological_jurist"
+    ].includes(identity?.id);
+  }
+
   const SOURCE_SUBSTANTIVE_MODIFIERS = new Set([
     "inclusive_positivism",
     "exclusive_positivism",
@@ -1187,6 +1221,12 @@
     "moral_impact_nonpositivism",
     "moral_practice_nonpositivism",
     "extreme_injustice_nonpositivism"
+  ]);
+
+  const METHOD_SUBSTANTIVE_MODIFIERS = new Set([
+    "imaginative_reconstruction",
+    "practical_reasoning_pluralism",
+    "fact_skeptical_realism"
   ]);
 
   function specialTitle(classification) {
@@ -1231,6 +1271,9 @@
       modifier=newOriginalist?asModifier(newOriginalist.twist):fitModifier(classification);
     } else if(isSourceIdentity(identity)) {
       const substantive=twistRanking.find(item=>SOURCE_SUBSTANTIVE_MODIFIERS.has(item.twist.id) && item.score>=0.3)||null;
+      modifier=substantive?asModifier(substantive.twist):fitModifier(classification);
+    } else if(isMethodIdentity(identity)) {
+      const substantive=twistRanking.find(item=>METHOD_SUBSTANTIVE_MODIFIERS.has(item.twist.id) && item.score>=0.3)||null;
       modifier=substantive?asModifier(substantive.twist):fitModifier(classification);
     } else {
       const substantive=twistRanking.find(item=>item.score>=0.3 && !item.twist.fallback)||null;
