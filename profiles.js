@@ -54,12 +54,8 @@ globalThis.LAW_PROFILES = Object.freeze([
     name: "Tom Campbell / Jeremy Waldron / Frederick Schauer",
     tier: "specialist",
     identityIds: ["positivist"],
-    axisSignature: {
-      sorc: { target: 94, weight: 0.75 },
-      post: { target: 78, weight: 0.45 },
-      form: { target: 82, weight: 0.45 }
-    },
-    signatureTraits: ["source.normative_positivism", "form.anti_discretion"],
+    axisSignature: { sorc: { target: 94, weight: 1 } },
+    signatureTraits: ["source.normative_positivism", "form.anti_discretion", "posture.majoritarian"],
     requiredTraits: [{ all: ["source.normative_positivism"], min: 0.5 }],
     antiTraits: ["source.objective_morality"],
     description: "Normative/Ethical Positivism: source-based legality is not just a conceptual fact but a desirable institutional discipline that limits contested merits-based judicial lawmaking.",
