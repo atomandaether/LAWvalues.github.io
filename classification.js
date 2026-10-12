@@ -830,9 +830,13 @@
     const provisionalMethodIdentity = resolveIdentity(scores, traits).best.identity.id;
 
     if (provisionalMethodIdentity === "textualist" && constraint >= 62) {
-      const bestReading = traits["constraint.best_reading_context"] || 0;
-      const enactedBargain = traits["constraint.enacted_bargain"] || 0;
-      if (Math.max(bestReading, enactedBargain) < 0.72) offer("D-TXT1", 72);
+      if (!hasAsked(diagnosticResponses, "D-TXT1")) offer("D-TXT1", 74);
+      const blackPlausible =
+        (traits["posture.rights_trumps"] || 0) >= 0.4 &&
+        (traits["form.anti_discretion"] || 0) >= 0.45;
+      if (blackPlausible && !hasAsked(diagnosticResponses, "D-TXT2")) {
+        offer("D-TXT2", 83);
+      }
     }
 
     if (constraint <= 42) {
