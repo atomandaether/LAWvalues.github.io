@@ -340,6 +340,19 @@ globalThis.LAW_DIAGNOSTIC_QUESTIONS = Object.freeze([
     note: "Substantive Imaginative-Reconstruction modifier and Learned Hand/early Posner champion discriminator."
   },
   {
+    id: "D-PRAG1",
+    family: "interpretation",
+    priority: "high",
+    unlock: "Open-ended interpretation is clear but Pragmatism and Purposivism remain live primary-fixation candidates.",
+    prompt: "In a genuinely hard case, practical consequences and workable legal development can be independent reasons for the court’s decision, not merely evidence of what the legislature intended or what statutory purpose it pursued.",
+    agreeTraits: ["method.pragmatic_priority", "method.consequences", "method.workability"],
+    disagreeTraits: [],
+    nextOnAgree: [],
+    nextOnDisagree: [],
+    relatedIdentityIds: ["pragmatist", "purposivist"],
+    note: "Noun-level Pragmatism discriminator: consequences/workability as independent adjudicative reasons rather than servants of statutory purpose."
+  },
+  {
     id: "D-LP1",
     family: "interpretation",
     priority: "high",
