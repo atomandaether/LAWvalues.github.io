@@ -363,8 +363,7 @@
         "form.balancing"
       ],
       "spentBy": [
-        "proportionalist",
-        "alexyan"
+        "proportionalist"
       ],
       "phrase": "who does whatever they want",
       "explanation": "You prefer contextual weighing of competing considerations over categorical rules in hard cases."
@@ -810,6 +809,50 @@
       "explanation": "Your otherwise broader methodology has a distinctive preference for structured proportionality rather than free-form balancing."
     },
     {
+      "id": "passive_virtues_minimalism",
+      "text": "Passive-virtues",
+      "appliesTo": [
+        "minimalist"
+      ],
+      "traits": [
+        "posture.passive_virtues"
+      ],
+      "min": 0.55,
+      "priority": 1.2,
+      "explanation": "Within Judicial Minimalism, your restraint is especially Bickel-like: strategic avoidance and delay are themselves part of the judicial method, not merely a preference for narrow remedies."
+    },
+    {
+      "id": "nonpositivist_proportionality",
+      "text": "Higher-law",
+      "appliesTo": [
+        "proportionalist"
+      ],
+      "axis": "sorc",
+      "direction": "right",
+      "min": 0.3,
+      "priority": 1.2,
+      "blockedPhraseIds": [
+        "source_nonpositive",
+        "objective_morality"
+      ],
+      "explanation": "Within Proportionalism, your balancing sits inside a nonpositivist account of legal principles and moral correctness rather than functioning as a merely practical judicial technique."
+    },
+    {
+      "id": "purposive_proportionality",
+      "text": "Purpose-led",
+      "appliesTo": [
+        "proportionalist"
+      ],
+      "axis": "cons",
+      "direction": "right",
+      "min": 0.35,
+      "priority": 1.1,
+      "blockedPhraseIds": [
+        "purposive"
+      ],
+      "explanation": "Within Proportionalism, your structured balancing is embedded in a broader purposive and open-construction approach to legal interpretation."
+    },
+    {
       "id": "anti_discretion_tinge",
       "text": "Judgment-allergic",
       "appliesTo": [
@@ -829,6 +872,12 @@
         "anti_discretion"
       ],
       "explanation": "Your main methodology is sharpened by an unusually strong distrust of discretionary judicial judgment."
+    },
+    {
+      "id": "archetypal",
+      "text": "Textbook",
+      "fallback": true,
+      "explanation": "No narrower measured subtype or cross-cutting twist clearly improves on the selected noun; this respondent is comparatively close to the noun's central package."
     }
   ]);
 
@@ -1005,6 +1054,7 @@
   }
 
   function twistScore(twist,identity,scores,traits,phraseFeature=null) {
+    if(twist.fallback) return 0;
     if(!identityAllowsTwist(identity,twist)) return 0;
     if(phraseFeature && (twist.blockedPhraseIds||[]).includes(phraseFeature.id)) return 0;
     const evidence=twistEvidence(twist,scores,traits);
@@ -1078,7 +1128,8 @@
     // twist: what makes this respondent's version of the selected noun distinctive.
     const twistRanking=rankTwists(identity,scores,traits,phrasePick?.feature||null);
     const twistPick=twistRanking.find(item=>item.score>=0.3)||null;
-    const modifier=asModifier(twistPick?.twist||null);
+    const archetypal=TWISTS.find(twist=>twist.fallback)||null;
+    const modifier=asModifier(twistPick?.twist||archetypal);
 
     const title=[modifier?.text,identity.label,phrase?.text].filter(Boolean).join(" ");
     const bridge=BRIDGES.find(item=>item.when(scores,traits,identity))||null;
