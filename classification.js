@@ -309,30 +309,39 @@
       ((traits["realism.empirical_prediction"] || 0) >= 0.35 || (traits["realism.law_in_action"] || 0) >= 0.5);
     if (realismConfirmed) add("legal_realist", 0.99, "Confirmed Realism diagnostics.");
 
-    if (l.sorc >= 0.25 && (traits["source.morality_incorporated"] || 0) >= 0.45) {
-      add("inclusive_positivist", 0.82 + 0.12 * s.sorc, "Positive-source profile plus incorporation diagnostic.");
-    }
-    if (l.sorc >= 0.25 && (traits["source.source_thesis"] || 0) >= 0.45) {
-      add("exclusive_positivist", 0.82 + 0.12 * s.sorc, "Positive-source profile plus source-thesis diagnostic.");
-    }
-    if (r.sorc >= 0.2 && (traits["source.principles_are_law"] || 0) >= 0.5) {
-      add("dworkinian", 0.78 + 0.16 * s.sorc, "Principles-as-existing-law pattern.");
-    }
-    if (r.sorc >= 0.2 && (traits["source.moral_impact"] || 0) >= 0.5) {
-      add("moral_impact_theorist", 0.86 + 0.08 * s.sorc, "Institutional action understood through the moral rights and obligations it generates.");
+    const positivistSpecificity = Math.max(
+      traits["source.morality_incorporated"] || 0,
+      traits["source.source_thesis"] || 0,
+      traits["source.normative_positivism"] || 0
+    );
+    const nonpositivistSpecificity = Math.max(
+      traits["source.moral_impact"] || 0,
+      traits["source.moral_practice"] || 0,
+      traits["source.extreme_injustice"] || 0
+    );
+    const interpretivistEvidence = Math.max(
+      traits["source.principles_are_law"] || 0,
+      traits["source.fit_and_justification"] || 0,
+      traits["source.right_answer"] || 0
+    );
+
+    if (r.sorc >= 0.2 && interpretivistEvidence >= 0.5) {
+      add("interpretivist", 0.82 + 0.12 * s.sorc, "Principles, fit, and justification support Legal Interpretivism.");
     }
     if (r.sorc >= 0.2 &&
         (traits["source.objective_morality"] || 0) >= 0.45 &&
-        ((traits["source.positive_law_settlement"] || 0) >= 0.35 ||
-         ((traits["source.objective_morality"] || 0) >= 0.72 && (traits["source.principles_are_law"] || 0) < 0.4))) {
-      add("natural_lawyer", 0.77 + 0.16 * s.sorc, "Objective-morality pattern distinct from Dworkinian principles.");
+        (traits["source.positive_law_settlement"] || 0) >= 0.35 &&
+        interpretivistEvidence < 0.65) {
+      add("natural_lawyer", 0.83 + 0.11 * s.sorc, "Objective morality plus a genuine settlement and coordination role for positive law.");
     }
     if ((traits["source.internal_legality"] || 0) >= 0.5) {
-      add("fullerian", 0.86, "Internal morality of legality diagnostic.");
+      add("fullerian", 0.9, "Internal morality/principles of legality diagnostic.");
     }
-    if ((traits["source.extreme_injustice"] || 0) >= 0.5 &&
-        (traits["source.objective_morality"] || 0) < 0.4) {
-      add("radbruchian", 0.81, "Extreme-injustice threshold without broad moral invalidation.");
+    if (r.sorc >= 0.15 && nonpositivistSpecificity >= 0.5 &&
+        interpretivistEvidence < 0.5 &&
+        (traits["source.positive_law_settlement"] || 0) < 0.5 &&
+        (traits["source.internal_legality"] || 0) < 0.5) {
+      add("nonpositivist", 0.85 + 0.08 * s.sorc, "A distinctive nonpositivist theory is established below the noun layer.", "Non-Positivist");
     }
 
     if (l.time >= 0.2 && (traits["time.original_intent"] || 0) >= 0.5) {
@@ -388,8 +397,22 @@
 
     if (l.time >= 0.3) add("originalist", 0.56 + 0.34 * s.time, "Historical fixation is a dominant feature.");
     if (r.time >= 0.3) add("living_constitutionalist", 0.56 + 0.34 * s.time, "Evolving constitutional content is a dominant feature.");
-    if (l.sorc >= 0.3) add("positivist", 0.56 + 0.34 * s.sorc, "Positive legal sources dominate the Source axis.");
-    if (r.sorc >= 0.3) add("nonpositivist", 0.46 + 0.18 * s.sorc, "Non-positivism is clear but the narrower theory is not yet established.", "Non-positivist");
+    if (l.sorc >= 0.25) {
+      add(
+        "positivist",
+        positivistSpecificity >= 0.5 ? 0.8 + 0.12 * s.sorc : 0.56 + 0.34 * s.sorc,
+        positivistSpecificity >= 0.5
+          ? "Positive-law grounding plus a distinctive Positivist branch."
+          : "Positive legal sources dominate the Source axis."
+      );
+    }
+    if (r.sorc >= 0.3 &&
+        nonpositivistSpecificity < 0.5 &&
+        interpretivistEvidence < 0.5 &&
+        (traits["source.objective_morality"] || 0) < 0.45 &&
+        (traits["source.internal_legality"] || 0) < 0.5) {
+      add("nonpositivist", 0.5 + 0.2 * s.sorc, "Non-positivism is clear but no narrower public Source identity is established.", "Non-Positivist");
+    }
     if (l.cons >= 0.3) add("textualist", 0.56 + 0.34 * s.cons, "Textual constraint is a dominant feature.");
     if (r.cons >= 0.3) add("purposivist", 0.54 + 0.32 * s.cons, "Purpose/open construction dominates and no narrower method is established.");
     if (l.separ >= 0.4) add("formalist", 0.55 + 0.32 * s.separ, "Formal separation of powers is highly distinctive.");
@@ -477,6 +500,7 @@
     const normal = [];
     const catchalls = [];
     const originalistIdentity = ["originalist", "public_meaning_originalist", "original_intent_originalist"].includes(identity.id);
+    const sourceIdentity = ["positivist", "natural_lawyer", "interpretivist", "fullerian", "nonpositivist"].includes(identity.id);
 
     for (const profile of profiles) {
       if (originalistIdentity) {
@@ -486,6 +510,7 @@
           (identity.id !== "originalist" && ids.includes("originalist"));
         if (!compatibleOriginalist) continue;
       }
+      if (sourceIdentity && !(profile.identityIds || []).includes(identity.id)) continue;
       if (profile.tier === "catchall") {
         catchalls.push(profile);
         continue;
@@ -645,15 +670,58 @@
       }
     }
 
-    if (source >= 65) offer("D-POS1", 76);
+    if (source >= 65) {
+      const incorporated = traits["source.morality_incorporated"] || 0;
+      const exclusive = traits["source.source_thesis"] || 0;
+      const normative = traits["source.normative_positivism"] || 0;
 
-    if (source <= 40) {
+      if (Math.max(incorporated, exclusive) < 0.5) offer("D-POS1", 90);
+      if (normative < 0.5 &&
+          (hasAsked(diagnosticResponses, "D-POS1") || source >= 78)) {
+        offer("D-POS2", 70);
+      }
+    }
+
+    if (source <= 42) {
       const naturalPlausible = (traits["source.objective_morality"] || 0) >= 0.25;
-      const dworkinPlausible = (traits["source.principles_are_law"] || 0) >= 0.25;
-      if (naturalPlausible || dworkinPlausible || source <= 28) offer("D-NP1", 88);
-      if ((traits["source.moral_impact"] || 0) < 0.5) offer("D-NP4", 84);
-      if ((traits["source.principles_are_law"] || 0) < 0.5) offer("D-NP2", 80);
-      if (!naturalPlausible && !dworkinPlausible) offer("D-NP3", 48);
+      const interpretivistPlausible = (traits["source.principles_are_law"] || 0) >= 0.25 ||
+        (traits["source.fit_and_justification"] || 0) >= 0.25;
+      const extremePlausible = (traits["source.extreme_injustice"] || 0) >= 0.35;
+      const impact = traits["source.moral_impact"] || 0;
+      const practice = traits["source.moral_practice"] || 0;
+      const internalLegality = traits["source.internal_legality"] || 0;
+
+      // Core S2 can make the threshold theory visible immediately.
+      if (extremePlausible && (traits["source.objective_morality"] || 0) < 0.5) offer("D-NP6", 94);
+
+      if (naturalPlausible && (traits["source.positive_law_settlement"] || 0) < 0.5) {
+        offer("D-NP1", 92);
+      }
+      if (interpretivistPlausible && (traits["source.fit_and_justification"] || 0) < 0.5) {
+        offer("D-NP2", 90);
+      }
+
+      // When the core does not already point to Natural Law or Interpretivism,
+      // test the narrower one-system and Fullerian branches adaptively.
+      if (!naturalPlausible && !interpretivistPlausible && impact < 0.5) offer("D-NP4", 86);
+      if (!naturalPlausible && !interpretivistPlausible &&
+          hasAsked(diagnosticResponses, "D-NP4") && impact < 0.5 && practice < 0.5) {
+        offer("D-NP5", 82);
+      }
+      if (!naturalPlausible && !interpretivistPlausible &&
+          hasAsked(diagnosticResponses, "D-NP4") &&
+          (hasAsked(diagnosticResponses, "D-NP5") || practice >= 0.5) &&
+          internalLegality < 0.5) {
+        offer("D-NP3", 76);
+      }
+
+      // If none of the core-guided routes fired, Natural Law and Interpretivism
+      // remain useful late probes before falling back to generic Non-Positivist.
+      if (!naturalPlausible && !interpretivistPlausible &&
+          hasAsked(diagnosticResponses, "D-NP3")) {
+        if ((traits["source.positive_law_settlement"] || 0) < 0.5) offer("D-NP1", 58);
+        if ((traits["source.fit_and_justification"] || 0) < 0.5) offer("D-NP2", 56);
+      }
     }
 
     if (posture >= 62) {
