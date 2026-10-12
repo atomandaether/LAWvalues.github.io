@@ -118,6 +118,16 @@ for (const diagnostic of allDiagnostics) {
 for (const profile of profiles) {
   assert.ok(allowedProfileTiers.has(profile.tier), `${profile.id} has invalid tier`);
   assert.ok(Array.isArray(profile.identityIds), `${profile.id} needs identityIds`);
+  assert.ok(profile.crossCuttingIdentityIds === undefined || Array.isArray(profile.crossCuttingIdentityIds),
+    `${profile.id} crossCuttingIdentityIds must be an array when present`);
+  for (const id of profile.identityIds) {
+    assert.ok(identityIds.has(id), `${profile.id} has unknown primary-compatible identity ${id}`);
+  }
+  for (const id of profile.crossCuttingIdentityIds || []) {
+    assert.ok(identityIds.has(id), `${profile.id} has unknown cross-cutting identity ${id}`);
+    assert.ok(!profile.identityIds.includes(id),
+      `${profile.id} must not list ${id} as both primary and cross-cutting compatibility`);
+  }
   assert.ok(Array.isArray(profile.signatureTraits), `${profile.id} needs signatureTraits`);
   assert.ok(Array.isArray(profile.requiredTraits), `${profile.id} needs requiredTraits`);
   assert.ok(Array.isArray(profile.antiTraits), `${profile.id} needs antiTraits`);
@@ -211,6 +221,32 @@ assert.equal(identities.find((x) => x.id === "nonpositivist").broadFallback, tru
   "Non-positivist should be marked as a broad last-resort fallback");
 
 const profileById = Object.fromEntries(profiles.map((x) => [x.id, x]));
+
+// Champion matching is noun-conditioned rather than a free-floating nearest-neighbor search.
+// Primary compatibility gets the strongest preference; explicitly cross-cutting thinkers
+// remain eligible; incompatible thinkers are excluded outright.
+assert.equal(classifier.championIdentityCompatibility(
+  profileById.hugo_black,
+  identities.find((x) => x.id === "textualist")
+), "primary", "Hugo Black should be primarily compatible with the Textualist noun");
+assert.equal(classifier.championIdentityCompatibility(
+  profileById.hugo_black,
+  identities.find((x) => x.id === "formalist")
+), "cross-cutting", "Hugo Black may remain available for a Formalist whose whole profile is Black-like");
+assert.equal(classifier.championIdentityCompatibility(
+  profileById.hugo_black,
+  identities.find((x) => x.id === "public_meaning_originalist")
+), "incompatible", "Hugo Black must not appear merely because an Originalist shares his rules/rights profile");
+
+assert.equal(classifier.championIdentityCompatibility(
+  profileById.scalia_manning,
+  identities.find((x) => x.id === "public_meaning_originalist")
+), "primary", "Scalia/Manning should remain primarily Originalist-compatible");
+assert.equal(classifier.championIdentityCompatibility(
+  profileById.scalia_manning,
+  identities.find((x) => x.id === "textualist")
+), "cross-cutting", "Scalia/Manning should remain available to strongly compatible Textualist results");
+
 assert.equal(profileById.finnis_murphy_george.tier, "main",
   "Finnis/Murphy/George must remain the central modern Natural Law champion unit");
 assert.equal(profileById.dworkin_stavropoulos.tier, "main",
@@ -233,6 +269,30 @@ assert.ok(!profiles.some((x) => /ginsburg/i.test(x.name)), "Ginsburg should not 
 // Sparse means unmodeled axes stay absent rather than silently becoming 50.
 assert.deepEqual(Object.keys(profileById.hart.axisSignature), ["sorc"], "Hart should not acquire invented positions on seven unrelated axes");
 assert.deepEqual(Object.keys(profileById.schauer.axisSignature), ["form"], "Schauer should remain a Rules specialist");
+
+// A strongly Black-like respondent can receive the Textualist noun because textual
+// constraint is the primary fixation, while the full cross-axis profile selects Black.
+const blackScores = { sorc: 50, cons: 94, time: 50, prec: 50, remed: 50, post: 8, separ: 50, form: 96 };
+const blackTraits = {
+  "constraint.textual": 0.95,
+  "form.anti_discretion": 0.95,
+  "posture.rights_trumps": 0.95
+};
+const blackMatch = classifier.resolveChampions(
+  blackScores,
+  blackTraits,
+  identities.find((x) => x.id === "textualist")
+);
+assert.equal(blackMatch.matches[0]?.profile.id, "hugo_black",
+  "A Black-like Textualist profile should select Hugo Black as the closest champion");
+
+const blackUnderOriginalism = classifier.resolveChampions(
+  blackScores,
+  blackTraits,
+  identities.find((x) => x.id === "public_meaning_originalist")
+);
+assert.ok(!blackUnderOriginalism.matches.some((x) => x.profile.id === "hugo_black"),
+  "Hugo Black must be excluded when the winning noun is incompatible Originalism");
 
 // Natural-law evidence should not collapse into generic Non-Positivism or Interpretivism.
 const naturalScores = { sorc: 8, cons: 50, time: 50, prec: 50, remed: 50, post: 50, separ: 50, form: 50 };
@@ -854,3 +914,4 @@ console.log("PASS: Alexyan and Bickelian are champion/modifier-level distinction
 console.log("PASS: Formalist and Functionalist public labels remain unchanged.");
 console.log("PASS: generic fit modifiers render Unmistakably a/an / blank / Some kind of, with correct articles and substantive modifiers taking priority.");
 console.log("PASS: all 10 locked Source champion units are reachable end-to-end from literal answers within the seven-diagnostic cap.");
+console.log("PASS: champion matching is noun-conditioned: primary and cross-cutting compatibility are explicit, incompatible champions are excluded.");
