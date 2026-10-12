@@ -45,6 +45,8 @@ globalThis.LAW_DIAGNOSTIC_QUESTIONS = Object.freeze([
   },
 
   // Originalism router
+  // Public noun routing is OPM vs OI.  Named theories below that level are
+  // champion or modifier evidence, not additional public nouns.
   {
     id: "D-ORI1",
     family: "originalism",
@@ -53,36 +55,62 @@ globalThis.LAW_DIAGNOSTIC_QUESTIONS = Object.freeze([
     prompt: "Suppose the public meaning of a constitutional provision at ratification clearly points one way, but reliable private records show that its drafters intended something different. The public meaning should control.",
     agreeTraits: ["time.public_meaning"],
     disagreeTraits: ["time.original_intent"],
-    nextOnAgree: ["D-ORI2", "D-ORI3"],
-    nextOnDisagree: ["D-ORI2"],
+    nextOnAgree: ["D-ORI3"],
+    nextOnDisagree: ["D-ORI3"],
     relatedIdentityIds: ["public_meaning_originalist", "original_intent_originalist"],
-    note: "Use only when core public-meaning evidence is insufficient; do not redundantly ask a respondent already cleanly sorted by T7."
+    note: "Noun-level router: public communicative meaning versus authorial/enactor intent."
   },
   {
     id: "D-ORI2",
     family: "originalism",
     priority: "high",
-    unlock: "Originalist candidate remains ambiguous after public-meaning/intent evidence.",
+    unlock: "Public-Meaning Originalism is plausible and Original Methods would materially change the champion match.",
     prompt: "The Constitution should be interpreted using the legal rules and interpretive methods that were accepted when it was adopted, even when those historical methods produce a different answer from simply asking what the words meant to an ordinary reader.",
     agreeTraits: ["time.original_methods"],
-    disagreeTraits: [],
+    disagreeTraits: ["time.ordinary_public_meaning"],
     nextOnAgree: [],
     nextOnDisagree: [],
-    relatedIdentityIds: ["original_methods_originalist"],
-    note: "Specific McGinnis/Rappaport-style diagnostic."
+    relatedIdentityIds: ["public_meaning_originalist", "originalist"],
+    note: "Champion-level McGinnis/Rappaport discriminator; Original Methods is no longer a public noun."
   },
   {
     id: "D-ORI3",
     family: "originalism",
     priority: "high",
-    unlock: "Originalist candidate has meaningful construction/open-development evidence or Framework Originalism is plausible.",
+    unlock: "An Originalist noun is plausible and construction would materially refine the modifier or champion.",
     prompt: "When the Constitution’s fixed original meaning genuinely leaves a question unresolved, later generations may legitimately develop constitutional doctrine within that unresolved space without changing the Constitution’s original meaning.",
-    agreeTraits: ["time.construction_zone", "time.framework"],
+    agreeTraits: ["time.construction_zone"],
+    disagreeTraits: ["time.no_construction"],
+    nextOnAgree: [],
+    nextOnDisagree: [],
+    relatedIdentityIds: ["public_meaning_originalist", "original_intent_originalist", "originalist"],
+    note: "This is the public New-Originalist modifier signal. With OI it chiefly identifies Whittington; with OPM it routes among Solum, Barnett/Bernick, and Balkin."
+  },
+  {
+    id: "D-ORI4",
+    family: "originalism",
+    priority: "high",
+    unlock: "Original-Intent Originalism is plausible, construction is not decisive, and modern semantic intentionalism remains live.",
+    prompt: "Original intent should control because interpreting a text means recovering what its authors intended to communicate, even if that approach sometimes produces results that are not especially deferential to legislatures.",
+    agreeTraits: ["time.intent_as_meaning"],
+    disagreeTraits: ["time.intent_as_constraint"],
+    nextOnAgree: [],
+    nextOnDisagree: [],
+    relatedIdentityIds: ["original_intent_originalist", "originalist"],
+    note: "Separates the Alexander/Kay/Prakash unit from the older Bork/Berger restraint-centered unit."
+  },
+  {
+    id: "D-ORI5",
+    family: "originalism",
+    priority: "medium",
+    unlock: "Public-Meaning Originalism is plausible and Amar-style intratextualism could materially improve the champion match.",
+    prompt: "When a constitutional phrase is ambiguous, judges should give substantial weight to how the Constitution uses the same or related words elsewhere and to how the provision fits the document’s overall structure, even if an isolated reading of the clause points another way.",
+    agreeTraits: ["time.intratextualism", "method.holistic_constitution"],
     disagreeTraits: [],
     nextOnAgree: [],
     nextOnDisagree: [],
-    relatedIdentityIds: ["framework_originalist", "public_meaning_originalist", "originalist"],
-    note: "Agreement does not by itself make someone Balkinian; combine with the broader framework/living-construction pattern."
+    relatedIdentityIds: ["public_meaning_originalist", "originalist"],
+    note: "Specialist Amar discriminator; ask only when the core profile leaves that methodology plausible."
   },
 
   // Positivism / nonpositivism router
