@@ -232,7 +232,7 @@ assert.equal(spam.identity.id, "unusable_response", "Implausibly fast completion
 // modifier third. The phrase must take the strongest unspent feature and the modifier
 // should then add a genuinely different next-best feature.
 const syntheticIdentity = identities.find((x) => x.id === "public_meaning_originalist");
-const syntheticScores = { sorc: 86, cons: 68, time: 92, prec: 82, remed: 55, post: 61, separ: 54, form: 70 };
+const syntheticScores = { sorc: 86, cons: 68, time: 92, prec: 92, remed: 55, post: 61, separ: 54, form: 70 };
 const syntheticTraits = {
   "source.positive_sources": 0.72,
   "time.public_meaning": 0.9,
