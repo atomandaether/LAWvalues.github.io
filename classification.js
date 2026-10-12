@@ -676,84 +676,91 @@
       }
     }
 
-    const extremeSourcePlausible = (traits["source.extreme_injustice"] || 0) >= 0.35;
-    if (extremeSourcePlausible &&
-        (traits["source.objective_morality"] || 0) < 0.5 &&
-        !hasAsked(diagnosticResponses, "D-NP6")) {
-      offer("D-NP6", 94);
-    }
-
-    if (source >= 65) {
-      const incorporated = traits["source.morality_incorporated"] || 0;
-      const exclusive = traits["source.source_thesis"] || 0;
-      const normative = traits["source.normative_positivism"] || 0;
-
-      if (Math.max(incorporated, exclusive) < 0.5) offer("D-POS1", 90);
-      if (normative < 0.5 &&
-          (hasAsked(diagnosticResponses, "D-POS1") || source >= 78)) {
-        offer("D-POS2", 70);
+    // When the Time axis already puts the respondent squarely in the Originalist
+    // refinement zone, do not let exploratory Source diagnostics consume the
+    // seven-question budget. Originalist source-sensitive champions use the core
+    // Source evidence instead.
+    if (time < 60) {
+      const extremeSourcePlausible = (traits["source.extreme_injustice"] || 0) >= 0.35;
+      if (extremeSourcePlausible &&
+          (traits["source.objective_morality"] || 0) < 0.5 &&
+          !hasAsked(diagnosticResponses, "D-NP6")) {
+        offer("D-NP6", 94);
       }
-    }
-
-    if (source <= 58) {
-      const naturalCorePlausible = (traits["source.objective_morality"] || 0) >= 0.25;
-      const interpretivistCorePlausible = (traits["source.principles_are_law"] || 0) >= 0.25 ||
-        (traits["source.fit_and_justification"] || 0) >= 0.25;
-      const naturalRejected = hasAsked(diagnosticResponses, "D-NP1") && Number(diagnosticResponses["D-NP1"]) <= 0;
-      const interpretivistRejected = hasAsked(diagnosticResponses, "D-NP2") && Number(diagnosticResponses["D-NP2"]) <= 0;
-      const naturalPlausible = naturalCorePlausible && !naturalRejected;
-      const interpretivistPlausible = interpretivistCorePlausible && !interpretivistRejected;
-      const extremePlausible = (traits["source.extreme_injustice"] || 0) >= 0.35;
-      const impact = traits["source.moral_impact"] || 0;
-      const practice = traits["source.moral_practice"] || 0;
-      const internalLegality = traits["source.internal_legality"] || 0;
-
-      // Core S2 can make the threshold theory visible immediately.
-      if (extremePlausible && (traits["source.objective_morality"] || 0) < 0.5) offer("D-NP6", 94);
-
-      if (naturalPlausible && (traits["source.positive_law_settlement"] || 0) < 0.5) {
-        offer("D-NP1", 92);
+  
+      if (source >= 65) {
+        const incorporated = traits["source.morality_incorporated"] || 0;
+        const exclusive = traits["source.source_thesis"] || 0;
+        const normative = traits["source.normative_positivism"] || 0;
+  
+        if (Math.max(incorporated, exclusive) < 0.5) offer("D-POS1", 90);
+        if (normative < 0.5 &&
+            (hasAsked(diagnosticResponses, "D-POS1") || source >= 78)) {
+          offer("D-POS2", 70);
+        }
       }
-      if (interpretivistPlausible && (traits["source.fit_and_justification"] || 0) < 0.5) {
-        offer("D-NP2", 90);
+  
+      if (source <= 58) {
+        const naturalCorePlausible = (traits["source.objective_morality"] || 0) >= 0.25;
+        const interpretivistCorePlausible = (traits["source.principles_are_law"] || 0) >= 0.25 ||
+          (traits["source.fit_and_justification"] || 0) >= 0.25;
+        const naturalRejected = hasAsked(diagnosticResponses, "D-NP1") && Number(diagnosticResponses["D-NP1"]) <= 0;
+        const interpretivistRejected = hasAsked(diagnosticResponses, "D-NP2") && Number(diagnosticResponses["D-NP2"]) <= 0;
+        const naturalPlausible = naturalCorePlausible && !naturalRejected;
+        const interpretivistPlausible = interpretivistCorePlausible && !interpretivistRejected;
+        const extremePlausible = (traits["source.extreme_injustice"] || 0) >= 0.35;
+        const impact = traits["source.moral_impact"] || 0;
+        const practice = traits["source.moral_practice"] || 0;
+        const internalLegality = traits["source.internal_legality"] || 0;
+  
+        // Core S2 can make the threshold theory visible immediately.
+        if (extremePlausible && (traits["source.objective_morality"] || 0) < 0.5) offer("D-NP6", 94);
+  
+        if (naturalPlausible && (traits["source.positive_law_settlement"] || 0) < 0.5) {
+          offer("D-NP1", 92);
+        }
+        if (interpretivistPlausible && (traits["source.fit_and_justification"] || 0) < 0.5) {
+          offer("D-NP2", 90);
+        }
+  
+        const naturalEstablished =
+          (traits["source.objective_morality"] || 0) >= 0.45 &&
+          (traits["source.positive_law_settlement"] || 0) >= 0.5;
+        const interpretivistEstablished =
+          (traits["source.fit_and_justification"] || 0) >= 0.5 &&
+          (traits["source.principles_are_law"] || 0) >= 0.35;
+        const naturalCleared = !naturalCorePlausible || naturalRejected;
+        const interpretivistCleared = !interpretivistCorePlausible || interpretivistRejected;
+  
+        // Once a broad Source noun is affirmatively established, do not spend
+        // diagnostics searching for narrower alternative theories.
+        if (!naturalEstablished && !interpretivistEstablished &&
+            naturalCleared && interpretivistCleared && impact < 0.5) offer("D-NP4", 86);
+        if (!naturalEstablished && !interpretivistEstablished &&
+            naturalCleared && interpretivistCleared &&
+            hasAsked(diagnosticResponses, "D-NP4") && impact < 0.5 && practice < 0.5) {
+          offer("D-NP5", 82);
+        }
+        const oneSystemEstablished = impact >= 0.5 || practice >= 0.5;
+        if (!naturalEstablished && !interpretivistEstablished && !oneSystemEstablished &&
+            naturalCleared && interpretivistCleared &&
+            hasAsked(diagnosticResponses, "D-NP4") &&
+            hasAsked(diagnosticResponses, "D-NP5") &&
+            internalLegality < 0.5) {
+          offer("D-NP3", 76);
+        }
+  
+        // If the core supplied no clue at all, use remaining capacity to test the
+        // two broad nonpositivist nouns before settling for the generic fallback.
+        if (!naturalEstablished && !interpretivistEstablished &&
+            !naturalCorePlausible && !interpretivistCorePlausible &&
+            hasAsked(diagnosticResponses, "D-NP3")) {
+          if (!hasAsked(diagnosticResponses, "D-NP1")) offer("D-NP1", 58);
+          if (!hasAsked(diagnosticResponses, "D-NP2")) offer("D-NP2", 56);
+        }
       }
-
-      const naturalEstablished =
-        (traits["source.objective_morality"] || 0) >= 0.45 &&
-        (traits["source.positive_law_settlement"] || 0) >= 0.5;
-      const interpretivistEstablished =
-        (traits["source.fit_and_justification"] || 0) >= 0.5 &&
-        (traits["source.principles_are_law"] || 0) >= 0.35;
-      const naturalCleared = !naturalCorePlausible || naturalRejected;
-      const interpretivistCleared = !interpretivistCorePlausible || interpretivistRejected;
-
-      // Once a broad Source noun is affirmatively established, do not spend
-      // diagnostics searching for narrower alternative theories.
-      if (!naturalEstablished && !interpretivistEstablished &&
-          naturalCleared && interpretivistCleared && impact < 0.5) offer("D-NP4", 86);
-      if (!naturalEstablished && !interpretivistEstablished &&
-          naturalCleared && interpretivistCleared &&
-          hasAsked(diagnosticResponses, "D-NP4") && impact < 0.5 && practice < 0.5) {
-        offer("D-NP5", 82);
+  
       }
-      const oneSystemEstablished = impact >= 0.5 || practice >= 0.5;
-      if (!naturalEstablished && !interpretivistEstablished && !oneSystemEstablished &&
-          naturalCleared && interpretivistCleared &&
-          hasAsked(diagnosticResponses, "D-NP4") &&
-          hasAsked(diagnosticResponses, "D-NP5") &&
-          internalLegality < 0.5) {
-        offer("D-NP3", 76);
-      }
-
-      // If the core supplied no clue at all, use remaining capacity to test the
-      // two broad nonpositivist nouns before settling for the generic fallback.
-      if (!naturalEstablished && !interpretivistEstablished &&
-          !naturalCorePlausible && !interpretivistCorePlausible &&
-          hasAsked(diagnosticResponses, "D-NP3")) {
-        if (!hasAsked(diagnosticResponses, "D-NP1")) offer("D-NP1", 58);
-        if (!hasAsked(diagnosticResponses, "D-NP2")) offer("D-NP2", 56);
-      }
-    }
 
     if (posture >= 62) {
       offer("D-MAJ1", 82);
