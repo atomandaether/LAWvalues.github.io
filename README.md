@@ -1,5 +1,7 @@
 # LAWvalues
 
+> Source-of-law classifier details are documented in [`SOURCE_ENGINE.md`](SOURCE_ENGINE.md): public nouns, substantive modifiers, ten champion units, adaptive routing, article-aware fit labels, and end-to-end reachability.
+
 > Originalism classifier details are documented in [`ORIGINALISM_ENGINE.md`](ORIGINALISM_ENGINE.md): OPM/OI public nouns, New construction modifier, fit modifiers, thirteen champion units, and adaptive routing under the seven-question cap.
 
 LAWvalues is a static, client-side legal-philosophy quiz. The current public label is **Version 0.6 Beta**. It maps respondents across eight bipolar dimensions:
