@@ -401,7 +401,7 @@ globalThis.LAW_PROFILES = Object.freeze([
       prec: { target: 80, weight: 0.85 },
       form: { target: 42, weight: 0.35 }
     },
-    signatureTraits: ["method.consequences", "time.common_law_development", "precedent.settlement"],
+    signatureTraits: ["method.pragmatic_priority", "method.consequences", "time.common_law_development", "precedent.settlement"],
     requiredTraits: [],
     antiTraits: [],
     description: "Bounded common-law Pragmatism: hard cases permit development, but precedent, custom, continuity, and incremental legal growth sharply constrain practical judgment.",
@@ -418,7 +418,7 @@ globalThis.LAW_PROFILES = Object.freeze([
       form: { target: 16, weight: 0.8 },
       prec: { target: 30, weight: 0.55 }
     },
-    signatureTraits: ["method.consequences", "method.workability"],
+    signatureTraits: ["method.pragmatic_priority", "method.consequences", "method.workability"],
     requiredTraits: [],
     antiTraits: ["form.rules", "precedent.settlement"],
     description: "Forward-looking Pragmatism: consequences, institutional workability, and practical administration can outweigh doctrinal continuity when inherited law performs badly.",
