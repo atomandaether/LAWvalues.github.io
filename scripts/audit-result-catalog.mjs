@@ -9,7 +9,7 @@ const root = path.resolve(here, "..");
 const context = vm.createContext({ console });
 context.globalThis = context;
 
-for (const filename of ["axes.js", "result_catalog.js", "diagnostics.js", "profiles.js", "result_content.js", "classification.js"]) {
+for (const filename of ["axes.js", "questions.js", "scoring.js", "result_catalog.js", "diagnostics.js", "profiles.js", "result_content.js", "classification.js"]) {
   vm.runInContext(fs.readFileSync(path.join(root, filename), "utf8"), context, { filename });
 }
 
@@ -20,6 +20,8 @@ const diagnostics = context.LAW_DIAGNOSTIC_QUESTIONS;
 const profiles = context.LAW_PROFILES;
 const classifier = context.LAW_CLASSIFIER;
 const resultContent = context.LAW_RESULT_CONTENT;
+const scoring = context.LAW_SCORING;
+const questions = context.LAW_QUESTIONS;
 const allDiagnostics = classifier.diagnosticBank();
 
 assert.ok(Array.isArray(identities) && identities.length >= 20, "Need a substantial identity catalog");
@@ -463,6 +465,137 @@ assertOriginalistChampion("natural_law_originalists", "public_meaning_originalis
   { ...OBASE, sorc:14, time:88 },
   { "time.public_meaning":0.8, "time.fixation":1, "source.objective_morality":1, "source.positive_law_settlement":1 });
 
+// End-to-end Originalism reachability: each locked champion must be producible
+// from literal 93-item answers plus only diagnostics the live router actually asks.
+const ORIGINALIST_OI = new Set(["bork_berger", "alexander_kay_prakash", "whittington"]);
+const ORIGINALIST_PM = new Set([
+  "solum", "barnett_bernick", "balkin", "scalia_manning", "mcginnis_rappaport",
+  "mcconnell_green", "amar", "thomas_paulsen", "barrett", "natural_law_originalists"
+]);
+const ORIGINALIST_NEW = new Set(["whittington", "solum", "barnett_bernick", "balkin"]);
+
+function literalOriginalistCore(id) {
+  const profile = profileById[id];
+  const responses = {};
+
+  for (let i = 0; i < questions.length; i += 1) {
+    const item = questions[i];
+    const target = profile.axisSignature?.[item.axis]?.target ?? (item.axis === "time" ? 82 : 50);
+    const agreeSignal = Number(item.signals?.agree?.[item.axis] || 0);
+    const disagreeSignal = Number(item.signals?.disagree?.[item.axis] || 0);
+    const desired = target > 55 ? 1 : target < 45 ? -1 : 0;
+
+    if (desired !== 0) {
+      const positiveAnswer = desired * agreeSignal >= desired * disagreeSignal;
+      const extremity = Math.abs(target - 50);
+      const magnitude = extremity >= 32 ? 3 : extremity >= 18 ? 2 : 1;
+      responses[item.id] = (positiveAnswer ? 1 : -1) * magnitude;
+    } else {
+      responses[item.id] = i % 2 ? 1 : -1;
+    }
+  }
+
+  if (ORIGINALIST_PM.has(id)) responses.T7 = 3;
+  if (ORIGINALIST_OI.has(id)) responses.T7 = -3;
+
+  if (["solum", "mcconnell_green", "balkin"].includes(id)) responses.T8 = 3;
+  if (id === "solum") responses.T10 = 3;
+  if (id === "balkin") {
+    responses.T12 = 3;
+    responses.P3 = 3;
+    responses.T9 = 3;
+  }
+  if (id === "barnett_bernick") {
+    responses.O4 = 3;
+    responses.O11 = 3;
+    responses.O13 = 3;
+  }
+  if (id === "scalia_manning") {
+    for (const questionId of ["C1", "C2", "C7", "C9", "C11", "C17", "C18", "F1", "F3", "F7", "F8"]) {
+      responses[questionId] = 3;
+    }
+  }
+
+  // Keep McConnell/Green out of the Barrett/Thomas precedent poles while
+  // preserving strong principle/application evidence.
+  if (id === "mcconnell_green") {
+    responses.T12 = -3;
+    const precedentItems = questions.filter((item) => item.axis === "prec");
+    precedentItems.forEach((item, index) => { responses[item.id] = index % 2 ? 1 : -1; });
+    responses.T7 = 3;
+    responses.T8 = 3;
+    responses.T9 = 3;
+  }
+
+  // Natural-law originalism must be reachable without the Natural Lawyer or
+  // Dworkinian noun swallowing the OPM result.  This literal source pattern
+  // supplies objective-morality evidence while leaving OPM as the best noun.
+  if (id === "natural_law_originalists") {
+    for (const questionId of ["S1", "S2", "S3", "S4", "S5", "S6", "S7", "S8"]) responses[questionId] = -3;
+    for (const questionId of ["S9", "S10", "S11"]) responses[questionId] = 3;
+  }
+
+  return responses;
+}
+
+function originalistDiagnosticAnswer(id, diagnosticId) {
+  if (diagnosticId === "D-RLS1") return -3;
+  if (diagnosticId === "D-QC1") return -2;
+  if (diagnosticId === "D-ORI1") return ORIGINALIST_PM.has(id) ? 3 : -3;
+  if (diagnosticId === "D-ORI3") return ORIGINALIST_NEW.has(id) ? 3 : -3;
+  if (diagnosticId === "D-ORI4") return id === "alexander_kay_prakash" ? 3 : -3;
+  if (diagnosticId === "D-ORI2") return id === "mcginnis_rappaport" ? 3 : -3;
+  if (diagnosticId === "D-ORI5") return id === "amar" ? 3 : -3;
+  if (diagnosticId === "D-NP1") return id === "natural_law_originalists" ? 3 : -3;
+  if (["D-NP2", "D-NP3", "D-NP4", "D-POS1"].includes(diagnosticId)) return -3;
+  return -3;
+}
+
+function runLiteralOriginalistFixture(id) {
+  const responses = literalOriginalistCore(id);
+  const scores = scoring.scoreAll(responses);
+  const diagnosticResponses = {};
+  const diagnosticOrder = [];
+
+  for (let i = 0; i < classifier.MAX_DIAGNOSTICS; i += 1) {
+    const next = classifier.nextDiagnostic(scores, responses, diagnosticResponses);
+    if (!next) break;
+    diagnosticOrder.push(next.id);
+    diagnosticResponses[next.id] = originalistDiagnosticAnswer(id, next.id);
+  }
+
+  const result = classifier.classify(
+    scores,
+    responses,
+    diagnosticResponses,
+    { coreElapsedMs: 10 * 60 * 1000 }
+  );
+
+  return { result, diagnosticOrder };
+}
+
+for (const id of lockedOriginalistUnits) {
+  const { result, diagnosticOrder } = runLiteralOriginalistFixture(id);
+  assert.equal(
+    result.champions[0]?.id,
+    id,
+    `Literal 93-answer + adaptive path must reach ${id}; got ${result.identity.id} / ${result.champions.map((x) => x.id).join(",")}`
+  );
+  assert.ok(diagnosticOrder.length <= classifier.MAX_DIAGNOSTICS,
+    `${id} must remain reachable within the seven-diagnostic cap`);
+  if (ORIGINALIST_OI.has(id)) {
+    assert.equal(result.identity.id, "original_intent_originalist",
+      `${id} should resolve through the Original-Intent noun`);
+  } else {
+    assert.equal(result.identity.id, "public_meaning_originalist",
+      `${id} should resolve through the Public-Meaning noun`);
+  }
+  if (ORIGINALIST_NEW.has(id)) {
+    assert.equal(result.resultTitle.modifier?.id, "new_originalism",
+      `${id} should surface the New modifier`);
+  }
+}
+
 // Alexy and Bickel now live at champion/modifier granularity rather than consuming
 // their own public nouns.
 const alexyLike = classifier.classify(
@@ -562,7 +695,7 @@ console.log("PASS: Natural Law remains first-class; Pound is specialist; Savigny
 console.log("PASS: sparse profiles ignore unmodeled axes and diagnostic specialists require evidence.");
 console.log("PASS: public titles split broad phrase ranking from noun-conditioned twist selection.");
 console.log("PASS: all 18 approved phrases are reachable and use the approved critic-rib wording.");
-console.log("PASS: Originalism resolves to OPM/OI nouns, New construction modifier, and the locked 13 champion units.");
+console.log("PASS: Originalism resolves end-to-end from literal 93-item answers through adaptive routing to all 13 locked champion units.");
 console.log("PASS: Alexyan and Bickelian are champion/modifier-level distinctions, not public nouns.");
 console.log("PASS: Formalist and Functionalist public labels remain unchanged.");
 console.log("PASS: generic fit modifiers use Unmistakably / blank / Some kind of, with substantive modifiers taking priority.");
