@@ -383,11 +383,14 @@
     if (l.post >= 0.2 && (traits["posture.clear_error"] || 0) >= 0.5) {
       add("thayerian", 0.78 + 0.12 * s.post, "Clear-error judicial deference.");
     }
-    if ((traits["posture.passive_virtues"] || 0) >= 0.55 && l.post >= 0.1) {
-      add("bickelian", 0.82, "Passive virtues and avoidance.");
-    }
-    if (l.remed >= 0.25 && (traits["posture.passive_virtues"] || 0) >= 0.35) {
-      add("minimalist", 0.72 + 0.12 * s.remed, "Narrow/incremental adjudication.");
+    const passiveVirtues = traits["posture.passive_virtues"] || 0;
+    if ((l.remed >= 0.25 && passiveVirtues >= 0.35) ||
+        (passiveVirtues >= 0.55 && l.post >= 0.1)) {
+      add(
+        "minimalist",
+        0.72 + 0.12 * Math.max(s.remed, 0.7 * passiveVirtues),
+        "Narrow/incremental adjudication, including passive-virtues avoidance when strongly present."
+      );
     }
 
     if (l.time >= 0.3) add("originalist", 0.56 + 0.34 * s.time, "Historical fixation is a dominant feature.");
