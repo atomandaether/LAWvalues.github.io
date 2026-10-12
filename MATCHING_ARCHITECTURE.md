@@ -37,7 +37,7 @@ Current protected families include:
 - Living Constitutionalism
 - Common-Law Constitutionalism
 - Common-Good Constitutionalism when directly diagnosed
-- Thayerian, Waldronian, Popular-Constitutionalist, Departmentalist, Elyan, Bickelian, and Minimalist accounts of judicial review
+- Thayerian, Waldronian, Popular-Constitutionalist, Departmentalist, Elyan, and Minimalist accounts of judicial review
 - Formalist and Functionalist separation of powers
 - Structured Proportionality
 
@@ -53,7 +53,7 @@ Examples:
 - Jack Balkin: fixed framework plus legitimate later construction
 - Frederick Schauer: unusually strong commitment to rules as constraints on decision-makers
 - James Bradley Thayer: clear-error judicial deference
-- Robert Alexy: structured proportionality plus non-positivist correctness claims
+- Robert Alexy: champion-level fit for Proportionalism when non-positivist correctness claims accompany structured proportionality
 - Owen Fiss: structural remedies and continuing supervision
 - Roscoe Pound: sociological jurisprudence—law in action, competing social interests, and practical social operation
 - Henry Hart & Albert Sacks: Legal Process—purpose plus institutional competence, settlement, and reasoned elaboration
@@ -102,6 +102,8 @@ The three slots now do different jobs:
 1. **Noun:** the respondent's nearest serious jurisprudential identity. This is the primary classification.
 2. **Phrase:** the strongest broad characteristic not already communicated by the noun. Phrase eligibility is deliberately conservative: the public pool consists of the eight axis poles plus `objective_morality` and `anti_discretion`, the two narrower traits that the existing core/diagnostic bank can support with genuine breadth. A one-off answer cannot become a phrase.
 3. **Modifier / twist:** a conditional refinement of the noun, not the third-highest global trait. It asks: *given that this person is a [noun], what is unusually informative about the particular kind of [noun] they are?* Twists may therefore use narrower subtype or adaptive-diagnostic evidence when that evidence genuinely distinguishes variants inside or around the selected noun.
+
+The modifier layer is deliberately **between noun and champion** in granularity. It should capture a real sub-umbrella or meaningful twist shared by multiple plausible champions, not merely rename the runner-up noun and not reproduce an individual scholar's signature doctrine. If no measured subtype genuinely improves on the noun, the result uses an explicit archetypal/default modifier rather than inventing fake precision. Alexy-shaped proportionality and Bickel-shaped minimalism are model cases: **Proportionalist** and **Judicial Minimalist** stay the nouns; the finer distinction moves to modifier/champion level.
 
 This distinction matters. A Solum-like respondent may be a **Public-Meaning Originalist** whose strongest broad residual characteristic is textual constraint, while the front modifier captures the more specific fixed-meaning / construction-zone package that makes that originalism Solum-like. The title can therefore say something like **Elbow-room Public-Meaning Originalist ...** rather than spending both public joke slots on the respondent's second- and third-largest axis bars.
 

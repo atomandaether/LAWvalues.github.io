@@ -258,7 +258,7 @@ globalThis.LAW_DIAGNOSTIC_QUESTIONS = Object.freeze([
     disagreeTraits: [],
     nextOnAgree: [],
     nextOnDisagree: [],
-    relatedIdentityIds: ["proportionalist", "alexyan"],
+    relatedIdentityIds: ["proportionalist"],
     note: "Structured proportionality is narrower than generic case-by-case balancing."
   }
 ]);

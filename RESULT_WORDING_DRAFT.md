@@ -2,13 +2,13 @@
 
 This is the current live editorial surface for the humorous parts of the public result title.
 
-The grammar is now:
+The grammar is:
 
 > **[noun-conditioned twist] [real jurisprudential noun] [broad residual phrase]**
 
-The **phrase** is the strongest broad characteristic not already communicated by the noun. It is deliberately conservative: the live pool is the sixteen poles of the eight public axes plus `objective_morality` and `anti_discretion`, the two narrower traits that the existing question bank can support with genuine breadth. All 18 are regression-tested to ensure that they can actually become the public phrase.
+The **phrase** is the strongest broad characteristic not already communicated by the noun. It is deliberately conservative: the live pool is the sixteen poles of the eight public axes plus `objective_morality` and `anti_discretion`, the two narrower traits that the existing question bank can support with genuine breadth.
 
-The **modifier** is no longer the respondent's third-highest generic trait. It is a **twist on the noun**: a narrower, conditional feature that helps explain what kind of Positivist, Public-Meaning Originalist, Purposivist, etc. this respondent is. The modifier list below is a first live draft for the new architecture and should be workshopped separately from the now-approved phrase wording.
+The **modifier** is a twist on the noun, not a third-place axis and not a disguised champion. Its intended granularity is **between noun and champion**: a real sub-umbrella or meaningful internal/cross-cutting variation that changes what kind of Positivist, Originalist, Minimalist, Proportionalist, etc. the respondent is. If no such measured twist is supported, the explicit `archetypal` fallback is used rather than inventing fake precision. Alexy-like respondents therefore use **Proportionalist** as the noun with a proportionality subtype modifier; Bickel-like respondents use **Judicial Minimalist** with a passive-virtues modifier. Formalist and Functionalist remain the public noun labels exactly as written.
 
 The tone target remains an intelligent enemy of the view taking a cheap but recognizable shot at it: unfair is fine; accidentally describing a different axis is not.
 
@@ -37,8 +37,6 @@ The tone target remains an intelligent enemy of the view taking a cheap but reco
 
 ## Noun-conditioned modifier / twist pool
 
-These modifiers are **conditional**. They do not globally compete as “third place.” A twist only enters the ranking for nouns where that feature genuinely adds useful contrast or subtype information, and it is suppressed when the selected phrase already says the same thing.
-
 | Twist ID | Modifier draft | Eligible noun IDs | Evidence | What the twist is trying to communicate |
 | --- | --- | --- | --- | --- |
 | `construction_room` | **Elbow-room** | `originalist`, `public_meaning_originalist`, `original_intent_originalist`, `original_methods_originalist` | `time.construction_zone` + `time.principle_originalism` | Your originalism fixes meaning without treating every expected historical application as binding; genuine underdetermination can leave room for construction. |
@@ -64,10 +62,14 @@ These modifiers are **conditional**. They do not globally compete as “third pl
 | `low_theory` | **Theory-light** | `pragmatist`, `interpretive_pluralist`, `minimalist` | `method.case_by_case` + `method.anti_grand_theory` | You resist turning your main approach into a comprehensive theory and prefer narrow, fact-sensitive judgment. |
 | `realist_tinge` | **Doctrine-cynical** | `positivist`, `textualist`, `originalist`, `pragmatist`, `interpretive_pluralist` | `realism.underdetermination` + `realism.extra_doctrinal` | You retain your normative methodology while showing an unusually Realist suspicion that doctrine alone explains hard-case outcomes. |
 | `proportionality_tinge` | **Balancing-with-homework** | `dworkinian`, `natural_lawyer`, `living_constitutionalist`, `pragmatist`, `purposivist` | `form.proportionality` | Your otherwise broader methodology has a distinctive preference for structured proportionality rather than free-form balancing. |
+| `passive_virtues_minimalism` | **Passive-virtues** | `minimalist` | `posture.passive_virtues` | Within Judicial Minimalism, your restraint is especially Bickel-like: strategic avoidance and delay are themselves part of the judicial method, not merely a preference for narrow remedies. |
+| `nonpositivist_proportionality` | **Higher-law** | `proportionalist` | sorc right | Within Proportionalism, your balancing sits inside a nonpositivist account of legal principles and moral correctness rather than functioning as a merely practical judicial technique. |
+| `purposive_proportionality` | **Purpose-led** | `proportionalist` | cons right | Within Proportionalism, your structured balancing is embedded in a broader purposive and open-construction approach to legal interpretation. |
 | `anti_discretion_tinge` | **Judgment-allergic** | `positivist`, `textualist`, `originalist`, `public_meaning_originalist`, `formalist` | `form.anti_discretion` | Your main methodology is sharpened by an unusually strong distrust of discretionary judicial judgment. |
+| `archetypal` | **Textbook** | all ordinary nouns (fallback only) | fallback | No narrower measured subtype or cross-cutting twist clearly improves on the selected noun; this respondent is comparatively close to the noun's central package. |
 
 ## Evidence rule
 
 Broad phrase outcomes inherit evidence from their entire public axis. `objective_morality` requires the S9/S10/S11 cluster, matching nonpositivist Source evidence, and corroboration from the existing natural-law diagnostic; `anti_discretion` requires the four independent F1/F3/F7/F8 signals. No one- or two-question niche can become a stand-alone phrase.
 
-Twists use a different standard because they make a narrower conditional claim. A two-question cluster or adaptive diagnostic can be enough to say “this is the unusual kind of Public-Meaning Originalist you are” even when it would be far too narrow to call that feature the person's second-biggest jurisprudential commitment. The canonical example is the Solum-style construction-zone package: it can produce **Elbow-room Public-Meaning Originalist** while the trailing phrase remains available for a genuinely broad second characteristic.
+Twists make a narrower conditional claim and may therefore use subtype evidence that would be too narrow for the phrase slot. The key restriction is conceptual rather than merely numerical: the twist must genuinely refine the selected noun. It must not merely repeat another public noun, and it should not exist solely to encode one champion. If no non-fallback twist clears its threshold, `archetypal` guarantees that an ordinary jurisprudential result still has a meaningful modifier.

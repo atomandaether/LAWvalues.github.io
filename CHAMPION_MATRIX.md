@@ -70,7 +70,7 @@ Examples:
 | Natural Lawyer | Finnis | objective morality + positive law's settlement function |
 | Radbruchian | Radbruch | extreme-injustice threshold |
 | Fullerian | Fuller | internal morality / legality conditions |
-| Alexyan | Alexy | claim to correctness + nonpositivism + proportionality |
+| Proportionalist | Alexy for nonpositivist/correctness-heavy proportionality; Barak for purposive proportionality | structured proportionality is the noun; modifier + champion carry the Alexy/Barak split |
 | Legal Realist | Llewellyn; Leiter for Realist+Positivist/Naturalist; Holmes as precursor | Llewellyn = broad mature Realism; Leiter = modern naturalized/positivist reconstruction; Holmes = precursor + deference; Frank remains lineage until fact/psychology diagnostics exist |
 | Pragmatist | Posner; Breyer as judicial relative | consequences/workability; Breyer when purposivism/functionalism is stronger |
 | Textualist | Manning; Scalia when broader bundle fits | Scalia needs public meaning/rules/formalism, not text alone |
@@ -90,8 +90,7 @@ Examples:
 | Popular Constitutionalist | Kramer; Tushnet for more radical/weak-form variants | anti-judicial supremacy + popular constitutional authority |
 | Departmentalist | no single default | independent branch interpretation; do not collapse into popular constitutionalism |
 | Elyan | Ely | representation reinforcement / process failure |
-| Bickelian | Bickel | passive virtues / counter-majoritarian difficulty |
-| Judicial Minimalist | Sunstein; Bickel as precursor | narrow/incompletely theorized decisions rather than Bickel specifically |
+| Judicial Minimalist | Sunstein; Bickel when passive virtues/avoidance dominate | narrow/incompletely theorized decisions are the noun; modifier + champion carry the Bickel/Sunstein split |
 | Formalist | Lawson; Scalia if text/rules/originalism also fit; Schauer for rule form | distinguish structural formalism from rule formalism |
 | Functionalist | Peter Strauss; Breyer as judicial relative | workable institutional overlap |
 | Proportionalist | Alexy; Barak; German FCC / Barak-era Israeli Supreme Court | structured proportionality, not generic balancing |

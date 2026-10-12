@@ -120,9 +120,10 @@ globalThis.LAW_RESULT_IDENTITIES = Object.freeze([
     label: "Alexyan",
     family: "source",
     status: "adaptive",
-    parentId: null,
+    public: false,
+    parentId: "proportionalist",
     covers: ["source.claim_to_correctness", "source.extreme_injustice", "form.proportionality"],
-    notes: "Rare precise identity: dual nature/claim to correctness plus proportionality. Do not use for generic balancing."
+    notes: "Internal/legacy subtype only. Public results should use Proportionalist as the noun, surface the nonpositivist/correctness package as a modifier twist, and let Robert Alexy remain the champion-level match."
   },
 
   // Interpretation / adjudicative method
@@ -315,9 +316,10 @@ globalThis.LAW_RESULT_IDENTITIES = Object.freeze([
     label: "Bickelian",
     family: "posture",
     status: "adaptive",
-    parentId: null,
+    public: false,
+    parentId: "minimalist",
     covers: ["posture.passive_virtues", "posture.countermajoritarian_difficulty"],
-    notes: "Use only when avoidance/passive virtues are central, not for generic restraint."
+    notes: "Internal/legacy subtype only. Public results should use Judicial Minimalist as the noun, surface passive-virtues/avoidance as a modifier twist, and let Alexander Bickel remain the champion-level match."
   },
   {
     id: "minimalist",
@@ -456,7 +458,7 @@ globalThis.LAW_CHAMPIONS = Object.freeze([
     name: "Robert Alexy",
     kind: "person",
     role: "primary",
-    eligibleIdentityIds: ["alexyan", "proportionalist"],
+    eligibleIdentityIds: ["proportionalist"],
     signatureTraits: ["source.claim_to_correctness", "source.extreme_injustice", "form.proportionality"],
     antiTraits: ["form.rules"],
     note: "Best when nonpositivism and proportionality travel together."
@@ -755,7 +757,7 @@ globalThis.LAW_CHAMPIONS = Object.freeze([
     name: "Alexander Bickel",
     kind: "person",
     role: "primary",
-    eligibleIdentityIds: ["bickelian", "minimalist"],
+    eligibleIdentityIds: ["minimalist"],
     signatureTraits: ["posture.passive_virtues", "posture.countermajoritarian_difficulty"],
     antiTraits: [],
     note: "Passive-virtues/counter-majoritarian-difficulty champion."

@@ -225,7 +225,7 @@ globalThis.LAW_PROFILES = Object.freeze([
     id: "alexy",
     name: "Robert Alexy",
     tier: "specialist",
-    identityIds: ["alexyan", "proportionalist"],
+    identityIds: ["proportionalist"],
     axisSignature: {
       form: { target: 4, weight: 1 },
       sorc: { target: 16, weight: 0.6 }
@@ -422,7 +422,7 @@ globalThis.LAW_PROFILES = Object.freeze([
     id: "bickel",
     name: "Alexander Bickel",
     tier: "specialist",
-    identityIds: ["bickelian", "minimalist"],
+    identityIds: ["minimalist"],
     axisSignature: {
       post: { target: 72, weight: 0.55 },
       remed: { target: 80, weight: 0.45 }
