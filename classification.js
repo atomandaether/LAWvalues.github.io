@@ -683,9 +683,13 @@
     }
 
     if (source <= 42) {
-      const naturalPlausible = (traits["source.objective_morality"] || 0) >= 0.25;
-      const interpretivistPlausible = (traits["source.principles_are_law"] || 0) >= 0.25 ||
+      const naturalCorePlausible = (traits["source.objective_morality"] || 0) >= 0.25;
+      const interpretivistCorePlausible = (traits["source.principles_are_law"] || 0) >= 0.25 ||
         (traits["source.fit_and_justification"] || 0) >= 0.25;
+      const naturalRejected = hasAsked(diagnosticResponses, "D-NP1") && Number(diagnosticResponses["D-NP1"]) <= 0;
+      const interpretivistRejected = hasAsked(diagnosticResponses, "D-NP2") && Number(diagnosticResponses["D-NP2"]) <= 0;
+      const naturalPlausible = naturalCorePlausible && !naturalRejected;
+      const interpretivistPlausible = interpretivistCorePlausible && !interpretivistRejected;
       const extremePlausible = (traits["source.extreme_injustice"] || 0) >= 0.35;
       const impact = traits["source.moral_impact"] || 0;
       const practice = traits["source.moral_practice"] || 0;
@@ -701,26 +705,31 @@
         offer("D-NP2", 90);
       }
 
-      // When the core does not already point to Natural Law or Interpretivism,
-      // test the narrower one-system and Fullerian branches adaptively.
-      if (!naturalPlausible && !interpretivistPlausible && impact < 0.5) offer("D-NP4", 86);
-      if (!naturalPlausible && !interpretivistPlausible &&
+      const naturalCleared = !naturalCorePlausible || naturalRejected ||
+        (traits["source.positive_law_settlement"] || 0) >= 0.5;
+      const interpretivistCleared = !interpretivistCorePlausible || interpretivistRejected ||
+        (traits["source.fit_and_justification"] || 0) >= 0.5;
+
+      // Once stronger competing theories are absent or explicitly rejected,
+      // test the narrower one-system and Fullerian branches.
+      if (naturalCleared && interpretivistCleared && impact < 0.5) offer("D-NP4", 86);
+      if (naturalCleared && interpretivistCleared &&
           hasAsked(diagnosticResponses, "D-NP4") && impact < 0.5 && practice < 0.5) {
         offer("D-NP5", 82);
       }
-      if (!naturalPlausible && !interpretivistPlausible &&
+      if (naturalCleared && interpretivistCleared &&
           hasAsked(diagnosticResponses, "D-NP4") &&
           (hasAsked(diagnosticResponses, "D-NP5") || practice >= 0.5) &&
           internalLegality < 0.5) {
         offer("D-NP3", 76);
       }
 
-      // If none of the core-guided routes fired, Natural Law and Interpretivism
-      // remain useful late probes before falling back to generic Non-Positivist.
-      if (!naturalPlausible && !interpretivistPlausible &&
+      // If the core supplied no clue at all, use remaining capacity to test the
+      // two broad nonpositivist nouns before settling for the generic fallback.
+      if (!naturalCorePlausible && !interpretivistCorePlausible &&
           hasAsked(diagnosticResponses, "D-NP3")) {
-        if ((traits["source.positive_law_settlement"] || 0) < 0.5) offer("D-NP1", 58);
-        if ((traits["source.fit_and_justification"] || 0) < 0.5) offer("D-NP2", 56);
+        if (!hasAsked(diagnosticResponses, "D-NP1")) offer("D-NP1", 58);
+        if (!hasAsked(diagnosticResponses, "D-NP2")) offer("D-NP2", 56);
       }
     }
 
