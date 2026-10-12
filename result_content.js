@@ -386,6 +386,60 @@
       "explanation": "You accept the New Originalist interpretation/construction distinction: fixed original meaning can genuinely underdetermine a case and leave legitimate room for constitutional construction."
     },
     {
+      "id": "inclusive_positivism",
+      "text": "Inclusive",
+      "appliesTo": ["positivist"],
+      "traits": ["source.morality_incorporated"],
+      "min": 0.5,
+      "priority": 1.42,
+      "explanation": "You are a Positivist who thinks a socially grounded legal system can itself incorporate genuine moral criteria into its tests of legal validity."
+    },
+    {
+      "id": "exclusive_positivism",
+      "text": "Exclusive",
+      "appliesTo": ["positivist"],
+      "traits": ["source.source_thesis"],
+      "min": 0.5,
+      "priority": 1.42,
+      "explanation": "You are a Positivist who thinks legal validity must remain identifiable from source or social facts without making moral merits themselves a criterion of what law exists."
+    },
+    {
+      "id": "normative_positivism",
+      "text": "Normative",
+      "appliesTo": ["positivist"],
+      "traits": ["source.normative_positivism"],
+      "min": 0.5,
+      "priority": 1.5,
+      "explanation": "You defend source-based legality not merely as a conceptual account of law but as a desirable institutional discipline that limits contested merits-based judicial lawmaking."
+    },
+    {
+      "id": "moral_impact_nonpositivism",
+      "text": "Moral-Impact",
+      "appliesTo": ["nonpositivist"],
+      "traits": ["source.moral_impact"],
+      "min": 0.5,
+      "priority": 1.5,
+      "explanation": "You think institutional legal action changes the moral situation, and the resulting moral rights and obligations constitute the law."
+    },
+    {
+      "id": "moral_practice_nonpositivism",
+      "text": "Moral-Practice",
+      "appliesTo": ["nonpositivist"],
+      "traits": ["source.moral_practice"],
+      "min": 0.5,
+      "priority": 1.5,
+      "explanation": "You treat legal claims as claims about genuine moral rights and responsibilities rather than as claims inside a separate source-generated domain of legal obligation."
+    },
+    {
+      "id": "extreme_injustice_nonpositivism",
+      "text": "Extreme-Injustice",
+      "appliesTo": ["nonpositivist"],
+      "traits": ["source.extreme_injustice"],
+      "min": 0.5,
+      "priority": 1.48,
+      "explanation": "You think ordinary injustice can coexist with legal validity, but sufficiently extreme injustice can defeat a purported rule's legal status."
+    },
+    {
       "id": "hartian_gap",
       "text": "Gap-friendly",
       "appliesTo": [
@@ -1082,16 +1136,24 @@
     } : null;
   }
 
+  function indefiniteArticle(phrase) {
+    const spoken=String(phrase||"").trim();
+    if(!spoken) return "a";
+    // Public jurisprudential labels are ordinary words, so vowel-initial labels
+    // take "an"; this keeps the article tied to the actual rendered phrase.
+    return /^[aeiou]/i.test(spoken) ? "an" : "a";
+  }
+
   function fitModifier(classification) {
     const score=Number(classification?.identityScore);
     if(!Number.isFinite(score)) return null;
     const runner=Number(classification?.identityAlternatives?.[0]?.score);
     const margin=Number.isFinite(runner)?score-runner:1;
     const noun=classification?.identity?.label||"";
-    const article=/^[aeiou]/i.test(noun)?"an":"a";
+    const article=indefiniteArticle(noun);
 
     // Deliberately generous outer bands: the unmodified noun is the relatively
-    // narrow middle case, while "Unmistakably" and "Some kind of" communicate
+    // narrow middle case, while "Unmistakably a/an" and "Some kind of" communicate
     // unusually clean versus weak nearest-neighbor classification.
     if(score>=0.82 && margin>=0.07) {
       return {
@@ -1113,6 +1175,19 @@
   function isOriginalistIdentity(identity) {
     return ["originalist","public_meaning_originalist","original_intent_originalist"].includes(identity?.id);
   }
+
+  function isSourceIdentity(identity) {
+    return ["positivist","natural_lawyer","interpretivist","fullerian","nonpositivist"].includes(identity?.id);
+  }
+
+  const SOURCE_SUBSTANTIVE_MODIFIERS = new Set([
+    "inclusive_positivism",
+    "exclusive_positivism",
+    "normative_positivism",
+    "moral_impact_nonpositivism",
+    "moral_practice_nonpositivism",
+    "extreme_injustice_nonpositivism"
+  ]);
 
   function specialTitle(classification) {
     const id=classification?.identity?.id;
@@ -1154,6 +1229,9 @@
     if(isOriginalistIdentity(identity)) {
       const newOriginalist=twistRanking.find(item=>item.twist.id==="new_originalism" && item.score>=0.3)||null;
       modifier=newOriginalist?asModifier(newOriginalist.twist):fitModifier(classification);
+    } else if(isSourceIdentity(identity)) {
+      const substantive=twistRanking.find(item=>SOURCE_SUBSTANTIVE_MODIFIERS.has(item.twist.id) && item.score>=0.3)||null;
+      modifier=substantive?asModifier(substantive.twist):fitModifier(classification);
     } else {
       const substantive=twistRanking.find(item=>item.score>=0.3 && !item.twist.fallback)||null;
       modifier=substantive?asModifier(substantive.twist):fitModifier(classification);
