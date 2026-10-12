@@ -1,48 +1,73 @@
 # LAWvalues Result Wording Draft
 
-This is the current live editorial surface for the two humorous result slots.
+This is the current live editorial surface for the humorous parts of the public result title.
 
-The backend first selects the serious jurisprudential noun. It then ranks one neutral residual-feature pool: the strongest unspent feature becomes the **phrase** (#2 characteristic), and the next genuinely different feature becomes the **modifier** (#3 characteristic). Broad axis traits are supported by the full question bank; narrower traits are only eligible when multiple existing core answers and/or an already-existing adaptive diagnostic corroborate them. One isolated answer cannot create a headline feature. These jokes never determine scoring; they only render the already-selected feature.
+The grammar is now:
 
-The tone target is an intelligent opponent ribbing the respondent: slightly unfair is fine, technically misleading is not.
+> **[noun-conditioned twist] [real jurisprudential noun] [broad residual phrase]**
 
-| Internal feature | Modifier (#3 rendering) | Phrase (#2 rendering) | What the backend actually means |
-| --- | --- | --- | --- |
-| `source_positive` | **Morality-“blind”** | who insists “evil” and “illegal” are different complaints | You sharply separate legal validity from moral merit; the joke is the non-positivist complaint that this quarantines morality from the question of what law is. |
-| `law_runs_out` | **Gap-friendly** | who thinks judges sometimes have to make it up | You think genuinely novel cases can exhaust the existing law, leaving judges to create a rule rather than discover an already-existing legal answer. |
-| `principles_as_law` | **Principle-smuggling** | who keeps finding law nobody enacted | You give unwritten legal principles real legal force rather than treating them as merely moral reasons outside the law. |
-| `objective_morality` | **Bench-moralizing** | who brought moral philosophy to a legal-text fight | You are unusually willing to treat objective moral requirements as part of the legal question itself. |
-| `textual_constraint` | **Text-worshipping** | who thinks the words are, annoyingly, legally binding | Enacted language puts unusually hard limits on what you think judges may do. |
-| `contextual_text` | **Dictionary-dodging** | who thinks the dictionary forgot context exists | You resist isolated dictionary literalism and read legal language in its linguistic and legal context. |
-| `enacted_bargain` | **Fine-print-loving** | who makes Congress live with the loophole it wrote | You give unusual weight to enacted compromises, exceptions, and omissions even when they frustrate a broader statutory goal. |
-| `purposive` | **Text-hating** | who apparently can’t read | You are comparatively willing to let statutory purpose and practical sense overcome a rigid reading of enacted words. |
-| `intent` | **Mind-reading** | who wants to know what Congress was thinking | Actual legislative or enactor intent matters to you independently of text and objective statutory purpose. |
-| `fixed_meaning` | **Dead-hand-bound** | who lets dead people freeze the meaning | You treat legal meaning as substantially fixed at adoption rather than updated by later usage or values. |
-| `living_meaning` | **Amendment-optional** | who thinks formal amendment is apparently optional | You accept genuine constitutional development without requiring every change in constitutional content to pass through formal amendment. |
-| `historical_practice` | **Ouija-board-guided** | who asks the dead how they did it | Historical applications and longstanding early governmental practice carry unusual evidentiary weight for you. |
-| `precedent_stability` | **Error-hoarding** | who thinks being wrong for 50 years counts for something | Reliance, settlement, and legal continuity make you unusually reluctant to discard an established decision even when it was mistaken. |
-| `precedent_correction` | **Case-burning** | who thinks old mistakes deserve no retirement plan | You put correctness ahead of preserving precedent and are unusually willing to overrule decisions you think are seriously wrong. |
-| `statutory_precedent` | **Congress-can-fix-it** | who makes Congress clean up the Court’s old mistakes | You give extra staying power to statutory precedent because the legislature can amend the statute itself. |
-| `narrow_remedies` | **Remedy-stingy** | who brought a Band-Aid to a house fire | You generally want judicial relief confined to the parties and violation actually before the court. |
-| `structural_remedies` | **Court-running** | who thinks the judge should just run the place | Once a systemic violation is established, you are comparatively comfortable with restructuring institutions and continuing judicial supervision. |
-| `universal_relief` | **One-lawsuit-fixes-all** | who refuses to make everyone sue separately | You are willing to extend relief beyond the named plaintiff when the same unlawful rule affects many people. |
-| `severability` | **Statute-surgery** | who amputates the bad part and sends the rest home | You prefer cutting out the invalid provision while preserving the remainder of a workable law. |
-| `prophylactic` | **Extra-rule-writing** | who writes an extra rule because the right needs backup | You allow courts to create protective rules beyond the bare constitutional minimum when needed to make the underlying right effective. |
-| `majoritarian` | **Rights-on-honor-system** | who lets the majority grade its own rights homework | You give elected government unusually broad room when constitutional meaning is reasonably contestable. |
-| `countermajoritarian` | **Democracy-vetoing** | who trusts judges with democracy’s emergency brake | You are unusually willing to have courts enforce constitutional rights against sustained majority opposition. |
-| `separation_formal` | **Org-chart-worshipping** | who thinks the boxes on the diagram are sacred | You are unusually strict about constitutionally assigned institutional powers and prescribed procedures. |
-| `separation_functional` | **Separation-“optional”** | who thinks separation of powers is more of a suggestion | You tolerate institutional overlap when the arrangement remains workable, accountable, and preserves each branch’s core role. |
-| `rules` | **Rule-worshipping** | who would rather be predictably wrong than unpredictably fair | You accept some ugly edge cases as the price of general rules that constrain decision-makers. |
-| `anti_discretion` | **Judgment-allergic** | who thinks judges exercising judgment is the problem | Your attraction to rules is especially driven by fear of arbitrary, biased, or inconsistent discretion. |
-| `balancing` | **Vibes-balancing** | who turns every rule into a vibes check | You prefer contextual weighing of competing considerations over categorical rules in hard cases. |
-| `equitable_exceptions` | **Exception-addicted** | who thinks every hard case deserves a loophole | You resist rigid rules when their margins create outcomes you regard as arbitrary or unfair. |
-| `proportionality` | **Balancing-with-homework** | who makes balancing wear a checklist | You favor structured proportionality rather than free-form all-things-considered balancing. |
-| `pragmatic_consequences` | **Policy-playing** | who keeps asking what happens after the opinion | Practical consequences and institutional workability matter unusually strongly to your legal reasoning. |
-| `legal_process` | **Process-pilled** | who asks whose job it is before asking who is right | Institutional role and competence are part of the legal answer for you, not merely afterthoughts. |
-| `low_theory` | **Vibes-based** | who calls it case-by-case because “I know it when I see it” sounded worse | You prefer concrete, fact-sensitive judgment over forcing every hard case through one comprehensive theory. |
-| `realism` | **Doctrine-cynical** | who thinks the holding is only half the story | You think formal legal materials often underdetermine hard cases and that extra-doctrinal facts help explain what courts actually do. |
+The **phrase** is the strongest broad characteristic not already communicated by the noun. It is deliberately conservative: the live pool is the sixteen poles of the eight public axes plus `objective_morality` and `anti_discretion`, the two narrower traits that the existing question bank can support with genuine breadth. All 18 are regression-tested to ensure that they can actually become the public phrase.
 
+The **modifier** is no longer the respondent's third-highest generic trait. It is a **twist on the noun**: a narrower, conditional feature that helps explain what kind of Positivist, Public-Meaning Originalist, Purposivist, etc. this respondent is. The modifier list below is a first live draft for the new architecture and should be workshopped separately from the now-approved phrase wording.
+
+The tone target remains an intelligent enemy of the view taking a cheap but recognizable shot at it: unfair is fine; accidentally describing a different axis is not.
+
+## Approved phrase pool
+
+| Internal feature | Phrase | What the backend actually means |
+| --- | --- | --- |
+| `source_positive` | who thinks evil just needs the right paperwork | You sharply separate legal validity from moral merit and give recognized social/legal sources the decisive role. |
+| `source_nonpositive` | who thinks the law is haunted, and the ghosts agree with them | You reject the idea that recognized social sources exhaust what counts as law, allowing moral principles or higher-law considerations to contribute to legal validity. |
+| `objective_morality` | who says “of course I’m right, here’s an MLK quote” | You treat objective morality as independently relevant to what the law legally requires. |
+| `textual_constraint` | who’d eat their own Grandma because Congress forgot a comma | Enacted wording puts unusually hard limits on what you think judges may do, even when a more purposive result seems sensible. |
+| `purposive` | who doesn’t let their inability to read hold them down | You are comparatively willing to let purpose, practical sense, context, or anti-evasion principles overcome a rigid reading of enacted words. |
+| `fixed_meaning` | who uses an Ouija board as a dictionary | You treat constitutional meaning as substantially fixed at adoption rather than updated by later usage or values. |
+| `living_meaning` | who thinks amendments are for suckers | You accept genuine constitutional development without requiring every change in constitutional content to pass through formal amendment. |
+| `precedent_stability` | who thinks being wrong for 50 years makes it right | Reliance, settlement, and legal continuity make you unusually reluctant to discard an established decision even when it was mistaken. |
+| `precedent_correction` | who’ll tell you the opposite tomorrow | You put correcting legal error ahead of preserving precedent and are comparatively willing to overrule decisions you think are wrong. |
+| `narrow_remedies` | who brought a hand towel to a hurricane | You generally want judicial relief confined to the parties and violation actually before the court. |
+| `structural_remedies` | who let themselves in and started knocking down walls | Once a systemic violation is established, you are comparatively comfortable with restructuring institutions and continuing judicial supervision. |
+| `majoritarian` | who’d let two wolves and a sheep vote on dinner | You give elected government unusually broad room when constitutional meaning is reasonably contestable. |
+| `countermajoritarian` | who thinks 5 is more than 535 | You are unusually willing to have courts enforce constitutional rights against sustained majority opposition. |
+| `separation_formal` | who’d fire the lifeguard for getting in the pool | You are unusually strict about constitutionally assigned institutional powers and prescribed procedures. |
+| `separation_functional` | who thinks the kitchen can never have too many cooks | You tolerate institutional overlap when the arrangement remains workable, accountable, and preserves each branch’s core role. |
+| `rules` | who’d rather be consistently wrong than occasionally right | You accept ugly edge cases as the price of general rules that constrain decision-makers. |
+| `anti_discretion` | who doesn’t trust themselves to decide when to pee | Your attraction to rules is especially driven by distrust of discretionary human judgment and its risks of arbitrariness, bias, or inconsistency. |
+| `balancing` | who does whatever they want | You prefer contextual weighing of competing considerations over categorical rules in hard cases. |
+
+## Noun-conditioned modifier / twist pool
+
+These modifiers are **conditional**. They do not globally compete as “third place.” A twist only enters the ranking for nouns where that feature genuinely adds useful contrast or subtype information, and it is suppressed when the selected phrase already says the same thing.
+
+| Twist ID | Modifier draft | Eligible noun IDs | Evidence | What the twist is trying to communicate |
+| --- | --- | --- | --- | --- |
+| `construction_room` | **Elbow-room** | `originalist`, `public_meaning_originalist`, `original_intent_originalist`, `original_methods_originalist` | `time.construction_zone` + `time.principle_originalism` | Your originalism fixes meaning without treating every expected historical application as binding; genuine underdetermination can leave room for construction. |
+| `hartian_gap` | **Gap-friendly** | `positivist`, `inclusive_positivist`, `exclusive_positivist` | `source.law_runs_out` | Within a positivist framework, you are comparatively willing to say that existing law can genuinely run out in a hard case. |
+| `positive_law_settlement` | **Settlement-minded** | `natural_lawyer`, `common_good_constitutionalist` | `source.positive_law_settlement` | Your higher-law commitments coexist with a strong view that positive law legitimately settles many questions morality leaves open. |
+| `contextual_textualism` | **Dictionary-skeptical** | `textualist`, `originalist`, `public_meaning_originalist`, `original_intent_originalist`, `original_methods_originalist` | `constraint.contextual_textualism` | You are text-centered without treating isolated dictionary definitions as the whole interpretive enterprise. |
+| `enacted_bargain` | **Fine-print** | `textualist`, `positivist`, `inclusive_positivist`, `exclusive_positivist` | `constraint.enacted_bargain` | You are especially willing to make the legal system live with enacted compromises, exceptions, and omissions. |
+| `precedent_skeptic` | **Case-burning** | `originalist`, `public_meaning_originalist`, `original_intent_originalist`, `original_methods_originalist`, `framework_originalist`, `textualist`, `formalist`, `positivist` | prec right | You combine your main methodology with unusual willingness to discard precedent you think is wrong. |
+| `precedent_loyal` | **Error-hoarding** | `originalist`, `public_meaning_originalist`, `original_intent_originalist`, `original_methods_originalist`, `framework_originalist`, `textualist`, `formalist` | prec left | You combine your main methodology with unusual respect for settlement, reliance, and continuity. |
+| `rights_aggressive` | **Democracy-vetoing** | `positivist`, `inclusive_positivist`, `exclusive_positivist`, `textualist`, `originalist`, `public_meaning_originalist`, `original_intent_originalist`, `original_methods_originalist`, `formalist` | post right | You pair a usually constraint-oriented methodology with unusually aggressive judicial enforcement against majority will. |
+| `democracy_deferential` | **Rights-on-honor-system** | `dworkinian`, `moral_impact_theorist`, `natural_lawyer`, `living_constitutionalist`, `common_good_constitutionalist`, `proportionalist`, `pragmatist` | post left | You pair a morality-, rights-, or adaptation-friendly methodology with unusually strong democratic deference. |
+| `narrow_enforcement` | **Remedy-stingy** | `dworkinian`, `natural_lawyer`, `living_constitutionalist`, `common_good_constitutionalist`, `proportionalist`, `elyan` | remed left | You are willing to recognize strong rights or evolving legal obligations while remaining unusually cautious about the breadth of judicial relief. |
+| `systemic_enforcement` | **Court-running** | `thayerian`, `waldronian`, `popular_constitutionalist`, `departmentalist`, `originalist`, `public_meaning_originalist`, `textualist`, `formalist` | remed right | You combine a restraint-, democracy-, or constraint-oriented methodology with unusually sweeping remedial instincts once a violation is established. |
+| `rulebound_open` | **Rule-worshipping** | `purposivist`, `pragmatist`, `functionalist`, `living_constitutionalist`, `common_law_constitutionalist`, `legal_process_theorist`, `interpretive_pluralist`, `legal_realist` | form left | You are comparatively open or pragmatic about finding the governing law but unusually rule-bound once doctrine is identified. |
+| `balancing_strict` | **Vibes-balancing** | `positivist`, `exclusive_positivist`, `textualist`, `originalist`, `public_meaning_originalist`, `original_intent_originalist`, `original_methods_originalist`, `formalist` | form right | You combine a constraint-oriented main methodology with unusually contextual, balancing-oriented doctrinal form. |
+| `formal_structure` | **Org-chart-worshipping** | `dworkinian`, `natural_lawyer`, `pragmatist`, `purposivist`, `legal_process_theorist`, `interpretive_pluralist`, `living_constitutionalist` | separ left | Your broader methodology is flexible in other domains, but you become unusually strict about institutional boundaries. |
+| `functional_structure` | **Separation-“optional”** | `positivist`, `exclusive_positivist`, `natural_lawyer`, `textualist`, `originalist`, `public_meaning_originalist`, `original_methods_originalist` | separ right | Your broader methodology is constraint-oriented, but you tolerate unusually pragmatic overlap among governmental institutions. |
+| `source_bound_living` | **Source-bound** | `living_constitutionalist`, `common_law_constitutionalist`, `pragmatist`, `legal_realist` | sorc left | Your adaptive or pragmatic method remains grounded in socially recognized legal sources rather than freestanding moral validity. |
+| `higher_law_historical` | **Higher-law** | `textualist`, `originalist`, `public_meaning_originalist`, `original_methods_originalist`, `formalist` | sorc right | You combine historical or textual constraint with a nonpositivist view that legal validity is not exhausted by positive sources. |
+| `common_law_growth` | **Precedent-grown** | `living_constitutionalist`, `originalist`, `public_meaning_originalist`, `framework_originalist` | `time.common_law_development` | Your account of constitutional change or construction leans unusually heavily on accumulated precedent and practice. |
+| `institutional_process` | **Process-pilled** | `purposivist`, `pragmatist`, `intentionalist`, `interpretive_pluralist` | `method.institutional_competence` + `method.reasoned_elaboration` | What makes your broader interpretive method distinctive is a strong concern with institutional role, competence, and reasoned elaboration. |
+| `sociological` | **Law-in-action** | `purposivist`, `pragmatist`, `legal_process_theorist`, `interpretive_pluralist` | `method.social_interests` + `method.law_in_action` | You put unusual weight on how doctrine actually operates in society and on the social interests legal rules organize. |
+| `low_theory` | **Theory-light** | `pragmatist`, `interpretive_pluralist`, `minimalist` | `method.case_by_case` + `method.anti_grand_theory` | You resist turning your main approach into a comprehensive theory and prefer narrow, fact-sensitive judgment. |
+| `realist_tinge` | **Doctrine-cynical** | `positivist`, `textualist`, `originalist`, `pragmatist`, `interpretive_pluralist` | `realism.underdetermination` + `realism.extra_doctrinal` | You retain your normative methodology while showing an unusually Realist suspicion that doctrine alone explains hard-case outcomes. |
+| `proportionality_tinge` | **Balancing-with-homework** | `dworkinian`, `natural_lawyer`, `living_constitutionalist`, `pragmatist`, `purposivist` | `form.proportionality` | Your otherwise broader methodology has a distinctive preference for structured proportionality rather than free-form balancing. |
+| `anti_discretion_tinge` | **Judgment-allergic** | `positivist`, `textualist`, `originalist`, `public_meaning_originalist`, `formalist` | `form.anti_discretion` | Your main methodology is sharpened by an unusually strong distrust of discretionary judicial judgment. |
 
 ## Evidence rule
 
-A residual feature is not allowed to become the phrase or modifier merely because one or two isolated answers point toward it. Axis-backed features use the broad axis itself. Narrower features require either a sufficiently broad direct pattern (normally four or more supporting core items), or corroboration between at least two direct core items and the matching axis, or a targeted adaptive diagnostic plus matching broad-axis evidence. Diagnostic clusters such as Legal Realism can qualify through multiple diagnostics. Features the current 93-question bank cannot support this way stay available internally for noun/champion matching but are omitted from the public modifier/phrase pool.
+Broad phrase outcomes inherit evidence from their entire public axis. `objective_morality` requires the S9/S10/S11 cluster, matching nonpositivist Source evidence, and corroboration from the existing natural-law diagnostic; `anti_discretion` requires the four independent F1/F3/F7/F8 signals. No one- or two-question niche can become a stand-alone phrase.
+
+Twists use a different standard because they make a narrower conditional claim. A two-question cluster or adaptive diagnostic can be enough to say “this is the unusual kind of Public-Meaning Originalist you are” even when it would be far too narrow to call that feature the person's second-biggest jurisprudential commitment. The canonical example is the Solum-style construction-zone package: it can produce **Elbow-room Public-Meaning Originalist** while the trailing phrase remains available for a genuinely broad second characteristic.
