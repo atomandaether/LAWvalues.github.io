@@ -385,10 +385,14 @@
     }
 
     if ((traits["method.institutional_competence"] || 0) >= 0.45) {
-      add("legal_process_theorist", 0.88, "Institutional competence and reasoned elaboration.");
+      add("legal_process_theorist", 0.9, "Institutional competence, settlement, and reasoned elaboration establish Legal Process as the primary method.");
     }
     if ((traits["constraint.intent"] || 0) >= 0.5) {
-      add("intentionalist", 0.86, "Actual legislative/enactor intent diagnostic.");
+      add("intentionalist", 0.89, "Legislative/enactor intention is the primary interpretive target.");
+    }
+    if ((traits["method.social_interests"] || 0) >= 0.5 &&
+        (traits["method.law_in_action"] || 0) >= 0.5) {
+      add("sociological_jurist", 0.92, "Law-in-action and explicit social-interest reasoning establish Sociological Jurisprudence.");
     }
     if ((traits["form.proportionality"] || 0) >= 0.5) {
       add("proportionalist", 0.88, "Structured proportionality rather than generic balancing.");
@@ -667,6 +671,16 @@
       if (byId[id] && !hasAsked(diagnosticResponses, id)) priorities.push({ id, priority });
     };
 
+    const realismConfirmed =
+      (traits["realism.underdetermination"] || 0) >= 0.45 &&
+      (traits["realism.extra_doctrinal"] || 0) >= 0.45 &&
+      ((traits["realism.empirical_prediction"] || 0) >= 0.35 ||
+       (traits["realism.law_in_action"] || 0) >= 0.5);
+    if (realismConfirmed) {
+      if (!hasAsked(diagnosticResponses, "D-RLS4")) offer("D-RLS4", 99);
+      else if (!hasAsked(diagnosticResponses, "D-RLS5")) offer("D-RLS5", 98);
+    }
+
     const time = axisValue(scores, "time");
     const source = axisValue(scores, "sorc");
     const posture = axisValue(scores, "post");
@@ -814,19 +828,49 @@
       offer("D-ELY1", 54);
     }
 
-    if (constraint <= 40) {
-      if (precedent >= 52 || posture >= 45) offer("D-LP1", 72);
-      offer("D-SOC1", form <= 50 ? 70 : 58);
-      offer("D-INT1", 64);
+    const provisionalMethodIdentity = resolveIdentity(scores, traits).best.identity.id;
+
+    if (provisionalMethodIdentity === "textualist" && constraint >= 62) {
+      const bestReading = traits["constraint.best_reading_context"] || 0;
+      const enactedBargain = traits["constraint.enacted_bargain"] || 0;
+      if (Math.max(bestReading, enactedBargain) < 0.72) offer("D-TXT1", 72);
+    }
+
+    if (constraint <= 42) {
+      const intent = traits["constraint.intent"] || 0;
+      const institutional = traits["method.institutional_competence"] || 0;
+      const social = traits["method.social_interests"] || 0;
+
+      // Resolve actual intent versus objective purpose before champion-level
+      // refinements when Intentionalism is still untested.
+      if (intent < 0.5 && !hasAsked(diagnosticResponses, "D-INT1")) offer("D-INT1", 86);
+      if (intent >= 0.5 && !hasAsked(diagnosticResponses, "D-INT2")) offer("D-INT2", 91);
+
+      if ((precedent >= 52 || posture >= 45 || institutional >= 0.25) &&
+          institutional < 0.5 && !hasAsked(diagnosticResponses, "D-LP1")) {
+        offer("D-LP1", 80);
+      }
+      if (institutional >= 0.5 && !hasAsked(diagnosticResponses, "D-LP2")) {
+        offer("D-LP2", 88);
+      }
+
+      if (social < 0.5 && !hasAsked(diagnosticResponses, "D-SOC1")) {
+        offer("D-SOC1", form <= 50 ? 77 : 64);
+      }
     }
 
     if (form <= 28) offer("D-PROP1", 74);
 
     if (source <= 35 && constraint <= 40 && posture >= 55) offer("D-CGC1", 42);
 
-    if (maxSalience <= 0.38) {
-      offer("D-PLU1", 78);
-      if (hasAsked(diagnosticResponses, "D-PLU1") && Number(diagnosticResponses["D-PLU1"]) <= 0) {
+    if (maxSalience <= 0.42 || provisionalMethodIdentity === "interpretive_pluralist") {
+      const pluralism = traits["method.modal_pluralism"] || 0;
+      if (pluralism < 0.5) offer("D-PLU1", 78);
+      if (pluralism >= 0.5 && !hasAsked(diagnosticResponses, "D-PLU2")) {
+        offer("D-PLU2", 87);
+      }
+      if (hasAsked(diagnosticResponses, "D-PLU1") &&
+          Number(diagnosticResponses["D-PLU1"]) <= 0) {
         offer("D-OCO1", 76);
       }
     }
