@@ -267,12 +267,8 @@
     setMax(traits, "method.consequences", pragmaticCluster);
     setMax(traits, "method.workability", pragmaticCluster);
 
-    // Existing core questions already distinguish enacted-bargain textualism and
-    // contextual textualism. The best-reading diagnostic sharpens the latter only
-    // when champion precision is genuinely useful.
-    setMax(traits, "constraint.best_reading_context",
-      0.7 * (traits["constraint.contextual_textualism"] || 0) +
-      0.3 * Math.max(0, 1 - (traits["constraint.enacted_bargain"] || 0)));
+    // Contextual-textualist evidence from the core helps champion scoring, but
+    // the narrower modern "best reading" champion gate is diagnostic-only.
     setMax(traits, "method.pluralism", traits["method.modal_pluralism"] || 0);
 
     const maxAxisSalience = Math.max(...AXIS_IDS.map((id) => salience(scores, id)));
@@ -393,6 +389,9 @@
     if ((traits["method.social_interests"] || 0) >= 0.5 &&
         (traits["method.law_in_action"] || 0) >= 0.5) {
       add("sociological_jurist", 0.92, "Law-in-action and explicit social-interest reasoning establish Sociological Jurisprudence.");
+    }
+    if ((traits["method.pragmatic_priority"] || 0) >= 0.5) {
+      add("pragmatist", 0.91, "Consequences and practical workability are independent adjudicative reasons rather than merely evidence of purpose.");
     }
     if ((traits["form.proportionality"] || 0) >= 0.5) {
       add("proportionalist", 0.88, "Structured proportionality rather than generic balancing.");
@@ -757,7 +756,7 @@
         }
       }
   
-      if (source <= 58) {
+      if (source <= 38) {
         const naturalCorePlausible = (traits["source.objective_morality"] || 0) >= 0.25;
         const interpretivistCorePlausible = (traits["source.principles_are_law"] || 0) >= 0.25 ||
           (traits["source.fit_and_justification"] || 0) >= 0.25;
@@ -845,6 +844,11 @@
       // refinements when Intentionalism is still untested.
       if (intent < 0.5 && !hasAsked(diagnosticResponses, "D-INT1")) offer("D-INT1", 86);
       if (intent >= 0.5 && !hasAsked(diagnosticResponses, "D-INT2")) offer("D-INT2", 91);
+
+      if ((traits["method.pragmatic_priority"] || 0) < 0.5 &&
+          !hasAsked(diagnosticResponses, "D-PRAG1")) {
+        offer("D-PRAG1", 82);
+      }
 
       if ((precedent >= 52 || posture >= 45 || institutional >= 0.25) &&
           institutional < 0.5 && !hasAsked(diagnosticResponses, "D-LP1")) {
