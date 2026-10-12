@@ -148,7 +148,7 @@ assert.equal(
   "Legal Realist should remain the approved non-axis override identity"
 );
 for (const id of [
-  "positivist", "nonpositivist", "dworkinian", "moral_impact_theorist", "natural_lawyer", "legal_process_theorist",
+  "positivist", "nonpositivist", "interpretivist", "natural_lawyer", "fullerian", "legal_process_theorist",
   "originalist", "purposivist", "common_law_constitutionalist",
   "thayerian", "waldronian", "popular_constitutionalist", "proportionalist"
 ]) {
@@ -167,8 +167,8 @@ assert.equal(identities.find((x) => x.id === "framework_originalist").public, fa
   "Framework Originalism is Balkin champion-level theory inside New OPM, not a public noun");
 
 for (const id of [
-  "D-RLS1", "D-RLS2", "D-RLS3", "D-POS1", "D-NP1", "D-MAJ1", "D-MAJ2",
-  "D-INT1", "D-LP1", "D-NP4", "D-QC1", "D-SOC1", "D-PLU1", "D-OCO1",
+  "D-RLS1", "D-RLS2", "D-RLS3", "D-POS1", "D-POS2", "D-NP1", "D-NP2", "D-NP3", "D-NP4", "D-NP5", "D-NP6",
+  "D-MAJ1", "D-MAJ2", "D-INT1", "D-LP1", "D-QC1", "D-SOC1", "D-PLU1", "D-OCO1",
   "D-ORI1", "D-ORI2", "D-ORI3", "D-ORI4", "D-ORI5"
 ]) {
   assert.ok(diagnosticIds.has(id), `Missing high-value diagnostic ${id}`);
@@ -179,8 +179,22 @@ assert.equal(rules.doNotForceChampion, true, "Champion matching must permit no s
 assert.equal(rules.requireMarginalExplanatoryValue, true, "Champions must add marginal explanatory coverage");
 assert.equal(rules.pruneRedundantChampions, true, "Redundant champions must be pruned");
 
-assert.equal(identities.find((x) => x.id === "moral_impact_theorist").label, "Greenbergian",
-  "Moral Impact Theory should use the punchier public noun Greenbergian");
+assert.equal(identities.find((x) => x.id === "positivist").label, "Positivist",
+  "Positivist should remain the public noun while Inclusive/Exclusive/Normative are modifiers");
+assert.equal(identities.find((x) => x.id === "inclusive_positivist").public, false,
+  "Inclusive Positivist is now an internal compatibility subtype; public output uses an Inclusive modifier");
+assert.equal(identities.find((x) => x.id === "exclusive_positivist").public, false,
+  "Exclusive Positivist is now an internal compatibility subtype; public output uses an Exclusive modifier");
+assert.equal(identities.find((x) => x.id === "interpretivist").public, undefined,
+  "Interpretivist must now be a public Source noun");
+assert.equal(identities.find((x) => x.id === "dworkinian").public, false,
+  "Dworkinian is champion-level/internal; public output uses Interpretivist");
+assert.equal(identities.find((x) => x.id === "moral_impact_theorist").public, false,
+  "Moral Impact is a descriptive Non-Positivist modifier, not a public noun");
+assert.equal(identities.find((x) => x.id === "radbruchian").public, false,
+  "Extreme-Injustice is a descriptive Non-Positivist modifier, not a public noun");
+assert.equal(identities.find((x) => x.id === "fullerian").label, "Fullerian",
+  "Fullerian remains a public noun");
 assert.equal(identities.find((x) => x.id === "legal_process_theorist").label, "Legal Process Jurist",
   "Legal Process should use a jurist identity rather than a generic Theorist suffix");
 assert.equal(identities.find((x) => x.id === "proportionalist").label, "Proportionalist",
@@ -193,15 +207,20 @@ assert.equal(identities.find((x) => x.id === "formalist").label, "Formalist",
   "Keep the public noun Formalist exactly as-is");
 assert.equal(identities.find((x) => x.id === "functionalist").label, "Functionalist",
   "Keep the public noun Functionalist exactly as-is");
-assert.equal(identities.find((x) => x.id === "interpretivist").public, false,
-  "Interpretivist should remain an internal parent, not a competing public noun");
 assert.equal(identities.find((x) => x.id === "nonpositivist").broadFallback, true,
   "Non-positivist should be marked as a broad last-resort fallback");
 
 const profileById = Object.fromEntries(profiles.map((x) => [x.id, x]));
-assert.equal(profileById.finnis.tier, "main", "Finnis must remain a first-class Natural Law result");
+assert.equal(profileById.finnis_murphy_george.tier, "main",
+  "Finnis/Murphy/George must remain the central modern Natural Law champion unit");
+assert.equal(profileById.dworkin_stavropoulos.tier, "main",
+  "Dworkin/Stavropoulos must be the central Interpretivist champion unit");
 assert.equal(profileById.greenberg.tier, "specialist",
-  "Greenberg should be a diagnosable Moral Impact Theory specialist");
+  "Greenberg should be a diagnosable Moral-Impact Non-Positivist specialist");
+assert.equal(profileById.hershovitz.tier, "specialist",
+  "Hershovitz should be a diagnosable Moral-Practice Non-Positivist specialist");
+assert.equal(profileById.radbruch_soper.tier, "specialist",
+  "Radbruch/Soper should be a diagnosable Extreme-Injustice Non-Positivist specialist");
 assert.equal(profileById.pound.tier, "specialist", "Pound should be a diagnosable sociological-jurisprudence specialist");
 assert.equal(profileById.savigny.tier, "lineage", "Savigny should be Historical School lineage/further reading");
 assert.equal(profileById.oconnor.tier, "catchall", "O'Connor should be the low-theory/contextual catch-all");
@@ -215,12 +234,13 @@ assert.ok(!profiles.some((x) => /ginsburg/i.test(x.name)), "Ginsburg should not 
 assert.deepEqual(Object.keys(profileById.hart.axisSignature), ["sorc"], "Hart should not acquire invented positions on seven unrelated axes");
 assert.deepEqual(Object.keys(profileById.schauer.axisSignature), ["form"], "Schauer should remain a Rules specialist");
 
-// Natural-law evidence should not collapse into generic nonpositivism or Dworkin.
+// Natural-law evidence should not collapse into generic Non-Positivism or Interpretivism.
 const naturalScores = { sorc: 8, cons: 50, time: 50, prec: 50, remed: 50, post: 50, separ: 50, form: 50 };
 const naturalResponses = { S9: 3, S10: 3, S11: 3, S7: -3, S8: -3 };
-const natural = classifier.classify(naturalScores, naturalResponses, {});
-assert.equal(natural.identity.id, "natural_lawyer", "Strong objective-morality evidence should resolve to Natural Lawyer");
-assert.ok(natural.champions.some((x) => x.id === "finnis"), "Finnis should be available for a clean natural-law profile");
+const natural = classifier.classify(naturalScores, naturalResponses, { "D-NP1": 3 });
+assert.equal(natural.identity.id, "natural_lawyer", "Objective morality plus settlement evidence should resolve to Natural Lawyer");
+assert.ok(natural.champions.some((x) => x.id === "finnis_murphy_george"),
+  "Finnis/Murphy/George should be available for a clean natural-law profile");
 assert.ok(!natural.champions.some((x) => x.id === "hart"), "Hart must not win a strongly nonpositivist natural-law profile");
 
 // A specialist cannot win just because a sparse axis happens to be nearby.
@@ -622,7 +642,7 @@ assert.equal(bickelLike.resultTitle.modifier.id, "passive_virtues_minimalism",
 assert.ok(bickelLike.champions.some((x) => x.id === "bickel"),
   "Alexander Bickel should remain available among the closest thinkers");
 
-const fitIdentity = identities.find((x) => x.id === "dworkinian");
+const fitIdentity = identities.find((x) => x.id === "interpretivist");
 const unmistakable = resultContent.assemble(
   { identity: fitIdentity, identityScore: 0.91, identityAlternatives: [{ score: 0.73 }] },
   { sorc:20, cons:50, time:50, prec:50, remed:50, post:50, separ:50, form:50 },
@@ -630,7 +650,18 @@ const unmistakable = resultContent.assemble(
   {}
 );
 assert.equal(unmistakable.modifier.id, "fit_unmistakable",
-  "Exceptionally clean noun fits should display Unmistakably a/an");
+  "Exceptionally clean noun fits should display an explicit indefinite article");
+assert.ok(unmistakable.title.startsWith("Unmistakably an Interpretivist"),
+  "Vowel-initial nouns must render as Unmistakably an ..., never Unmistakably a ... or article-less");
+
+const unmistakablePositivist = resultContent.assemble(
+  { identity: identities.find((x) => x.id === "positivist"), identityScore: 0.91, identityAlternatives: [{ score: 0.73 }] },
+  { sorc:92, cons:50, time:50, prec:50, remed:50, post:50, separ:50, form:50 },
+  {},
+  {}
+);
+assert.ok(unmistakablePositivist.title.startsWith("Unmistakably a Positivist"),
+  "Consonant-initial nouns must render as Unmistakably a ...");
 
 const ordinaryFit = resultContent.assemble(
   { identity: fitIdentity, identityScore: 0.77, identityAlternatives: [{ score: 0.70 }] },
@@ -672,30 +703,154 @@ assert.equal(phraseText.anti_discretion, "who doesn’t trust themselves to deci
 assert.equal(phraseText.balancing, "who does whatever they want");
 
 const greenbergDiagnostic = classifier.diagnosticBank().find((x) => x.id === "D-NP4");
-assert.ok(greenbergDiagnostic && greenbergDiagnostic.relatedIdentityIds.includes("moral_impact_theorist"),
-  "Moral Impact Theory must have an adaptive diagnostic");
+assert.ok(greenbergDiagnostic && greenbergDiagnostic.relatedIdentityIds.includes("nonpositivist"),
+  "Moral Impact Theory must remain adaptively routable under the Non-Positivist noun");
 
-const greenbergScores = { sorc: 12, cons: 50, time: 50, prec: 50, remed: 50, post: 50, separ: 50, form: 50 };
+const greenbergScores = { sorc: 28, cons: 50, time: 50, prec: 50, remed: 50, post: 50, separ: 50, form: 50 };
 const greenberg = classifier.classify(
   greenbergScores,
   variedResponses,
-  { "D-RLS1": -2, "D-QC1": -2, "D-NP4": 3 }
+  { "D-RLS1": -2, "D-QC1": -2, "D-NP2": -3, "D-NP4": 3 }
 );
-assert.equal(greenberg.identity.id, "moral_impact_theorist",
-  "Direct Moral Impact evidence should resolve to Greenbergian/Moral Impact identity");
-assert.equal(greenberg.identity.label, "Greenbergian",
-  "Moral Impact identity should display as Greenbergian");
+assert.equal(greenberg.identity.id, "nonpositivist",
+  "Direct Moral Impact evidence should keep the public noun Non-Positivist");
+assert.equal(greenberg.resultTitle.modifier.id, "moral_impact_nonpositivism",
+  "Greenberg-like respondents should receive the descriptive Moral-Impact modifier");
 assert.ok(greenberg.champions.some((x) => x.id === "greenberg"),
-  "Mark Greenberg should be available as the closest thinker for a clean Moral Impact profile");
+  "Mark Greenberg should be the closest thinker for a clean Moral-Impact profile");
+
+// Locked Source champion units and literal-answer reachability.
+const lockedSourceUnits = [
+  "hart",
+  "coleman_waluchow_kramer",
+  "raz_shapiro_marmor",
+  "campbell_waldron_schauer",
+  "dworkin_stavropoulos",
+  "greenberg",
+  "hershovitz",
+  "finnis_murphy_george",
+  "fuller",
+  "radbruch_soper"
+];
+for (const id of lockedSourceUnits) {
+  assert.ok(profileById[id] && profileById[id].selectable !== false,
+    `Locked Source champion unit ${id} must be selectable`);
+}
+
+const SOURCE_POSITIVISTS = new Set([
+  "hart", "coleman_waluchow_kramer", "raz_shapiro_marmor", "campbell_waldron_schauer"
+]);
+
+function literalSourceCore(id) {
+  const responses = Object.fromEntries(
+    questions.map((question, index) => [question.id, [-2, -1, 0, 1, 2][index % 5]])
+  );
+
+  if (SOURCE_POSITIVISTS.has(id)) {
+    Object.assign(responses, {
+      S1:3, S2:-3, S3:3, S4:3, S5:3, S6:-3, S7:3, S8:-3, S9:-3, S10:-3, S11:-3
+    });
+  } else if (id === "dworkin_stavropoulos") {
+    Object.assign(responses, {
+      S1:-2, S2:-1, S3:-2, S4:-2, S5:-1, S6:2, S7:-3, S8:3, S9:-1, S10:-1, S11:-1
+    });
+  } else if (id === "finnis_murphy_george") {
+    Object.assign(responses, {
+      S1:-1, S2:2, S3:-1, S4:-1, S5:-1, S6:2, S7:-2, S8:-3, S9:3, S10:3, S11:3
+    });
+  } else if (id === "radbruch_soper") {
+    Object.assign(responses, {
+      S1:2, S2:3, S3:2, S4:2, S5:1, S6:-1, S7:1, S8:-2, S9:-2, S10:-2, S11:-2
+    });
+  } else {
+    Object.assign(responses, {
+      S1:-3, S2:-1, S3:-3, S4:-3, S5:-3, S6:3, S7:-3, S8:-1, S9:0, S10:0, S11:0
+    });
+  }
+  return responses;
+}
+
+function sourceDiagnosticAnswer(id, diagnosticId) {
+  if (diagnosticId === "D-RLS1") return -2;
+  if (diagnosticId === "D-QC1") return -2;
+  if (diagnosticId === "D-POS1") {
+    if (id === "coleman_waluchow_kramer") return 3;
+    if (id === "raz_shapiro_marmor") return -3;
+    return 0;
+  }
+  if (diagnosticId === "D-POS2") return id === "campbell_waldron_schauer" ? 3 : -3;
+  if (diagnosticId === "D-NP1") return id === "finnis_murphy_george" ? 3 : -3;
+  if (diagnosticId === "D-NP2") return id === "dworkin_stavropoulos" ? 3 : -3;
+  if (diagnosticId === "D-NP4") return id === "greenberg" ? 3 : -3;
+  if (diagnosticId === "D-NP5") return id === "hershovitz" ? 3 : -3;
+  if (diagnosticId === "D-NP6") return id === "radbruch_soper" ? 3 : -3;
+  if (diagnosticId === "D-NP3") return id === "fuller" ? 3 : -3;
+  return -3;
+}
+
+function runLiteralSourceFixture(id) {
+  const responses = literalSourceCore(id);
+  const scores = scoring.scoreAll(responses);
+  const diagnosticResponses = {};
+  const diagnosticOrder = [];
+
+  for (let i = 0; i < classifier.MAX_DIAGNOSTICS; i += 1) {
+    const next = classifier.nextDiagnostic(scores, responses, diagnosticResponses);
+    if (!next) break;
+    diagnosticOrder.push(next.id);
+    diagnosticResponses[next.id] = sourceDiagnosticAnswer(id, next.id);
+  }
+
+  return {
+    result: classifier.classify(scores, responses, diagnosticResponses, { coreElapsedMs: 10 * 60 * 1000 }),
+    diagnosticOrder
+  };
+}
+
+const sourceExpectedIdentity = {
+  hart:"positivist",
+  coleman_waluchow_kramer:"positivist",
+  raz_shapiro_marmor:"positivist",
+  campbell_waldron_schauer:"positivist",
+  dworkin_stavropoulos:"interpretivist",
+  greenberg:"nonpositivist",
+  hershovitz:"nonpositivist",
+  finnis_murphy_george:"natural_lawyer",
+  fuller:"fullerian",
+  radbruch_soper:"nonpositivist"
+};
+const sourceExpectedModifier = {
+  coleman_waluchow_kramer:"inclusive_positivism",
+  raz_shapiro_marmor:"exclusive_positivism",
+  campbell_waldron_schauer:"normative_positivism",
+  greenberg:"moral_impact_nonpositivism",
+  hershovitz:"moral_practice_nonpositivism",
+  radbruch_soper:"extreme_injustice_nonpositivism"
+};
+
+for (const id of lockedSourceUnits) {
+  const { result, diagnosticOrder } = runLiteralSourceFixture(id);
+  assert.equal(result.identity.id, sourceExpectedIdentity[id],
+    `Literal Source path for ${id} must use the locked public noun`);
+  assert.equal(result.champions[0]?.id, id,
+    `Literal 93-answer + adaptive path must reach Source champion ${id}; got ${result.champions.map((x) => x.id).join(",")}`);
+  assert.ok(diagnosticOrder.length <= classifier.MAX_DIAGNOSTICS,
+    `${id} must remain reachable within the seven-diagnostic cap`);
+  if (sourceExpectedModifier[id]) {
+    assert.equal(result.resultTitle.modifier?.id, sourceExpectedModifier[id],
+      `${id} should surface its locked descriptive Source modifier`);
+  }
+}
 
 console.log(`PASS: ${identities.length} real/fallback identities audited.`);
 console.log(`PASS: ${profiles.length} sparse thinker profiles across main, specialist, catch-all, and lineage tiers.`);
 console.log(`PASS: ${allDiagnostics.length} adaptive diagnostics with a seven-question cap.`);
-console.log("PASS: Natural Law remains first-class; Pound is specialist; Savigny is lineage; O'Connor is catch-all.");
+console.log("PASS: Source nouns/modifiers are locked: Positivist, Natural Lawyer, Interpretivist, Fullerian, and residual Non-Positivist.");
 console.log("PASS: sparse profiles ignore unmodeled axes and diagnostic specialists require evidence.");
 console.log("PASS: public titles split broad phrase ranking from noun-conditioned twist selection.");
 console.log("PASS: all 18 approved phrases are reachable and use the approved critic-rib wording.");
 console.log("PASS: Originalism resolves end-to-end from literal 93-item answers through adaptive routing to all 13 locked champion units.");
 console.log("PASS: Alexyan and Bickelian are champion/modifier-level distinctions, not public nouns.");
 console.log("PASS: Formalist and Functionalist public labels remain unchanged.");
-console.log("PASS: generic fit modifiers use Unmistakably / blank / Some kind of, with substantive modifiers taking priority.");
+console.log("PASS: generic fit modifiers render Unmistakably a/an / blank / Some kind of, with correct articles and substantive modifiers taking priority.");
+console.log("PASS: all 10 locked Source champion units are reachable end-to-end from literal answers within the seven-diagnostic cap.");

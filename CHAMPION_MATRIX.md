@@ -1,5 +1,7 @@
 \nImplementation note: the live sparse-profile rules are in `profiles.js` and `classification.js`; see `MATCHING_ARCHITECTURE.md` for the family → specialist → further-reading hierarchy and false-match safeguards.\n# LAWvalues Champion Matrix and Identity Resolution
 
+> **Source implementation note (2026-10-12):** `SOURCE_ENGINE.md` now governs Positivism, Natural Law, Interpretivism, Fullerian legality, residual Non-Positivism, their substantive modifiers, and Source champion units. Older eponymous noun examples below are historical design notes.
+
 > **Originalism implementation note (2026-10-12):** `ORIGINALISM_ENGINE.md` now governs Originalist nouns, modifiers, champion units, and adaptive routing. Where older examples below still mention Framework or Original-Methods Originalist as middle identities, treat them as historical design notes; both are now champion-level/internal theories.
 
 This document answers a different question from the axis definitions:

@@ -118,66 +118,105 @@ globalThis.LAW_DIAGNOSTIC_QUESTIONS = Object.freeze([
     id: "D-POS1",
     family: "positivism",
     priority: "high",
-    unlock: "Positivist is a leading identity candidate and Hart/Raz precision would materially change the middle label or champion.",
+    unlock: "Positivist is a leading identity candidate and Inclusive/Exclusive precision would materially improve the modifier or champion.",
     prompt: "A legal system can make moral correctness part of its own test for legal validity—for example, by adopting a constitutional rule that no law is valid unless it respects human dignity. Morality matters there because the legal system’s accepted rule itself points to that moral standard.",
     agreeTraits: ["source.morality_incorporated"],
     disagreeTraits: ["source.source_thesis"],
     nextOnAgree: [],
     nextOnDisagree: [],
-    relatedIdentityIds: ["inclusive_positivist", "exclusive_positivist"],
-    note: "Only interpret inside an already-positive-law profile. The same answer outside positivism means something different."
+    relatedIdentityIds: ["positivist", "inclusive_positivist", "exclusive_positivist"],
+    note: "Modifier-level router: agreement supports Inclusive Positivism; disagreement supports Exclusive Positivism. Both remain Positivist nouns."
+  },
+  {
+    id: "D-POS2",
+    family: "positivism",
+    priority: "medium",
+    unlock: "Positivism is clear and a normatively source-bound institutional theory would materially change the modifier or champion.",
+    prompt: "Even if judges sometimes could identify morally better answers, a legal system generally works better when courts treat enacted and otherwise recognized legal sources as settling the law and leave contested moral lawmaking to politically accountable institutions.",
+    agreeTraits: ["source.normative_positivism", "form.anti_discretion", "posture.majoritarian"],
+    disagreeTraits: [],
+    nextOnAgree: [],
+    nextOnDisagree: [],
+    relatedIdentityIds: ["positivist"],
+    note: "Normative/Ethical Positivism: source-based adjudication is defended as an institutional and democratic virtue, not merely described as a conceptual feature of law."
   },
   {
     id: "D-NP1",
     family: "nonpositivism",
     priority: "high",
-    unlock: "Natural Lawyer and Dworkinian/other nonpositivist candidates remain competitive.",
+    unlock: "Natural Lawyer and Interpretivist/other nonpositivist candidates remain competitive.",
     prompt: "Natural law does not give judges a general license to replace clear positive law with whichever result seems morally best. One important purpose of positive law is to authoritatively settle questions that practical morality itself leaves open.",
     agreeTraits: ["source.positive_law_settlement", "source.objective_morality"],
     disagreeTraits: [],
     nextOnAgree: [],
     nextOnDisagree: ["D-NP2"],
     relatedIdentityIds: ["natural_lawyer"],
-    note: "Finnis/Pojanowski-sensitive discriminator: natural law plus the settlement function of posited law."
+    note: "Central modern Natural Law discriminator: objective morality plus a genuine settlement and coordination role for positive law."
   },
   {
     id: "D-NP2",
     family: "nonpositivism",
     priority: "high",
-    unlock: "Dworkinian candidate remains ambiguous after core S8 or D-NP1.",
+    unlock: "Interpretivism remains plausible after the core Source questions.",
     prompt: "When statutes and precedents do not uniquely settle a hard case, the legal answer can be the moral principle that best fits and justifies the legal system as a whole. The judge can be discovering part of the existing law rather than creating a new rule.",
     agreeTraits: ["source.principles_are_law", "source.fit_and_justification", "source.right_answer"],
     disagreeTraits: [],
     nextOnAgree: [],
     nextOnDisagree: [],
-    relatedIdentityIds: ["dworkinian", "interpretivist"],
-    note: "Close to S8; ask only if the existing Dworkin evidence is genuinely ambiguous."
+    relatedIdentityIds: ["interpretivist", "dworkinian"],
+    note: "Noun-level Interpretivist discriminator. Dworkin/Stavropoulos sit at champion level."
   },
   {
     id: "D-NP4",
     family: "nonpositivism",
     priority: "high",
-    unlock: "Nonpositivist is clear but Natural Law and Dworkinian interpretivism do not fully explain why institutional action changes legal obligations.",
+    unlock: "Nonpositivism is clear but Natural Law and Interpretivism do not fully explain how institutional action changes legal obligations.",
     prompt: "When legislatures and courts act, what matters legally is the change those institutional actions make to people's actual moral rights and obligations. Those resulting moral obligations are the law; they are not merely moral reasons for obeying a separate source-based legal rule.",
     agreeTraits: ["source.moral_impact", "source.one_system"],
     disagreeTraits: [],
     nextOnAgree: [],
     nextOnDisagree: [],
     relatedIdentityIds: ["moral_impact_theorist", "nonpositivist"],
-    note: "Greenberg-style Moral Impact Theory diagnostic. Distinguishes institutional moral impact from Dworkinian fit/justification and classical Natural Law."
+    note: "Moral-Impact modifier and Mark Greenberg champion discriminator."
+  },
+  {
+    id: "D-NP5",
+    family: "nonpositivism",
+    priority: "medium",
+    unlock: "One-system nonpositivism is plausible but Moral Impact Theory is not established.",
+    prompt: "A person who goes to court claiming a legal right is ultimately claiming a genuine moral right that the court should recognize; there is no separate kind of 'legal right' whose existence is independent of the parties’ real moral rights and responsibilities.",
+    agreeTraits: ["source.one_system", "source.moral_practice"],
+    disagreeTraits: [],
+    nextOnAgree: [],
+    nextOnDisagree: [],
+    relatedIdentityIds: ["nonpositivist"],
+    note: "Moral-Practice modifier and Scott Hershovitz champion discriminator."
+  },
+  {
+    id: "D-NP6",
+    family: "nonpositivism",
+    priority: "medium",
+    unlock: "The core suggests a threshold rather than general moral invalidation and an Extreme-Injustice result would materially improve the match.",
+    prompt: "An unjust enactment can still be law in ordinary cases, but there is a point of sufficiently extreme injustice at which the purported rule loses its legal status rather than merely becoming a gravely immoral law.",
+    agreeTraits: ["source.extreme_injustice"],
+    disagreeTraits: [],
+    nextOnAgree: [],
+    nextOnDisagree: [],
+    relatedIdentityIds: ["radbruchian", "nonpositivist"],
+    note: "Extreme-Injustice modifier and Radbruch/Soper champion discriminator."
   },
   {
     id: "D-NP3",
     family: "nonpositivism",
     priority: "medium",
-    unlock: "Fullerian candidate is plausible and the project decides that Fuller precision is worth the extra question.",
+    unlock: "Fullerian legality is plausible and would materially improve the noun or champion.",
     prompt: "A system that rules mainly through secret, retroactive, contradictory, or constantly changing commands can fail as law in an important sense even if every command came from the formally authorized ruler.",
     agreeTraits: ["source.internal_legality"],
     disagreeTraits: [],
     nextOnAgree: [],
     nextOnDisagree: [],
     relatedIdentityIds: ["fullerian"],
-    note: "Do not ask merely because someone is Nonpositivist; this tests Fuller's distinctive internal morality of legality."
+    note: "Noun-level Fullerian discriminator: this tests the internal morality/principles of legality rather than generic nonpositivism."
   },
 
   // Majoritarian / constitutional authority router

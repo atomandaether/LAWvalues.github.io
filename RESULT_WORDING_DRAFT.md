@@ -1,5 +1,7 @@
 # LAWvalues Result Wording Draft
 
+> **Fit-article note (2026-10-12):** the strong generic fit label always includes the correct indefinite article: **Unmistakably a Positivist**, **Unmistakably an Interpretivist**, etc. It is never rendered as article-less `Unmistakably [noun]`.
+
 > **Modifier architecture note (2026-10-12):** generic fallback wording is now fit-based: **Unmistakably a/an**, blank, or **Some kind of**. Originalism uses **New** as its substantive constructionist modifier. The older `Textbook`/archetypal and `Elbow-room` examples below are retained only as editorial history until the broader modifier rewrite.
 
 This is the current live editorial surface for the humorous parts of the public result title.
