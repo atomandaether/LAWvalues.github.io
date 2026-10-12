@@ -246,7 +246,7 @@ globalThis.LAW_PROFILES = Object.freeze([
     name: "Antonin Scalia / John Manning",
     tier: "main",
     identityIds: ["public_meaning_originalist", "originalist"],
-    crossCuttingIdentityIds: ["textualist", "formalist"],
+    crossCuttingIdentityIds: ["formalist"],
     axisSignature: {
       cons: { target: 92, weight: 0.8 },
       time: { target: 90, weight: 0.9 },
