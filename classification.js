@@ -337,11 +337,17 @@
     if ((traits["source.internal_legality"] || 0) >= 0.5) {
       add("fullerian", 0.9, "Internal morality/principles of legality diagnostic.");
     }
-    if (r.sorc >= 0.15 && nonpositivistSpecificity >= 0.5 &&
+    const narrowOneSystem = Math.max(
+      traits["source.moral_impact"] || 0,
+      traits["source.moral_practice"] || 0
+    );
+    const extremeInjustice = traits["source.extreme_injustice"] || 0;
+    if (((axisValue(scores, "sorc") <= 60 && narrowOneSystem >= 0.5) ||
+         (extremeInjustice >= 0.5 && (traits["source.objective_morality"] || 0) < 0.5)) &&
         interpretivistEvidence < 0.5 &&
         (traits["source.positive_law_settlement"] || 0) < 0.5 &&
         (traits["source.internal_legality"] || 0) < 0.5) {
-      add("nonpositivist", 0.85 + 0.08 * s.sorc, "A distinctive nonpositivist theory is established below the noun layer.", "Non-Positivist");
+      add("nonpositivist", 0.88, "A distinctive nonpositivist theory is established below the noun layer.", "Non-Positivist");
     }
 
     if (l.time >= 0.2 && (traits["time.original_intent"] || 0) >= 0.5) {
@@ -670,6 +676,13 @@
       }
     }
 
+    const extremeSourcePlausible = (traits["source.extreme_injustice"] || 0) >= 0.35;
+    if (extremeSourcePlausible &&
+        (traits["source.objective_morality"] || 0) < 0.5 &&
+        !hasAsked(diagnosticResponses, "D-NP6")) {
+      offer("D-NP6", 94);
+    }
+
     if (source >= 65) {
       const incorporated = traits["source.morality_incorporated"] || 0;
       const exclusive = traits["source.source_thesis"] || 0;
@@ -682,7 +695,7 @@
       }
     }
 
-    if (source <= 42) {
+    if (source <= 58) {
       const naturalCorePlausible = (traits["source.objective_morality"] || 0) >= 0.25;
       const interpretivistCorePlausible = (traits["source.principles_are_law"] || 0) >= 0.25 ||
         (traits["source.fit_and_justification"] || 0) >= 0.25;
@@ -705,19 +718,26 @@
         offer("D-NP2", 90);
       }
 
-      const naturalCleared = !naturalCorePlausible || naturalRejected ||
+      const naturalEstablished =
+        (traits["source.objective_morality"] || 0) >= 0.45 &&
         (traits["source.positive_law_settlement"] || 0) >= 0.5;
-      const interpretivistCleared = !interpretivistCorePlausible || interpretivistRejected ||
-        (traits["source.fit_and_justification"] || 0) >= 0.5;
+      const interpretivistEstablished =
+        (traits["source.fit_and_justification"] || 0) >= 0.5 &&
+        (traits["source.principles_are_law"] || 0) >= 0.35;
+      const naturalCleared = !naturalCorePlausible || naturalRejected;
+      const interpretivistCleared = !interpretivistCorePlausible || interpretivistRejected;
 
-      // Once stronger competing theories are absent or explicitly rejected,
-      // test the narrower one-system and Fullerian branches.
-      if (naturalCleared && interpretivistCleared && impact < 0.5) offer("D-NP4", 86);
-      if (naturalCleared && interpretivistCleared &&
+      // Once a broad Source noun is affirmatively established, do not spend
+      // diagnostics searching for narrower alternative theories.
+      if (!naturalEstablished && !interpretivistEstablished &&
+          naturalCleared && interpretivistCleared && impact < 0.5) offer("D-NP4", 86);
+      if (!naturalEstablished && !interpretivistEstablished &&
+          naturalCleared && interpretivistCleared &&
           hasAsked(diagnosticResponses, "D-NP4") && impact < 0.5 && practice < 0.5) {
         offer("D-NP5", 82);
       }
-      if (naturalCleared && interpretivistCleared &&
+      if (!naturalEstablished && !interpretivistEstablished &&
+          naturalCleared && interpretivistCleared &&
           hasAsked(diagnosticResponses, "D-NP4") &&
           (hasAsked(diagnosticResponses, "D-NP5") || practice >= 0.5) &&
           internalLegality < 0.5) {
@@ -726,7 +746,8 @@
 
       // If the core supplied no clue at all, use remaining capacity to test the
       // two broad nonpositivist nouns before settling for the generic fallback.
-      if (!naturalCorePlausible && !interpretivistCorePlausible &&
+      if (!naturalEstablished && !interpretivistEstablished &&
+          !naturalCorePlausible && !interpretivistCorePlausible &&
           hasAsked(diagnosticResponses, "D-NP3")) {
         if (!hasAsked(diagnosticResponses, "D-NP1")) offer("D-NP1", 58);
         if (!hasAsked(diagnosticResponses, "D-NP2")) offer("D-NP2", 56);
