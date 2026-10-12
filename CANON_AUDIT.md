@@ -55,8 +55,8 @@ A legitimate narrow identity when the extreme-injustice threshold specifically a
 ### Fullerian
 Legitimate only after targeted diagnostics on the internal morality / conditions of legality. The current core does not justify the name by itself.
 
-### Alexyan
-Legitimate but rare. Require a claim-to-correctness / dual-nature nonpositivism pattern plus structured proportionality. Generic balancing is not enough.
+### Alexy-shaped proportionality
+Do **not** use Alexyan as a public noun. The public noun is **Proportionalist** when structured proportionality is directly diagnosed. A nonpositivist/correctness-heavy version is a modifier-level subtype, and **Robert Alexy** remains the champion-level match. This prevents a person-derived noun from duplicating the champion layer.
 
 ## Conditional contemporary identity
 
@@ -72,7 +72,7 @@ This is a real theory, not an invented label, but it is too specific to infer fr
 - Pojanowski/Walsh = special Natural Law + Originalism + positive-law-settlement combination.
 - Fuller = internal legality.
 - Radbruch = extreme-injustice threshold.
-- Alexy = nonpositivism + claim to correctness + proportionality.
+- Alexy = champion for Proportionalism when nonpositivist/correctness features dominate.
 - Blackstone/Aquinas = historical lineage unless a much more specific diagnostic is ever added.
 
 ---
@@ -221,15 +221,8 @@ Representation reinforcement: defer ordinarily, intervene when political process
 
 Champion: **John Hart Ely**.
 
-## Bickelian
-Passive virtues / strategic avoidance / counter-majoritarian difficulty.
-
-Champion: **Alexander Bickel**.
-
 ## Judicial Minimalist
-Broader real identity for narrow/incompletely theorized decisions.
-
-Champion: **Cass Sunstein**; Bickel as an important precursor.
+Public noun for narrow/incompletely theorized adjudication. **Bickelian** is no longer a separate public noun: passive virtues / strategic avoidance / counter-majoritarian difficulty are a modifier-level subtype within Minimalism, while **Alexander Bickel** remains a champion. **Cass Sunstein** remains the cleaner broad Minimalist champion.
 
 ---
 
@@ -319,8 +312,8 @@ Reason: these require substantive theoretical questions that are not doing much 
 
 ## Medium priority
 7. Legal Process vs generic Purposivism/Pragmatism.
-8. Bickelian vs generic Minimalism if core O7 is insufficient.
-9. Proportionalist only if structured proportionality would materially improve on a balancing modifier.
+8. Passive-virtues/Bickel-style Minimalism only when it would materially refine the broader Minimalist noun.
+9. Proportionalist only if structured proportionality would materially improve on generic balancing; Alexy-vs-Barak distinctions belong in modifiers/champions.
 10. Common-Good Constitutionalist only in the rare profile where it is genuinely plausible.
 
 ## Usually no extra diagnostics needed
