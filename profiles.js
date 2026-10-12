@@ -143,7 +143,8 @@ globalThis.LAW_PROFILES = Object.freeze([
     id: "hugo_black",
     name: "Hugo Black",
     tier: "main",
-    identityIds: ["textualist", "formalist"],
+    identityIds: ["textualist"],
+    crossCuttingIdentityIds: ["formalist"],
     axisSignature: {
       cons: { target: 90, weight: 0.9 },
       form: { target: 97, weight: 1 },
@@ -246,7 +247,8 @@ globalThis.LAW_PROFILES = Object.freeze([
     id: "scalia_manning",
     name: "Antonin Scalia / John Manning",
     tier: "main",
-    identityIds: ["public_meaning_originalist", "originalist", "textualist", "formalist"],
+    identityIds: ["public_meaning_originalist", "originalist"],
+    crossCuttingIdentityIds: ["textualist", "formalist"],
     axisSignature: {
       cons: { target: 92, weight: 0.8 },
       time: { target: 90, weight: 0.9 },
@@ -394,7 +396,8 @@ globalThis.LAW_PROFILES = Object.freeze([
     id: "cardozo",
     name: "Benjamin Cardozo",
     tier: "main",
-    identityIds: ["pragmatist", "common_law_constitutionalist"],
+    identityIds: ["pragmatist"],
+    crossCuttingIdentityIds: ["common_law_constitutionalist"],
     axisSignature: {
       cons: { target: 36, weight: 0.55 },
       prec: { target: 74, weight: 0.7 },
@@ -427,7 +430,8 @@ globalThis.LAW_PROFILES = Object.freeze([
     id: "breyer",
     name: "Stephen Breyer",
     tier: "main",
-    identityIds: ["purposivist", "pragmatist", "functionalist"],
+    identityIds: ["purposivist"],
+    crossCuttingIdentityIds: ["pragmatist", "functionalist"],
     axisSignature: {
       cons: { target: 20, weight: 0.8 },
       separ: { target: 12, weight: 0.8 },
