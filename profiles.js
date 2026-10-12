@@ -103,23 +103,6 @@ globalThis.LAW_PROFILES = Object.freeze([
     related: ["Lon Fuller", "John Finnis"]
   },
   {
-    id: "scalia",
-    name: "Antonin Scalia",
-    tier: "main",
-    identityIds: ["textualist", "public_meaning_originalist", "originalist", "formalist"],
-    axisSignature: {
-      cons: { target: 92, weight: 1 },
-      time: { target: 88, weight: 0.9 },
-      separ: { target: 84, weight: 0.65 },
-      form: { target: 93, weight: 0.9 }
-    },
-    signatureTraits: ["time.public_meaning", "form.anti_discretion"],
-    requiredTraits: [],
-    antiTraits: ["constraint.purpose", "form.proportionality"],
-    description: "The classic cross-axis bundle of enacted text, public-meaning originalism, rules, and relatively formal separation of powers.",
-    related: ["John Manning", "Hugo Black"]
-  },
-  {
     id: "hugo_black",
     name: "Hugo Black",
     tier: "main",
@@ -135,62 +118,196 @@ globalThis.LAW_PROFILES = Object.freeze([
     description: "Distinctive because categorical, text-centered judging is paired with unusually aggressive enforcement of enumerated constitutional rights.",
     related: ["Antonin Scalia"]
   },
+
+  // Locked Originalism champion units.
   {
-    id: "thomas",
-    name: "Clarence Thomas",
+    id: "bork_berger",
+    name: "Robert Bork / Raoul Berger",
     tier: "main",
-    identityIds: ["originalist", "public_meaning_originalist"],
+    identityIds: ["original_intent_originalist", "originalist"],
     axisSignature: {
-      time: { target: 96, weight: 1 },
-      prec: { target: 12, weight: 1 }
+      time: { target: 94, weight: 1 },
+      post: { target: 84, weight: 0.65 },
+      form: { target: 78, weight: 0.4 }
     },
-    signatureTraits: ["precedent.correctness_first"],
-    requiredTraits: [],
-    antiTraits: ["precedent.stability"],
-    description: "A strong fit for historical constitutional meaning combined with unusual willingness to reconsider entrenched precedent thought to be wrong.",
-    related: ["Michael Stokes Paulsen", "Antonin Scalia"]
+    signatureTraits: ["time.original_intent", "time.no_construction", "posture.majoritarian"],
+    requiredTraits: [{ any: ["time.original_intent"], min: 0.45 }],
+    antiTraits: ["time.intent_as_meaning", "time.construction_zone"],
+    description: "First-generation Original Intent: recover the founding intention, strongly constrain judicial innovation, and leave little legitimate construction beyond it.",
+    related: ["Robert Bork", "Raoul Berger"]
   },
   {
-    id: "barnett",
-    name: "Randy Barnett",
-    tier: "main",
-    identityIds: ["originalist", "public_meaning_originalist"],
-    axisSignature: {
-      time: { target: 90, weight: 1 },
-      post: { target: 15, weight: 0.85 },
-      prec: { target: 28, weight: 0.5 }
-    },
-    signatureTraits: ["time.public_meaning"],
-    requiredTraits: [],
-    antiTraits: ["posture.majoritarian"],
-    description: "A useful cross-cutting fit for original meaning combined with vigorous judicial protection of individual liberty rather than reflexive judicial restraint.",
-    related: ["Lawrence Solum", "Hugo Black"]
+    id: "alexander_kay_prakash",
+    name: "Larry Alexander / Richard Kay / Saikrishna Prakash",
+    tier: "specialist",
+    identityIds: ["original_intent_originalist", "originalist"],
+    axisSignature: { time: { target: 94, weight: 1 } },
+    signatureTraits: ["time.original_intent", "time.intent_as_meaning"],
+    requiredTraits: [{ all: ["time.intent_as_meaning"], min: 0.5 }],
+    antiTraits: ["time.public_meaning"],
+    description: "Modern strong intentionalism: intended communication is the semantic object of interpretation, not merely a device for judicial restraint.",
+    related: ["Larry Alexander", "Richard Kay", "Saikrishna Prakash"]
+  },
+  {
+    id: "whittington",
+    name: "Keith Whittington",
+    tier: "specialist",
+    identityIds: ["original_intent_originalist", "originalist"],
+    axisSignature: { time: { target: 86, weight: 0.9 } },
+    signatureTraits: ["time.original_intent", "time.construction_zone"],
+    requiredTraits: [{ all: ["time.construction_zone"], min: 0.5 }],
+    antiTraits: ["time.public_meaning"],
+    description: "The distinctive Original-Intent plus construction fit: fixed founding intent can leave unresolved constitutional questions for legitimate construction.",
+    related: ["Lawrence Solum", "Randy Barnett"]
   },
   {
     id: "solum",
     name: "Lawrence Solum",
     tier: "specialist",
     identityIds: ["public_meaning_originalist", "originalist"],
-    axisSignature: { time: { target: 88, weight: 1 } },
-    signatureTraits: ["time.public_meaning", "time.principle_originalism", "time.construction_zone"],
-    requiredTraits: [
-      { any: ["time.public_meaning", "time.principle_originalism"], min: 0.45 }
-    ],
-    antiTraits: ["time.living_content"],
-    description: "A specialist originalist fit where original semantic meaning is fixed but applying that meaning can still leave genuine room for constitutional construction.",
-    related: ["Will Baude & Stephen Sachs", "Randy Barnett"]
+    axisSignature: { time: { target: 90, weight: 1 } },
+    signatureTraits: ["time.public_meaning", "time.semantic_fixation", "time.construction_zone", "time.principle_originalism"],
+    requiredTraits: [{ all: ["time.construction_zone"], min: 0.5 }],
+    antiTraits: ["time.original_intent", "time.original_methods", "time.common_law_development"],
+    description: "New public-meaning originalism centered on semantic fixation and a genuine but constrained interpretation/construction distinction.",
+    related: ["Randy Barnett", "Jack Balkin", "Keith Whittington"]
+  },
+  {
+    id: "barnett_bernick",
+    name: "Randy Barnett / Evan Bernick",
+    tier: "specialist",
+    identityIds: ["public_meaning_originalist", "originalist"],
+    axisSignature: {
+      time: { target: 90, weight: 0.85 },
+      post: { target: 18, weight: 0.9 }
+    },
+    signatureTraits: ["time.public_meaning", "time.construction_zone", "posture.rights_trumps"],
+    requiredTraits: [{ all: ["time.construction_zone"], min: 0.5 }],
+    antiTraits: ["posture.majoritarian"],
+    description: "New OPM with rights-protective, good-faith construction once fixed communicative meaning leaves genuine room.",
+    related: ["Lawrence Solum", "Jack Balkin"]
   },
   {
     id: "balkin",
     name: "Jack Balkin",
     tier: "specialist",
-    identityIds: ["framework_originalist", "originalist"],
-    axisSignature: { time: { target: 55, weight: 0.35 } },
-    signatureTraits: ["time.framework", "time.construction_zone", "time.principle_originalism"],
-    requiredTraits: [{ all: ["time.framework"], min: 0.5 }],
+    identityIds: ["public_meaning_originalist", "originalist"],
+    axisSignature: {
+      time: { target: 72, weight: 0.7 },
+      prec: { target: 66, weight: 0.35 }
+    },
+    signatureTraits: ["time.public_meaning", "time.construction_zone", "time.principle_originalism", "time.common_law_development"],
+    requiredTraits: [
+      { all: ["time.construction_zone"], min: 0.5 },
+      { all: ["time.common_law_development"], min: 0.35 }
+    ],
+    antiTraits: ["time.expected_applications"],
+    description: "New OPM with a fixed framework and comparatively extensive legitimate doctrinal, institutional, and political construction over time.",
+    related: ["Lawrence Solum", "Randy Barnett", "Reva Siegel"]
+  },
+  {
+    id: "scalia_manning",
+    name: "Antonin Scalia / John Manning",
+    tier: "main",
+    identityIds: ["public_meaning_originalist", "originalist", "textualist", "formalist"],
+    axisSignature: {
+      cons: { target: 92, weight: 0.8 },
+      time: { target: 90, weight: 0.9 },
+      separ: { target: 82, weight: 0.45 },
+      form: { target: 92, weight: 0.8 }
+    },
+    signatureTraits: ["time.public_meaning", "constraint.textual", "form.anti_discretion"],
+    requiredTraits: [],
+    antiTraits: ["constraint.purpose", "time.construction_zone"],
+    description: "Mainline text-and-rule public-meaning originalism: text, legal context, rules, and anti-discretion do most of the work.",
+    related: ["Antonin Scalia", "John Manning"]
+  },
+  {
+    id: "mcginnis_rappaport",
+    name: "John McGinnis / Michael Rappaport",
+    tier: "specialist",
+    identityIds: ["public_meaning_originalist", "originalist"],
+    axisSignature: {
+      time: { target: 94, weight: 1 },
+      cons: { target: 86, weight: 0.45 }
+    },
+    signatureTraits: ["time.original_methods", "time.fixation", "time.no_construction"],
+    requiredTraits: [{ all: ["time.original_methods"], min: 0.5 }],
+    antiTraits: ["time.construction_zone"],
+    description: "Original Methods: use the historically accepted legal interpretive rules for the Constitution and minimize a separate construction zone.",
+    related: ["Caleb Nelson", "Antonin Scalia", "John Manning"]
+  },
+  {
+    id: "mcconnell_green",
+    name: "Michael McConnell / Christopher Green",
+    tier: "specialist",
+    identityIds: ["public_meaning_originalist", "originalist"],
+    axisSignature: { time: { target: 88, weight: 1 } },
+    signatureTraits: ["time.public_meaning", "time.principle_originalism"],
+    requiredTraits: [{ all: ["time.principle_originalism"], min: 0.5 }],
+    antiTraits: ["time.expected_applications", "time.common_law_development"],
+    description: "Principle/application originalism: fixed historical principles can govern new circumstances even when the adopters expected different concrete applications.",
+    related: ["Michael McConnell", "Christopher Green"]
+  },
+  {
+    id: "amar",
+    name: "Akhil Reed Amar",
+    tier: "specialist",
+    identityIds: ["public_meaning_originalist", "originalist"],
+    axisSignature: {
+      time: { target: 84, weight: 0.75 },
+      cons: { target: 78, weight: 0.45 }
+    },
+    signatureTraits: ["time.public_meaning", "time.intratextualism", "method.holistic_constitution"],
+    requiredTraits: [{ all: ["time.intratextualism"], min: 0.5 }],
     antiTraits: [],
-    description: "A distinctive fixed-framework-plus-living-construction position: original semantic commitments coexist with substantial legitimate constitutional development.",
-    related: ["Reva Siegel", "Lawrence Solum"]
+    description: "Holistic/intratextual OPM: ambiguous clauses are read through recurring constitutional language, architecture, and the document as a whole.",
+    related: ["Akhil Reed Amar"]
+  },
+  {
+    id: "thomas_paulsen",
+    name: "Clarence Thomas / Michael Stokes Paulsen",
+    tier: "main",
+    identityIds: ["public_meaning_originalist", "originalist", "formalist"],
+    axisSignature: {
+      time: { target: 96, weight: 0.85 },
+      prec: { target: 10, weight: 1 }
+    },
+    signatureTraits: ["time.fixation", "precedent.correctness_first"],
+    requiredTraits: [],
+    antiTraits: ["precedent.stability"],
+    description: "Correction-first originalism: entrenched precedent yields comparatively readily to the best account of original constitutional law.",
+    related: ["Clarence Thomas", "Michael Stokes Paulsen"]
+  },
+  {
+    id: "barrett",
+    name: "Amy Coney Barrett",
+    tier: "main",
+    identityIds: ["public_meaning_originalist", "originalist"],
+    axisSignature: {
+      time: { target: 90, weight: 0.85 },
+      prec: { target: 82, weight: 1 }
+    },
+    signatureTraits: ["time.fixation", "precedent.stability", "precedent.settlement"],
+    requiredTraits: [],
+    antiTraits: ["precedent.correctness_first"],
+    description: "Precedent-accommodating originalism: original meaning remains authoritative while stare decisis, reliance, and legal settlement retain substantial force.",
+    related: ["Amy Coney Barrett"]
+  },
+  {
+    id: "natural_law_originalists",
+    name: "Pojanowski / Walsh / Alicea / Strang",
+    tier: "specialist",
+    identityIds: ["public_meaning_originalist", "originalist", "natural_lawyer"],
+    axisSignature: {
+      sorc: { target: 14, weight: 0.75 },
+      time: { target: 88, weight: 0.8 }
+    },
+    signatureTraits: ["source.objective_morality", "source.positive_law_settlement", "time.fixation"],
+    requiredTraits: [{ all: ["source.objective_morality"], min: 0.35 }],
+    antiTraits: ["time.living_content"],
+    description: "Natural-law-grounded originalism: classical natural law explains why promulgated positive constitutional law has authoritative settlement force.",
+    related: ["Jeffrey Pojanowski", "Kevin Walsh", "J. Joel Alicea", "Lee Strang"]
   },
   {
     id: "owen_dixon",
@@ -535,7 +652,7 @@ globalThis.LAW_PROFILES = Object.freeze([
     id: "lawson",
     name: "Gary Lawson",
     tier: "specialist",
-    identityIds: ["formalist", "originalist"],
+    identityIds: ["formalist"],
     axisSignature: {
       separ: { target: 97, weight: 1 },
       time: { target: 82, weight: 0.35 }
@@ -592,17 +709,4 @@ globalThis.LAW_PROFILES = Object.freeze([
     description: "Historical School lineage: law develops organically through custom, legal culture, and inherited social practice rather than simply being designed from above.",
     related: []
   },
-  {
-    id: "manning",
-    name: "John Manning",
-    tier: "lineage",
-    selectable: false,
-    identityIds: ["textualist"],
-    axisSignature: { cons: { target: 96, weight: 1 } },
-    signatureTraits: ["constraint.textual"],
-    requiredTraits: [],
-    antiTraits: ["constraint.purpose"],
-    description: "Important modern textualist scholarship, retained as further reading rather than a separate default match when Scalia or the Textualist identity already explains the measured space.",
-    related: []
-  }
 ]);
