@@ -372,21 +372,18 @@
 
   const TWISTS = Object.freeze(  [
     {
-      "id": "construction_room",
-      "text": "Elbow-room",
+      "id": "new_originalism",
+      "text": "New",
       "appliesTo": [
-        "originalist",
         "public_meaning_originalist",
-        "original_intent_originalist",
-        "original_methods_originalist"
+        "original_intent_originalist"
       ],
       "traits": [
-        "time.construction_zone",
-        "time.principle_originalism"
+        "time.construction_zone"
       ],
-      "min": 0.45,
-      "priority": 1.25,
-      "explanation": "Your originalism fixes meaning without treating every expected historical application as binding; genuine underdetermination can leave room for construction."
+      "min": 0.5,
+      "priority": 1.5,
+      "explanation": "You accept the New Originalist interpretation/construction distinction: fixed original meaning can genuinely underdetermine a case and leave legitimate room for constitutional construction."
     },
     {
       "id": "hartian_gap",
@@ -1085,6 +1082,38 @@
     } : null;
   }
 
+  function fitModifier(classification) {
+    const score=Number(classification?.identityScore);
+    if(!Number.isFinite(score)) return null;
+    const runner=Number(classification?.identityAlternatives?.[0]?.score);
+    const margin=Number.isFinite(runner)?score-runner:1;
+    const noun=classification?.identity?.label||"";
+    const article=/^[aeiou]/i.test(noun)?"an":"a";
+
+    // Deliberately generous outer bands: the unmodified noun is the relatively
+    // narrow middle case, while "Unmistakably" and "Some kind of" communicate
+    // unusually clean versus weak nearest-neighbor classification.
+    if(score>=0.82 && margin>=0.07) {
+      return {
+        id:"fit_unmistakable",
+        text:`Unmistakably ${article}`,
+        explanation:"Your answers form an unusually clean and well-separated match for this jurisprudential identity."
+      };
+    }
+    if(score<0.72 || margin<0.04) {
+      return {
+        id:"fit_some_kind",
+        text:"Some kind of",
+        explanation:"This is your nearest jurisprudential neighbor, but the match is comparatively weak, mixed, or close to another identity."
+      };
+    }
+    return null;
+  }
+
+  function isOriginalistIdentity(identity) {
+    return ["originalist","public_meaning_originalist","original_intent_originalist"].includes(identity?.id);
+  }
+
   function specialTitle(classification) {
     const id=classification?.identity?.id;
     if(id==="unusable_response") return "Unclear response pattern";
@@ -1117,12 +1146,18 @@
     const phrasePick=phraseRanking.find(item=>item.score>=0.18)||null;
     const phrase=asPhrase(phrasePick?.feature||null);
 
-    // The modifier is not "third place." It is the best supported noun-conditioned
-    // twist: what makes this respondent's version of the selected noun distinctive.
+    // Substantive modifiers beat generic fit language.  Originalism currently has
+    // one such public intermediate camp: New Originalism (constructionist OPM/OI).
+    // Otherwise fit quality is expressed as Unmistakably / blank / Some kind of.
     const twistRanking=rankTwists(identity,scores,traits,phrasePick?.feature||null);
-    const twistPick=twistRanking.find(item=>item.score>=0.3)||null;
-    const archetypal=TWISTS.find(twist=>twist.fallback)||null;
-    const modifier=asModifier(twistPick?.twist||archetypal);
+    let modifier=null;
+    if(isOriginalistIdentity(identity)) {
+      const newOriginalist=twistRanking.find(item=>item.twist.id==="new_originalism" && item.score>=0.3)||null;
+      modifier=newOriginalist?asModifier(newOriginalist.twist):fitModifier(classification);
+    } else {
+      const substantive=twistRanking.find(item=>item.score>=0.3 && !item.twist.fallback)||null;
+      modifier=substantive?asModifier(substantive.twist):fitModifier(classification);
+    }
 
     const title=[modifier?.text,identity.label,phrase?.text].filter(Boolean).join(" ");
     const bridge=BRIDGES.find(item=>item.when(scores,traits,identity))||null;
