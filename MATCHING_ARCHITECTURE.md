@@ -1,5 +1,7 @@
 # LAWvalues Matching Architecture
 
+> **Method implementation note (2026-10-12):** see `METHOD_ENGINE.md` for the locked Interpretation/adjudicative-style nouns, modifiers, champion units, diagnostic routing, and literal-answer reachability contract.
+
 > **Source implementation note (2026-10-12):** see `SOURCE_ENGINE.md` for the locked Source classifier and its literal-answer reachability contract.
 
 > **Originalism implementation note (2026-10-12):** see `ORIGINALISM_ENGINE.md` for the locked Originalist classifier. The public noun split is OPM/OI, **New** is the construction modifier, and the locked champion layer contains thirteen units.
