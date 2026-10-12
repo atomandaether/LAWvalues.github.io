@@ -25,13 +25,13 @@ globalThis.LAW_RESULT_IDENTITIES = Object.freeze([
   // Nature / source of law
   {
     id: "nonpositivist",
-    label: "Non-positivist",
+    label: "Non-Positivist",
     family: "source",
     status: "fallback",
     broadFallback: true,
     parentId: null,
     covers: ["source.nonpositive_sources"],
-    notes: "Broad last-resort fallback when social-source positivism is rejected but no narrower non-positivist theory or comparably strong middle-level identity can be diagnosed honestly."
+    notes: "Broad last-resort fallback when positivism is rejected but Natural Law, Interpretivism, Fullerian legality, or a narrower descriptive nonpositivist modifier is not established."
   },
   {
     id: "positivist",
@@ -40,53 +40,56 @@ globalThis.LAW_RESULT_IDENTITIES = Object.freeze([
     status: "core",
     parentId: null,
     covers: ["source.positive_sources"],
-    notes: "Fallback source-theory identity when positive-law/social-source answers dominate but no narrower positivist subtype is established."
+    notes: "Public positivist noun. Inclusive, Exclusive, and Normative Positivism are substantive modifier-level branches rather than separate nouns."
   },
   {
     id: "inclusive_positivist",
     label: "Inclusive Positivist",
     family: "source",
     status: "adaptive",
+    public: false,
     parentId: "positivist",
     covers: ["source.positive_sources", "source.social_practice", "source.morality_incorporated"],
-    notes: "Use only after the respondent affirms that a social rule of recognition can incorporate moral criteria."
+    notes: "Internal/legacy subtype used for compatibility and routing. Public results use Positivist with the Inclusive modifier."
   },
   {
     id: "exclusive_positivist",
     label: "Exclusive Positivist",
     family: "source",
     status: "adaptive",
+    public: false,
     parentId: "positivist",
     covers: ["source.positive_sources", "source.source_thesis"],
-    notes: "Use only after a genuine Hart/Raz-style incorporation diagnostic; do not infer merely from hard textualism."
+    notes: "Internal/legacy subtype used for compatibility and routing. Public results use Positivist with the Exclusive modifier."
   },
   {
     id: "interpretivist",
     label: "Interpretivist",
     family: "source",
-    status: "fallback",
-    public: false,
+    status: "adaptive",
     parentId: null,
-    covers: ["source.principles_are_law"],
-    notes: "Internal parent for principle-based nonpositivism. Public results should prefer Dworkinian or another genuine middle-level neighbor rather than showing Interpretivist as a competing noun."
+    covers: ["source.principles_are_law", "source.fit_and_justification", "source.right_answer"],
+    notes: "Public noun for legal interpretivism: institutional practice bears on law through the principles that best justify it. Dworkinian is champion-level/internal rather than a separate public noun."
   },
   {
     id: "dworkinian",
     label: "Dworkinian",
     family: "source",
     status: "adaptive",
+    public: false,
     parentId: "interpretivist",
     covers: ["source.principles_are_law", "source.fit_and_justification", "source.right_answer"],
-    notes: "Requires more than generic moral reasoning: existing-law principles, fit/justification, and discovery rather than free creation in hard cases."
+    notes: "Internal/legacy subtype only. Public results use Interpretivist; Dworkin/Stavropoulos are champion-level representatives."
   },
   {
     id: "moral_impact_theorist",
-    label: "Greenbergian",
+    label: "Moral-Impact Non-Positivist",
     family: "source",
     status: "adaptive",
-    parentId: null,
+    public: false,
+    parentId: "nonpositivist",
     covers: ["source.moral_impact", "source.one_system"],
-    notes: "Greenberg-style nonpositivism: legal institutions change the moral rights and obligations of people, and the resulting moral obligations are the legal obligations."
+    notes: "Internal theory record only. Public results use Non-Positivist with the descriptive Moral-Impact modifier and Mark Greenberg as champion."
   },
   {
     id: "natural_lawyer",
@@ -94,17 +97,18 @@ globalThis.LAW_RESULT_IDENTITIES = Object.freeze([
     family: "source",
     status: "core",
     parentId: null,
-    covers: ["source.moral_constraint", "source.objective_morality"],
-    notes: "Modern classical-natural-law identity. Positive law's settlement function can be used to distinguish Finnis-style natural law from freer moral reading."
+    covers: ["source.moral_constraint", "source.objective_morality", "source.positive_law_settlement"],
+    notes: "Broad natural-law noun. The central modern champion unit combines objective morality with a substantial settlement and coordination role for positive law."
   },
   {
     id: "radbruchian",
-    label: "Radbruchian",
+    label: "Extreme-Injustice Non-Positivist",
     family: "source",
     status: "adaptive",
-    parentId: null,
+    public: false,
+    parentId: "nonpositivist",
     covers: ["source.extreme_injustice"],
-    notes: "Use only for the distinctive threshold view: ordinary injustice can remain law, but extreme injustice can destroy legal validity."
+    notes: "Internal theory record only. Public results use Non-Positivist with the descriptive Extreme-Injustice modifier and the Radbruch/Soper champion unit."
   },
   {
     id: "fullerian",
@@ -113,7 +117,7 @@ globalThis.LAW_RESULT_IDENTITIES = Object.freeze([
     status: "adaptive",
     parentId: null,
     covers: ["source.internal_legality"],
-    notes: "Requires targeted diagnostics on publicity, prospectivity, clarity, consistency, congruence, and legality as an internal morality."
+    notes: "Public noun for Fuller's internal morality of legality: publicity, prospectivity, clarity, consistency, possibility of compliance, stability, and congruence are constitutive virtues of legality."
   },
   {
     id: "alexyan",
@@ -370,20 +374,40 @@ globalThis.LAW_CHAMPIONS = Object.freeze([
     name: "H. L. A. Hart",
     kind: "person",
     role: "primary",
-    eligibleIdentityIds: ["positivist", "inclusive_positivist"],
+    eligibleIdentityIds: ["positivist"],
     signatureTraits: ["source.social_practice", "source.positive_sources", "source.law_runs_out"],
     antiTraits: ["source.objective_morality"],
-    note: "Canonical modern positivist; especially useful for social-practice/rule-of-recognition and hard-case discretion."
+    note: "Baseline modern positivist champion: social rule of recognition, open texture, and genuine hard-case discretion."
   },
   {
-    id: "raz",
-    name: "Joseph Raz",
-    kind: "person",
-    role: "primary",
-    eligibleIdentityIds: ["exclusive_positivist", "positivist"],
-    signatureTraits: ["source.source_thesis", "source.positive_sources"],
+    id: "coleman_waluchow_kramer",
+    name: "Jules Coleman / Wil Waluchow / Matthew Kramer",
+    kind: "people",
+    role: "subtype",
+    eligibleIdentityIds: ["positivist"],
+    signatureTraits: ["source.positive_sources", "source.morality_incorporated"],
+    antiTraits: ["source.source_thesis"],
+    note: "Systematic Inclusive Positivist champion unit: socially grounded validity criteria can incorporate genuine moral standards."
+  },
+  {
+    id: "raz_shapiro_marmor",
+    name: "Joseph Raz / Scott Shapiro / Andrei Marmor",
+    kind: "people",
+    role: "subtype",
+    eligibleIdentityIds: ["positivist"],
+    signatureTraits: ["source.positive_sources", "source.source_thesis"],
     antiTraits: ["source.morality_incorporated"],
-    note: "Canonical exclusive/source-based positivist."
+    note: "Exclusive Positivist champion unit: legal validity remains identifiable through source/conventional/planning facts rather than moral merits."
+  },
+  {
+    id: "campbell_waldron_schauer",
+    name: "Tom Campbell / Jeremy Waldron / Frederick Schauer",
+    kind: "people",
+    role: "subtype",
+    eligibleIdentityIds: ["positivist"],
+    signatureTraits: ["source.positive_sources", "source.normative_positivism", "form.anti_discretion", "posture.majoritarian"],
+    antiTraits: ["source.objective_morality"],
+    note: "Normative/Ethical Positivist unit: there are moral-democratic reasons for legal institutions to minimize merits-based judicial lawmaking and preserve source-based settlement."
   },
   {
     id: "kelsen",
@@ -393,47 +417,47 @@ globalThis.LAW_CHAMPIONS = Object.freeze([
     eligibleIdentityIds: ["positivist"],
     signatureTraits: ["source.positive_sources"],
     antiTraits: [],
-    note: "Major architect of modern positivism, but LAWvalues does not currently test the Pure Theory / basic-norm architecture well enough for a Kelsenian label."
+    note: "Major positivist lineage. The quiz does not test Pure Theory/basic-norm architecture closely enough for a separate selectable unit."
   },
   {
-    id: "dworkin",
-    name: "Ronald Dworkin",
-    kind: "person",
+    id: "dworkin_stavropoulos",
+    name: "Ronald Dworkin / Nicos Stavropoulos",
+    kind: "people",
     role: "primary",
-    eligibleIdentityIds: ["dworkinian", "interpretivist"],
-    signatureTraits: ["source.principles_are_law", "source.fit_and_justification", "source.right_answer", "posture.rights_trumps"],
+    eligibleIdentityIds: ["interpretivist"],
+    signatureTraits: ["source.principles_are_law", "source.fit_and_justification", "source.right_answer"],
     antiTraits: ["source.law_runs_out"],
-    note: "Best champion when principles-as-existing-law and fit/justification are specifically present."
+    note: "Central Interpretivist champion unit: legal rights are determined through the morally best justification of institutional legal practice rather than source criteria alone."
   },
   {
     id: "greenberg",
     name: "Mark Greenberg",
     kind: "person",
-    role: "primary",
-    eligibleIdentityIds: ["moral_impact_theorist", "nonpositivist"],
+    role: "subtype",
+    eligibleIdentityIds: ["nonpositivist"],
     signatureTraits: ["source.moral_impact", "source.one_system"],
-    antiTraits: ["source.source_thesis", "source.fit_and_justification"],
-    note: "Primary champion of Moral Impact Theory: institutional legal actions matter because of the moral rights and obligations they generate."
+    antiTraits: ["source.source_thesis", "source.fit_and_justification", "source.moral_practice"],
+    note: "Moral-Impact champion: institutional legal action changes the moral situation, and the resulting moral obligations constitute law."
   },
   {
-    id: "finnis",
-    name: "John Finnis",
+    id: "hershovitz",
+    name: "Scott Hershovitz",
     kind: "person",
+    role: "subtype",
+    eligibleIdentityIds: ["nonpositivist"],
+    signatureTraits: ["source.one_system", "source.moral_practice"],
+    antiTraits: ["source.source_thesis", "source.moral_impact"],
+    note: "Moral-Practice champion: legal claims are ultimately claims about genuine moral rights and responsibilities rather than a distinct source-generated domain of legal obligation."
+  },
+  {
+    id: "finnis_murphy_george",
+    name: "John Finnis / Mark Murphy / Robert P. George",
+    kind: "people",
     role: "primary",
     eligibleIdentityIds: ["natural_lawyer"],
     signatureTraits: ["source.objective_morality", "source.positive_law_settlement"],
-    antiTraits: [],
-    note: "Canonical modern natural-law champion; especially apt when moral law coexists with strong positive-law settlement."
-  },
-  {
-    id: "pojanowski_walsh",
-    name: "Jeffrey Pojanowski & Kevin Walsh",
-    kind: "people",
-    role: "subtype",
-    eligibleIdentityIds: ["natural_lawyer", "originalist", "public_meaning_originalist"],
-    signatureTraits: ["source.objective_morality", "source.positive_law_settlement", "time.fixation"],
-    antiTraits: ["time.living_content"],
-    note: "Special combination champion for classical natural law plus durable positive-law originalism; not a default Natural Law stand-in."
+    antiTraits: ["source.principles_are_law"],
+    note: "Central modern Natural Law unit: objective moral order matters while positive law performs a genuine settlement, coordination, and institutional-authority function."
   },
   {
     id: "fuller",
@@ -443,27 +467,17 @@ globalThis.LAW_CHAMPIONS = Object.freeze([
     eligibleIdentityIds: ["fullerian"],
     signatureTraits: ["source.internal_legality"],
     antiTraits: [],
-    note: "Use only after internal-morality-of-law diagnostics."
+    note: "Canonical Fullerian champion for the internal morality/principles of legality."
   },
   {
-    id: "radbruch",
-    name: "Gustav Radbruch",
-    kind: "person",
-    role: "primary",
-    eligibleIdentityIds: ["radbruchian"],
+    id: "radbruch_soper",
+    name: "Gustav Radbruch / Philip Soper",
+    kind: "people",
+    role: "subtype",
+    eligibleIdentityIds: ["nonpositivist"],
     signatureTraits: ["source.extreme_injustice"],
     antiTraits: ["source.every_injustice_invalidates"],
-    note: "Distinctive extreme-injustice threshold champion."
-  },
-  {
-    id: "alexy",
-    name: "Robert Alexy",
-    kind: "person",
-    role: "primary",
-    eligibleIdentityIds: ["proportionalist"],
-    signatureTraits: ["source.claim_to_correctness", "source.extreme_injustice", "form.proportionality"],
-    antiTraits: ["form.rules"],
-    note: "Best when nonpositivism and proportionality travel together."
+    note: "Extreme-Injustice champion unit: ordinary injustice need not erase legality, but sufficiently grave injustice can defeat a norm's legal status."
   },
   {
     id: "blackstone",
@@ -473,7 +487,7 @@ globalThis.LAW_CHAMPIONS = Object.freeze([
     eligibleIdentityIds: ["natural_lawyer", "common_law_constitutionalist"],
     signatureTraits: ["source.objective_morality", "time.tradition", "precedent.stability"],
     antiTraits: [],
-    note: "Canon/lineage champion, not a default modern middle identity; his bundle cuts across several contemporary categories."
+    note: "Natural-law/common-law lineage rather than a default modern champion."
   },
   {
     id: "aquinas",
@@ -483,7 +497,7 @@ globalThis.LAW_CHAMPIONS = Object.freeze([
     eligibleIdentityIds: ["natural_lawyer"],
     signatureTraits: ["source.objective_morality"],
     antiTraits: [],
-    note: "Foundational natural-law ancestor; usually lineage rather than closest modern champion."
+    note: "Foundational natural-law lineage rather than a closest modern champion."
   },
 
   // Realism / pragmatism
