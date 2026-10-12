@@ -536,7 +536,7 @@ globalThis.LAW_PROFILES = Object.freeze([
     },
     signatureTraits: ["constraint.textual", "constraint.enacted_bargain", "form.anti_discretion"],
     requiredTraits: [],
-    antiTraits: ["constraint.purpose", "constraint.best_reading_context"],
+    antiTraits: ["constraint.purpose", "constraint.best_reading_context", "method.categorical_textual_rights"],
     description: "Mainline New Textualism: enacted language and compromise control, judicial repair is disfavored, and rules constrain interpreters even when the result is awkward.",
     related: ["Antonin Scalia", "John Manning", "Frank Easterbrook"]
   },
