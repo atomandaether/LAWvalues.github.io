@@ -190,7 +190,13 @@ Core direct identity when constitutional content itself can evolve.
 Potential judicial champion: **Justice Brennan** for a strongly rights-protective version. Do not make Brennan the definition of Living Constitutionalism.
 
 ## Common-Law Constitutionalist
-Core distinctive identity. **David Strauss** is an unusually clean champion because precedent/tradition as constitutional law is the theory itself.
+Core distinctive identity. **David Strauss** remains the default clean champion because precedent/tradition as constitutional law is the theory itself.
+
+Two diagnostic specialists clear the Alexander-v-Bork threshold:
+- **John Marshall Harlan II** when common-law development is specifically framed as historically embedded ordered liberty / living tradition and paired with substantial restraint.
+- **Lord Cooke of Thorndon** when fundamental common-law rights are treated as possible limits on ordinary legislative supremacy.
+
+Do not infer either specialist from generic Living Constitutionalism or respect for precedent alone.
 
 ## Principle-oriented vs expected-applications-heavy originalism
 Usually better treated as a **front modifier/subtype trait** rather than inventing another middle identity. T8/T9/T11 already carry useful information here.
@@ -263,6 +269,7 @@ Systemic versus narrow remedial instincts usually belong in the modifier or trai
 Champions:
 - **Owen Fiss** = structural reform / institutional restructuring.
 - **Abram Chayes** = public-law litigation / managerial judge.
+- **P. N. Bhagwati / V. R. Krishna Iyer** = Indian social-action/PIL judging when relaxed standing and filing rules are themselves part of the rights-enforcement theory.
 - **Samuel Bray** = plaintiff-specific / traditional-equity limits.
 
 Do not invent "Structuralist," "Remedialist," or similar pseudo-schools.
