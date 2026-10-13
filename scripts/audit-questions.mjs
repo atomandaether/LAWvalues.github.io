@@ -78,6 +78,26 @@ assert.equal(scoring.signalFor(c13, "agree", "cons"), 0,
   "Agreeing that boats count should not be treated as purposivism/open construction");
 assert.equal(scoring.signalFor(c13, "disagree", "cons"), 1,
   "Rejecting boats because the list is of road vehicles should score toward contextual textualism");
+assert.equal(c13.key, -1,
+  "C13 metadata must identify disagreement as its scored primary direction");
+
+const t2Post = questions.find((item) => item.id === "T2");
+const p9 = questions.find((item) => item.id === "P9");
+const p10 = questions.find((item) => item.id === "P10");
+const e3 = questions.find((item) => item.id === "E3");
+const f5 = questions.find((item) => item.id === "F5");
+assert.equal(scoring.signalFor(t2Post, "agree", "post"), 0,
+  "Historical legislative-prayer fixation should not independently score Majoritarian posture");
+assert.equal(scoring.signalFor(p9, "agree", "form"), 0,
+  "Entrenchment of Miranda is precedent evidence, not an independent rules-over-standards answer");
+assert.equal(scoring.signalFor(p10, "agree", "separ"), 0.2,
+  "P10 should carry modest institutional-restraint evidence toward formal allocation");
+assert.equal(scoring.signalFor(p10, "agree", "post"), 0.1,
+  "P10 should carry only a small democratic-deference cross-loading");
+assert.equal(scoring.signalFor(e3, "agree", "post"), 0.15,
+  "E3 may carry a small congressional-accountability vibe without duplicating the Posture axis");
+assert.equal(scoring.signalFor(f5, "agree", "post"), 0,
+  "Individualized adjudicative responsibility should not itself imply Countermajoritarian posture");
 
 const t8 = questions.find((item) => item.id === "T8");
 assert.ok(scoring.signalFor(t8, "agree", "time") > 0, "Principle originalism should register as historical");
@@ -120,6 +140,46 @@ assert.ok(skippedSource.score>neutralSource.score,
   "Skipped questions must be removed from evidence opportunities");
 assert.ok(skippedSource.score<100 && skippedSource.score>50,
   "One answered source question cannot produce unwarranted 100 percent certainty");
+
+// Replacing a skipped item with a genuinely neutral answer must never make an
+// axis more extreme. This is the central missing-data invariant: neutral adds
+// answered information but no directional evidence.
+for (const axis of axes) {
+  const contributors = questions.filter((item) => scoring.contributesToAxis(item, axis.id));
+  for (const direction of [1, -1]) {
+    const base = {};
+    contributors.forEach((item, index) => {
+      const agree = scoring.signalFor(item, "agree", axis.id) * direction;
+      const disagree = scoring.signalFor(item, "disagree", axis.id) * direction;
+      if (index % 3 === 0) base[item.id] = null;
+      else if (index % 3 === 1) base[item.id] = agree >= disagree ? 3 : -3;
+      else base[item.id] = agree >= disagree ? 1 : -1;
+    });
+    for (const item of contributors.filter((item) => base[item.id] === null)) {
+      const skipped = scoring.scoreAxis(axis.id, base, questions).score;
+      const neutralized = scoring.scoreAxis(axis.id, { ...base, [item.id]: 0 }, questions).score;
+      assert.ok(
+        Math.abs(neutralized - 50) <= Math.abs(skipped - 50),
+        `${axis.id} neutral ${item.id} must not increase extremity over Not sure`
+      );
+    }
+  }
+}
+
+// Only scored diagnostics that were actually offered join the final axis
+// calculation. Core routing scores remain unchanged.
+const neutralCoreResponses = responsesFrom(() => 0);
+assert.equal(scoring.scoreAll(neutralCoreResponses, axes, questions).separ.score, 50);
+const sepAgree = scoring.scoreAllWithDiagnostics(
+  neutralCoreResponses, { "D-SEP3": 3 }, axes, questions, context.LAW_DIAGNOSTIC_QUESTIONS
+);
+const sepDisagree = scoring.scoreAllWithDiagnostics(
+  neutralCoreResponses, { "D-SEP3": -3 }, axes, questions, context.LAW_DIAGNOSTIC_QUESTIONS
+);
+assert.ok(sepAgree.separ.score > 50 && sepAgree.separ.score < 60,
+  "Strong nondelegation diagnostic should modestly, not overwhelmingly, raise Formalist Separation");
+assert.ok(sepDisagree.separ.score < 50 && sepDisagree.separ.score > 40,
+  "Delegation-accepting diagnostic should modestly lower Formalist Separation");
 
 // Every axis must be capable of accumulating evidence for both poles somewhere in the bank.
 for (const axis of axes) {
