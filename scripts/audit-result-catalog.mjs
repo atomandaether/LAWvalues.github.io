@@ -58,24 +58,12 @@ assert.ok(typeof resultContent.rankTwists === "function", "Need separate noun-co
     "Every substantive twist must be explicitly public or explicitly archival");
   assert.ok(publicIds.every(id=>resultContent.PUBLIC_MODIFIERS.some(m=>m.id===id)));
   assert.ok(internalIds.every(id=>!publicIds.includes(id)));
-  const originalist=new Set(["originalist","public_meaning_originalist","original_intent_originalist"]);
-  const source=new Set(["positivist","natural_lawyer","interpretivist","fullerian","nonpositivist"]);
-  const method=new Set(["textualist","intentionalist","purposivist","legal_process_theorist",
-    "interpretive_pluralist","pragmatist","legal_realist","sociological_jurist"]);
-  const sourceModifiers=new Set(["inclusive_positivism","exclusive_positivism","normative_positivism",
-    "moral_impact_nonpositivism","moral_practice_nonpositivism","extreme_injustice_nonpositivism"]);
-  const methodModifiers=new Set(["imaginative_reconstruction","practical_reasoning_pluralism",
-    "fact_skeptical_realism"]);
   const candidates=identities.filter(id=>id.public!==false &&
     !["unusable_response","incoherent_response","outcome_driven_left","outcome_driven_right"].includes(id.id));
   const probes=[{}, {time:0},{sorc:0},{cons:100},{remed:100},{post:100},
     {form:100},{separ:100},{prec:100},{time:100},{form:0},{prec:0},{post:0},{remed:0},{separ:0}];
   function permitted(t,id){
-    if(!(t.appliesTo||[]).includes(id.id) && !(t.appliesFamilies||[]).includes(id.family))return false;
-    if(originalist.has(id.id))return t.id==="new_originalism";
-    if(source.has(id.id))return sourceModifiers.has(t.id);
-    if(method.has(id.id))return methodModifiers.has(t.id);
-    return true;
+    return (t.appliesTo||[]).includes(id.id) || (t.appliesFamilies||[]).includes(id.family);
   }
   for(const twist of resultContent.TWISTS.filter(x=>publicIds.includes(x.id))){
     let witnessed=false;
@@ -102,6 +90,41 @@ assert.ok(typeof resultContent.rankTwists === "function", "Need separate noun-co
   }
 }
 console.log("PASS: all 29 public substantive modifiers are constructively reachable; 10 legacy twists are internal.");
+
+// Compatible noun-conditioned twists should no longer disappear behind generic
+// fit language merely because the noun belongs to Source, Method, or Originalism.
+{
+  const natural=identities.find(x=>x.id==="natural_lawyer");
+  const naturalTitle=resultContent.assemble(
+    {identity:natural,identityScore:.86,identityAlternatives:[],primaryStrength:.8},
+    {sorc:20,cons:50,time:50,prec:50,remed:50,post:50,separ:50,form:50},
+    {"source.positive_law_settlement":.8},{});
+  assert.equal(naturalTitle.modifier?.id,"positive_law_settlement",
+    "Natural Lawyer should be able to surface the compatible Settlement-minded twist");
+
+  const textual=identities.find(x=>x.id==="textualist");
+  const textualTitle=resultContent.assemble(
+    {identity:textual,identityScore:.84,identityAlternatives:[],primaryStrength:.75},
+    {sorc:50,cons:88,time:50,prec:80,remed:50,post:10,separ:50,form:50},
+    {},{});
+  assert.equal(textualTitle.modifier?.id,"precedent_loyal",
+    "Textualist should be able to surface a compatible precedent twist when no Method subtype modifier applies");
+
+  const opm=identities.find(x=>x.id==="public_meaning_originalist");
+  const opmTitle=resultContent.assemble(
+    {identity:opm,identityScore:.86,identityAlternatives:[],primaryStrength:.8},
+    {sorc:50,cons:55,time:90,prec:80,remed:50,post:10,separ:50,form:50},
+    {},{});
+  assert.equal(opmTitle.modifier?.id,"precedent_loyal",
+    "Originalist should fall through to a compatible twist when New Originalism is not established");
+
+  const newOpmTitle=resultContent.assemble(
+    {identity:opm,identityScore:.86,identityAlternatives:[],primaryStrength:.8},
+    {sorc:50,cons:55,time:90,prec:80,remed:50,post:10,separ:50,form:50},
+    {"time.construction_zone":1},{});
+  assert.equal(newOpmTitle.modifier?.id,"new_originalism",
+    "New Originalism must retain priority over other compatible Originalist twists");
+}
 
 
 /* Specialist constitutional structure: no new common question, no ninth axis.
@@ -151,8 +174,14 @@ console.log("PASS: all 29 public substantive modifiers are constructively reacha
   for(const [id,agree,disagree] of responseChoices){
     assert.ok(classifier.buildTraits(scores,{}, {[id]:3})[agree]>=0.9);
     assert.ok(classifier.buildTraits(scores,{}, {[id]:-3})[disagree]>=0.9);
-    // Diagnostics only refine nouns and champions; the axis map is immutable.
-    assert.equal(scoring.scoreAll(Object.fromEntries(questions.map(q=>[q.id,0]))).separ.score,50);
+    const neutralCore=Object.fromEntries(questions.map(q=>[q.id,0]));
+    assert.equal(scoring.scoreAll(neutralCore).separ.score,50);
+    const moved=scoring.scoreAllWithDiagnostics(neutralCore,{[id]:3}).separ.score;
+    const opposite=scoring.scoreAllWithDiagnostics(neutralCore,{[id]:-3}).separ.score;
+    assert.notEqual(moved,50,`${id} agreement should modestly refine Separation when asked`);
+    assert.notEqual(opposite,50,`${id} disagreement should modestly refine Separation when asked`);
+    assert.ok(Math.abs(moved-50)<=5 && Math.abs(opposite-50)<=5,
+      `${id} must refine rather than dominate the headline Separation score`);
   }
 }
 console.log("PASS: all four Separation diagnostics route in 88+12 and discriminate distinct theories.");
@@ -1869,6 +1898,14 @@ console.log("PASS: focused single-axis judicial profiles classify without weaken
   assert.equal(mistimed.identity.id,"unusable_response");
   const contrad={...left,S7:3,S8:3,F1:3,F5:3};
   assert.equal(conclude(contrad).identity.id,"incoherent_response");
+  assert.equal(classifier.detectBroadIncoherence({...responses,S7:3,S8:3},{}),false,
+    "One contradictory domain alone must not suppress an otherwise interpretable result");
+  assert.equal(classifier.detectBroadIncoherence(
+    {...responses,S7:3,S8:3,T7:3},{"D-ORI1":-3}),true,
+    "Independent Source and constitutional-time contradictions should trigger the safeguard");
+  assert.equal(classifier.detectBroadIncoherence(
+    {...responses,F1:3,F5:3,E3:-3},{"D-SEP3":3}),true,
+    "Independent Form and Separation contradictions should trigger the safeguard");
 }
 console.log("PASS: hidden partisan override is symmetric, cross-domain, thresholded, and subordinate to quality checks.");
 
