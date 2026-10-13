@@ -82,7 +82,7 @@ Close matches reduce confidence but never produce co-champions. If an otherwise 
 
 ## Reachability contract
 
-The audit suite separately requires these endpoints to remain reachable from literal 93-item answer profiles through the live adaptive router within the seven-question cap:
+The audit suite separately requires these endpoints to remain reachable from literal 88-item answer profiles through the live adaptive router within the twelve-question cap:
 
 - Peter Strauss → Functionalist
 - Gary Lawson → Formalist
@@ -99,3 +99,7 @@ It also verifies:
 - exact-zero axis values remain extreme title evidence rather than being silently converted to neutral 50;
 - every valid fixture returns exactly one champion unit;
 - all previously locked Originalism, Source, Method, non-originalist Time, and Authority reachability contracts remain green.
+
+## Theory-based Separation diagnostics (0.7 Beta)
+
+Four conditional diagnostics, D-SEP1–D-SEP4, distinguish theories of presidential direction of executive officers, independent judicial construction of delegated statutory authority, nondelegation despite clear legislative authorization, and the constitutional limits on administrative adjudication. They use no new public axis and do not change the eight common-core percentages. They are routed by the strength and relevance of an existing structural judicial philosophy; they supply narrower champion signals for Lawson, Calabresi/Prakash, Peter Strauss and appropriate Textualist/Purposivist profiles. The 88-core + up-to-12-adaptive allocation retains the 100-response limit. All four must be reachable on tested Formalist/Functionalist paths.
