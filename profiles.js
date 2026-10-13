@@ -1046,6 +1046,7 @@ globalThis.LAW_PROFILES = Object.freeze([
     minAxisSalience: { separ: 0.55 },
     signatureTraits: ["separation.formalist", "separation.unitary_executive"],
     requiredTraits: [{ all: ["separation.unitary_executive"], min: 0.5 }],
+    specificityBonus: 0.05,
     antiTraits: ["separation.functionalist"],
     description: "Unitary-executive Formalism: Article II places executive administration under presidential control rather than permitting Congress to insulate executive officers from presidential supervision.",
     related: ["Gary Lawson"]
