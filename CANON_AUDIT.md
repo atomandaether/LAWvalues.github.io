@@ -274,43 +274,77 @@ Default champion: **Cass Sunstein**.
 
 ---
 
-# 6. Separation, rules, proportionality, remedies
+# 6. Institutional structure, doctrinal form, and remedies
 
 ## Formalist
-Core real identity only when structural/legal formalism is genuinely central.
+A single public noun covers two ways formal constraint can itself become the respondent's primary jurisprudential commitment:
 
-Champions depend on the actual form:
-- **Gary Lawson** for hard separation-of-powers formalism.
-- **Scalia** when the profile also has text/public-meaning/rules.
-- **Frederick Schauer** for rule-formalism as allocation of decisionmaking power.
+- **structural Formalism** — categorical constitutional assignment of governmental powers and prescribed institutional procedures;
+- **rule Formalism** — rules deliberately constrain decision-makers even when an all-things-considered judgment would produce a better result.
+
+Locked champions:
+- **Gary Lawson** — default hard structural Formalism / nondelegation. His champion vector no longer borrows Originalist Time merely because Lawson is also an Originalist.
+- **Frederick Schauer** — rule Formalism / anti-discretion. A sufficiently dominant Rules profile can now reach Formalist directly rather than falling through to Interpretive Pluralism.
+- **Steven Calabresi / Saikrishna Prakash** — unitary-executive Formalism when E2 affirmatively supplies the presidential-control proposition.
+
+Scalia remains cross-cutting only when Textualism/Originalism is the stronger overall fixation. Kathleen Sullivan is important rules-versus-standards lineage rather than another champion.
 
 ## Functionalist
-Core real separation-of-powers identity.
+Core separation-of-powers identity centered on workability, accountability, tolerated institutional overlap, and preservation of each branch's core capacities.
 
-Champion: **Peter Strauss**.
-Breyer can be a judicial relative for a broader pragmatic/functionalist profile.
+Locked champion:
+- **Peter Strauss** — default Functionalist.
+Breyer and Justice White remain related judicial exemplars rather than separate endpoints.
 
 ## Proportionalist
-Conditional real label. Require **structured proportionality**, not generic balancing.
+Structured proportionality remains a public noun only after affirmative **D-PROP1** evidence. Generic balancing is not enough.
 
-Champions:
-- **Robert Alexy** for the theoretical principles/proportionality account.
-- **Aharon Barak** for judicial application / purposive-proportionality bundle.
-- **German Federal Constitutional Court / proportionality tradition** as an institutional champion.
-- **Israeli Supreme Court (Barak era)** only with era/doctrine qualification.
+Locked champions:
+- **Robert Alexy** — nonpositivist/principles-heavy Proportionalism.
+- **Aharon Barak** — purposive, rights-protective judicial Proportionalism.
 
-## Remedies do not need a fake middle school
-Systemic versus narrow remedial instincts usually belong in the modifier or trailing phrase.
+The existing public modifiers remain:
+- **Higher-law Proportionalist** for the Alexy-shaped nonpositivist version.
+- **Purpose-led Proportionalist** for the Barak-shaped purposive version.
 
-Champions:
-- **Owen Fiss** = structural reform / institutional restructuring.
-- **Abram Chayes** = public-law litigation / managerial judge.
-- **P. N. Bhagwati / V. R. Krishna Iyer** = Indian social-action/PIL judging when relaxed standing and filing rules are themselves part of the rights-enforcement theory.
-- **Samuel Bray** = plaintiff-specific / traditional-equity limits.
+D-PROP1 is now routed early only for genuinely plausible proportionality profiles so it can beat generic Interpretivism without wasting the diagnostic budget on ordinary pragmatists or purposivists.
 
-Do not invent "Structuralist," "Remedialist," or similar pseudo-schools.
+Möller and Beatty remain lineage: their distinctive theories require propositions the current instrument does not directly measure.
 
-If a respondent's only highly distinctive feature is Remedies, the title can use a neutral broader real identity in the middle and let the modifier/phrase carry the remedial information; champion display can still be Fiss/Chayes/Bray.
+## Remedies do not become a noun
+Remedies remain orthogonal to the respondent's main jurisprudential identity. A user still receives one noun and exactly one champion unit.
+
+### Selectable remedial champions
+
+**P. N. Bhagwati / V. R. Krishna Iyer** remain selectable because their social-action/PIL package crosses Remedies, Method, Posture, access to court, and judicial role. The existing D-PIL1 gate remains required.
+
+**Owen Fiss** remains the one exceptional cross-noun remedial champion. Fiss may enter the single global champion competition only when:
+- systemic Remedies are extremely salient;
+- structural reform and continuing judicial supervision are both strongly supported;
+- the judicial-role profile is strongly counter-majoritarian; and
+- either no strong noun-compatible champion exists or Remedies are materially more distinctive than every other axis.
+
+Thus a Barak-like respondent with broad remedies remains Barak. Fiss wins only when structural-reform adjudication actually explains the respondent better as a whole.
+
+### Lineage / explanation only
+
+The following are deliberately **not selectable** for the single champion slot:
+- **Abram Chayes** — public-law-litigation lineage closely overlapping Fiss.
+- **Samuel Bray** — plaintiff-specific / traditional-equity explanation for narrow-remedy results.
+- **Mila Sohoni / Amanda Frost** — universal-relief lineage.
+- **Henry Monaghan** — constitutional-common-law / prophylactic-doctrine lineage.
+- **Daryl Levinson** — remedial equilibration, which the current bank does not directly measure.
+
+R1/R2, R3-R5/R8, R9/R10, and R11 may still explain these traditions in result text or further reading without displacing the user's one whole-profile champion.
+
+## Single champion rule
+
+Every valid classified result receives **exactly one champion unit**.
+
+Noun compatibility remains a substantial advantage because the champion should normally explain the user's primary jurisprudential identity. Specific affirmative evidence breaks ties in favor of a narrower genuinely measured unit. Fiss is the only current cross-noun exception and is subject to the high whole-profile gate above.
+
+Close races lower champion confidence; they never produce a second champion. Response-quality failures and withheld/incoherent results remain the obvious exception.
+
 
 ---
 
@@ -409,7 +443,7 @@ Examples:
 - Pojanowski/Walsh for Natural Law + Originalism + positive-law settlement.
 - Blackstone/Aquinas as lineage rather than automatic closest champion.
 
-If the top champion is not materially better than the next one, do not force a single person. Show multiple intellectual relatives or just the identity.
+If the top champion is only narrowly ahead of the runner-up, lower the confidence label but still return the single best champion unit. Valid results never display multiple champion units.
 
 
 # 11. Champion-pool pruning
