@@ -26,7 +26,7 @@ A candidate middle identity must pass all of these:
 
 1. **Realness:** an established school, theory, or recognized jurisprudential descriptor.
 2. **Distinctiveness:** meaningfully different from neighboring identities.
-3. **Diagnosability:** the 93-item core plus at most a few adaptive questions can actually identify it.
+3. **Diagnosability:** the 88-item core plus at most a few adaptive questions can actually identify it.
 4. **Naming fit:** the public-facing label is not something LAWvalues invented.
 5. **Coverage value:** it explains a real region of the existing result space.
 6. **No-overclaim rule:** when subtype evidence is insufficient, fall back to the broader real label.
