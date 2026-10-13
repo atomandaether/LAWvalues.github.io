@@ -433,7 +433,21 @@
     }
 
     if (l.time >= 0.3) add("originalist", 0.56 + 0.34 * s.time, "Historical fixation is a dominant feature.");
-    if (r.time >= 0.3) add("living_constitutionalist", 0.56 + 0.34 * s.time, "Evolving constitutional content is a dominant feature.");
+    const livingSubtypeEvidence = Math.max(
+      traits["time.democratic_constitutionalism"] || 0,
+      traits["time.transformative_constitutionalism"] || 0
+    );
+    if (livingSubtypeEvidence >= 0.5) {
+      add(
+        "living_constitutionalist",
+        0.98,
+        (traits["time.transformative_constitutionalism"] || 0) >= 0.5
+          ? "Transformative Constitutionalism directly establishes a Living constitutional-development theory."
+          : "Democratic Constitutionalism directly establishes a Living constitutional-development theory."
+      );
+    } else if (r.time >= 0.3) {
+      add("living_constitutionalist", 0.56 + 0.34 * s.time, "Evolving constitutional content is a dominant feature.");
+    }
     if (l.sorc >= 0.25) {
       add(
         "positivist",
@@ -693,6 +707,7 @@
     const constraint = axisValue(scores, "cons");
     const form = axisValue(scores, "form");
     const precedent = axisValue(scores, "prec");
+    const remedies = axisValue(scores, "remed");
     const maxSalience = maxSalienceEarly;
 
     if (time >= 60) {
@@ -736,6 +751,31 @@
       if (looksOPM && intratextual < 0.5 && constraint >= 55 &&
           hasAsked(diagnosticResponses, "D-ORI2") && !hasAsked(diagnosticResponses, "D-ORI5")) {
         offer("D-ORI5", 54);
+      }
+    }
+
+    // Non-originalist constitutional-time refinement.  These questions never
+    // create a new public noun: they distinguish substantive varieties of an
+    // already strongly Living profile.  Common-law-development respondents are
+    // routed instead to Strauss/Harlan/Cooke/Waluchow.
+    const commonLawCore = traits["time.common_law_development"] || 0;
+    const democraticLiving = traits["time.democratic_constitutionalism"] || 0;
+    const transformativeLiving = traits["time.transformative_constitutionalism"] || 0;
+    const strongLiving = time <= 32;
+    const pureLivingBranch = strongLiving && commonLawCore < 0.4 && posture <= 45;
+    const transformativeShape =
+      pureLivingBranch && constraint <= 45 && remedies <= 35 && posture <= 35;
+
+    if (pureLivingBranch && Math.max(democraticLiving, transformativeLiving) < 0.5) {
+      if (transformativeShape) {
+        if (!hasAsked(diagnosticResponses, "D-LIV2")) offer("D-LIV2", 99);
+        else if (Number(diagnosticResponses["D-LIV2"]) <= 0 &&
+                 !hasAsked(diagnosticResponses, "D-LIV1")) offer("D-LIV1", 98);
+      } else {
+        if (!hasAsked(diagnosticResponses, "D-LIV1")) offer("D-LIV1", 98);
+        else if (Number(diagnosticResponses["D-LIV1"]) <= 0 &&
+                 constraint <= 45 && remedies <= 45 &&
+                 !hasAsked(diagnosticResponses, "D-LIV2")) offer("D-LIV2", 97);
       }
     }
 
@@ -882,7 +922,7 @@
     // consume scarce adaptive slots merely to search for exotic names.
     const freeScientific = traits["method.free_scientific_research"] || 0;
     const socialMethod = traits["method.social_interests"] || 0;
-    const remediesScore = axisValue(scores, "remed");
+    const remediesScore = remedies;
     if (socialMethod >= 0.5 && freeScientific < 0.5 && remediesScore > 25) {
       offer("D-GENY1", 95);
     }
