@@ -810,13 +810,14 @@ globalThis.LAW_PROFILES = Object.freeze([
   {
     id: "gardbaum",
     name: "Stephen Gardbaum",
-    tier: "main",
+    tier: "lineage",
+    selectable: false,
     identityIds: ["weak_form_constitutionalist"],
     axisSignature: { post: { target: 60, weight: 0.35 } },
     signatureTraits: ["posture.dialogic", "posture.weak_form"],
     requiredTraits: [{ all: ["posture.dialogic"], min: 0.5 }],
     antiTraits: ["posture.judicial_supremacy", "posture.popular_authority"],
-    description: "Weak-form constitutionalism: courts independently adjudicate rights while ordinary democratic institutions retain a structured capacity to respond without constitutional amendment.",
+    description: "Weak-form review / New Commonwealth model: courts independently adjudicate rights while ordinary democratic institutions retain a structured capacity to respond without constitutional amendment. Retained as institutional-design lineage rather than a public jurisprudential endpoint.",
     related: ["Mark Tushnet", "Rosalind Dixon", "Peter Hogg / Allison Bushell"]
   },
   {
