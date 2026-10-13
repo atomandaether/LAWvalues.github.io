@@ -87,10 +87,11 @@ Examples:
 | Proportionalist | Alexy for nonpositivist/correctness-heavy proportionality; Barak for purposive proportionality | structured proportionality is the noun; modifier + champion carry the Alexy/Barak split |
 | Legal Realist | Llewellyn; Leiter for Realist+Positivist/Naturalist; Holmes as precursor | Llewellyn = broad mature Realism; Leiter = modern naturalized/positivist reconstruction; Holmes = precursor + deference; Frank remains lineage until fact/psychology diagnostics exist |
 | Pragmatist | Posner; Breyer as judicial relative | consequences/workability; Breyer when purposivism/functionalism is stronger |
-| Textualist | Manning; Scalia when broader bundle fits | Scalia needs public meaning/rules/formalism, not text alone |
+| Textualist | Scalia/Manning/Easterbrook; Kavanaugh/Barrett; Kagan; Hugo Black | mainline enacted-bargain text; modern court-centered best reading; Kagan's institutionalist/contextual text + precedent + agency accommodation; Black's categorical text/rights package |
 | Intentionalist | no default yet | diagnose actual legislative/enactor intent before choosing a champion |
 | Purposivist | Hart & Sacks; Breyer; Barak | Hart/Sacks = legal process; Breyer = pragmatic judging; Barak = purposive + proportionality |
 | Legal-Process Theorist | Hart & Sacks | institutional competence + reasoned elaboration |
+| Structuralist | John Marshall | constitutional architecture, institutional relationships, federalism, and necessary structural implications; Charles Black is major theoretical lineage |
 | Originalist | no single default | use subtype/axes before championing |
 | Public-Meaning Originalist | Solum, Scalia, Barrett depending rest of profile | principle/construction vs rules/formalism vs precedent |
 | Original-Intent Originalist | historical old-originalist lineage; no forced modern champion | do not invent a champion without evidence |
@@ -107,8 +108,12 @@ Examples:
 | Political Process Jurist | Ely default; Dixon after Responsive diagnostic | representation reinforcement; Dixon calibrates intervention to specific democratic dysfunctions |
 | Judicial Minimalist | Sunstein default; Bickel when passive virtues/avoidance dominate | narrow/shallow adjudication; modifier + champion carry the Bickel/Sunstein split |
 | Formalist | Lawson default structural; Schauer rule-formalism; Calabresi/Prakash unitary-executive subtype; Scalia only when Originalism/Textualism is primary | structural formalism vs rule formalism vs directly evidenced unitary-executive formalism |
-| Functionalist | Peter Strauss; Breyer/White as judicial relatives | workable institutional overlap |
+| Functionalist | Peter Strauss; Breyer only with affirmative functional/interpretive-accommodation bridge evidence | workable institutional overlap; moderate Separation scores alone no longer manufacture the noun |
 | Proportionalist | Alexy for Higher-law/nonpositivist proportionality; Barak for Purpose-led proportionality | affirmative structured proportionality, not generic balancing |
+
+## Champion guardrails
+
+Champion matching is noun-conditioned and whole-profile-sensitive. Incompatible global fallback is prohibited; a cross-cutting champion needs an explicit affirmative bridge; and a sparse champion profile is modestly penalized when it leaves a respondent's strongest high-salience commitments unexplained. If no affirmative public school is established, the internal **Mixed Jurisprudence** fallback uses O'Connor rather than pretending the respondent is an Interpretive Pluralist.
 
 ## Important figures that should not automatically become middle labels
 

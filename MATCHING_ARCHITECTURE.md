@@ -17,7 +17,7 @@ The public noun is resolved first from the respondent's **primary jurisprudentia
 Profiles may declare:
 
 - **primary compatibility** in `identityIds`: the thinker directly exemplifies that noun. This receives the full champion compatibility bonus.
-- **cross-cutting compatibility** in `crossCuttingIdentityIds`: the thinker can honestly sit beneath that noun when the respondent's full profile is unusually close, but the noun is not the thinker's principal theoretical identity. This receives a smaller compatibility bonus.
+- **cross-cutting compatibility** in `crossCuttingIdentityIds`: the thinker can honestly sit beneath that noun only when an explicit `crossCuttingRequirements` bridge is affirmatively evidenced. Merely listing the noun is not enough. This receives a smaller compatibility bonus.
 - anything else is **incompatible** and is excluded outright. Axis proximity cannot rescue an intellectually misleading thinker/noun pairing.
 
 Public child identities inherit compatibility from their public parent where appropriate. Thus a champion eligible for generic Originalism can remain eligible beneath Public-Meaning or Original-Intent Originalism, while an unrelated thinker cannot leak into those results.
@@ -39,7 +39,7 @@ A thinker is not assigned a position on every axis. Each selectable thinker has:
 - **anti-traits**: strong contrary evidence that should suppress the match;
 - **tier**: main, specialist, catch-all, or lineage.
 
-An absent axis is unknown or non-diagnostic, never an implicit 50.
+An absent axis is unknown or non-diagnostic, never an implicit 50. But a champion also does not receive a free pass for ignoring the respondent's strongest commitments: highly salient respondent axes that the champion profile does not model impose a modest **unexplained-salience penalty**. This lowers confidence/fit without inventing a position for the thinker.
 
 Matching therefore uses the *shape* of a respondent's profile. Two people can sit on the same side of every axis but differ because one respondent's strongest feature is Textualism while another's is Positivism. A specialist can beat a broad profile when the respondent has the specialist's distinctive spike.
 
@@ -63,8 +63,9 @@ Current protected families include:
 - Living Constitutionalism
 - Common-Law Constitutionalism
 - Common-Good Constitutionalism when directly diagnosed
-- Legal Constitutionalism, Political Constitutionalism, Thayerian deference, Weak-Form Constitutionalism, Popular Constitutionalism, Departmentalism, Political Process Jurisprudence, and Judicial Minimalism
-- Formalism, including structural and genuinely dominant rule-formalism
+- Political Constitutionalism, Thayerian deference, Popular Constitutionalism, Departmentalism, Political Process Jurisprudence, and Judicial Minimalism; strong-form Legal Constitutionalism and Weak-Form review remain internal authority descriptors rather than public nouns
+- Structural constitutional interpretation
+- Formalism, including separation-of-powers formalism and genuinely dominant rule-formalism
 - Functionalist separation of powers
 - Structured Proportionality
 
@@ -112,13 +113,15 @@ Current remedies lineage includes Abram Chayes, Samuel Bray, Mila Sohoni / Amand
 
 ## Catch-all without false theory
 
-Sandra Day O'Connor is a deliberate exception to theory-first matching. A broadly moderate respondent who repeatedly prefers fact-sensitive balancing, narrow decisions, precedent, and case-by-case judgment may genuinely be better described by O'Connor's low-theory judicial style than by forcing an elaborate jurisprudential system onto them.
+Sandra Day O'Connor is the designated champion for the internal **Mixed Jurisprudence** fallback: a respondent for whom no affirmative public school is established can receive an honest low-theory/case-by-case analogue rather than being forced into a false theory.
 
-Philip Bobbitt covers a different apparent-middle case: principled methodological pluralism. The adaptive bank distinguishes "several modalities are legitimately available" from "I do not want a grand theory and would decide concretely."
+Philip Bobbitt covers a different case entirely: **affirmative** methodological pluralism. Interpretive Pluralist now requires actual modal-pluralism evidence; it is never the "none of the above" noun.
 
 ## Single champion cardinality
 
-Every valid classified result returns exactly one champion unit. Noun-compatible profiles receive the normal compatibility advantage. Close scores lower confidence rather than creating co-champions. Fiss is the only current cross-noun exception and enters only through the explicit extreme structural-reform whole-profile gate. If no compatible selectable profile exists, the engine falls back to the best globally fitting eligible profile rather than leaving the champion slot empty.
+Every valid classified result returns exactly one champion unit. Noun-compatible profiles receive the normal compatibility advantage. Close scores lower confidence rather than creating co-champions. Fiss is the only current cross-noun exception and enters only through the explicit extreme structural-reform whole-profile gate.
+
+There is **no global incompatible champion fallback**. If a public noun cannot produce a compatible champion, that is an architecture error for the audit suite to catch, not permission to return the least-wrong thinker from another school. The only no-school path is the explicit internal Mixed Jurisprudence fallback with its designated O'Connor catch-all.
 
 ## Adaptive diagnostics
 
@@ -130,12 +133,13 @@ The first follow-up is a soft Legal Realism probe because Realism is intentional
 - Inclusive vs Exclusive Positivism
 - Natural Law vs Dworkinian Interpretivism vs Moral Impact Theory vs Fuller/Radbruch edge cases
 - Thayerian deference vs Political Constitutionalism
-- Weak-Form Constitutionalism vs Popular Constitutionalism
+- weak-form/dialogic review as an institutional descriptor versus genuinely Popular Constitutionalism
 - Popular Constitutionalism vs Departmentalism
 - Political Process Jurisprudence vs generic deference
 - Sunsteinian Minimalism vs Bickelian passive virtues
 - Intentionalism vs Purposivism
 - Legal Process vs generic Purposivism/Pragmatism
+- Structuralism vs text-, history-, purpose-, and structure-formalism explanations
 - Pound-style sociological jurisprudence
 - structured Proportionality
 - Bobbitt-style pluralism vs O'Connor-style low theory

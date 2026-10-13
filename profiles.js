@@ -20,7 +20,7 @@ globalThis.LAW_PROFILES = Object.freeze([
     identityIds: ["positivist"],
     axisSignature: { sorc: { target: 92, weight: 1 } },
     signatureTraits: ["source.social_practice", "source.law_runs_out"],
-    requiredTraits: [{ any: ["source.social_practice", "source.law_runs_out"], min: 0.35 }],
+    requiredTraits: [],
     antiTraits: ["source.objective_morality", "source.normative_positivism"],
     description: "Baseline modern positivism: recognized social sources make law, and open texture can leave genuine hard-case discretion.",
     related: ["Jules Coleman", "Wil Waluchow", "Joseph Raz", "Hans Kelsen"]
@@ -146,6 +146,9 @@ globalThis.LAW_PROFILES = Object.freeze([
     tier: "main",
     identityIds: ["textualist"],
     crossCuttingIdentityIds: ["formalist", "legal_constitutionalist"],
+    crossCuttingRequirements: {
+      formalist: [{ all: ["form.anti_discretion"], min: 0.45 }]
+    },
     axisSignature: {
       cons: { target: 94, weight: 0.9 },
       form: { target: 98, weight: 1 },
@@ -249,6 +252,9 @@ globalThis.LAW_PROFILES = Object.freeze([
     tier: "main",
     identityIds: ["public_meaning_originalist", "originalist"],
     crossCuttingIdentityIds: ["formalist"],
+    crossCuttingRequirements: {
+      formalist: [{ all: ["form.anti_discretion"], min: 0.45 }]
+    },
     axisSignature: {
       cons: { target: 92, weight: 0.8 },
       time: { target: 90, weight: 0.9 },
@@ -399,6 +405,10 @@ globalThis.LAW_PROFILES = Object.freeze([
     tier: "main",
     identityIds: ["pragmatist"],
     crossCuttingIdentityIds: ["common_law_constitutionalist", "sociological_jurist"],
+    crossCuttingRequirements: {
+      common_law_constitutionalist: [{ all: ["time.common_law_development"], min: 0.35 }],
+      sociological_jurist: [{ all: ["method.social_interests"], min: 0.45 }]
+    },
     axisSignature: {
       cons: { target: 36, weight: 0.5 },
       prec: { target: 80, weight: 0.85 },
@@ -433,6 +443,10 @@ globalThis.LAW_PROFILES = Object.freeze([
     tier: "main",
     identityIds: ["purposivist"],
     crossCuttingIdentityIds: ["pragmatist", "functionalist"],
+    crossCuttingRequirements: {
+      pragmatist: [{ all: ["method.workability"], min: 0.45 }, { all: ["method.consequences"], min: 0.35 }],
+      functionalist: [{ all: ["separation.interpretive_accommodation"], min: 0.35 }]
+    },
     axisSignature: {
       cons: { target: 16, weight: 0.85 },
       separ: { target: 16, weight: 0.7 },
@@ -501,6 +515,10 @@ globalThis.LAW_PROFILES = Object.freeze([
     tier: "specialist",
     identityIds: ["common_law_constitutionalist"],
     crossCuttingIdentityIds: ["living_constitutionalist", "nonpositivist"],
+    crossCuttingRequirements: {
+      living_constitutionalist: [{ all: ["time.living_content"], min: 0.3 }],
+      nonpositivist: [{ all: ["source.common_law_fundamental_rights"], min: 0.5 }]
+    },
     axisSignature: {
       sorc: { target: 18, weight: 0.55 },
       time: { target: 30, weight: 0.45 },
@@ -607,6 +625,9 @@ globalThis.LAW_PROFILES = Object.freeze([
     tier: "main",
     identityIds: ["legal_process_theorist"],
     crossCuttingIdentityIds: ["purposivist"],
+    crossCuttingRequirements: {
+      purposivist: [{ all: ["constraint.purpose"], min: 0.4 }]
+    },
     axisSignature: {
       cons: { target: 28, weight: 0.6 },
       post: { target: 64, weight: 0.25 },
@@ -624,6 +645,10 @@ globalThis.LAW_PROFILES = Object.freeze([
     tier: "main",
     identityIds: ["sociological_jurist"],
     crossCuttingIdentityIds: ["pragmatist", "purposivist"],
+    crossCuttingRequirements: {
+      pragmatist: [{ all: ["method.consequences"], min: 0.4 }],
+      purposivist: [{ all: ["constraint.purpose"], min: 0.4 }]
+    },
     axisSignature: {
       cons: { target: 28, weight: 0.4 },
       form: { target: 30, weight: 0.45 },
@@ -641,6 +666,10 @@ globalThis.LAW_PROFILES = Object.freeze([
     tier: "specialist",
     identityIds: ["sociological_jurist"],
     crossCuttingIdentityIds: ["interpretive_pluralist", "purposivist"],
+    crossCuttingRequirements: {
+      interpretive_pluralist: [{ all: ["method.modal_pluralism"], min: 0.45 }],
+      purposivist: [{ all: ["constraint.purpose"], min: 0.4 }]
+    },
     axisSignature: {
       cons: { target: 34, weight: 0.5 },
       form: { target: 38, weight: 0.35 }
@@ -672,12 +701,36 @@ globalThis.LAW_PROFILES = Object.freeze([
     name: "Brett Kavanaugh / Amy Coney Barrett",
     tier: "specialist",
     identityIds: ["textualist"],
-    axisSignature: { cons: { target: 90, weight: 1 } },
+    axisSignature: {
+      cons: { target: 90, weight: 1 },
+      separ: { target: 72, weight: 0.45 },
+      prec: { target: 72, weight: 0.35 }
+    },
     signatureTraits: ["constraint.textual", "constraint.contextual_textualism", "constraint.best_reading_context", "separation.independent_judicial_interpretation"],
     requiredTraits: [{ all: ["constraint.best_reading_context"], min: 0.5 }],
-    antiTraits: ["constraint.intent"],
-    description: "Modern best-reading Textualism: choose the better linguistic reading using ordinary usage and whole-text context rather than atomistic parsing or purposive repair.",
+    antiTraits: ["constraint.intent", "separation.interpretive_accommodation"],
+    description: "Modern best-reading Textualism: choose the better linguistic reading using ordinary usage and whole-text context, paired with comparatively court-centered interpretation of legal limits.",
     related: ["Brett Kavanaugh", "Amy Coney Barrett"]
+  },
+  {
+    id: "kagan",
+    name: "Elena Kagan",
+    tier: "main",
+    identityIds: ["textualist"],
+    axisSignature: {
+      cons: { target: 78, weight: 0.75 },
+      prec: { target: 92, weight: 0.8 },
+      separ: { target: 28, weight: 0.7 },
+      form: { target: 58, weight: 0.25 }
+    },
+    signatureTraits: ["constraint.textual", "constraint.contextual_textualism", "constraint.best_reading_context", "precedent.settlement", "separation.interpretive_accommodation"],
+    requiredTraits: [
+      { all: ["constraint.best_reading_context"], min: 0.5 },
+      { all: ["separation.interpretive_accommodation"], min: 0.35 }
+    ],
+    antiTraits: ["separation.independent_judicial_interpretation", "separation.strong_nondelegation"],
+    description: "Institutionalist contextual Textualism: text and statutory context remain central, while precedent, delegated institutional responsibility, agency expertise, and administrability receive substantial weight.",
+    related: ["Henry Hart / Albert Sacks", "Stephen Breyer", "Robert Katzmann"]
   },
   {
     id: "ekins_intentionalism",
@@ -724,6 +777,9 @@ globalThis.LAW_PROFILES = Object.freeze([
     tier: "specialist",
     identityIds: ["interpretive_pluralist"],
     crossCuttingIdentityIds: ["purposivist"],
+    crossCuttingRequirements: {
+      purposivist: [{ all: ["constraint.purpose"], min: 0.35 }]
+    },
     axisSignature: { cons: { target: 36, weight: 0.35 } },
     signatureTraits: ["method.modal_pluralism", "method.practical_reasoning"],
     requiredTraits: [{ all: ["method.practical_reasoning"], min: 0.5 }],
@@ -891,6 +947,22 @@ globalThis.LAW_PROFILES = Object.freeze([
     related: ["Philip Bobbitt", "William Eskridge", "Philip Frickey"]
   },
   {
+    id: "marshall_structuralist",
+    name: "John Marshall",
+    tier: "main",
+    identityIds: ["structuralist"],
+    axisSignature: {
+      cons: { target: 46, weight: 0.3 },
+      separ: { target: 60, weight: 0.3 },
+      post: { target: 28, weight: 0.35 }
+    },
+    signatureTraits: ["method.structural_reasoning", "method.structural_inference"],
+    requiredTraits: [{ all: ["method.structural_reasoning"], min: 0.5 }],
+    antiTraits: [],
+    description: "Foundational Structuralism: constitutional powers and limits can be inferred from the Constitution's overall design, federal relationships, institutional structure, and necessary implications rather than from isolated clauses alone.",
+    related: ["Charles L. Black Jr.", "McCulloch v. Maryland"]
+  },
+  {
     id: "vermeule",
     name: "Adrian Vermeule",
     tier: "specialist",
@@ -932,6 +1004,10 @@ globalThis.LAW_PROFILES = Object.freeze([
     tier: "specialist",
     identityIds: ["sociological_jurist"],
     crossCuttingIdentityIds: ["living_constitutionalist", "purposivist"],
+    crossCuttingRequirements: {
+      living_constitutionalist: [{ all: ["time.living_content"], min: 0.3 }],
+      purposivist: [{ all: ["constraint.purpose"], min: 0.35 }]
+    },
     axisSignature: {
       remed: { target: 5, weight: 1 },
       post: { target: 8, weight: 0.8 },
@@ -1071,7 +1147,7 @@ globalThis.LAW_PROFILES = Object.freeze([
     id: "oconnor",
     name: "Sandra Day O'Connor",
     tier: "catchall",
-    identityIds: ["interpretive_pluralist", "minimalist"],
+    identityIds: ["interpretive_pluralist", "minimalist", "mixed_jurisprudence"],
     axisSignature: {
       prec: { target: 70, weight: 0.45 },
       remed: { target: 74, weight: 0.45 },

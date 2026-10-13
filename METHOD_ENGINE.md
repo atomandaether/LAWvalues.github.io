@@ -25,12 +25,15 @@ The Method zone may publicly return:
 - **Pragmatist**
 - **Legal Realist**
 - **Sociological Jurist**
+- **Structuralist**
 
 Legal Realist remains the intentionally non-axis override because its central claims are substantially descriptive/empirical.
 
-Sociological Jurist is now a full noun rather than a Pound-only specialist inside Pragmatism/Purposivism.
+Sociological Jurist is a full noun rather than a Pound-only specialist inside Pragmatism/Purposivism.
 
-Interpretive Pluralist is a real adaptive noun rather than a mere "none of the above" fallback.
+**Structuralist** is the constitutional-structure method: rules may follow from the Constitution's overall architecture, relationships among institutions and powers, federalism, and necessary structural implications even when no isolated clause states the whole rule.
+
+Interpretive Pluralist requires affirmative modal-pluralism evidence. A respondent for whom no affirmative school is established now uses the internal **Mixed Jurisprudence** fallback rather than being mislabeled a Pluralist.
 
 ## Modifier layer
 
@@ -55,46 +58,52 @@ Formal versus contextual Textualism is deliberately **not** a public modifier. I
 ### Textualist
 1. **Hugo Black** — categorical text + rules/anti-discretion + unusually aggressive enforcement of expressly protected rights.
 2. **Antonin Scalia / John Manning / Frank Easterbrook** — mainline/New Textualism: enacted language, enacted compromise, anti-repair, rules and constraint.
-3. **Brett Kavanaugh / Amy Coney Barrett** — modern best-reading/context-sensitive Textualism.
+3. **Brett Kavanaugh / Amy Coney Barrett** — modern best-reading/context-sensitive Textualism with comparatively court-centered interpretation of legal limits.
+4. **Elena Kagan** — institutionalist contextual Textualism: text and whole-statute context remain central, but precedent, delegated institutional responsibility, agency expertise, and administrability receive substantially more weight.
 
 The separate locked Originalist **Scalia/Manning** unit remains in the Originalism engine. The Method engine uses a dedicated Textualist unit rather than letting the Originalist profile leak across nouns.
 
 ### Intentionalist
-4. **Richard Ekins** — modern institutional/group-agency Intentionalism.
-5. **Learned Hand / early Richard Posner** — Imaginative Reconstruction.
+5. **Richard Ekins** — modern institutional/group-agency Intentionalism.
+6. **Learned Hand / early Richard Posner** — Imaginative Reconstruction.
 
 Strong Intentionalism is important further reading but does not clear the Alexander-v-Bork champion threshold against Ekins-style actual-intent judging.
 
 ### Purposivist
-6. **Stephen Breyer** — practical American purposivism: purpose, consequences, administrability, institutional workability.
-7. **Aharon Barak** — systematic/objective purposive interpretation with a much more rights/proportionality-heavy overall judicial package.
+7. **Stephen Breyer** — practical American purposivism: purpose, consequences, administrability, institutional workability.
+8. **Aharon Barak** — systematic/objective purposive interpretation with a much more rights/proportionality-heavy overall judicial package.
 
 Barak may also legitimately appear under Proportionalist when proportionality, rather than purpose, is the respondent's stronger fixation. The public title therefore distinguishes **Proportionalist Purposivist** from **Purposivist Proportionalist** depending on which commitment supplies the winning noun.
 
 ### Legal Process Jurist
-8. **Henry Hart / Albert Sacks** — institutional settlement, competence, and purposive reasoned elaboration.
-9. **Herbert Wechsler** — neutral-principles Legal Process; constitutional decisions should rest on generalizable principles.
+9. **Henry Hart / Albert Sacks** — institutional settlement, competence, and purposive reasoned elaboration.
+10. **Herbert Wechsler** — neutral-principles Legal Process; constitutional decisions should rest on generalizable principles.
 
 ### Interpretive Pluralist
-10. **Philip Bobbitt** — modal constitutional pluralism.
-11. **William Eskridge / Philip Frickey** — Practical-Reasoning pluralism.
+11. **Philip Bobbitt** — modal constitutional pluralism.
+12. **William Eskridge / Philip Frickey** — Practical-Reasoning pluralism.
 
 Sandra Day O'Connor remains a low-theory catch-all rather than a theorist defining pluralism.
 
+### Structuralist
+13. **John Marshall** — foundational structural constitutional reasoning: constitutional powers and limits can be inferred from the Constitution's overall design, institutional relationships, federal supremacy, and necessary implications rather than from isolated clauses alone.
+
+Charles L. Black Jr. remains the central modern theoretical lineage for structural argument; D-STR1 establishes the method without requiring a respondent to endorse any particular Marshall Court outcome.
+
 ### Pragmatist
-12. **Richard Posner** — consequence-forward, workability-centered Pragmatism with comparatively weak doctrinal settlement.
-13. **Benjamin Cardozo** — bounded common-law Pragmatism constrained by precedent, custom, continuity, and incremental development.
+14. **Richard Posner** — consequence-forward, workability-centered Pragmatism with comparatively weak doctrinal settlement.
+15. **Benjamin Cardozo** — bounded common-law Pragmatism constrained by precedent, custom, continuity, and incremental development.
 
 ### Legal Realist
-14. **Karl Llewellyn** — mature/mainline Realism: underdetermination, situation sense, law in action.
-15. **Felix S. Cohen** — functional/anti-conceptual Realism: translate doctrinal labels into concrete conduct, consequences, and normative choices.
-16. **Jerome Frank** — fact-skeptical Realism.
+16. **Karl Llewellyn** — mature/mainline Realism: underdetermination, situation sense, law in action.
+17. **Felix S. Cohen** — functional/anti-conceptual Realism: translate doctrinal labels into concrete conduct, consequences, and normative choices.
+18. **Jerome Frank** — fact-skeptical Realism.
 
 Brian Leiter remains major further reading/reconstruction rather than a separate closest-judge endpoint.
 
 ### Sociological Jurist
-17. **Roscoe Pound** — law in action, competing social interests, and practical social operation.
-18. **François Gény** — *libre recherche scientifique*: positive sources govern until they genuinely run out, after which disciplined inquiry into social facts, justice, equity, and the nature of things supplies the missing rule.
+19. **Roscoe Pound** — law in action, competing social interests, and practical social operation.
+20. **François Gény** — *libre recherche scientifique*: positive sources govern until they genuinely run out, after which disciplined inquiry into social facts, justice, equity, and the nature of things supplies the missing rule.
 
 Eugen Ehrlich remains lineage/further reading. Cardozo is explicitly cross-cutting-compatible with Sociological Jurisprudence where the respondent's whole profile warrants it. Gény requires his dedicated source-gap diagnostic; generic open construction is not enough.
 
@@ -112,7 +121,8 @@ The global cap remains twelve adaptive questions.
 A confirmed Realist can use up to six of seven slots because the Realist noun itself is an override and these distinctions determine the Realist champion.
 
 ### Textualism
-- **D-TXT1** — modern best-reading/contextual champion discriminator; Kavanaugh/Barrett versus mainline Scalia/Manning/Easterbrook.
+- **D-TXT1** — establishes modern best-reading/contextual Textualism against mainline enacted-bargain Textualism.
+- **D-SEP2**, when contextual Textualism is established, separates Kagan-like institutional/agency accommodation from the more court-centered Kavanaugh/Barrett branch.
 - **D-TXT2** — Hugo Black categorical-text-plus-rights discriminator.
 
 Neither becomes a public Textualist modifier.
@@ -124,6 +134,7 @@ Neither becomes a public Textualist modifier.
 - **D-LP1** — Legal Process noun router.
 - **D-LP2** — Wechsler neutral-principles champion discriminator.
 - **D-SOC1** — Sociological Jurisprudence noun router.
+- **D-STR1** — Structuralism noun router: constitutional architecture and institutional relationships can themselves generate legal implications.
 - **D-GENY1** — Gény Free Scientific Research champion discriminator, asked only after Sociological Jurisprudence is already live.
 - **D-PLU1** — principled Interpretive Pluralism.
 - **D-PLU2** — Practical-Reasoning pluralism.
@@ -147,10 +158,10 @@ The audit suite requires every locked unit to have a coherent literal-answer pat
 
 ## Reachability contract
 
-The audit suite requires all eighteen Method champion units to be separately reachable from literal 88-item answer vectors through the live adaptive router within the twelve-question cap.
+The audit suite requires all twenty Method champion units to be separately reachable from literal 88-item answer vectors through the live adaptive router within the twelve-question cap.
 
 It additionally verifies:
-- all eight Method nouns remain available;
+- all nine Method nouns remain available, including Structuralist;
 - Sociological Jurist is a public noun;
 - Interpretive Pluralist is diagnosable rather than merely a fallback;
 - the three method-internal subtype modifiers appear only in their locked cells, and Barak's Proportionalist/Purposivist hybrid appears only with confirmed structured proportionality;

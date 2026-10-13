@@ -48,6 +48,19 @@
       note: "Noun-level Sociological Jurisprudence router and Roscoe Pound champion evidence."
     },
     {
+      id: "D-STR1",
+      family: "structuralism",
+      priority: "high",
+      unlock: "Constitutional structure is salient but no text-, history-, or purpose-centered method fully explains the respondent's reasoning.",
+      prompt: "A constitutional rule can sometimes be legally inferred from the Constitution's overall design and the relationships among its institutions and powers even when no single clause expressly states that rule. The structure itself can supply the governing constitutional principle.",
+      agreeTraits: ["method.structural_reasoning", "method.structural_inference"],
+      disagreeTraits: [],
+      nextOnAgree: [],
+      nextOnDisagree: [],
+      relatedIdentityIds: ["structuralist"],
+      note: "Noun-level Structuralist router: overall constitutional architecture and necessary institutional relationships can generate legal implications beyond isolated clause-by-clause reading."
+    },
+    {
       id: "D-PLU1",
       family: "pluralism",
       priority: "medium",
@@ -79,7 +92,7 @@
       priority: "medium",
       unlock: "Broadly moderate profile remains without a strong theoretical identity after pluralism is considered.",
       prompt: "In genuinely hard cases, I would rather decide narrowly from the concrete facts and practical circumstances than commit to a comprehensive theory that is supposed to determine the correct method across very different cases.",
-      agreeTraits: ["method.case_by_case", "method.anti_grand_theory", "remedies.incremental"],
+      agreeTraits: ["method.case_by_case", "method.anti_grand_theory", "method.narrow_shallow", "remedies.incremental"],
       disagreeTraits: [],
       nextOnAgree: [],
       nextOnDisagree: [],
@@ -348,7 +361,7 @@
     const singleProposition=new Set([
       "minimalist","thayerian","nonpositivist","fullerian",
       "intentionalist","political_process_jurist","legal_process_theorist",
-      "sociological_jurist","proportionalist","common_good_constitutionalist"
+      "sociological_jurist","structuralist","proportionalist","common_good_constitutionalist"
     ]);
     const output=[];
     for(const candidate of candidates) {
@@ -386,6 +399,7 @@
         focus=["cons"];
         if(id==="textualist")basis=left.cons;
         else if(id==="interpretive_pluralist"){focus=[];basis=Math.max(0.18,(traits["method.modal_pluralism"]||0)*0.45);}
+        else if(id==="structuralist"){focus=[];basis=Math.max(0.2,(traits["method.structural_reasoning"]||0)*0.5);}
         else basis=right.cons;
       }else if(id==="legal_realist"){basis=Math.max(0.25,(traits["realism.empirical_prediction"]||0)*0.55);}
       // Cooke's common-law-rights claim itself explains a nonpositive Source
@@ -494,6 +508,9 @@
         (traits["method.law_in_action"] || 0) >= 0.5) {
       add("sociological_jurist", 0.92, "Law-in-action and explicit social-interest reasoning establish Sociological Jurisprudence.");
     }
+    if ((traits["method.structural_reasoning"] || 0) >= 0.5) {
+      add("structuralist", 0.95, "Affirmative structural reasoning treats constitutional architecture and institutional relationships as an independent source of constitutional implications.");
+    }
     if ((traits["method.pragmatic_priority"] || 0) >= 0.5) {
       add("pragmatist", 0.91, "Consequences and practical workability are independent adjudicative reasons rather than merely evidence of purpose.");
     }
@@ -573,13 +590,6 @@
           : "Positive legal sources dominate the Source axis."
       );
     }
-    if (r.sorc >= 0.3 &&
-        nonpositivistSpecificity < 0.5 &&
-        interpretivistEvidence < 0.5 &&
-        (traits["source.objective_morality"] || 0) < 0.45 &&
-        (traits["source.internal_legality"] || 0) < 0.5) {
-      add("nonpositivist", 0.5 + 0.2 * s.sorc, "Non-positivism is clear but no narrower public Source identity is established.", "Non-Positivist");
-    }
     if (l.cons >= 0.3) add("textualist", 0.56 + 0.34 * s.cons, "Textual constraint is a dominant feature.");
     if (r.cons >= 0.3) add("purposivist", 0.54 + 0.32 * s.cons, "Purpose/open construction dominates and no narrower method is established.");
     if (l.separ >= 0.4) {
@@ -591,7 +601,7 @@
     if (ruleFormalistCanDominate && l.form >= 0.43 && antiDiscretion >= 0.65) {
       add("formalist", 0.93, "Rule-centered anti-discretion Formalism is the respondent's dominant jurisprudential commitment.");
     }
-    if (r.separ >= 0.4) add("functionalist", 0.55 + 0.32 * s.separ, "Functional separation of powers is highly distinctive.");
+    if (r.separ >= 0.55) add("functionalist", 0.55 + 0.32 * s.separ, "Functional separation of powers is highly distinctive.");
 
     const pragmatic = (r.cons + r.separ + r.form) / 3;
     if (pragmatic >= 0.32) add("pragmatist", 0.57 + 0.25 * pragmatic, "Open, functional, consequence-sensitive pattern across domains.");
@@ -601,11 +611,11 @@
     }
 
     if (candidates.length === 0) {
-      add("interpretive_pluralist", 0.5 + 0.25 * (1 - Math.max(...Object.values(s))), "No single methodology strongly dominates.");
+      add("mixed_jurisprudence", 0.5, "No affirmative public jurisprudential school is established.");
     }
 
     const calibrated=calibrateIdentityCandidates(candidates,scores,traits);
-    if(!calibrated.length) calibrated.push({identity:identityFromCatalog("interpretive_pluralist"),score:0.5,basis:0,reason:"No dominant, internally consistent judicial philosophy emerges."});
+    if(!calibrated.length) calibrated.push({identity:identityFromCatalog("mixed_jurisprudence"),score:0.5,basis:0,reason:"No dominant, internally consistent judicial philosophy emerges."});
     calibrated.sort((a,b)=>b.score-a.score || b.basis-a.basis || a.identity.id.localeCompare(b.identity.id));
     return {best:calibrated[0],candidates:calibrated.slice(0,5)};
   }
@@ -648,6 +658,34 @@
     return tags.reduce((sum, trait) => sum + (traits[trait] || 0), 0) / tags.length;
   }
 
+  function profileUnexplainedSalience(profile, scores) {
+    const modeled = new Set(Object.keys(profile.axisSignature || {}));
+    // Profiles with no axis model are intentionally proposition-level theories;
+    // do not pretend an omitted axis is a known disagreement. Once a profile
+    // does model axes, however, very strong respondent commitments outside that
+    // model count as unexplained rather than as a free match.
+    if (modeled.size === 0) return 0;
+    const unexplained = AXIS_IDS
+      .filter((axisId) => !modeled.has(axisId))
+      .map((axisId) => salience(scores, axisId))
+      .filter((value) => value >= 0.55);
+    if (!unexplained.length) return 0;
+    const max = Math.max(...unexplained);
+    const mean = unexplained.reduce((sum, value) => sum + value, 0) / unexplained.length;
+    return clamp01(0.10 * max + 0.06 * mean);
+  }
+
+  function crossCuttingRequirementsSatisfied(profile, identity, traits) {
+    const rules = profile.crossCuttingRequirements?.[identity?.id];
+    if (!Array.isArray(rules) || rules.length === 0) return false;
+    for (const rule of rules) {
+      const min = Number(rule.min ?? 0.5);
+      if (Array.isArray(rule.all) && !rule.all.every((trait) => (traits[trait] || 0) >= min)) return false;
+      if (Array.isArray(rule.any) && !rule.any.some((trait) => (traits[trait] || 0) >= min)) return false;
+    }
+    return true;
+  }
+
   function identityLineageIds(identityId) {
     const catalog = Array.isArray(global.LAW_RESULT_IDENTITIES) ? global.LAW_RESULT_IDENTITIES : [];
     const byId = Object.fromEntries(catalog.map((item) => [item.id, item]));
@@ -678,6 +716,8 @@
 
     const compatibility = championIdentityCompatibility(profile, identity);
     if (compatibility === "incompatible") return null;
+    if (compatibility === "cross-cutting" &&
+        !crossCuttingRequirementsSatisfied(profile, identity, traits)) return null;
 
     for (const [axisId, minimum] of Object.entries(profile.minAxisSalience || {})) {
       if (salience(scores, axisId) < Number(minimum)) return null;
@@ -686,6 +726,7 @@
     const { fit, shape, modeledAxes } = axisProfileFit(profile, scores);
     const traitFit = profileTraitFit(profile, traits);
     const anti = Math.max(0, ...(profile.antiTraits || []).map((trait) => traits[trait] || 0));
+    const unexplained = profileUnexplainedSalience(profile, scores);
     // The noun is already resolved from the respondent's primary jurisprudential
     // fixation. Champion matching is then conditioned on that noun: a thinker
     // who directly exemplifies it receives the full compatibility bonus, while
@@ -698,7 +739,7 @@
     if (modeledAxes === 0) {
       score = 0.5 + 0.34 * traitFit + identityBonus - 0.22 * anti;
     } else {
-      score = 0.62 * fit + 0.18 * shape + 0.15 * traitFit + identityBonus - 0.22 * anti;
+      score = 0.62 * fit + 0.18 * shape + 0.15 * traitFit + identityBonus - 0.22 * anti - unexplained;
     }
     if (profile.tier === "main") score += 0.015;
     score += Number(profile.specificityBonus || 0);
@@ -763,7 +804,8 @@
         traits["method.anti_grand_theory"] || 0,
         traits["method.low_theory_space"] || 0
       );
-      if (maxSalience <= 0.52 || topNormal < 0.61 || lowTheoryEvidence >= 0.5) {
+      if (identity?.id === "mixed_jurisprudence" ||
+          maxSalience <= 0.52 || topNormal < 0.61 || lowTheoryEvidence >= 0.5) {
         const base = scoreProfile(profile, scores, traits, identity) ?? 0;
         const score = clamp01(base + 0.16 * lowTheoryEvidence);
         pool = [...pool, { profile, score }].sort((a, b) =>
@@ -774,34 +816,8 @@
       }
     }
 
-    if (pool.length === 0) {
-      const globalFallback = [];
-      for (const profile of profiles) {
-        if (profile.selectable === false || profile.tier === "lineage" || profile.tier === "catchall" || profile.globalSpecialist) continue;
-        if (!requiredTraitsSatisfied(profile, traits)) continue;
-        let salienceGateFailed = false;
-        for (const [axisId, minimum] of Object.entries(profile.minAxisSalience || {})) {
-          if (salience(scores, axisId) < Number(minimum)) salienceGateFailed = true;
-        }
-        if (salienceGateFailed) continue;
-
-        const { fit, shape, modeledAxes } = axisProfileFit(profile, scores);
-        const traitFit = profileTraitFit(profile, traits);
-        const anti = Math.max(0, ...(profile.antiTraits || []).map((trait) => traits[trait] || 0));
-        let score = modeledAxes === 0
-          ? 0.42 + 0.28 * traitFit - 0.22 * anti
-          : 0.52 * fit + 0.14 * shape + 0.16 * traitFit - 0.22 * anti;
-        score += Number(profile.specificityBonus || 0);
-        globalFallback.push({ profile, score: clamp01(score) });
-      }
-      globalFallback.sort((a, b) =>
-        b.score - a.score ||
-        Number(b.profile.specificityBonus || 0) - Number(a.profile.specificityBonus || 0) ||
-        a.profile.id.localeCompare(b.profile.id)
-      );
-      pool = globalFallback;
-    }
-
+    // Never rescue a noun by jumping to an incompatible thinker. If this is
+    // empty, the noun/profile contracts are wrong and the audit should fail.
     if (pool.length === 0) return { matches: [], confidence: "withheld" };
 
     const first = pool[0];
@@ -1042,6 +1058,15 @@
         offer("D-SEP4", 76);
     }
 
+    const structuralMethodEvidence = traits["method.structural_reasoning"] || 0;
+    const structuralMethodPlausible =
+      constraint >= 35 && constraint <= 65 &&
+      Math.max(salience(scores,"time"), salience(scores,"post"), salience(scores,"separ")) >= 0.30;
+    if (structuralMethodPlausible && structuralMethodEvidence < 0.5 &&
+        !hasAsked(diagnosticResponses,"D-STR1")) {
+      offer("D-STR1", 85);
+    }
+
     const originalistZone = time >= 64 &&
       resolveIdentity(scores,traits).candidates.some(c=>c.identity.id.includes("originalist"));
     if(originalistZone && (precedent >= 55 || precedent <= 38 || time >= 78) &&
@@ -1238,6 +1263,10 @@
         (traits["form.anti_discretion"] || 0) >= 0.45;
       if (blackPlausible && !hasAsked(diagnosticResponses, "D-TXT2")) {
         offer("D-TXT2", 83);
+      }
+      if ((traits["constraint.best_reading_context"] || 0) >= 0.5 &&
+          !hasAsked(diagnosticResponses, "D-SEP2")) {
+        offer("D-SEP2", 88);
       }
     }
 
