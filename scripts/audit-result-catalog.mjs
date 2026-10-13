@@ -43,6 +43,120 @@ assert.ok(typeof classifier.buildTraitEvidence === "function",
 assert.ok(typeof resultContent.rankPhrases === "function", "Need separate broad phrase ranking");
 assert.ok(typeof resultContent.rankTwists === "function", "Need separate noun-conditioned twist ranking");
 
+
+/* Public modifier contract: the public result grammar intentionally exposes
+   only 29 of the retained 39 substantive twist definitions. Legacy/internal
+   names cannot be advertised as impossible promised results. */
+{
+  const publicIds=resultContent.PUBLIC_SUBSTANTIVE_MODIFIER_IDS;
+  const internalIds=resultContent.INTERNAL_TWIST_IDS;
+  assert.equal(publicIds.length,29,"Approved substantive modifier pool should have 29 items");
+  assert.equal(new Set(publicIds).size,publicIds.length);
+  assert.equal(new Set(internalIds).size,internalIds.length);
+  assert.equal(publicIds.length+internalIds.length,
+    resultContent.TWISTS.filter(x=>!x.fallback).length,
+    "Every substantive twist must be explicitly public or explicitly archival");
+  assert.ok(publicIds.every(id=>resultContent.PUBLIC_MODIFIERS.some(m=>m.id===id)));
+  assert.ok(internalIds.every(id=>!publicIds.includes(id)));
+  const originalist=new Set(["originalist","public_meaning_originalist","original_intent_originalist"]);
+  const source=new Set(["positivist","natural_lawyer","interpretivist","fullerian","nonpositivist"]);
+  const method=new Set(["textualist","intentionalist","purposivist","legal_process_theorist",
+    "interpretive_pluralist","pragmatist","legal_realist","sociological_jurist"]);
+  const sourceModifiers=new Set(["inclusive_positivism","exclusive_positivism","normative_positivism",
+    "moral_impact_nonpositivism","moral_practice_nonpositivism","extreme_injustice_nonpositivism"]);
+  const methodModifiers=new Set(["imaginative_reconstruction","practical_reasoning_pluralism",
+    "fact_skeptical_realism"]);
+  const candidates=identities.filter(id=>id.public!==false &&
+    !["unusable_response","incoherent_response","outcome_driven_left","outcome_driven_right"].includes(id.id));
+  const probes=[{}, {time:0},{sorc:0},{cons:100},{remed:100},{post:100},
+    {form:100},{separ:100},{prec:100},{time:100},{form:0},{prec:0},{post:0},{remed:0},{separ:0}];
+  function permitted(t,id){
+    if(!(t.appliesTo||[]).includes(id.id) && !(t.appliesFamilies||[]).includes(id.family))return false;
+    if(originalist.has(id.id))return t.id==="new_originalism";
+    if(source.has(id.id))return sourceModifiers.has(t.id);
+    if(method.has(id.id))return methodModifiers.has(t.id);
+    return true;
+  }
+  for(const twist of resultContent.TWISTS.filter(x=>publicIds.includes(x.id))){
+    let witnessed=false;
+    for(const identity of candidates.filter(id=>permitted(twist,id))){
+      for(const otherAxis of probes){
+        const scores=Object.fromEntries(context.LAW_AXES.map(a=>[a.id,50]));
+        Object.assign(scores,otherAxis);
+        if(twist.axis)scores[twist.axis]=twist.direction==="left"?100:0;
+        const traits=Object.fromEntries([...(twist.traits||[]),...(twist.allTraits||[])]
+          .map(t=>[t,1]));
+        const assembled=resultContent.assemble({identity,identityScore:.82,
+          identityAlternatives:[],primaryStrength:.8},scores,traits,{});
+        if(assembled.modifier?.id===twist.id){witnessed=true;break;}
+      }
+      if(witnessed)break;
+    }
+    assert.ok(witnessed,
+      `Public modifier ${twist.id} must be constructively selectable through the real assembler`);
+  }
+  for(const id of internalIds){
+    const twist=resultContent.TWISTS.find(x=>x.id===id);
+    assert.ok(twist && !resultContent.PUBLIC_MODIFIERS.some(x=>x.id===id),
+      `Archival modifier ${id} must be explicitly nonpublic`);
+  }
+}
+console.log("PASS: all 29 public substantive modifiers are constructively reachable; 10 legacy twists are internal.");
+
+
+/* Specialist constitutional structure: no new common question, no ninth axis.
+   All four theory distinctions must be reachable via ordinary adaptive routing
+   in the allotted twelve slots. */
+{
+  const ids=["D-SEP1","D-SEP2","D-SEP3","D-SEP4"];
+  for(const id of ids){
+    const diag=allDiagnostics.find(d=>d.id===id);
+    assert.ok(diag && diag.family==="separation",`Missing theory-based Separation diagnostic ${id}`);
+    assert.ok(diag.agreeTraits.length && diag.disagreeTraits.length,
+      `${id} must be a genuine conceptual choice with consequences both ways`);
+  }
+  function structuralAnswers(side) {
+    const r=Object.fromEntries(questions.map(q=>[q.id,0]));
+    for(const q of questions.filter(q=>q.axis==="separ")){
+      const left=Number(q.signals.agree.separ||0)*side;
+      const right=Number(q.signals.disagree.separ||0)*side;
+      r[q.id]=left>=right?3:-3;
+    }
+    return r;
+  }
+  const seen=new Set();
+  for(const side of [1,-1]){
+    const answers=structuralAnswers(side),scores=scoring.scoreAll(answers);
+    assert.ok(side>0 ? scores.separ.score>=90 : scores.separ.score<=10);
+    const d={},order=[];
+    for(let k=0;k<classifier.MAX_DIAGNOSTICS;k++){
+      const next=classifier.nextDiagnostic(scores,answers,d);
+      if(!next)break;
+      assert.ok(!order.includes(next.id),"A specialist diagnostic must never repeat");
+      order.push(next.id);
+      if(ids.includes(next.id))seen.add(next.id);
+      d[next.id]=next.id==="D-QC1"||next.id==="D-RLS1"?-2:next.id==="D-QC2"?1:0;
+    }
+    assert.ok(order.length<=12);
+  }
+  assert.deepEqual(Array.from(seen).sort(),ids,
+    "Each specialist structural diagnostic must be offered on a realistic formal or functional path");
+  const scores=Object.fromEntries(context.LAW_AXES.map(x=>[x.id,50]));
+  const responseChoices=[
+    ["D-SEP1","separation.assigned_independence","separation.unitary_executive"],
+    ["D-SEP2","separation.independent_judicial_interpretation","separation.interpretive_accommodation"],
+    ["D-SEP3","separation.strong_nondelegation","separation.delegation_acceptable"],
+    ["D-SEP4","separation.judicial_power_boundary","separation.administrative_adjudication"]
+  ];
+  for(const [id,agree,disagree] of responseChoices){
+    assert.ok(classifier.buildTraits(scores,{}, {[id]:3})[agree]>=0.9);
+    assert.ok(classifier.buildTraits(scores,{}, {[id]:-3})[disagree]>=0.9);
+    // Diagnostics only refine nouns and champions; the axis map is immutable.
+    assert.equal(scoring.scoreAll(Object.fromEntries(questions.map(q=>[q.id,0]))).separ.score,50);
+  }
+}
+console.log("PASS: all four Separation diagnostics route in 88+12 and discriminate distinct theories.");
+
 const expectedPhraseIds = [
   "source_positive", "source_nonpositive", "objective_morality",
   "textual_constraint", "purposive", "fixed_meaning", "living_meaning",
