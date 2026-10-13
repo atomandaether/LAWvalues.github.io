@@ -72,6 +72,8 @@ Examples:
 - Living Constitutionalist + democratic constitutional development -> Post/Siegel
 - Living Constitutionalist + transformative constitutional project -> Klare/Langa
 - Inclusive Positivism + Common-Law Constitutionalism -> Waluchow
+- Political Process Jurist + responsive, dysfunction-specific calibration -> Rosalind Dixon
+- Judicial Minimalist + passive virtues / strategic avoidance -> Alexander Bickel
 
 ## Balanced identity/champion map
 
@@ -97,12 +99,14 @@ Examples:
 | Living Constitutionalist | Brennan default; Post/Siegel after Democratic diagnostic; Klare/Langa after Transformative diagnostic | Brennan = contemporary ratification + rights; Post/Siegel = democratic constitutional development; Klare/Langa = transformative constitutional project |
 | Common-Law Constitutionalist | David Strauss default; Harlan II after ordered-liberty/living-tradition diagnostic; Lord Cooke after strong common-law-rights diagnostic; Waluchow for Inclusive Positivism + common-law development | Strauss = precedent/practice as constitutional law; Harlan = historically embedded ordered liberty + restraint; Cooke = fundamental common-law limits on ordinary legislative supremacy; Waluchow = inclusive-positivist living-tree/common-law combination |
 | Common-Good Constitutionalist | Vermeule | classical/common-good teleology, only after diagnostics |
-| Thayerian | Thayer; Holmes/Hand/Frankfurter as historical practitioners | clear-error deference |
-| Waldronian | Waldron | democratic legitimacy under reasonable rights disagreement |
-| Popular Constitutionalist | Kramer; Tushnet for more radical/weak-form variants | anti-judicial supremacy + popular constitutional authority |
-| Departmentalist | no single default | independent branch interpretation; do not collapse into popular constitutionalism |
-| Elyan | Ely | representation reinforcement / process failure |
-| Judicial Minimalist | Sunstein; Bickel when passive virtues/avoidance dominate | narrow/incompletely theorized decisions are the noun; modifier + champion carry the Bickel/Sunstein split |
+| Legal Constitutionalist | no forced default; compatible whole-profile champions include Brennan, Dworkin, Black, Barak, Alexy | entrenched rights + strong judicial authority |
+| Political Constitutionalist | Waldron / Bellamy | democratic finality under functioning institutions and reasonable rights disagreement |
+| Thayerian | Thayer; Holmes/Hand/Frankfurter as historical practitioners | clear-error / reasonable-judgment deference |
+| Weak-Form Constitutionalist | Gardbaum | independent judicial rights review without entrenched judicial supremacy |
+| Popular Constitutionalist | Kramer | anti-judicial supremacy + popular constitutional authority |
+| Departmentalist | Kevin Walsh | independent branch interpretation without broader popular-authority claim |
+| Political Process Jurist | Ely default; Dixon after Responsive diagnostic | representation reinforcement; Dixon calibrates intervention to specific democratic dysfunctions |
+| Judicial Minimalist | Sunstein default; Bickel when passive virtues/avoidance dominate | narrow/shallow adjudication; modifier + champion carry the Bickel/Sunstein split |
 | Formalist | Lawson; Scalia if text/rules/originalism also fit; Schauer for rule form | distinguish structural formalism from rule formalism |
 | Functionalist | Peter Strauss; Breyer as judicial relative | workable institutional overlap |
 | Proportionalist | Alexy; Barak; German FCC / Barak-era Israeli Supreme Court | structured proportionality, not generic balancing |
