@@ -1001,7 +1001,7 @@ globalThis.LAW_PROFILES = Object.freeze([
     selectable: false,
     identityIds: [],
     axisSignature: {},
-    signatureTraits: [],
+    signatureTraits: ["remedies.equilibration"],
     requiredTraits: [],
     antiTraits: [],
     description: "Remedial-equilibration lineage: remedial consequences can feed back into the content of constitutional rights, a distinctive theory not directly measured by the current bank.",
