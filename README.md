@@ -12,7 +12,7 @@
 
 > Institutional-structure / doctrinal-form / remedies details are documented in [`STRUCTURE_FORM_ENGINE.md`](STRUCTURE_FORM_ENGINE.md): Formalist/Functionalist/Proportionalist, eight locked selectable champion units across this zone, tightly gated Fiss cross-noun matching, remedies lineage, and the exactly-one-champion rule.
 
-LAWvalues is a static, client-side legal-philosophy quiz. The current public label is **Version 0.6 Beta**. It maps respondents across eight bipolar dimensions:
+LAWvalues is a static, client-side legal-philosophy quiz. The current public label is **Version 0.7 Beta**. It maps respondents across eight bipolar dimensions:
 
 - Source: Positivist ↔ Non-positivist
 - Constraint: Textualist ↔ Open construction
@@ -75,6 +75,14 @@ They check the 88-item core, asymmetric scoring, source references, local asset 
 ## Validation status
 
 The item bank is content-grounded and structurally audited, not empirically validated. Factor structure, reliability, test–retest stability, convergent and discriminant validity, subgroup invariance, diagnostic thresholds, and thinker-profile locations require pilot response data.
+
+## Public modifiers versus archival twist records
+
+The current result-title grammar deliberately exposes **29 substantive modifiers** and three fit-strength alternatives (Unmistakably, Fairly clearly, Some kind of). Each substantive modifier has a constructive result-assembler witness in the audit. Ten additional historical twist entries are **internal/legacy only**; they remain in the catalog to interpret older share links or describe jurisprudential distinctions, but are not advertised as independently reachable public outcomes. See `PUBLIC_SUBSTANTIVE_MODIFIER_IDS`, `PUBLIC_MODIFIERS`, and `INTERNAL_TWIST_IDS` in `result_content.js`.
+
+## Theory-based institutional diagnostics
+
+The seven common Separation questions continue to determine the displayed Formalist–Functionalist percentage. Four **conditional** specialist questions (D-SEP1 through D-SEP4) instead investigate the justification for those answers: whether the President can override officers' congressionally assigned discretion, whether courts independently determine the limits of delegated statutory authority, whether broad major-policy delegation remains unconstitutional despite clear authorization, and whether serious executive-branch civil adjudication is compatible with the judicial role. These diagnostics alter only narrower champion/identity evidence; they do **not** change the common-core axis numbers or add another public axis. The router offers them only when the existing Separation profile or linked interpretive commitments make the dispute live.
 
 ## Exceptional results and political mirrors
 
