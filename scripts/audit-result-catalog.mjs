@@ -1246,6 +1246,12 @@ function literalAuthorityCore(id) {
   // O6 directly tests weak-form review.  Do not let a generic posture vector
   // accidentally manufacture that theory in unrelated authority fixtures.
   responses.O6 = id === "gardbaum" ? 3 : -3;
+  if (id === "gardbaum") {
+    // Genuine dialogue requires both judicial enforcement of rights and
+    // democratic authority to respond. An O6-only response is too thin.
+    responses.O2 = 3;
+    responses.O4 = 3;
+  }
 
   // O7 is the Bickelian passive-virtues discriminator; generic Sunsteinian
   // minimalism instead comes from narrow/shallow remedial evidence.
