@@ -87,7 +87,7 @@ Examples:
 | Proportionalist | Alexy for nonpositivist/correctness-heavy proportionality; Barak for purposive proportionality | structured proportionality is the noun; modifier + champion carry the Alexy/Barak split |
 | Legal Realist | Llewellyn; Leiter for Realist+Positivist/Naturalist; Holmes as precursor | Llewellyn = broad mature Realism; Leiter = modern naturalized/positivist reconstruction; Holmes = precursor + deference; Frank remains lineage until fact/psychology diagnostics exist |
 | Pragmatist | Posner; Breyer as judicial relative | consequences/workability; Breyer when purposivism/functionalism is stronger |
-| Textualist | Manning; Scalia when broader bundle fits | Scalia needs public meaning/rules/formalism, not text alone |
+| Textualist | Scalia/Manning/Easterbrook; Kavanaugh/Barrett; Hugo Black | mainline enacted-bargain text; modern best-reading/context-sensitive text; Black's categorical text/rights package |
 | Intentionalist | no default yet | diagnose actual legislative/enactor intent before choosing a champion |
 | Purposivist | Hart & Sacks; Breyer; Barak | Hart/Sacks = legal process; Breyer = pragmatic judging; Barak = purposive + proportionality |
 | Legal-Process Theorist | Hart & Sacks | institutional competence + reasoned elaboration |
