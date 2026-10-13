@@ -339,6 +339,10 @@ assert.equal(identities.find((x) => x.id === "original_methods_originalist").pub
   "Original Methods is champion-level evidence, not a public noun");
 assert.equal(identities.find((x) => x.id === "framework_originalist").public, false,
   "Framework Originalism is Balkin champion-level theory inside New OPM, not a public noun");
+assert.equal(identities.find((x) => x.id === "legal_constitutionalist").public, false,
+  "Legal Constitutionalism is an internal strong-form authority descriptor, not a public noun");
+assert.equal(identities.find((x) => x.id === "weak_form_constitutionalist").public, false,
+  "Weak-form review is an internal institutional-design descriptor, not a public noun");
 
 for (const id of [
   "D-RLS1", "D-RLS2", "D-RLS3", "D-RLS4", "D-RLS5",
@@ -1408,7 +1412,6 @@ assert.equal(profileById.ackerman.selectable, false,
 const lockedAuthorityUnits = [
   "thayer",
   "waldron",
-  "gardbaum",
   "kramer",
   "walsh_departmentalism",
   "ely",
@@ -1425,15 +1428,9 @@ for (const id of lockedAuthorityUnits) {
 function literalAuthorityCore(id) {
   const responses = literalMethodCore(id);
 
-  // O6 directly tests weak-form review.  Do not let a generic posture vector
-  // accidentally manufacture that theory in unrelated authority fixtures.
-  responses.O6 = id === "gardbaum" ? 3 : -3;
-  if (id === "gardbaum") {
-    // Genuine dialogue requires both judicial enforcement of rights and
-    // democratic authority to respond. An O6-only response is too thin.
-    responses.O2 = 3;
-    responses.O4 = 3;
-  }
+  // Weak-form review remains measured on the Posture axis but no longer
+  // manufactures a public jurisprudential noun.
+  responses.O6 = -3;
 
   // O7 is the Bickelian passive-virtues discriminator; generic Sunsteinian
   // minimalism instead comes from narrow/shallow remedial evidence.
@@ -1468,7 +1465,6 @@ function authorityDiagnosticAnswer(id, diagnosticId) {
 const authorityExpectedIdentity = {
   thayer: "thayerian",
   waldron: "political_constitutionalist",
-  gardbaum: "weak_form_constitutionalist",
   kramer: "popular_constitutionalist",
   walsh_departmentalism: "departmentalist",
   ely: "political_process_jurist",
@@ -1508,31 +1504,16 @@ for (const id of lockedAuthorityUnits) {
   }
 }
 
-// Legal Constitutionalism is intentionally a real public noun without a forced
-// one-size-fits-all champion.
-{
-  const responses = Object.fromEntries(
-    questions.map((question, index) => [question.id, [-1, 0, 1, -1, 1][index % 5]])
-  );
-  Object.assign(responses, {
-    O1:-3, O2:-3, O3:3, O4:3, O5:-3, O6:-3, O7:-3,
-    O8:-3, O9:-3, O10:3, O11:3, O12:-3, O13:3
-  });
-  const scores = scoring.scoreAll(responses);
-  const diagnosticResponses = {};
-  const diagnosticOrder = [];
-  for (let i = 0; i < classifier.MAX_DIAGNOSTICS; i += 1) {
-    const next = classifier.nextDiagnostic(scores, responses, diagnosticResponses);
-    if (!next) break;
-    diagnosticOrder.push(next.id);
-    diagnosticResponses[next.id] = next.id === "D-QC1" ? -2 : -3;
-  }
-  const result = classifier.classify(scores, responses, diagnosticResponses, { coreElapsedMs: 10 * 60 * 1000 });
-  assert.equal(result.identity.id, "legal_constitutionalist",
-    "A strongly rights-protective judicial-finality profile must reach Legal Constitutionalist");
-  assert.ok(diagnosticOrder.length <= classifier.MAX_DIAGNOSTICS,
-    "Legal Constitutionalist must remain reachable within the twelve-diagnostic cap");
-}
+// Strong-form legal constitutionalism and weak-form review remain measured
+// authority descriptors, but neither is a public noun. They must never displace
+// a more informative jurisprudential identity merely because the respondent
+// accepts or rejects strong-form judicial review.
+assert.equal(identities.find(x=>x.id==="legal_constitutionalist")?.public, false,
+  "Legal Constitutionalism must remain an internal authority descriptor");
+assert.equal(identities.find(x=>x.id==="weak_form_constitutionalist")?.public, false,
+  "Weak-form review must remain an internal institutional-design descriptor");
+assert.equal(profileById.gardbaum?.selectable, false,
+  "Gardbaum remains weak-form lineage/explanation rather than a public champion endpoint");
 
 // Locked institutional-structure / doctrinal-form / remedies champion paths.
 const lockedStructureFormUnits = [
@@ -1772,7 +1753,7 @@ const allPublicNouns=new Set([
   ...Object.values(authorityExpectedIdentity),
   ...Object.values(structureFormExpectedIdentity),
   "originalist","public_meaning_originalist","original_intent_originalist",
-  "legal_constitutionalist","common_good_constitutionalist"
+  "common_good_constitutionalist"
 ]);
 assert.deepEqual(
   Array.from(identities.filter(x=>x.public!==false && x.family!=="meta"),x=>x.id)
@@ -1968,5 +1949,5 @@ console.log("PASS: Method nouns/modifiers are locked, including Sociological Jur
 console.log("PASS: all 18 locked Method champion units are reachable end-to-end from literal answers within the twelve-diagnostic cap.");
 console.log("PASS: champion matching is noun-conditioned: primary and cross-cutting compatibility are explicit, incompatible champions are excluded.");
 console.log("PASS: Living/Common-Law constitutionalism resolves to all 7 locked non-originalist champion units, including Democratic/Transformative Living modifiers, within the twelve-diagnostic cap.");
-console.log("PASS: Judicial review / constitutional authority resolves to all 9 locked champion units plus standalone Legal Constitutionalism within the twelve-diagnostic cap.");
+console.log("PASS: Judicial review / constitutional authority resolves to the 8 public champion units; broad legal/weak-form authority configurations stay internal.");
 console.log("PASS: Institutional structure / doctrinal form resolves to Lawson, Calabresi-Prakash, Schauer, Peter Strauss, Alexy, and Barak; remedies retain Bhagwati-Iyer and tightly gated Fiss under the single-champion rule.");
