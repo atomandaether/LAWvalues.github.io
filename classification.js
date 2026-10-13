@@ -608,6 +608,7 @@
       score = 0.62 * fit + 0.18 * shape + 0.15 * traitFit + identityBonus - 0.22 * anti;
     }
     if (profile.tier === "main") score += 0.015;
+    score += Number(profile.specificityBonus || 0);
     return clamp01(score);
   }
 
@@ -1015,7 +1016,7 @@
       offer("D-CLC1", 97);
     }
 
-    const pilCompatible = new Set(["sociological_jurist", "living_constitutionalist", "purposivist"]);
+    const pilCompatible = new Set(["sociological_jurist", "living_constitutionalist", "purposivist", "legal_constitutionalist"]);
     if (pilCompatible.has(provisionalMethodIdentity) &&
         remediesScore <= 25 && posture <= 32 && constraint <= 45 &&
         (traits["remedies.public_interest_litigation"] || 0) < 0.5) {
