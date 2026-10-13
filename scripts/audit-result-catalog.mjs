@@ -1561,7 +1561,7 @@ for(let i=0;i<600;i++){
     const next=classifier.nextDiagnostic(scores,responses,diagnosticResponses);
     if(!next)break;
     diagnosticResponses[next.id]=next.id==="D-QC1"||next.id==="D-RLS1"
-      ? -2 : [-3,-2,-1,0,1,2,3][Math.floor(fuzzRandom()*7)];
+      ? -2 : next.id==="D-QC2" ? 1 : [-3,-2,-1,0,1,2,3][Math.floor(fuzzRandom()*7)];
     asked++;
   }
   assert.ok(!classifier.nextDiagnostic(scores,responses,diagnosticResponses),
