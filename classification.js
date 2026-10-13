@@ -866,7 +866,7 @@
         // Strong balancing/open-construction profiles need the Sociological
         // router early enough that a confirmed social-interest method can still
         // receive one champion-level refinement inside the seven-question cap.
-        offer("D-SOC1", form <= 45 ? 90 : form <= 50 ? 77 : 64);
+        offer("D-SOC1", form <= 40 ? 90 : form <= 50 ? 77 : 64);
       }
     }
 
