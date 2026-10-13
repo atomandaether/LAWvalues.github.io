@@ -73,7 +73,7 @@ globalThis.LAW_PROFILES = Object.freeze([
     },
     signatureTraits: ["source.principles_are_law", "source.fit_and_justification", "source.right_answer"],
     requiredTraits: [{ any: ["source.principles_are_law", "source.fit_and_justification"], min: 0.45 }],
-    antiTraits: ["source.law_runs_out"],
+    antiTraits: ["source.law_runs_out", "method.subjective_moral_override"],
     description: "Central legal Interpretivism: institutional practice bears on legal rights through the principles that best fit and justify that practice.",
     related: ["Ronald Dworkin", "Nicos Stavropoulos", "T.R.S. Allan"]
   },
@@ -112,7 +112,7 @@ globalThis.LAW_PROFILES = Object.freeze([
       { all: ["source.objective_morality"], min: 0.35 },
       { all: ["source.positive_law_settlement"], min: 0.35 }
     ],
-    antiTraits: ["source.principles_are_law"],
+    antiTraits: ["source.principles_are_law", "method.subjective_moral_override"],
     description: "Central modern Natural Law: objective practical morality matters to law, while positive law retains an important settlement, coordination, and institutional-authority function.",
     related: ["Thomas Aquinas", "William Blackstone", "Jonathan Crowe"]
   },
@@ -221,6 +221,7 @@ globalThis.LAW_PROFILES = Object.freeze([
     signatureTraits: ["time.public_meaning", "time.construction_zone", "posture.rights_trumps"],
     requiredTraits: [{ all: ["time.construction_zone"], min: 0.5 }],
     antiTraits: ["posture.majoritarian"],
+    specificityBonus: 0.02,
     description: "New OPM with rights-protective, good-faith construction once fixed communicative meaning leaves genuine room.",
     related: ["Lawrence Solum", "Jack Balkin"]
   },
@@ -311,7 +312,7 @@ globalThis.LAW_PROFILES = Object.freeze([
       time: { target: 96, weight: 0.85 },
       prec: { target: 10, weight: 1 }
     },
-    signatureTraits: ["time.fixation", "precedent.correctness_first"],
+    signatureTraits: ["time.fixation", "precedent.correctness_first", "precedent.judicial_invention_skepticism"],
     requiredTraits: [],
     antiTraits: ["precedent.stability"],
     description: "Correction-first originalism: entrenched precedent yields comparatively readily to the best account of original constitutional law.",
@@ -326,7 +327,7 @@ globalThis.LAW_PROFILES = Object.freeze([
       time: { target: 90, weight: 0.85 },
       prec: { target: 82, weight: 1 }
     },
-    signatureTraits: ["time.fixation", "precedent.stability", "precedent.settlement"],
+    signatureTraits: ["time.fixation", "precedent.stability", "precedent.settlement", "precedent.protective_rule_stability"],
     requiredTraits: [],
     antiTraits: ["precedent.correctness_first"],
     description: "Precedent-accommodating originalism: original meaning remains authoritative while stare decisis, reliance, and legal settlement retain substantial force.",
@@ -369,7 +370,7 @@ globalThis.LAW_PROFILES = Object.freeze([
     tier: "specialist",
     identityIds: ["formalist"],
     axisSignature: { form: { target: 98, weight: 1 } },
-    minAxisSalience: { form: 0.5 },
+    minAxisSalience: { form: 0.45 },
     signatureTraits: ["form.rules", "form.anti_discretion"],
     requiredTraits: [],
     antiTraits: ["form.proportionality"],
@@ -438,7 +439,7 @@ globalThis.LAW_PROFILES = Object.freeze([
       form: { target: 24, weight: 0.6 },
       post: { target: 56, weight: 0.2 }
     },
-    signatureTraits: ["constraint.purpose", "method.workability"],
+    signatureTraits: ["constraint.purpose", "method.workability", "separation.interpretive_accommodation"],
     requiredTraits: [],
     antiTraits: ["constraint.textual", "form.proportionality"],
     description: "Practical American Purposivism: statutory purpose, real-world consequences, administrability, and institutional workability reinforce one another.",
@@ -660,7 +661,7 @@ globalThis.LAW_PROFILES = Object.freeze([
       form: { target: 86, weight: 0.55 },
       separ: { target: 76, weight: 0.3 }
     },
-    signatureTraits: ["constraint.textual", "constraint.enacted_bargain", "form.anti_discretion"],
+    signatureTraits: ["constraint.textual", "constraint.enacted_bargain", "form.anti_discretion", "separation.independent_judicial_interpretation"],
     requiredTraits: [],
     antiTraits: ["constraint.purpose", "constraint.best_reading_context", "method.categorical_textual_rights"],
     description: "Mainline New Textualism: enacted language and compromise control, judicial repair is disfavored, and rules constrain interpreters even when the result is awkward.",
@@ -672,7 +673,7 @@ globalThis.LAW_PROFILES = Object.freeze([
     tier: "specialist",
     identityIds: ["textualist"],
     axisSignature: { cons: { target: 90, weight: 1 } },
-    signatureTraits: ["constraint.textual", "constraint.contextual_textualism", "constraint.best_reading_context"],
+    signatureTraits: ["constraint.textual", "constraint.contextual_textualism", "constraint.best_reading_context", "separation.independent_judicial_interpretation"],
     requiredTraits: [{ all: ["constraint.best_reading_context"], min: 0.5 }],
     antiTraits: ["constraint.intent"],
     description: "Modern best-reading Textualism: choose the better linguistic reading using ordinary usage and whole-text context rather than atomistic parsing or purposive repair.",
@@ -1014,7 +1015,7 @@ globalThis.LAW_PROFILES = Object.freeze([
     identityIds: ["functionalist"],
     axisSignature: { separ: { target: 3, weight: 1 } },
     minAxisSalience: { separ: 0.55 },
-    signatureTraits: ["separation.functionalist"],
+    signatureTraits: ["separation.functionalist", "separation.assigned_independence", "separation.interpretive_accommodation", "separation.administrative_adjudication"],
     requiredTraits: [],
     antiTraits: ["separation.formalist"],
     description: "The specialist for functional separation-of-powers analysis: institutional overlap can be legitimate when accountability and each branch's core capacities remain workable.",
@@ -1029,7 +1030,7 @@ globalThis.LAW_PROFILES = Object.freeze([
       separ: { target: 97, weight: 1 }
     },
     minAxisSalience: { separ: 0.55 },
-    signatureTraits: ["separation.formalist", "separation.nondelegation"],
+    signatureTraits: ["separation.formalist", "separation.nondelegation", "separation.strong_nondelegation", "separation.judicial_power_boundary"],
     requiredTraits: [],
     antiTraits: ["separation.functionalist"],
     description: "The specialist for hard structural formalism: constitutionally assigned powers and anti-delegation constraints remain binding even when functional arrangements seem more efficient.",

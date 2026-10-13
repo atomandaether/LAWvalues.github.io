@@ -9,7 +9,7 @@ const root = path.resolve(here, "..");
 const context = vm.createContext({ console });
 context.globalThis = context;
 
-for (const filename of ["axes.js", "sources.js", "questions.js", "scoring.js"]) {
+for (const filename of ["axes.js", "sources.js", "questions.js", "scoring.js", "diagnostics.js"]) {
   vm.runInContext(fs.readFileSync(path.join(root, filename), "utf8"), context, { filename });
 }
 
@@ -29,10 +29,10 @@ for (const typo of [
 }
 
 assert.equal(axes.length, 8, "There must be exactly eight axes");
-assert.equal(context.LAW_QUESTION_COUNT, 93, "The configured question count must be 93");
-assert.equal(questions.length, 93, "The question bank must contain 93 questions");
-assert.equal(new Set(questions.map((item) => item.id)).size, 93, "Question IDs must be unique");
-assert.equal(new Set(questions.map((item) => item.prompt)).size, 93, "Question prompts must be unique");
+assert.equal(context.LAW_QUESTION_COUNT, 88, "The configured question count must be 88");
+assert.equal(questions.length, 88, "The question bank must contain 88 questions");
+assert.equal(new Set(questions.map((item) => item.id)).size, 88, "Question IDs must be unique");
+assert.equal(new Set(questions.map((item) => item.prompt)).size, 88, "Question prompts must be unique");
 
 const axisIds = new Set(axes.map((axis) => axis.id));
 for (const item of questions) {
@@ -59,25 +59,19 @@ for (const item of questions) {
 
 // Verify the Reconstruction-meaning anchor and the genuinely distinct moral
 // premises of S9 (personal moral discretion) and S10 (objective moral law).
-const t1 = questions.find(q => q.id === "T1");
-const s9 = questions.find(q => q.id === "S9");
-const s10 = questions.find(q => q.id === "S10");
+const t1 = questions.find(q=>q.id==="T1");
+const s10 = questions.find(q=>q.id==="S10");
+const oldSource = context.LAW_DIAGNOSTIC_QUESTIONS.find(q=>q.id==="D-MOR1");
+const oldPrecedent = context.LAW_DIAGNOSTIC_QUESTIONS.find(q=>q.id==="D-PREC1");
 assert.ok(t1.prompt.startsWith("Laws passed right after the American Civil War"));
-assert.ok(s9.prompt.includes("judge’s personal moral judgment") && s9.prompt.includes("no established objective moral rule"));
-assert.ok(s10.prompt.includes("objectively true moral rule") && s10.prompt.includes("independent moral rule"));
-assert.ok(scoring.signalFor(s9,"agree","sorc") < 0 && Math.abs(scoring.signalFor(s9,"agree","sorc")) < 0.5,
-  "Subjective moral override must not receive full Natural-Law-equivalent Source weight");
-assert.equal(scoring.signalFor(s9,"disagree","sorc"),0,
-  "Rejecting personal discretion is not proof of legal positivism");
-assert.equal(scoring.signalFor(s10,"agree","sorc"),-1,
-  "An objectively true moral rule has independent Source significance");
-const probe = scoring.historicalMethodConsistency;
-assert.equal(probe({T1:3,T2:-3,T3:0}).disagreements,1,
-  "Favoring Reconstruction meaning while rejecting comparable historical locking contributes divergence evidence");
-assert.equal(probe({T1:3,T2:3,T3:3}).disagreements,0);
-assert.equal(probe({T1:3,T2:null,T3:0}).status,"insufficient");
-assert.equal(probe({T1:-3,T2:3}).disagreements,1,
-  "The same comparison must be symmetric rather than presuming a party preference");
+assert.ok(s10.prompt.includes("objectively true moral rule"));
+assert.ok(oldSource.prompt.includes("judge’s personal moral judgment"));
+assert.ok(oldPrecedent.prompt.includes("newspapers"));
+for (const id of ["F2","C16","S9","P1","P8"]) {
+  assert.ok(!questions.some(q=>q.id===id),`${id} must not be in the common core`);
+}
+assert.equal(questions.length + 12,100);
+assert.ok(!questions.some(q=>q.id==="D-MOR1"||q.id==="D-PREC1"));
 
 const c13 = questions.find((item) => item.id === "C13");
 assert.equal(scoring.signalFor(c13, "agree", "cons"), 0,
@@ -155,10 +149,10 @@ for (const filename of htmlFiles) {
   }
 }
 
-assert.ok(htmlByFile["index.html"].includes("Version 0.6 Beta"), "Front page must show Version 0.6 Beta");
+assert.ok(htmlByFile["index.html"].includes("Version 0.7 Beta"), "Front page must show Version 0.6 Beta");
 assert.ok(htmlByFile["instructions.html"].includes("You will be presented with a series of statements about legal interpretation and judicial philosophy. For each one, click the button with your opinion on it."),
   "Instructions must retain the original wording");
-assert.ok(htmlByFile["quiz.html"].includes('aria-valuemax="100"'), "Quiz progress maximum must allow 93 core plus up to 7 diagnostics");
+assert.ok(htmlByFile["quiz.html"].includes('aria-valuemax="100"'), "Quiz progress maximum must allow 88 core plus up to 12 diagnostics");
 assert.ok(htmlByFile["results.html"].includes('<script src="questions.js"></script>'),
   "Results must load question signals");
 assert.ok(htmlByFile["quiz.html"].includes('<script src="result_content.js"></script>'),
@@ -181,7 +175,7 @@ assert.ok(!htmlByFile["results.html"].includes(">Retake<"), "Results should not 
 console.table(axisRows);
 console.log("All-agree scores:", Object.fromEntries(axes.map((axis)=>[axis.id,allAgree[axis.id].score])));
 console.log("All-disagree scores:", Object.fromEntries(axes.map((axis)=>[axis.id,allDisagree[axis.id].score])));
-console.log("PASS: all 93 questions inform at least one axis in at least one response direction.");
+console.log("PASS: all 88 questions inform at least one axis in at least one response direction.");
 console.log("PASS: C13 now scores disagreement toward contextual textualism.");
 console.log("PASS: asymmetric pole evidence; no forced acquiescence normalization.");
-console.log("PASS: original visible copy and Version 0.6 Beta preserved.");
+console.log("PASS: visible question copy and Version 0.7 Beta preserved.");

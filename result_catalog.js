@@ -4,6 +4,24 @@
 
 globalThis.LAW_RESULT_IDENTITIES = Object.freeze([
   {
+    id: "outcome_driven_left",
+    label: "Left-Partisan Judging",
+    family: "meta",
+    status: "override",
+    parentId: null,
+    covers: ["quality.partisan_outcomes"],
+    notes: "Exceptional outcome-selection override after at least three politically matched judicial principles reverse in a left-favoring direction; never a jurist identity."
+  },
+  {
+    id: "outcome_driven_right",
+    label: "Right-Partisan Judging",
+    family: "meta",
+    status: "override",
+    parentId: null,
+    covers: ["quality.partisan_outcomes"],
+    notes: "Exceptional outcome-selection override after at least three politically matched judicial principles reverse in a right-favoring direction; never a jurist identity."
+  },
+  {
     id: "incoherent_response",
     label: "Inconsistent response pattern",
     family: "meta",

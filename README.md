@@ -4,15 +4,15 @@
 
 > Source-of-law classifier details are documented in [`SOURCE_ENGINE.md`](SOURCE_ENGINE.md): public nouns, substantive modifiers, ten champion units, adaptive routing, article-aware fit labels, and end-to-end reachability.
 
-> Originalism classifier details are documented in [`ORIGINALISM_ENGINE.md`](ORIGINALISM_ENGINE.md): OPM/OI public nouns, New construction modifier, fit modifiers, thirteen champion units, and adaptive routing under the seven-question cap.
+> Originalism classifier details are documented in [`ORIGINALISM_ENGINE.md`](ORIGINALISM_ENGINE.md): OPM/OI public nouns, New construction modifier, fit modifiers, thirteen champion units, and adaptive routing under the twelve-question cap.
 
-> Non-originalist constitutional-time details are documented in [`NONORIGINALISM_ENGINE.md`](NONORIGINALISM_ENGINE.md): Living/Common-Law public nouns, Democratic/Transformative Living modifiers, seven locked champion units, and end-to-end reachability under the seven-question cap.
+> Non-originalist constitutional-time details are documented in [`NONORIGINALISM_ENGINE.md`](NONORIGINALISM_ENGINE.md): Living/Common-Law public nouns, Democratic/Transformative Living modifiers, seven locked champion units, and end-to-end reachability under the twelve-question cap.
 
-> Judicial-review / constitutional-authority details are documented in [`AUTHORITY_ENGINE.md`](AUTHORITY_ENGINE.md): eight public authority nouns, Responsive/Passive-virtues modifiers, nine locked champion units, and end-to-end reachability under the seven-question cap.
+> Judicial-review / constitutional-authority details are documented in [`AUTHORITY_ENGINE.md`](AUTHORITY_ENGINE.md): eight public authority nouns, Responsive/Passive-virtues modifiers, nine locked champion units, and end-to-end reachability under the twelve-question cap.
 
 > Institutional-structure / doctrinal-form / remedies details are documented in [`STRUCTURE_FORM_ENGINE.md`](STRUCTURE_FORM_ENGINE.md): Formalist/Functionalist/Proportionalist, eight locked selectable champion units across this zone, tightly gated Fiss cross-noun matching, remedies lineage, and the exactly-one-champion rule.
 
-LAWvalues is a static, client-side legal-philosophy quiz. The current public label is **Version 0.6 Beta**. It maps respondents across eight bipolar dimensions:
+LAWvalues is a static, client-side legal-philosophy quiz. The current public label is **Version 0.7 Beta**. It maps respondents across eight bipolar dimensions:
 
 - Source: Positivist ↔ Non-positivist
 - Constraint: Textualist ↔ Open construction
@@ -25,7 +25,7 @@ LAWvalues is a static, client-side legal-philosophy quiz. The current public lab
 
 ## Instrument design
 
-The core bank contains 93 questions across eight dimensions. Questions are grouped by a nominal section for presentation, but scoring is multidimensional and asymmetric: agreement and disagreement can carry different implications, and an item may contribute to any axis it materially informs. Each pole is estimated separately from the evidence that actually bears on it. Responses use a seven-point scale from −3 to +3, and “Not sure” answers are excluded from both evidence and scoring denominators; low coverage conservatively shrinks estimates toward 50 rather than projecting certainty from a single item.
+The core bank contains 88 questions across eight dimensions. Questions are grouped by a nominal section for presentation, but scoring is multidimensional and asymmetric: agreement and disagreement can carry different implications, and an item may contribute to any axis it materially informs. Each pole is estimated separately from the evidence that actually bears on it. Responses use a seven-point scale from −3 to +3, and “Not sure” answers are excluded from both evidence and scoring denominators; low coverage conservatively shrinks estimates toward 50 rather than projecting certainty from a single item.
 
 For each axis, the scorer separately totals available evidence for the first and second pole. A respondent's answer contributes in proportion to response strength and to that answer direction's signed signal for the axis. The displayed score is the difference between normalized support for the two poles, centered at 50 and clamped to 0–100. Rejection of a proposition therefore does not automatically count as support for its opposite unless the item explicitly encodes that implication.
 
@@ -33,9 +33,9 @@ The questions are written as plain-language legal problems rather than definitio
 
 ## Jurisprudential matching
 
-After the 93-question core, LAWvalues may ask up to seven adaptive tie-breakers, keeping the full quiz at 100 questions or fewer. These follow-ups **do not change the eight headline scores**. The first two are a soft Realism probe and a response check; remaining questions are routed only when they can refine a live jurisprudential distinction.
+After the 88-question core, LAWvalues may ask up to twelve adaptive tie-breakers, keeping the full quiz at 100 questions or fewer. These follow-ups **do not change the eight headline scores**. The first two are a soft Realism probe and a response check; particularly noisy and low-salience response patterns may receive a second explicit response check; remaining questions are routed only when they can refine a live jurisprudential distinction.
 
-Public results use the three-part grammar **[noun-conditioned twist] [real jurisprudential identity] [broad residual phrase]**. The middle noun is the nearest real jurisprudential neighbor. The trailing phrase carries the strongest broad, well-supported characteristic that noun does not already communicate; it is drawn from the eight axis poles plus only the few narrower traits that the existing 93 questions genuinely measure with enough independent evidence. The front modifier is no longer "third place" in the same ranking. It is a **twist on the noun**: a narrower, noun-conditioned feature that explains what is unusual about this respondent's particular version of that jurisprudential identity. This lets a Solum-like Public-Meaning Originalist, for example, surface a construction-zone twist without pretending that one narrow distinction is the person's third-largest worldview axis. Closest-thinker matching remains separate.
+Public results use the three-part grammar **[noun-conditioned twist] [real jurisprudential identity] [broad residual phrase]**. The middle noun is the nearest real jurisprudential neighbor. The trailing phrase carries the strongest broad, well-supported characteristic that noun does not already communicate; it is drawn from the eight axis poles plus only the few narrower traits that the existing 88 questions genuinely measure with enough independent evidence. The front modifier is no longer "third place" in the same ranking. It is a **twist on the noun**: a narrower, noun-conditioned feature that explains what is unusual about this respondent's particular version of that jurisprudential identity. This lets a Solum-like Public-Meaning Originalist, for example, surface a construction-zone twist without pretending that one narrow distinction is the person's third-largest worldview axis. Closest-thinker matching remains separate.
 
 The matching model is deliberately sparse:
 
@@ -70,8 +70,41 @@ The repository includes dependency-free structural, scoring, and profile audits:
 npm test
 ```
 
-They check the 93-item core, asymmetric scoring, source references, local asset references, sparse profile validity, specialist gates, major jurisprudential-family coverage, phrase reachability, noun-conditioned twist assembly, the seven-question diagnostic cap, explicit response-quality safeguards, and several false-match tests such as preventing a positivist from winning a strong Natural Law profile.
+They check the 88-item core, asymmetric scoring, source references, local asset references, sparse profile validity, specialist gates, major jurisprudential-family coverage, phrase reachability, noun-conditioned twist assembly, the twelve-question diagnostic cap, explicit response-quality safeguards, and several false-match tests such as preventing a positivist from winning a strong Natural Law profile.
 
 ## Validation status
 
 The item bank is content-grounded and structurally audited, not empirically validated. Factor structure, reliability, test–retest stability, convergent and discriminant validity, subgroup invariance, diagnostic thresholds, and thinker-profile locations require pilot response data.
+
+## Public modifiers versus archival twist records
+
+The current result-title grammar deliberately exposes **29 substantive modifiers** and three fit-strength alternatives (Unmistakably, Fairly clearly, Some kind of). Each substantive modifier has a constructive result-assembler witness in the audit. Ten additional historical twist entries are **internal/legacy only**; they remain in the catalog to interpret older share links or describe jurisprudential distinctions, but are not advertised as independently reachable public outcomes. See `PUBLIC_SUBSTANTIVE_MODIFIER_IDS`, `PUBLIC_MODIFIERS`, and `INTERNAL_TWIST_IDS` in `result_content.js`.
+
+## Theory-based institutional diagnostics
+
+The seven common Separation questions continue to determine the displayed Formalist–Functionalist percentage. Four **conditional** specialist questions (D-SEP1 through D-SEP4) instead investigate the justification for those answers: whether the President can override officers' congressionally assigned discretion, whether courts independently determine the limits of delegated statutory authority, whether broad major-policy delegation remains unconstitutional despite clear authorization, and whether serious executive-branch civil adjudication is compatible with the judicial role. These diagnostics alter only narrower champion/identity evidence; they do **not** change the common-core axis numbers or add another public axis. The router offers them only when the existing Separation profile or linked interpretive commitments make the dispute live.
+
+## Exceptional results and political mirrors
+
+Jurisprudential matches are withheld on three exceptional paths: mechanical or
+inattentive answers (including the universal response check), broad internal
+contradictions in independent domains, and repeated selection of politically
+favored outcomes across matched judicial-method cases. These are not ninth or
+tenth axes. No partisanship meter appears on the result page.
+
+The hidden outcome-selection test uses C3/C4, R2/R1, R7/R6 and R10/R9 as
+politically counterbalanced applications of the same kind of judicial rule.
+It requires at least three independently reversed pairs favoring the same
+political side, weighted evidence of at least 3, and a clear directional
+margin. The historically framed T1/T2 pair is weaker corroboration and cannot
+substitute for a third direct reversal. O9/O10 are deliberately *not* counted:
+their constitutional premises differ too much to infer an inconsistent method
+from a simple opposition of substantive outcomes. This is a stringent
+heuristic rather than a validated measure of individual political motivation.
+
+A successful outcome-selection override returns the exceptional
+"Outcome-driven pattern" result without a jurist or three-part title.
+It does not affect the eight plotted scores. Ordinary, valid cases retain
+exactly one champion unit and a modifier, noun and phrase. Broad incoherence
+requires direct contradictions in more than one jurisprudential domain; mixed
+scores and sincere methodological uncertainty do not qualify.

@@ -160,7 +160,7 @@ Do not force all eight axes into the prose.
 
 ## 10. Adaptive diagnostics refine the middle identity
 
-The 93-item core should not ask everyone every specialist distinction.
+The 88-item core should not ask everyone every specialist distinction.
 
 After the core:
 - one soft Realism probe may be asked universally because Realism is not discoverable from the eight axes;

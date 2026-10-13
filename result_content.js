@@ -1002,6 +1002,48 @@
     explanation:feature.explanation
   })));
 
+  // Public selection is deliberately narrower than the retained historical
+  // twist catalog. Internal/legacy descriptions remain available for older
+  // shared result links and scholarship, but are not promised quiz outcomes.
+  const PUBLIC_SUBSTANTIVE_MODIFIER_IDS = Object.freeze([
+    "new_originalism",
+    "democratic_living",
+    "transformative_living",
+    "inclusive_positivism",
+    "exclusive_positivism",
+    "normative_positivism",
+    "moral_impact_nonpositivism",
+    "moral_practice_nonpositivism",
+    "extreme_injustice_nonpositivism",
+    "imaginative_reconstruction",
+    "practical_reasoning_pluralism",
+    "fact_skeptical_realism",
+    "positive_law_settlement",
+    "precedent_skeptic",
+    "precedent_loyal",
+    "democracy_deferential",
+    "narrow_enforcement",
+    "systemic_enforcement",
+    "rulebound_open",
+    "formal_structure",
+    "source_bound_living",
+    "higher_law_historical",
+    "low_theory",
+    "proportionality_tinge",
+    "responsive_process",
+    "passive_virtues_minimalism",
+    "nonpositivist_proportionality",
+    "purposive_proportionality",
+    "anti_discretion_tinge"
+  ]);
+  const PUBLIC_MODIFIER_SET = new Set(PUBLIC_SUBSTANTIVE_MODIFIER_IDS);
+  const INTERNAL_TWIST_IDS = Object.freeze(TWISTS.filter(twist =>
+    !twist.fallback && !PUBLIC_MODIFIER_SET.has(twist.id)).map(twist=>twist.id));
+  const PUBLIC_MODIFIERS = Object.freeze(TWISTS.filter(twist =>
+    PUBLIC_MODIFIER_SET.has(twist.id)).map(twist => Object.freeze({
+      id:twist.id,text:twist.text,explanation:twist.explanation
+    })));
+
   const MODIFIERS = Object.freeze(TWISTS.map((twist) => Object.freeze({
     id:twist.id,
     text:twist.text,
@@ -1173,7 +1215,7 @@
   }
 
   function rankTwists(identity,scores,traits,phraseFeature=null) {
-    return TWISTS
+    return TWISTS.filter(twist => PUBLIC_MODIFIER_SET.has(twist.id))
       .map(twist=>({
         twist,
         evidence:twistEvidence(twist,scores,traits),
@@ -1622,6 +1664,9 @@
     PHRASE_FEATURES,
     TWISTS,
     MODIFIERS,
+    PUBLIC_SUBSTANTIVE_MODIFIER_IDS,
+    PUBLIC_MODIFIERS,
+    INTERNAL_TWIST_IDS,
     PHRASES,
     BRIDGES,
     phraseEvidence,

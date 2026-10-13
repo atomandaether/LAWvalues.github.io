@@ -1,4 +1,4 @@
-/* 93-item LAWvalues working bank.
+/* 88-item LAWvalues working bank.
    axis/key identify the nominal section and primary direction.
    signals are asymmetric scoring vectors. Agreement and disagreement are modeled
    separately because rejecting a proposition does not always imply its opposite.
@@ -144,23 +144,6 @@ globalThis.LAW_QUESTIONS = Object.freeze([
       "disagree": {
         "sorc": 1
       }
-    }
-  },
-  {
-    "id": "S9",
-    "axis": "sorc",
-    "key": -1,
-    "prompt": "Two large companies sign a voluntary contract that every constitution, statute, precedent, and accepted legal practice treats as valid. The judge personally believes the contract is immoral, but assume that this is only the judge’s own sincerely held moral view: there is no established objective moral rule against the contract, and reasonable people disagree. The court should still refuse to enforce the contract based solely on the judge’s personal moral judgment.",
-    "sourceIds": [
-      "radbruch2006",
-      "dworkin1967"
-    ],
-    "signals": {
-      "agree": {
-        "sorc": -0.35,
-        "form": -0.35
-      },
-      "disagree": {}
     }
   },
   {
@@ -474,23 +457,6 @@ globalThis.LAW_QUESTIONS = Object.freeze([
     }
   },
   {
-    "id": "C16",
-    "axis": "cons",
-    "key": 1,
-    "prompt": "We begin, as always, with the language of the statute.",
-    "sourceIds": [
-      "manning2005"
-    ],
-    "signals": {
-      "agree": {
-        "cons": 1
-      },
-      "disagree": {
-        "cons": -1
-      }
-    }
-  },
-  {
     "id": "C17",
     "axis": "cons",
     "key": 1,
@@ -754,23 +720,6 @@ globalThis.LAW_QUESTIONS = Object.freeze([
     }
   },
   {
-    "id": "P1",
-    "axis": "prec",
-    "key": 1,
-    "prompt": "For eighty years, courts have used the same rule for determining property boundaries, and thousands of people have bought and sold land relying on it. Now, it's clear that original decision was legally wrong. The Court should keep the old rule because changing it would unsettle deeply entrenched ownership across the country.",
-    "sourceIds": [
-      "kozel2010"
-    ],
-    "signals": {
-      "agree": {
-        "prec": 1
-      },
-      "disagree": {
-        "prec": -1
-      }
-    }
-  },
-  {
     "id": "P2",
     "axis": "prec",
     "key": 1,
@@ -875,23 +824,6 @@ globalThis.LAW_QUESTIONS = Object.freeze([
       },
       "disagree": {
         "prec": -1
-      }
-    }
-  },
-  {
-    "id": "P8",
-    "axis": "prec",
-    "key": -1,
-    "prompt": "A state constitution says that newspapers may be sued for false statements under the same rules as everyone else. Fifty years ago, the state supreme court nevertheless created a special rule out of nowhere protecting investigative journalism and political criticism from inclusion in that liability. The court should now abolish it because the constitution never authorized the special protection.",
-    "sourceIds": [
-      "kozel2010"
-    ],
-    "signals": {
-      "agree": {
-        "prec": -1
-      },
-      "disagree": {
-        "prec": 1
       }
     }
   },
@@ -1574,24 +1506,6 @@ globalThis.LAW_QUESTIONS = Object.freeze([
       },
       "disagree": {
         "form": -1
-      }
-    }
-  },
-  {
-    "id": "F2",
-    "axis": "form",
-    "key": -1,
-    "prompt": "No single set of legal rules can ever capture the ever changing complexity of human life.",
-    "sourceIds": [
-      "schauer1988",
-      "sullivan1992"
-    ],
-    "signals": {
-      "agree": {
-        "form": -0.35
-      },
-      "disagree": {
-        "form": 0.25
       }
     }
   },

@@ -3,9 +3,23 @@
   "use strict";
 
   const AXIS_IDS = ["sorc", "cons", "time", "prec", "remed", "post", "separ", "form"];
-  const MAX_DIAGNOSTICS = 7;
+  const MAX_DIAGNOSTICS = 12;
 
   const EXTRA_DIAGNOSTICS = Object.freeze([
+    {
+      id: "D-QC2",
+      family: "quality",
+      priority: "high",
+      unlock: "Only unusually noisy, low-salience profiles with contradictory extreme answers across several axes need a second explicit response check.",
+      prompt: "Response check: please select Slightly Agree for this item.",
+      agreeTraits: [],
+      disagreeTraits: [],
+      nextOnAgree: [],
+      nextOnDisagree: [],
+      relatedIdentityIds: ["interpretive_pluralist"],
+      qualityCheckExpected: 1,
+      note: "Does not change an axis, noun, or champion. Disagreement between many strong core responses prompts an additional response-quality confirmation rather than a speculative personality match."
+    },
     {
       id: "D-QC1",
       family: "quality",
@@ -80,7 +94,6 @@
     "source.principles_are_law": [["S8", 1, 1], ["S7", -1, 0.35]],
     "source.extreme_injustice": [["S2", 1, 1]],
     "source.objective_morality": [["S10", 1, 1], ["S11", 1, 1]],
-    "method.subjective_moral_override": [["S9", 1, 1]],
     "constraint.purpose": [["C8", 1, 0.8], ["C12", 1, 0.8], ["C14", 1, 0.9], ["C15", 1, 1]],
     "constraint.textual": [["C1", 1, 0.6], ["C2", 1, 0.7], ["C7", 1, 0.8], ["C9", 1, 0.7], ["C11", 1, 0.7], ["C17", 1, 1], ["C18", 1, 0.8]],
     "constraint.contextual_textualism": [["C5", 1, 0.8], ["C13", -1, 1]],
@@ -92,7 +105,7 @@
     "time.expected_applications": [["T3", 1, 0.7], ["T9", -1, 0.8]],
     "time.early_practice": [["T11", 1, 1]],
     "time.common_law_development": [["T12", 1, 1], ["P3", 1, 1]],
-    "precedent.reliance": [["P1", 1, 1], ["P4", 1, 0.8], ["P12", 1, 1]],
+    "precedent.reliance": [["P4", 1, 0.8], ["P12", 1, 1]],
     "precedent.settlement": [["P5", 1, 0.9], ["P7", 1, 1]],
     "precedent.statutory": [["P2", 1, 0.8], ["P12", 1, 0.7]],
     "remedies.universal": [["R1", 1, 0.9], ["R2", 1, 1]],
@@ -585,7 +598,7 @@
     const antiDiscretion = traits["form.anti_discretion"] || 0;
     const ruleFormalistCanDominate =
       Math.max(s.sorc, s.cons, s.time, s.separ) <= 0.65;
-    if (ruleFormalistCanDominate && l.form >= 0.55 && antiDiscretion >= 0.55) {
+    if (ruleFormalistCanDominate && l.form >= 0.43 && antiDiscretion >= 0.65) {
       add("formalist", 0.93, "Rule-centered anti-discretion Formalism is the respondent's dominant jurisprudential commitment.");
     }
     if (r.separ >= 0.4) add("functionalist", 0.55 + 0.32 * s.separ, "Functional separation of powers is highly distinctive.");
@@ -848,6 +861,76 @@
     return null;
   }
 
+
+  // Hidden, conservative partisan-outcome override. A matched pair offers the
+  // same judicial choice with opposed political beneficiaries. Ordinary
+  // ideological answers and unrelated case disagreements earn no points.
+  const OUTCOME_MIRRORS = Object.freeze([
+    { id: "avoidance", left: "C3", right: "C4", weight: 1 },
+    { id: "nationwide_relief", left: "R2", right: "R1", weight: 1 },
+    { id: "severability", left: "R7", right: "R6", weight: 1 },
+    { id: "prophylactic_remedies", left: "R10", right: "R9", weight: 1 },
+    // Less comparable: two different constitutional eras and subject areas.
+    // Corroboration only; this pair cannot satisfy the main-pair count.
+    { id: "historical_fixation", left: "T1", right: "T2", weight: 0.5 }
+  ]);
+
+  function detectOutcomeSelection(responses = {}) {
+    const getAnswer = (id) => {
+      if (!Object.prototype.hasOwnProperty.call(responses,id) ||
+          responses[id] === null) return 0;
+      const v = Number(responses[id]);
+      return Number.isInteger(v) && v >= -3 && v <= 3 ? v : 0;
+    };
+    const evidence = { left: { units: 0, direct: 0, pairs: [] },
+                       right: { units: 0, direct: 0, pairs: [] } };
+    for (const mirror of OUTCOME_MIRRORS) {
+      const l = getAnswer(mirror.left), r = getAnswer(mirror.right);
+      if (!l || !r || Math.sign(l) === Math.sign(r)) continue;
+      const side = l > 0 ? "left" : "right";
+      const unit = (Math.min(Math.abs(l),Math.abs(r)) === 1 ? 0.75 :
+                    Math.min(Math.abs(l),Math.abs(r)) === 2 ? 1 : 1.25) * mirror.weight;
+      evidence[side].units += unit;
+      if (mirror.weight === 1) evidence[side].direct += 1;
+      evidence[side].pairs.push(mirror.id);
+    }
+    // Three separate directly matched doctrines must reverse in the same
+    // political direction, and their combined evidence must be substantial.
+    // The T1/T2 contrast cannot, by itself, trigger the override.
+    const side = ["left","right"].find(s =>
+      evidence[s].direct >= 3 && evidence[s].units >= 3 &&
+      evidence[s].units >= evidence[s === "left" ? "right" : "left"].units + 1.5
+    ) || null;
+    return { side, evidence };
+  }
+
+  // A conservative *prompt* for an additional attention check, not itself
+  // grounds for labeling a sincere respondent unintelligent or dishonest.
+  // Compare each strong answer with its item's nominal pole to avoid treating
+  // ordinary reverse-keyed questions as ideological contradictions.
+  function detectRandomLikePattern(responses,scores) {
+    const items=Array.isArray(global.LAW_QUESTIONS)?global.LAW_QUESTIONS:[];
+    let mixedAxes=0,strong=0;
+    for(const axis of AXIS_IDS){
+      let forPole=0,againstPole=0;
+      for(const q of items){
+        if(q.axis!==axis)continue;
+        const raw=responses?.[q.id];
+        if(raw===null||raw===undefined)continue;
+        const answer=Number(raw);
+        if(!Number.isFinite(answer)||Math.abs(answer)<2)continue;
+        const direction=answer>0?"agree":"disagree";
+        const signal=Number(q.signals?.[direction]?.[axis]||0);
+        strong++;
+        if(signal>0)forPole++;
+        if(signal<0)againstPole++;
+      }
+      if(forPole>=2&&againstPole>=2)mixedAxes++;
+    }
+    return strong>=35 && mixedAxes>=5 &&
+      Math.max(...AXIS_IDS.map(axis=>Math.abs(axisValue(scores,axis)-50)))<=18;
+  }
+
   function detectBroadIncoherence(responses) {
     const strongAgree = (id) => responseValue(responses, id) >= 2;
     const sourceContradiction = strongAgree("S7") && strongAgree("S8");
@@ -872,6 +955,10 @@
     if (!hasAsked(diagnosticResponses, "D-RLS1")) return byId["D-RLS1"];
     if (!hasAsked(diagnosticResponses, "D-QC1")) return byId["D-QC1"];
     if (Number(diagnosticResponses["D-QC1"]) !== -2) return null;
+    if(detectRandomLikePattern(responses,scores) && !hasAsked(diagnosticResponses,"D-QC2"))
+      return byId["D-QC2"];
+    if(hasAsked(diagnosticResponses,"D-QC2") && Number(diagnosticResponses["D-QC2"]) !== 1)
+      return null;
 
     const maxSalienceEarly = Math.max(...AXIS_IDS.map((id) => salience(scores, id)));
 
@@ -916,7 +1003,44 @@
     const form = axisValue(scores, "form");
     const precedent = axisValue(scores, "prec");
     const remedies = axisValue(scores, "remed");
+    const separ = axisValue(scores, "separ");
     const maxSalience = maxSalienceEarly;
+
+    // Structural jurisprudence should be diagnosed only when constitutional
+    // allocation of institutional authority is a substantial commitment.
+    // These questions DO NOT alter the common-core Separation percentage.
+    const structuralIdentity = resolveIdentity(scores, traits).best.identity.id;
+    const structuralSalience = salience(scores, "separ");
+    const structuralLive = structuralSalience >= 0.40 ||
+      ["formalist", "functionalist"].includes(structuralIdentity);
+    if (structuralLive) {
+      // E2 asks about one especially sensitive special prosecutor. The
+      // general Article II theory need not have the same answer.
+      if ((separ >= 65 || (separ <= 36 && Math.abs(responseValue(responses,"E2")) >= 2)) && !hasAsked(diagnosticResponses,"D-SEP1"))
+        offer("D-SEP1", 86);
+      // Differentiate court-owned legal interpretation from administrative
+      // policymaking without equating this with hostility to delegation.
+      if ((constraint >= 60 || constraint <= 42 || structuralSalience >= 0.57) &&
+          !hasAsked(diagnosticResponses,"D-SEP2")) offer("D-SEP2", 83);
+      // Some strict separationists allow Congress to delegate if it speaks
+      // clearly; other theories reject the transfer even then.
+      if (separ >= 68 && !hasAsked(diagnosticResponses,"D-SEP3"))
+        offer("D-SEP3", 84);
+      // E5 supplies the first general clue to administrative adjudication.
+      if (Math.abs(responseValue(responses,"E5")) >= 2 &&
+          !hasAsked(diagnosticResponses,"D-SEP4"))
+        offer("D-SEP4", 76);
+    }
+
+    const originalistZone = time >= 64 &&
+      resolveIdentity(scores,traits).candidates.some(c=>c.identity.id.includes("originalist"));
+    if(originalistZone && (precedent >= 55 || precedent <= 38 || time >= 78) &&
+       !hasAsked(diagnosticResponses,"D-PREC1")) offer("D-PREC1",75);
+    const sourceNuanceZone = source <= 43 &&
+      ((traits["source.objective_morality"]||0)>=0.33 ||
+       (traits["source.fit_and_justification"]||0)>=0.33 ||
+       (traits["source.positive_law_settlement"]||0)>=0.4);
+    if(sourceNuanceZone && !hasAsked(diagnosticResponses,"D-MOR1")) offer("D-MOR1",64);
 
     if (time >= 60) {
       const publicMeaning = traits["time.public_meaning"] || 0;
@@ -1123,7 +1247,7 @@
       if (social < 0.5 && !hasAsked(diagnosticResponses, "D-SOC1")) {
         // Strong balancing/open-construction profiles need the Sociological
         // router early enough that a confirmed social-interest method can still
-        // receive one champion-level refinement inside the seven-question cap.
+        // receive one champion-level refinement inside the 12-question cap.
         offer("D-SOC1", form <= 40 ? 90 : form <= 50 ? 77 : 64);
       }
     }
@@ -1180,8 +1304,40 @@
       }
     }
 
-    priorities.sort((a, b) => b.priority - a.priority);
-    return priorities.length ? byId[priorities[0].id] : null;
+    // Rank a live, independently useful specialty distinction above a weak
+    // exploration of an unrelated jurisprudential family.
+    const resolution=resolveIdentity(scores,traits);
+    const leading=resolution.candidates.slice(0,3).filter((c,i)=>
+      i===0||resolution.best.score-c.score<=0.13);
+    const relevant=new Set(leading.map(c=>c.identity.id));
+    const targeted=priorities.map(p=>{
+      const diagnostic=byId[p.id],covers=diagnostic.relatedIdentityIds||[];
+      const direct=covers.some(id=>relevant.has(id)) ||
+        (resolution.best.identity.id.includes("originalist") && diagnostic.family==="originalism");
+      let bonus=direct?19:0;
+      if(resolution.best.score>=0.83&&resolution.best.basis>=0.34&&!direct)bonus-=12;
+      // Even a non-front-runner method question may expose a strong,
+      // untested rival noun (e.g. Sociological Jurisprudence) and must not
+      // be discarded solely because the current provisional winner is strong.
+      const outcomes=[3,-3].map(value=>{
+        const t=buildTraits(scores,responses,{...diagnosticResponses,[p.id]:value});
+        const noun=resolveIdentity(scores,t).best.identity;
+        return noun.id+"/"+(resolveChampions(scores,t,noun).matches[0]?.profile?.id||"none");
+      });
+      const material=outcomes[0]!==outcomes[1];
+      if(material)bonus+=direct?16:8;
+      return {...p,rank:p.priority+bonus,direct,material};
+    });
+    targeted.sort((a,b)=>b.rank-a.rank||b.priority-a.priority||a.id.localeCompare(b.id));
+    // Do not spend the remaining specialist budget on a remote family merely
+    // because a diagnostic happens to be eligible under a broad axis window.
+    const margin=resolution.candidates.length>1
+      ? resolution.best.score-resolution.candidates[1].score : 1;
+    const champion=resolveChampions(scores,traits,resolution.best.identity);
+    const settled=askedCount>=4 && resolution.best.score>=0.84 &&
+      margin>=0.08 && champion.confidence==="high";
+    if(settled && !targeted.some(item=>item.direct||item.material))return null;
+    return targeted.length?byId[targeted[0].id]:null;
   }
 
   function classify(scored, responses = {}, diagnosticResponses = {}, meta = {}) {
@@ -1192,7 +1348,9 @@
     const mechanical = detectMechanicalPattern(responses, meta);
     const qualityCheckFailed =
       hasAsked(diagnosticResponses, "D-QC1") &&
-      Number(diagnosticResponses["D-QC1"]) !== -2;
+      Number(diagnosticResponses["D-QC1"]) !== -2 ||
+      (hasAsked(diagnosticResponses,"D-QC2") &&
+       Number(diagnosticResponses["D-QC2"]) !== 1);
 
     if (mechanical || qualityCheckFailed) {
       return finalizeResult({
@@ -1226,14 +1384,32 @@
       }, scores, traits, traitEvidence);
     }
 
+
+    const outcomeSelection = detectOutcomeSelection(responses);
+    if (outcomeSelection.side) {
+      const left = outcomeSelection.side === "left";
+      return finalizeResult({
+        identity: identityFromCatalog(left ? "outcome_driven_left" : "outcome_driven_right"),
+        identityScore: 1,
+        identityReason: left
+          ? "Across several politically mirrored cases, you repeatedly changed your preferred legal approach when doing so favored the political left."
+          : "Across several politically mirrored cases, you repeatedly changed your preferred legal approach when doing so favored the political right.",
+        identityAlternatives: [],
+        champions: [],
+        championConfidence: "withheld",
+        traits,
+        diagnosticCount: Object.keys(diagnosticResponses || {}).length,
+        responseQuality: "partisan-outcome-selection",
+        calibration: "conservative-mirror-heuristic"
+      }, scores, traits, traitEvidence);
+    }
+
     const identityResolution = resolveIdentity(scores, traits);
     const championResolution = resolveChampions(scores, traits, identityResolution.best.identity);
-    const historicalMethod = global.LAW_SCORING?.historicalMethodConsistency?.(responses) || null;
     return finalizeResult({
       identity: identityResolution.best.identity,
       identityScore: identityResolution.best.score,
       primaryStrength: identityResolution.best.basis,
-      historicalMethod,
       identityReason: identityResolution.best.reason,
       identityAlternatives: identityResolution.candidates.slice(1, 4),
       champions: championResolution.matches.map(({ profile, score }) => ({
@@ -1259,7 +1435,9 @@
     buildTraits,
     buildTraitEvidence,
     detectMechanicalPattern,
+    detectRandomLikePattern,
     detectBroadIncoherence,
+    detectOutcomeSelection,
     resolveIdentity,
     championIdentityCompatibility,
     resolveChampions,

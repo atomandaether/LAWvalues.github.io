@@ -1,6 +1,6 @@
 /* LAWvalues axis definitions. The first pole is scored toward 100; the second toward 0. */
-globalThis.LAW_VERSION = "0.6 Beta";
-globalThis.LAW_QUESTION_COUNT = 93;
+globalThis.LAW_VERSION = "0.7 Beta";
+globalThis.LAW_QUESTION_COUNT = 88;
 
 globalThis.LAW_AXES = Object.freeze([
   {
