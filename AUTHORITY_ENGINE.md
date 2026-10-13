@@ -74,7 +74,7 @@ All other authority nouns use the generic fit modifier.
 
 ## Adaptive routing
 
-The global cap remains seven adaptive questions.
+The global cap remains twelve adaptive questions.
 
 - **D-MAJ1** tests whether political branches retain independent interpretive authority after Supreme Court interpretation.
 - Agreement with **D-MAJ1** immediately routes to **D-MAJ2**.
@@ -95,7 +95,7 @@ Authority identities may not displace an already-established non-authority speci
 
 ## Reachability contract
 
-The audit suite requires these nine named champion units to be separately reachable from literal 93-item answers through the live adaptive router within the seven-question cap:
+The audit suite requires these nine named champion units to be separately reachable from literal 88-item answers through the live adaptive router within the twelve-question cap:
 
 1. Thayer
 2. Waldron / Bellamy
