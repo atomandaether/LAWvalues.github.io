@@ -93,6 +93,17 @@ const allDisagree = scoring.scoreAll(responsesFrom(() => -3), axes, questions);
 assert.ok(axes.some((axis) => allAgree[axis.id].score !== 50), "All-agree must not be normalized to 50");
 assert.ok(axes.some((axis) => allDisagree[axis.id].score !== 50), "All-disagree must not be normalized to 50");
 
+// Skipping cannot count as an implicitly neutral answer, but one answered
+// item also cannot establish a fully certain jurisprudential axis.
+const skippedSource = scoring.scoreAxis("sorc",{S1:3,S2:null},questions);
+const neutralSource = scoring.scoreAxis("sorc",{S1:3,S2:0},questions);
+assert.equal(skippedSource.answered,1);
+assert.equal(neutralSource.answered,2);
+assert.ok(skippedSource.score>neutralSource.score,
+  "Skipped questions must be removed from evidence opportunities");
+assert.ok(skippedSource.score<100 && skippedSource.score>50,
+  "One answered source question cannot produce unwarranted 100 percent certainty");
+
 // Every axis must be capable of accumulating evidence for both poles somewhere in the bank.
 for (const axis of axes) {
   let hasLeft = false, hasRight = false;

@@ -25,7 +25,7 @@ LAWvalues is a static, client-side legal-philosophy quiz. The current public lab
 
 ## Instrument design
 
-The core bank contains 93 questions across eight dimensions. Questions are grouped by a nominal section for presentation, but scoring is multidimensional and asymmetric: agreement and disagreement can carry different implications, and an item may contribute to any axis it materially informs. Each pole is estimated separately from the evidence that actually bears on it. Responses use a seven-point scale from −3 to +3, and “Not sure” answers are omitted.
+The core bank contains 93 questions across eight dimensions. Questions are grouped by a nominal section for presentation, but scoring is multidimensional and asymmetric: agreement and disagreement can carry different implications, and an item may contribute to any axis it materially informs. Each pole is estimated separately from the evidence that actually bears on it. Responses use a seven-point scale from −3 to +3, and “Not sure” answers are excluded from both evidence and scoring denominators; low coverage conservatively shrinks estimates toward 50 rather than projecting certainty from a single item.
 
 For each axis, the scorer separately totals available evidence for the first and second pole. A respondent's answer contributes in proportion to response strength and to that answer direction's signed signal for the axis. The displayed score is the difference between normalized support for the two poles, centered at 50 and clamped to 0–100. Rejection of a proposition therefore does not automatically count as support for its opposite unless the item explicitly encodes that implication.
 

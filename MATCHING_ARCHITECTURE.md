@@ -178,3 +178,8 @@ The current locations and thresholds are theory-derived prototypes. Pilot respon
 - catch-all frequency.
 
 Calibration may move numbers. It should not erase the structural rules above without an explicit redesign.
+
+
+## Calibrated primary-fixation safeguards (October 2026)
+
+The adjudicative identity must reflect the respondent's strongest well-supported judicial commitment, not merely whichever niche diagnostic carries the highest fixed priority. A supported specialist answer is affirmative subtype evidence, but strong contradictory parent-axis evidence can disqualify it. All candidate identities therefore face a family-appropriate axis alignment and competing-salience penalty before ranking. Descriptive Legal Realism does not displace a clearly stronger normative identity. These coefficients are theory-derived safeguards, not fitted population statistics. Every valid result must display a modifier, real noun, residual phrase, and one champion unit. When secondary evidence cannot justify a specific residual phrase, the neutral mixed-profile phrase is used instead of manufacturing a jurisprudential opinion. Quality-control failures still withhold personalized classifications.

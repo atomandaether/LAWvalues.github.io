@@ -299,6 +299,17 @@
     }
     if ((traits["posture.dialogic"] || 0) > 0) setMax(traits, "posture.weak_form", traits["posture.dialogic"]);
     if ((traits["method.social_interests"] || 0) > 0) setMax(traits, "method.law_in_action", traits["method.social_interests"]);
+    // An explicit rejection of the direct Dworkinian legal-answer diagnostic
+    // defeats a weaker affirmative hint inferred from a different core case.
+    if(Number(diagnosticResponses?.["D-NP6"])<=-2){
+      // The direct diagnostic vetoes a conflicting single-example inference.
+      traits["source.extreme_injustice"]=0;
+      setMax(traits,"source.extreme_injustice_rejected",Math.abs(Number(diagnosticResponses["D-NP6"]))/3);
+    }
+    if (Number(diagnosticResponses?.["D-NP2"]) <= -2) {
+      setMax(traits, "source.interpretivism_rejected",
+        Math.abs(Number(diagnosticResponses["D-NP2"])) / 3);
+    }
     return traits;
   }
 
@@ -310,6 +321,78 @@
     const found = (global.LAW_RESULT_IDENTITIES || []).find((item) => item.id === id);
     return found ? { id: found.id, label: found.label, family: found.family, status: found.status } :
       { id, label: fallbackLabel || id, family: "fallback", status: "fallback" };
+  }
+
+
+  // Match the primary judicial commitment, not merely the easiest subtype
+  // to trigger. A narrow diagnostic adds specificity but never cancels
+  // strong contrary evidence on the axis that defines its parent theory.
+  function calibrateIdentityCandidates(candidates, scores, traits) {
+    const sal=Object.fromEntries(AXIS_IDS.map(id=>[id,salience(scores,id)]));
+    const left=Object.fromEntries(AXIS_IDS.map(id=>[id,leftStrength(scores,id)]));
+    const right=Object.fromEntries(AXIS_IDS.map(id=>[id,rightStrength(scores,id)]));
+    const singleProposition=new Set([
+      "weak_form_constitutionalist","minimalist","thayerian","nonpositivist","fullerian",
+      "intentionalist","political_process_jurist","legal_process_theorist",
+      "sociological_jurist","proportionalist","common_good_constitutionalist"
+    ]);
+    const output=[];
+    for(const candidate of candidates) {
+      const id=candidate.identity.id, family=candidate.identity.family;
+      if(["nonpositivist","natural_lawyer","interpretivist"].includes(id) && axisValue(scores,"sorc")>=56) continue;
+      if(id==="positivist" && axisValue(scores,"sorc")<=44) continue;
+      if(["originalist","public_meaning_originalist","original_intent_originalist"].includes(id) && axisValue(scores,"time")<55) continue;
+      if(["living_constitutionalist","common_law_constitutionalist"].includes(id) &&
+         axisValue(scores,"time")>=56) continue;
+      if(id==="textualist" && axisValue(scores,"cons")<=44) continue;
+      if(["purposivist","intentionalist","legal_process_theorist"].includes(id) && axisValue(scores,"cons")>=65) continue;
+      if(id==="functionalist" && axisValue(scores,"separ")>=56) continue;
+      if(id==="proportionalist" && axisValue(scores,"form")>=56) continue;
+      if(["thayerian","political_constitutionalist","popular_constitutionalist","departmentalist"].includes(id) &&
+         axisValue(scores,"post")<=44) continue;
+      if(id==="legal_constitutionalist" && axisValue(scores,"post")>=56) continue;
+      let focus=[], basis=0;
+      if(id==="common_good_constitutionalist"){
+        focus=["sorc","cons","post"];
+        basis=(right.sorc+right.cons+left.post)/3;
+      }else if(family==="source"){focus=["sorc"];basis=id==="positivist"?left.sorc:right.sorc;}
+      else if(family==="time"){
+        focus=["time"];basis=id.includes("originalist")?left.time:right.time;
+        if(id==="common_law_constitutionalist"){focus=["time","prec"];basis=(right.time+left.prec)/2;}
+      }else if(family==="structure"){
+        focus=id==="formalist"?["separ","form"]:["separ"];
+        basis=id==="formalist"?Math.max(left.separ,left.form*(traits["form.anti_discretion"]||0)):right.separ;
+      }else if(family==="form"){focus=["form"];basis=right.form;}
+      else if(family==="posture"){
+        focus=id==="minimalist"?["post","remed"]:["post"];
+        if(id==="weak_form_constitutionalist")basis=Math.max(sal.post,(traits["posture.dialogic"]||0)*0.45);
+        else if(id==="minimalist")basis=Math.max(left.remed,(traits["posture.passive_virtues"]||0)*0.38);
+        else if(id==="legal_constitutionalist")basis=right.post;
+        else if(["political_constitutionalist","thayerian","popular_constitutionalist","departmentalist"].includes(id))basis=left.post;
+        else basis=Math.max(sal.post,(traits["posture.process_reinforcement"]||0)*0.45);
+      }else if(family==="method"){
+        focus=["cons"];
+        if(id==="textualist")basis=left.cons;
+        else if(id==="interpretive_pluralist"){focus=[];basis=Math.max(0.18,(traits["method.modal_pluralism"]||0)*0.45);}
+        else basis=right.cons;
+      }else if(id==="legal_realist"){basis=Math.max(0.25,(traits["realism.empirical_prediction"]||0)*0.55);}
+      // Cooke's common-law-rights claim itself explains a nonpositive Source
+      // score; treating that same axis as a rival theory double-counts it.
+      if(id==="common_law_constitutionalist" &&
+         (traits["source.common_law_fundamental_rights"]||0)>=0.5) focus.push("sorc");
+      const other=Math.max(0,...AXIS_IDS.filter(axis=>!focus.includes(axis)).map(axis=>sal[axis]));
+      let score=candidate.score;
+      if(id==="legal_realist"){
+        // A descriptive view of judicial behavior can accompany Originalism,
+        // Positivism, or another strong normative judicial philosophy.
+        score=Math.min(score,0.96-0.35*other);
+      }else{
+        if(singleProposition.has(id))score=Math.min(score,0.80+0.13*basis);
+        score-=Math.max(0,other-basis-0.08)*(focus.length?0.39:0.17);
+      }
+      output.push({...candidate,score:clamp01(score),basis});
+    }
+    return output;
   }
 
   function resolveIdentity(scores, traits) {
@@ -344,7 +427,7 @@
       traits["source.right_answer"] || 0
     );
 
-    if (r.sorc >= 0.2 && interpretivistEvidence >= 0.5) {
+    if (r.sorc >= 0.2 && interpretivistEvidence >= 0.5 && (traits["source.interpretivism_rejected"]||0) < 0.67) {
       add("interpretivist", 0.82 + 0.12 * s.sorc, "Principles, fit, and justification support Legal Interpretivism.");
     }
     if (r.sorc >= 0.2 &&
@@ -422,7 +505,10 @@
     const narrowShallow = traits["method.narrow_shallow"] || 0;
     const incremental = traits["remedies.incremental"] || 0;
 
-    if (authorityCanDominate && dialogic >= 0.5 && s.post <= 0.5) {
+    const weakFormRights=Math.max(traits["posture.rights_trumps"]||0,traits["posture.judicial_independence"]||0);
+    const weakFormDemocracy=traits["posture.democratic_legitimacy"]||0;
+    if(authorityCanDominate && dialogic>=0.5 && s.post<=0.5 &&
+       weakFormRights>=0.25 && weakFormDemocracy>=0.25) {
       add("weak_form_constitutionalist", 0.98, "Direct weak-form/dialogic-review evidence within an intermediate judicial-authority posture.");
     }
     if (authorityCanDominate && antiJudicialSupremacy >= 0.45 && popularAuthority >= 0.45) {
@@ -446,7 +532,8 @@
     if (authorityCanDominate && l.post >= 0.2 && clearError >= 0.5 && reasonableDisagreement < 0.5) {
       add("thayerian", 0.96, "Courts retain review but invalidate only constitutional judgments outside the range of reasonableness.");
     }
-    if (authorityCanDominate && passiveVirtues >= 0.5) {
+    if(authorityCanDominate && passiveVirtues>=0.5 &&
+       (narrowShallow>=0.33 || incremental>=0.3)) {
       add("minimalist", 0.98, "Strategic avoidance and passive virtues establish a distinctive form of Judicial Minimalism.");
     } else if (authorityCanDominate && narrowShallow >= 0.5 && incremental >= 0.45) {
       add("minimalist", 0.94, "Narrow, shallow, incremental adjudication establishes Judicial Minimalism.");
@@ -513,8 +600,10 @@
       add("interpretive_pluralist", 0.5 + 0.25 * (1 - Math.max(...Object.values(s))), "No single methodology strongly dominates.");
     }
 
-    candidates.sort((a, b) => b.score - a.score);
-    return { best: candidates[0], candidates: candidates.slice(0, 5) };
+    const calibrated=calibrateIdentityCandidates(candidates,scores,traits);
+    if(!calibrated.length) calibrated.push({identity:identityFromCatalog("interpretive_pluralist"),score:0.5,basis:0,reason:"No dominant, internally consistent judicial philosophy emerges."});
+    calibrated.sort((a,b)=>b.score-a.score || b.basis-a.basis || a.identity.id.localeCompare(b.identity.id));
+    return {best:calibrated[0],candidates:calibrated.slice(0,5)};
   }
 
   function requiredTraitsSatisfied(profile, traits) {
@@ -1070,7 +1159,7 @@
       offer("D-PROP1", 98);
     }
 
-    if (source <= 35 && constraint <= 40 && posture >= 55) offer("D-CGC1", 42);
+    if (source <= 35 && constraint <= 40 && posture >= 55) offer("D-CGC1", 96);
 
     if (maxSalience <= 0.42 || provisionalMethodIdentity === "interpretive_pluralist") {
       const pluralism = traits["method.modal_pluralism"] || 0;
@@ -1135,6 +1224,7 @@
     return finalizeResult({
       identity: identityResolution.best.identity,
       identityScore: identityResolution.best.score,
+      primaryStrength: identityResolution.best.basis,
       identityReason: identityResolution.best.reason,
       identityAlternatives: identityResolution.candidates.slice(1, 4),
       champions: championResolution.matches.map(({ profile, score }) => ({

@@ -34,7 +34,7 @@
 
     let leftPotential = 0;
     let rightPotential = 0;
-    for (const item of items) {
+    for (const item of answered) {
       const possible = [
         signalFor(item, "agree", axisId),
         signalFor(item, "disagree", axisId)
@@ -60,7 +60,10 @@
 
     // The two poles are estimated separately. An answer that is evidence for one pole
     // need not be treated as evidence for the other when the proposition is asymmetric.
-    const raw = leftSupport - rightSupport;
+    // "Not sure" is not a neutral answer: exclude its potential from the
+    // denominator. Shrink sparse evidence toward 50 to avoid false certainty.
+    const coverage = items.length ? answered.length / items.length : 0;
+    const raw = (leftSupport - rightSupport) * Math.sqrt(coverage);
     const score = clamp(50 + roundAwayFromZero(50 * raw), 0, 100);
     const strength = Math.round(100 * Math.max(leftSupport, rightSupport));
     const conflict = Math.round(100 * Math.min(leftSupport, rightSupport));
