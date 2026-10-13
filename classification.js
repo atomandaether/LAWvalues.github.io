@@ -7,6 +7,20 @@
 
   const EXTRA_DIAGNOSTICS = Object.freeze([
     {
+      id: "D-QC2",
+      family: "quality",
+      priority: "high",
+      unlock: "Only unusually noisy, low-salience profiles with contradictory extreme answers across several axes need a second explicit response check.",
+      prompt: "Response check: please select Slightly Agree for this item.",
+      agreeTraits: [],
+      disagreeTraits: [],
+      nextOnAgree: [],
+      nextOnDisagree: [],
+      relatedIdentityIds: ["interpretive_pluralist"],
+      qualityCheckExpected: 1,
+      note: "Does not change an axis, noun, or champion. Disagreement between many strong core responses prompts an additional response-quality confirmation rather than a speculative personality match."
+    },
+    {
       id: "D-QC1",
       family: "quality",
       priority: "high",
@@ -890,6 +904,33 @@
     return { side, evidence };
   }
 
+  // A conservative *prompt* for an additional attention check, not itself
+  // grounds for labeling a sincere respondent unintelligent or dishonest.
+  // Compare each strong answer with its item's nominal pole to avoid treating
+  // ordinary reverse-keyed questions as ideological contradictions.
+  function detectRandomLikePattern(responses,scores) {
+    const items=Array.isArray(global.LAW_QUESTIONS)?global.LAW_QUESTIONS:[];
+    let mixedAxes=0,strong=0;
+    for(const axis of AXIS_IDS){
+      let forPole=0,againstPole=0;
+      for(const q of items){
+        if(q.axis!==axis)continue;
+        const raw=responses?.[q.id];
+        if(raw===null||raw===undefined)continue;
+        const answer=Number(raw);
+        if(!Number.isFinite(answer)||Math.abs(answer)<2)continue;
+        const direction=answer>0?"agree":"disagree";
+        const signal=Number(q.signals?.[direction]?.[axis]||0);
+        strong++;
+        if(signal>0)forPole++;
+        if(signal<0)againstPole++;
+      }
+      if(forPole>=2&&againstPole>=2)mixedAxes++;
+    }
+    return strong>=35 && mixedAxes>=5 &&
+      Math.max(...AXIS_IDS.map(axis=>Math.abs(axisValue(scores,axis)-50)))<=18;
+  }
+
   function detectBroadIncoherence(responses) {
     const strongAgree = (id) => responseValue(responses, id) >= 2;
     const sourceContradiction = strongAgree("S7") && strongAgree("S8");
@@ -914,6 +955,10 @@
     if (!hasAsked(diagnosticResponses, "D-RLS1")) return byId["D-RLS1"];
     if (!hasAsked(diagnosticResponses, "D-QC1")) return byId["D-QC1"];
     if (Number(diagnosticResponses["D-QC1"]) !== -2) return null;
+    if(detectRandomLikePattern(responses,scores) && !hasAsked(diagnosticResponses,"D-QC2"))
+      return byId["D-QC2"];
+    if(hasAsked(diagnosticResponses,"D-QC2") && Number(diagnosticResponses["D-QC2"]) !== 1)
+      return null;
 
     const maxSalienceEarly = Math.max(...AXIS_IDS.map((id) => salience(scores, id)));
 
@@ -1275,7 +1320,9 @@
     const mechanical = detectMechanicalPattern(responses, meta);
     const qualityCheckFailed =
       hasAsked(diagnosticResponses, "D-QC1") &&
-      Number(diagnosticResponses["D-QC1"]) !== -2;
+      Number(diagnosticResponses["D-QC1"]) !== -2 ||
+      (hasAsked(diagnosticResponses,"D-QC2") &&
+       Number(diagnosticResponses["D-QC2"]) !== 1);
 
     if (mechanical || qualityCheckFailed) {
       return finalizeResult({
@@ -1360,6 +1407,7 @@
     buildTraits,
     buildTraitEvidence,
     detectMechanicalPattern,
+    detectRandomLikePattern,
     detectBroadIncoherence,
     detectOutcomeSelection,
     resolveIdentity,
