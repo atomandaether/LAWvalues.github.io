@@ -230,15 +230,6 @@ globalThis.LAW_RESULT_IDENTITIES = Object.freeze([
     covers: ["method.social_interests", "method.law_in_action"],
     notes: "Sociological Jurisprudence: judges should attend to law in action, competing social interests, and the actual social operation of legal rules."
   },
-  {
-    id: "structuralist",
-    label: "Structuralist",
-    family: "method",
-    status: "adaptive",
-    parentId: null,
-    covers: ["method.structural_reasoning", "method.structural_inference"],
-    notes: "Structural constitutional interpretation: derive constitutional rules from the Constitution's overall arrangement and relationships of institutions, powers, federalism, and democratic structure when no isolated clause supplies the whole answer."
-  },
 
   // Constitutional time
   {
@@ -678,16 +669,6 @@ globalThis.LAW_CHAMPIONS = Object.freeze([
     note: "Modern best-reading/context-sensitive Textualism: ordinary usage and whole-text context without abandoning enacted text as the governing object."
   },
   {
-    id: "kagan",
-    name: "Elena Kagan",
-    kind: "person",
-    role: "subtype",
-    eligibleIdentityIds: ["textualist"],
-    signatureTraits: ["constraint.textual", "constraint.contextual_textualism", "constraint.best_reading_context", "precedent.settlement", "separation.interpretive_accommodation"],
-    antiTraits: ["separation.independent_judicial_interpretation", "separation.strong_nondelegation"],
-    note: "Institutionalist contextual Textualism: text and whole-statute context remain central, but precedent, congressional allocation of responsibility, agency expertise, and workable administration carry substantially more weight than in the modern formalist textualist branch."
-  },
-  {
     id: "ekins_intentionalism",
     name: "Richard Ekins",
     kind: "person",
@@ -766,16 +747,6 @@ globalThis.LAW_CHAMPIONS = Object.freeze([
     signatureTraits: ["method.pluralism", "method.practical_reasoning"],
     antiTraits: [],
     note: "Practical-Reasoning pluralism: text, history, purpose, legal context, consequences, and policy receive context-sensitive weight rather than a fixed hierarchy."
-  },
-  {
-    id: "marshall_structuralist",
-    name: "John Marshall",
-    kind: "person",
-    role: "primary",
-    eligibleIdentityIds: ["structuralist"],
-    signatureTraits: ["method.structural_reasoning", "method.structural_inference"],
-    antiTraits: [],
-    note: "Foundational structural constitutional reasoning: constitutional powers and limits may follow from the Constitution's overall design, relationships, federal supremacy, and implications of the governmental structure rather than from an isolated clause alone."
   },
   {
     id: "pound",
