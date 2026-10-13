@@ -99,6 +99,7 @@
     "remedies.prophylactic": [["R9", 1, 1], ["R10", 1, 1]],
     "remedies.structural": [["R3", 1, 0.9], ["R5", 1, 0.9], ["R8", 1, 0.8]],
     "remedies.supervision": [["R4", 1, 1]],
+    "method.narrow_shallow": [["R11", 1, 1], ["R6", 1, 0.6], ["R7", 1, 0.6]],
     "posture.clear_error": [["O1", 1, 1]],
     "posture.democratic_legitimacy": [["O2", 1, 0.9], ["O5", 1, 0.75], ["O8", 1, 1]],
     "posture.dialogic": [["O6", 1, 1]],
@@ -404,32 +405,51 @@
       add("proportionalist", 0.88, "Structured proportionality rather than generic balancing.");
     }
 
-    if ((traits["posture.process_reinforcement"] || 0) >= 0.5) {
-      add("elyan", 0.91, "Representation-reinforcement diagnostic.");
-    }
-    if ((traits["posture.anti_judicial_supremacy"] || 0) >= 0.45 &&
-        (traits["posture.popular_authority"] || 0) >= 0.45) {
-      add("popular_constitutionalist", 0.91, "Popular constitutional authority beyond mere deference.");
-    }
-    if ((traits["posture.anti_judicial_supremacy"] || 0) >= 0.45 &&
-        (traits["posture.branch_interpretation"] || 0) >= 0.45 &&
-        (traits["posture.popular_authority"] || 0) < 0.4) {
-      add("departmentalist", 0.88, "Independent branch interpretation without broader popular-authority claim.");
-    }
-    if (l.post >= 0.2 && (traits["posture.reasonable_disagreement"] || 0) >= 0.45) {
-      add("waldronian", 0.86 + 0.1 * s.post, "Democratic legitimacy under reasonable rights disagreement.");
-    }
-    if (l.post >= 0.2 && (traits["posture.clear_error"] || 0) >= 0.5) {
-      add("thayerian", 0.78 + 0.12 * s.post, "Clear-error judicial deference.");
-    }
+    const processReinforcement = traits["posture.process_reinforcement"] || 0;
+    const responsiveReview = traits["posture.responsive_review"] || 0;
+    const antiJudicialSupremacy = traits["posture.anti_judicial_supremacy"] || 0;
+    const popularAuthority = traits["posture.popular_authority"] || 0;
+    const branchInterpretation = traits["posture.branch_interpretation"] || 0;
+    const reasonableDisagreement = traits["posture.reasonable_disagreement"] || 0;
+    const clearError = traits["posture.clear_error"] || 0;
+    const dialogic = traits["posture.dialogic"] || 0;
     const passiveVirtues = traits["posture.passive_virtues"] || 0;
-    if ((l.remed >= 0.25 && passiveVirtues >= 0.35) ||
-        (passiveVirtues >= 0.55 && l.post >= 0.1)) {
+    const narrowShallow = traits["method.narrow_shallow"] || 0;
+    const incremental = traits["remedies.incremental"] || 0;
+
+    if (dialogic >= 0.5) {
+      add("weak_form_constitutionalist", 0.98, "Direct weak-form/dialogic-review evidence.");
+    }
+    if (antiJudicialSupremacy >= 0.45 && popularAuthority >= 0.45) {
+      add("popular_constitutionalist", 0.99, "Popular constitutional authority beyond branch-specific departmentalism.");
+    }
+    if (antiJudicialSupremacy >= 0.45 && branchInterpretation >= 0.45 && popularAuthority < 0.4) {
+      add("departmentalist", 0.97, "Independent branch interpretation without a broader popular-authority claim.");
+    }
+    if (processReinforcement >= 0.5) {
       add(
-        "minimalist",
-        0.72 + 0.12 * Math.max(s.remed, 0.7 * passiveVirtues),
-        "Narrow/incremental adjudication, including passive-virtues avoidance when strongly present."
+        "political_process_jurist",
+        responsiveReview >= 0.5 ? 0.99 : 0.96,
+        responsiveReview >= 0.5
+          ? "Responsive political-process review calibrated to specific democratic dysfunctions."
+          : "Representation reinforcement / political-process review."
       );
+    }
+    if (l.post >= 0.2 && reasonableDisagreement >= 0.5) {
+      add("political_constitutionalist", 0.98, "Democratic finality under functioning institutions and reasonable rights disagreement.");
+    }
+    if (l.post >= 0.2 && clearError >= 0.5 && reasonableDisagreement < 0.5) {
+      add("thayerian", 0.96, "Courts retain review but invalidate only constitutional judgments outside the range of reasonableness.");
+    }
+    if (passiveVirtues >= 0.5) {
+      add("minimalist", 0.98, "Strategic avoidance and passive virtues establish a distinctive form of Judicial Minimalism.");
+    } else if (narrowShallow >= 0.5 && incremental >= 0.45) {
+      add("minimalist", 0.94, "Narrow, shallow, incremental adjudication establishes Judicial Minimalism.");
+    }
+
+    const rightsReview = traits["posture.rights_trumps"] || 0;
+    if (r.post >= 0.3 && rightsReview >= 0.4) {
+      add("legal_constitutionalist", 0.8 + 0.14 * s.post, "Entrenched rights and independent courts constrain ordinary political majorities.");
     }
 
     if (l.time >= 0.3) add("originalist", 0.56 + 0.34 * s.time, "Historical fixation is a dominant feature.");
@@ -701,6 +721,19 @@
       else if (!hasAsked(diagnosticResponses, "D-RLS5")) offer("D-RLS5", 98);
     }
 
+    if (!realismConfirmed &&
+        hasAsked(diagnosticResponses, "D-MAJ1") &&
+        Number(diagnosticResponses["D-MAJ1"]) > 0 &&
+        !hasAsked(diagnosticResponses, "D-MAJ2")) {
+      return byId["D-MAJ2"];
+    }
+    if (!realismConfirmed &&
+        hasAsked(diagnosticResponses, "D-ELY1") &&
+        Number(diagnosticResponses["D-ELY1"]) > 0 &&
+        !hasAsked(diagnosticResponses, "D-RESP1")) {
+      return byId["D-RESP1"];
+    }
+
     const time = axisValue(scores, "time");
     const source = axisValue(scores, "sorc");
     const posture = axisValue(scores, "post");
@@ -867,12 +900,13 @@
   
       }
 
-    if (posture >= 62) {
+    const dialogicPosture = traits["posture.dialogic"] || 0;
+    if (posture >= 62 && dialogicPosture < 0.5) {
       offer("D-MAJ1", 82);
       if ((traits["posture.democratic_legitimacy"] || 0) >= 0.35 || (traits["posture.clear_error"] || 0) >= 0.35) {
         offer("D-WAL1", 78);
       }
-    } else if (posture >= 42 && posture <= 68) {
+    } else if (posture >= 42 && posture <= 68 && dialogicPosture < 0.5) {
       offer("D-ELY1", 54);
     }
 
