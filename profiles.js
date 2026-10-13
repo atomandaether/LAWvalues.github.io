@@ -836,7 +836,7 @@ globalThis.LAW_PROFILES = Object.freeze([
     tier: "specialist",
     identityIds: ["political_process_jurist"],
     axisSignature: {
-      post: { target: 42, weight: 0.3 },
+      post: { target: 48, weight: 0.3 },
       remed: { target: 58, weight: 0.2 }
     },
     signatureTraits: ["posture.process_reinforcement", "posture.responsive_review"],
