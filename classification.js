@@ -1115,7 +1115,7 @@
 
     // When the Time axis already puts the respondent squarely in the Originalist
     // refinement zone, do not let exploratory Source diagnostics consume the
-    // seven-question budget. Originalist source-sensitive champions use the core
+    // twelve-question budget. Originalist source-sensitive champions use the core
     // Source evidence instead.
     if (time < 60) {
       const extremeSourcePlausible = (traits["source.extreme_injustice"] || 0) >= 0.35;
