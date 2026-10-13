@@ -477,7 +477,7 @@ globalThis.LAW_PROFILES = Object.freeze([
   {
     id: "harlan_ii",
     name: "John Marshall Harlan II",
-    tier: "main",
+    tier: "specialist",
     identityIds: ["common_law_constitutionalist", "living_constitutionalist"],
     axisSignature: {
       time: { target: 28, weight: 0.75 },
@@ -485,8 +485,8 @@ globalThis.LAW_PROFILES = Object.freeze([
       post: { target: 62, weight: 0.6 },
       remed: { target: 72, weight: 0.35 }
     },
-    signatureTraits: ["time.common_law_development", "precedent.settlement"],
-    requiredTraits: [],
+    signatureTraits: ["time.common_law_development", "precedent.settlement", "time.ordered_liberty_tradition"],
+    requiredTraits: [{ all: ["time.ordered_liberty_tradition"], min: 0.5 }],
     antiTraits: ["precedent.correctness_first"],
     description: "Living-tradition constitutionalism: ordered liberty develops through historically embedded tradition and precedent, paired with substantial judicial restraint rather than either fixed original meaning or free-form moral updating.",
     related: ["David Strauss", "Felix Frankfurter"]
