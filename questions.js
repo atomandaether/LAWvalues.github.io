@@ -150,25 +150,24 @@ globalThis.LAW_QUESTIONS = Object.freeze([
     "id": "S9",
     "axis": "sorc",
     "key": -1,
-    "prompt": "Two large companies make a voluntary contract. Every constitution, statute, past decision, and accepted legal practice treats it as valid. Even so, a judge considers it to violate an objective moral rule that government has never recognized. The court should invalidate the contract.",
+    "prompt": "Two large companies sign a voluntary contract that every constitution, statute, precedent, and accepted legal practice treats as valid. The judge personally believes the contract is immoral, but assume that this is only the judge’s own sincerely held moral view: there is no established objective moral rule against the contract, and reasonable people disagree. The court should still refuse to enforce the contract based solely on the judge’s personal moral judgment.",
     "sourceIds": [
       "radbruch2006",
       "dworkin1967"
     ],
     "signals": {
       "agree": {
-        "sorc": -1
+        "sorc": -0.35,
+        "form": -0.35
       },
-      "disagree": {
-        "sorc": 1
-      }
+      "disagree": {}
     }
   },
   {
     "id": "S10",
     "axis": "sorc",
     "key": -1,
-    "prompt": "Two large companies make a voluntary contract. Every constitution, statute, past decision, and accepted legal practice treats it as valid. Assume the contract nevertheless violates an objective moral rule—one that would be true even if no government recognized it. The court should treat that moral rule as part of the law and refuse to enforce the contract.",
+    "prompt": "Two large companies sign a voluntary contract that every constitution, statute, precedent, and accepted legal practice treats as valid. Unlike a judge’s personal moral opinion, assume that the contract really does violate an objectively true moral rule—one that remains true regardless of anyone’s beliefs, even though no government has recognized it. The court should treat that independent moral rule itself as part of the law and refuse to enforce the contract.",
     "sourceIds": [
       "radbruch2006",
       "dworkin1967"
@@ -534,7 +533,7 @@ globalThis.LAW_QUESTIONS = Object.freeze([
     "id": "T1",
     "axis": "time",
     "key": 1,
-    "prompt": "A law passed right after the American Civil War should be read with that strong, equality-securing sense they were understood to have when adopted, even if—especially if—times or views change.",
+    "prompt": "Laws passed right after the American Civil War should be read with that strong, equality-securing sense they were understood to have when adopted, even if—especially if—times or views change.",
     "sourceIds": [
       "solum2010",
       "balkin2009"
