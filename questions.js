@@ -406,7 +406,7 @@ globalThis.LAW_QUESTIONS = Object.freeze([
   {
     "id": "C13",
     "axis": "cons",
-    "key": 1,
+    "key": -1,
     "prompt": "A tax provision applies to \"cars, trucks, motorcycles, and other vehicles.\" A boat fits one dictionary definition of \"vehicle,\" but every specific example in the list is a road vehicle. An administration uses it to tax luxury yachts. The tax provision should apply to boats.",
     "sourceIds": [
       "manning2005"
@@ -524,8 +524,7 @@ globalThis.LAW_QUESTIONS = Object.freeze([
     ],
     "signals": {
       "agree": {
-        "time": 1,
-        "post": 0.2
+        "time": 1
       },
       "disagree": {
         "time": -1
@@ -839,8 +838,7 @@ globalThis.LAW_QUESTIONS = Object.freeze([
     "signals": {
       "agree": {
         "prec": 1,
-        "sorc": 0.35,
-        "form": 0.25
+        "sorc": 0.35
       },
       "disagree": {
         "prec": -1
@@ -858,7 +856,9 @@ globalThis.LAW_QUESTIONS = Object.freeze([
     "signals": {
       "agree": {
         "prec": -1,
-        "remed": 0.35
+        "remed": 0.35,
+        "separ": 0.2,
+        "post": 0.1
       },
       "disagree": {
         "prec": 1
@@ -1406,7 +1406,7 @@ globalThis.LAW_QUESTIONS = Object.freeze([
     "signals": {
       "agree": {
         "separ": 1,
-        "post": 0.3,
+        "post": 0.15,
         "form": 0.3
       },
       "disagree": {
@@ -1556,8 +1556,7 @@ globalThis.LAW_QUESTIONS = Object.freeze([
     ],
     "signals": {
       "agree": {
-        "form": -1,
-        "post": -0.15
+        "form": -1
       },
       "disagree": {
         "form": 1
