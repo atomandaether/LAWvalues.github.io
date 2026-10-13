@@ -1004,6 +1004,33 @@
     const precedent = axisValue(scores, "prec");
     const remedies = axisValue(scores, "remed");
     const maxSalience = maxSalienceEarly;
+
+    // Structural jurisprudence should be diagnosed only when constitutional
+    // allocation of institutional authority is a substantial commitment.
+    // These questions DO NOT alter the common-core Separation percentage.
+    const structuralIdentity = resolveIdentity(scores, traits).best.identity.id;
+    const structuralSalience = salience(scores, "separ");
+    const structuralLive = structuralSalience >= 0.40 ||
+      ["formalist", "functionalist"].includes(structuralIdentity);
+    if (structuralLive) {
+      // E2 asks about one especially sensitive special prosecutor. The
+      // general Article II theory need not have the same answer.
+      if ((separ >= 65 || (separ <= 36 && Math.abs(responseValue(responses,"E2")) >= 2)) && !hasAsked(diagnosticResponses,"D-SEP1"))
+        offer("D-SEP1", 86);
+      // Differentiate court-owned legal interpretation from administrative
+      // policymaking without equating this with hostility to delegation.
+      if ((constraint >= 60 || constraint <= 42 || structuralSalience >= 0.57) &&
+          !hasAsked(diagnosticResponses,"D-SEP2")) offer("D-SEP2", 83);
+      // Some strict separationists allow Congress to delegate if it speaks
+      // clearly; other theories reject the transfer even then.
+      if (separ >= 68 && !hasAsked(diagnosticResponses,"D-SEP3"))
+        offer("D-SEP3", 84);
+      // E5 supplies the first general clue to administrative adjudication.
+      if (Math.abs(responseValue(responses,"E5")) >= 2 &&
+          !hasAsked(diagnosticResponses,"D-SEP4"))
+        offer("D-SEP4", 76);
+    }
+
     const originalistZone = time >= 64 &&
       resolveIdentity(scores,traits).candidates.some(c=>c.identity.id.includes("originalist"));
     if(originalistZone && (precedent >= 55 || precedent <= 38 || time >= 78) &&
@@ -1219,7 +1246,7 @@
       if (social < 0.5 && !hasAsked(diagnosticResponses, "D-SOC1")) {
         // Strong balancing/open-construction profiles need the Sociological
         // router early enough that a confirmed social-interest method can still
-        // receive one champion-level refinement inside the seven-question cap.
+        // receive one champion-level refinement inside the 12-question cap.
         offer("D-SOC1", form <= 40 ? 90 : form <= 50 ? 77 : 64);
       }
     }
