@@ -20,7 +20,7 @@ globalThis.LAW_PROFILES = Object.freeze([
     identityIds: ["positivist"],
     axisSignature: { sorc: { target: 92, weight: 1 } },
     signatureTraits: ["source.social_practice", "source.law_runs_out"],
-    requiredTraits: [{ any: ["source.social_practice", "source.law_runs_out"], min: 0.35 }],
+    requiredTraits: [],
     antiTraits: ["source.objective_morality", "source.normative_positivism"],
     description: "Baseline modern positivism: recognized social sources make law, and open texture can leave genuine hard-case discretion.",
     related: ["Jules Coleman", "Wil Waluchow", "Joseph Raz", "Hans Kelsen"]
@@ -672,12 +672,36 @@ globalThis.LAW_PROFILES = Object.freeze([
     name: "Brett Kavanaugh / Amy Coney Barrett",
     tier: "specialist",
     identityIds: ["textualist"],
-    axisSignature: { cons: { target: 90, weight: 1 } },
+    axisSignature: {
+      cons: { target: 90, weight: 1 },
+      separ: { target: 72, weight: 0.45 },
+      prec: { target: 72, weight: 0.35 }
+    },
     signatureTraits: ["constraint.textual", "constraint.contextual_textualism", "constraint.best_reading_context", "separation.independent_judicial_interpretation"],
     requiredTraits: [{ all: ["constraint.best_reading_context"], min: 0.5 }],
-    antiTraits: ["constraint.intent"],
-    description: "Modern best-reading Textualism: choose the better linguistic reading using ordinary usage and whole-text context rather than atomistic parsing or purposive repair.",
+    antiTraits: ["constraint.intent", "separation.interpretive_accommodation"],
+    description: "Modern best-reading Textualism: choose the better linguistic reading using ordinary usage and whole-text context, paired with comparatively court-centered interpretation of legal limits.",
     related: ["Brett Kavanaugh", "Amy Coney Barrett"]
+  },
+  {
+    id: "kagan",
+    name: "Elena Kagan",
+    tier: "main",
+    identityIds: ["textualist"],
+    axisSignature: {
+      cons: { target: 78, weight: 0.75 },
+      prec: { target: 92, weight: 0.8 },
+      separ: { target: 28, weight: 0.7 },
+      form: { target: 58, weight: 0.25 }
+    },
+    signatureTraits: ["constraint.textual", "constraint.contextual_textualism", "constraint.best_reading_context", "precedent.settlement", "separation.interpretive_accommodation"],
+    requiredTraits: [
+      { all: ["constraint.best_reading_context"], min: 0.5 },
+      { all: ["separation.interpretive_accommodation"], min: 0.35 }
+    ],
+    antiTraits: ["separation.independent_judicial_interpretation", "separation.strong_nondelegation"],
+    description: "Institutionalist contextual Textualism: text and statutory context remain central, while precedent, delegated institutional responsibility, agency expertise, and administrability receive substantial weight.",
+    related: ["Henry Hart / Albert Sacks", "Stephen Breyer", "Robert Katzmann"]
   },
   {
     id: "ekins_intentionalism",
@@ -891,6 +915,22 @@ globalThis.LAW_PROFILES = Object.freeze([
     related: ["Philip Bobbitt", "William Eskridge", "Philip Frickey"]
   },
   {
+    id: "marshall_structuralist",
+    name: "John Marshall",
+    tier: "main",
+    identityIds: ["structuralist"],
+    axisSignature: {
+      cons: { target: 46, weight: 0.3 },
+      separ: { target: 60, weight: 0.3 },
+      post: { target: 28, weight: 0.35 }
+    },
+    signatureTraits: ["method.structural_reasoning", "method.structural_inference"],
+    requiredTraits: [{ all: ["method.structural_reasoning"], min: 0.5 }],
+    antiTraits: [],
+    description: "Foundational Structuralism: constitutional powers and limits can be inferred from the Constitution's overall design, federal relationships, institutional structure, and necessary implications rather than from isolated clauses alone.",
+    related: ["Charles L. Black Jr.", "McCulloch v. Maryland"]
+  },
+  {
     id: "vermeule",
     name: "Adrian Vermeule",
     tier: "specialist",
@@ -1071,7 +1111,7 @@ globalThis.LAW_PROFILES = Object.freeze([
     id: "oconnor",
     name: "Sandra Day O'Connor",
     tier: "catchall",
-    identityIds: ["interpretive_pluralist", "minimalist"],
+    identityIds: ["interpretive_pluralist", "minimalist", "mixed_jurisprudence"],
     axisSignature: {
       prec: { target: 70, weight: 0.45 },
       remed: { target: 74, weight: 0.45 },
