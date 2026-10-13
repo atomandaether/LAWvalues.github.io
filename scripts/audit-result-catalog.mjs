@@ -162,7 +162,9 @@ for (const id of [
   "textualist", "intentionalist", "purposivist", "legal_process_theorist", "interpretive_pluralist",
   "pragmatist", "legal_realist", "sociological_jurist",
   "originalist", "common_law_constitutionalist",
-  "thayerian", "waldronian", "popular_constitutionalist", "proportionalist"
+  "legal_constitutionalist", "political_constitutionalist", "thayerian",
+  "weak_form_constitutionalist", "popular_constitutionalist", "departmentalist",
+  "political_process_jurist", "minimalist", "proportionalist"
 ]) {
   assert.ok(identityIds.has(id), `Missing major jurisprudential family ${id}`);
 }
@@ -181,7 +183,7 @@ assert.equal(identities.find((x) => x.id === "framework_originalist").public, fa
 for (const id of [
   "D-RLS1", "D-RLS2", "D-RLS3", "D-RLS4", "D-RLS5",
   "D-POS1", "D-POS2", "D-NP1", "D-NP2", "D-NP3", "D-NP4", "D-NP5", "D-NP6",
-  "D-MAJ1", "D-MAJ2", "D-TXT1", "D-TXT2", "D-INT1", "D-INT2", "D-PRAG1",
+  "D-MAJ1", "D-MAJ2", "D-ELY1", "D-WAL1", "D-RESP1", "D-TXT1", "D-TXT2", "D-INT1", "D-INT2", "D-PRAG1",
   "D-LP1", "D-LP2", "D-QC1", "D-SOC1", "D-GENY1", "D-LIV1", "D-LIV2", "D-HAR1", "D-CLC1", "D-PIL1", "D-PLU1", "D-PLU2", "D-OCO1",
   "D-ORI1", "D-ORI2", "D-ORI3", "D-ORI4", "D-ORI5"
 ]) {
@@ -221,6 +223,15 @@ assert.equal(identities.find((x) => x.id === "alexyan").public, false,
   "Alexyan should remain internal/legacy; public Alexy-like results use Proportionalist plus a modifier twist");
 assert.equal(identities.find((x) => x.id === "bickelian").public, false,
   "Bickelian should remain internal/legacy; public Bickel-like results use Judicial Minimalist plus a modifier twist");
+assert.equal(identities.find((x) => x.id === "waldronian").public, false,
+  "Waldronian should remain internal/legacy; public results use Political Constitutionalist");
+assert.equal(identities.find((x) => x.id === "elyan").public, false,
+  "Elyan should remain internal/legacy; public results use Political Process Jurist");
+assert.equal(identities.find((x) => x.id === "weak_form_constitutionalist").label, "Weak-Form Constitutionalist",
+  "Weak-form review must be a public constitutional-authority noun");
+assert.equal(identities.find((x) => x.id === "legal_constitutionalist").label, "Legal Constitutionalist",
+  "Strong-form judicial constitutional authority needs a public noun");
+
 assert.equal(identities.find((x) => x.id === "formalist").label, "Formalist",
   "Keep the public noun Formalist exactly as-is");
 assert.equal(identities.find((x) => x.id === "functionalist").label, "Functionalist",
@@ -1209,6 +1220,130 @@ for (const id of lockedNonOriginalistUnits) {
 assert.equal(profileById.ackerman.selectable, false,
   "Ackerman must remain lineage-only until constitutional-moments evidence exists");
 
+// Locked judicial-review / constitutional-authority champion paths.
+const lockedAuthorityUnits = [
+  "thayer",
+  "waldron",
+  "gardbaum",
+  "kramer",
+  "walsh_departmentalism",
+  "ely",
+  "dixon_responsive",
+  "bickel",
+  "sunstein"
+];
+
+for (const id of lockedAuthorityUnits) {
+  assert.ok(profileById[id] && profileById[id].selectable !== false,
+    `Locked authority champion unit ${id} must be selectable`);
+}
+
+function literalAuthorityCore(id) {
+  const responses = literalMethodCore(id);
+
+  // O6 directly tests weak-form review.  Do not let a generic posture vector
+  // accidentally manufacture that theory in unrelated authority fixtures.
+  responses.O6 = id === "gardbaum" ? 3 : -3;
+
+  // O7 is the Bickelian passive-virtues discriminator; generic Sunsteinian
+  // minimalism instead comes from narrow/shallow remedial evidence.
+  if (id === "bickel") responses.O7 = 3;
+  if (id === "sunstein") {
+    responses.O7 = -3;
+    responses.R6 = 3;
+    responses.R7 = 3;
+    responses.R11 = 3;
+  }
+  if (["thayer", "waldron", "kramer", "walsh_departmentalism"].includes(id)) {
+    responses.O7 = -3;
+  }
+  return responses;
+}
+
+function authorityDiagnosticAnswer(id, diagnosticId) {
+  if (diagnosticId === "D-RLS1") return -3;
+  if (diagnosticId === "D-QC1") return -2;
+  if (diagnosticId === "D-MAJ1") {
+    return ["kramer", "walsh_departmentalism"].includes(id) ? 3 : -3;
+  }
+  if (diagnosticId === "D-MAJ2") return id === "kramer" ? 3 : -3;
+  if (diagnosticId === "D-WAL1") return id === "waldron" ? 3 : -3;
+  if (diagnosticId === "D-ELY1") {
+    return ["ely", "dixon_responsive"].includes(id) ? 3 : -3;
+  }
+  if (diagnosticId === "D-RESP1") return id === "dixon_responsive" ? 3 : -3;
+  return -3;
+}
+
+const authorityExpectedIdentity = {
+  thayer: "thayerian",
+  waldron: "political_constitutionalist",
+  gardbaum: "weak_form_constitutionalist",
+  kramer: "popular_constitutionalist",
+  walsh_departmentalism: "departmentalist",
+  ely: "political_process_jurist",
+  dixon_responsive: "political_process_jurist",
+  bickel: "minimalist",
+  sunstein: "minimalist"
+};
+
+const authorityExpectedModifier = {
+  dixon_responsive: "responsive_process",
+  bickel: "passive_virtues_minimalism"
+};
+
+for (const id of lockedAuthorityUnits) {
+  const responses = literalAuthorityCore(id);
+  const scores = scoring.scoreAll(responses);
+  const diagnosticResponses = {};
+  const diagnosticOrder = [];
+
+  for (let i = 0; i < classifier.MAX_DIAGNOSTICS; i += 1) {
+    const next = classifier.nextDiagnostic(scores, responses, diagnosticResponses);
+    if (!next) break;
+    diagnosticOrder.push(next.id);
+    diagnosticResponses[next.id] = authorityDiagnosticAnswer(id, next.id);
+  }
+
+  const result = classifier.classify(scores, responses, diagnosticResponses, { coreElapsedMs: 10 * 60 * 1000 });
+  assert.equal(result.identity.id, authorityExpectedIdentity[id],
+    `Authority path for ${id} must resolve to the locked public noun; got ${result.identity.id}`);
+  assert.equal(result.champions[0]?.id, id,
+    `Authority path for ${id} must reach its intended champion; got ${result.champions.map((x) => x.id).join(",")}`);
+  assert.ok(diagnosticOrder.length <= classifier.MAX_DIAGNOSTICS,
+    `${id} must remain reachable within the seven-diagnostic cap`);
+  if (authorityExpectedModifier[id]) {
+    assert.equal(result.resultTitle.modifier?.id, authorityExpectedModifier[id],
+      `${id} must surface its locked authority modifier`);
+  }
+}
+
+// Legal Constitutionalism is intentionally a real public noun without a forced
+// one-size-fits-all champion.
+{
+  const responses = Object.fromEntries(
+    questions.map((question, index) => [question.id, [-1, 0, 1, -1, 1][index % 5]])
+  );
+  Object.assign(responses, {
+    O1:-3, O2:-3, O3:3, O4:3, O5:-3, O6:-3, O7:-3,
+    O8:-3, O9:-3, O10:3, O11:3, O12:-3, O13:3
+  });
+  const scores = scoring.scoreAll(responses);
+  const diagnosticResponses = {};
+  const diagnosticOrder = [];
+  for (let i = 0; i < classifier.MAX_DIAGNOSTICS; i += 1) {
+    const next = classifier.nextDiagnostic(scores, responses, diagnosticResponses);
+    if (!next) break;
+    diagnosticOrder.push(next.id);
+    diagnosticResponses[next.id] = next.id === "D-QC1" ? -2 : -3;
+  }
+  const result = classifier.classify(scores, responses, diagnosticResponses, { coreElapsedMs: 10 * 60 * 1000 });
+  assert.equal(result.identity.id, "legal_constitutionalist",
+    "A strongly rights-protective judicial-finality profile must reach Legal Constitutionalist");
+  assert.ok(diagnosticOrder.length <= classifier.MAX_DIAGNOSTICS,
+    "Legal Constitutionalist must remain reachable within the seven-diagnostic cap");
+}
+
 // The Alexander-v-Bork threshold is executable: these paired units differ by
 // adjudicatively meaningful evidence, not merely by academic rationale.
 assert.notDeepEqual(
@@ -1233,3 +1368,4 @@ console.log("PASS: Method nouns/modifiers are locked, including Sociological Jur
 console.log("PASS: all 18 locked Method champion units are reachable end-to-end from literal answers within the seven-diagnostic cap.");
 console.log("PASS: champion matching is noun-conditioned: primary and cross-cutting compatibility are explicit, incompatible champions are excluded.");
 console.log("PASS: Living/Common-Law constitutionalism resolves to all 7 locked non-originalist champion units, including Democratic/Transformative Living modifiers, within the seven-diagnostic cap.");
+console.log("PASS: Judicial review / constitutional authority resolves to all 9 locked champion units plus standalone Legal Constitutionalism within the seven-diagnostic cap.");
