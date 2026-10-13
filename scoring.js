@@ -129,7 +129,10 @@
     diagnostics = global.LAW_DIAGNOSTIC_QUESTIONS
   ) {
     const supplemental = (Array.isArray(diagnostics) ? diagnostics : []).filter(
-      (item) => item?.signals && hasResponse(diagnosticResponses, item.id)
+      (item) =>
+        item?.signals &&
+        hasResponse(diagnosticResponses, item.id) &&
+        diagnosticResponses[item.id] !== null
     );
     if (supplemental.length === 0) return scoreAll(responses, axes, questions);
     return scoreAll(
