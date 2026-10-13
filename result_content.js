@@ -1221,7 +1221,13 @@
     // Deliberately generous outer bands: the unmodified noun is the relatively
     // narrow middle case, while "Unmistakably a/an" and "Some kind of" communicate
     // unusually clean versus weak nearest-neighbor classification.
-    if(score>=0.82 && margin>=0.07) {
+    const corroboration=Number(classification?.primaryStrength);
+    const isolated=new Set(["weak_form_constitutionalist","minimalist","thayerian",
+      "nonpositivist","fullerian","intentionalist","political_process_jurist",
+      "sociological_jurist","proportionalist","common_good_constitutionalist"]);
+    const needsMore=isolated.has(classification?.identity?.id) &&
+      Number.isFinite(corroboration) && corroboration<0.6;
+    if(score>=0.82 && margin>=0.07 && !needsMore) {
       return {
         id:"fit_unmistakable",
         text:`Unmistakably ${article}`,
