@@ -282,8 +282,8 @@ globalThis.LAW_DIAGNOSTIC_QUESTIONS = Object.freeze([
     disagreeTraits: [],
     nextOnAgree: [],
     nextOnDisagree: [],
-    relatedIdentityIds: ["elyan"],
-    note: "Ely is conditional and therefore should never be inferred from a single Majoritarian percentage."
+    relatedIdentityIds: ["political_process_jurist"],
+    note: "Political Process Jurisprudence is conditional and should never be inferred from a single Majoritarian percentage."
   },
   {
     id: "D-WAL1",
@@ -295,8 +295,21 @@ globalThis.LAW_DIAGNOSTIC_QUESTIONS = Object.freeze([
     disagreeTraits: [],
     nextOnAgree: [],
     nextOnDisagree: [],
-    relatedIdentityIds: ["waldronian"],
-    note: "Use only if O1/O2/O5/O8 have not already made the democratic-legitimacy rationale clear."
+    relatedIdentityIds: ["political_constitutionalist"],
+    note: "Waldron/Bellamy discriminator: distinguish democratic-finality Political Constitutionalism from Thayerian clear-error deference."
+  },
+  {
+    id: "D-RESP1",
+    family: "majoritarian",
+    priority: "medium",
+    unlock: "Political Process Jurisprudence is established and Dixon-style responsive review could materially change the modifier and champion.",
+    prompt: "When democratic institutions malfunction, courts should calibrate how strongly they intervene to the particular problem: stronger remedies for entrenched exclusion or monopoly, more limited or dialogic intervention for temporary blind spots or inertia, and restraint where courts lack comparative capacity.",
+    agreeTraits: ["posture.responsive_review", "posture.process_reinforcement"],
+    disagreeTraits: [],
+    nextOnAgree: [],
+    nextOnDisagree: [],
+    relatedIdentityIds: ["political_process_jurist"],
+    note: "Dixon-specific Responsive Judicial Review discriminator."
   },
 
   // Statutory-method / adjudicative-style routers
