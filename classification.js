@@ -601,7 +601,7 @@
     if (ruleFormalistCanDominate && l.form >= 0.43 && antiDiscretion >= 0.65) {
       add("formalist", 0.93, "Rule-centered anti-discretion Formalism is the respondent's dominant jurisprudential commitment.");
     }
-    if (r.separ >= 0.4) add("functionalist", 0.55 + 0.32 * s.separ, "Functional separation of powers is highly distinctive.");
+    if (r.separ >= 0.55) add("functionalist", 0.55 + 0.32 * s.separ, "Functional separation of powers is highly distinctive.");
 
     const pragmatic = (r.cons + r.separ + r.form) / 3;
     if (pragmatic >= 0.32) add("pragmatist", 0.57 + 0.25 * pragmatic, "Open, functional, consequence-sensitive pattern across domains.");
