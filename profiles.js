@@ -470,7 +470,7 @@ globalThis.LAW_PROFILES = Object.freeze([
     },
     signatureTraits: ["time.common_law_development"],
     requiredTraits: [{ any: ["time.common_law_development"], min: 0.35 }],
-    antiTraits: ["precedent.correctness_first", "time.ordered_liberty_tradition", "source.common_law_fundamental_rights"],
+    antiTraits: ["precedent.correctness_first", "time.ordered_liberty_tradition", "source.common_law_fundamental_rights", "source.morality_incorporated"],
     description: "The clearest living-plus-stability fit: constitutional development occurs through precedent, practice, and accumulated institutional experience.",
     related: ["Friedrich Carl von Savigny", "Beverley McLachlin", "Benjamin Cardozo"]
   },
