@@ -10,7 +10,7 @@ The classifier may publicly return:
 - **Natural Lawyer**
 - **Interpretivist**
 - **Fullerian**
-- **Non-Positivist** only as the residual fallback when positivism is rejected but no narrower public Source noun is established.
+- **Non-Positivist** only when a distinctive nonpositivist subtype is affirmatively established below the noun layer. A merely nonpositive Source score is not enough.
 
 The following remain internal/legacy compatibility records rather than public nouns:
 
@@ -32,7 +32,7 @@ Substantive modifiers:
 
 Normative Positivism is orthogonal to the Inclusive/Exclusive conceptual dispute. The public modifier engine shows the strongest supported substantive branch rather than forcing every Positivist into a complete partition.
 
-### Non-Positivist fallback
+### Non-Positivist subtype umbrella
 
 Substantive descriptive modifiers:
 
@@ -83,7 +83,7 @@ Aquinas, Blackstone, Jonathan Crowe, and related thinkers remain lineage/further
 ### Fullerian
 7. **Lon Fuller** — internal morality/principles of legality.
 
-### Residual Non-Positivist branches
+### Non-Positivist subtype branches
 8. **Mark Greenberg** — Moral Impact Theory.
 9. **Scott Hershovitz** — moral-practice / one-system nonpositivism.
 10. **Gustav Radbruch / Philip Soper** — extreme-injustice threshold.
@@ -103,7 +103,7 @@ The global adaptive cap remains twelve questions.
 - **D-NP6** — Extreme-Injustice threshold / Radbruch-Soper.
 - **D-NP3** — Fullerian internal legality.
 
-The router stops probing competing Source theories once a broad noun or narrow branch is affirmatively established. Source probes also do not consume the diagnostic budget when a respondent is already squarely inside the Originalist refinement zone; Originalist source-sensitive champions use the 88-item core Source evidence.
+The router stops probing competing Source theories once a real noun or narrow branch is affirmatively established. If the respondent is nonpositive on the broad Source axis but rejects the diagnosable nonpositivist theories, Source alone does not manufacture a Non-Positivist noun; another established jurisprudential commitment wins, or the explicit Mixed fallback is used. Source probes also do not consume the diagnostic budget when a respondent is already squarely inside the Originalist refinement zone; Originalist source-sensitive champions use the 88-item core Source evidence.
 
 ## Reachability contract
 
