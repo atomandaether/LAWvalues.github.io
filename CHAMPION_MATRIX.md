@@ -45,7 +45,7 @@ Examples:
 - Positivist -> Hart
 - Natural Lawyer -> Finnis
 - Pragmatist -> Posner
-- Common-Law Constitutionalist -> David Strauss
+- Common-Law Constitutionalist -> David Strauss by default; Harlan II or Cooke only with their distinctive evidence
 
 ### Level 2 — subtype champion
 Extra axis information makes a particular champion clearly better.
@@ -66,6 +66,9 @@ Examples:
 - Public-Meaning + principle/construction emphasis -> Solum
 - Confirmed Legal Realist + general law-in-action orientation -> Llewellyn
 - Confirmed Legal Realist + psychological/fact skepticism -> Frank, if later diagnostics support that distinction
+- Sociological Jurist + source-gap Free Scientific Research -> François Gény
+- Common-Law Constitutionalist + living tradition / ordered liberty -> Harlan II
+- Common-Law Constitutionalist + fundamental common-law limits on legislative supremacy -> Lord Cooke
 
 ## Balanced identity/champion map
 
@@ -88,8 +91,8 @@ Examples:
 | Original-Intent Originalist | historical old-originalist lineage; no forced modern champion | do not invent a champion without evidence |
 | Original-Methods Originalist | McGinnis & Rappaport | historically accepted interpretive methods |
 | Framework Originalist | Balkin | fixed framework + substantial construction |
-| Living Constitutionalist | Brennan as judicial champion; no forced theorist | use only when constitutional content genuinely evolves |
-| Common-Law Constitutionalist | David Strauss | precedent/tradition themselves constitute constitutional law |
+| Living Constitutionalist | Brennan as judicial champion; Harlan II for living tradition + restraint | use only when constitutional content genuinely evolves |
+| Common-Law Constitutionalist | David Strauss; Harlan II after ordered-liberty/living-tradition diagnostic; Lord Cooke after strong common-law-rights diagnostic | Strauss = precedent/practice as constitutional law; Harlan = historically embedded ordered liberty + restraint; Cooke = fundamental common-law limits on ordinary legislative supremacy |
 | Common-Good Constitutionalist | Vermeule | classical/common-good teleology, only after diagnostics |
 | Thayerian | Thayer; Holmes/Hand/Frankfurter as historical practitioners | clear-error deference |
 | Waldronian | Waldron | democratic legitimacy under reasonable rights disagreement |
