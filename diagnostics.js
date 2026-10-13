@@ -289,7 +289,7 @@ globalThis.LAW_DIAGNOSTIC_QUESTIONS = Object.freeze([
     id: "D-WAL1",
     family: "majoritarian",
     priority: "medium",
-    unlock: "Thayerian and Waldronian candidates remain difficult to separate from the core Posture answers.",
+    unlock: "Thayerian and Political-Constitutionalist candidates remain difficult to separate from the core Posture answers.",
     prompt: "When democratic institutions are functioning well and citizens disagree in good faith about what rights require, the strongest reason for legislative rather than judicial finality is that elected institutions have the better claim to make the community’s authoritative decision.",
     agreeTraits: ["posture.democratic_legitimacy", "posture.reasonable_disagreement"],
     disagreeTraits: [],
