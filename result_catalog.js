@@ -856,7 +856,7 @@ globalThis.LAW_CHAMPIONS = Object.freeze([
     role: "primary",
     eligibleIdentityIds: ["common_law_constitutionalist"],
     signatureTraits: ["time.common_law_development", "precedent.stability", "precedent.settlement"],
-    antiTraits: ["precedent.correctness_first", "time.ordered_liberty_tradition", "source.common_law_fundamental_rights"],
+    antiTraits: ["precedent.correctness_first", "time.ordered_liberty_tradition", "source.common_law_fundamental_rights", "source.morality_incorporated"],
     note: "Very clean champion because the theory label and his scholarship closely coincide; an affirmative Harlan-style ordered-liberty/living-tradition diagnostic points away from this generic common-law fit."
   },
   {
