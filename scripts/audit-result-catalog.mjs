@@ -186,7 +186,7 @@ for (const id of [
   "D-POS1", "D-POS2", "D-NP1", "D-NP2", "D-NP3", "D-NP4", "D-NP5", "D-NP6",
   "D-MAJ1", "D-MAJ2", "D-ELY1", "D-WAL1", "D-RESP1", "D-TXT1", "D-TXT2", "D-INT1", "D-INT2", "D-PRAG1",
   "D-LP1", "D-LP2", "D-QC1", "D-SOC1", "D-GENY1", "D-LIV1", "D-LIV2", "D-HAR1", "D-CLC1", "D-PIL1", "D-PLU1", "D-PLU2", "D-OCO1",
-  "D-ORI1", "D-ORI2", "D-ORI3", "D-ORI4", "D-ORI5", "D-MOR1", "D-PREC1"
+  "D-ORI1", "D-ORI2", "D-ORI3", "D-ORI4", "D-ORI5", "D-MOR1", "D-PREC1", "D-QC2"
 ]) {
   assert.ok(diagnosticIds.has(id), `Missing high-value diagnostic ${id}`);
 }
@@ -1754,12 +1754,39 @@ console.log("PASS: focused single-axis judicial profiles classify without weaken
 }
 console.log("PASS: hidden partisan override is symmetric, cross-domain, thresholded, and subordinate to quality checks.");
 
+
+// The conditional second check tests attention in unusually random-like
+// profiles without treating an eclectic but meaningful profile as spam.
+{
+  const core=Object.fromEntries(questions.map((q,i)=>{
+    const nominal=questions.filter(x=>x.axis===q.axis).findIndex(x=>x.id===q.id);
+    const choice=nominal%2===0?1:-1;
+    const agree=Number(q.signals.agree[q.axis]||0);
+    const disagree=Number(q.signals.disagree[q.axis]||0);
+    const positive=agree>=disagree?3:-3;
+    return [q.id,choice===1?positive:-positive];
+  }));
+  const scores=scoring.scoreAll(core);
+  assert.ok(classifier.detectRandomLikePattern(core,scores),
+    "Contradictory extreme answers on several axes must request additional attention confirmation");
+  const next=classifier.nextDiagnostic(scores,core,{"D-RLS1":-2,"D-QC1":-2});
+  assert.equal(next?.id,"D-QC2");
+  const rejected=classifier.classify(scores,core,{"D-RLS1":-2,"D-QC1":-2,"D-QC2":-3},
+    {coreElapsedMs:900000});
+  assert.equal(rejected.identity.id,"unusable_response");
+  assert.equal(rejected.champions.length,0);
+  const attended=classifier.classify(scores,core,{"D-RLS1":-2,"D-QC1":-2,"D-QC2":1},
+    {coreElapsedMs:900000});
+  assert.notEqual(attended.responseQuality,"attention-check-failed",
+    "Passing the additional check does not punish unconventional substantive views");
+}
+
 console.log("PASS: adversarial primary-commitment, modifier/phrase, share-link, and 600 adaptive fuzz invariants.");
 console.log("PASS: all 18 approved phrases are reachable and use the approved critic-rib wording.");
 console.log("PASS: Originalism resolves end-to-end from literal 88-item answers through adaptive routing to all 13 locked champion units.");
 console.log("PASS: Alexyan and Bickelian are champion/modifier-level distinctions, not public nouns.");
 console.log("PASS: Formalist and Functionalist public labels remain unchanged.");
-console.log("PASS: generic fit modifiers render Unmistakably a/an / blank / Some kind of, with correct articles and substantive modifiers taking priority.");
+console.log("PASS: generic fit modifiers render Unmistakably a/an / Fairly clearly a/an / Some kind of, with correct articles and substantive modifiers taking priority.");
 console.log("PASS: all 10 locked Source champion units are reachable end-to-end from literal answers within the twelve-diagnostic cap.");
 console.log("PASS: Method nouns/modifiers are locked, including Sociological Jurist and the three substantive Method modifiers.");
 console.log("PASS: all 18 locked Method champion units are reachable end-to-end from literal answers within the twelve-diagnostic cap.");
