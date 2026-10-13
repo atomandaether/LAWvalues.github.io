@@ -405,6 +405,8 @@
       add("proportionalist", 0.88, "Structured proportionality rather than generic balancing.");
     }
 
+    const authorityCanDominate =
+      Math.max(s.sorc, s.cons, s.time, s.separ, s.form) <= 0.7;
     const processReinforcement = traits["posture.process_reinforcement"] || 0;
     const responsiveReview = traits["posture.responsive_review"] || 0;
     const antiJudicialSupremacy = traits["posture.anti_judicial_supremacy"] || 0;
@@ -417,16 +419,16 @@
     const narrowShallow = traits["method.narrow_shallow"] || 0;
     const incremental = traits["remedies.incremental"] || 0;
 
-    if (dialogic >= 0.5 && s.post <= 0.5) {
+    if (authorityCanDominate && dialogic >= 0.5 && s.post <= 0.5) {
       add("weak_form_constitutionalist", 0.98, "Direct weak-form/dialogic-review evidence within an intermediate judicial-authority posture.");
     }
-    if (antiJudicialSupremacy >= 0.45 && popularAuthority >= 0.45) {
+    if (authorityCanDominate && antiJudicialSupremacy >= 0.45 && popularAuthority >= 0.45) {
       add("popular_constitutionalist", 0.99, "Popular constitutional authority beyond branch-specific departmentalism.");
     }
-    if (antiJudicialSupremacy >= 0.45 && branchInterpretation >= 0.45 && popularAuthority < 0.4) {
+    if (authorityCanDominate && antiJudicialSupremacy >= 0.45 && branchInterpretation >= 0.45 && popularAuthority < 0.4) {
       add("departmentalist", 0.97, "Independent branch interpretation without a broader popular-authority claim.");
     }
-    if (processReinforcement >= 0.5) {
+    if (authorityCanDominate && processReinforcement >= 0.5) {
       add(
         "political_process_jurist",
         responsiveReview >= 0.5 ? 0.99 : 0.96,
@@ -435,14 +437,12 @@
           : "Representation reinforcement / political-process review."
       );
     }
-    if (l.post >= 0.2 && reasonableDisagreement >= 0.5) {
+    if (authorityCanDominate && l.post >= 0.2 && reasonableDisagreement >= 0.5) {
       add("political_constitutionalist", 0.98, "Democratic finality under functioning institutions and reasonable rights disagreement.");
     }
-    if (l.post >= 0.2 && clearError >= 0.5 && reasonableDisagreement < 0.5) {
+    if (authorityCanDominate && l.post >= 0.2 && clearError >= 0.5 && reasonableDisagreement < 0.5) {
       add("thayerian", 0.96, "Courts retain review but invalidate only constitutional judgments outside the range of reasonableness.");
     }
-    const authorityCanDominate =
-      s.time <= 0.55 && s.cons <= 0.55;
     if (authorityCanDominate && passiveVirtues >= 0.5) {
       add("minimalist", 0.98, "Strategic avoidance and passive virtues establish a distinctive form of Judicial Minimalism.");
     } else if (authorityCanDominate && narrowShallow >= 0.5 && incremental >= 0.45) {
@@ -450,7 +450,7 @@
     }
 
     const rightsReview = traits["posture.rights_trumps"] || 0;
-    if (r.post >= 0.3 && rightsReview >= 0.4) {
+    if (authorityCanDominate && r.post >= 0.3 && rightsReview >= 0.4) {
       add("legal_constitutionalist", 0.8 + 0.14 * s.post, "Entrenched rights and independent courts constrain ordinary political majorities.");
     }
 
