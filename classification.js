@@ -301,6 +301,11 @@
     if ((traits["method.social_interests"] || 0) > 0) setMax(traits, "method.law_in_action", traits["method.social_interests"]);
     // An explicit rejection of the direct Dworkinian legal-answer diagnostic
     // defeats a weaker affirmative hint inferred from a different core case.
+    if(Number(diagnosticResponses?.["D-NP6"])<=-2){
+      // The direct diagnostic vetoes a conflicting single-example inference.
+      traits["source.extreme_injustice"]=0;
+      setMax(traits,"source.extreme_injustice_rejected",Math.abs(Number(diagnosticResponses["D-NP6"]))/3);
+    }
     if (Number(diagnosticResponses?.["D-NP2"]) <= -2) {
       setMax(traits, "source.interpretivism_rejected",
         Math.abs(Number(diagnosticResponses["D-NP2"])) / 3);
@@ -500,7 +505,10 @@
     const narrowShallow = traits["method.narrow_shallow"] || 0;
     const incremental = traits["remedies.incremental"] || 0;
 
-    if (authorityCanDominate && dialogic >= 0.5 && s.post <= 0.5) {
+    const weakFormRights=Math.max(traits["posture.rights_trumps"]||0,traits["posture.judicial_independence"]||0);
+    const weakFormDemocracy=traits["posture.democratic_legitimacy"]||0;
+    if(authorityCanDominate && dialogic>=0.5 && s.post<=0.5 &&
+       weakFormRights>=0.25 && weakFormDemocracy>=0.25) {
       add("weak_form_constitutionalist", 0.98, "Direct weak-form/dialogic-review evidence within an intermediate judicial-authority posture.");
     }
     if (authorityCanDominate && antiJudicialSupremacy >= 0.45 && popularAuthority >= 0.45) {
@@ -524,7 +532,8 @@
     if (authorityCanDominate && l.post >= 0.2 && clearError >= 0.5 && reasonableDisagreement < 0.5) {
       add("thayerian", 0.96, "Courts retain review but invalidate only constitutional judgments outside the range of reasonableness.");
     }
-    if (authorityCanDominate && passiveVirtues >= 0.5) {
+    if(authorityCanDominate && passiveVirtues>=0.5 &&
+       (narrowShallow>=0.33 || incremental>=0.3)) {
       add("minimalist", 0.98, "Strategic avoidance and passive virtues establish a distinctive form of Judicial Minimalism.");
     } else if (authorityCanDominate && narrowShallow >= 0.5 && incremental >= 0.45) {
       add("minimalist", 0.94, "Narrow, shallow, incremental adjudication establishes Judicial Minimalism.");
