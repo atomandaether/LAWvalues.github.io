@@ -937,8 +937,8 @@ const ordinaryFit = resultContent.assemble(
   {},
   {}
 );
-assert.equal(ordinaryFit.modifier.id, "fit_moderate",
-  "Every valid three-part result needs a modifier even at intermediate fit");
+assert.equal(ordinaryFit.modifier, null,
+  "Intermediate noun fits should use a blank modifier rather than invented fit language");
 
 const weakFit = resultContent.assemble(
   { identity: fitIdentity, identityScore: 0.69, identityAlternatives: [{ score: 0.67 }] },
@@ -1941,7 +1941,7 @@ console.log("PASS: all 18 approved phrases are reachable and use the approved cr
 console.log("PASS: Originalism resolves end-to-end from literal 88-item answers through adaptive routing to all 13 locked champion units.");
 console.log("PASS: Alexyan and Bickelian are champion/modifier-level distinctions, not public nouns.");
 console.log("PASS: Formalist and Functionalist public labels remain unchanged.");
-console.log("PASS: generic fit modifiers render Unmistakably a/an / Fairly clearly a/an / Some kind of, with correct articles and substantive modifiers taking priority.");
+console.log("PASS: generic fit modifiers render Unmistakably a/an / blank / Some kind of, with correct articles and substantive modifiers taking priority.");
 console.log("PASS: all 10 locked Source champion units are reachable end-to-end from literal answers within the twelve-diagnostic cap.");
 console.log("PASS: Method nouns/modifiers are locked, including Sociological Jurist and the three substantive Method modifiers.");
 console.log("PASS: all 18 locked Method champion units are reachable end-to-end from literal answers within the twelve-diagnostic cap.");
