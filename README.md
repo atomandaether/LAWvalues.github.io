@@ -1,6 +1,6 @@
 # LAWvalues
 
-> Method/interpretation classifier details are documented in [`METHOD_ENGINE.md`](METHOD_ENGINE.md): eight public nouns, three substantive modifiers, eighteen locked champion units, noun-conditioned compatibility, and literal-answer reachability.
+> Method/interpretation classifier details are documented in [`METHOD_ENGINE.md`](METHOD_ENGINE.md): nine public nouns including Structuralist, three substantive modifiers, twenty locked champion units, noun-conditioned compatibility, and literal-answer reachability.
 
 > Source-of-law classifier details are documented in [`SOURCE_ENGINE.md`](SOURCE_ENGINE.md): public nouns, substantive modifiers, ten champion units, adaptive routing, article-aware fit labels, and end-to-end reachability.
 
