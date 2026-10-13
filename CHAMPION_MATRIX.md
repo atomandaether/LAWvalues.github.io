@@ -107,9 +107,9 @@ Examples:
 | Departmentalist | Kevin Walsh | independent branch interpretation without broader popular-authority claim |
 | Political Process Jurist | Ely default; Dixon after Responsive diagnostic | representation reinforcement; Dixon calibrates intervention to specific democratic dysfunctions |
 | Judicial Minimalist | Sunstein default; Bickel when passive virtues/avoidance dominate | narrow/shallow adjudication; modifier + champion carry the Bickel/Sunstein split |
-| Formalist | Lawson; Scalia if text/rules/originalism also fit; Schauer for rule form | distinguish structural formalism from rule formalism |
-| Functionalist | Peter Strauss; Breyer as judicial relative | workable institutional overlap |
-| Proportionalist | Alexy; Barak; German FCC / Barak-era Israeli Supreme Court | structured proportionality, not generic balancing |
+| Formalist | Lawson default structural; Schauer rule-formalism; Calabresi/Prakash unitary-executive subtype; Scalia only when Originalism/Textualism is primary | structural formalism vs rule formalism vs directly evidenced unitary-executive formalism |
+| Functionalist | Peter Strauss; Breyer/White as judicial relatives | workable institutional overlap |
+| Proportionalist | Alexy for Higher-law/nonpositivist proportionality; Barak for Purpose-led proportionality | affirmative structured proportionality, not generic balancing |
 
 ## Important figures that should not automatically become middle labels
 
@@ -140,8 +140,12 @@ Do not add by default. Once Law & Economics is deliberately outside scope, Easte
 ### Scalia
 Scalia is highly useful precisely because his signature crosses multiple LAWvalues axes: textualism, public-meaning originalism, rules, democratic anti-discretion, and separation formalism. That makes him a **great champion for a specific bundle and a bad universal champion for any one component**.
 
-### Fiss / Chayes / Bray
-These are exceptionally useful remedial champions, but Remedies is usually best expressed in the front modifier or trailing phrase. A respondent can be a Textualist, Originalist, Pragmatist, etc. **with Fiss-like remedies**. Do not invent a fake middle school merely to make Remedies occupy the middle slot.
+### Remedies and the one champion slot
+Remedies do not create a public noun and do not receive a separate secondary champion.
+
+- **Bhagwati/Iyer** remain selectable because PIL/social-action judging is a multi-axis jurisprudential package.
+- **Fiss** remains selectable only through an extreme whole-profile structural-reform gate and can displace a noun-compatible champion only when that package is genuinely more explanatory overall.
+- **Chayes, Bray, Sohoni/Frost, Monaghan, and Levinson** are lineage/result-explanation only and never compete for the user's single champion slot.
 
 ## Champion matching rule
 
@@ -160,8 +164,9 @@ The actual implementation should weight **respondent trait importance**, not cou
 Then:
 - require at least two distinctive matched traits for a personal champion;
 - do not select a champion whose anti-traits are among the respondent's strongest traits;
-- if the top two champions are close, show both as intellectual relatives or show no single champion;
-- institutional champions are allowed when they are more accurate than a person.
+- always return exactly one champion unit for a valid result;
+- close races reduce confidence but never produce a second champion;
+- institutional or grouped champion units are allowed when they are more accurate than a single person.
 
 ## Why the catalog is deliberately not exhaustive
 

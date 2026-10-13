@@ -1031,7 +1031,8 @@
   function axisScore(scores,id) {
     const raw=scores?.[id];
     const value=typeof raw==="object" && raw!==null ? raw.score : raw;
-    return Math.max(0,Math.min(100,Number(value) || 50));
+    const numeric=Number(value);
+    return Math.max(0,Math.min(100,Number.isFinite(numeric) ? numeric : 50));
   }
 
   function left(scores,id) { return Math.max(0,(axisScore(scores,id)-50)/50); }

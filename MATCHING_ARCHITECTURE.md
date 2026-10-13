@@ -64,7 +64,8 @@ Current protected families include:
 - Common-Law Constitutionalism
 - Common-Good Constitutionalism when directly diagnosed
 - Legal Constitutionalism, Political Constitutionalism, Thayerian deference, Weak-Form Constitutionalism, Popular Constitutionalism, Departmentalism, Political Process Jurisprudence, and Judicial Minimalism
-- Formalist and Functionalist separation of powers
+- Formalism, including structural and genuinely dominant rule-formalism
+- Functionalist separation of powers
 - Structured Proportionality
 
 Natural Law is specifically protected from collapsing into generic Non-Positivism. Finnis is a main modern champion; Fuller and Radbruch require their narrower distinctive evidence. Dworkin likewise is not simply "the non-positivist."
@@ -77,10 +78,11 @@ Examples:
 
 - Lawrence Solum: public meaning / principle application / construction-zone nuance
 - Jack Balkin: fixed framework plus legitimate later construction
-- Frederick Schauer: unusually strong commitment to rules as constraints on decision-makers
+- Frederick Schauer: dominant rule-formalism / anti-discretion rather than merely a Rules side-note
+- Steven Calabresi / Saikrishna Prakash: unitary-executive Formalism when E2 directly supplies the presidential-control proposition
 - James Bradley Thayer: clear-error judicial deference
 - Robert Alexy: champion-level fit for Proportionalism when non-positivist correctness claims accompany structured proportionality
-- Owen Fiss: structural remedies and continuing supervision
+- Owen Fiss: exceptional cross-noun champion only when extreme structural remedies, continuing supervision, and strong judicial role form the respondent's most explanatory whole-profile package
 - Roscoe Pound: sociological jurisprudence—law in action, competing social interests, and practical social operation
 - Henry Hart & Albert Sacks: Legal Process—purpose plus institutional competence, settlement, and reasoned elaboration
 - François Gény: Free Scientific Research only after Sociological Jurisprudence is already plausible
@@ -106,11 +108,17 @@ Savigny and the Historical School are the model case. The tradition is major jur
 
 This tier also accommodates academics whose work is illuminating but too narrow, insufficiently diagnosable, or redundant with a stronger selectable personality.
 
+Current remedies lineage includes Abram Chayes, Samuel Bray, Mila Sohoni / Amanda Frost, Henry Monaghan, and Daryl Levinson. Their ideas can inform the result explanation without consuming the user's single champion slot.
+
 ## Catch-all without false theory
 
 Sandra Day O'Connor is a deliberate exception to theory-first matching. A broadly moderate respondent who repeatedly prefers fact-sensitive balancing, narrow decisions, precedent, and case-by-case judgment may genuinely be better described by O'Connor's low-theory judicial style than by forcing an elaborate jurisprudential system onto them.
 
 Philip Bobbitt covers a different apparent-middle case: principled methodological pluralism. The adaptive bank distinguishes "several modalities are legitimately available" from "I do not want a grand theory and would decide concretely."
+
+## Single champion cardinality
+
+Every valid classified result returns exactly one champion unit. Noun-compatible profiles receive the normal compatibility advantage. Close scores lower confidence rather than creating co-champions. Fiss is the only current cross-noun exception and enters only through the explicit extreme structural-reform whole-profile gate. If no compatible selectable profile exists, the engine falls back to the best globally fitting eligible profile rather than leaving the champion slot empty.
 
 ## Adaptive diagnostics
 
