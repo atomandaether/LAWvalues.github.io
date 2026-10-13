@@ -299,6 +299,12 @@
     }
     if ((traits["posture.dialogic"] || 0) > 0) setMax(traits, "posture.weak_form", traits["posture.dialogic"]);
     if ((traits["method.social_interests"] || 0) > 0) setMax(traits, "method.law_in_action", traits["method.social_interests"]);
+    // An explicit rejection of the direct Dworkinian legal-answer diagnostic
+    // defeats a weaker affirmative hint inferred from a different core case.
+    if (Number(diagnosticResponses?.["D-NP2"]) <= -2) {
+      setMax(traits, "source.interpretivism_rejected",
+        Math.abs(Number(diagnosticResponses["D-NP2"])) / 3);
+    }
     return traits;
   }
 
@@ -321,7 +327,7 @@
     const left=Object.fromEntries(AXIS_IDS.map(id=>[id,leftStrength(scores,id)]));
     const right=Object.fromEntries(AXIS_IDS.map(id=>[id,rightStrength(scores,id)]));
     const singleProposition=new Set([
-      "weak_form_constitutionalist","minimalist","nonpositivist","fullerian",
+      "weak_form_constitutionalist","minimalist","thayerian","nonpositivist","fullerian",
       "intentionalist","political_process_jurist","legal_process_theorist",
       "sociological_jurist","proportionalist","common_good_constitutionalist"
     ]);
@@ -403,7 +409,7 @@
       traits["source.right_answer"] || 0
     );
 
-    if (r.sorc >= 0.2 && interpretivistEvidence >= 0.5) {
+    if (r.sorc >= 0.2 && interpretivistEvidence >= 0.5 && (traits["source.interpretivism_rejected"]||0) < 0.67) {
       add("interpretivist", 0.82 + 0.12 * s.sorc, "Principles, fit, and justification support Legal Interpretivism.");
     }
     if (r.sorc >= 0.2 &&
