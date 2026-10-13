@@ -43,7 +43,7 @@ No separate substantive public modifier is locked. Distinctive variants remain c
 4. **David Strauss** — default common-law constitutionalist: precedent and accumulated practice are themselves major components of constitutional law.
 5. **John Marshall Harlan II** — living tradition / ordered liberty plus substantial restraint; requires **D-HAR1**.
 6. **Lord Cooke of Thorndon** — strong common-law constitutionalism in which fundamental common-law rights may constrain ordinary legislative supremacy; requires **D-CLC1**.
-7. **Wil Waluchow** — cross-axis Inclusive-Positivist/Common-Law Constitutionalism. This champion requires independently established Inclusive Positivism plus common-law constitutional development; it does not make Waluchow the generic Inclusive-Positivist champion.
+7. **Wil Waluchow** — **Inclusive-Positivist Common-Law Constitutionalism**. This is a genuine hybrid rather than a generic Source-axis adjective: constitutional rights develop through common-law reasoning inside an inclusive-positivist theory of legal validity. When the Common-Law noun wins and both components are independently established, the public title uses **Inclusive-Positivist Common-Law Constitutionalist**.
 
 ## Adaptive routing
 
@@ -76,6 +76,6 @@ It additionally verifies:
 - Klare/Langa resolve as **Transformative Living Constitutionalist**;
 - Strauss remains the default **Common-Law Constitutionalist**;
 - Harlan II and Cooke require their distinctive diagnostics;
-- Waluchow defeats both generic Strauss and generic Inclusive-Positivist alternatives only when the cross-axis combination is present;
+- Waluchow defeats both generic Strauss and generic Inclusive-Positivist alternatives only when the hybrid is present, and then surfaces **Inclusive-Positivist Common-Law Constitutionalist**;
 - Ackerman remains nonselectable;
 - all previously locked Originalism, Source, and Method reachability contracts remain green.
