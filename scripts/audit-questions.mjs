@@ -71,13 +71,11 @@ assert.equal(scoring.signalFor(s9,"disagree","sorc"),0,
   "Rejecting personal discretion is not proof of legal positivism");
 assert.equal(scoring.signalFor(s10,"agree","sorc"),-1,
   "An objectively true moral rule has independent Source significance");
-const probe = scoring.historicalMethodConsistency;
-assert.equal(probe({T1:3,T2:-3,T3:0}).disagreements,1,
-  "Favoring Reconstruction meaning while rejecting comparable historical locking contributes divergence evidence");
-assert.equal(probe({T1:3,T2:3,T3:3}).disagreements,0);
-assert.equal(probe({T1:3,T2:null,T3:0}).status,"insufficient");
-assert.equal(probe({T1:-3,T2:3}).disagreements,1,
-  "The same comparison must be symmetric rather than presuming a party preference");
+// Mirrored legal hypotheticals remain in the core bank as intentionally
+// cross-ideological evidence; they never constitute an additional axis.
+for(const id of ["T1","T2","C3","C4","R1","R2","R6","R7","R9","R10"]){
+  assert.ok(questions.some(q=>q.id===id),`${id} must remain an available mirror item`);
+}
 
 const c13 = questions.find((item) => item.id === "C13");
 assert.equal(scoring.signalFor(c13, "agree", "cons"), 0,
