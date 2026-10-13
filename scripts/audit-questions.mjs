@@ -149,7 +149,7 @@ for (const filename of htmlFiles) {
   }
 }
 
-assert.ok(htmlByFile["index.html"].includes("Version 0.7 Beta"), "Front page must show Version 0.6 Beta");
+assert.ok(htmlByFile["index.html"].includes("Version 0.7 Beta"), "Front page must show Version 0.7 Beta");
 assert.ok(htmlByFile["instructions.html"].includes("You will be presented with a series of statements about legal interpretation and judicial philosophy. For each one, click the button with your opinion on it."),
   "Instructions must retain the original wording");
 assert.ok(htmlByFile["quiz.html"].includes('aria-valuemax="100"'), "Quiz progress maximum must allow 88 core plus up to 12 diagnostics");
