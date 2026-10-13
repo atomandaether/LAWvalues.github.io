@@ -21,6 +21,8 @@ It may attach to either public noun:
 - **New Public-Meaning Originalist**
 - **New Original-Intent Originalist**
 
+A second substantive Originalist hybrid is **Higher-law**. It is reserved for natural-law-grounded Originalism: objective morality plus the settlement authority of positive constitutional law. It is not triggered by generic non-positivism. The locked Pojanowski / Walsh / Alicea / Strang unit is the canonical **Higher-law Public-Meaning Originalist** endpoint.
+
 The OI+construction cell is principally represented by Keith Whittington.  The OPM+construction cell contains several champion units.
 
 When no substantive modifier applies, generic fit language is used:
@@ -68,4 +70,4 @@ The 88-item core already supplies most remaining champion evidence: textual cons
 
 ## Reachability contract
 
-The audit suite requires all thirteen champion units to be separately selectable under coherent fixtures, requires OPM/OI to be the only public Originalist children, requires New to appear for constructionist OPM/OI, and verifies Unmistakably / blank / Some kind of fit states.
+The audit suite requires all thirteen champion units to be separately selectable under coherent fixtures, requires OPM/OI to be the only public Originalist children, requires **New** to appear for constructionist OPM/OI, requires **Higher-law** for the natural-law-grounded Originalist cell, and verifies Unmistakably / blank / Some kind of fit states.
