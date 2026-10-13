@@ -804,7 +804,6 @@
       "id": "common_law_growth",
       "text": "Precedent-grown",
       "appliesTo": [
-        "living_constitutionalist",
         "originalist",
         "public_meaning_originalist",
         "framework_originalist"
