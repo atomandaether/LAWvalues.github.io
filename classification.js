@@ -834,9 +834,15 @@
 
     const counts = new Map();
     for (const value of answered) counts.set(value, (counts.get(value) || 0) + 1);
-    const mostCommon = Math.max(...counts.values());
-    if (answered.length >= 80 && mostCommon / answered.length >= 0.9) return "straight-line";
-    if (answered.length >= 80 && answered.filter((value) => value === 0).length / answered.length >= 0.85) return "mostly-neutral";
+    // A respondent may have one sharply held judicial commitment and be
+    // genuinely undecided on most other issues. Do not mistake that for
+    // straight-line clicking merely because "Neither" is the modal answer.
+    const neutralCount = counts.get(0) || 0;
+    const mostCommonNonNeutral = Math.max(0, ...[...counts]
+      .filter(([value]) => value !== 0).map(([, count]) => count));
+    if (answered.length >= 80 && mostCommonNonNeutral / answered.length >= 0.9) return "straight-line";
+    if (answered.length >= 80 && neutralCount / answered.length >= 0.85 &&
+        answered.length - neutralCount < 4) return "mostly-neutral";
     if (values.length >= 80 && skipped / values.length >= 0.5) return "excessive-skips";
     return null;
   }
