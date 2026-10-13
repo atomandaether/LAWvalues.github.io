@@ -386,7 +386,7 @@ globalThis.LAW_PROFILES = Object.freeze([
       form: { target: 4, weight: 1 },
       sorc: { target: 16, weight: 0.6 }
     },
-    signatureTraits: ["form.proportionality", "source.claim_to_correctness"],
+    signatureTraits: ["form.proportionality", "source.principles_are_law"],
     requiredTraits: [{ all: ["form.proportionality"], min: 0.5 }],
     antiTraits: ["form.rules"],
     description: "A specialist fit for structured proportionality and principles understood as optimization requirements, especially when paired with non-positivism.",
@@ -910,13 +910,16 @@ globalThis.LAW_PROFILES = Object.freeze([
     name: "Owen Fiss",
     tier: "specialist",
     identityIds: [],
+    globalSpecialist: true,
     axisSignature: {
       remed: { target: 3, weight: 1 },
       post: { target: 18, weight: 0.45 }
     },
-    minAxisSalience: { remed: 0.55 },
-    signatureTraits: ["remedies.structural", "remedies.supervision"],
-    requiredTraits: [],
+    minAxisSalience: { remed: 0.75 },
+    signatureTraits: ["remedies.structural", "remedies.supervision", "posture.countermajoritarian"],
+    requiredTraits: [
+      { all: ["remedies.structural", "remedies.supervision"], min: 0.65 }
+    ],
     antiTraits: ["remedies.party_specific"],
     description: "The structural-remedies specialist: adjudication can vindicate public values through institutional reform and continuing judicial supervision.",
     related: ["Abram Chayes", "P. N. Bhagwati"]
@@ -942,14 +945,66 @@ globalThis.LAW_PROFILES = Object.freeze([
   {
     id: "bray",
     name: "Samuel Bray",
-    tier: "specialist",
+    tier: "lineage",
+    selectable: false,
     identityIds: [],
     axisSignature: { remed: { target: 97, weight: 1 } },
-    minAxisSalience: { remed: 0.55 },
     signatureTraits: ["remedies.party_specific", "remedies.incremental"],
     requiredTraits: [],
     antiTraits: ["remedies.structural"],
-    description: "A specialist for plaintiff-specific, traditional-equity instincts and strong resistance to remedies broader than the case and parties require.",
+    description: "Lineage for plaintiff-specific, traditional-equity instincts and resistance to remedies broader than the case and parties require; not eligible for the single champion slot.",
+    related: ["Mila Sohoni", "Amanda Frost"]
+  },
+  {
+    id: "sohoni_frost",
+    name: "Mila Sohoni / Amanda Frost",
+    tier: "lineage",
+    selectable: false,
+    identityIds: [],
+    axisSignature: { remed: { target: 8, weight: 0.7 } },
+    signatureTraits: ["remedies.universal"],
+    requiredTraits: [],
+    antiTraits: ["remedies.party_specific"],
+    description: "Lineage for the modern defense of nationwide or universal relief; the distinction remains result explanation rather than a single-champion endpoint.",
+    related: ["Samuel Bray"]
+  },
+  {
+    id: "chayes",
+    name: "Abram Chayes",
+    tier: "lineage",
+    selectable: false,
+    identityIds: [],
+    axisSignature: { remed: { target: 7, weight: 0.8 } },
+    signatureTraits: ["remedies.structural", "remedies.supervision"],
+    requiredTraits: [],
+    antiTraits: ["remedies.party_specific"],
+    description: "Canonical public-law-litigation lineage closely adjacent to Fiss; not separately selectable under the Alexander/Kaye anti-redundancy threshold.",
+    related: ["Owen Fiss"]
+  },
+  {
+    id: "monaghan",
+    name: "Henry Monaghan",
+    tier: "lineage",
+    selectable: false,
+    identityIds: [],
+    axisSignature: {},
+    signatureTraits: ["remedies.prophylactic"],
+    requiredTraits: [],
+    antiTraits: [],
+    description: "Constitutional-common-law lineage for judicially created prophylactic doctrine inspired by constitutional norms but not identical to the constitutional minimum.",
+    related: ["David Strauss"]
+  },
+  {
+    id: "levinson",
+    name: "Daryl Levinson",
+    tier: "lineage",
+    selectable: false,
+    identityIds: [],
+    axisSignature: {},
+    signatureTraits: [],
+    requiredTraits: [],
+    antiTraits: [],
+    description: "Remedial-equilibration lineage: remedial consequences can feed back into the content of constitutional rights, a distinctive theory not directly measured by the current bank.",
     related: []
   },
   {
@@ -971,15 +1026,29 @@ globalThis.LAW_PROFILES = Object.freeze([
     tier: "specialist",
     identityIds: ["formalist"],
     axisSignature: {
-      separ: { target: 97, weight: 1 },
-      time: { target: 82, weight: 0.35 }
+      separ: { target: 97, weight: 1 }
     },
     minAxisSalience: { separ: 0.55 },
-    signatureTraits: ["separation.formalist"],
+    signatureTraits: ["separation.formalist", "separation.nondelegation"],
     requiredTraits: [],
     antiTraits: ["separation.functionalist"],
-    description: "The specialist for hard structural formalism, especially when formal separation-of-powers boundaries coincide with historically fixed constitutional meaning.",
-    related: ["Antonin Scalia"]
+    description: "The specialist for hard structural formalism: constitutionally assigned powers and anti-delegation constraints remain binding even when functional arrangements seem more efficient.",
+    related: ["Antonin Scalia", "Steven Calabresi", "Saikrishna Prakash"]
+  },
+  {
+    id: "calabresi_prakash",
+    name: "Steven Calabresi / Saikrishna Prakash",
+    tier: "specialist",
+    identityIds: ["formalist"],
+    axisSignature: {
+      separ: { target: 95, weight: 0.9 }
+    },
+    minAxisSalience: { separ: 0.55 },
+    signatureTraits: ["separation.formalist", "separation.unitary_executive"],
+    requiredTraits: [{ all: ["separation.unitary_executive"], min: 0.5 }],
+    antiTraits: ["separation.functionalist"],
+    description: "Unitary-executive Formalism: Article II places executive administration under presidential control rather than permitting Congress to insulate executive officers from presidential supervision.",
+    related: ["Gary Lawson"]
   },
   {
     id: "llewellyn",
