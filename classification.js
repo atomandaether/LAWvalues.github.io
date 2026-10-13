@@ -1003,6 +1003,7 @@
     const form = axisValue(scores, "form");
     const precedent = axisValue(scores, "prec");
     const remedies = axisValue(scores, "remed");
+    const separ = axisValue(scores, "separ");
     const maxSalience = maxSalienceEarly;
 
     // Structural jurisprudence should be diagnosed only when constitutional
