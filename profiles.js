@@ -621,6 +621,9 @@ globalThis.LAW_PROFILES = Object.freeze([
     tier: "main",
     identityIds: ["legal_process_theorist"],
     crossCuttingIdentityIds: ["purposivist"],
+    crossCuttingRequirements: {
+      purposivist: [{ all: ["constraint.purpose"], min: 0.4 }]
+    },
     axisSignature: {
       cons: { target: 28, weight: 0.6 },
       post: { target: 64, weight: 0.25 },
