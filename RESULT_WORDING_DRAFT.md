@@ -1,4 +1,4 @@
-> **Authority implementation note (2026-10-12):** `AUTHORITY_ENGINE.md` supersedes older public references to Waldronian and Elyan. Public authority nouns are Legal Constitutionalist, Political Constitutionalist, Thayerian, Weak-Form Constitutionalist, Popular Constitutionalist, Departmentalist, Political Process Jurist, and Judicial Minimalist.
+> **Authority implementation note (2026-10-13):** `AUTHORITY_ENGINE.md` is controlling. Public authority nouns are Political Constitutionalist, Thayerian, Popular Constitutionalist, Departmentalist, Political Process Jurist, and Judicial Minimalist. Legal Constitutionalism and Weak-Form Constitutionalism are internal authority descriptors only.
 
 # LAWvalues Result Wording Draft
 
