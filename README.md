@@ -8,6 +8,8 @@
 
 > Non-originalist constitutional-time details are documented in [`NONORIGINALISM_ENGINE.md`](NONORIGINALISM_ENGINE.md): Living/Common-Law public nouns, Democratic/Transformative Living modifiers, seven locked champion units, and end-to-end reachability under the seven-question cap.
 
+> Judicial-review / constitutional-authority details are documented in [`AUTHORITY_ENGINE.md`](AUTHORITY_ENGINE.md): eight public authority nouns, Responsive/Passive-virtues modifiers, nine locked champion units, and end-to-end reachability under the seven-question cap.
+
 LAWvalues is a static, client-side legal-philosophy quiz. The current public label is **Version 0.6 Beta**. It maps respondents across eight bipolar dimensions:
 
 - Source: Positivist ↔ Non-positivist
