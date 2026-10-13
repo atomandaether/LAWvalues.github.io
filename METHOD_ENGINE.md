@@ -98,7 +98,7 @@ Eugen Ehrlich remains lineage/further reading. Cardozo is explicitly cross-cutti
 
 ## Adaptive diagnostics
 
-The global cap remains seven adaptive questions.
+The global cap remains twelve adaptive questions.
 
 ### Universal / Realism
 - **D-RLS1** — universal soft Realism probe.
@@ -145,7 +145,7 @@ The audit suite requires every locked unit to have a coherent literal-answer pat
 
 ## Reachability contract
 
-The audit suite requires all eighteen Method champion units to be separately reachable from literal 93-item answer vectors through the live adaptive router within the seven-question cap.
+The audit suite requires all eighteen Method champion units to be separately reachable from literal 88-item answer vectors through the live adaptive router within the twelve-question cap.
 
 It additionally verifies:
 - all eight Method nouns remain available;
