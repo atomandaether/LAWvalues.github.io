@@ -1,8 +1,10 @@
 /* Proposed adaptive diagnostic bank.
-   These questions are not part of the public 93-item core yet.
+   These questions are not part of the common 88-item core yet.
    They are classification tie-breakers and normally do not move the eight headline axes. */
 
 globalThis.LAW_DIAGNOSTIC_QUESTIONS = Object.freeze([
+  {id:"D-MOR1",family:"nonpositivism",priority:"high",unlock:"A live specialty distinction requires this counterexample.",prompt:"Two large companies sign a voluntary contract that every constitution, statute, precedent, and accepted legal practice treats as valid. The judge personally believes the contract is immoral, but assume that this is only the judge’s own sincerely held moral view: there is no established objective moral rule against the contract, and reasonable people disagree. The court should still refuse to enforce the contract based solely on the judge’s personal moral judgment.",agreeTraits:["method.subjective_moral_override"],disagreeTraits:["method.rejects_subjective_override"],nextOnAgree:[],nextOnDisagree:[],relatedIdentityIds:["natural_lawyer","interpretivist","nonpositivist"],note:"Core-to-adaptive migration: no effect on the eight shared axis percentages."},
+  {id:"D-PREC1",family:"originalism",priority:"high",unlock:"A live specialty distinction requires this counterexample.",prompt:"A state constitution says that newspapers may be sued for false statements under the same rules as everyone else. Fifty years ago, the state supreme court nevertheless created a special rule out of nowhere protecting investigative journalism and political criticism from inclusion in that liability. The court should now abolish it because the constitution never authorized the special protection.",agreeTraits:["precedent.judicial_invention_skepticism","precedent.correctness_first"],disagreeTraits:["precedent.protective_rule_stability"],nextOnAgree:[],nextOnDisagree:[],relatedIdentityIds:["public_meaning_originalist","originalist"],note:"Core-to-adaptive migration: no effect on the eight shared axis percentages."},
   // Universal soft probe for the only intentionally non-axis identity.
   {
     id: "D-RLS1",
