@@ -28,50 +28,85 @@
 
   function scoreAxis(axisId, responses, questions = global.LAW_QUESTIONS) {
     const items = questions.filter((item) => contributesToAxis(item, axisId));
-    const answered = items.filter(
-      (item) => hasResponse(responses, item.id) && responses[item.id] !== null
-    );
+    const rows = items.map((item) => {
+      const agree = signalFor(item, "agree", axisId);
+      const disagree = signalFor(item, "disagree", axisId);
+      return {
+        item,
+        agree,
+        disagree,
+        leftPotential: Math.max(0, agree, disagree),
+        rightPotential: Math.max(0, -agree, -disagree)
+      };
+    });
 
-    let leftPotential = 0;
-    let rightPotential = 0;
-    for (const item of answered) {
-      const possible = [
-        signalFor(item, "agree", axisId),
-        signalFor(item, "disagree", axisId)
-      ];
-      leftPotential += Math.max(0, ...possible);
-      rightPotential += Math.max(0, ...possible.map((value) => -value));
+    const totalLeftPotential = rows.reduce((sum, row) => sum + row.leftPotential, 0);
+    const totalRightPotential = rows.reduce((sum, row) => sum + row.rightPotential, 0);
+
+    // Information weights are normalized against each pole before being placed
+    // on one common scale. This preserves asymmetric items without allowing the
+    // pole with more raw weight to acquire a mathematical advantage.
+    for (const row of rows) {
+      const leftWeight = totalLeftPotential > 0 ? row.leftPotential / totalLeftPotential : 0;
+      const rightWeight = totalRightPotential > 0 ? row.rightPotential / totalRightPotential : 0;
+      row.informationWeight = Math.max(leftWeight, rightWeight);
     }
 
+    const totalInformation = rows.reduce((sum, row) => sum + row.informationWeight, 0);
+    let answeredInformation = 0;
+    let answered = 0;
+    let answeredLeftPotential = 0;
+    let answeredRightPotential = 0;
     let leftEvidence = 0;
     let rightEvidence = 0;
-    for (const item of answered) {
+    let signedEvidence = 0;
+
+    for (const row of rows) {
+      const item = row.item;
+      if (!hasResponse(responses, item.id) || responses[item.id] === null) continue;
+
+      answered += 1;
+      answeredInformation += row.informationWeight;
+      answeredLeftPotential += row.leftPotential;
+      answeredRightPotential += row.rightPotential;
+
       const response = Number(responses[item.id]);
       if (!Number.isFinite(response) || response === 0) continue;
       const direction = response > 0 ? "agree" : "disagree";
       const signal = signalFor(item, direction, axisId);
       const contribution = Math.abs(response) / RESPONSE_MAX * signal;
-      if (contribution > 0) leftEvidence += contribution;
-      if (contribution < 0) rightEvidence += -contribution;
+
+      if (contribution > 0) {
+        leftEvidence += contribution;
+        if (totalLeftPotential > 0) signedEvidence += contribution / totalLeftPotential;
+      }
+      if (contribution < 0) {
+        rightEvidence += -contribution;
+        if (totalRightPotential > 0) signedEvidence += contribution / totalRightPotential;
+      }
     }
 
-    const leftSupport = leftPotential > 0 ? leftEvidence / leftPotential : 0;
-    const rightSupport = rightPotential > 0 ? rightEvidence / rightPotential : 0;
+    const leftSupport = answeredLeftPotential > 0 ? leftEvidence / answeredLeftPotential : 0;
+    const rightSupport = answeredRightPotential > 0 ? rightEvidence / answeredRightPotential : 0;
 
-    // The two poles are estimated separately. An answer that is evidence for one pole
-    // need not be treated as evidence for the other when the proposition is asymmetric.
-    // "Not sure" is not a neutral answer: exclude its potential from the
-    // denominator. Shrink sparse evidence toward 50 to avoid false certainty.
-    const coverage = items.length ? answered.length / items.length : 0;
-    const raw = (leftSupport - rightSupport) * Math.sqrt(coverage);
+    // "Not sure" removes the item's information opportunity rather than acting
+    // like a neutral answer. A genuine neutral answer contributes no directional
+    // evidence but does enlarge the answered-information denominator, so it can
+    // only leave extremity unchanged or pull the score toward 50. Sparse answers
+    // are still shrunk toward 50 by the square-root information-coverage term.
+    const coverage = totalInformation > 0 ? answeredInformation / totalInformation : 0;
+    const raw = answeredInformation > 0 && totalInformation > 0
+      ? clamp(signedEvidence * Math.sqrt(totalInformation / answeredInformation), -1, 1)
+      : 0;
     const score = clamp(50 + roundAwayFromZero(50 * raw), 0, 100);
     const strength = Math.round(100 * Math.max(leftSupport, rightSupport));
     const conflict = Math.round(100 * Math.min(leftSupport, rightSupport));
 
     return {
       score,
-      answered: answered.length,
+      answered,
       total: items.length,
+      coverage,
       strength,
       conflict,
       leftSupport: Math.round(100 * leftSupport),
@@ -83,6 +118,27 @@
   function scoreAll(responses, axes = global.LAW_AXES, questions = global.LAW_QUESTIONS) {
     return Object.fromEntries(
       axes.map((axis) => [axis.id, scoreAxis(axis.id, responses, questions)])
+    );
+  }
+
+  function scoreAllWithDiagnostics(
+    responses,
+    diagnosticResponses = {},
+    axes = global.LAW_AXES,
+    questions = global.LAW_QUESTIONS,
+    diagnostics = global.LAW_DIAGNOSTIC_QUESTIONS
+  ) {
+    const supplemental = (Array.isArray(diagnostics) ? diagnostics : []).filter(
+      (item) =>
+        item?.signals &&
+        hasResponse(diagnosticResponses, item.id) &&
+        diagnosticResponses[item.id] !== null
+    );
+    if (supplemental.length === 0) return scoreAll(responses, axes, questions);
+    return scoreAll(
+      { ...(responses || {}), ...(diagnosticResponses || {}) },
+      axes,
+      [...questions, ...supplemental]
     );
   }
 
@@ -125,6 +181,7 @@
     contributesToAxis,
     scoreAxis,
     scoreAll,
+    scoreAllWithDiagnostics,
     axisLabel,
     dominantPole,
     profileDistance

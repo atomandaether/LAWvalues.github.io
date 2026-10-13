@@ -931,13 +931,33 @@
       Math.max(...AXIS_IDS.map(axis=>Math.abs(axisValue(scores,axis)-50)))<=18;
   }
 
-  function detectBroadIncoherence(responses) {
-    const strongAgree = (id) => responseValue(responses, id) >= 2;
-    const sourceContradiction = strongAgree("S7") && strongAgree("S8");
-    const formContradiction =
-      (strongAgree("F1") && strongAgree("F5")) ||
-      (strongAgree("F3") && strongAgree("F5"));
-    return sourceContradiction && formContradiction;
+  function detectBroadIncoherence(responses, diagnosticResponses = {}) {
+    const coreAtLeast = (id, threshold) => responseValue(responses, id) >= threshold;
+    const coreAtMost = (id, threshold) => responseValue(responses, id) <= threshold;
+    const diagnosticAtLeast = (id, threshold) =>
+      hasAsked(diagnosticResponses, id) && Number(diagnosticResponses[id]) >= threshold;
+    const diagnosticAtMost = (id, threshold) =>
+      hasAsked(diagnosticResponses, id) && Number(diagnosticResponses[id]) <= threshold;
+
+    // Each domain below requires propositions that are genuinely difficult to
+    // reconcile, not merely answers that land on opposite ends of an axis.
+    // The exceptional result requires contradictions in at least two independent
+    // jurisprudential domains, so ordinary nuance and case-specific distinctions
+    // remain classifiable.
+    const domains = {
+      source:
+        (coreAtLeast("S7", 2) && coreAtLeast("S8", 2)) ||
+        (coreAtLeast("S2", 2) && diagnosticAtMost("D-NP6", -2)),
+      form:
+        ((coreAtLeast("F1", 2) || coreAtLeast("F3", 2)) && coreAtLeast("F5", 2)),
+      constitutional_time:
+        (coreAtLeast("T7", 2) && diagnosticAtMost("D-ORI1", -2)) ||
+        (coreAtMost("T7", -2) && diagnosticAtLeast("D-ORI1", 2)),
+      separation:
+        coreAtMost("E3", -2) && diagnosticAtLeast("D-SEP3", 2)
+    };
+
+    return Object.values(domains).filter(Boolean).length >= 2;
   }
 
   function finalizeResult(result, scores, traits, traitEvidence) {
@@ -1369,7 +1389,7 @@
       }, scores, traits, traitEvidence);
     }
 
-    if (detectBroadIncoherence(responses)) {
+    if (detectBroadIncoherence(responses, diagnosticResponses)) {
       return finalizeResult({
         identity: identityFromCatalog("incoherent_response", "Inconsistent response pattern"),
         identityScore: 1,
