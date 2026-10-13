@@ -1291,12 +1291,10 @@
 
     const identityResolution = resolveIdentity(scores, traits);
     const championResolution = resolveChampions(scores, traits, identityResolution.best.identity);
-    const historicalMethod = global.LAW_SCORING?.historicalMethodConsistency?.(responses) || null;
     return finalizeResult({
       identity: identityResolution.best.identity,
       identityScore: identityResolution.best.score,
       primaryStrength: identityResolution.best.basis,
-      historicalMethod,
       identityReason: identityResolution.best.reason,
       identityAlternatives: identityResolution.candidates.slice(1, 4),
       champions: championResolution.matches.map(({ profile, score }) => ({
