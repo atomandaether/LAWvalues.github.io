@@ -1310,7 +1310,7 @@
     const corroboration=Number(classification?.primaryStrength);
     const isolated=new Set(["minimalist","thayerian",
       "nonpositivist","fullerian","intentionalist","political_process_jurist",
-      "sociological_jurist","structuralist","proportionalist","common_good_constitutionalist"]);
+      "sociological_jurist","proportionalist","common_good_constitutionalist"]);
     const needsMore=isolated.has(classification?.identity?.id) &&
       Number.isFinite(corroboration) && corroboration<0.6;
     if(score>=0.82 && margin>=0.07 && !needsMore) {
@@ -1341,7 +1341,7 @@
   function isMethodIdentity(identity) {
     return [
       "textualist","intentionalist","purposivist","legal_process_theorist",
-      "interpretive_pluralist","pragmatist","legal_realist","sociological_jurist","structuralist"
+      "interpretive_pluralist","pragmatist","legal_realist","sociological_jurist"
     ].includes(identity?.id);
   }
 
