@@ -1577,7 +1577,7 @@ const allLockedUnits=new Set([
   "owen_dixon","vermeule","oconnor"
 ]);
 assert.deepEqual([...allLockedUnits].sort(),
-  profiles.filter(p=>p.selectable!==false && p.tier!=="lineage").map(p=>p.id).sort(),
+  Array.from(profiles.filter(p=>p.selectable!==false && p.tier!=="lineage"),p=>p.id).sort(),
   "Every selectable champion must have a literal route audit");
 const allPublicNouns=new Set([
   ...Object.values(sourceExpectedIdentity),
@@ -1590,7 +1590,7 @@ const allPublicNouns=new Set([
   "legal_constitutionalist","common_good_constitutionalist"
 ]);
 assert.deepEqual(
-  identities.filter(x=>x.public!==false && x.family!=="meta").map(x=>x.id)
+  Array.from(identities.filter(x=>x.public!==false && x.family!=="meta"),x=>x.id)
     .filter(id=>!allPublicNouns.has(id)),[],
   "Every public noun must be covered by a literal reachable champion or noun fixture"
 );
