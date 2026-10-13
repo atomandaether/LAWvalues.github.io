@@ -417,8 +417,8 @@
     const narrowShallow = traits["method.narrow_shallow"] || 0;
     const incremental = traits["remedies.incremental"] || 0;
 
-    if (dialogic >= 0.5) {
-      add("weak_form_constitutionalist", 0.98, "Direct weak-form/dialogic-review evidence.");
+    if (dialogic >= 0.5 && s.post <= 0.5) {
+      add("weak_form_constitutionalist", 0.98, "Direct weak-form/dialogic-review evidence within an intermediate judicial-authority posture.");
     }
     if (antiJudicialSupremacy >= 0.45 && popularAuthority >= 0.45) {
       add("popular_constitutionalist", 0.99, "Popular constitutional authority beyond branch-specific departmentalism.");
