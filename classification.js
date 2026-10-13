@@ -408,7 +408,7 @@
     const establishedNonAuthorityScore = Math.max(0, ...candidates.map((item) => item.score));
     const authorityCanDominate =
       Math.max(s.sorc, s.cons, s.time, s.separ, s.form) <= 0.7 &&
-      establishedNonAuthorityScore < 0.9;
+      establishedNonAuthorityScore < 0.85;
     const processReinforcement = traits["posture.process_reinforcement"] || 0;
     const responsiveReview = traits["posture.responsive_review"] || 0;
     const antiJudicialSupremacy = traits["posture.anti_judicial_supremacy"] || 0;
