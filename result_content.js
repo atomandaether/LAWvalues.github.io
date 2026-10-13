@@ -1283,7 +1283,7 @@
         explanation:"This is your nearest jurisprudential neighbor, but the match is comparatively weak, mixed, or close to another identity."
       };
     }
-    return {id:"fit_moderate",text:`Fairly clearly ${article}`,explanation:"This is your nearest judicial philosophy, with meaningful but not exclusive support."};
+    return null;
   }
 
   function isOriginalistIdentity(identity) {
@@ -1663,7 +1663,11 @@
     if(ids.modifierId) {
       const twist=twistByAnyId(ids.modifierId);
       assembled.modifier=ids.modifierId.startsWith("fit_")
-        ? {id:ids.modifierId,text:ids.modifierId==="fit_some_kind"?"Some kind of":ids.modifierId==="fit_unmistakable"?`Unmistakably ${indefiniteArticle(identity.label)}`:`Fairly clearly ${indefiniteArticle(identity.label)}`,explanation:"Nearest judicial philosophy at the recorded evidence level."}
+        ? ids.modifierId==="fit_some_kind"
+          ? {id:"fit_some_kind",text:"Some kind of",explanation:"This is your nearest jurisprudential neighbor, but the match is comparatively weak, mixed, or close to another identity."}
+          : ids.modifierId==="fit_unmistakable"
+            ? {id:"fit_unmistakable",text:`Unmistakably ${indefiniteArticle(identity.label)}`,explanation:"Your answers form an unusually clean and well-separated match for this jurisprudential identity."}
+            : null
         : twist?asModifier(twist):legacyRendering(ids.modifierId,"modifier")||assembled.modifier;
     }
     if(ids.bridgeId) assembled.bridge=BRIDGES.find(x=>x.id===ids.bridgeId)||assembled.bridge;
