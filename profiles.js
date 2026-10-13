@@ -73,7 +73,7 @@ globalThis.LAW_PROFILES = Object.freeze([
     },
     signatureTraits: ["source.principles_are_law", "source.fit_and_justification", "source.right_answer"],
     requiredTraits: [{ any: ["source.principles_are_law", "source.fit_and_justification"], min: 0.45 }],
-    antiTraits: ["source.law_runs_out"],
+    antiTraits: ["source.law_runs_out", "method.subjective_moral_override"],
     description: "Central legal Interpretivism: institutional practice bears on legal rights through the principles that best fit and justify that practice.",
     related: ["Ronald Dworkin", "Nicos Stavropoulos", "T.R.S. Allan"]
   },
@@ -112,7 +112,7 @@ globalThis.LAW_PROFILES = Object.freeze([
       { all: ["source.objective_morality"], min: 0.35 },
       { all: ["source.positive_law_settlement"], min: 0.35 }
     ],
-    antiTraits: ["source.principles_are_law"],
+    antiTraits: ["source.principles_are_law", "method.subjective_moral_override"],
     description: "Central modern Natural Law: objective practical morality matters to law, while positive law retains an important settlement, coordination, and institutional-authority function.",
     related: ["Thomas Aquinas", "William Blackstone", "Jonathan Crowe"]
   },
@@ -311,7 +311,7 @@ globalThis.LAW_PROFILES = Object.freeze([
       time: { target: 96, weight: 0.85 },
       prec: { target: 10, weight: 1 }
     },
-    signatureTraits: ["time.fixation", "precedent.correctness_first"],
+    signatureTraits: ["time.fixation", "precedent.correctness_first", "precedent.judicial_invention_skepticism"],
     requiredTraits: [],
     antiTraits: ["precedent.stability"],
     description: "Correction-first originalism: entrenched precedent yields comparatively readily to the best account of original constitutional law.",
@@ -326,7 +326,7 @@ globalThis.LAW_PROFILES = Object.freeze([
       time: { target: 90, weight: 0.85 },
       prec: { target: 82, weight: 1 }
     },
-    signatureTraits: ["time.fixation", "precedent.stability", "precedent.settlement"],
+    signatureTraits: ["time.fixation", "precedent.stability", "precedent.settlement", "precedent.protective_rule_stability"],
     requiredTraits: [],
     antiTraits: ["precedent.correctness_first"],
     description: "Precedent-accommodating originalism: original meaning remains authoritative while stare decisis, reliance, and legal settlement retain substantial force.",
