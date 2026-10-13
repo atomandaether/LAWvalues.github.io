@@ -66,6 +66,7 @@ globalThis.LAW_PROFILES = Object.freeze([
     name: "Ronald Dworkin / Nicos Stavropoulos",
     tier: "main",
     identityIds: ["interpretivist"],
+    crossCuttingIdentityIds: ["legal_constitutionalist"],
     axisSignature: {
       sorc: { target: 8, weight: 1 },
       post: { target: 24, weight: 0.35 }
@@ -144,7 +145,7 @@ globalThis.LAW_PROFILES = Object.freeze([
     name: "Hugo Black",
     tier: "main",
     identityIds: ["textualist"],
-    crossCuttingIdentityIds: ["formalist"],
+    crossCuttingIdentityIds: ["formalist", "legal_constitutionalist"],
     axisSignature: {
       cons: { target: 94, weight: 0.9 },
       form: { target: 98, weight: 1 },
@@ -380,6 +381,7 @@ globalThis.LAW_PROFILES = Object.freeze([
     name: "Robert Alexy",
     tier: "specialist",
     identityIds: ["proportionalist"],
+    crossCuttingIdentityIds: ["legal_constitutionalist"],
     axisSignature: {
       form: { target: 4, weight: 1 },
       sorc: { target: 16, weight: 0.6 }
@@ -447,6 +449,7 @@ globalThis.LAW_PROFILES = Object.freeze([
     name: "Aharon Barak",
     tier: "main",
     identityIds: ["purposivist", "proportionalist"],
+    crossCuttingIdentityIds: ["legal_constitutionalist"],
     axisSignature: {
       cons: { target: 10, weight: 0.8 },
       post: { target: 10, weight: 0.75 },
@@ -514,6 +517,7 @@ globalThis.LAW_PROFILES = Object.freeze([
     name: "William J. Brennan Jr.",
     tier: "main",
     identityIds: ["living_constitutionalist"],
+    crossCuttingIdentityIds: ["legal_constitutionalist"],
     axisSignature: {
       time: { target: 5, weight: 1 },
       post: { target: 10, weight: 0.75 },
@@ -588,13 +592,12 @@ globalThis.LAW_PROFILES = Object.freeze([
     identityIds: ["minimalist"],
     axisSignature: {
       remed: { target: 91, weight: 1 },
-      post: { target: 65, weight: 0.35 },
       prec: { target: 68, weight: 0.35 }
     },
-    signatureTraits: ["remedies.incremental", "posture.passive_virtues"],
+    signatureTraits: ["method.narrow_shallow", "remedies.incremental"],
     requiredTraits: [],
-    antiTraits: ["remedies.structural"],
-    description: "The strongest fit when deciding narrowly and shallowly is itself a major commitment, leaving broader questions for later cases and democratic deliberation.",
+    antiTraits: ["posture.passive_virtues", "remedies.structural"],
+    description: "Judicial Minimalism: decide narrowly and shallowly, leave broader questions unresolved, and seek incompletely theorized agreement rather than maximal constitutional settlement.",
     related: ["Alexander Bickel"]
   },
   {
@@ -759,21 +762,21 @@ globalThis.LAW_PROFILES = Object.freeze([
     axisSignature: { post: { target: 97, weight: 1 } },
     signatureTraits: ["posture.clear_error"],
     requiredTraits: [{ all: ["posture.clear_error"], min: 0.5 }],
-    antiTraits: ["posture.rights_trumps"],
-    description: "The clear-error deference specialist: a judge can think another constitutional interpretation is better yet still uphold a legislature's reasonable judgment.",
+    antiTraits: ["posture.rights_trumps", "posture.reasonable_disagreement"],
+    description: "The clear-error deference specialist: courts retain judicial review but uphold any legislative constitutional judgment within the range of reasonable interpretation.",
     related: ["Learned Hand", "Felix Frankfurter", "Oliver Wendell Holmes Jr."]
   },
   {
     id: "waldron",
-    name: "Jeremy Waldron",
+    name: "Jeremy Waldron / Richard Bellamy",
     tier: "main",
-    identityIds: ["waldronian"],
-    axisSignature: { post: { target: 98, weight: 1 } },
+    identityIds: ["political_constitutionalist"],
+    axisSignature: { post: { target: 96, weight: 1 } },
     signatureTraits: ["posture.democratic_legitimacy", "posture.reasonable_disagreement"],
-    requiredTraits: [{ any: ["posture.democratic_legitimacy", "posture.reasonable_disagreement"], min: 0.45 }],
-    antiTraits: ["posture.judicial_supremacy"],
-    description: "A rights-respecting majoritarian fit: under functioning democratic institutions and reasonable disagreement, legislatures have the stronger claim to final decision.",
-    related: ["James Bradley Thayer"]
+    requiredTraits: [{ all: ["posture.reasonable_disagreement"], min: 0.5 }],
+    antiTraits: ["posture.judicial_supremacy", "posture.clear_error_only"],
+    description: "Political Constitutionalism: under functioning democratic institutions and reasonable rights disagreement, representative political processes retain the stronger claim to final constitutional authority.",
+    related: ["J. A. G. Griffith", "Adam Tomkins", "Grégoire Webber"]
   },
   {
     id: "kramer",
@@ -786,20 +789,61 @@ globalThis.LAW_PROFILES = Object.freeze([
       { all: ["posture.anti_judicial_supremacy", "posture.popular_authority"], min: 0.45 }
     ],
     antiTraits: ["posture.judicial_supremacy"],
-    description: "A specialist fit when constitutional authority ultimately belongs to the people and democratic politics rather than becoming the exclusive domain of courts.",
+    description: "Popular Constitutionalism: ultimate constitutional authority remains with the people and democratic constitutional politics rather than becoming the exclusive property of courts.",
     related: ["Mark Tushnet"]
+  },
+  {
+    id: "walsh_departmentalism",
+    name: "Kevin Walsh",
+    tier: "specialist",
+    identityIds: ["departmentalist"],
+    axisSignature: { post: { target: 84, weight: 0.55 } },
+    signatureTraits: ["posture.anti_judicial_supremacy", "posture.branch_interpretation"],
+    requiredTraits: [
+      { all: ["posture.anti_judicial_supremacy", "posture.branch_interpretation"], min: 0.45 }
+    ],
+    antiTraits: ["posture.popular_authority"],
+    description: "Judicial Departmentalism: judicial judgments and precedent are authoritative within the judicial department without making the Supreme Court's constitutional interpretation uniquely binding on every governmental actor.",
+    related: ["Abraham Lincoln", "Thomas Jefferson"]
+  },
+  {
+    id: "gardbaum",
+    name: "Stephen Gardbaum",
+    tier: "main",
+    identityIds: ["weak_form_constitutionalist"],
+    axisSignature: { post: { target: 60, weight: 0.35 } },
+    signatureTraits: ["posture.dialogic", "posture.weak_form"],
+    requiredTraits: [{ all: ["posture.dialogic"], min: 0.5 }],
+    antiTraits: ["posture.judicial_supremacy", "posture.popular_authority"],
+    description: "Weak-form constitutionalism: courts independently adjudicate rights while ordinary democratic institutions retain a structured capacity to respond without constitutional amendment.",
+    related: ["Mark Tushnet", "Rosalind Dixon", "Peter Hogg / Allison Bushell"]
   },
   {
     id: "ely",
     name: "John Hart Ely",
-    tier: "specialist",
-    identityIds: ["elyan"],
+    tier: "main",
+    identityIds: ["political_process_jurist"],
     axisSignature: { post: { target: 48, weight: 0.25 } },
     signatureTraits: ["posture.process_reinforcement", "posture.conditional_intervention"],
     requiredTraits: [{ all: ["posture.process_reinforcement"], min: 0.5 }],
+    antiTraits: ["posture.responsive_review"],
+    description: "Political-process / representation-reinforcement review: ordinary substantive disagreements stay with politics, while courts intervene aggressively when democratic channels are blocked or distorted.",
+    related: ["Carolene Products Footnote Four", "Henry Hart / Albert Sacks"]
+  },
+  {
+    id: "dixon_responsive",
+    name: "Rosalind Dixon",
+    tier: "specialist",
+    identityIds: ["political_process_jurist"],
+    axisSignature: {
+      post: { target: 42, weight: 0.3 },
+      remed: { target: 58, weight: 0.2 }
+    },
+    signatureTraits: ["posture.process_reinforcement", "posture.responsive_review"],
+    requiredTraits: [{ all: ["posture.responsive_review"], min: 0.5 }],
     antiTraits: [],
-    description: "A representation-reinforcement fit: defer on ordinary substantive disagreements but intervene aggressively when the democratic process itself is blocked or distorted.",
-    related: ["Henry Hart & Albert Sacks"]
+    description: "Responsive Judicial Review: tailor the timing, intensity, reasoning, and remedies of review to specific democratic blind spots, burdens of inertia or monopoly, and the judiciary's comparative capacity.",
+    related: ["John Hart Ely", "Stephen Gardbaum"]
   },
   {
     id: "bickel",
@@ -807,26 +851,14 @@ globalThis.LAW_PROFILES = Object.freeze([
     tier: "specialist",
     identityIds: ["minimalist"],
     axisSignature: {
-      post: { target: 72, weight: 0.55 },
-      remed: { target: 80, weight: 0.45 }
+      post: { target: 72, weight: 0.45 },
+      remed: { target: 80, weight: 0.55 }
     },
-    signatureTraits: ["posture.passive_virtues", "posture.countermajoritarian_difficulty"],
+    signatureTraits: ["posture.passive_virtues"],
     requiredTraits: [{ all: ["posture.passive_virtues"], min: 0.5 }],
     antiTraits: [],
-    description: "A restraint fit centered on the counter-majoritarian difficulty and strategic avoidance—the passive virtues—rather than legislative supremacy as such.",
+    description: "Passive-virtues Minimalism: strategic avoidance, timing, and justiciability are themselves tools for managing the counter-majoritarian difficulty.",
     related: ["Cass Sunstein", "James Bradley Thayer"]
-  },
-  {
-    id: "gardbaum",
-    name: "Stephen Gardbaum",
-    tier: "specialist",
-    identityIds: ["popular_constitutionalist"],
-    axisSignature: { post: { target: 60, weight: 0.35 } },
-    signatureTraits: ["posture.dialogic", "posture.weak_form"],
-    requiredTraits: [{ all: ["posture.dialogic"], min: 0.5 }],
-    antiTraits: [],
-    description: "A weak-form-review specialist: courts enforce rights without necessarily possessing the final constitutional word over democratic institutions.",
-    related: ["Rosalind Dixon", "Mark Tushnet"]
   },
   {
     id: "ackerman",
