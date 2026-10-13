@@ -8,7 +8,7 @@
 
 > Non-originalist constitutional-time details are documented in [`NONORIGINALISM_ENGINE.md`](NONORIGINALISM_ENGINE.md): Living/Common-Law public nouns, Democratic/Transformative Living modifiers, seven locked champion units, and end-to-end reachability under the twelve-question cap.
 
-> Judicial-review / constitutional-authority details are documented in [`AUTHORITY_ENGINE.md`](AUTHORITY_ENGINE.md): eight public authority nouns, Responsive/Passive-virtues modifiers, nine locked champion units, and end-to-end reachability under the twelve-question cap.
+> Judicial-review / constitutional-authority details are documented in [`AUTHORITY_ENGINE.md`](AUTHORITY_ENGINE.md): six narrow public authority nouns, Responsive/Passive-virtues modifiers, eight locked public champion units, and strong-/weak-form review retained as nonpublic descriptors.
 
 > Institutional-structure / doctrinal-form / remedies details are documented in [`STRUCTURE_FORM_ENGINE.md`](STRUCTURE_FORM_ENGINE.md): Formalist/Functionalist/Proportionalist, eight locked selectable champion units across this zone, tightly gated Fiss cross-noun matching, remedies lineage, and the exactly-one-champion rule.
 

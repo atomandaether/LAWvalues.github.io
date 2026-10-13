@@ -303,10 +303,11 @@ globalThis.LAW_RESULT_IDENTITIES = Object.freeze([
     id: "legal_constitutionalist",
     label: "Legal Constitutionalist",
     family: "posture",
-    status: "core",
+    status: "adaptive",
+    public: false,
     parentId: null,
     covers: ["posture.countermajoritarian", "posture.rights_trumps", "posture.judicial_supremacy", "posture.judicial_independence"],
-    notes: "Strong-form constitutional authority: entrenched constitutional rights and independent courts can bind ordinary political majorities."
+    notes: "Internal authority descriptor only. Strong-form judicial constitutional authority is too broad to function as a public jurisprudential noun; retain these traits for explanation and champion matching."
   },
   {
     id: "political_constitutionalist",
@@ -330,10 +331,11 @@ globalThis.LAW_RESULT_IDENTITIES = Object.freeze([
     id: "weak_form_constitutionalist",
     label: "Weak-Form Constitutionalist",
     family: "posture",
-    status: "core",
+    status: "adaptive",
+    public: false,
     parentId: null,
     covers: ["posture.dialogic", "posture.weak_form"],
-    notes: "Courts independently enforce rights without necessarily possessing the final constitutional word over ordinary democratic institutions."
+    notes: "Internal institutional-design descriptor only. Weak-form review is a model of judicial review that can coexist with multiple jurisprudential identities, not a public noun."
   },
   {
     id: "popular_constitutionalist",

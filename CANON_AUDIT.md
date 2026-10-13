@@ -212,12 +212,7 @@ Usually better treated as a **front modifier/subtype trait** rather than inventi
 
 # 5. Judicial review and constitutional authority
 
-The Posture zone uses eight public nouns. These are institutional theories of constitutional authority, not merely points on the Majoritarian/Counter-majoritarian axis.
-
-## Legal Constitutionalist
-Strong-form constitutional authority: entrenched constitutional rights and independent judicial enforcement can bind ordinary political majorities.
-
-There is deliberately no one forced default champion. Dworkin, Brennan, Black, Barak, Alexy, and other existing thinkers may become cross-cutting compatible when their whole jurisprudential profile fits. **Lawrence Sager** remains important further reading because underenforced constitutional norms are not directly measured.
+The Posture zone uses six public nouns. Broad strong-form legal constitutionalism and weak-form review remain measured authority configurations but are no longer public nouns.
 
 ## Political Constitutionalist
 Functioning representative institutions retain the stronger claim to final constitutional authority under reasonable rights disagreement.
@@ -230,11 +225,6 @@ Champion unit: **Jeremy Waldron / Richard Bellamy**. Their philosophical rationa
 Courts retain judicial review but invalidate legislation only when the legislature's constitutional judgment falls outside the range of reasonable interpretation.
 
 Champion: **James Bradley Thayer**. Holmes, Hand, Brandeis, Cardozo, and Frankfurter remain historical practitioners/relatives.
-
-## Weak-Form Constitutionalist
-Courts independently adjudicate constitutional rights without necessarily possessing the final constitutional word; ordinary democratic institutions retain a structured response mechanism.
-
-Champion: **Stephen Gardbaum**. Tushnet and Hogg/Bushell remain important lineage. Weak-form review is not Popular Constitutionalism: it preserves independent judicial rights review while rejecting entrenched judicial supremacy.
 
 ## Popular Constitutionalist
 Ultimate constitutional authority remains with the people and democratic constitutional politics rather than becoming the exclusive property of courts.
@@ -265,7 +255,7 @@ Default champion: **Cass Sunstein**.
 ## Routing
 - O1 plus rejection of the Waldron/Bellamy democratic-finality rationale supports Thayer.
 - D-WAL1 separates Thayerian deference from Political Constitutionalism.
-- O6 directly supplies weak-form/dialogic evidence.
+- O6 still supplies weak-form/dialogic institutional-design evidence, but no public noun.
 - D-MAJ1 must be followed by D-MAJ2 when agreed: D-MAJ2 separates Popular Constitutionalism from branch-specific Departmentalism.
 - D-ELY1 establishes Political Process Jurisprudence; **D-RESP1** is the only new diagnostic and distinguishes Dixon from Ely.
 - O7 supplies passive-virtues evidence; R6/R7/R11 and the Remedies axis supply generic narrow/shallow Minimalism.

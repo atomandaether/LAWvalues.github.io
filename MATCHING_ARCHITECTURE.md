@@ -93,7 +93,7 @@ Examples:
 - Robert Post / Reva Siegel: Democratic Living modifier/champion only after a public-contestation constitutional-development diagnostic
 - Karl Klare / Pius Langa: Transformative Living modifier/champion only after a continuing constitutional-transformation diagnostic
 - Wil Waluchow: Common-Law champion only when Inclusive Positivism and common-law constitutional development are both independently established
-- Stephen Gardbaum: Weak-Form Constitutionalism from direct dialogic-review evidence, not merely moderate Majoritarianism
+- Stephen Gardbaum: retained as weak-form/New Commonwealth lineage; dialogic-review evidence no longer creates a public noun or champion endpoint
 - Kevin Walsh: Departmentalism only after branch-specific independent-interpretation evidence
 - Rosalind Dixon: Responsive Political Process Jurisprudence only after representation reinforcement is established and the responsive-review diagnostic is affirmed
 - Alexander Bickel: Passive-virtues Judicial Minimalism only when strategic avoidance is directly evidenced; generic narrow/shallow Minimalism remains Sunsteinian
