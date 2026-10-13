@@ -55,11 +55,10 @@ globalThis.LAW_RESULT_IDENTITIES = Object.freeze([
     id: "nonpositivist",
     label: "Non-Positivist",
     family: "source",
-    status: "fallback",
-    broadFallback: true,
+    status: "adaptive",
     parentId: null,
     covers: ["source.nonpositive_sources"],
-    notes: "Broad last-resort fallback when positivism is rejected but Natural Law, Interpretivism, Fullerian legality, or a narrower descriptive nonpositivist modifier is not established."
+    notes: "Public umbrella only when a distinctive nonpositivist subtype is affirmatively established below the noun layer, such as Moral Impact, Moral Practice, or Extreme-Injustice theory. A merely nonpositive Source score is not enough."
   },
   {
     id: "positivist",
