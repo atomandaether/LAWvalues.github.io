@@ -235,8 +235,8 @@ globalThis.LAW_DIAGNOSTIC_QUESTIONS = Object.freeze([
     disagreeTraits: [],
     nextOnAgree: [],
     nextOnDisagree: ["D-NP2"],
-    relatedIdentityIds: ["natural_lawyer"],
-    note: "Central modern Natural Law discriminator: objective morality plus a genuine settlement and coordination role for positive law."
+    relatedIdentityIds: ["natural_lawyer", "originalist", "public_meaning_originalist", "original_intent_originalist"],
+    note: "Central modern Natural Law discriminator: objective morality plus a genuine settlement and coordination role for positive law; also confirms natural-law-grounded Higher-law Originalism when the Originalist noun is already live."
   },
   {
     id: "D-NP2",
