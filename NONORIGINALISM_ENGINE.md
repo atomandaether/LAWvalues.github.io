@@ -47,7 +47,7 @@ No separate substantive public modifier is locked. Distinctive variants remain c
 
 ## Adaptive routing
 
-The global cap remains seven adaptive questions.
+The global cap remains twelve adaptive questions.
 
 - **D-LIV1** is offered only when the core already resolves strongly toward the Living noun rather than a Common-Law or other family. Agreement supplies Democratic Living evidence.
 - **D-LIV2** is prioritized for a strongly Living profile that is also open-construction, systemic-remedial, and counter-majoritarian enough to make Transformative Constitutionalism genuinely plausible. It may also follow rejection of D-LIV1 where the remaining profile warrants it.
@@ -67,7 +67,7 @@ The subtype diagnostics affirmatively strengthen the existing Living noun. They 
 
 ## Reachability contract
 
-The audit suite requires all seven locked non-originalist constitutional-time champion units to be separately reachable from literal 93-item answer vectors through the live adaptive router within the seven-question cap.
+The audit suite requires all seven locked non-originalist constitutional-time champion units to be separately reachable from literal 88-item answer vectors through the live adaptive router within the twelve-question cap.
 
 It additionally verifies:
 
