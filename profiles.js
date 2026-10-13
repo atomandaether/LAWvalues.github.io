@@ -146,6 +146,9 @@ globalThis.LAW_PROFILES = Object.freeze([
     tier: "main",
     identityIds: ["textualist"],
     crossCuttingIdentityIds: ["formalist", "legal_constitutionalist"],
+    crossCuttingRequirements: {
+      formalist: [{ all: ["form.anti_discretion"], min: 0.45 }]
+    },
     axisSignature: {
       cons: { target: 94, weight: 0.9 },
       form: { target: 98, weight: 1 },
@@ -249,6 +252,9 @@ globalThis.LAW_PROFILES = Object.freeze([
     tier: "main",
     identityIds: ["public_meaning_originalist", "originalist"],
     crossCuttingIdentityIds: ["formalist"],
+    crossCuttingRequirements: {
+      formalist: [{ all: ["form.anti_discretion"], min: 0.45 }]
+    },
     axisSignature: {
       cons: { target: 92, weight: 0.8 },
       time: { target: 90, weight: 0.9 },
@@ -399,6 +405,10 @@ globalThis.LAW_PROFILES = Object.freeze([
     tier: "main",
     identityIds: ["pragmatist"],
     crossCuttingIdentityIds: ["common_law_constitutionalist", "sociological_jurist"],
+    crossCuttingRequirements: {
+      common_law_constitutionalist: [{ all: ["time.common_law_development"], min: 0.35 }],
+      sociological_jurist: [{ all: ["method.social_interests"], min: 0.45 }]
+    },
     axisSignature: {
       cons: { target: 36, weight: 0.5 },
       prec: { target: 80, weight: 0.85 },
