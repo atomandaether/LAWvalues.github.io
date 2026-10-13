@@ -761,8 +761,10 @@
     const commonLawCore = traits["time.common_law_development"] || 0;
     const democraticLiving = traits["time.democratic_constitutionalism"] || 0;
     const transformativeLiving = traits["time.transformative_constitutionalism"] || 0;
+    const provisionalTimeIdentity = resolveIdentity(scores, traits).best.identity.id;
     const strongLiving = time <= 32;
-    const pureLivingBranch = strongLiving && commonLawCore < 0.4 && posture <= 45;
+    const pureLivingBranch =
+      strongLiving && provisionalTimeIdentity === "living_constitutionalist" && posture <= 45;
     const transformativeShape =
       pureLivingBranch && constraint <= 45 && remedies <= 35 && posture <= 35;
 
