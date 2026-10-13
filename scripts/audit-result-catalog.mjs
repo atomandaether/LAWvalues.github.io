@@ -1567,6 +1567,66 @@ for(let i=0;i<600;i++){
 }
 assert.ok(validCases>=550,"Fuzz must check enough valid completed profiles");
 
+
+// Exhaustive public roster accounting, including the three endpoints missing
+// from prior end-to-end fixtures.
+const allLockedUnits=new Set([
+  ...lockedOriginalistUnits,...lockedSourceUnits,...lockedMethodUnits,
+  ...Object.keys(distinctiveExpectedIdentity),...lockedNonOriginalistUnits,
+  ...lockedAuthorityUnits,...lockedStructureFormUnits,
+  "owen_dixon","vermeule","oconnor"
+]);
+assert.deepEqual([...allLockedUnits].sort(),
+  profiles.filter(p=>p.selectable!==false && p.tier!=="lineage").map(p=>p.id).sort(),
+  "Every selectable champion must have a literal route audit");
+const allPublicNouns=new Set([
+  ...Object.values(sourceExpectedIdentity),
+  ...Object.values(methodExpectedIdentity),
+  ...Object.values(distinctiveExpectedIdentity),
+  ...Object.values(nonOriginalistExpectedIdentity),
+  ...Object.values(authorityExpectedIdentity),
+  ...Object.values(structureFormExpectedIdentity),
+  "originalist","public_meaning_originalist","original_intent_originalist",
+  "legal_constitutionalist","common_good_constitutionalist"
+]);
+assert.deepEqual(
+  identities.filter(x=>x.public!==false && x.family!=="meta").map(x=>x.id)
+    .filter(id=>!allPublicNouns.has(id)),[],
+  "Every public noun must be covered by a literal reachable champion or noun fixture"
+);
+for(const id of ["owen_dixon","vermeule"]){
+  const responses=literalMethodCore(id),scores=scoring.scoreAll(responses),diagnostics={},asked=[];
+  for(let k=0;k<classifier.MAX_DIAGNOSTICS;k++){
+    const next=classifier.nextDiagnostic(scores,responses,diagnostics);
+    if(!next)break;
+    asked.push(next.id);
+    diagnostics[next.id]=next.id==="D-RLS1"?-3:next.id==="D-QC1"?-2:
+      id==="vermeule"&&next.id==="D-CGC1"?3:-3;
+  }
+  const result=classifier.classify(scores,responses,diagnostics,{coreElapsedMs:900000});
+  assert.equal(result.champions[0]?.id,id,`${id} must be reachable through actual core answers and adaptive routing`);
+  assert.equal(result.identity.id,id==="vermeule"?"common_good_constitutionalist":"formalist");
+  assert.ok(asked.length<=classifier.MAX_DIAGNOSTICS);
+}
+{
+  let seed=908442;
+  const random=()=>{seed=(Math.imul(seed,1664525)+1013904223)>>>0;return seed/4294967296;};
+  let reached=false;
+  for(let i=0;i<250 && !reached;i++){
+    const responses=Object.fromEntries(questions.map(q=>[q.id,[-3,-2,-1,0,1,2,3][Math.floor(random()*7)]]));
+    const scores=scoring.scoreAll(responses),diagnostics={};
+    for(let j=0;j<classifier.MAX_DIAGNOSTICS;j++){
+      const next=classifier.nextDiagnostic(scores,responses,diagnostics);
+      if(!next)break;
+      diagnostics[next.id]=next.id==="D-RLS1"||next.id==="D-QC1"?-2:
+        [-3,-2,-1,0,1,2,3][Math.floor(random()*7)];
+    }
+    const result=classifier.classify(scores,responses,diagnostics,{coreElapsedMs:900000});
+    if(result.champions[0]?.id==="oconnor"&&!result.responseQuality)reached=true;
+  }
+  assert.ok(reached,"O'Connor must remain reachable as a low-theory champion with literal answers");
+}
+
 console.log("PASS: adversarial primary-commitment, modifier/phrase, share-link, and 600 adaptive fuzz invariants.");
 console.log("PASS: all 18 approved phrases are reachable and use the approved critic-rib wording.");
 console.log("PASS: Originalism resolves end-to-end from literal 93-item answers through adaptive routing to all 13 locked champion units.");
