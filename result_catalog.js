@@ -282,22 +282,40 @@ globalThis.LAW_RESULT_IDENTITIES = Object.freeze([
 
   // Judicial review / democratic constitutional authority
   {
+    id: "legal_constitutionalist",
+    label: "Legal Constitutionalist",
+    family: "posture",
+    status: "core",
+    parentId: null,
+    covers: ["posture.countermajoritarian", "posture.rights_trumps", "posture.judicial_supremacy", "posture.judicial_independence"],
+    notes: "Strong-form constitutional authority: entrenched constitutional rights and independent courts can bind ordinary political majorities."
+  },
+  {
+    id: "political_constitutionalist",
+    label: "Political Constitutionalist",
+    family: "posture",
+    status: "adaptive",
+    parentId: null,
+    covers: ["posture.majoritarian", "posture.democratic_legitimacy", "posture.reasonable_disagreement"],
+    notes: "Functioning representative institutions retain the stronger claim to final constitutional authority under reasonable rights disagreement."
+  },
+  {
     id: "thayerian",
     label: "Thayerian",
     family: "posture",
     status: "adaptive",
     parentId: null,
     covers: ["posture.clear_error", "posture.majoritarian"],
-    notes: "Clear-mistake/beyond-reasonable-doubt judicial deference. High Majoritarian scores alone are insufficient."
+    notes: "Courts retain judicial review but invalidate legislation only outside the range of reasonable constitutional judgment."
   },
   {
-    id: "waldronian",
-    label: "Waldronian",
+    id: "weak_form_constitutionalist",
+    label: "Weak-Form Constitutionalist",
     family: "posture",
-    status: "adaptive",
+    status: "core",
     parentId: null,
-    covers: ["posture.majoritarian", "posture.democratic_legitimacy", "posture.reasonable_disagreement"],
-    notes: "Use when the objection to strong judicial review is specifically democratic legitimacy under functioning institutions and good-faith rights disagreement."
+    covers: ["posture.dialogic", "posture.weak_form"],
+    notes: "Courts independently enforce rights without necessarily possessing the final constitutional word over ordinary democratic institutions."
   },
   {
     id: "popular_constitutionalist",
@@ -306,7 +324,7 @@ globalThis.LAW_RESULT_IDENTITIES = Object.freeze([
     status: "adaptive",
     parentId: null,
     covers: ["posture.majoritarian", "posture.anti_judicial_supremacy", "posture.popular_authority"],
-    notes: "Extreme Majoritarianism is only the unlock. The label requires independent popular/political authority over constitutional meaning."
+    notes: "Ultimate constitutional authority remains with the people and democratic constitutional politics rather than becoming the exclusive property of courts."
   },
   {
     id: "departmentalist",
@@ -315,16 +333,45 @@ globalThis.LAW_RESULT_IDENTITIES = Object.freeze([
     status: "adaptive",
     parentId: null,
     covers: ["posture.anti_judicial_supremacy", "posture.branch_interpretation"],
-    notes: "Political branches retain independent constitutional interpretive authority; this is narrower than Popular Constitutionalism."
+    notes: "Coordinate governmental branches retain independent good-faith constitutional interpretive authority within their own institutional functions."
+  },
+  {
+    id: "political_process_jurist",
+    label: "Political Process Jurist",
+    family: "posture",
+    status: "adaptive",
+    parentId: null,
+    covers: ["posture.process_reinforcement", "posture.conditional_intervention"],
+    notes: "Ordinary substantive disagreements are generally left to politics, with stronger judicial intervention when democratic processes malfunction or exclude groups."
+  },
+  {
+    id: "minimalist",
+    label: "Judicial Minimalist",
+    family: "posture",
+    status: "core",
+    parentId: null,
+    covers: ["method.narrow_shallow", "remedies.incremental", "posture.passive_virtues"],
+    notes: "Narrow, shallow, incompletely theorized adjudication that resolves no more than necessary."
+  },
+  {
+    id: "waldronian",
+    label: "Waldronian",
+    family: "posture",
+    status: "adaptive",
+    public: false,
+    parentId: "political_constitutionalist",
+    covers: ["posture.democratic_legitimacy", "posture.reasonable_disagreement"],
+    notes: "Legacy/internal alias. Public output uses Political Constitutionalist."
   },
   {
     id: "elyan",
     label: "Elyan",
     family: "posture",
     status: "adaptive",
-    parentId: null,
+    public: false,
+    parentId: "political_process_jurist",
     covers: ["posture.process_reinforcement", "posture.conditional_intervention"],
-    notes: "Representation-reinforcement: ordinary deference plus aggressive review when democratic processes malfunction or exclude groups."
+    notes: "Legacy/internal alias. Public output uses Political Process Jurist."
   },
   {
     id: "bickelian",
@@ -334,16 +381,7 @@ globalThis.LAW_RESULT_IDENTITIES = Object.freeze([
     public: false,
     parentId: "minimalist",
     covers: ["posture.passive_virtues", "posture.countermajoritarian_difficulty"],
-    notes: "Internal/legacy subtype only. Public results should use Judicial Minimalist as the noun, surface passive-virtues/avoidance as a modifier twist, and let Alexander Bickel remain the champion-level match."
-  },
-  {
-    id: "minimalist",
-    label: "Judicial Minimalist",
-    family: "posture",
-    status: "core",
-    parentId: null,
-    covers: ["posture.passive_virtues", "remedies.incremental"],
-    notes: "Broader real label when narrow decisionmaking/avoidance is clear but a specifically Bickelian theory is not."
+    notes: "Internal subtype only. Public results use Judicial Minimalist with the Passive-virtues modifier and Alexander Bickel as champion."
   },
 
   // Structure / form
@@ -930,7 +968,7 @@ globalThis.LAW_CHAMPIONS = Object.freeze([
     note: "Use only after targeted Common-Good Constitutionalism diagnostics; Natural Law alone is not enough."
   },
 
-  // Judicial review / democracy
+  // Judicial review / constitutional authority
   {
     id: "thayer",
     name: "James Bradley Thayer",
@@ -938,18 +976,28 @@ globalThis.LAW_CHAMPIONS = Object.freeze([
     role: "primary",
     eligibleIdentityIds: ["thayerian"],
     signatureTraits: ["posture.clear_error", "posture.majoritarian"],
-    antiTraits: ["posture.countermajoritarian"],
-    note: "Canonical clear-mistake/beyond-reasonable-doubt deference champion."
+    antiTraits: ["posture.rights_trumps"],
+    note: "Canonical clear-mistake / reasonable-judgment judicial-deference champion."
   },
   {
     id: "waldron",
-    name: "Jeremy Waldron",
-    kind: "person",
+    name: "Jeremy Waldron / Richard Bellamy",
+    kind: "people",
     role: "primary",
-    eligibleIdentityIds: ["waldronian"],
+    eligibleIdentityIds: ["political_constitutionalist"],
     signatureTraits: ["posture.democratic_legitimacy", "posture.reasonable_disagreement"],
     antiTraits: ["posture.judicial_supremacy"],
-    note: "Canonical democratic-legitimacy objection to strong judicial review under specified conditions."
+    note: "Political-Constitutionalist champion unit: rights-respecting democratic institutions retain the stronger claim to final constitutional authority."
+  },
+  {
+    id: "gardbaum",
+    name: "Stephen Gardbaum",
+    kind: "person",
+    role: "primary",
+    eligibleIdentityIds: ["weak_form_constitutionalist"],
+    signatureTraits: ["posture.dialogic", "posture.weak_form"],
+    antiTraits: ["posture.judicial_supremacy", "posture.popular_authority"],
+    note: "New Commonwealth / weak-form-review champion: independent judicial rights review without entrenched judicial supremacy."
   },
   {
     id: "kramer",
@@ -965,31 +1013,51 @@ globalThis.LAW_CHAMPIONS = Object.freeze([
     id: "tushnet",
     name: "Mark Tushnet",
     kind: "person",
-    role: "subtype",
-    eligibleIdentityIds: ["popular_constitutionalist"],
-    signatureTraits: ["posture.anti_judicial_supremacy", "posture.popular_authority", "posture.weak_form"],
+    role: "historical",
+    eligibleIdentityIds: ["popular_constitutionalist", "weak_form_constitutionalist"],
+    signatureTraits: ["posture.anti_judicial_supremacy", "posture.weak_form"],
     antiTraits: [],
-    note: "More radical / weak-form-popular-constitutional champion; do not treat as identical to Kramer."
+    note: "Important lineage across Popular Constitutionalism and weak-form review rather than a separate locked endpoint."
+  },
+  {
+    id: "walsh_departmentalism",
+    name: "Kevin Walsh",
+    kind: "person",
+    role: "primary",
+    eligibleIdentityIds: ["departmentalist"],
+    signatureTraits: ["posture.anti_judicial_supremacy", "posture.branch_interpretation"],
+    antiTraits: ["posture.popular_authority"],
+    note: "Judicial Departmentalism: judicial judgments and precedent bind within the judicial department without making Supreme Court interpretations uniquely authoritative for every governmental actor."
   },
   {
     id: "ely",
     name: "John Hart Ely",
     kind: "person",
     role: "primary",
-    eligibleIdentityIds: ["elyan"],
+    eligibleIdentityIds: ["political_process_jurist"],
     signatureTraits: ["posture.process_reinforcement", "posture.conditional_intervention"],
+    antiTraits: ["posture.responsive_review"],
+    note: "Canonical representation-reinforcement / political-process champion."
+  },
+  {
+    id: "dixon_responsive",
+    name: "Rosalind Dixon",
+    kind: "person",
+    role: "subtype",
+    eligibleIdentityIds: ["political_process_jurist"],
+    signatureTraits: ["posture.process_reinforcement", "posture.responsive_review"],
     antiTraits: [],
-    note: "Representation-reinforcement champion; requires conditional pattern, not a point on Majoritarianism."
+    note: "Responsive Judicial Review: calibrate timing, intensity, reasoning, and remedies to specific democratic dysfunctions and judicial capacity."
   },
   {
     id: "bickel",
     name: "Alexander Bickel",
     kind: "person",
-    role: "primary",
+    role: "subtype",
     eligibleIdentityIds: ["minimalist"],
-    signatureTraits: ["posture.passive_virtues", "posture.countermajoritarian_difficulty"],
-    antiTraits: [],
-    note: "Passive-virtues/counter-majoritarian-difficulty champion."
+    signatureTraits: ["posture.passive_virtues"],
+    antiTraits: ["method.narrow_shallow"],
+    note: "Passive-virtues specialist: strategic avoidance, timing, and justiciability respond to the counter-majoritarian difficulty."
   },
   {
     id: "sunstein",
@@ -997,9 +1065,9 @@ globalThis.LAW_CHAMPIONS = Object.freeze([
     kind: "person",
     role: "primary",
     eligibleIdentityIds: ["minimalist"],
-    signatureTraits: ["posture.passive_virtues", "remedies.incremental", "method.incompletely_theorized"],
-    antiTraits: [],
-    note: "Modern judicial-minimalism champion distinct from Bickel's more specific passive-virtues theory."
+    signatureTraits: ["method.narrow_shallow", "remedies.incremental"],
+    antiTraits: ["posture.passive_virtues"],
+    note: "Modern judicial-minimalism champion: narrow and shallow decisions, incompletely theorized agreement, and leaving broader questions unresolved."
   },
 
   // Structure / rules / remedies
