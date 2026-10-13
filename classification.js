@@ -681,7 +681,35 @@
       }
     }
 
-    if (pool.length === 0) return { matches: [], confidence: "low" };
+    if (pool.length === 0) {
+      const globalFallback = [];
+      for (const profile of profiles) {
+        if (profile.selectable === false || profile.tier === "lineage" || profile.tier === "catchall" || profile.globalSpecialist) continue;
+        if (!requiredTraitsSatisfied(profile, traits)) continue;
+        let salienceGateFailed = false;
+        for (const [axisId, minimum] of Object.entries(profile.minAxisSalience || {})) {
+          if (salience(scores, axisId) < Number(minimum)) salienceGateFailed = true;
+        }
+        if (salienceGateFailed) continue;
+
+        const { fit, shape, modeledAxes } = axisProfileFit(profile, scores);
+        const traitFit = profileTraitFit(profile, traits);
+        const anti = Math.max(0, ...(profile.antiTraits || []).map((trait) => traits[trait] || 0));
+        let score = modeledAxes === 0
+          ? 0.42 + 0.28 * traitFit - 0.22 * anti
+          : 0.52 * fit + 0.14 * shape + 0.16 * traitFit - 0.22 * anti;
+        score += Number(profile.specificityBonus || 0);
+        globalFallback.push({ profile, score: clamp01(score) });
+      }
+      globalFallback.sort((a, b) =>
+        b.score - a.score ||
+        Number(b.profile.specificityBonus || 0) - Number(a.profile.specificityBonus || 0) ||
+        a.profile.id.localeCompare(b.profile.id)
+      );
+      pool = globalFallback;
+    }
+
+    if (pool.length === 0) return { matches: [], confidence: "withheld" };
 
     const first = pool[0];
     const second = pool[1];
