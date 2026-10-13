@@ -33,7 +33,7 @@ globalThis.LAW_PROFILES = Object.freeze([
     axisSignature: { sorc: { target: 94, weight: 1 } },
     signatureTraits: ["source.morality_incorporated", "source.positive_sources"],
     requiredTraits: [{ all: ["source.morality_incorporated"], min: 0.5 }],
-    antiTraits: ["source.source_thesis", "time.common_law_development"],
+    antiTraits: ["source.source_thesis"],
     description: "Inclusive Positivism: a source-grounded legal system can itself make genuine moral correctness a criterion of legal validity.",
     related: ["H. L. A. Hart", "Wil Waluchow", "Kenneth Einar Himma"]
   },
@@ -566,8 +566,7 @@ globalThis.LAW_PROFILES = Object.freeze([
     id: "waluchow_common_law",
     name: "Wil Waluchow",
     tier: "specialist",
-    identityIds: ["common_law_constitutionalist"],
-    crossCuttingIdentityIds: ["positivist"],
+    identityIds: ["common_law_constitutionalist", "positivist"],
     axisSignature: {
       sorc: { target: 92, weight: 0.75 },
       time: { target: 12, weight: 0.8 },
