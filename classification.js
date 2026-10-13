@@ -658,6 +658,34 @@
     return tags.reduce((sum, trait) => sum + (traits[trait] || 0), 0) / tags.length;
   }
 
+  function profileUnexplainedSalience(profile, scores) {
+    const modeled = new Set(Object.keys(profile.axisSignature || {}));
+    // Profiles with no axis model are intentionally proposition-level theories;
+    // do not pretend an omitted axis is a known disagreement. Once a profile
+    // does model axes, however, very strong respondent commitments outside that
+    // model count as unexplained rather than as a free match.
+    if (modeled.size === 0) return 0;
+    const unexplained = AXIS_IDS
+      .filter((axisId) => !modeled.has(axisId))
+      .map((axisId) => salience(scores, axisId))
+      .filter((value) => value >= 0.55);
+    if (!unexplained.length) return 0;
+    const max = Math.max(...unexplained);
+    const mean = unexplained.reduce((sum, value) => sum + value, 0) / unexplained.length;
+    return clamp01(0.10 * max + 0.06 * mean);
+  }
+
+  function crossCuttingRequirementsSatisfied(profile, identity, traits) {
+    const rules = profile.crossCuttingRequirements?.[identity?.id];
+    if (!Array.isArray(rules) || rules.length === 0) return false;
+    for (const rule of rules) {
+      const min = Number(rule.min ?? 0.5);
+      if (Array.isArray(rule.all) && !rule.all.every((trait) => (traits[trait] || 0) >= min)) return false;
+      if (Array.isArray(rule.any) && !rule.any.some((trait) => (traits[trait] || 0) >= min)) return false;
+    }
+    return true;
+  }
+
   function identityLineageIds(identityId) {
     const catalog = Array.isArray(global.LAW_RESULT_IDENTITIES) ? global.LAW_RESULT_IDENTITIES : [];
     const byId = Object.fromEntries(catalog.map((item) => [item.id, item]));
@@ -688,6 +716,8 @@
 
     const compatibility = championIdentityCompatibility(profile, identity);
     if (compatibility === "incompatible") return null;
+    if (compatibility === "cross-cutting" &&
+        !crossCuttingRequirementsSatisfied(profile, identity, traits)) return null;
 
     for (const [axisId, minimum] of Object.entries(profile.minAxisSalience || {})) {
       if (salience(scores, axisId) < Number(minimum)) return null;
@@ -696,6 +726,7 @@
     const { fit, shape, modeledAxes } = axisProfileFit(profile, scores);
     const traitFit = profileTraitFit(profile, traits);
     const anti = Math.max(0, ...(profile.antiTraits || []).map((trait) => traits[trait] || 0));
+    const unexplained = profileUnexplainedSalience(profile, scores);
     // The noun is already resolved from the respondent's primary jurisprudential
     // fixation. Champion matching is then conditioned on that noun: a thinker
     // who directly exemplifies it receives the full compatibility bonus, while
@@ -708,7 +739,7 @@
     if (modeledAxes === 0) {
       score = 0.5 + 0.34 * traitFit + identityBonus - 0.22 * anti;
     } else {
-      score = 0.62 * fit + 0.18 * shape + 0.15 * traitFit + identityBonus - 0.22 * anti;
+      score = 0.62 * fit + 0.18 * shape + 0.15 * traitFit + identityBonus - 0.22 * anti - unexplained;
     }
     if (profile.tier === "main") score += 0.015;
     score += Number(profile.specificityBonus || 0);
@@ -773,7 +804,8 @@
         traits["method.anti_grand_theory"] || 0,
         traits["method.low_theory_space"] || 0
       );
-      if (maxSalience <= 0.52 || topNormal < 0.61 || lowTheoryEvidence >= 0.5) {
+      if (identity?.id === "mixed_jurisprudence" ||
+          maxSalience <= 0.52 || topNormal < 0.61 || lowTheoryEvidence >= 0.5) {
         const base = scoreProfile(profile, scores, traits, identity) ?? 0;
         const score = clamp01(base + 0.16 * lowTheoryEvidence);
         pool = [...pool, { profile, score }].sort((a, b) =>
@@ -784,34 +816,8 @@
       }
     }
 
-    if (pool.length === 0) {
-      const globalFallback = [];
-      for (const profile of profiles) {
-        if (profile.selectable === false || profile.tier === "lineage" || profile.tier === "catchall" || profile.globalSpecialist) continue;
-        if (!requiredTraitsSatisfied(profile, traits)) continue;
-        let salienceGateFailed = false;
-        for (const [axisId, minimum] of Object.entries(profile.minAxisSalience || {})) {
-          if (salience(scores, axisId) < Number(minimum)) salienceGateFailed = true;
-        }
-        if (salienceGateFailed) continue;
-
-        const { fit, shape, modeledAxes } = axisProfileFit(profile, scores);
-        const traitFit = profileTraitFit(profile, traits);
-        const anti = Math.max(0, ...(profile.antiTraits || []).map((trait) => traits[trait] || 0));
-        let score = modeledAxes === 0
-          ? 0.42 + 0.28 * traitFit - 0.22 * anti
-          : 0.52 * fit + 0.14 * shape + 0.16 * traitFit - 0.22 * anti;
-        score += Number(profile.specificityBonus || 0);
-        globalFallback.push({ profile, score: clamp01(score) });
-      }
-      globalFallback.sort((a, b) =>
-        b.score - a.score ||
-        Number(b.profile.specificityBonus || 0) - Number(a.profile.specificityBonus || 0) ||
-        a.profile.id.localeCompare(b.profile.id)
-      );
-      pool = globalFallback;
-    }
-
+    // Never rescue a noun by jumping to an incompatible thinker. If this is
+    // empty, the noun/profile contracts are wrong and the audit should fail.
     if (pool.length === 0) return { matches: [], confidence: "withheld" };
 
     const first = pool[0];
