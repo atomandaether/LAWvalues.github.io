@@ -80,30 +80,6 @@
     };
   }
 
-  // Limited cross-outcome historical-method check. A difference is not proof
-  // of partisanship: provisions can differ for legitimate jurisprudential reasons.
-  function historicalMethodConsistency(responses = {}) {
-    const answer = (id) => {
-      if (!Object.prototype.hasOwnProperty.call(responses, id) || responses[id] === null) return null;
-      const value = Number(responses[id]);
-      return Number.isInteger(value) && value >= -3 && value <= 3 ? value : null;
-    };
-    const reconstruction = answer("T1");
-    const compared = ["T2", "T3"].map(id => ({ id, value: answer(id) }))
-      .filter(item => reconstruction !== null && Math.abs(reconstruction) >= 2 &&
-        item.value !== null && Math.abs(item.value) >= 2);
-    const contrary = compared.filter(item => Math.sign(item.value) !== Math.sign(reconstruction));
-    return Object.freeze({
-      anchorId: "T1",
-      comparisonIds: compared.map(item => item.id),
-      comparisons: compared.length,
-      disagreements: contrary.length,
-      disagreementIds: contrary.map(item => item.id),
-      divergencePercent: compared.length ? Math.round(100 * contrary.length / compared.length) : null,
-      status: !compared.length ? "insufficient" : contrary.length ? "divergent" : "consistent"
-    });
-  }
-
   function scoreAll(responses, axes = global.LAW_AXES, questions = global.LAW_QUESTIONS) {
     return Object.fromEntries(
       axes.map((axis) => [axis.id, scoreAxis(axis.id, responses, questions)])
@@ -151,7 +127,6 @@
     scoreAll,
     axisLabel,
     dominantPole,
-    profileDistance,
-    historicalMethodConsistency
+    profileDistance
   });
 })(globalThis);
