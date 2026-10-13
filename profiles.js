@@ -443,6 +443,10 @@ globalThis.LAW_PROFILES = Object.freeze([
     tier: "main",
     identityIds: ["purposivist"],
     crossCuttingIdentityIds: ["pragmatist", "functionalist"],
+    crossCuttingRequirements: {
+      pragmatist: [{ all: ["method.workability"], min: 0.45 }, { all: ["method.consequences"], min: 0.35 }],
+      functionalist: [{ all: ["separation.interpretive_accommodation"], min: 0.35 }]
+    },
     axisSignature: {
       cons: { target: 16, weight: 0.85 },
       separ: { target: 16, weight: 0.7 },
@@ -634,6 +638,10 @@ globalThis.LAW_PROFILES = Object.freeze([
     tier: "main",
     identityIds: ["sociological_jurist"],
     crossCuttingIdentityIds: ["pragmatist", "purposivist"],
+    crossCuttingRequirements: {
+      pragmatist: [{ all: ["method.consequences"], min: 0.4 }],
+      purposivist: [{ all: ["constraint.purpose"], min: 0.4 }]
+    },
     axisSignature: {
       cons: { target: 28, weight: 0.4 },
       form: { target: 30, weight: 0.45 },
@@ -651,6 +659,10 @@ globalThis.LAW_PROFILES = Object.freeze([
     tier: "specialist",
     identityIds: ["sociological_jurist"],
     crossCuttingIdentityIds: ["interpretive_pluralist", "purposivist"],
+    crossCuttingRequirements: {
+      interpretive_pluralist: [{ all: ["method.modal_pluralism"], min: 0.45 }],
+      purposivist: [{ all: ["constraint.purpose"], min: 0.4 }]
+    },
     axisSignature: {
       cons: { target: 34, weight: 0.5 },
       form: { target: 38, weight: 0.35 }
