@@ -1251,9 +1251,17 @@
         });
         if(outcomes[0]!==outcomes[1])bonus+=16;
       }
-      return {...p,rank:p.priority+bonus};
+      return {...p,rank:p.priority+bonus,direct};
     });
     targeted.sort((a,b)=>b.rank-a.rank||b.priority-a.priority||a.id.localeCompare(b.id));
+    // Do not spend the remaining specialist budget on a remote family merely
+    // because a diagnostic happens to be eligible under a broad axis window.
+    const margin=resolution.candidates.length>1
+      ? resolution.best.score-resolution.candidates[1].score : 1;
+    const champion=resolveChampions(scores,traits,resolution.best.identity);
+    const settled=askedCount>=4 && resolution.best.score>=0.84 &&
+      margin>=0.08 && champion.confidence==="high";
+    if(settled && !targeted.some(item=>item.direct))return null;
     return targeted.length?byId[targeted[0].id]:null;
   }
 
