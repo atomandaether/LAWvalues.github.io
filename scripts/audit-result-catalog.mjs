@@ -1627,6 +1627,39 @@ for(const id of ["owen_dixon","vermeule"]){
   assert.ok(reached,"O'Connor must remain reachable as a low-theory champion with literal answers");
 }
 
+
+// A focused respondent who has a clear judicial position on one axis but is
+// undecided on most others is not an inattentive straight-line respondent.
+// Test literal answer profiles, result cardinality, and polarity together.
+for(const axisId of ["sorc","cons","time","separ"]){
+  for(const direction of [1,-1]){
+    const focused=Object.fromEntries(questions.map(q=>{
+      const agree=(q.signals?.agree?.[axisId]||0)*direction;
+      const disagree=(q.signals?.disagree?.[axisId]||0)*direction;
+      return [q.id,Math.max(agree,disagree)<=0?0:agree>=disagree?3:-3];
+    }));
+    const scored=scoring.scoreAll(focused);
+    const result=classifier.classify(scored,focused,{"D-RLS1":-2,"D-QC1":-2},
+      {coreElapsedMs:900000});
+    assert.equal(result.responseQuality,undefined,
+      `Focused ${axisId}/${direction} respondent must not fail the mechanical-response check`);
+    assert.equal(result.champions.length,1,"A focused respondent still receives exactly one champion");
+    assert.ok(result.resultTitle.modifier && result.resultTitle.phrase,
+      "A focused respondent still receives all three title components");
+    assert.equal(scored[axisId].score,direction===1?100:0,
+      "Fixture must firmly establish the advertised judicial commitment");
+  }
+}
+{
+  const neutral=Object.fromEntries(questions.map(q=>[q.id,0]));
+  const straight=Object.fromEntries(questions.map(q=>[q.id,2]));
+  assert.equal(classifier.detectMechanicalPattern(neutral),"mostly-neutral",
+    "A wholly indifferent response pattern is still withheld");
+  assert.equal(classifier.detectMechanicalPattern(straight),"straight-line",
+    "Mechanical repeated agreement is still withheld");
+}
+console.log("PASS: focused single-axis judicial profiles classify without weakening actual response-quality checks.");
+
 console.log("PASS: adversarial primary-commitment, modifier/phrase, share-link, and 600 adaptive fuzz invariants.");
 console.log("PASS: all 18 approved phrases are reachable and use the approved critic-rib wording.");
 console.log("PASS: Originalism resolves end-to-end from literal 93-item answers through adaptive routing to all 13 locked champion units.");
