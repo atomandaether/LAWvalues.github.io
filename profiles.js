@@ -221,6 +221,7 @@ globalThis.LAW_PROFILES = Object.freeze([
     signatureTraits: ["time.public_meaning", "time.construction_zone", "posture.rights_trumps"],
     requiredTraits: [{ all: ["time.construction_zone"], min: 0.5 }],
     antiTraits: ["posture.majoritarian"],
+    specificityBonus: 0.02,
     description: "New OPM with rights-protective, good-faith construction once fixed communicative meaning leaves genuine room.",
     related: ["Lawrence Solum", "Jack Balkin"]
   },
