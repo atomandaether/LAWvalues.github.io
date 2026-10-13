@@ -10,6 +10,8 @@
 
 > Judicial-review / constitutional-authority details are documented in [`AUTHORITY_ENGINE.md`](AUTHORITY_ENGINE.md): eight public authority nouns, Responsive/Passive-virtues modifiers, nine locked champion units, and end-to-end reachability under the seven-question cap.
 
+> Institutional-structure / doctrinal-form / remedies details are documented in [`STRUCTURE_FORM_ENGINE.md`](STRUCTURE_FORM_ENGINE.md): Formalist/Functionalist/Proportionalist, eight locked selectable champion units across this zone, tightly gated Fiss cross-noun matching, remedies lineage, and the exactly-one-champion rule.
+
 LAWvalues is a static, client-side legal-philosophy quiz. The current public label is **Version 0.6 Beta**. It maps respondents across eight bipolar dimensions:
 
 - Source: Positivist ↔ Non-positivist
@@ -42,13 +44,13 @@ The matching model is deliberately sparse:
 - specialist thinkers can win only when their distinctive proposition is affirmatively supported;
 - lineage/further-reading figures can enrich a result without being eligible to win it;
 - anti-traits and minimum-salience gates prevent a numerically nearby thinker from being selected when the respondent rejects the idea that makes that thinker distinctive;
-- when two thinker matches are effectively tied, LAWvalues shows both rather than inventing false precision.
+- every valid classified result returns exactly one champion unit; close races reduce confidence rather than creating co-champions.
 
 Legal Realism remains a special meta-position because it asks how determinative legal doctrine actually is rather than taking a position on the eight normative axes. A universal soft Realism probe can unlock follow-up questions.
 
 Current specialist examples include Lawrence Solum for principle/construction-sensitive originalism, Roscoe Pound for sociological jurisprudence, Frederick Schauer for unusually rule-centered judging, James Bradley Thayer for clear-error deference, Robert Alexy for structured proportionality, and Owen Fiss for structural remedies. Friedrich Carl von Savigny is retained as Historical School lineage rather than forced into the modern Historical/Living axis. Sandra Day O'Connor is available conservatively as a low-theory, contextual catch-all when no grand jurisprudential theory explains an otherwise moderate case-by-case profile.
 
-Thinker signatures are theory-derived prototypes, not empirical estimates. Pilot data should later calibrate thresholds, profile locations, diagnostic routing, and the confidence needed to display a single thinker. See `MATCHING_ARCHITECTURE.md` for the matching rules.
+Thinker signatures are theory-derived prototypes, not empirical estimates. Pilot data should later calibrate thresholds, profile locations, diagnostic routing, and champion-confidence labels. See `MATCHING_ARCHITECTURE.md` for the matching rules.
 
 ## Local use
 
