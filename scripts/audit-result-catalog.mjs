@@ -62,7 +62,8 @@ for (const removed of [
   assert.ok(!resultContent.PHRASE_FEATURES.some((x) => x.id === removed),
     `${removed} is too narrow or indirect to be a stand-alone broad phrase outcome`);
 }
-assert.equal(classifier.MAX_DIAGNOSTICS, 7, "Adaptive phase must cap the quiz at 100 total questions");
+assert.equal(classifier.MAX_DIAGNOSTICS, 12, "The 88-question core plus adaptive cap must equal 100");
+assert.equal(questions.length + classifier.MAX_DIAGNOSTICS, 100);
 
 assert.equal(new Set(identities.map((x) => x.id)).size, identities.length, "Identity IDs must be unique");
 assert.equal(new Set(identities.map((x) => x.label)).size, identities.length, "Identity labels must be unique");
@@ -185,7 +186,7 @@ for (const id of [
   "D-POS1", "D-POS2", "D-NP1", "D-NP2", "D-NP3", "D-NP4", "D-NP5", "D-NP6",
   "D-MAJ1", "D-MAJ2", "D-ELY1", "D-WAL1", "D-RESP1", "D-TXT1", "D-TXT2", "D-INT1", "D-INT2", "D-PRAG1",
   "D-LP1", "D-LP2", "D-QC1", "D-SOC1", "D-GENY1", "D-LIV1", "D-LIV2", "D-HAR1", "D-CLC1", "D-PIL1", "D-PLU1", "D-PLU2", "D-OCO1",
-  "D-ORI1", "D-ORI2", "D-ORI3", "D-ORI4", "D-ORI5"
+  "D-ORI1", "D-ORI2", "D-ORI3", "D-ORI4", "D-ORI5", "D-MOR1", "D-PREC1"
 ]) {
   assert.ok(diagnosticIds.has(id), `Missing high-value diagnostic ${id}`);
 }
@@ -344,7 +345,7 @@ assert.ok(!blackUnderOriginalism.matches.some((x) => x.profile.id === "hugo_blac
 
 // Natural-law evidence should not collapse into generic Non-Positivism or Interpretivism.
 const naturalScores = { sorc: 8, cons: 50, time: 50, prec: 50, remed: 50, post: 50, separ: 50, form: 50 };
-const naturalResponses = { S9: 3, S10: 3, S11: 3, S7: -3, S8: -3 };
+const naturalResponses = { S10: 3, S11: 3, S7: -3, S8: -3 };
 const natural = classifier.classify(naturalScores, naturalResponses, { "D-NP1": 3 });
 assert.equal(natural.identity.id, "natural_lawyer", "Objective morality plus settlement evidence should resolve to Natural Lawyer");
 assert.ok(natural.champions.some((x) => x.id === "finnis_murphy_george"),
@@ -374,7 +375,7 @@ assert.equal(failedQuality.champions.length, 0,
   "A failed response check must never manufacture a thinker match");
 
 const variedResponses = Object.fromEntries(
-  Array.from({length:93}, (_,i)=>[`Q${i}`, [-2,-1,0,1,2][i % 5]])
+  Array.from({length:88}, (_,i)=>[`Q${i}`, [-2,-1,0,1,2][i % 5]])
 );
 const passedQuality = classifier.classify(
   neutralScores,
@@ -387,7 +388,7 @@ assert.equal(passedQuality.champions.length, 1,
   "Every valid classified result must return exactly one champion unit");
 
 // Very fast or straight-line completion should be withheld even if the response check happened to be passed.
-const spamResponses = Object.fromEntries(Array.from({length:93}, (_,i)=>[`Q${i}`, 2]));
+const spamResponses = Object.fromEntries(Array.from({length:88}, (_,i)=>[`Q${i}`, 2]));
 const spam = classifier.classify(neutralScores, spamResponses, { "D-RLS1": -2, "D-QC1": -2 }, { elapsedMs: 30000 });
 assert.equal(spam.identity.id, "unusable_response", "Implausibly fast completion must suppress personality matching");
 
@@ -425,8 +426,8 @@ assert.ok(assembled.rankedTwists.some((x) => x.id === "new_originalism"),
   const q = resultContent.PHRASE_FEATURES.find(x => x.id === "objective_morality");
   assert.equal(resultContent.phraseQuality(q,fixed,supported,supportedEvidence).eligible,true,
     "Independent objective moral law should survive removing personal-morality S9 from its proof count");
-  const merelyPersonal = classifier.buildTraits(fixed,{S9:3},{"D-NP1":3});
-  const personalEvidence = classifier.buildTraitEvidence({S9:3},{"D-NP1":3});
+  const merelyPersonal = classifier.buildTraits(fixed,{},{"D-NP1":3,"D-MOR1":3});
+  const personalEvidence = classifier.buildTraitEvidence({},{"D-NP1":3,"D-MOR1":3});
   assert.equal(resultContent.phraseQuality(q,fixed,merelyPersonal,personalEvidence).eligible,false,
     "The judge's personal moral objection cannot establish the objective-morality phrase");
 }
@@ -476,10 +477,10 @@ assertTopPhrase(
 assertTopPhrase("balancing", textualistIdentity, { ...phraseNeutral, cons: 100, form: 10 });
 
 // Also prove that every phrase survives the real classifier/assembler path, not
-// merely direct result-content ranking. A varied 93-response shell keeps the
+// merely direct result-content ranking. A varied 88-response shell keeps the
 // response-quality checks realistic while score fixtures isolate each target.
 const reachabilityResponses = Object.fromEntries(
-  Array.from({length:93}, (_,i)=>[`Q${i}`, [-2,-1,0,1,2][i % 5]])
+  Array.from({length:88}, (_,i)=>[`Q${i}`, [-2,-1,0,1,2][i % 5]])
 );
 function assertClassifiedPhrase(expectedId, scores, overrides = {}, diagnostics = {}) {
   const classified = classifier.classify(
@@ -610,7 +611,7 @@ assertOriginalistChampion("natural_law_originalists", "public_meaning_originalis
   { "time.public_meaning":0.8, "time.fixation":1, "source.objective_morality":1, "source.positive_law_settlement":1 });
 
 // End-to-end Originalism reachability: each locked champion must be producible
-// from literal 93-item answers plus only diagnostics the live router actually asks.
+// from literal 88-item answers plus only diagnostics the live router actually asks.
 const ORIGINALIST_OI = new Set(["bork_berger", "alexander_kay_prakash", "whittington"]);
 const ORIGINALIST_PM = new Set([
   "solum", "barnett_bernick", "balkin", "scalia_manning", "mcginnis_rappaport",
@@ -676,7 +677,7 @@ function literalOriginalistCore(id) {
   // supplies objective-morality evidence while leaving OPM as the best noun.
   if (id === "natural_law_originalists") {
     for (const questionId of ["S1", "S2", "S3", "S4", "S5", "S6", "S7", "S8"]) responses[questionId] = -3;
-    for (const questionId of ["S9", "S10", "S11"]) responses[questionId] = 3;
+    for (const questionId of ["S10", "S11"]) responses[questionId] = 3;
   }
 
   return responses;
@@ -723,10 +724,10 @@ for (const id of lockedOriginalistUnits) {
   assert.equal(
     result.champions[0]?.id,
     id,
-    `Literal 93-answer + adaptive path must reach ${id}; got ${result.identity.id} / ${result.champions.map((x) => x.id).join(",")}`
+    `Literal 88-answer + adaptive path must reach ${id}; got ${result.identity.id} / ${result.champions.map((x) => x.id).join(",")}`
   );
   assert.ok(diagnosticOrder.length <= classifier.MAX_DIAGNOSTICS,
-    `${id} must remain reachable within the seven-diagnostic cap`);
+    `${id} must remain reachable within the twelve-diagnostic cap`);
   if (ORIGINALIST_OI.has(id)) {
     assert.equal(result.identity.id, "original_intent_originalist",
       `${id} should resolve through the Original-Intent noun`);
@@ -880,7 +881,7 @@ function literalSourceCore(id) {
     });
   } else if (id === "finnis_murphy_george") {
     Object.assign(responses, {
-      S1:-1, S2:2, S3:-1, S4:-1, S5:-1, S6:2, S7:-2, S8:-3, S9:3, S10:3, S11:3
+      S1:-1, S2:2, S3:-1, S4:-1, S5:-1, S6:2, S7:-2, S8:-3, S10:3, S11:3
     });
   } else if (id === "radbruch_soper") {
     Object.assign(responses, {
@@ -957,9 +958,9 @@ for (const id of lockedSourceUnits) {
   assert.equal(result.identity.id, sourceExpectedIdentity[id],
     `Literal Source path for ${id} must use the locked public noun`);
   assert.equal(result.champions[0]?.id, id,
-    `Literal 93-answer + adaptive path must reach Source champion ${id}; got ${result.champions.map((x) => x.id).join(",")}`);
+    `Literal 88-answer + adaptive path must reach Source champion ${id}; got ${result.champions.map((x) => x.id).join(",")}`);
   assert.ok(diagnosticOrder.length <= classifier.MAX_DIAGNOSTICS,
-    `${id} must remain reachable within the seven-diagnostic cap`);
+    `${id} must remain reachable within the twelve-diagnostic cap`);
   if (sourceExpectedModifier[id]) {
     assert.equal(result.resultTitle.modifier?.id, sourceExpectedModifier[id],
       `${id} should surface its locked descriptive Source modifier`);
@@ -1113,9 +1114,9 @@ for (const id of lockedMethodUnits) {
   assert.equal(result.identity.id, methodExpectedIdentity[id],
     `Literal Method path for ${id} must use the locked public noun; got ${result.identity.id}`);
   assert.equal(result.champions[0]?.id, id,
-    `Literal 93-answer + adaptive path must reach Method champion ${id}; got ${result.champions.map((x) => x.id).join(",")}`);
+    `Literal 88-answer + adaptive path must reach Method champion ${id}; got ${result.champions.map((x) => x.id).join(",")}`);
   assert.ok(diagnosticOrder.length <= classifier.MAX_DIAGNOSTICS,
-    `${id} must remain reachable within the seven-diagnostic cap`);
+    `${id} must remain reachable within the twelve-diagnostic cap`);
   if (methodExpectedModifier[id]) {
     assert.equal(result.resultTitle.modifier?.id, methodExpectedModifier[id],
       `${id} should surface its locked Method substantive modifier`);
@@ -1160,7 +1161,7 @@ for (const id of Object.keys(distinctiveExpectedIdentity)) {
   assert.equal(result.champions[0]?.id, id,
     `Distinctive path for ${id} must reach the intended champion; got ${result.champions.map((x) => x.id).join(",")}`);
   assert.ok(diagnosticOrder.length <= classifier.MAX_DIAGNOSTICS,
-    `${id} must remain reachable within the seven-diagnostic cap`);
+    `${id} must remain reachable within the twelve-diagnostic cap`);
 }
 
 // Locked non-originalist constitutional-time champion paths.
@@ -1226,7 +1227,7 @@ for (const id of lockedNonOriginalistUnits) {
   assert.equal(result.champions[0]?.id, id,
     `Non-originalist path for ${id} must reach the intended champion; got ${result.champions.map((x) => x.id).join(",")}`);
   assert.ok(diagnosticOrder.length <= classifier.MAX_DIAGNOSTICS,
-    `${id} must remain reachable within the seven-diagnostic cap`);
+    `${id} must remain reachable within the twelve-diagnostic cap`);
   if (nonOriginalistExpectedModifier[id]) {
     assert.equal(result.resultTitle.modifier?.id, nonOriginalistExpectedModifier[id],
       `${id} must surface its locked Living modifier`);
@@ -1333,7 +1334,7 @@ for (const id of lockedAuthorityUnits) {
   assert.equal(result.champions[0]?.id, id,
     `Authority path for ${id} must reach its intended champion; got ${result.champions.map((x) => x.id).join(",")}`);
   assert.ok(diagnosticOrder.length <= classifier.MAX_DIAGNOSTICS,
-    `${id} must remain reachable within the seven-diagnostic cap`);
+    `${id} must remain reachable within the twelve-diagnostic cap`);
   if (authorityExpectedModifier[id]) {
     assert.equal(result.resultTitle.modifier?.id, authorityExpectedModifier[id],
       `${id} must surface its locked authority modifier`);
@@ -1363,7 +1364,7 @@ for (const id of lockedAuthorityUnits) {
   assert.equal(result.identity.id, "legal_constitutionalist",
     "A strongly rights-protective judicial-finality profile must reach Legal Constitutionalist");
   assert.ok(diagnosticOrder.length <= classifier.MAX_DIAGNOSTICS,
-    "Legal Constitutionalist must remain reachable within the seven-diagnostic cap");
+    "Legal Constitutionalist must remain reachable within the twelve-diagnostic cap");
 }
 
 // Locked institutional-structure / doctrinal-form / remedies champion paths.
@@ -1470,7 +1471,7 @@ for (const id of lockedStructureFormUnits) {
   assert.equal(result.champions[0]?.id, id,
     `Structure/form path for ${id} must reach its intended champion; got ${result.champions.map((x) => x.id).join(",")}`);
   assert.ok(diagnosticOrder.length <= classifier.MAX_DIAGNOSTICS,
-    `${id} must remain reachable within the seven-diagnostic cap`);
+    `${id} must remain reachable within the twelve-diagnostic cap`);
   if (structureFormExpectedModifier[id]) {
     assert.equal(result.resultTitle.modifier?.id, structureFormExpectedModifier[id],
       `${id} must surface its locked structure/form modifier`);
@@ -1678,7 +1679,7 @@ console.log("PASS: focused single-axis judicial profiles classify without weaken
 // Personal moral override is not an independent objective moral truth.
 {
   const scores = Object.fromEntries(context.LAW_AXES.map(a => [a.id,50]));
-  const personal = classifier.buildTraits(scores,{S9:3},{});
+  const personal = classifier.buildTraits(scores,{},{"D-MOR1":3});
   const objective = classifier.buildTraits(scores,{S10:3},{});
   assert.equal(personal["source.objective_morality"] || 0,0);
   assert.ok(personal["method.subjective_moral_override"] >= 0.9);
@@ -1753,14 +1754,14 @@ console.log("PASS: hidden partisan override is symmetric, cross-domain, threshol
 
 console.log("PASS: adversarial primary-commitment, modifier/phrase, share-link, and 600 adaptive fuzz invariants.");
 console.log("PASS: all 18 approved phrases are reachable and use the approved critic-rib wording.");
-console.log("PASS: Originalism resolves end-to-end from literal 93-item answers through adaptive routing to all 13 locked champion units.");
+console.log("PASS: Originalism resolves end-to-end from literal 88-item answers through adaptive routing to all 13 locked champion units.");
 console.log("PASS: Alexyan and Bickelian are champion/modifier-level distinctions, not public nouns.");
 console.log("PASS: Formalist and Functionalist public labels remain unchanged.");
 console.log("PASS: generic fit modifiers render Unmistakably a/an / blank / Some kind of, with correct articles and substantive modifiers taking priority.");
-console.log("PASS: all 10 locked Source champion units are reachable end-to-end from literal answers within the seven-diagnostic cap.");
+console.log("PASS: all 10 locked Source champion units are reachable end-to-end from literal answers within the twelve-diagnostic cap.");
 console.log("PASS: Method nouns/modifiers are locked, including Sociological Jurist and the three substantive Method modifiers.");
-console.log("PASS: all 18 locked Method champion units are reachable end-to-end from literal answers within the seven-diagnostic cap.");
+console.log("PASS: all 18 locked Method champion units are reachable end-to-end from literal answers within the twelve-diagnostic cap.");
 console.log("PASS: champion matching is noun-conditioned: primary and cross-cutting compatibility are explicit, incompatible champions are excluded.");
-console.log("PASS: Living/Common-Law constitutionalism resolves to all 7 locked non-originalist champion units, including Democratic/Transformative Living modifiers, within the seven-diagnostic cap.");
-console.log("PASS: Judicial review / constitutional authority resolves to all 9 locked champion units plus standalone Legal Constitutionalism within the seven-diagnostic cap.");
+console.log("PASS: Living/Common-Law constitutionalism resolves to all 7 locked non-originalist champion units, including Democratic/Transformative Living modifiers, within the twelve-diagnostic cap.");
+console.log("PASS: Judicial review / constitutional authority resolves to all 9 locked champion units plus standalone Legal Constitutionalism within the twelve-diagnostic cap.");
 console.log("PASS: Institutional structure / doctrinal form resolves to Lawson, Calabresi-Prakash, Schauer, Peter Strauss, Alexy, and Barak; remedies retain Bhagwati-Iyer and tightly gated Fiss under the single-champion rule.");
