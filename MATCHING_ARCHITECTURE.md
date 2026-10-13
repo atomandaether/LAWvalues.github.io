@@ -83,6 +83,10 @@ Examples:
 - Owen Fiss: structural remedies and continuing supervision
 - Roscoe Pound: sociological jurisprudence—law in action, competing social interests, and practical social operation
 - Henry Hart & Albert Sacks: Legal Process—purpose plus institutional competence, settlement, and reasoned elaboration
+- François Gény: Free Scientific Research only after Sociological Jurisprudence is already plausible
+- John Marshall Harlan II: living tradition / ordered liberty only inside an already plausible common-law constitutional profile
+- Lord Cooke: strong common-law constitutional rights only after the dedicated legislative-supremacy diagnostic
+- P. N. Bhagwati / V. R. Krishna Iyer: social-action/PIL judging only when systemic remedies, counter-majoritarian posture, and procedural-access innovation align
 
 A specialist never wins from coordinate proximity alone.
 
