@@ -867,17 +867,19 @@ const SOURCE_POSITIVISTS = new Set([
 ]);
 
 function literalSourceCore(id) {
+  // Neutral non-Source shell prevents incidental Time/Method answers from
+  // routing a Source specialist into an unrelated constitutional family.
   const responses = Object.fromEntries(
-    questions.map((question, index) => [question.id, [-2, -1, 0, 1, 2][index % 5]])
+    questions.map((question) => [question.id, 0])
   );
 
   if (SOURCE_POSITIVISTS.has(id)) {
     Object.assign(responses, {
-      S1:3, S2:-3, S3:3, S4:3, S5:3, S6:-3, S7:3, S8:-3, S9:-3, S10:-3, S11:-3
+      S1:3, S2:-3, S3:3, S4:3, S5:3, S6:-3, S7:3, S8:-3, S10:-3, S11:-3
     });
   } else if (id === "dworkin_stavropoulos") {
     Object.assign(responses, {
-      S1:-2, S2:-1, S3:-2, S4:-2, S5:-1, S6:2, S7:-3, S8:3, S9:-1, S10:-1, S11:-1
+      S1:-2, S2:-1, S3:-2, S4:-2, S5:-1, S6:2, S7:-3, S8:3, S10:-1, S11:-1
     });
   } else if (id === "finnis_murphy_george") {
     Object.assign(responses, {
@@ -885,11 +887,11 @@ function literalSourceCore(id) {
     });
   } else if (id === "radbruch_soper") {
     Object.assign(responses, {
-      S1:0, S2:3, S3:0, S4:0, S5:0, S6:2, S7:0, S8:2, S9:-2, S10:-2, S11:-2
+      S1:0, S2:3, S3:0, S4:0, S5:0, S6:2, S7:0, S8:2, S10:-2, S11:-2
     });
   } else {
     Object.assign(responses, {
-      S1:-3, S2:-1, S3:-3, S4:-3, S5:-3, S6:3, S7:-3, S8:-1, S9:0, S10:0, S11:0
+      S1:-3, S2:-1, S3:-3, S4:-3, S5:-3, S6:3, S7:-3, S8:-1, S10:0, S11:0
     });
   }
   return responses;
