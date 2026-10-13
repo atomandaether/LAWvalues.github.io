@@ -1389,15 +1389,15 @@
 
     const identity=classification?.identity || {id:"interpretive_pluralist",label:"Interpretive Pluralist",family:"method"};
 
-    // The phrase carries the strongest broad residual characteristic.
+    // Rank broad residual characteristics independently. The final phrase is
+    // chosen only after the modifier, so a genuine subtype/hybrid can spend the
+    // concept it already communicates rather than being suppressed by a phrase
+    // that happened to rank first.
     const phraseRanking=rankPhrases(identity,scores,traits,traitEvidence);
-    const phrasePick=phraseRanking.find(item=>item.score>=0.18)||null;
-    const phrase=asPhrase(phrasePick?.feature||null)||MIXED_PHRASE;
 
-    // Substantive modifiers beat generic fit language.  Originalism currently has
-    // one such public intermediate camp: New Originalism (constructionist OPM/OI).
-    // Otherwise fit quality is expressed as Unmistakably / blank / Some kind of.
-    const twistRanking=rankTwists(identity,scores,traits,phrasePick?.feature||null);
+    // Substantive modifiers beat generic fit language. Fit quality is otherwise
+    // expressed as Unmistakably / blank / Some kind of.
+    const twistRanking=rankTwists(identity,scores,traits,null);
     let modifier=null;
     const bestCompatibleSubstantive = (exclude = null) =>
       twistRanking.find(item =>
@@ -1426,6 +1426,12 @@
       const substantive=bestCompatibleSubstantive();
       modifier=substantive?asModifier(substantive.twist):fitModifier(classification);
     }
+
+    const selectedTwist=modifier?.id ? TWISTS.find(twist=>twist.id===modifier.id)||null : null;
+    const blockedPhraseIds=new Set(selectedTwist?.blockedPhraseIds||[]);
+    const phrasePick=phraseRanking.find(item=>
+      item.score>=0.18 && !blockedPhraseIds.has(item.feature.id))||null;
+    const phrase=asPhrase(phrasePick?.feature||null)||MIXED_PHRASE;
 
     const title=[modifier?.text,identity.label,phrase?.text].filter(Boolean).join(" ");
     const bridge=BRIDGES.find(item=>item.when(scores,traits,identity))||null;
