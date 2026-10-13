@@ -178,4 +178,4 @@ console.log("All-disagree scores:", Object.fromEntries(axes.map((axis)=>[axis.id
 console.log("PASS: all 88 questions inform at least one axis in at least one response direction.");
 console.log("PASS: C13 now scores disagreement toward contextual textualism.");
 console.log("PASS: asymmetric pole evidence; no forced acquiescence normalization.");
-console.log("PASS: original visible copy and Version 0.6 Beta preserved.");
+console.log("PASS: visible question copy and Version 0.7 Beta preserved.");
