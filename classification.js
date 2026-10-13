@@ -346,7 +346,7 @@
     const left=Object.fromEntries(AXIS_IDS.map(id=>[id,leftStrength(scores,id)]));
     const right=Object.fromEntries(AXIS_IDS.map(id=>[id,rightStrength(scores,id)]));
     const singleProposition=new Set([
-      "weak_form_constitutionalist","minimalist","thayerian","nonpositivist","fullerian",
+      "minimalist","thayerian","nonpositivist","fullerian",
       "intentionalist","political_process_jurist","legal_process_theorist",
       "sociological_jurist","proportionalist","common_good_constitutionalist"
     ]);
@@ -379,9 +379,7 @@
       }else if(family==="form"){focus=["form"];basis=right.form;}
       else if(family==="posture"){
         focus=id==="minimalist"?["post","remed"]:["post"];
-        if(id==="weak_form_constitutionalist")basis=Math.max(sal.post,(traits["posture.dialogic"]||0)*0.45);
-        else if(id==="minimalist")basis=Math.max(left.remed,(traits["posture.passive_virtues"]||0)*0.38);
-        else if(id==="legal_constitutionalist")basis=right.post;
+        if(id==="minimalist")basis=Math.max(left.remed,(traits["posture.passive_virtues"]||0)*0.38);
         else if(["political_constitutionalist","thayerian","popular_constitutionalist","departmentalist"].includes(id))basis=left.post;
         else basis=Math.max(sal.post,(traits["posture.process_reinforcement"]||0)*0.45);
       }else if(family==="method"){
@@ -1298,7 +1296,7 @@
       offer("D-CLC1", 97);
     }
 
-    const pilCompatible = new Set(["sociological_jurist", "living_constitutionalist", "purposivist", "legal_constitutionalist"]);
+    const pilCompatible = new Set(["sociological_jurist", "living_constitutionalist", "purposivist"]);
     if (pilCompatible.has(provisionalMethodIdentity) &&
         remediesScore <= 25 && posture <= 32 && constraint <= 45 &&
         (traits["remedies.public_interest_litigation"] || 0) < 0.5) {
