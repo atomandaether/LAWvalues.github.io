@@ -292,6 +292,10 @@
         if (classification.resultTitle?.phrase?.id) params.set('p', classification.resultTitle.phrase.id);
         if (classification.resultTitle?.bridge?.id) params.set('b', classification.resultTitle.bridge.id);
         params.set('d', String(classification.diagnosticCount));
+        const historicalMethod = classification.historicalMethod;
+        if (historicalMethod?.comparisons > 0) {
+            params.set('hc', `${historicalMethod.comparisons},${historicalMethod.disagreements}`);
+        }
 
         const record = {
             version: globalThis.LAW_VERSION,

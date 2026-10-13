@@ -264,6 +264,28 @@
 
     displayClassification(classification);
 
+    // The historical-method comparison is a limited partisanship probe, not
+    // a political-label inference. It never changes an axis or thinker match.
+    const historicalMethodNote = document.getElementById('historical-method-note');
+    const sharedConsistency = (() => {
+        const value = params.get('hc');
+        const match = /^(\d+),(\d+)$/.exec(value || '');
+        if (!match) return null;
+        const comparisons = Number(match[1]), disagreements = Number(match[2]);
+        return comparisons >= 1 && comparisons <= 2 && disagreements <= comparisons
+            ? { comparisons, disagreements } : null;
+    })();
+    const historicalMethod = classification?.historicalMethod || sharedConsistency;
+    if (historicalMethod?.comparisons > 0 &&
+        classification?.identity?.id !== 'unusable_response' &&
+        classification?.identity?.id !== 'incoherent_response') {
+        historicalMethodNote.hidden = false;
+        historicalMethodNote.textContent = historicalMethod.disagreements > 0
+            ? `Historical-method consistency: your Reconstruction-era answer differs from ${historicalMethod.disagreements} of ${historicalMethod.comparisons} comparable historical-meaning answers. This can indicate outcome-sensitive reasoning, but it does not establish partisanship.`
+            : `Historical-method consistency: your Reconstruction-era answer agrees with ${historicalMethod.comparisons} comparable historical-meaning answer${historicalMethod.comparisons === 1 ? '' : 's'}. This limited comparison is not a measure of political affiliation.`;
+    }
+
+
     function textSummary() {
         const classificationLines = classification?.identity
             ? [

@@ -121,7 +121,7 @@
         "axis": "sorc",
         "direction": "right"
       },
-      "minCoreCount": 3,
+      "minCoreCount": 2,
       "minCoreUnits": 2,
       "minDiagnosticCount": 1,
       "minDiagnosticUnits": 0.65,

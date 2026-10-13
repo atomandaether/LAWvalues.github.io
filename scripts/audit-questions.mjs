@@ -56,6 +56,29 @@ for (const item of questions) {
   item.sourceIds.forEach((sourceId) => assert.ok(sources[sourceId], `${item.id} cites unknown source ${sourceId}`));
 }
 
+
+// Verify the Reconstruction-meaning anchor and the genuinely distinct moral
+// premises of S9 (personal moral discretion) and S10 (objective moral law).
+const t1 = questions.find(q => q.id === "T1");
+const s9 = questions.find(q => q.id === "S9");
+const s10 = questions.find(q => q.id === "S10");
+assert.ok(t1.prompt.startsWith("Laws passed right after the American Civil War"));
+assert.ok(s9.prompt.includes("judge’s personal moral judgment") && s9.prompt.includes("no established objective moral rule"));
+assert.ok(s10.prompt.includes("objectively true moral rule") && s10.prompt.includes("independent moral rule"));
+assert.ok(scoring.signalFor(s9,"agree","sorc") < 0 && Math.abs(scoring.signalFor(s9,"agree","sorc")) < 0.5,
+  "Subjective moral override must not receive full Natural-Law-equivalent Source weight");
+assert.equal(scoring.signalFor(s9,"disagree","sorc"),0,
+  "Rejecting personal discretion is not proof of legal positivism");
+assert.equal(scoring.signalFor(s10,"agree","sorc"),-1,
+  "An objectively true moral rule has independent Source significance");
+const probe = scoring.historicalMethodConsistency;
+assert.equal(probe({T1:3,T2:-3,T3:0}).disagreements,1,
+  "Favoring Reconstruction meaning while rejecting comparable historical locking contributes divergence evidence");
+assert.equal(probe({T1:3,T2:3,T3:3}).disagreements,0);
+assert.equal(probe({T1:3,T2:null,T3:0}).status,"insufficient");
+assert.equal(probe({T1:-3,T2:3}).disagreements,1,
+  "The same comparison must be symmetric rather than presuming a party preference");
+
 const c13 = questions.find((item) => item.id === "C13");
 assert.equal(scoring.signalFor(c13, "agree", "cons"), 0,
   "Agreeing that boats count should not be treated as purposivism/open construction");

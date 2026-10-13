@@ -79,7 +79,8 @@
     "source.law_runs_out": [["S7", 1, 1], ["S8", -1, 0.35]],
     "source.principles_are_law": [["S8", 1, 1], ["S7", -1, 0.35]],
     "source.extreme_injustice": [["S2", 1, 1]],
-    "source.objective_morality": [["S10", 1, 1], ["S11", 1, 1], ["S9", 1, 0.6]],
+    "source.objective_morality": [["S10", 1, 1], ["S11", 1, 1]],
+    "method.subjective_moral_override": [["S9", 1, 1]],
     "constraint.purpose": [["C8", 1, 0.8], ["C12", 1, 0.8], ["C14", 1, 0.9], ["C15", 1, 1]],
     "constraint.textual": [["C1", 1, 0.6], ["C2", 1, 0.7], ["C7", 1, 0.8], ["C9", 1, 0.7], ["C11", 1, 0.7], ["C17", 1, 1], ["C18", 1, 0.8]],
     "constraint.contextual_textualism": [["C5", 1, 0.8], ["C13", -1, 1]],
@@ -1227,10 +1228,12 @@
 
     const identityResolution = resolveIdentity(scores, traits);
     const championResolution = resolveChampions(scores, traits, identityResolution.best.identity);
+    const historicalMethod = global.LAW_SCORING?.historicalMethodConsistency?.(responses) || null;
     return finalizeResult({
       identity: identityResolution.best.identity,
       identityScore: identityResolution.best.score,
       primaryStrength: identityResolution.best.basis,
+      historicalMethod,
       identityReason: identityResolution.best.reason,
       identityAlternatives: identityResolution.candidates.slice(1, 4),
       champions: championResolution.matches.map(({ profile, score }) => ({
