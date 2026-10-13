@@ -1018,23 +1018,19 @@
     "imaginative_reconstruction",
     "practical_reasoning_pluralism",
     "fact_skeptical_realism",
+
+    // Pending editorial review: these may encode genuine subtypes/hybrids rather
+    // than merely another high-scoring axis. Keep them public until that review
+    // resolves their jurisprudential status.
     "positive_law_settlement",
-    "precedent_skeptic",
-    "precedent_loyal",
-    "democracy_deferential",
-    "narrow_enforcement",
-    "systemic_enforcement",
-    "rulebound_open",
-    "formal_structure",
     "source_bound_living",
     "higher_law_historical",
-    "low_theory",
     "proportionality_tinge",
-    "responsive_process",
-    "passive_virtues_minimalism",
     "nonpositivist_proportionality",
     "purposive_proportionality",
-    "anti_discretion_tinge"
+
+    "responsive_process",
+    "passive_virtues_minimalism"
   ]);
   const PUBLIC_MODIFIER_SET = new Set(PUBLIC_SUBSTANTIVE_MODIFIER_IDS);
   const INTERNAL_TWIST_IDS = Object.freeze(TWISTS.filter(twist =>
