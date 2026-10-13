@@ -1235,7 +1235,7 @@
         explanation:"This is your nearest jurisprudential neighbor, but the match is comparatively weak, mixed, or close to another identity."
       };
     }
-    return null;
+    return {id:"fit_moderate",text:`Fairly clearly ${article}`,explanation:"This is your nearest judicial philosophy, with meaningful but not exclusive support."};
   }
 
   function isOriginalistIdentity(identity) {
@@ -1268,6 +1268,8 @@
     "fact_skeptical_realism"
   ]);
 
+  const MIXED_PHRASE=Object.freeze({id:"mixed_profile",text:"who keeps the hard cases open",explanation:"No secondary judicial commitment was strong enough to justify a more definite description."});
+
   function specialTitle(classification) {
     const id=classification?.identity?.id;
     if(id==="unusable_response") return "Unclear response pattern";
@@ -1298,7 +1300,7 @@
     // The phrase carries the strongest broad residual characteristic.
     const phraseRanking=rankPhrases(identity,scores,traits,traitEvidence);
     const phrasePick=phraseRanking.find(item=>item.score>=0.18)||null;
-    const phrase=asPhrase(phrasePick?.feature||null);
+    const phrase=asPhrase(phrasePick?.feature||null)||MIXED_PHRASE;
 
     // Substantive modifiers beat generic fit language.  Originalism currently has
     // one such public intermediate camp: New Originalism (constructionist OPM/OI).
@@ -1594,11 +1596,13 @@
     const assembled=assemble({identity},scores,traits||{},{});
     if(ids.phraseId) {
       const feature=phraseByAnyId(ids.phraseId);
-      assembled.phrase=feature ? asPhrase(feature) : legacyRendering(ids.phraseId,"phrase") || assembled.phrase;
+      assembled.phrase=ids.phraseId==="mixed_profile"?MIXED_PHRASE:feature?asPhrase(feature):legacyRendering(ids.phraseId,"phrase")||assembled.phrase;
     }
     if(ids.modifierId) {
       const twist=twistByAnyId(ids.modifierId);
-      assembled.modifier=twist ? asModifier(twist) : legacyRendering(ids.modifierId,"modifier") || assembled.modifier;
+      assembled.modifier=ids.modifierId.startsWith("fit_")
+        ? {id:ids.modifierId,text:ids.modifierId==="fit_some_kind"?"Some kind of":ids.modifierId==="fit_unmistakable"?`Unmistakably ${indefiniteArticle(identity.label)}`:`Fairly clearly ${indefiniteArticle(identity.label)}`,explanation:"Nearest judicial philosophy at the recorded evidence level."}
+        : twist?asModifier(twist):legacyRendering(ids.modifierId,"modifier")||assembled.modifier;
     }
     if(ids.bridgeId) assembled.bridge=BRIDGES.find(x=>x.id===ids.bridgeId)||assembled.bridge;
     assembled.title=[assembled.modifier?.text,identity.label,assembled.phrase?.text].filter(Boolean).join(" ");
