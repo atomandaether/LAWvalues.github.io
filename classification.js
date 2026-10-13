@@ -334,11 +334,18 @@
     const output=[];
     for(const candidate of candidates) {
       const id=candidate.identity.id, family=candidate.identity.family;
-      if(["nonpositivist","natural_lawyer","interpretivist"].includes(id) && axisValue(scores,"sorc")>=65) continue;
-      if(id==="positivist" && axisValue(scores,"sorc")<=35) continue;
+      if(["nonpositivist","natural_lawyer","interpretivist"].includes(id) && axisValue(scores,"sorc")>=56) continue;
+      if(id==="positivist" && axisValue(scores,"sorc")<=44) continue;
       if(["originalist","public_meaning_originalist","original_intent_originalist"].includes(id) && axisValue(scores,"time")<55) continue;
       if(["living_constitutionalist","common_law_constitutionalist"].includes(id) &&
-         axisValue(scores,"time")>=65) continue;
+         axisValue(scores,"time")>=56) continue;
+      if(id==="textualist" && axisValue(scores,"cons")<=44) continue;
+      if(["purposivist","intentionalist","legal_process_theorist"].includes(id) && axisValue(scores,"cons")>=65) continue;
+      if(id==="functionalist" && axisValue(scores,"separ")>=56) continue;
+      if(id==="proportionalist" && axisValue(scores,"form")>=56) continue;
+      if(["thayerian","political_constitutionalist","popular_constitutionalist","departmentalist"].includes(id) &&
+         axisValue(scores,"post")<=44) continue;
+      if(id==="legal_constitutionalist" && axisValue(scores,"post")>=56) continue;
       let focus=[], basis=0;
       if(id==="common_good_constitutionalist"){
         focus=["sorc","cons","post"];
