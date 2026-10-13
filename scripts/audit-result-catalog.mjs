@@ -44,13 +44,13 @@ assert.ok(typeof resultContent.rankPhrases === "function", "Need separate broad 
 assert.ok(typeof resultContent.rankTwists === "function", "Need separate noun-conditioned twist ranking");
 
 
-/* Public modifier contract: the public result grammar intentionally exposes
-   only 29 of the retained 39 substantive twist definitions. Legacy/internal
-   names cannot be advertised as impossible promised results. */
+/* Public modifier contract: the public result grammar exposes only genuine
+   subtype/hybrid candidates. Ordinary cross-axis traits belong in the phrase,
+   bridge, or champion layers rather than being promoted to modifiers. */
 {
   const publicIds=resultContent.PUBLIC_SUBSTANTIVE_MODIFIER_IDS;
   const internalIds=resultContent.INTERNAL_TWIST_IDS;
-  assert.equal(publicIds.length,29,"Approved substantive modifier pool should have 29 items");
+  assert.equal(publicIds.length,20,"Reviewed public modifier pool should have 20 items pending the remaining subtype workshop");
   assert.equal(new Set(publicIds).size,publicIds.length);
   assert.equal(new Set(internalIds).size,internalIds.length);
   assert.equal(publicIds.length+internalIds.length,
@@ -89,7 +89,7 @@ assert.ok(typeof resultContent.rankTwists === "function", "Need separate noun-co
       `Archival modifier ${id} must be explicitly nonpublic`);
   }
 }
-console.log("PASS: all 29 public substantive modifiers are constructively reachable; 10 legacy twists are internal.");
+console.log("PASS: all 20 retained public modifier candidates are constructively reachable; cross-axis twists are internal.");
 
 // Compatible noun-conditioned twists should no longer disappear behind generic
 // fit language merely because the noun belongs to Source, Method, or Originalism.
@@ -107,16 +107,16 @@ console.log("PASS: all 29 public substantive modifiers are constructively reacha
     {identity:textual,identityScore:.84,identityAlternatives:[],primaryStrength:.75},
     {sorc:50,cons:88,time:50,prec:80,remed:50,post:10,separ:50,form:50},
     {},{});
-  assert.equal(textualTitle.modifier?.id,"precedent_loyal",
-    "Textualist should be able to surface a compatible precedent twist when no Method subtype modifier applies");
+  assert.notEqual(textualTitle.modifier?.id,"precedent_loyal",
+    "Precedent loyalty is a cross-axis trait, not a Textualist subtype modifier");
 
   const opm=identities.find(x=>x.id==="public_meaning_originalist");
   const opmTitle=resultContent.assemble(
     {identity:opm,identityScore:.86,identityAlternatives:[],primaryStrength:.8},
     {sorc:50,cons:55,time:90,prec:80,remed:50,post:10,separ:50,form:50},
     {},{});
-  assert.equal(opmTitle.modifier?.id,"precedent_loyal",
-    "Originalist should fall through to a compatible twist when New Originalism is not established");
+  assert.notEqual(opmTitle.modifier?.id,"precedent_loyal",
+    "Precedent loyalty is a cross-axis trait, not an Originalist subtype modifier");
 
   const newOpmTitle=resultContent.assemble(
     {identity:opm,identityScore:.86,identityAlternatives:[],primaryStrength:.8},
@@ -1587,8 +1587,7 @@ const structureFormExpectedIdentity = {
 
 const structureFormExpectedModifier = {
   alexy: "nonpositivist_proportionality",
-  barak: "purposive_proportionality",
-  schauer: "anti_discretion_tinge"
+  barak: "purposive_proportionality"
 };
 
 function runLiteralStructureFormFixture(id, mutator = null) {
