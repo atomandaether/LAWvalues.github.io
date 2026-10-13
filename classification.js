@@ -867,6 +867,28 @@
       }
     }
 
+    // Champion-only refinements: these are deliberately gated behind a
+    // profile that is already plausible from the core bank, so they cannot
+    // consume scarce adaptive slots merely to search for exotic names.
+    const freeScientific = traits["method.free_scientific_research"] || 0;
+    const socialMethod = traits["method.social_interests"] || 0;
+    if (socialMethod >= 0.5 && freeScientific < 0.5) {
+      offer("D-GENY1", 72);
+    }
+
+    if (provisionalMethodIdentity === "common_law_constitutionalist" &&
+        source <= 48 && posture <= 42 &&
+        (traits["source.common_law_fundamental_rights"] || 0) < 0.5) {
+      offer("D-CLC1", 73);
+    }
+
+    const pilCompatible = new Set(["sociological_jurist", "living_constitutionalist", "purposivist"]);
+    if (pilCompatible.has(provisionalMethodIdentity) &&
+        axisValue(scores, "remed") <= 25 && posture <= 32 && constraint <= 45 &&
+        (traits["remedies.public_interest_litigation"] || 0) < 0.5) {
+      offer("D-PIL1", 69);
+    }
+
     if (form <= 28) offer("D-PROP1", 74);
 
     if (source <= 35 && constraint <= 40 && posture >= 55) offer("D-CGC1", 42);
