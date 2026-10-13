@@ -3,6 +3,59 @@
    They are classification tie-breakers and normally do not move the eight headline axes. */
 
 globalThis.LAW_DIAGNOSTIC_QUESTIONS = Object.freeze([
+  // Theory-level allocation of judicial, executive, and legislative power.
+  {
+    id: "D-SEP1",
+    family: "separation",
+    priority: "high",
+    unlock: "Unitary presidential control versus Congress's authority to assign independent executive judgment; not simply attitudes about an independent prosecutor.",
+    prompt: "Congress can assign an executive officer a judgment to make under a law without allowing the President to replace that officer's lawful decision with the President's own. Being responsible for executing the law does not mean controlling every judgment made under it.",
+    agreeTraits: ["separation.assigned_independence"],
+    disagreeTraits: ["separation.unitary_executive"],
+    nextOnAgree: [],
+    nextOnDisagree: [],
+    relatedIdentityIds: ["formalist","functionalist"],
+    note: "Unitary presidential control versus Congress's authority to assign independent executive judgment; not simply attitudes about an independent prosecutor."
+  },
+  {
+    id: "D-SEP2",
+    family: "separation",
+    priority: "high",
+    unlock: "Who determines the legal limits of delegated power, not whether technical policymaking may be delegated.",
+    prompt: "When an agency's authority depends on genuinely ambiguous statutory language, a judge should enforce the judge's own best interpretation even if the agency has a different, equally reasonable interpretation informed by greater subject-matter expertise. Deciding the law's limits is the court's responsibility.",
+    agreeTraits: ["separation.independent_judicial_interpretation"],
+    disagreeTraits: ["separation.interpretive_accommodation"],
+    nextOnAgree: [],
+    nextOnDisagree: [],
+    relatedIdentityIds: ["textualist","formalist","functionalist","purposivist"],
+    note: "Who determines the legal limits of delegated power, not whether technical policymaking may be delegated."
+  },
+  {
+    id: "D-SEP3",
+    family: "separation",
+    priority: "high",
+    unlock: "Constitutional nondelegation despite perfectly clear authorization, separated from a mere statutory clear-statement or major-questions rule.",
+    prompt: "Even if Congress clearly and deliberately authorizes an agency to make major policy choices under a broad standard, courts should invalidate that delegation: some lawmaking decisions must constitutionally remain with Congress, no matter how unambiguous its authorization.",
+    agreeTraits: ["separation.strong_nondelegation","separation.nondelegation"],
+    disagreeTraits: ["separation.delegation_acceptable"],
+    nextOnAgree: [],
+    nextOnDisagree: [],
+    relatedIdentityIds: ["formalist","functionalist"],
+    note: "Constitutional nondelegation despite perfectly clear authorization, separated from a mere statutory clear-statement or major-questions rule."
+  },
+  {
+    id: "D-SEP4",
+    family: "separation",
+    priority: "high",
+    unlock: "Judicial-power allocation versus integrated executive adjudication; independent of general hostility to agencies.",
+    prompt: "The government should not impose serious civil penalties through an executive agency's own adjudicators, even if Congress authorized the procedure and an independent court can review the result afterward. Deciding that kind of liability belongs to courts.",
+    agreeTraits: ["separation.judicial_power_boundary"],
+    disagreeTraits: ["separation.administrative_adjudication"],
+    nextOnAgree: [],
+    nextOnDisagree: [],
+    relatedIdentityIds: ["formalist","functionalist"],
+    note: "Judicial-power allocation versus integrated executive adjudication; independent of general hostility to agencies."
+  },
   {id:"D-MOR1",family:"nonpositivism",priority:"high",unlock:"A live specialty distinction requires this counterexample.",prompt:"Two large companies sign a voluntary contract that every constitution, statute, precedent, and accepted legal practice treats as valid. The judge personally believes the contract is immoral, but assume that this is only the judge’s own sincerely held moral view: there is no established objective moral rule against the contract, and reasonable people disagree. The court should still refuse to enforce the contract based solely on the judge’s personal moral judgment.",agreeTraits:["method.subjective_moral_override"],disagreeTraits:["method.rejects_subjective_override"],nextOnAgree:[],nextOnDisagree:[],relatedIdentityIds:["natural_lawyer","interpretivist","nonpositivist"],note:"Core-to-adaptive migration: no effect on the eight shared axis percentages."},
   {id:"D-PREC1",family:"originalism",priority:"high",unlock:"A live specialty distinction requires this counterexample.",prompt:"A state constitution says that newspapers may be sued for false statements under the same rules as everyone else. Fifty years ago, the state supreme court nevertheless created a special rule out of nowhere protecting investigative journalism and political criticism from inclusion in that liability. The court should now abolish it because the constitution never authorized the special protection.",agreeTraits:["precedent.judicial_invention_skepticism","precedent.correctness_first"],disagreeTraits:["precedent.protective_rule_stability"],nextOnAgree:[],nextOnDisagree:[],relatedIdentityIds:["public_meaning_originalist","originalist"],note:"Core-to-adaptive migration: no effect on the eight shared axis percentages."},
   // Universal soft probe for the only intentionally non-axis identity.
