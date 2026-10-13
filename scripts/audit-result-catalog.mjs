@@ -1660,6 +1660,22 @@ for(const axisId of ["sorc","cons","time","separ"]){
 }
 console.log("PASS: focused single-axis judicial profiles classify without weakening actual response-quality checks.");
 
+
+// Personal moral override is not an independent objective moral truth.
+{
+  const scores = Object.fromEntries(context.LAW_AXES.map(a => [a.id,50]));
+  const personal = classifier.buildTraits(scores,{S9:3},{});
+  const objective = classifier.buildTraits(scores,{S10:3},{});
+  assert.equal(personal["source.objective_morality"] || 0,0);
+  assert.ok(personal["method.subjective_moral_override"] >= 0.9);
+  assert.ok(objective["source.objective_morality"] >= 0.4);
+  assert.equal(objective["method.subjective_moral_override"] || 0,0);
+  const check = classifier.classify(scores,{S9:3,T1:3,T2:-3},
+    {"D-RLS1":-2,"D-QC1":-2},{coreElapsedMs:900000});
+  assert.equal(check.historicalMethod?.disagreements,1,
+    "The historical-method partisanship probe must be recorded without forcing a partisan noun");
+}
+
 console.log("PASS: adversarial primary-commitment, modifier/phrase, share-link, and 600 adaptive fuzz invariants.");
 console.log("PASS: all 18 approved phrases are reachable and use the approved critic-rib wording.");
 console.log("PASS: Originalism resolves end-to-end from literal 93-item answers through adaptive routing to all 13 locked champion units.");
