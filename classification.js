@@ -1063,6 +1063,16 @@
     if(sourceNuanceZone && !hasAsked(diagnosticResponses,"D-MOR1")) offer("D-MOR1",64);
 
     if (time >= 60) {
+      // Natural-law grounding is a genuine Originalist subtype rather than an
+      // unrelated Source exploration. When objective-morality evidence is
+      // already present, D-NP1 tests the positive-law settlement component
+      // needed for the Higher-law Originalist modifier/champion cell.
+      if ((traits["source.objective_morality"] || 0) >= 0.35 &&
+          (traits["source.positive_law_settlement"] || 0) < 0.5 &&
+          !hasAsked(diagnosticResponses, "D-NP1")) {
+        offer("D-NP1", 86);
+      }
+
       const publicMeaning = traits["time.public_meaning"] || 0;
       const originalIntent = traits["time.original_intent"] || 0;
       const construction = traits["time.construction_zone"] || 0;
