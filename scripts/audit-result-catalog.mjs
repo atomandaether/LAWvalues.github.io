@@ -779,8 +779,8 @@ const ordinaryFit = resultContent.assemble(
   {},
   {}
 );
-assert.equal(ordinaryFit.modifier, null,
-  "The deliberately narrow middle fit band should use no modifier");
+assert.equal(ordinaryFit.modifier.id, "fit_moderate",
+  "Every valid three-part result needs a modifier even at intermediate fit");
 
 const weakFit = resultContent.assemble(
   { identity: fitIdentity, identityScore: 0.69, identityAlternatives: [{ score: 0.67 }] },
@@ -870,7 +870,7 @@ function literalSourceCore(id) {
     });
   } else if (id === "radbruch_soper") {
     Object.assign(responses, {
-      S1:2, S2:3, S3:2, S4:2, S5:1, S6:-1, S7:1, S8:-2, S9:-2, S10:-2, S11:-2
+      S1:0, S2:3, S3:0, S4:0, S5:0, S6:2, S7:0, S8:2, S9:-2, S10:-2, S11:-2
     });
   } else {
     Object.assign(responses, {
@@ -1489,6 +1489,79 @@ console.log(`PASS: ${allDiagnostics.length} adaptive diagnostics with a seven-qu
 console.log("PASS: Source nouns/modifiers are locked: Positivist, Natural Lawyer, Interpretivist, Fullerian, and residual Non-Positivist.");
 console.log("PASS: sparse profiles ignore unmodeled axes and diagnostic specialists require evidence.");
 console.log("PASS: public titles split broad phrase ranking from noun-conditioned twist selection.");
+
+// Cross-family adversarial invariants: narrow yes-answers may refine a theory
+// but must not invert a strongly opposing primary judicial commitment.
+{
+  const positivistCore=Object.fromEntries(questions.map((q,i)=>[q.id,i%2?1:-1]));
+  for(const q of questions){
+    const agree=q.signals?.agree?.sorc||0, disagree=q.signals?.disagree?.sorc||0;
+    if(agree>0||disagree>0) positivistCore[q.id]=agree>=disagree?3:-3;
+    else if(agree<0||disagree<0) positivistCore[q.id]=0;
+  }
+  const original=classifier.classify(scoring.scoreAll({...positivistCore,S2:-3}),
+    {...positivistCore,S2:-3},{"D-RLS1":-2,"D-QC1":-2},{coreElapsedMs:900000});
+  const changedCore={...positivistCore,S2:3};
+  const changedScores=scoring.scoreAll(changedCore);
+  const changed=classifier.classify(changedScores,changedCore,{"D-RLS1":-2,"D-QC1":-2},{coreElapsedMs:900000});
+  assert.equal(original.identity.id,"positivist","Uncontradicted strongly sourced law must remain Positivist");
+  assert.ok(changedScores.sorc.score>=80,"Fixture must remain overwhelmingly source-positivist");
+  assert.equal(changed.identity.id,"positivist",
+    "One exceptional-injustice answer must not invert an overwhelmingly Positivist result");
+}
+{
+  const originalist=Object.fromEntries(questions.map((q,i)=>[q.id,i%2?1:-1]));
+  for(const q of questions){
+    const agree=q.signals?.agree?.time||0, disagree=q.signals?.disagree?.time||0;
+    if(agree>0||disagree>0)originalist[q.id]=agree>=disagree?3:-3;
+    else if(agree<0||disagree<0)originalist[q.id]=0;
+  }
+  Object.assign(originalist,{T7:3,T8:3,T10:3});
+  const core=scoring.scoreAll(originalist);
+  const legalOnly=classifier.classify(core,originalist,{"D-RLS1":-2,"D-QC1":-2},{coreElapsedMs:900000});
+  const alsoRealist=classifier.classify(core,originalist,
+    {"D-RLS1":3,"D-QC1":-2,"D-RLS2":3,"D-RLS3":3},{coreElapsedMs:900000});
+  assert.equal(legalOnly.identity.id,"public_meaning_originalist");
+  assert.equal(alsoRealist.identity.id,"public_meaning_originalist",
+    "Descriptive Realism must not erase a dominating normative Originalist commitment");
+}
+// End-to-end fuzzing exercises the actual adaptive router and literal core
+// responses, not unattainable synthetic coordinates or directly supplied traits.
+let fuzzSeed=20261013;
+function fuzzRandom(){fuzzSeed=(Math.imul(fuzzSeed,1664525)+1013904223)>>>0;return fuzzSeed/4294967296;}
+let validCases=0;
+for(let i=0;i<600;i++){
+  const responses=Object.fromEntries(questions.map(q=>[q.id,[-3,-2,-1,0,1,2,3][Math.floor(fuzzRandom()*7)]]));
+  const scores=scoring.scoreAll(responses),diagnosticResponses={};
+  let asked=0;
+  while(asked<classifier.MAX_DIAGNOSTICS){
+    const next=classifier.nextDiagnostic(scores,responses,diagnosticResponses);
+    if(!next)break;
+    diagnosticResponses[next.id]=next.id==="D-QC1"||next.id==="D-RLS1"
+      ? -2 : [-3,-2,-1,0,1,2,3][Math.floor(fuzzRandom()*7)];
+    asked++;
+  }
+  assert.ok(!classifier.nextDiagnostic(scores,responses,diagnosticResponses),
+    "No adaptive router may ask an eighth question");
+  const result=classifier.classify(scores,responses,diagnosticResponses,{coreElapsedMs:900000});
+  if(result.responseQuality)continue;
+  validCases++;
+  assert.equal(result.champions.length,1,"Each valid respondent gets exactly one champion unit");
+  assert.ok(result.identity?.public!==false,"A valid result may not expose an internal noun");
+  assert.ok(result.resultTitle?.modifier?.text && result.resultTitle?.phrase?.text,
+    "Every valid respondent gets modifier + noun + phrase");
+  const source=scores.sorc.score;
+  if(source>=65)assert.ok(!["nonpositivist","natural_lawyer","interpretivist"].includes(result.identity.id),
+    "Contradictory source-of-law noun must not override Positivism");
+  const recreated=resultContent.fromIds(result.identity,
+    Object.fromEntries(Object.entries(scores).map(([k,v])=>[k,v.score])),{},
+    {modifierId:result.resultTitle.modifier.id,phraseId:result.resultTitle.phrase.id,bridgeId:result.resultTitle.bridge?.id});
+  assert.equal(recreated.title,result.resultTitle.title,
+    "Shared result links must preserve all title words and modifiers");
+}
+assert.ok(validCases>=550,"Fuzz must check enough valid completed profiles");
+
+console.log("PASS: adversarial primary-commitment, modifier/phrase, share-link, and 600 adaptive fuzz invariants.");
 console.log("PASS: all 18 approved phrases are reachable and use the approved critic-rib wording.");
 console.log("PASS: Originalism resolves end-to-end from literal 93-item answers through adaptive routing to all 13 locked champion units.");
 console.log("PASS: Alexyan and Bickelian are champion/modifier-level distinctions, not public nouns.");
