@@ -11,7 +11,7 @@ Two public nouns are locked:
 - **Living Constitutionalist**
 - **Common-Law Constitutionalist**
 
-Nearby theories whose real distinction belongs principally to another dimension remain there rather than becoming duplicate Time nouns: Dworkin/Fleming in Source/Interpretivism, Bobbitt/Fallon in Method/Pluralism, and Kramer/Tushnet/Gardbaum in Posture/constitutional authority.
+Nearby theories whose real distinction belongs principally to another dimension remain there rather than becoming duplicate Time nouns: Dworkin/Fleming in Source/Interpretivism, Bobbitt/Fallon in Method/Pluralism, Kramer/Tushnet in Posture/constitutional authority, and Gardbaum's weak-form review in the nonpublic institutional-design layer.
 
 ## Living Constitutionalist
 
