@@ -475,6 +475,41 @@ globalThis.LAW_PROFILES = Object.freeze([
     related: ["Friedrich Carl von Savigny", "Beverley McLachlin", "Benjamin Cardozo"]
   },
   {
+    id: "harlan_ii",
+    name: "John Marshall Harlan II",
+    tier: "main",
+    identityIds: ["common_law_constitutionalist", "living_constitutionalist"],
+    axisSignature: {
+      time: { target: 28, weight: 0.75 },
+      prec: { target: 86, weight: 0.8 },
+      post: { target: 62, weight: 0.6 },
+      remed: { target: 72, weight: 0.35 }
+    },
+    signatureTraits: ["time.common_law_development", "precedent.settlement"],
+    requiredTraits: [],
+    antiTraits: ["precedent.correctness_first"],
+    description: "Living-tradition constitutionalism: ordered liberty develops through historically embedded tradition and precedent, paired with substantial judicial restraint rather than either fixed original meaning or free-form moral updating.",
+    related: ["David Strauss", "Felix Frankfurter"]
+  },
+  {
+    id: "robin_cooke",
+    name: "Lord Cooke of Thorndon",
+    tier: "specialist",
+    identityIds: ["common_law_constitutionalist"],
+    crossCuttingIdentityIds: ["living_constitutionalist", "nonpositivist"],
+    axisSignature: {
+      sorc: { target: 18, weight: 0.55 },
+      time: { target: 30, weight: 0.45 },
+      prec: { target: 68, weight: 0.35 },
+      post: { target: 12, weight: 0.75 }
+    },
+    signatureTraits: ["source.common_law_fundamental_rights"],
+    requiredTraits: [{ all: ["source.common_law_fundamental_rights"], min: 0.5 }],
+    antiTraits: ["posture.majoritarian"],
+    description: "Strong common-law constitutionalism: some fundamental common-law rights can constrain even otherwise valid legislation, making judicially articulated constitutional principle a potential limit on parliamentary supremacy.",
+    related: ["T.R.S. Allan", "John Laws", "David Strauss"]
+  },
+  {
     id: "sunstein",
     name: "Cass Sunstein",
     tier: "main",
@@ -523,6 +558,22 @@ globalThis.LAW_PROFILES = Object.freeze([
     antiTraits: [],
     description: "Sociological Jurisprudence: identify competing social interests, examine law in action, and shape doctrine with explicit attention to its practical social operation.",
     related: ["Eugen Ehrlich", "Benjamin Cardozo"]
+  },
+  {
+    id: "geny",
+    name: "François Gény",
+    tier: "specialist",
+    identityIds: ["sociological_jurist"],
+    crossCuttingIdentityIds: ["interpretive_pluralist", "purposivist"],
+    axisSignature: {
+      cons: { target: 34, weight: 0.5 },
+      form: { target: 38, weight: 0.35 }
+    },
+    signatureTraits: ["method.free_scientific_research", "method.law_in_action"],
+    requiredTraits: [{ all: ["method.free_scientific_research"], min: 0.5 }],
+    antiTraits: ["constraint.textual"],
+    description: "Free Scientific Research: authoritative positive sources govern where they answer the case, but genuine gaps call for disciplined inquiry into social facts, justice, equity, and the nature of things rather than fictitious textual deduction.",
+    related: ["Roscoe Pound", "Eugen Ehrlich"]
   },
   {
     id: "scalia_manning_easterbrook",
@@ -708,7 +759,8 @@ globalThis.LAW_PROFILES = Object.freeze([
   {
     id: "ackerman",
     name: "Bruce Ackerman",
-    tier: "main",
+    tier: "lineage",
+    selectable: false,
     identityIds: ["living_constitutionalist"],
     axisSignature: {
       time: { target: 18, weight: 0.8 },
@@ -764,6 +816,24 @@ globalThis.LAW_PROFILES = Object.freeze([
     antiTraits: ["remedies.party_specific"],
     description: "The structural-remedies specialist: adjudication can vindicate public values through institutional reform and continuing judicial supervision.",
     related: ["Abram Chayes", "P. N. Bhagwati"]
+  },
+  {
+    id: "bhagwati_iyer",
+    name: "P. N. Bhagwati / V. R. Krishna Iyer",
+    tier: "specialist",
+    identityIds: ["sociological_jurist"],
+    crossCuttingIdentityIds: ["living_constitutionalist", "purposivist"],
+    axisSignature: {
+      remed: { target: 5, weight: 1 },
+      post: { target: 8, weight: 0.8 },
+      cons: { target: 20, weight: 0.4 },
+      form: { target: 28, weight: 0.3 }
+    },
+    signatureTraits: ["remedies.public_interest_litigation", "remedies.access_relaxation"],
+    requiredTraits: [{ all: ["remedies.public_interest_litigation"], min: 0.5 }],
+    antiTraits: ["remedies.party_specific"],
+    description: "Indian social-action/PIL judging: relax standing and procedural barriers, innovate access to court, and use systemic constitutional remedies so disadvantaged groups can obtain effective rights enforcement.",
+    related: ["Owen Fiss", "Abram Chayes"]
   },
   {
     id: "bray",
