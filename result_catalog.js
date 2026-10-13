@@ -692,6 +692,16 @@ globalThis.LAW_CHAMPIONS = Object.freeze([
     note: "Canonical Sociological Jurisprudence champion: law in action, competing social interests, and practical social operation."
   },
   {
+    id: "geny",
+    name: "François Gény",
+    kind: "person",
+    role: "subtype",
+    eligibleIdentityIds: ["sociological_jurist", "interpretive_pluralist", "purposivist"],
+    signatureTraits: ["method.free_scientific_research", "method.law_in_action"],
+    antiTraits: ["constraint.textual"],
+    note: "Free Scientific Research: positive sources control until they genuinely run out, after which disciplined social, equitable, and practical inquiry supplies the missing rule."
+  },
+  {
     id: "ehrlich",
     name: "Eugen Ehrlich",
     kind: "person",
@@ -850,6 +860,26 @@ globalThis.LAW_CHAMPIONS = Object.freeze([
     note: "Very clean champion because the theory label and his scholarship closely coincide."
   },
   {
+    id: "harlan_ii",
+    name: "John Marshall Harlan II",
+    kind: "person",
+    role: "primary",
+    eligibleIdentityIds: ["common_law_constitutionalist", "living_constitutionalist"],
+    signatureTraits: ["time.common_law_development", "precedent.stability", "precedent.settlement", "posture.majoritarian"],
+    antiTraits: ["precedent.correctness_first"],
+    note: "Living-tradition / ordered-liberty champion: evolutionary constitutional tradition combined with substantial restraint and respect for federal structure."
+  },
+  {
+    id: "robin_cooke",
+    name: "Lord Cooke of Thorndon",
+    kind: "person",
+    role: "subtype",
+    eligibleIdentityIds: ["common_law_constitutionalist", "living_constitutionalist", "nonpositivist"],
+    signatureTraits: ["source.common_law_fundamental_rights", "posture.judicial_supremacy"],
+    antiTraits: ["posture.majoritarian"],
+    note: "Strong common-law constitutionalism: fundamental common-law rights can constrain ordinary legislative supremacy; require the dedicated diagnostic."
+  },
+  {
     id: "brennan",
     name: "William J. Brennan Jr.",
     kind: "person",
@@ -982,6 +1012,16 @@ globalThis.LAW_CHAMPIONS = Object.freeze([
     signatureTraits: ["remedies.structural", "remedies.supervision", "posture.countermajoritarian"],
     antiTraits: ["remedies.party_specific"],
     note: "Structural-reform champion. Normally attaches to a modifier/phrase; do not invent a fake middle school around him."
+  },
+  {
+    id: "bhagwati_iyer",
+    name: "P. N. Bhagwati / V. R. Krishna Iyer",
+    kind: "people",
+    role: "subtype",
+    eligibleIdentityIds: ["sociological_jurist", "living_constitutionalist", "purposivist"],
+    signatureTraits: ["remedies.public_interest_litigation", "remedies.access_relaxation", "remedies.structural", "posture.countermajoritarian"],
+    antiTraits: ["remedies.party_specific"],
+    note: "Indian social-action/PIL champion unit: relaxed standing and filing barriers plus systemic rights enforcement for people otherwise unable to reach court."
   },
   {
     id: "chayes",
