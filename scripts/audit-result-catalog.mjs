@@ -328,7 +328,7 @@ assert.equal(
 for (const id of [
   "positivist", "nonpositivist", "interpretivist", "natural_lawyer", "fullerian",
   "textualist", "intentionalist", "purposivist", "legal_process_theorist", "interpretive_pluralist",
-  "pragmatist", "legal_realist", "sociological_jurist", "structuralist",
+  "pragmatist", "legal_realist", "sociological_jurist",
   "originalist", "common_law_constitutionalist",
   "legal_constitutionalist", "political_constitutionalist", "thayerian",
   "weak_form_constitutionalist", "popular_constitutionalist", "departmentalist",
@@ -356,7 +356,7 @@ for (const id of [
   "D-RLS1", "D-RLS2", "D-RLS3", "D-RLS4", "D-RLS5",
   "D-POS1", "D-POS2", "D-NP1", "D-NP2", "D-NP3", "D-NP4", "D-NP5", "D-NP6",
   "D-MAJ1", "D-MAJ2", "D-ELY1", "D-WAL1", "D-RESP1", "D-TXT1", "D-TXT2", "D-INT1", "D-INT2", "D-PRAG1",
-  "D-LP1", "D-LP2", "D-QC1", "D-SOC1", "D-STR1", "D-GENY1", "D-LIV1", "D-LIV2", "D-HAR1", "D-CLC1", "D-PIL1", "D-PLU1", "D-PLU2", "D-OCO1",
+  "D-LP1", "D-LP2", "D-QC1", "D-SOC1", "D-GENY1", "D-LIV1", "D-LIV2", "D-HAR1", "D-CLC1", "D-PIL1", "D-PLU1", "D-PLU2", "D-OCO1",
   "D-ORI1", "D-ORI2", "D-ORI3", "D-ORI4", "D-ORI5", "D-MOR1", "D-PREC1", "D-QC2"
 ]) {
   assert.ok(diagnosticIds.has(id), `Missing high-value diagnostic ${id}`);
@@ -1145,13 +1145,12 @@ for (const id of lockedSourceUnits) {
 
 
 // Locked Interpretation / adjudicative-style champion units.
-// The approved Method roster now contains 20 endpoints, adding an
-// institutionalist contextual-Textualist Kagan cell and Structuralism via Marshall.
+// The approved roster contains 18 endpoints after adding Gény as the
+// source-gap / Free Scientific Research specialist inside Sociological Jurisprudence.
 const lockedMethodUnits = [
   "hugo_black",
   "scalia_manning_easterbrook",
   "kavanaugh_barrett",
-  "kagan",
   "ekins_intentionalism",
   "hand_posner_imaginative",
   "breyer",
@@ -1160,7 +1159,6 @@ const lockedMethodUnits = [
   "wechsler",
   "bobbitt",
   "eskridge_frickey",
-  "marshall_structuralist",
   "posner",
   "cardozo",
   "llewellyn",
@@ -1224,10 +1222,8 @@ function methodDiagnosticAnswer(id, diagnosticId) {
   if (diagnosticId === "D-RLS4") return id === "frank" ? 3 : -3;
   if (diagnosticId === "D-RLS5") return id === "felix_cohen" ? 3 : -3;
 
-  if (diagnosticId === "D-TXT1") return ["kavanaugh_barrett","kagan"].includes(id) ? 3 : -3;
+  if (diagnosticId === "D-TXT1") return id === "kavanaugh_barrett" ? 3 : -3;
   if (diagnosticId === "D-TXT2") return id === "hugo_black" ? 3 : -3;
-  if (diagnosticId === "D-SEP2") return id === "kagan" ? -3 : id === "kavanaugh_barrett" ? 3 : -3;
-  if (diagnosticId === "D-STR1") return id === "marshall_structuralist" ? 3 : -3;
 
   if (diagnosticId === "D-INT1") return METHOD_INTENTIONALISTS.has(id) ? 3 : -3;
   if (diagnosticId === "D-INT2") return id === "hand_posner_imaginative" ? 3 : -3;
@@ -1267,7 +1263,6 @@ const methodExpectedIdentity = {
   hugo_black:"textualist",
   scalia_manning_easterbrook:"textualist",
   kavanaugh_barrett:"textualist",
-  kagan:"textualist",
   ekins_intentionalism:"intentionalist",
   hand_posner_imaginative:"intentionalist",
   breyer:"purposivist",
@@ -1276,7 +1271,6 @@ const methodExpectedIdentity = {
   wechsler:"legal_process_theorist",
   bobbitt:"interpretive_pluralist",
   eskridge_frickey:"interpretive_pluralist",
-  marshall_structuralist:"structuralist",
   posner:"pragmatist",
   cardozo:"pragmatist",
   llewellyn:"legal_realist",
@@ -2028,8 +2022,8 @@ console.log("PASS: Alexyan and Bickelian are champion/modifier-level distinction
 console.log("PASS: Formalist and Functionalist public labels remain unchanged.");
 console.log("PASS: generic fit modifiers render Unmistakably a/an / blank / Some kind of, with correct articles and substantive modifiers taking priority.");
 console.log("PASS: all 10 locked Source champion units are reachable end-to-end from literal answers within the twelve-diagnostic cap.");
-console.log("PASS: Method nouns/modifiers are locked, including Structuralist, Sociological Jurist, and the three substantive Method modifiers.");
-console.log("PASS: all 20 locked Method champion units are reachable end-to-end from literal answers within the twelve-diagnostic cap.");
+console.log("PASS: Method nouns/modifiers are locked, including Sociological Jurist and the three substantive Method modifiers.");
+console.log("PASS: all 18 locked Method champion units are reachable end-to-end from literal answers within the twelve-diagnostic cap.");
 console.log("PASS: champion matching is noun-conditioned: primary and cross-cutting compatibility are explicit, incompatible champions are excluded.");
 console.log("PASS: Living/Common-Law constitutionalism resolves to all 7 locked non-originalist champion units, including Democratic/Transformative Living modifiers, within the twelve-diagnostic cap.");
 console.log("PASS: Judicial review / constitutional authority resolves to the 8 public champion units; broad legal/weak-form authority configurations stay internal.");
