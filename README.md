@@ -75,3 +75,28 @@ They check the 93-item core, asymmetric scoring, source references, local asset 
 ## Validation status
 
 The item bank is content-grounded and structurally audited, not empirically validated. Factor structure, reliability, test–retest stability, convergent and discriminant validity, subgroup invariance, diagnostic thresholds, and thinker-profile locations require pilot response data.
+
+## Exceptional results and political mirrors
+
+Jurisprudential matches are withheld on three exceptional paths: mechanical or
+inattentive answers (including the universal response check), broad internal
+contradictions in independent domains, and repeated selection of politically
+favored outcomes across matched judicial-method cases. These are not ninth or
+tenth axes. No partisanship meter appears on the result page.
+
+The hidden outcome-selection test uses C3/C4, R2/R1, R7/R6 and R10/R9 as
+politically counterbalanced applications of the same kind of judicial rule.
+It requires at least three independently reversed pairs favoring the same
+political side, weighted evidence of at least 3, and a clear directional
+margin. The historically framed T1/T2 pair is weaker corroboration and cannot
+substitute for a third direct reversal. O9/O10 are deliberately *not* counted:
+their constitutional premises differ too much to infer an inconsistent method
+from a simple opposition of substantive outcomes. This is a stringent
+heuristic rather than a validated measure of individual political motivation.
+
+A successful outcome-selection override returns the exceptional
+"Outcome-driven pattern" result without a jurist or three-part title.
+It does not affect the eight plotted scores. Ordinary, valid cases retain
+exactly one champion unit and a modifier, noun and phrase. Broad incoherence
+requires direct contradictions in more than one jurisprudential domain; mixed
+scores and sincere methodological uncertainty do not qualify.
