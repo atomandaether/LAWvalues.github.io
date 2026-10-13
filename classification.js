@@ -3,7 +3,7 @@
   "use strict";
 
   const AXIS_IDS = ["sorc", "cons", "time", "prec", "remed", "post", "separ", "form"];
-  const MAX_DIAGNOSTICS = 7;
+  const MAX_DIAGNOSTICS = 12;
 
   const EXTRA_DIAGNOSTICS = Object.freeze([
     {
@@ -80,7 +80,6 @@
     "source.principles_are_law": [["S8", 1, 1], ["S7", -1, 0.35]],
     "source.extreme_injustice": [["S2", 1, 1]],
     "source.objective_morality": [["S10", 1, 1], ["S11", 1, 1]],
-    "method.subjective_moral_override": [["S9", 1, 1]],
     "constraint.purpose": [["C8", 1, 0.8], ["C12", 1, 0.8], ["C14", 1, 0.9], ["C15", 1, 1]],
     "constraint.textual": [["C1", 1, 0.6], ["C2", 1, 0.7], ["C7", 1, 0.8], ["C9", 1, 0.7], ["C11", 1, 0.7], ["C17", 1, 1], ["C18", 1, 0.8]],
     "constraint.contextual_textualism": [["C5", 1, 0.8], ["C13", -1, 1]],
@@ -92,7 +91,7 @@
     "time.expected_applications": [["T3", 1, 0.7], ["T9", -1, 0.8]],
     "time.early_practice": [["T11", 1, 1]],
     "time.common_law_development": [["T12", 1, 1], ["P3", 1, 1]],
-    "precedent.reliance": [["P1", 1, 1], ["P4", 1, 0.8], ["P12", 1, 1]],
+    "precedent.reliance": [["P4", 1, 0.8], ["P12", 1, 1]],
     "precedent.settlement": [["P5", 1, 0.9], ["P7", 1, 1]],
     "precedent.statutory": [["P2", 1, 0.8], ["P12", 1, 0.7]],
     "remedies.universal": [["R1", 1, 0.9], ["R2", 1, 1]],
@@ -960,6 +959,15 @@
     const precedent = axisValue(scores, "prec");
     const remedies = axisValue(scores, "remed");
     const maxSalience = maxSalienceEarly;
+    const originalistZone = time >= 64 &&
+      resolveIdentity(scores,traits).candidates.some(c=>c.identity.id.includes("originalist"));
+    if(originalistZone && (precedent >= 55 || precedent <= 38 || time >= 78) &&
+       !hasAsked(diagnosticResponses,"D-PREC1")) offer("D-PREC1",75);
+    const sourceNuanceZone = source <= 43 &&
+      ((traits["source.objective_morality"]||0)>=0.33 ||
+       (traits["source.fit_and_justification"]||0)>=0.33 ||
+       (traits["source.positive_law_settlement"]||0)>=0.4);
+    if(sourceNuanceZone && !hasAsked(diagnosticResponses,"D-MOR1")) offer("D-MOR1",64);
 
     if (time >= 60) {
       const publicMeaning = traits["time.public_meaning"] || 0;
@@ -1223,8 +1231,30 @@
       }
     }
 
-    priorities.sort((a, b) => b.priority - a.priority);
-    return priorities.length ? byId[priorities[0].id] : null;
+    // Rank a live, independently useful specialty distinction above a weak
+    // exploration of an unrelated jurisprudential family.
+    const resolution=resolveIdentity(scores,traits);
+    const leading=resolution.candidates.slice(0,3).filter((c,i)=>
+      i===0||resolution.best.score-c.score<=0.13);
+    const relevant=new Set(leading.map(c=>c.identity.id));
+    const targeted=priorities.map(p=>{
+      const diagnostic=byId[p.id],covers=diagnostic.relatedIdentityIds||[];
+      const direct=covers.some(id=>relevant.has(id)) ||
+        (resolution.best.identity.id.includes("originalist") && diagnostic.family==="originalism");
+      let bonus=direct?19:0;
+      if(resolution.best.score>=0.83&&resolution.best.basis>=0.34&&!direct)bonus-=12;
+      if(direct){
+        const outcomes=[3,-3].map(value=>{
+          const t=buildTraits(scores,responses,{...diagnosticResponses,[p.id]:value});
+          const noun=resolveIdentity(scores,t).best.identity;
+          return noun.id+"/"+(resolveChampions(scores,t,noun).matches[0]?.profile?.id||"none");
+        });
+        if(outcomes[0]!==outcomes[1])bonus+=16;
+      }
+      return {...p,rank:p.priority+bonus};
+    });
+    targeted.sort((a,b)=>b.rank-a.rank||b.priority-a.priority||a.id.localeCompare(b.id));
+    return targeted.length?byId[targeted[0].id]:null;
   }
 
   function classify(scored, responses = {}, diagnosticResponses = {}, meta = {}) {
