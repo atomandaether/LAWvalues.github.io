@@ -1684,11 +1684,72 @@ console.log("PASS: focused single-axis judicial profiles classify without weaken
   assert.ok(personal["method.subjective_moral_override"] >= 0.9);
   assert.ok(objective["source.objective_morality"] >= 0.4);
   assert.equal(objective["method.subjective_moral_override"] || 0,0);
-  const check = classifier.classify(scores,{S9:3,T1:3,T2:-3},
-    {"D-RLS1":-2,"D-QC1":-2},{coreElapsedMs:900000});
-  assert.equal(check.historicalMethod?.disagreements,1,
-    "The historical-method partisanship probe must be recorded without forcing a partisan noun");
+
 }
+
+
+// Partisan judging is a hidden exceptional override. Three independent
+// same-direction *matched* reversals are required; one or two are insufficient.
+// The softer T1/T2 historical contrast corroborates but cannot trigger alone.
+{
+  const ids = [
+    ["C3","C4"],["R2","R1"],["R7","R6"],["R10","R9"]
+  ];
+  const responses=Object.fromEntries(questions.map((q,i)=>[q.id,[-2,-1,0,1,2][i%5]]));
+  const d={"D-RLS1":-2,"D-QC1":-2};
+  const conclude = r=>classifier.classify(scoring.scoreAll(r),r,d,{coreElapsedMs:900000});
+  const set = (side,count,value=2) => {
+    const r={...responses};
+    for(let k=0;k<count;k++){
+      r[ids[k][0]]=side==="left"?value:-value;
+      r[ids[k][1]]=side==="left"?-value:value;
+    }
+    return r;
+  };
+  const left=set("left",3);
+  const right=set("right",3);
+  assert.equal(classifier.detectOutcomeSelection(left).side,"left");
+  assert.equal(classifier.detectOutcomeSelection(right).side,"right");
+  assert.equal(conclude(left).identity.id,"outcome_driven_left");
+  assert.equal(conclude(right).identity.id,"outcome_driven_right");
+  for(const r of [left,right]){
+    const result=conclude(r);
+    assert.equal(result.champions.length,0,"Override must not award a jurist champion");
+    assert.equal(result.resultTitle.special,true,"Override must replace modifier/noun/phrase");
+    assert.equal(result.resultTitle.modifier,null);
+    assert.equal(result.resultTitle.phrase,null);
+  }
+  const less=set("left",2);
+  assert.equal(classifier.detectOutcomeSelection(less).side,null,
+    "Two mirrored pairs are insufficient for a partisan classification");
+  assert.notEqual(conclude(less).identity.id,"outcome_driven_left");
+  const historyOnly={...less,T1:3,T2:-3};
+  assert.equal(classifier.detectOutcomeSelection(historyOnly).side,null,
+    "History corroboration cannot convert two direct reversals into a partisan result");
+  // Agreement with every member of the pair expresses consistent doctrine.
+  const consistent={...responses};
+  for(const [l,r] of ids){consistent[l]=3;consistent[r]=3;}
+  consistent.T1=3;consistent.T2=3;
+  assert.equal(classifier.detectOutcomeSelection(consistent).side,null);
+  // Mixed left and right reversals do not demonstrate a single partisan aim.
+  const mixed={...responses};
+  for(let k=0;k<2;k++){mixed[ids[k][0]]=2;mixed[ids[k][1]]=-2;}
+  for(let k=2;k<4;k++){mixed[ids[k][0]]=-2;mixed[ids[k][1]]=2;}
+  assert.equal(classifier.detectOutcomeSelection(mixed).side,null);
+  // A neutral or skipped half-pair is never partisan evidence.
+  const skipped={...left,C3:null,C4:-3};
+  assert.equal(classifier.detectOutcomeSelection(skipped).side,null);
+  // Strength affects evidence without changing a zero into a substantive vote.
+  assert.equal(classifier.detectOutcomeSelection(set("left",3,1)).side,null);
+  // Mechanical, inattentive, and genuine broad-incoherence overrides still win.
+  const fast=conclude({...left});
+  assert.equal(fast.responseQuality,"partisan-outcome-selection");
+  const mistimed=classifier.classify(scoring.scoreAll(left),left,d,{coreElapsedMs:20000});
+  assert.equal(mistimed.identity.id,"unusable_response");
+  const contrad={...left,S7:3,S8:3,F1:3,F5:3};
+  assert.equal(conclude(contrad).identity.id,"incoherent_response");
+}
+console.log("PASS: hidden partisan override is symmetric, cross-domain, thresholded, and subordinate to quality checks.");
 
 console.log("PASS: adversarial primary-commitment, modifier/phrase, share-link, and 600 adaptive fuzz invariants.");
 console.log("PASS: all 18 approved phrases are reachable and use the approved critic-rib wording.");
