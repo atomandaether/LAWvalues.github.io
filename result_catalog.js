@@ -1,5 +1,5 @@
 /* Internal result-identity and champion catalog.
-   The public classifier uses these real jurisprudential identities after the 93-item
+   The public classifier uses these real jurisprudential identities after the 88-item
    core; personality matching is separate and deliberately sparse. */
 
 globalThis.LAW_RESULT_IDENTITIES = Object.freeze([
