@@ -1355,17 +1355,31 @@
     // Otherwise fit quality is expressed as Unmistakably / blank / Some kind of.
     const twistRanking=rankTwists(identity,scores,traits,phrasePick?.feature||null);
     let modifier=null;
+    const bestCompatibleSubstantive = (exclude = null) =>
+      twistRanking.find(item =>
+        item.score >= 0.3 &&
+        !item.twist.fallback &&
+        (!exclude || !exclude.has(item.twist.id))
+      ) || null;
+
     if(isOriginalistIdentity(identity)) {
+      // New Originalism is the canonical Originalist subtype and keeps first
+      // priority. If it is not established, a genuinely informative compatible
+      // twist (precedent loyalty, higher-law grounding, etc.) should beat generic
+      // fit language rather than being silently discarded.
       const newOriginalist=twistRanking.find(item=>item.twist.id==="new_originalism" && item.score>=0.3)||null;
-      modifier=newOriginalist?asModifier(newOriginalist.twist):fitModifier(classification);
+      const substantive=newOriginalist||bestCompatibleSubstantive();
+      modifier=substantive?asModifier(substantive.twist):fitModifier(classification);
     } else if(isSourceIdentity(identity)) {
-      const substantive=twistRanking.find(item=>SOURCE_SUBSTANTIVE_MODIFIERS.has(item.twist.id) && item.score>=0.3)||null;
+      const preferred=twistRanking.find(item=>SOURCE_SUBSTANTIVE_MODIFIERS.has(item.twist.id) && item.score>=0.3)||null;
+      const substantive=preferred||bestCompatibleSubstantive();
       modifier=substantive?asModifier(substantive.twist):fitModifier(classification);
     } else if(isMethodIdentity(identity)) {
-      const substantive=twistRanking.find(item=>METHOD_SUBSTANTIVE_MODIFIERS.has(item.twist.id) && item.score>=0.3)||null;
+      const preferred=twistRanking.find(item=>METHOD_SUBSTANTIVE_MODIFIERS.has(item.twist.id) && item.score>=0.3)||null;
+      const substantive=preferred||bestCompatibleSubstantive();
       modifier=substantive?asModifier(substantive.twist):fitModifier(classification);
     } else {
-      const substantive=twistRanking.find(item=>item.score>=0.3 && !item.twist.fallback)||null;
+      const substantive=bestCompatibleSubstantive();
       modifier=substantive?asModifier(substantive.twist):fitModifier(classification);
     }
 
