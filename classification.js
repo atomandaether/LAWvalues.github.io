@@ -863,7 +863,10 @@
       }
 
       if (social < 0.5 && !hasAsked(diagnosticResponses, "D-SOC1")) {
-        offer("D-SOC1", form <= 50 ? 77 : 64);
+        // Strong balancing/open-construction profiles need the Sociological
+        // router early enough that a confirmed social-interest method can still
+        // receive one champion-level refinement inside the seven-question cap.
+        offer("D-SOC1", form <= 45 ? 90 : form <= 50 ? 77 : 64);
       }
     }
 
@@ -873,7 +876,7 @@
     const freeScientific = traits["method.free_scientific_research"] || 0;
     const socialMethod = traits["method.social_interests"] || 0;
     if (socialMethod >= 0.5 && freeScientific < 0.5) {
-      offer("D-GENY1", 72);
+      offer("D-GENY1", 95);
     }
 
     if (provisionalMethodIdentity === "common_law_constitutionalist" &&
