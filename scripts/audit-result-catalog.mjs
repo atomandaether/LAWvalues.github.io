@@ -417,6 +417,20 @@ assert.equal(assembled.modifier.text, "New",
 assert.ok(assembled.rankedTwists.some((x) => x.id === "new_originalism"),
   "Result debug data should expose why the noun-conditioned twist won");
 
+{
+  const fixed = {sorc:20,cons:50,time:100,prec:50,remed:50,post:50,separ:50,form:50};
+  const profile = identities.find(x => x.id === "public_meaning_originalist");
+  const supported = classifier.buildTraits(fixed,{S10:3,S11:3},{"D-NP1":3});
+  const supportedEvidence = classifier.buildTraitEvidence({S10:3,S11:3},{"D-NP1":3});
+  const q = resultContent.PHRASE_FEATURES.find(x => x.id === "objective_morality");
+  assert.equal(resultContent.phraseQuality(q,fixed,supported,supportedEvidence).eligible,true,
+    "Independent objective moral law should survive removing personal-morality S9 from its proof count");
+  const merelyPersonal = classifier.buildTraits(fixed,{S9:3},{"D-NP1":3});
+  const personalEvidence = classifier.buildTraitEvidence({S9:3},{"D-NP1":3});
+  assert.equal(resultContent.phraseQuality(q,fixed,merelyPersonal,personalEvidence).eligible,false,
+    "The judge's personal moral objection cannot establish the objective-morality phrase");
+}
+
 // Every approved phrase must be reachable as the strongest residual outcome under
 // an internally coherent score/evidence fixture. This protects against dead copy.
 const phraseNeutral = { sorc: 50, cons: 50, time: 50, prec: 50, remed: 50, post: 50, separ: 50, form: 50 };
@@ -437,7 +451,7 @@ assertTopPhrase(
   "objective_morality",
   publicMeaningIdentity,
   { ...phraseNeutral, time: 100, sorc: 20 },
-  { S9: 3, S10: 3, S11: 3 },
+  { S10: 3, S11: 3 },
   { "D-NP1": 3 }
 );
 assertTopPhrase("textual_constraint", originalistIdentity, { ...phraseNeutral, time: 100, cons: 90 });
@@ -484,7 +498,7 @@ assertClassifiedPhrase("source_nonpositive", { ...phraseNeutral, cons: 100, sorc
 assertClassifiedPhrase(
   "objective_morality",
   { ...phraseNeutral, time: 100, sorc: 20 },
-  { S9: 3, S10: 3, S11: 3 },
+  { S10: 3, S11: 3 },
   { "D-NP1": 3 }
 );
 assertClassifiedPhrase("textual_constraint", { ...phraseNeutral, time: 100, cons: 90 });
