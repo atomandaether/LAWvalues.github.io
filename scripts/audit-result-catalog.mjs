@@ -191,7 +191,7 @@ for (const id of [
 }
 
 assert.equal(rules.selectAfterIdentity, true, "Champion selection must happen after identity selection");
-assert.equal(rules.doNotForceChampion, true, "Champion matching must permit no single winner");
+assert.equal(rules.doNotForceChampion, false, "Every valid classified result must return exactly one champion unit");
 assert.equal(rules.requireMarginalExplanatoryValue, true, "Champions must add marginal explanatory coverage");
 assert.equal(rules.pruneRedundantChampions, true, "Redundant champions must be pruned");
 
@@ -383,6 +383,8 @@ const passedQuality = classifier.classify(
 );
 assert.notEqual(passedQuality.identity.id, "unusable_response",
   "Selecting the instructed response should allow ordinary classification to continue when a usable core response pattern exists");
+assert.equal(passedQuality.champions.length, 1,
+  "Every valid classified result must return exactly one champion unit");
 
 // Very fast or straight-line completion should be withheld even if the response check happened to be passed.
 const spamResponses = Object.fromEntries(Array.from({length:93}, (_,i)=>[`Q${i}`, 2]));
@@ -1344,6 +1346,135 @@ for (const id of lockedAuthorityUnits) {
     "Legal Constitutionalist must remain reachable within the seven-diagnostic cap");
 }
 
+// Locked institutional-structure / doctrinal-form / remedies champion paths.
+const lockedStructureFormUnits = [
+  "peter_strauss",
+  "lawson",
+  "calabresi_prakash",
+  "schauer",
+  "alexy",
+  "barak",
+  "fiss",
+  "bhagwati_iyer"
+];
+
+for (const id of lockedStructureFormUnits) {
+  assert.ok(profileById[id] && profileById[id].selectable !== false,
+    `Locked structure/form/remedies champion unit ${id} must be selectable`);
+}
+
+for (const id of ["bray", "sohoni_frost", "chayes", "monaghan", "levinson"]) {
+  assert.equal(profileById[id]?.selectable, false,
+    `${id} must remain lineage/explanation only and cannot take the single champion slot`);
+}
+
+function literalStructureFormCore(id) {
+  const profile = profileById[id];
+  const responses = {};
+
+  for (let i = 0; i < questions.length; i += 1) {
+    const item = questions[i];
+    const target = profile.axisSignature?.[item.axis]?.target ?? 50;
+    const agreeSignal = Number(item.signals?.agree?.[item.axis] || 0);
+    const disagreeSignal = Number(item.signals?.disagree?.[item.axis] || 0);
+    const desired = target > 55 ? 1 : target < 45 ? -1 : 0;
+
+    if (desired !== 0) {
+      const positiveAnswer = desired * agreeSignal >= desired * disagreeSignal;
+      const extremity = Math.abs(target - 50);
+      const magnitude = extremity >= 32 ? 3 : extremity >= 18 ? 2 : 1;
+      responses[item.id] = (positiveAnswer ? 1 : -1) * magnitude;
+    } else {
+      responses[item.id] = i % 2 ? 1 : -1;
+    }
+  }
+
+  // Structural Formalism without the unitary-executive proposition should
+  // remain Lawson rather than Calabresi/Prakash.
+  if (id === "lawson") responses.E2 = 3;
+  return responses;
+}
+
+function structureFormDiagnosticAnswer(id, diagnosticId) {
+  if (diagnosticId === "D-RLS1") return -3;
+  if (diagnosticId === "D-QC1") return -2;
+  if (diagnosticId === "D-PROP1") return ["alexy", "barak"].includes(id) ? 3 : -3;
+  if (diagnosticId === "D-PIL1") return id === "bhagwati_iyer" ? 3 : -3;
+  if (diagnosticId === "D-SOC1") return id === "bhagwati_iyer" ? 3 : -3;
+  return -3;
+}
+
+const structureFormExpectedIdentity = {
+  peter_strauss: "functionalist",
+  lawson: "formalist",
+  calabresi_prakash: "formalist",
+  schauer: "formalist",
+  alexy: "proportionalist",
+  barak: "proportionalist",
+  fiss: "legal_constitutionalist",
+  bhagwati_iyer: "sociological_jurist"
+};
+
+const structureFormExpectedModifier = {
+  alexy: "nonpositivist_proportionality",
+  barak: "purposive_proportionality",
+  schauer: "anti_discretion_tinge"
+};
+
+function runLiteralStructureFormFixture(id, mutator = null) {
+  const responses = literalStructureFormCore(id);
+  if (mutator) mutator(responses);
+  const scores = scoring.scoreAll(responses);
+  const diagnosticResponses = {};
+  const diagnosticOrder = [];
+
+  for (let i = 0; i < classifier.MAX_DIAGNOSTICS; i += 1) {
+    const next = classifier.nextDiagnostic(scores, responses, diagnosticResponses);
+    if (!next) break;
+    diagnosticOrder.push(next.id);
+    diagnosticResponses[next.id] = structureFormDiagnosticAnswer(id, next.id);
+  }
+
+  return {
+    result: classifier.classify(scores, responses, diagnosticResponses, { coreElapsedMs: 10 * 60 * 1000 }),
+    diagnosticOrder
+  };
+}
+
+for (const id of lockedStructureFormUnits) {
+  const { result, diagnosticOrder } = runLiteralStructureFormFixture(id);
+  assert.equal(result.identity.id, structureFormExpectedIdentity[id],
+    `Structure/form path for ${id} must resolve to the locked public noun; got ${result.identity.id}`);
+  assert.equal(result.champions.length, 1,
+    `Structure/form path for ${id} must return exactly one champion unit`);
+  assert.equal(result.champions[0]?.id, id,
+    `Structure/form path for ${id} must reach its intended champion; got ${result.champions.map((x) => x.id).join(",")}`);
+  assert.ok(diagnosticOrder.length <= classifier.MAX_DIAGNOSTICS,
+    `${id} must remain reachable within the seven-diagnostic cap`);
+  if (structureFormExpectedModifier[id]) {
+    assert.equal(result.resultTitle.modifier?.id, structureFormExpectedModifier[id],
+      `${id} must surface its locked structure/form modifier`);
+  }
+}
+
+// Fiss is the exceptional cross-noun specialist, not a remedy-axis trump card.
+// An otherwise unmistakable Barak profile remains Barak even with structural remedies.
+{
+  const { result } = runLiteralStructureFormFixture("barak", (responses) => {
+    for (const id of ["R3", "R4", "R5", "R8", "R9", "R10"]) responses[id] = 3;
+  });
+  assert.equal(result.champions.length, 1, "Barak-plus-structural-remedies must still produce one champion");
+  assert.equal(result.champions[0]?.id, "barak",
+    "Fiss must not displace an otherwise strong whole-profile Barak match merely because remedies are broad");
+}
+
+// Exact-zero axis scores must remain extreme evidence in the title engine.
+{
+  const { result } = runLiteralStructureFormFixture("barak");
+  assert.equal(result.resultTitle.modifier?.id, "purposive_proportionality",
+    "An exact-zero open-construction score must still produce Purpose-led Proportionalist rather than being treated as neutral");
+}
+
 // The Alexander-v-Bork threshold is executable: these paired units differ by
 // adjudicatively meaningful evidence, not merely by academic rationale.
 assert.notDeepEqual(
@@ -1369,3 +1500,4 @@ console.log("PASS: all 18 locked Method champion units are reachable end-to-end 
 console.log("PASS: champion matching is noun-conditioned: primary and cross-cutting compatibility are explicit, incompatible champions are excluded.");
 console.log("PASS: Living/Common-Law constitutionalism resolves to all 7 locked non-originalist champion units, including Democratic/Transformative Living modifiers, within the seven-diagnostic cap.");
 console.log("PASS: Judicial review / constitutional authority resolves to all 9 locked champion units plus standalone Legal Constitutionalism within the seven-diagnostic cap.");
+console.log("PASS: Institutional structure / doctrinal form resolves to Lawson, Calabresi-Prakash, Schauer, Peter Strauss, Alexy, and Barak; remedies retain Bhagwati-Iyer and tightly gated Fiss under the single-champion rule.");
