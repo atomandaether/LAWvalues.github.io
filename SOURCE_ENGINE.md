@@ -62,7 +62,9 @@ Current fit gates remain theory-derived rather than population-calibrated: Unmis
 
 ### Positivist
 1. **H. L. A. Hart** — baseline social-rule/open-texture positivism.
-2. **Jules Coleman / Wil Waluchow / Matthew Kramer** — Inclusive Positivism.
+2. **Jules Coleman / Matthew Kramer** — generic Inclusive Positivism.
+
+**Wil Waluchow** is split out only when Inclusive Positivism combines with Common-Law Constitutionalism; that cross-axis combination is handled by the non-originalist constitutional-time champion layer rather than making Waluchow the default Inclusive-Positivist endpoint.
 3. **Joseph Raz / Scott Shapiro / Andrei Marmor** — Exclusive Positivism.
 4. **Tom Campbell / Jeremy Waldron / Frederick Schauer** — Normative/Ethical Positivism.
 
