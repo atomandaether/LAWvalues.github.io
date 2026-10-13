@@ -1177,7 +1177,7 @@ globalThis.LAW_CHAMPIONS = Object.freeze([
     kind: "person",
     role: "historical",
     eligibleIdentityIds: [],
-    signatureTraits: [],
+    signatureTraits: ["remedies.equilibration"],
     antiTraits: [],
     note: "Remedial-equilibration lineage. The current bank does not measure the feedback from remedial consequences into the content of constitutional rights."
   },
