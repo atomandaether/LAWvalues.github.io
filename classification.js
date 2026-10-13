@@ -1304,8 +1304,12 @@
     }
 
     const proportionalityPlausible =
-      form <= 25 &&
-      (source <= 35 || (constraint <= 25 && posture <= 35));
+      (form <= 25 && (source <= 35 || (constraint <= 25 && posture <= 35))) ||
+      // A strongly purposive, rights-protective profile can be Barak-like even
+      // when generic balancing is not extreme enough to make Proportionalist
+      // the leading noun. In that narrow cell, D-PROP1 tests the genuine
+      // Purposivist/Proportionalist hybrid rather than inferring it from Form.
+      (form <= 35 && constraint <= 25 && posture <= 35);
     if (proportionalityPlausible && (traits["form.proportionality"] || 0) < 0.5) {
       offer("D-PROP1", 98);
     }
