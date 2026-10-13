@@ -625,7 +625,11 @@
       const score = scoreProfile(profile, scores, traits, identity);
       if (score !== null) normal.push({ profile, score });
     }
-    normal.sort((a, b) => b.score - a.score);
+    normal.sort((a, b) =>
+      b.score - a.score ||
+      Number(b.profile.specificityBonus || 0) - Number(a.profile.specificityBonus || 0) ||
+      a.profile.id.localeCompare(b.profile.id)
+    );
 
     const maxSalience = Math.max(...AXIS_IDS.map((axisId) => salience(scores, axisId)));
     let pool = normal;
@@ -652,7 +656,11 @@
         const traitFit = profileTraitFit(fiss, traits);
         const anti = Math.max(0, ...(fiss.antiTraits || []).map((trait) => traits[trait] || 0));
         const fissScore = clamp01(0.58 * fit + 0.17 * shape + 0.20 * traitFit - 0.20 * anti - 0.03);
-        pool = [...pool, { profile: fiss, score: fissScore }].sort((a, b) => b.score - a.score);
+        pool = [...pool, { profile: fiss, score: fissScore }].sort((a, b) =>
+          b.score - a.score ||
+          Number(b.profile.specificityBonus || 0) - Number(a.profile.specificityBonus || 0) ||
+          a.profile.id.localeCompare(b.profile.id)
+        );
       }
     }
 
@@ -665,7 +673,11 @@
       if (maxSalience <= 0.52 || topNormal < 0.61 || lowTheoryEvidence >= 0.5) {
         const base = scoreProfile(profile, scores, traits, identity) ?? 0;
         const score = clamp01(base + 0.16 * lowTheoryEvidence);
-        pool = [...pool, { profile, score }].sort((a, b) => b.score - a.score);
+        pool = [...pool, { profile, score }].sort((a, b) =>
+          b.score - a.score ||
+          Number(b.profile.specificityBonus || 0) - Number(a.profile.specificityBonus || 0) ||
+          a.profile.id.localeCompare(b.profile.id)
+        );
       }
     }
 
