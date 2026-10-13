@@ -253,7 +253,7 @@ globalThis.LAW_DIAGNOSTIC_QUESTIONS = Object.freeze([
     unlock: "Posture is extremely Majoritarian or anti-judicial-supremacy is otherwise plausible.",
     prompt: "Even after the Supreme Court announces what the Constitution means, Congress and the President remain entitled to form and act on their own good-faith constitutional interpretations rather than treating the Court’s interpretation as uniquely authoritative.",
     agreeTraits: ["posture.anti_judicial_supremacy", "posture.branch_interpretation"],
-    disagreeTraits: ["posture.judicial_supremacy"],
+    disagreeTraits: [],
     nextOnAgree: ["D-MAJ2"],
     nextOnDisagree: [],
     relatedIdentityIds: ["departmentalist", "popular_constitutionalist"],
