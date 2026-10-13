@@ -87,6 +87,10 @@ Examples:
 - John Marshall Harlan II: living tradition / ordered liberty only inside an already plausible common-law constitutional profile
 - Lord Cooke: strong common-law constitutional rights only after the dedicated legislative-supremacy diagnostic
 - P. N. Bhagwati / V. R. Krishna Iyer: social-action/PIL judging only when systemic remedies, counter-majoritarian posture, and procedural-access innovation align
+- William J. Brennan Jr.: default strong Living champion from contemporary meaning plus rights-protective posture, without needing a bespoke diagnostic
+- Robert Post / Reva Siegel: Democratic Living modifier/champion only after a public-contestation constitutional-development diagnostic
+- Karl Klare / Pius Langa: Transformative Living modifier/champion only after a continuing constitutional-transformation diagnostic
+- Wil Waluchow: Common-Law champion only when Inclusive Positivism and common-law constitutional development are both independently established
 
 A specialist never wins from coordinate proximity alone.
 

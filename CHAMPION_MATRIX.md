@@ -69,6 +69,9 @@ Examples:
 - Sociological Jurist + source-gap Free Scientific Research -> François Gény
 - Common-Law Constitutionalist + living tradition / ordered liberty -> Harlan II
 - Common-Law Constitutionalist + fundamental common-law limits on legislative supremacy -> Lord Cooke
+- Living Constitutionalist + democratic constitutional development -> Post/Siegel
+- Living Constitutionalist + transformative constitutional project -> Klare/Langa
+- Inclusive Positivism + Common-Law Constitutionalism -> Waluchow
 
 ## Balanced identity/champion map
 
@@ -91,8 +94,8 @@ Examples:
 | Original-Intent Originalist | historical old-originalist lineage; no forced modern champion | do not invent a champion without evidence |
 | Original-Methods Originalist | McGinnis & Rappaport | historically accepted interpretive methods |
 | Framework Originalist | Balkin | fixed framework + substantial construction |
-| Living Constitutionalist | Brennan as judicial champion; Harlan II for living tradition + restraint | use only when constitutional content genuinely evolves |
-| Common-Law Constitutionalist | David Strauss; Harlan II after ordered-liberty/living-tradition diagnostic; Lord Cooke after strong common-law-rights diagnostic | Strauss = precedent/practice as constitutional law; Harlan = historically embedded ordered liberty + restraint; Cooke = fundamental common-law limits on ordinary legislative supremacy |
+| Living Constitutionalist | Brennan default; Post/Siegel after Democratic diagnostic; Klare/Langa after Transformative diagnostic | Brennan = contemporary ratification + rights; Post/Siegel = democratic constitutional development; Klare/Langa = transformative constitutional project |
+| Common-Law Constitutionalist | David Strauss default; Harlan II after ordered-liberty/living-tradition diagnostic; Lord Cooke after strong common-law-rights diagnostic; Waluchow for Inclusive Positivism + common-law development | Strauss = precedent/practice as constitutional law; Harlan = historically embedded ordered liberty + restraint; Cooke = fundamental common-law limits on ordinary legislative supremacy; Waluchow = inclusive-positivist living-tree/common-law combination |
 | Common-Good Constitutionalist | Vermeule | classical/common-good teleology, only after diagnostics |
 | Thayerian | Thayer; Holmes/Hand/Frankfurter as historical practitioners | clear-error deference |
 | Waldronian | Waldron | democratic legitimacy under reasonable rights disagreement |

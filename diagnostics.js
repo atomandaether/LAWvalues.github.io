@@ -406,6 +406,32 @@ globalThis.LAW_DIAGNOSTIC_QUESTIONS = Object.freeze([
     note: "Gény-specific Free Scientific Research discriminator; authoritative positive sources remain primary until they genuinely run out."
   },
   {
+    id: "D-LIV1",
+    family: "constitutionalism",
+    priority: "high",
+    unlock: "A strongly Living profile is established without a common-law-development signature, and Democratic Constitutionalism could materially change the modifier and champion.",
+    prompt: "Sustained political mobilization and public constitutional argument can legitimately reshape the constitutional meaning that courts enforce over time, even though courts still retain an independent responsibility to enforce constitutional rights rather than simply following current majority opinion.",
+    agreeTraits: ["time.democratic_constitutionalism"],
+    disagreeTraits: [],
+    nextOnAgree: [],
+    nextOnDisagree: ["D-LIV2"],
+    relatedIdentityIds: ["living_constitutionalist"],
+    note: "Post/Siegel discriminator: democratic constitutional development is distinct from Popular Constitutionalism because judicially enforceable rights remain part of the account."
+  },
+  {
+    id: "D-LIV2",
+    family: "constitutionalism",
+    priority: "high",
+    unlock: "A strongly Living, open, systemic-rights profile makes Transformative Constitutionalism a plausible subtype.",
+    prompt: "A constitution may properly be interpreted as an ongoing project of transforming inherited social and political institutions toward its commitments to democracy, participation, equality, and dignity, rather than merely preserving existing legal settlements while adapting them case by case.",
+    agreeTraits: ["time.transformative_constitutionalism"],
+    disagreeTraits: [],
+    nextOnAgree: [],
+    nextOnDisagree: [],
+    relatedIdentityIds: ["living_constitutionalist"],
+    note: "Klare/Langa discriminator: requires a continuing transformative constitutional project, not merely strong rights enforcement or ordinary Living Constitutionalism."
+  },
+  {
     id: "D-HAR1",
     family: "constitutionalism",
     priority: "medium",

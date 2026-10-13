@@ -27,7 +27,7 @@ globalThis.LAW_PROFILES = Object.freeze([
   },
   {
     id: "coleman_waluchow_kramer",
-    name: "Jules Coleman / Wil Waluchow / Matthew Kramer",
+    name: "Jules Coleman / Matthew Kramer",
     tier: "specialist",
     identityIds: ["positivist"],
     axisSignature: { sorc: { target: 94, weight: 1 } },
@@ -35,7 +35,7 @@ globalThis.LAW_PROFILES = Object.freeze([
     requiredTraits: [{ all: ["source.morality_incorporated"], min: 0.5 }],
     antiTraits: ["source.source_thesis"],
     description: "Inclusive Positivism: a source-grounded legal system can itself make genuine moral correctness a criterion of legal validity.",
-    related: ["H. L. A. Hart", "Kenneth Einar Himma"]
+    related: ["H. L. A. Hart", "Wil Waluchow", "Kenneth Einar Himma"]
   },
   {
     id: "raz_shapiro_marmor",
@@ -470,7 +470,7 @@ globalThis.LAW_PROFILES = Object.freeze([
     },
     signatureTraits: ["time.common_law_development"],
     requiredTraits: [{ any: ["time.common_law_development"], min: 0.35 }],
-    antiTraits: ["precedent.correctness_first", "time.ordered_liberty_tradition", "source.common_law_fundamental_rights"],
+    antiTraits: ["precedent.correctness_first", "time.ordered_liberty_tradition", "source.common_law_fundamental_rights", "source.morality_incorporated"],
     description: "The clearest living-plus-stability fit: constitutional development occurs through precedent, practice, and accumulated institutional experience.",
     related: ["Friedrich Carl von Savigny", "Beverley McLachlin", "Benjamin Cardozo"]
   },
@@ -508,6 +508,78 @@ globalThis.LAW_PROFILES = Object.freeze([
     antiTraits: ["posture.majoritarian"],
     description: "Strong common-law constitutionalism: some fundamental common-law rights can constrain even otherwise valid legislation, making judicially articulated constitutional principle a potential limit on parliamentary supremacy.",
     related: ["T.R.S. Allan", "John Laws", "David Strauss"]
+  },
+  {
+    id: "brennan",
+    name: "William J. Brennan Jr.",
+    tier: "main",
+    identityIds: ["living_constitutionalist"],
+    axisSignature: {
+      time: { target: 5, weight: 1 },
+      post: { target: 10, weight: 0.75 },
+      cons: { target: 26, weight: 0.35 }
+    },
+    signatureTraits: ["time.living_content", "posture.rights_trumps"],
+    requiredTraits: [],
+    antiTraits: [
+      "time.common_law_development",
+      "time.ordered_liberty_tradition",
+      "time.democratic_constitutionalism",
+      "time.transformative_constitutionalism"
+    ],
+    description: "Contemporary-ratification Living Constitutionalism: broad constitutional commitments receive present-day meaning in light of contemporary understandings, human dignity, and the judiciary's responsibility to enforce rights.",
+    related: ["Thurgood Marshall", "William O. Douglas"]
+  },
+  {
+    id: "post_siegel",
+    name: "Robert Post / Reva Siegel",
+    tier: "specialist",
+    identityIds: ["living_constitutionalist"],
+    axisSignature: {
+      time: { target: 10, weight: 0.9 },
+      post: { target: 28, weight: 0.45 }
+    },
+    signatureTraits: ["time.democratic_constitutionalism"],
+    requiredTraits: [{ all: ["time.democratic_constitutionalism"], min: 0.5 }],
+    antiTraits: ["time.transformative_constitutionalism"],
+    description: "Democratic Constitutionalism: constitutional meaning develops through sustained public contestation, political mobilization, and interaction among citizens, officials, and courts while judicially enforceable rights remain part of the system.",
+    related: ["Jack Balkin", "Larry Kramer"]
+  },
+  {
+    id: "klare_langa",
+    name: "Karl Klare / Pius Langa",
+    tier: "specialist",
+    identityIds: ["living_constitutionalist"],
+    axisSignature: {
+      time: { target: 6, weight: 0.8 },
+      cons: { target: 14, weight: 0.55 },
+      remed: { target: 8, weight: 0.75 },
+      post: { target: 10, weight: 0.65 }
+    },
+    signatureTraits: ["time.transformative_constitutionalism"],
+    requiredTraits: [{ all: ["time.transformative_constitutionalism"], min: 0.5 }],
+    antiTraits: ["time.democratic_constitutionalism"],
+    description: "Transformative Constitutionalism: constitutional interpretation and enforcement form a continuing legal project of remaking inherited institutions and power relations toward democratic, participatory, and egalitarian commitments.",
+    related: ["Albie Sachs", "South African Constitutional Court"]
+  },
+  {
+    id: "waluchow_common_law",
+    name: "Wil Waluchow",
+    tier: "specialist",
+    identityIds: ["common_law_constitutionalist", "positivist"],
+    axisSignature: {
+      sorc: { target: 92, weight: 0.75 },
+      time: { target: 12, weight: 0.8 },
+      prec: { target: 92, weight: 0.85 }
+    },
+    signatureTraits: ["source.morality_incorporated", "time.common_law_development"],
+    requiredTraits: [
+      { all: ["source.morality_incorporated"], min: 0.5 },
+      { all: ["time.common_law_development"], min: 0.45 }
+    ],
+    antiTraits: ["source.source_thesis", "precedent.correctness_first"],
+    description: "Inclusive-positivist Common-Law Constitutionalism: a source-grounded legal system can incorporate moral criteria while constitutional rights develop through precedent, practical judgment, and common-law refinement.",
+    related: ["David Strauss", "Jules Coleman"]
   },
   {
     id: "sunstein",

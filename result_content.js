@@ -386,6 +386,24 @@
       "explanation": "You accept the New Originalist interpretation/construction distinction: fixed original meaning can genuinely underdetermine a case and leave legitimate room for constitutional construction."
     },
     {
+      "id": "democratic_living",
+      "text": "Democratic",
+      "appliesTo": ["living_constitutionalist"],
+      "traits": ["time.democratic_constitutionalism"],
+      "min": 0.5,
+      "priority": 1.6,
+      "explanation": "Your Living Constitutionalism treats sustained public constitutional contestation and political mobilization as legitimate participants in the development of enforceable constitutional meaning, while preserving a judicial role in rights enforcement."
+    },
+    {
+      "id": "transformative_living",
+      "text": "Transformative",
+      "appliesTo": ["living_constitutionalist"],
+      "traits": ["time.transformative_constitutionalism"],
+      "min": 0.5,
+      "priority": 1.62,
+      "explanation": "Your Living Constitutionalism treats the constitution as an ongoing legal project of transforming inherited institutions and power relations toward its democratic, participatory, egalitarian, and dignity-based commitments."
+    },
+    {
       "id": "inclusive_positivism",
       "text": "Inclusive",
       "appliesTo": ["positivist"],
@@ -786,7 +804,6 @@
       "id": "common_law_growth",
       "text": "Precedent-grown",
       "appliesTo": [
-        "living_constitutionalist",
         "originalist",
         "public_meaning_originalist",
         "framework_originalist"

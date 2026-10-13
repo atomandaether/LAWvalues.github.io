@@ -182,7 +182,7 @@ for (const id of [
   "D-RLS1", "D-RLS2", "D-RLS3", "D-RLS4", "D-RLS5",
   "D-POS1", "D-POS2", "D-NP1", "D-NP2", "D-NP3", "D-NP4", "D-NP5", "D-NP6",
   "D-MAJ1", "D-MAJ2", "D-TXT1", "D-TXT2", "D-INT1", "D-INT2", "D-PRAG1",
-  "D-LP1", "D-LP2", "D-QC1", "D-SOC1", "D-GENY1", "D-HAR1", "D-CLC1", "D-PIL1", "D-PLU1", "D-PLU2", "D-OCO1",
+  "D-LP1", "D-LP2", "D-QC1", "D-SOC1", "D-GENY1", "D-LIV1", "D-LIV2", "D-HAR1", "D-CLC1", "D-PIL1", "D-PLU1", "D-PLU2", "D-OCO1",
   "D-ORI1", "D-ORI2", "D-ORI3", "D-ORI4", "D-ORI5"
 ]) {
   assert.ok(diagnosticIds.has(id), `Missing high-value diagnostic ${id}`);
@@ -1136,6 +1136,79 @@ for (const id of Object.keys(distinctiveExpectedIdentity)) {
     `${id} must remain reachable within the seven-diagnostic cap`);
 }
 
+// Locked non-originalist constitutional-time champion paths.
+// Living and Common-Law remain the only public nouns in this family;
+// Democratic and Transformative are substantive Living modifiers.
+const lockedNonOriginalistUnits = [
+  "brennan",
+  "post_siegel",
+  "klare_langa",
+  "david_strauss",
+  "harlan_ii",
+  "robin_cooke",
+  "waluchow_common_law"
+];
+
+for (const id of lockedNonOriginalistUnits) {
+  assert.ok(profileById[id] && profileById[id].selectable !== false,
+    `Locked non-originalist champion unit ${id} must be selectable`);
+}
+
+function nonOriginalistDiagnosticAnswer(id, diagnosticId) {
+  if (diagnosticId === "D-RLS1") return -3;
+  if (diagnosticId === "D-QC1") return -2;
+  if (diagnosticId === "D-LIV1") return id === "post_siegel" ? 3 : -3;
+  if (diagnosticId === "D-LIV2") return id === "klare_langa" ? 3 : -3;
+  if (diagnosticId === "D-HAR1") return id === "harlan_ii" ? 3 : -3;
+  if (diagnosticId === "D-CLC1") return id === "robin_cooke" ? 3 : -3;
+  if (diagnosticId === "D-POS1") return id === "waluchow_common_law" ? 3 : -3;
+  return -3;
+}
+
+const nonOriginalistExpectedIdentity = {
+  brennan: "living_constitutionalist",
+  post_siegel: "living_constitutionalist",
+  klare_langa: "living_constitutionalist",
+  david_strauss: "common_law_constitutionalist",
+  harlan_ii: "common_law_constitutionalist",
+  robin_cooke: "common_law_constitutionalist",
+  waluchow_common_law: "common_law_constitutionalist"
+};
+
+const nonOriginalistExpectedModifier = {
+  post_siegel: "democratic_living",
+  klare_langa: "transformative_living"
+};
+
+for (const id of lockedNonOriginalistUnits) {
+  const responses = literalMethodCore(id);
+  const scores = scoring.scoreAll(responses);
+  const diagnosticResponses = {};
+  const diagnosticOrder = [];
+
+  for (let i = 0; i < classifier.MAX_DIAGNOSTICS; i += 1) {
+    const next = classifier.nextDiagnostic(scores, responses, diagnosticResponses);
+    if (!next) break;
+    diagnosticOrder.push(next.id);
+    diagnosticResponses[next.id] = nonOriginalistDiagnosticAnswer(id, next.id);
+  }
+
+  const result = classifier.classify(scores, responses, diagnosticResponses, { coreElapsedMs: 10 * 60 * 1000 });
+  assert.equal(result.identity.id, nonOriginalistExpectedIdentity[id],
+    `Non-originalist path for ${id} must resolve to the locked public noun`);
+  assert.equal(result.champions[0]?.id, id,
+    `Non-originalist path for ${id} must reach the intended champion; got ${result.champions.map((x) => x.id).join(",")}`);
+  assert.ok(diagnosticOrder.length <= classifier.MAX_DIAGNOSTICS,
+    `${id} must remain reachable within the seven-diagnostic cap`);
+  if (nonOriginalistExpectedModifier[id]) {
+    assert.equal(result.resultTitle.modifier?.id, nonOriginalistExpectedModifier[id],
+      `${id} must surface its locked Living modifier`);
+  }
+}
+
+assert.equal(profileById.ackerman.selectable, false,
+  "Ackerman must remain lineage-only until constitutional-moments evidence exists");
+
 // The Alexander-v-Bork threshold is executable: these paired units differ by
 // adjudicatively meaningful evidence, not merely by academic rationale.
 assert.notDeepEqual(
@@ -1159,3 +1232,4 @@ console.log("PASS: all 10 locked Source champion units are reachable end-to-end 
 console.log("PASS: Method nouns/modifiers are locked, including Sociological Jurist and the three substantive Method modifiers.");
 console.log("PASS: all 18 locked Method champion units are reachable end-to-end from literal answers within the seven-diagnostic cap.");
 console.log("PASS: champion matching is noun-conditioned: primary and cross-cutting compatibility are explicit, incompatible champions are excluded.");
+console.log("PASS: Living/Common-Law constitutionalism resolves to all 7 locked non-originalist champion units, including Democratic/Transformative Living modifiers, within the seven-diagnostic cap.");

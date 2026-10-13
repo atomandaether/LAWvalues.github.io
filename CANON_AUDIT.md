@@ -187,7 +187,12 @@ Real Balkin theory: fixed framework plus substantial legitimate later constructi
 ## Living Constitutionalist
 Core direct identity when constitutional content itself can evolve.
 
-Potential judicial champion: **Justice Brennan** for a strongly rights-protective version. Do not make Brennan the definition of Living Constitutionalism.
+Locked champion structure:
+- **William J. Brennan Jr.** — default strong contemporary-ratification / rights-protective Living champion.
+- **Robert Post / Reva Siegel** — **Democratic Living Constitutionalist** modifier: sustained public constitutional contestation and political mobilization participate in constitutional development while judicially enforceable rights remain part of the system.
+- **Karl Klare / Pius Langa** — **Transformative Living Constitutionalist** modifier: constitutional interpretation and enforcement operate as a continuing project of institutional and social transformation.
+
+Democratic and Transformative are modifiers, not additional nouns. Dworkin/Fleming remain principally Source/Interpretivist; Bobbitt/Fallon principally Method; Kramer/Tushnet/Gardbaum principally Posture.
 
 ## Common-Law Constitutionalist
 Core distinctive identity. **David Strauss** remains the default clean champion because precedent/tradition as constitutional law is the theory itself.
@@ -197,6 +202,8 @@ Two diagnostic specialists clear the Alexander-v-Bork threshold:
 - **Lord Cooke of Thorndon** when fundamental common-law rights are treated as possible limits on ordinary legislative supremacy.
 
 Do not infer either specialist from generic Living Constitutionalism or respect for precedent alone.
+
+**Wil Waluchow** is a separate cross-axis Common-Law champion only when the respondent combines Inclusive Positivism with common-law constitutional development. Generic Inclusive Positivism remains Coleman/Kramer; generic Common-Law Constitutionalism remains Strauss.
 
 ## Principle-oriented vs expected-applications-heavy originalism
 Usually better treated as a **front modifier/subtype trait** rather than inventing another middle identity. T8/T9/T11 already carry useful information here.
