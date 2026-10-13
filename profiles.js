@@ -515,6 +515,10 @@ globalThis.LAW_PROFILES = Object.freeze([
     tier: "specialist",
     identityIds: ["common_law_constitutionalist"],
     crossCuttingIdentityIds: ["living_constitutionalist", "nonpositivist"],
+    crossCuttingRequirements: {
+      living_constitutionalist: [{ all: ["time.living_content"], min: 0.3 }],
+      nonpositivist: [{ all: ["source.common_law_fundamental_rights"], min: 0.5 }]
+    },
     axisSignature: {
       sorc: { target: 18, weight: 0.55 },
       time: { target: 30, weight: 0.45 },
@@ -773,6 +777,9 @@ globalThis.LAW_PROFILES = Object.freeze([
     tier: "specialist",
     identityIds: ["interpretive_pluralist"],
     crossCuttingIdentityIds: ["purposivist"],
+    crossCuttingRequirements: {
+      purposivist: [{ all: ["constraint.purpose"], min: 0.35 }]
+    },
     axisSignature: { cons: { target: 36, weight: 0.35 } },
     signatureTraits: ["method.modal_pluralism", "method.practical_reasoning"],
     requiredTraits: [{ all: ["method.practical_reasoning"], min: 0.5 }],
@@ -997,6 +1004,10 @@ globalThis.LAW_PROFILES = Object.freeze([
     tier: "specialist",
     identityIds: ["sociological_jurist"],
     crossCuttingIdentityIds: ["living_constitutionalist", "purposivist"],
+    crossCuttingRequirements: {
+      living_constitutionalist: [{ all: ["time.living_content"], min: 0.3 }],
+      purposivist: [{ all: ["constraint.purpose"], min: 0.35 }]
+    },
     axisSignature: {
       remed: { target: 5, weight: 1 },
       post: { target: 8, weight: 0.8 },
