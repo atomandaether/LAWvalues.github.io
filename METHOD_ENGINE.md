@@ -92,8 +92,9 @@ Brian Leiter remains major further reading/reconstruction rather than a separate
 
 ### Sociological Jurist
 17. **Roscoe Pound** — law in action, competing social interests, and practical social operation.
+18. **François Gény** — *libre recherche scientifique*: positive sources govern until they genuinely run out, after which disciplined inquiry into social facts, justice, equity, and the nature of things supplies the missing rule.
 
-Eugen Ehrlich remains lineage/further reading. Cardozo is explicitly cross-cutting-compatible with Sociological Jurisprudence where the respondent's whole profile warrants it.
+Eugen Ehrlich remains lineage/further reading. Cardozo is explicitly cross-cutting-compatible with Sociological Jurisprudence where the respondent's whole profile warrants it. Gény requires his dedicated source-gap diagnostic; generic open construction is not enough.
 
 ## Adaptive diagnostics
 
@@ -121,6 +122,7 @@ Neither becomes a public Textualist modifier.
 - **D-LP1** — Legal Process noun router.
 - **D-LP2** — Wechsler neutral-principles champion discriminator.
 - **D-SOC1** — Sociological Jurisprudence noun router.
+- **D-GENY1** — Gény Free Scientific Research champion discriminator, asked only after Sociological Jurisprudence is already live.
 - **D-PLU1** — principled Interpretive Pluralism.
 - **D-PLU2** — Practical-Reasoning pluralism.
 
@@ -143,7 +145,7 @@ The audit suite requires every locked unit to have a coherent literal-answer pat
 
 ## Reachability contract
 
-The audit suite requires all seventeen Method champion units to be separately reachable from literal 93-item answer vectors through the live adaptive router within the seven-question cap.
+The audit suite requires all eighteen Method champion units to be separately reachable from literal 93-item answer vectors through the live adaptive router within the seven-question cap.
 
 It additionally verifies:
 - all eight Method nouns remain available;
