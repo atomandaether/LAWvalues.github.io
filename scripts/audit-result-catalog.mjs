@@ -182,7 +182,7 @@ for (const id of [
   "D-RLS1", "D-RLS2", "D-RLS3", "D-RLS4", "D-RLS5",
   "D-POS1", "D-POS2", "D-NP1", "D-NP2", "D-NP3", "D-NP4", "D-NP5", "D-NP6",
   "D-MAJ1", "D-MAJ2", "D-TXT1", "D-TXT2", "D-INT1", "D-INT2", "D-PRAG1",
-  "D-LP1", "D-LP2", "D-QC1", "D-SOC1", "D-GENY1", "D-CLC1", "D-PIL1", "D-PLU1", "D-PLU2", "D-OCO1",
+  "D-LP1", "D-LP2", "D-QC1", "D-SOC1", "D-GENY1", "D-HAR1", "D-CLC1", "D-PIL1", "D-PLU1", "D-PLU2", "D-OCO1",
   "D-ORI1", "D-ORI2", "D-ORI3", "D-ORI4", "D-ORI5"
 ]) {
   assert.ok(diagnosticIds.has(id), `Missing high-value diagnostic ${id}`);
@@ -1093,6 +1093,47 @@ for (const id of lockedMethodUnits) {
     assert.equal(result.resultTitle.modifier?.id, methodExpectedModifier[id],
       `${id} should surface its locked Method substantive modifier`);
   }
+}
+
+// Distinctive constitutional/remedial figures must also be reachable without
+// new core questions. Their specialist diagnostics may refine an already-live
+// public noun but may not manufacture a result from name recognition alone.
+function distinctiveDiagnosticAnswer(id, diagnosticId) {
+  if (diagnosticId === "D-RLS1") return -3;
+  if (diagnosticId === "D-QC1") return -2;
+  if (diagnosticId === "D-HAR1") return id === "harlan_ii" ? 3 : -3;
+  if (diagnosticId === "D-CLC1") return id === "robin_cooke" ? 3 : -3;
+  if (diagnosticId === "D-PIL1") return id === "bhagwati_iyer" ? 3 : -3;
+  if (diagnosticId === "D-SOC1") return id === "bhagwati_iyer" ? 3 : -3;
+  return -3;
+}
+
+const distinctiveExpectedIdentity = {
+  harlan_ii: "common_law_constitutionalist",
+  robin_cooke: "common_law_constitutionalist",
+  bhagwati_iyer: "sociological_jurist"
+};
+
+for (const id of Object.keys(distinctiveExpectedIdentity)) {
+  const responses = literalMethodCore(id);
+  const scores = scoring.scoreAll(responses);
+  const diagnosticResponses = {};
+  const diagnosticOrder = [];
+
+  for (let i = 0; i < classifier.MAX_DIAGNOSTICS; i += 1) {
+    const next = classifier.nextDiagnostic(scores, responses, diagnosticResponses);
+    if (!next) break;
+    diagnosticOrder.push(next.id);
+    diagnosticResponses[next.id] = distinctiveDiagnosticAnswer(id, next.id);
+  }
+
+  const result = classifier.classify(scores, responses, diagnosticResponses, { coreElapsedMs: 10 * 60 * 1000 });
+  assert.equal(result.identity.id, distinctiveExpectedIdentity[id],
+    `Distinctive path for ${id} must resolve through an existing public noun`);
+  assert.equal(result.champions[0]?.id, id,
+    `Distinctive path for ${id} must reach the intended champion; got ${result.champions.map((x) => x.id).join(",")}`);
+  assert.ok(diagnosticOrder.length <= classifier.MAX_DIAGNOSTICS,
+    `${id} must remain reachable within the seven-diagnostic cap`);
 }
 
 // The Alexander-v-Bork threshold is executable: these paired units differ by
