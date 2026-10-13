@@ -392,6 +392,46 @@ globalThis.LAW_DIAGNOSTIC_QUESTIONS = Object.freeze([
     note: "Champion-level Herbert Wechsler discriminator."
   },
 
+  {
+    id: "D-GENY1",
+    family: "interpretation",
+    priority: "medium",
+    unlock: "Sociological Jurisprudence is live and Gény's source-gap method could materially change the champion.",
+    prompt: "When enacted law, established custom, and other authoritative legal materials genuinely do not answer a case, the judge should openly construct the missing rule through disciplined inquiry into social facts, practical needs, equity, justice, and the nature of the legal relationship rather than pretending the answer was already contained in the text.",
+    agreeTraits: ["method.free_scientific_research", "method.law_in_action"],
+    disagreeTraits: [],
+    nextOnAgree: [],
+    nextOnDisagree: [],
+    relatedIdentityIds: ["sociological_jurist", "interpretive_pluralist", "purposivist"],
+    note: "Gény-specific Free Scientific Research discriminator; authoritative positive sources remain primary until they genuinely run out."
+  },
+  {
+    id: "D-CLC1",
+    family: "constitutionalism",
+    priority: "deferred",
+    unlock: "Common-Law Constitutionalism is already live and Cooke's strong common-law-rights thesis could materially change the champion.",
+    prompt: "Even without a written higher-law provision expressly authorizing it, a court may treat some fundamental common-law rights as so basic to the constitutional order that Parliament cannot validly abolish them by ordinary legislation.",
+    agreeTraits: ["source.common_law_fundamental_rights", "posture.judicial_supremacy"],
+    disagreeTraits: [],
+    nextOnAgree: [],
+    nextOnDisagree: [],
+    relatedIdentityIds: ["common_law_constitutionalist"],
+    note: "Cooke-specific strong common-law-constitutionalism discriminator; do not ask generic Living Constitutionalists."
+  },
+  {
+    id: "D-PIL1",
+    family: "remedies",
+    priority: "deferred",
+    unlock: "A strongly systemic, rights-protective, open-method profile makes Indian social-action/PIL judging a plausible champion.",
+    prompt: "When poor or otherwise disadvantaged people cannot realistically bring their own constitutional claims, courts should be willing to relax ordinary standing and filing rules—even treating letters or public-interest petitions as sufficient—to get the rights violation before the court and fashion effective relief.",
+    agreeTraits: ["remedies.public_interest_litigation", "remedies.access_relaxation"],
+    disagreeTraits: [],
+    nextOnAgree: [],
+    nextOnDisagree: [],
+    relatedIdentityIds: ["sociological_jurist", "living_constitutionalist", "purposivist"],
+    note: "Bhagwati/Iyer discriminator: procedural access innovation is what separates this champion from generic structural-remedies activism."
+  },
+
   // Deferred / niche-but-real branches
   {
     id: "D-CGC1",
