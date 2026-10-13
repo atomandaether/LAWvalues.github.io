@@ -92,7 +92,7 @@ Robert Alexy remains primarily a Proportionalist champion rather than a duplicat
 
 ## Adaptive diagnostics
 
-The global adaptive cap remains seven questions.
+The global adaptive cap remains twelve questions.
 
 - **D-POS1** — Inclusive versus Exclusive Positivism.
 - **D-POS2** — Normative/Ethical Positivism.
@@ -103,11 +103,11 @@ The global adaptive cap remains seven questions.
 - **D-NP6** — Extreme-Injustice threshold / Radbruch-Soper.
 - **D-NP3** — Fullerian internal legality.
 
-The router stops probing competing Source theories once a broad noun or narrow branch is affirmatively established. Source probes also do not consume the diagnostic budget when a respondent is already squarely inside the Originalist refinement zone; Originalist source-sensitive champions use the 93-item core Source evidence.
+The router stops probing competing Source theories once a broad noun or narrow branch is affirmatively established. Source probes also do not consume the diagnostic budget when a respondent is already squarely inside the Originalist refinement zone; Originalist source-sensitive champions use the 88-item core Source evidence.
 
 ## Reachability contract
 
-The audit suite requires every locked Source champion unit to be separately reachable from literal 93-item answer vectors through the live adaptive router within the seven-question cap.
+The audit suite requires every locked Source champion unit to be separately reachable from literal 88-item answer vectors through the live adaptive router within the twelve-question cap.
 
 It also requires:
 
