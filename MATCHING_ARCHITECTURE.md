@@ -6,7 +6,7 @@
 
 > **Originalism implementation note (2026-10-12):** see `ORIGINALISM_ENGINE.md` for the locked Originalist classifier. The public noun split is OPM/OI, **New** is the construction modifier, and the locked champion layer contains thirteen units.
 
-The eight public axes remain the instrument. Jurisprudential identities and thinker matches are an interpretive layer built on top of the 93 core responses plus, when useful, no more than seven adaptive tie-breakers.
+The eight public axes remain the instrument. Jurisprudential identities and thinker matches are an interpretive layer built on top of the 88 core responses plus, when useful, no more than twelve adaptive tie-breakers.
 
 ## Sparse signatures, not eight-number caricatures
 
@@ -140,7 +140,7 @@ The first follow-up is a soft Legal Realism probe because Realism is intentional
 - structured Proportionality
 - Bobbitt-style pluralism vs O'Connor-style low theory
 
-The router stops when no remaining diagnostic is materially useful or after seven adaptive questions.
+The router stops when no remaining diagnostic is materially useful or after twelve adaptive questions.
 
 ## Public result grammar
 
