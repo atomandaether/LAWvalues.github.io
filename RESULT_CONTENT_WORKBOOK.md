@@ -1,3 +1,5 @@
+> **Authority implementation note (2026-10-12):** `AUTHORITY_ENGINE.md` governs the live judicial-review/constitutional-authority nouns, modifiers, champions, and routing. Older Waldronian/Elyan references below are design history only.
+
 # LAWvalues Result Content Workbook
 
 This file is the editorial control panel for the result system. The machine-readable implementation now lives in `result_content.js`; this workbook remains the place to review or rename the public wording.
@@ -12,7 +14,7 @@ Example structure only:
 
 > **Precedent-preserving Originalist who lets democracy decide**
 
-The middle slot is the **best real jurisprudential nearest neighbor we can honestly justify**—including established eponymous labels such as Dworkinian, Thayerian, or Waldronian when the evidence is genuinely that specific. The noun is the primary classification. The trailing phrase is the respondent's strongest **broad** characteristic that the noun does not already communicate; it comes from the eight axis poles plus only the very few narrower characteristics that the existing bank measures with enough independent evidence. The front modifier now has a different job: it is a **noun-conditioned twist**, chosen for how much it explains what is distinctive about this person's particular version of the selected noun. A narrow subtype distinction can therefore be appropriate as a modifier even when it would be too specific to claim as the person's second- or third-largest worldview dimension. The funny wording is allowed to be a slightly unfair critic's caricature because the backend signal remains neutral and precise.
+The middle slot is the **best real jurisprudential nearest neighbor we can honestly justify**—including established theory labels such as Dworkinian or Thayerian when the evidence is genuinely that specific; the authority zone now uses descriptive public nouns such as Political Constitutionalist and Political Process Jurist. The noun is the primary classification. The trailing phrase is the respondent's strongest **broad** characteristic that the noun does not already communicate; it comes from the eight axis poles plus only the very few narrower characteristics that the existing bank measures with enough independent evidence. The front modifier now has a different job: it is a **noun-conditioned twist**, chosen for how much it explains what is distinctive about this person's particular version of the selected noun. A narrow subtype distinction can therefore be appropriate as a modifier even when it would be too specific to claim as the person's second- or third-largest worldview dimension. The funny wording is allowed to be a slightly unfair critic's caricature because the backend signal remains neutral and precise.
 
 ---
 
