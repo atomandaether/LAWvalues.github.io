@@ -108,6 +108,7 @@
     "posture.judicial_independence": [["O13", 1, 1]],
     "posture.electoral_accountability": [["O12", 1, 1]],
     "separation.nondelegation": [["E3", 1, 1]],
+    "separation.unitary_executive": [["E2", -1, 1]],
     "separation.prescribed_process": [["E1", -1, 0.7], ["E4", 1, 1], ["E6", 1, 0.8]],
     "separation.combined_functions": [["E5", 1, 1]],
     "form.predictability": [["F1", 1, 1]],
@@ -402,7 +403,7 @@
       add("pragmatist", 0.91, "Consequences and practical workability are independent adjudicative reasons rather than merely evidence of purpose.");
     }
     if ((traits["form.proportionality"] || 0) >= 0.5) {
-      add("proportionalist", 0.88, "Structured proportionality rather than generic balancing.");
+      add("proportionalist", 0.99, "Affirmative structured-proportionality evidence establishes Proportionalism rather than generic balancing.");
     }
 
     const establishedNonAuthorityScore = Math.max(0, ...candidates.map((item) => item.score));
@@ -490,7 +491,15 @@
     }
     if (l.cons >= 0.3) add("textualist", 0.56 + 0.34 * s.cons, "Textual constraint is a dominant feature.");
     if (r.cons >= 0.3) add("purposivist", 0.54 + 0.32 * s.cons, "Purpose/open construction dominates and no narrower method is established.");
-    if (l.separ >= 0.4) add("formalist", 0.55 + 0.32 * s.separ, "Formal separation of powers is highly distinctive.");
+    if (l.separ >= 0.4) {
+      add("formalist", 0.55 + 0.32 * s.separ, "Formal separation of powers is highly distinctive.");
+    }
+    const antiDiscretion = traits["form.anti_discretion"] || 0;
+    const ruleFormalistCanDominate =
+      Math.max(s.sorc, s.cons, s.time, s.separ) <= 0.65;
+    if (ruleFormalistCanDominate && l.form >= 0.55 && antiDiscretion >= 0.55) {
+      add("formalist", 0.93, "Rule-centered anti-discretion Formalism is the respondent's dominant jurisprudential commitment.");
+    }
     if (r.separ >= 0.4) add("functionalist", 0.55 + 0.32 * s.separ, "Functional separation of powers is highly distinctive.");
 
     const pragmatic = (r.cons + r.separ + r.form) / 3;
@@ -621,6 +630,31 @@
     let pool = normal;
     const topNormal = normal[0]?.score ?? 0;
 
+    const fiss = profiles.find((profile) => profile.id === "fiss" && profile.selectable !== false);
+    if (fiss && requiredTraitsSatisfied(fiss, traits)) {
+      const remedialSalience = salience(scores, "remed");
+      const strongestOtherAxis = Math.max(
+        ...AXIS_IDS.filter((axisId) => axisId !== "remed").map((axisId) => salience(scores, axisId))
+      );
+      const structural = traits["remedies.structural"] || 0;
+      const supervision = traits["remedies.supervision"] || 0;
+      const strongJudicialRole = traits["posture.countermajoritarian"] || 0;
+      const fissMayDisplace =
+        remedialSalience >= 0.75 &&
+        structural >= 0.65 &&
+        supervision >= 0.65 &&
+        strongJudicialRole >= 0.55 &&
+        (topNormal < 0.72 || remedialSalience >= strongestOtherAxis + 0.12);
+
+      if (fissMayDisplace) {
+        const { fit, shape } = axisProfileFit(fiss, scores);
+        const traitFit = profileTraitFit(fiss, traits);
+        const anti = Math.max(0, ...(fiss.antiTraits || []).map((trait) => traits[trait] || 0));
+        const fissScore = clamp01(0.58 * fit + 0.17 * shape + 0.20 * traitFit - 0.20 * anti - 0.03);
+        pool = [...pool, { profile: fiss, score: fissScore }].sort((a, b) => b.score - a.score);
+      }
+    }
+
     for (const profile of catchalls) {
       const lowTheoryEvidence = Math.max(
         traits["method.case_by_case"] || 0,
@@ -634,15 +668,15 @@
       }
     }
 
-    const viable = pool.filter((item) => item.score >= 0.55);
-    if (viable.length === 0) return { matches: [], confidence: "low" };
+    if (pool.length === 0) return { matches: [], confidence: "low" };
 
-    const first = viable[0];
-    const second = viable[1];
-    const ambiguous = second && Math.abs(first.score - second.score) < 0.055;
-    const matches = ambiguous ? [first, second] : [first];
-    const confidence = first.score >= 0.76 && !ambiguous ? "high" : first.score >= 0.63 ? "medium" : "low";
-    return { matches, confidence };
+    const first = pool[0];
+    const second = pool[1];
+    const margin = second ? first.score - second.score : 1;
+    const confidence =
+      first.score >= 0.76 && margin >= 0.055 ? "high" :
+      first.score >= 0.63 ? "medium" : "low";
+    return { matches: [first], confidence };
   }
 
   function responseValue(responses, id) {
@@ -988,7 +1022,12 @@
       offer("D-PIL1", 96);
     }
 
-    if (form <= 28) offer("D-PROP1", 74);
+    const proportionalityPlausible =
+      form <= 25 &&
+      (source <= 35 || (constraint <= 25 && posture <= 35));
+    if (proportionalityPlausible && (traits["form.proportionality"] || 0) < 0.5) {
+      offer("D-PROP1", 98);
+    }
 
     if (source <= 35 && constraint <= 40 && posture >= 55) offer("D-CGC1", 42);
 
