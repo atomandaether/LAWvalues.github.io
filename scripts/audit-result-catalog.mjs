@@ -1508,7 +1508,7 @@ assert.notDeepEqual(
 
 console.log(`PASS: ${identities.length} real/fallback identities audited.`);
 console.log(`PASS: ${profiles.length} sparse thinker profiles across main, specialist, catch-all, and lineage tiers.`);
-console.log(`PASS: ${allDiagnostics.length} adaptive diagnostics with a seven-question cap.`);
+console.log(`PASS: ${allDiagnostics.length} adaptive diagnostics with a twelve-question cap.`);
 console.log("PASS: Source nouns/modifiers are locked: Positivist, Natural Lawyer, Interpretivist, Fullerian, and residual Non-Positivist.");
 console.log("PASS: sparse profiles ignore unmodeled axes and diagnostic specialists require evidence.");
 console.log("PASS: public titles split broad phrase ranking from noun-conditioned twist selection.");
