@@ -34,13 +34,15 @@ Interpretive Pluralist is a real adaptive noun rather than a mere "none of the a
 
 ## Modifier layer
 
-Only three substantive Method modifiers are locked:
+Three method-internal subtype modifiers are locked:
 
 - **Imaginative-Reconstruction Intentionalist** — asks what lawmakers would have intended had they confronted an unforeseen issue.
 - **Practical-Reasoning Interpretive Pluralist** — legitimate interpretive resources have no fixed hierarchy; their relative weight can shift with the case.
 - **Fact-Skeptical Legal Realist** — Realist uncertainty extends to trial facts, credibility, memory, psychology, and factfinding.
 
-All other Method nouns use the generic fit layer unless later research identifies a genuine intermediate camp:
+One cross-family hybrid is also public: a Purposivist who affirmatively endorses structured proportionality can be a **Proportionalist Purposivist**. This is the Barak cell and requires D-PROP1; generic balancing is not enough.
+
+Other Method nouns use the generic fit layer unless a genuine subtype or coherent hybrid is independently established:
 
 - **Unmistakably a/an [noun]**
 - plain **[noun]**
@@ -67,7 +69,7 @@ Strong Intentionalism is important further reading but does not clear the Alexan
 6. **Stephen Breyer** — practical American purposivism: purpose, consequences, administrability, institutional workability.
 7. **Aharon Barak** — systematic/objective purposive interpretation with a much more rights/proportionality-heavy overall judicial package.
 
-Barak may also legitimately appear under Proportionalist when proportionality, rather than purpose, is the respondent's stronger fixation.
+Barak may also legitimately appear under Proportionalist when proportionality, rather than purpose, is the respondent's stronger fixation. The public title therefore distinguishes **Proportionalist Purposivist** from **Purposivist Proportionalist** depending on which commitment supplies the winning noun.
 
 ### Legal Process Jurist
 8. **Henry Hart / Albert Sacks** — institutional settlement, competence, and purposive reasoned elaboration.
@@ -151,7 +153,7 @@ It additionally verifies:
 - all eight Method nouns remain available;
 - Sociological Jurist is a public noun;
 - Interpretive Pluralist is diagnosable rather than merely a fallback;
-- the three substantive modifiers appear only in their locked cells;
+- the three method-internal subtype modifiers appear only in their locked cells, and Barak's Proportionalist/Purposivist hybrid appears only with confirmed structured proportionality;
 - Hugo Black can resolve as **Textualist → Hugo Black** but is excluded from incompatible Originalist nouns;
 - the dedicated Textualist Scalia/Manning/Easterbrook unit prevents duplication with the locked Originalist Scalia/Manning unit;
 - existing Originalism and Source reachability contracts remain green.

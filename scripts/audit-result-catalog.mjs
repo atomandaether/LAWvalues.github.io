@@ -50,7 +50,7 @@ assert.ok(typeof resultContent.rankTwists === "function", "Need separate noun-co
 {
   const publicIds=resultContent.PUBLIC_SUBSTANTIVE_MODIFIER_IDS;
   const internalIds=resultContent.INTERNAL_TWIST_IDS;
-  assert.equal(publicIds.length,20,"Reviewed public modifier pool should have 20 items pending the remaining subtype workshop");
+  assert.equal(publicIds.length,19,"Resolved public modifier pool should have 19 substantive subtype/hybrid items");
   assert.equal(new Set(publicIds).size,publicIds.length);
   assert.equal(new Set(internalIds).size,internalIds.length);
   assert.equal(publicIds.length+internalIds.length,
@@ -89,7 +89,7 @@ assert.ok(typeof resultContent.rankTwists === "function", "Need separate noun-co
       `Archival modifier ${id} must be explicitly nonpublic`);
   }
 }
-console.log("PASS: all 20 retained public modifier candidates are constructively reachable; cross-axis twists are internal.");
+console.log("PASS: all 19 public substantive modifiers are constructively reachable; ordinary cross-axis twists are internal.");
 
 // Compatible noun-conditioned twists should no longer disappear behind generic
 // fit language merely because the noun belongs to Source, Method, or Originalism.
@@ -99,8 +99,24 @@ console.log("PASS: all 20 retained public modifier candidates are constructively
     {identity:natural,identityScore:.86,identityAlternatives:[],primaryStrength:.8},
     {sorc:20,cons:50,time:50,prec:50,remed:50,post:50,separ:50,form:50},
     {"source.positive_law_settlement":.8},{});
-  assert.equal(naturalTitle.modifier?.id,"positive_law_settlement",
-    "Natural Lawyer should be able to surface the compatible Settlement-minded twist");
+  assert.notEqual(naturalTitle.modifier?.id,"positive_law_settlement",
+    "Positive-law settlement is part of the central Natural Law package, not a separate public subtype");
+
+  const commonLaw=identities.find(x=>x.id==="common_law_constitutionalist");
+  const waluchowTitle=resultContent.assemble(
+    {identity:commonLaw,identityScore:.86,identityAlternatives:[],primaryStrength:.8},
+    {sorc:88,cons:50,time:20,prec:88,remed:50,post:50,separ:50,form:50},
+    {"source.morality_incorporated":1,"time.common_law_development":1},{});
+  assert.equal(waluchowTitle.modifier?.id,"inclusive_positivist_common_law",
+    "Waluchow-like Common-Law Constitutionalism should surface the Inclusive-Positivist hybrid");
+
+  const naturalLawOpm=identities.find(x=>x.id==="public_meaning_originalist");
+  const higherLawTitle=resultContent.assemble(
+    {identity:naturalLawOpm,identityScore:.86,identityAlternatives:[],primaryStrength:.8},
+    {sorc:18,cons:55,time:90,prec:50,remed:50,post:50,separ:50,form:50},
+    {"source.objective_morality":1,"source.positive_law_settlement":1},{});
+  assert.equal(higherLawTitle.modifier?.id,"higher_law_originalism",
+    "Natural-law-grounded Originalism should surface the Higher-law modifier");
 
   const textual=identities.find(x=>x.id==="textualist");
   const textualTitle=resultContent.assemble(
@@ -641,9 +657,9 @@ assertClassifiedPhrase("source_positive", { ...phraseNeutral, cons: 100, sorc: 9
 assertClassifiedPhrase("source_nonpositive", { ...phraseNeutral, cons: 100, sorc: 10 });
 assertClassifiedPhrase(
   "objective_morality",
-  { ...phraseNeutral, time: 100, sorc: 20 },
+  { ...phraseNeutral, sorc: 20, post: 30, form: 5 },
   { S10: 3, S11: 3 },
-  { "D-NP1": 3 }
+  { "D-NP1": 3, "D-PROP1": 3 }
 );
 assertClassifiedPhrase("textual_constraint", { ...phraseNeutral, time: 100, cons: 90 });
 assertClassifiedPhrase("purposive", { ...phraseNeutral, time: 100, cons: 10 });
@@ -881,6 +897,9 @@ for (const id of lockedOriginalistUnits) {
   if (ORIGINALIST_NEW.has(id)) {
     assert.equal(result.resultTitle.modifier?.id, "new_originalism",
       `${id} should surface the New modifier`);
+  } else if (id === "natural_law_originalists") {
+    assert.equal(result.resultTitle.modifier?.id, "higher_law_originalism",
+      "Natural-law-grounded Originalism should surface Higher-law");
   }
 }
 
@@ -1203,6 +1222,7 @@ function methodDiagnosticAnswer(id, diagnosticId) {
   if (diagnosticId === "D-GENY1") return id === "geny" ? 3 : -3;
   if (diagnosticId === "D-PLU1") return METHOD_PLURALISTS.has(id) ? 3 : -3;
   if (diagnosticId === "D-PLU2") return id === "eskridge_frickey" ? 3 : -3;
+  if (diagnosticId === "D-PROP1") return id === "barak" ? 3 : -3;
 
   // Other-zone diagnostics should not manufacture a different noun in a Method fixture.
   return -3;
@@ -1251,7 +1271,8 @@ const methodExpectedIdentity = {
 const methodExpectedModifier = {
   hand_posner_imaginative:"imaginative_reconstruction",
   eskridge_frickey:"practical_reasoning_pluralism",
-  frank:"fact_skeptical_realism"
+  frank:"fact_skeptical_realism",
+  barak:"proportionalist_purposivism"
 };
 
 for (const id of lockedMethodUnits) {
@@ -1350,7 +1371,8 @@ const nonOriginalistExpectedIdentity = {
 
 const nonOriginalistExpectedModifier = {
   post_siegel: "democratic_living",
-  klare_langa: "transformative_living"
+  klare_langa: "transformative_living",
+  waluchow_common_law: "inclusive_positivist_common_law"
 };
 
 for (const id of lockedNonOriginalistUnits) {
@@ -1641,7 +1663,7 @@ for (const id of lockedStructureFormUnits) {
 {
   const { result } = runLiteralStructureFormFixture("barak");
   assert.equal(result.resultTitle.modifier?.id, "purposive_proportionality",
-    "An exact-zero open-construction score must still produce Purpose-led Proportionalist rather than being treated as neutral");
+    "An exact-zero open-construction score must still preserve the Purposivist Proportionalist hybrid rather than being treated as neutral");
 }
 
 // The Alexander-v-Bork threshold is executable: these paired units differ by

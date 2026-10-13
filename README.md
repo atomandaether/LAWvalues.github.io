@@ -78,7 +78,7 @@ The item bank is content-grounded and structurally audited, not empirically vali
 
 ## Public modifiers versus archival twist records
 
-The current result-title grammar exposes **20 public modifier candidates** plus two fit-strength labels (Unmistakably and Some kind of); intermediate fits use no generic modifier. The public modifier layer is now restricted to candidate jurisprudential subtypes or coherent hybrids rather than ordinary cross-axis traits. The remaining retained twist records are **internal/legacy only** and may still support old share links, explanation copy, or editorial comparison without being advertised as public outcomes. See `PUBLIC_SUBSTANTIVE_MODIFIER_IDS`, `PUBLIC_MODIFIERS`, and `INTERNAL_TWIST_IDS` in `result_content.js`.
+The current result-title grammar exposes **19 public substantive modifiers** plus two fit-strength labels (Unmistakably and Some kind of); intermediate fits use no generic modifier. Public modifiers are limited to genuine jurisprudential subtypes or coherent hybrids. Ordinary cross-axis traits stay in the phrase, bridge, champion, or explanation layers. Retained historical twist records remain **internal/legacy only** and may still support old share links or editorial comparison without being advertised as public outcomes. See `PUBLIC_SUBSTANTIVE_MODIFIER_IDS`, `PUBLIC_MODIFIERS`, and `INTERNAL_TWIST_IDS` in `result_content.js`.
 
 ## Theory-based institutional diagnostics
 

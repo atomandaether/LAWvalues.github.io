@@ -39,12 +39,14 @@ Breyer and Justice White remain related judicial exemplars rather than additiona
 
 Generic balancing is not enough. **D-PROP1** must affirm the structured proportionality sequence.
 
-5. **Robert Alexy** — Higher-law / nonpositivist, principles-heavy Proportionalism.
-6. **Aharon Barak** — Purpose-led, purposive and strongly rights-protective Proportionalism.
+5. **Robert Alexy** — non-positivist, principles-heavy Proportionalism.
+6. **Aharon Barak** — purposive and strongly rights-protective Proportionalism.
 
 The title layer preserves:
-- **Higher-law Proportionalist** for Alexy-like profiles;
-- **Purpose-led Proportionalist** for Barak-like profiles.
+- **Non-Positivist Proportionalist** for Alexy-like profiles;
+- **Purposivist Proportionalist** for Barak-like profiles.
+
+When Purposivism rather than Proportionalism is the winning noun, a confirmed Barak-like proportionality commitment can surface reciprocally as **Proportionalist Purposivist**.
 
 D-PROP1 is high priority only when Form is extremely balancing-oriented and either nonpositive Source or purposive/rights-protective evidence makes structured proportionality genuinely plausible. This prevents proportionality diagnostics from consuming slots for ordinary pragmatists.
 
@@ -88,8 +90,8 @@ The audit suite separately requires these endpoints to remain reachable from lit
 - Gary Lawson → Formalist
 - Calabresi / Prakash → Formalist
 - Frederick Schauer → Formalist
-- Robert Alexy → Higher-law Proportionalist
-- Aharon Barak → Purpose-led Proportionalist
+- Robert Alexy → Non-Positivist Proportionalist
+- Aharon Barak → Purposivist Proportionalist
 - Owen Fiss → extreme structural-reform whole-profile champion
 - Bhagwati / Iyer → Sociological Jurist / PIL-social-action champion
 

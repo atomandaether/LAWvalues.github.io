@@ -789,6 +789,23 @@
       "explanation": "Your adaptive or pragmatic method remains grounded in socially recognized legal sources rather than freestanding moral validity."
     },
     {
+      "id": "inclusive_positivist_common_law",
+      "text": "Inclusive-Positivist",
+      "appliesTo": [
+        "common_law_constitutionalist"
+      ],
+      "allTraits": [
+        "source.morality_incorporated",
+        "time.common_law_development"
+      ],
+      "min": 0.45,
+      "priority": 1.35,
+      "blockedPhraseIds": [
+        "source_positive"
+      ],
+      "explanation": "Your Common-Law Constitutionalism is Waluchow-like: constitutional doctrine develops through precedent and practical judgment inside an inclusive-positivist account in which recognized legal sources may incorporate moral criteria."
+    },
+    {
       "id": "higher_law_historical",
       "text": "Higher-law",
       "appliesTo": [
@@ -807,6 +824,26 @@
         "objective_morality"
       ],
       "explanation": "You combine historical or textual constraint with a nonpositivist view that legal validity is not exhausted by positive sources."
+    },
+    {
+      "id": "higher_law_originalism",
+      "text": "Higher-law",
+      "appliesTo": [
+        "originalist",
+        "public_meaning_originalist",
+        "original_intent_originalist"
+      ],
+      "allTraits": [
+        "source.objective_morality",
+        "source.positive_law_settlement"
+      ],
+      "min": 0.35,
+      "priority": 1.35,
+      "blockedPhraseIds": [
+        "source_nonpositive",
+        "objective_morality"
+      ],
+      "explanation": "Your Originalism is grounded in a natural-law account in which objective morality matters to law while promulgated positive constitutional law retains genuine settlement authority."
     },
     {
       "id": "common_law_growth",
@@ -912,6 +949,22 @@
       "explanation": "Your otherwise broader methodology has a distinctive preference for structured proportionality rather than free-form balancing."
     },
     {
+      "id": "proportionalist_purposivism",
+      "text": "Proportionalist",
+      "appliesTo": [
+        "purposivist"
+      ],
+      "traits": [
+        "form.proportionality"
+      ],
+      "min": 0.5,
+      "priority": 1.35,
+      "blockedPhraseIds": [
+        "balancing"
+      ],
+      "explanation": "Your Purposivism is Barak-like in pairing objective purposive interpretation with a genuine structured-proportionality method for rights conflicts."
+    },
+    {
       "id": "responsive_process",
       "text": "Responsive",
       "appliesTo": [
@@ -939,7 +992,7 @@
     },
     {
       "id": "nonpositivist_proportionality",
-      "text": "Higher-law",
+      "text": "Non-Positivist",
       "appliesTo": [
         "proportionalist"
       ],
@@ -947,19 +1000,20 @@
       "direction": "right",
       "min": 0.3,
       "priority": 1.2,
-      "explanation": "Within Proportionalism, your balancing sits inside a nonpositivist account of legal principles and moral correctness rather than functioning as a merely practical judicial technique."
+      "explanation": "Your Proportionalism sits inside a non-positivist account of law in which legal principles and moral correctness are part of legal reasoning rather than merely external policy considerations."
     },
     {
       "id": "purposive_proportionality",
-      "text": "Purpose-led",
+      "text": "Purposivist",
       "appliesTo": [
         "proportionalist"
       ],
-      "axis": "cons",
-      "direction": "right",
-      "min": 0.35,
-      "priority": 1.1,
-      "explanation": "Within Proportionalism, your structured balancing is embedded in a broader purposive and open-construction approach to legal interpretation."
+      "traits": [
+        "constraint.purpose"
+      ],
+      "min": 0.45,
+      "priority": 1.15,
+      "explanation": "Your Proportionalism is Barak-like in embedding structured rights analysis inside a broader purposive approach to legal interpretation."
     },
     {
       "id": "anti_discretion_tinge",
@@ -1018,17 +1072,11 @@
     "imaginative_reconstruction",
     "practical_reasoning_pluralism",
     "fact_skeptical_realism",
-
-    // Pending editorial review: these may encode genuine subtypes/hybrids rather
-    // than merely another high-scoring axis. Keep them public until that review
-    // resolves their jurisprudential status.
-    "positive_law_settlement",
-    "source_bound_living",
-    "higher_law_historical",
-    "proportionality_tinge",
+    "inclusive_positivist_common_law",
+    "higher_law_originalism",
+    "proportionalist_purposivism",
     "nonpositivist_proportionality",
     "purposive_proportionality",
-
     "responsive_process",
     "passive_virtues_minimalism"
   ]);
@@ -1341,15 +1389,15 @@
 
     const identity=classification?.identity || {id:"interpretive_pluralist",label:"Interpretive Pluralist",family:"method"};
 
-    // The phrase carries the strongest broad residual characteristic.
+    // Rank broad residual characteristics independently. The final phrase is
+    // chosen only after the modifier, so a genuine subtype/hybrid can spend the
+    // concept it already communicates rather than being suppressed by a phrase
+    // that happened to rank first.
     const phraseRanking=rankPhrases(identity,scores,traits,traitEvidence);
-    const phrasePick=phraseRanking.find(item=>item.score>=0.18)||null;
-    const phrase=asPhrase(phrasePick?.feature||null)||MIXED_PHRASE;
 
-    // Substantive modifiers beat generic fit language.  Originalism currently has
-    // one such public intermediate camp: New Originalism (constructionist OPM/OI).
-    // Otherwise fit quality is expressed as Unmistakably / blank / Some kind of.
-    const twistRanking=rankTwists(identity,scores,traits,phrasePick?.feature||null);
+    // Substantive modifiers beat generic fit language. Fit quality is otherwise
+    // expressed as Unmistakably / blank / Some kind of.
+    const twistRanking=rankTwists(identity,scores,traits,null);
     let modifier=null;
     const bestCompatibleSubstantive = (exclude = null) =>
       twistRanking.find(item =>
@@ -1378,6 +1426,12 @@
       const substantive=bestCompatibleSubstantive();
       modifier=substantive?asModifier(substantive.twist):fitModifier(classification);
     }
+
+    const selectedTwist=modifier?.id ? TWISTS.find(twist=>twist.id===modifier.id)||null : null;
+    const blockedPhraseIds=new Set(selectedTwist?.blockedPhraseIds||[]);
+    const phrasePick=phraseRanking.find(item=>
+      item.score>=0.18 && !blockedPhraseIds.has(item.feature.id))||null;
+    const phrase=asPhrase(phrasePick?.feature||null)||MIXED_PHRASE;
 
     const title=[modifier?.text,identity.label,phrase?.text].filter(Boolean).join(" ");
     const bridge=BRIDGES.find(item=>item.when(scores,traits,identity))||null;

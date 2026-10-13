@@ -1063,6 +1063,16 @@
     if(sourceNuanceZone && !hasAsked(diagnosticResponses,"D-MOR1")) offer("D-MOR1",64);
 
     if (time >= 60) {
+      // Natural-law grounding is a genuine Originalist subtype rather than an
+      // unrelated Source exploration. When objective-morality evidence is
+      // already present, D-NP1 tests the positive-law settlement component
+      // needed for the Higher-law Originalist modifier/champion cell.
+      if ((traits["source.objective_morality"] || 0) >= 0.35 &&
+          (traits["source.positive_law_settlement"] || 0) < 0.5 &&
+          !hasAsked(diagnosticResponses, "D-NP1")) {
+        offer("D-NP1", 86);
+      }
+
       const publicMeaning = traits["time.public_meaning"] || 0;
       const originalIntent = traits["time.original_intent"] || 0;
       const construction = traits["time.construction_zone"] || 0;
@@ -1304,8 +1314,12 @@
     }
 
     const proportionalityPlausible =
-      form <= 25 &&
-      (source <= 35 || (constraint <= 25 && posture <= 35));
+      (form <= 25 && (source <= 35 || (constraint <= 25 && posture <= 35))) ||
+      // A strongly purposive, rights-protective profile can be Barak-like even
+      // when generic balancing is not extreme enough to make Proportionalist
+      // the leading noun. In that narrow cell, D-PROP1 tests the genuine
+      // Purposivist/Proportionalist hybrid rather than inferring it from Form.
+      (form <= 35 && constraint <= 25 && posture <= 35);
     if (proportionalityPlausible && (traits["form.proportionality"] || 0) < 0.5) {
       offer("D-PROP1", 98);
     }
