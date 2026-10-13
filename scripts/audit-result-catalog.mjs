@@ -288,6 +288,14 @@ for (const profile of profiles) {
     assert.ok(!profile.identityIds.includes(id),
       `${profile.id} must not list ${id} as both primary and cross-cutting compatibility`);
   }
+  for (const id of profile.crossCuttingIdentityIds || []) {
+    const identity=identities.find(x=>x.id===id);
+    if(identity?.public!==false) {
+      assert.ok(Array.isArray(profile.crossCuttingRequirements?.[id]) &&
+        profile.crossCuttingRequirements[id].length>0,
+        `${profile.id} cross-cutting public compatibility with ${id} needs affirmative bridge evidence`);
+    }
+  }
   assert.ok(Array.isArray(profile.signatureTraits), `${profile.id} needs signatureTraits`);
   assert.ok(Array.isArray(profile.requiredTraits), `${profile.id} needs requiredTraits`);
   assert.ok(Array.isArray(profile.antiTraits), `${profile.id} needs antiTraits`);
@@ -348,7 +356,7 @@ for (const id of [
   "D-RLS1", "D-RLS2", "D-RLS3", "D-RLS4", "D-RLS5",
   "D-POS1", "D-POS2", "D-NP1", "D-NP2", "D-NP3", "D-NP4", "D-NP5", "D-NP6",
   "D-MAJ1", "D-MAJ2", "D-ELY1", "D-WAL1", "D-RESP1", "D-TXT1", "D-TXT2", "D-INT1", "D-INT2", "D-PRAG1",
-  "D-LP1", "D-LP2", "D-QC1", "D-SOC1", "D-GENY1", "D-LIV1", "D-LIV2", "D-HAR1", "D-CLC1", "D-PIL1", "D-PLU1", "D-PLU2", "D-OCO1",
+  "D-LP1", "D-LP2", "D-QC1", "D-SOC1", "D-STR1", "D-GENY1", "D-LIV1", "D-LIV2", "D-HAR1", "D-CLC1", "D-PIL1", "D-PLU1", "D-PLU2", "D-OCO1",
   "D-ORI1", "D-ORI2", "D-ORI3", "D-ORI4", "D-ORI5", "D-MOR1", "D-PREC1", "D-QC2"
 ]) {
   assert.ok(diagnosticIds.has(id), `Missing high-value diagnostic ${id}`);
@@ -391,17 +399,17 @@ assert.equal(identities.find((x) => x.id === "waldronian").public, false,
   "Waldronian should remain internal/legacy; public results use Political Constitutionalist");
 assert.equal(identities.find((x) => x.id === "elyan").public, false,
   "Elyan should remain internal/legacy; public results use Political Process Jurist");
-assert.equal(identities.find((x) => x.id === "weak_form_constitutionalist").label, "Weak-Form Constitutionalist",
-  "Weak-form review must be a public constitutional-authority noun");
-assert.equal(identities.find((x) => x.id === "legal_constitutionalist").label, "Legal Constitutionalist",
-  "Strong-form judicial constitutional authority needs a public noun");
+assert.equal(identities.find((x) => x.id === "weak_form_constitutionalist").public, false,
+  "Weak-form review remains an internal institutional-design descriptor");
+assert.equal(identities.find((x) => x.id === "legal_constitutionalist").public, false,
+  "Strong-form legal constitutionalism remains an internal authority descriptor");
 
 assert.equal(identities.find((x) => x.id === "formalist").label, "Formalist",
   "Keep the public noun Formalist exactly as-is");
 assert.equal(identities.find((x) => x.id === "functionalist").label, "Functionalist",
   "Keep the public noun Functionalist exactly as-is");
-assert.equal(identities.find((x) => x.id === "nonpositivist").broadFallback, true,
-  "Non-positivist should be marked as a broad last-resort fallback");
+assert.notEqual(identities.find((x) => x.id === "nonpositivist").broadFallback, true,
+  "Non-Positivist must require affirmative subtype evidence rather than functioning as an axis-only fallback");
 
 const profileById = Object.fromEntries(profiles.map((x) => [x.id, x]));
 
@@ -1664,8 +1672,8 @@ assert.notDeepEqual(
 console.log(`PASS: ${identities.length} real/fallback identities audited.`);
 console.log(`PASS: ${profiles.length} sparse thinker profiles across main, specialist, catch-all, and lineage tiers.`);
 console.log(`PASS: ${allDiagnostics.length} adaptive diagnostics with a twelve-question cap.`);
-console.log("PASS: Source nouns/modifiers are locked: Positivist, Natural Lawyer, Interpretivist, Fullerian, and residual Non-Positivist.");
-console.log("PASS: sparse profiles ignore unmodeled axes and diagnostic specialists require evidence.");
+console.log("PASS: Source nouns/modifiers are locked: Positivist, Natural Lawyer, Interpretivist, Fullerian, and theory-backed Non-Positivist.");
+console.log("PASS: sparse profiles penalize unexplained high-salience commitments; diagnostic specialists and cross-cutting champions require evidence.");
 console.log("PASS: public titles split broad phrase ranking from noun-conditioned twist selection.");
 
 // Cross-family adversarial invariants: narrow yes-answers may refine a theory
@@ -1725,6 +1733,16 @@ for(let i=0;i<600;i++){
   if(result.responseQuality)continue;
   validCases++;
   assert.equal(result.champions.length,1,"Each valid respondent gets exactly one champion unit");
+  {
+    const winningProfile=profileById[result.champions[0].id];
+    const compatibility=classifier.championIdentityCompatibility(winningProfile,result.identity);
+    assert.notEqual(compatibility,"incompatible",
+      "A valid respondent may never receive a champion outside the winning noun family");
+    if(compatibility==="cross-cutting") {
+      assert.ok(winningProfile.crossCuttingRequirements?.[result.identity.id]?.length,
+        "A cross-cutting champion must be supported by an explicit bridge contract");
+    }
+  }
   assert.ok(result.identity?.public!==false || result.identity?.id==="mixed_jurisprudence",
     "A valid result may expose only the explicit Mixed Jurisprudence fallback, never another internal noun");
   assert.ok(result.resultTitle?.phrase?.text,
