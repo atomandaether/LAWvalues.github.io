@@ -338,10 +338,12 @@
       if(id==="positivist" && axisValue(scores,"sorc")<=35) continue;
       if(["originalist","public_meaning_originalist","original_intent_originalist"].includes(id) && axisValue(scores,"time")<55) continue;
       if(["living_constitutionalist","common_law_constitutionalist"].includes(id) &&
-         axisValue(scores,"time")>55 && (traits["time.democratic_constitutionalism"]||0)<0.5 &&
-         (traits["time.transformative_constitutionalism"]||0)<0.5) continue;
+         axisValue(scores,"time")>=65) continue;
       let focus=[], basis=0;
-      if(family==="source"){focus=["sorc"];basis=id==="positivist"?left.sorc:right.sorc;}
+      if(id==="common_good_constitutionalist"){
+        focus=["sorc","cons","post"];
+        basis=(right.sorc+right.cons+left.post)/3;
+      }else if(family==="source"){focus=["sorc"];basis=id==="positivist"?left.sorc:right.sorc;}
       else if(family==="time"){
         focus=["time"];basis=id.includes("originalist")?left.time:right.time;
         if(id==="common_law_constitutionalist"){focus=["time","prec"];basis=(right.time+left.prec)/2;}
@@ -362,6 +364,10 @@
         else if(id==="interpretive_pluralist"){focus=[];basis=Math.max(0.18,(traits["method.modal_pluralism"]||0)*0.45);}
         else basis=right.cons;
       }else if(id==="legal_realist"){basis=Math.max(0.25,(traits["realism.empirical_prediction"]||0)*0.55);}
+      // Cooke's common-law-rights claim itself explains a nonpositive Source
+      // score; treating that same axis as a rival theory double-counts it.
+      if(id==="common_law_constitutionalist" &&
+         (traits["source.common_law_fundamental_rights"]||0)>=0.5) focus.push("sorc");
       const other=Math.max(0,...AXIS_IDS.filter(axis=>!focus.includes(axis)).map(axis=>sal[axis]));
       let score=candidate.score;
       if(id==="legal_realist"){
@@ -1137,7 +1143,7 @@
       offer("D-PROP1", 98);
     }
 
-    if (source <= 35 && constraint <= 40 && posture >= 55) offer("D-CGC1", 42);
+    if (source <= 35 && constraint <= 40 && posture >= 55) offer("D-CGC1", 96);
 
     if (maxSalience <= 0.42 || provisionalMethodIdentity === "interpretive_pluralist") {
       const pluralism = traits["method.modal_pluralism"] || 0;
@@ -1202,6 +1208,7 @@
     return finalizeResult({
       identity: identityResolution.best.identity,
       identityScore: identityResolution.best.score,
+      primaryStrength: identityResolution.best.basis,
       identityReason: identityResolution.best.reason,
       identityAlternatives: identityResolution.candidates.slice(1, 4),
       champions: championResolution.matches.map(({ profile, score }) => ({
