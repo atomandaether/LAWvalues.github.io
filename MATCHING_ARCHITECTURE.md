@@ -63,7 +63,7 @@ Current protected families include:
 - Living Constitutionalism
 - Common-Law Constitutionalism
 - Common-Good Constitutionalism when directly diagnosed
-- Thayerian, Waldronian, Popular-Constitutionalist, Departmentalist, Elyan, and Minimalist accounts of judicial review
+- Legal Constitutionalism, Political Constitutionalism, Thayerian deference, Weak-Form Constitutionalism, Popular Constitutionalism, Departmentalism, Political Process Jurisprudence, and Judicial Minimalism
 - Formalist and Functionalist separation of powers
 - Structured Proportionality
 
@@ -91,6 +91,10 @@ Examples:
 - Robert Post / Reva Siegel: Democratic Living modifier/champion only after a public-contestation constitutional-development diagnostic
 - Karl Klare / Pius Langa: Transformative Living modifier/champion only after a continuing constitutional-transformation diagnostic
 - Wil Waluchow: Common-Law champion only when Inclusive Positivism and common-law constitutional development are both independently established
+- Stephen Gardbaum: Weak-Form Constitutionalism from direct dialogic-review evidence, not merely moderate Majoritarianism
+- Kevin Walsh: Departmentalism only after branch-specific independent-interpretation evidence
+- Rosalind Dixon: Responsive Political Process Jurisprudence only after representation reinforcement is established and the responsive-review diagnostic is affirmed
+- Alexander Bickel: Passive-virtues Judicial Minimalism only when strategic avoidance is directly evidenced; generic narrow/shallow Minimalism remains Sunsteinian
 
 A specialist never wins from coordinate proximity alone.
 
@@ -117,8 +121,11 @@ The first follow-up is a soft Legal Realism probe because Realism is intentional
 - Public Meaning vs Original Intent vs Original Methods vs Framework Originalism
 - Inclusive vs Exclusive Positivism
 - Natural Law vs Dworkinian Interpretivism vs Moral Impact Theory vs Fuller/Radbruch edge cases
-- Thayerian deference vs Waldronian democratic legitimacy
+- Thayerian deference vs Political Constitutionalism
+- Weak-Form Constitutionalism vs Popular Constitutionalism
 - Popular Constitutionalism vs Departmentalism
+- Political Process Jurisprudence vs generic deference
+- Sunsteinian Minimalism vs Bickelian passive virtues
 - Intentionalism vs Purposivism
 - Legal Process vs generic Purposivism/Pragmatism
 - Pound-style sociological jurisprudence

@@ -212,36 +212,65 @@ Usually better treated as a **front modifier/subtype trait** rather than inventi
 
 # 5. Judicial review and constitutional authority
 
-These are conditional identities for respondents whose Posture results are unusually distinctive.
+The Posture zone uses eight public nouns. These are institutional theories of constitutional authority, not merely points on the Majoritarian/Counter-majoritarian axis.
+
+## Legal Constitutionalist
+Strong-form constitutional authority: entrenched constitutional rights and independent judicial enforcement can bind ordinary political majorities.
+
+There is deliberately no one forced default champion. Dworkin, Brennan, Black, Barak, Alexy, and other existing thinkers may become cross-cutting compatible when their whole jurisprudential profile fits. **Lawrence Sager** remains important further reading because underenforced constitutional norms are not directly measured.
+
+## Political Constitutionalist
+Functioning representative institutions retain the stronger claim to final constitutional authority under reasonable rights disagreement.
+
+Champion unit: **Jeremy Waldron / Richard Bellamy**. Their philosophical rationales differ, but the present instrument does not measure enough to separate them without violating the Alexander/Kaye threshold. Griffith, Tomkins, and Webber remain related reading.
+
+**Waldronian** is retained only as an internal legacy alias.
 
 ## Thayerian
-Clear-error / beyond-reasonable-doubt judicial deference.
+Courts retain judicial review but invalidate legislation only when the legislature's constitutional judgment falls outside the range of reasonable interpretation.
 
-Champion: **James Bradley Thayer**.
-Historical practitioners/relatives can include Holmes, Brandeis, Hand, Cardozo, and Frankfurter.
+Champion: **James Bradley Thayer**. Holmes, Hand, Brandeis, Cardozo, and Frankfurter remain historical practitioners/relatives.
 
-## Waldronian
-Democratic-legitimacy objection to judicial finality under functioning institutions and reasonable rights disagreement.
+## Weak-Form Constitutionalist
+Courts independently adjudicate constitutional rights without necessarily possessing the final constitutional word; ordinary democratic institutions retain a structured response mechanism.
 
-Champion: **Jeremy Waldron**.
+Champion: **Stephen Gardbaum**. Tushnet and Hogg/Bushell remain important lineage. Weak-form review is not Popular Constitutionalism: it preserves independent judicial rights review while rejecting entrenched judicial supremacy.
 
 ## Popular Constitutionalist
-Not merely "super Majoritarian." It adds rejection of judicial supremacy and independent constitutional authority in the people / democratic politics.
+Ultimate constitutional authority remains with the people and democratic constitutional politics rather than becoming the exclusive property of courts.
 
-Champion: **Larry Kramer**; **Mark Tushnet** for more radical/weak-form variants.
+Champion: **Larry Kramer**. Tushnet remains important related reading but is not a separate locked endpoint.
 
 ## Departmentalist
-Branches retain independent interpretive authority. Distinct from the broader popular-authority claim.
+Coordinate governmental branches retain independent good-faith constitutional interpretive authority within their own functions.
 
-Do not force a single champion until the diagnostic pattern is clear.
+Champion: **Kevin Walsh** for judicial departmentalism. Lincoln and Jefferson remain historical lineage. Departmentalism is narrower than Popular Constitutionalism because it need not make ordinary popular constitutional politics the ultimate source of interpretive authority.
 
-## Elyan
-Representation reinforcement: defer ordinarily, intervene when political processes malfunction or exclude groups.
+## Political Process Jurist
+Ordinary substantive disagreements remain with democratic politics, while courts intervene more aggressively when democratic channels are blocked, distorted, or exclusionary.
 
-Champion: **John Hart Ely**.
+Default champion: **John Hart Ely**.
+
+**Responsive Political Process Jurist** is the one substantive modifier in this noun. It routes to **Rosalind Dixon**, whose responsive judicial review calibrates timing, intensity, reasoning, and remedies to the specific democratic dysfunction and to judicial capacity.
+
+**Elyan** is retained only as an internal legacy alias.
 
 ## Judicial Minimalist
-Public noun for narrow/incompletely theorized adjudication. **Bickelian** is no longer a separate public noun: passive virtues / strategic avoidance / counter-majoritarian difficulty are a modifier-level subtype within Minimalism, while **Alexander Bickel** remains a champion. **Cass Sunstein** remains the cleaner broad Minimalist champion.
+Narrow, shallow, incompletely theorized adjudication that resolves no more than necessary.
+
+Default champion: **Cass Sunstein**.
+
+**Passive-virtues Judicial Minimalist** is the substantive modifier and routes to **Alexander Bickel**. Passive virtues mean strategic avoidance, timing, and justiciability as responses to the counter-majoritarian difficulty, not merely narrow remedies.
+
+## Routing
+- O1 plus rejection of the Waldron/Bellamy democratic-finality rationale supports Thayer.
+- D-WAL1 separates Thayerian deference from Political Constitutionalism.
+- O6 directly supplies weak-form/dialogic evidence.
+- D-MAJ1 must be followed by D-MAJ2 when agreed: D-MAJ2 separates Popular Constitutionalism from branch-specific Departmentalism.
+- D-ELY1 establishes Political Process Jurisprudence; **D-RESP1** is the only new diagnostic and distinguishes Dixon from Ely.
+- O7 supplies passive-virtues evidence; R6/R7/R11 and the Remedies axis supply generic narrow/shallow Minimalism.
+- Strong rights-protective Posture answers can independently reach Legal Constitutionalism without requiring a bespoke champion.
+
 
 ---
 

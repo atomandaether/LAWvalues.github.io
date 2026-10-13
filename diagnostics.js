@@ -253,7 +253,7 @@ globalThis.LAW_DIAGNOSTIC_QUESTIONS = Object.freeze([
     unlock: "Posture is extremely Majoritarian or anti-judicial-supremacy is otherwise plausible.",
     prompt: "Even after the Supreme Court announces what the Constitution means, Congress and the President remain entitled to form and act on their own good-faith constitutional interpretations rather than treating the Court’s interpretation as uniquely authoritative.",
     agreeTraits: ["posture.anti_judicial_supremacy", "posture.branch_interpretation"],
-    disagreeTraits: ["posture.judicial_supremacy"],
+    disagreeTraits: [],
     nextOnAgree: ["D-MAJ2"],
     nextOnDisagree: [],
     relatedIdentityIds: ["departmentalist", "popular_constitutionalist"],
@@ -282,21 +282,34 @@ globalThis.LAW_DIAGNOSTIC_QUESTIONS = Object.freeze([
     disagreeTraits: [],
     nextOnAgree: [],
     nextOnDisagree: [],
-    relatedIdentityIds: ["elyan"],
-    note: "Ely is conditional and therefore should never be inferred from a single Majoritarian percentage."
+    relatedIdentityIds: ["political_process_jurist"],
+    note: "Political Process Jurisprudence is conditional and should never be inferred from a single Majoritarian percentage."
   },
   {
     id: "D-WAL1",
     family: "majoritarian",
     priority: "medium",
-    unlock: "Thayerian and Waldronian candidates remain difficult to separate from the core Posture answers.",
+    unlock: "Thayerian and Political-Constitutionalist candidates remain difficult to separate from the core Posture answers.",
     prompt: "When democratic institutions are functioning well and citizens disagree in good faith about what rights require, the strongest reason for legislative rather than judicial finality is that elected institutions have the better claim to make the community’s authoritative decision.",
     agreeTraits: ["posture.democratic_legitimacy", "posture.reasonable_disagreement"],
     disagreeTraits: [],
     nextOnAgree: [],
     nextOnDisagree: [],
-    relatedIdentityIds: ["waldronian"],
-    note: "Use only if O1/O2/O5/O8 have not already made the democratic-legitimacy rationale clear."
+    relatedIdentityIds: ["political_constitutionalist"],
+    note: "Waldron/Bellamy discriminator: distinguish democratic-finality Political Constitutionalism from Thayerian clear-error deference."
+  },
+  {
+    id: "D-RESP1",
+    family: "majoritarian",
+    priority: "medium",
+    unlock: "Political Process Jurisprudence is established and Dixon-style responsive review could materially change the modifier and champion.",
+    prompt: "When democratic institutions malfunction, courts should calibrate how strongly they intervene to the particular problem: stronger remedies for entrenched exclusion or monopoly, more limited or dialogic intervention for temporary blind spots or inertia, and restraint where courts lack comparative capacity.",
+    agreeTraits: ["posture.responsive_review", "posture.process_reinforcement"],
+    disagreeTraits: [],
+    nextOnAgree: [],
+    nextOnDisagree: [],
+    relatedIdentityIds: ["political_process_jurist"],
+    note: "Dixon-specific Responsive Judicial Review discriminator."
   },
 
   // Statutory-method / adjudicative-style routers

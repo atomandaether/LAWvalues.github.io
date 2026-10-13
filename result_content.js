@@ -40,13 +40,17 @@
     living_constitutionalist: "You accept that constitutional content can legitimately develop with precedent, experience, changed circumstances, and later understandings.",
     common_law_constitutionalist: "You treat accumulated precedent and practice as major components of constitutional law, allowing change through common-law development rather than free-form updating.",
     common_good_constitutionalist: "You approach public law through a classical account of lawful authority directed toward the common good rather than through historically fixed meaning alone.",
-    thayerian: "You favor strong judicial deference under constitutional uncertainty: a judge's preferred reading is not enough to invalidate a legislature's reasonable one.",
-    waldronian: "You emphasize democratic legitimacy when rights-respecting citizens reasonably disagree, resisting automatic judicial finality.",
-    popular_constitutionalist: "You reject exclusive judicial ownership of constitutional meaning and leave a continuing constitutional role for the people and democratic politics.",
-    departmentalist: "You reject judicial interpretive monopoly and allow the political branches to maintain their own good-faith constitutional judgments.",
-    elyan: "You favor ordinary democratic deference but much stronger judicial intervention when the political process itself is blocked, distorted, or exclusionary.",
-    bickelian: "You take the counter-majoritarian difficulty seriously and favor strategic avoidance or delay when courts need not immediately settle a divisive constitutional question.",
-    minimalist: "You prefer narrow, incompletely theorized decisions that resolve the case without unnecessarily settling broader controversies.",
+    legal_constitutionalist: "You treat entrenched constitutional rights and independent judicial enforcement as authoritative constraints on ordinary political majorities.",
+    political_constitutionalist: "You give functioning representative institutions the stronger claim to final constitutional authority when citizens reasonably disagree about rights.",
+    thayerian: "You preserve judicial review but invalidate legislation only when the legislature's constitutional judgment falls outside the range of reasonable interpretation.",
+    weak_form_constitutionalist: "You favor independent judicial rights review without giving courts an entrenched monopoly on the final constitutional word.",
+    popular_constitutionalist: "You reject exclusive judicial ownership of constitutional meaning and leave ultimate constitutional authority with the people and democratic politics.",
+    departmentalist: "You reject judicial interpretive monopoly and allow coordinate governmental branches to maintain their own good-faith constitutional judgments.",
+    political_process_jurist: "You ordinarily leave substantive disagreements to politics but favor stronger judicial intervention when democratic channels are blocked, distorted, or exclusionary.",
+    waldronian: "Legacy label for Political Constitutionalism.",
+    elyan: "Legacy label for Political Process Jurisprudence.",
+    bickelian: "Legacy label for Passive-virtues Judicial Minimalism.",
+    minimalist: "You prefer narrow, shallow, incompletely theorized decisions that resolve the case without unnecessarily settling broader controversies.",
     formalist: "You place unusual weight on legal categories, assigned powers, and prescribed institutional boundaries even when a looser arrangement might be more convenient.",
     functionalist: "You evaluate institutional arrangements mainly by workability, accountability, checks, and preservation of each branch's core role rather than categorical separation.",
     proportionalist: "You prefer structured proportionality and contextual weighing to categorical rules when rights or principles conflict."
@@ -271,9 +275,10 @@
         "posture.democratic_legitimacy"
       ],
       "spentBy": [
+        "political_constitutionalist",
         "thayerian",
-        "waldronian",
-        "popular_constitutionalist"
+        "popular_constitutionalist",
+        "departmentalist"
       ],
       "phrase": "who’d let two wolves and a sheep vote on dinner",
       "explanation": "You give elected government unusually broad room when constitutional meaning is reasonably contestable."
@@ -288,7 +293,9 @@
         "posture.countermajoritarian",
         "posture.rights_trumps"
       ],
-      "spentBy": [],
+      "spentBy": [
+        "legal_constitutionalist"
+      ],
       "phrase": "who thinks 5 is more than 535",
       "explanation": "You are unusually willing to have courts enforce constitutional rights against sustained majority opposition."
     },
@@ -642,7 +649,7 @@
         "living_constitutionalist",
         "common_good_constitutionalist",
         "proportionalist",
-        "elyan"
+        "political_process_jurist"
       ],
       "axis": "remed",
       "direction": "left",
@@ -657,8 +664,9 @@
       "id": "systemic_enforcement",
       "text": "Court-running",
       "appliesTo": [
+        "political_constitutionalist",
         "thayerian",
-        "waldronian",
+        "weak_form_constitutionalist",
         "popular_constitutionalist",
         "departmentalist",
         "originalist",
@@ -902,6 +910,19 @@
         "balancing"
       ],
       "explanation": "Your otherwise broader methodology has a distinctive preference for structured proportionality rather than free-form balancing."
+    },
+    {
+      "id": "responsive_process",
+      "text": "Responsive",
+      "appliesTo": [
+        "political_process_jurist"
+      ],
+      "traits": [
+        "posture.responsive_review"
+      ],
+      "min": 0.5,
+      "priority": 1.55,
+      "explanation": "Within Political Process Jurisprudence, you calibrate the timing, intensity, reasoning, and remedies of review to the specific democratic dysfunction and to judicial capacity."
     },
     {
       "id": "passive_virtues_minimalism",
