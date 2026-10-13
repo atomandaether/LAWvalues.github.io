@@ -391,8 +391,8 @@ globalThis.LAW_RESULT_IDENTITIES = Object.freeze([
     family: "structure",
     status: "core",
     parentId: null,
-    covers: ["separation.formalist"],
-    notes: "Use when formal institutional boundaries are genuinely identity-defining. If only rule preference is strong, use a modifier instead."
+    covers: ["separation.formalist", "form.rules", "form.anti_discretion"],
+    notes: "Public Formalism covers either strongly categorical institutional structure or strongly rule-centered anti-discretion jurisprudence when that commitment is itself the respondent's primary fixation."
   },
   {
     id: "functionalist",
@@ -1087,9 +1087,9 @@ globalThis.LAW_CHAMPIONS = Object.freeze([
     kind: "person",
     role: "primary",
     eligibleIdentityIds: ["formalist"],
-    signatureTraits: ["separation.formalist", "separation.nondelegation", "time.fixation"],
+    signatureTraits: ["separation.formalist", "separation.nondelegation"],
     antiTraits: ["separation.functionalist"],
-    note: "Strong champion for structural formalism, especially when paired with originalism."
+    note: "Structural-formalism champion: assigned powers, prescribed processes, and anti-delegation constraints rather than incidental Originalist Time."
   },
   {
     id: "schauer",
@@ -1099,7 +1099,17 @@ globalThis.LAW_CHAMPIONS = Object.freeze([
     eligibleIdentityIds: ["formalist"],
     signatureTraits: ["form.rules", "form.predictability", "form.anti_discretion", "form.edge_case_tolerance"],
     antiTraits: ["form.balancing"],
-    note: "Best champion for rule-based constraint. Often better as champion/modifier than as the respondent's middle identity."
+    note: "Rule-Formalism champion: rules constrain decision-makers partly by excluding otherwise attractive all-things-considered outcomes."
+  },
+  {
+    id: "calabresi_prakash",
+    name: "Steven Calabresi / Saikrishna Prakash",
+    kind: "people",
+    role: "subtype",
+    eligibleIdentityIds: ["formalist"],
+    signatureTraits: ["separation.formalist", "separation.unitary_executive"],
+    antiTraits: ["separation.functionalist"],
+    note: "Unitary-executive Formalist unit: executive administration remains subject to presidential control rather than congressional insulation."
   },
   {
     id: "fiss",
@@ -1109,7 +1119,7 @@ globalThis.LAW_CHAMPIONS = Object.freeze([
     eligibleIdentityIds: [],
     signatureTraits: ["remedies.structural", "remedies.supervision", "posture.countermajoritarian"],
     antiTraits: ["remedies.party_specific"],
-    note: "Structural-reform champion. Normally attaches to a modifier/phrase; do not invent a fake middle school around him."
+    note: "Exceptional cross-noun whole-profile champion: selectable only when structural remedies, continuing supervision, and strong judicial role form an extreme multi-trait package; never from broad remedies alone."
   },
   {
     id: "bhagwati_iyer",
@@ -1125,21 +1135,51 @@ globalThis.LAW_CHAMPIONS = Object.freeze([
     id: "chayes",
     name: "Abram Chayes",
     kind: "person",
-    role: "subtype",
+    role: "historical",
     eligibleIdentityIds: [],
     signatureTraits: ["remedies.structural", "remedies.supervision", "method.managerial_judging"],
     antiTraits: ["remedies.party_specific"],
-    note: "Public-law-litigation / managerial-judge champion; ordinarily a champion of the trailing remedial phrase rather than a middle identity."
+    note: "Canonical public-law-litigation lineage closely adjacent to Fiss; not separately selectable under the anti-redundancy threshold."
   },
   {
     id: "bray",
     name: "Samuel Bray",
     kind: "person",
-    role: "subtype",
+    role: "historical",
     eligibleIdentityIds: [],
     signatureTraits: ["remedies.party_specific", "remedies.incremental"],
     antiTraits: ["remedies.universal"],
-    note: "Champion for plaintiff-specific traditional-equity instincts; normally modifies another identity."
+    note: "Lineage/explanatory source for plaintiff-specific traditional-equity instincts; not eligible for the single champion slot."
+  },
+  {
+    id: "sohoni_frost",
+    name: "Mila Sohoni / Amanda Frost",
+    kind: "people",
+    role: "historical",
+    eligibleIdentityIds: [],
+    signatureTraits: ["remedies.universal"],
+    antiTraits: ["remedies.party_specific"],
+    note: "Lineage/explanatory source for nationwide or universal relief; not eligible for the single champion slot."
+  },
+  {
+    id: "monaghan",
+    name: "Henry Monaghan",
+    kind: "person",
+    role: "historical",
+    eligibleIdentityIds: [],
+    signatureTraits: ["remedies.prophylactic"],
+    antiTraits: [],
+    note: "Constitutional-common-law lineage for prophylactic doctrine; current questions capture the idea but not enough of Monaghan's broader theory for the single champion slot."
+  },
+  {
+    id: "levinson",
+    name: "Daryl Levinson",
+    kind: "person",
+    role: "historical",
+    eligibleIdentityIds: [],
+    signatureTraits: [],
+    antiTraits: [],
+    note: "Remedial-equilibration lineage. The current bank does not measure the feedback from remedial consequences into the content of constitutional rights."
   },
 
   // Institutional / comparative champions
@@ -1173,8 +1213,8 @@ globalThis.LAW_CHAMPION_MATCHING_RULES = Object.freeze({
   preferSpecificChampionOverFamousChampion: true,
   requireMarginalExplanatoryValue: true,
   pruneRedundantChampions: true,
-  doNotForceChampion: true,
-  ambiguityRule: "If the leading champion is not materially better supported than the next eligible champion, show multiple intellectual relatives or no single champion.",
-  explanationRule: "A champion illustrates a respondent's version of an identity; it does not define the identity itself.",
+  doNotForceChampion: false,
+  ambiguityRule: "Return exactly one champion unit for every valid classified result. Close races reduce confidence but never produce a second champion.",
+  explanationRule: "A champion is the single thinker or grouped unit that best explains the respondent's whole jurisprudential phenotype. Noun compatibility is a strong preference, not an absolute bar for the exceptional Fiss structural-reform package.",
   marginalCoverageRule: "Do not add or select a champion merely because the figure is canonical. The champion must explain a measurable combination not already captured as well by the respondent's real identity and the existing champion pool. If another champion covers the same measured region more directly, keep the redundant figure as lineage rather than a selectable match."
 });
