@@ -374,7 +374,14 @@
       add("public_meaning_originalist", 0.78 + 0.14 * s.time, "Public meaning at adoption.");
     }
     if (r.time >= 0.15 && l.prec >= 0.2 && (traits["time.common_law_development"] || 0) >= 0.4) {
-      add("common_law_constitutionalist", 0.8 + 0.12 * Math.min(s.time, s.prec), "Living development through precedent and accumulated practice.");
+      const strongCommonLawRights = (traits["source.common_law_fundamental_rights"] || 0) >= 0.5;
+      add(
+        "common_law_constitutionalist",
+        strongCommonLawRights ? 0.97 : 0.8 + 0.12 * Math.min(s.time, s.prec),
+        strongCommonLawRights
+          ? "Fundamental common-law rights are treated as constitutional limits on ordinary legislative supremacy."
+          : "Living development through precedent and accumulated practice."
+      );
     }
     if ((traits["method.common_good"] || 0) >= 0.5) {
       add("common_good_constitutionalist", 0.9, "Direct common-good/classical-law diagnostic.");
@@ -863,8 +870,42 @@
       }
 
       if (social < 0.5 && !hasAsked(diagnosticResponses, "D-SOC1")) {
-        offer("D-SOC1", form <= 50 ? 77 : 64);
+        // Strong balancing/open-construction profiles need the Sociological
+        // router early enough that a confirmed social-interest method can still
+        // receive one champion-level refinement inside the seven-question cap.
+        offer("D-SOC1", form <= 40 ? 90 : form <= 50 ? 77 : 64);
       }
+    }
+
+    // Champion-only refinements: these are deliberately gated behind a
+    // profile that is already plausible from the core bank, so they cannot
+    // consume scarce adaptive slots merely to search for exotic names.
+    const freeScientific = traits["method.free_scientific_research"] || 0;
+    const socialMethod = traits["method.social_interests"] || 0;
+    const remediesScore = axisValue(scores, "remed");
+    if (socialMethod >= 0.5 && freeScientific < 0.5 && remediesScore > 25) {
+      offer("D-GENY1", 95);
+    }
+
+    const commonLawDevelopment = traits["time.common_law_development"] || 0;
+    if (provisionalMethodIdentity === "common_law_constitutionalist" &&
+        precedent >= 70 && posture >= 58 &&
+        (traits["time.ordered_liberty_tradition"] || 0) < 0.5) {
+      offer("D-HAR1", 89);
+    }
+
+    if (commonLawDevelopment >= 0.4 &&
+        axisValue(scores, "time") <= 35 && precedent >= 65 &&
+        source <= 48 && posture <= 42 &&
+        (traits["source.common_law_fundamental_rights"] || 0) < 0.5) {
+      offer("D-CLC1", 97);
+    }
+
+    const pilCompatible = new Set(["sociological_jurist", "living_constitutionalist", "purposivist"]);
+    if (pilCompatible.has(provisionalMethodIdentity) &&
+        remediesScore <= 25 && posture <= 32 && constraint <= 45 &&
+        (traits["remedies.public_interest_litigation"] || 0) < 0.5) {
+      offer("D-PIL1", 96);
     }
 
     if (form <= 28) offer("D-PROP1", 74);

@@ -182,7 +182,7 @@ for (const id of [
   "D-RLS1", "D-RLS2", "D-RLS3", "D-RLS4", "D-RLS5",
   "D-POS1", "D-POS2", "D-NP1", "D-NP2", "D-NP3", "D-NP4", "D-NP5", "D-NP6",
   "D-MAJ1", "D-MAJ2", "D-TXT1", "D-TXT2", "D-INT1", "D-INT2", "D-PRAG1",
-  "D-LP1", "D-LP2", "D-QC1", "D-SOC1", "D-PLU1", "D-PLU2", "D-OCO1",
+  "D-LP1", "D-LP2", "D-QC1", "D-SOC1", "D-GENY1", "D-HAR1", "D-CLC1", "D-PIL1", "D-PLU1", "D-PLU2", "D-OCO1",
   "D-ORI1", "D-ORI2", "D-ORI3", "D-ORI4", "D-ORI5"
 ]) {
   assert.ok(diagnosticIds.has(id), `Missing high-value diagnostic ${id}`);
@@ -245,6 +245,30 @@ assert.equal(classifier.championIdentityCompatibility(
   profileById.hugo_black,
   identities.find((x) => x.id === "public_meaning_originalist")
 ), "incompatible", "Hugo Black must not appear merely because an Originalist shares his rules/rights profile");
+
+// Distinctive-figure pass: the new specialists must be noun-compatible only
+// where the quiz can actually see their jurisprudence, and Ackerman must remain
+// further reading until constitutional-moments evidence exists.
+assert.equal(profileById.ackerman.tier, "lineage",
+  "Ackerman should remain lineage until the quiz measures constitutional moments");
+assert.equal(profileById.ackerman.selectable, false,
+  "Ackerman must not win from generic living-constitution scores");
+assert.equal(classifier.championIdentityCompatibility(
+  profileById.harlan_ii,
+  identities.find((x) => x.id === "common_law_constitutionalist")
+), "primary", "Harlan II should be a primary Common-Law Constitutionalist champion");
+assert.equal(classifier.championIdentityCompatibility(
+  profileById.robin_cooke,
+  identities.find((x) => x.id === "common_law_constitutionalist")
+), "primary", "Cooke should be available only in a compatible common-law constitutional family");
+assert.equal(classifier.championIdentityCompatibility(
+  profileById.geny,
+  identities.find((x) => x.id === "sociological_jurist")
+), "primary", "Gény should sit inside Sociological Jurisprudence rather than create a new noun");
+assert.equal(classifier.championIdentityCompatibility(
+  profileById.bhagwati_iyer,
+  identities.find((x) => x.id === "sociological_jurist")
+), "primary", "Bhagwati/Iyer should attach to an existing open social-action family");;
 
 assert.equal(classifier.championIdentityCompatibility(
   profileById.scalia_manning,
@@ -917,8 +941,8 @@ for (const id of lockedSourceUnits) {
 
 
 // Locked Interpretation / adjudicative-style champion units.
-// The approved roster contains 17 endpoints once the newly promoted
-// Sociological-Jurist/Pound endpoint is counted.
+// The approved roster contains 18 endpoints after adding Gény as the
+// source-gap / Free Scientific Research specialist inside Sociological Jurisprudence.
 const lockedMethodUnits = [
   "hugo_black",
   "scalia_manning_easterbrook",
@@ -936,7 +960,8 @@ const lockedMethodUnits = [
   "llewellyn",
   "felix_cohen",
   "frank",
-  "pound"
+  "pound",
+  "geny"
 ];
 for (const id of lockedMethodUnits) {
   assert.ok(profileById[id] && profileById[id].selectable !== false,
@@ -984,6 +1009,7 @@ const METHOD_INTENTIONALISTS = new Set(["ekins_intentionalism", "hand_posner_ima
 const METHOD_LEGAL_PROCESS = new Set(["hart_sacks", "wechsler"]);
 const METHOD_PLURALISTS = new Set(["bobbitt", "eskridge_frickey"]);
 const METHOD_PRAGMATISTS = new Set(["posner", "cardozo"]);
+const METHOD_SOCIOLOGICAL = new Set(["pound", "geny"]);
 
 function methodDiagnosticAnswer(id, diagnosticId) {
   if (diagnosticId === "D-RLS1") return METHOD_REALISTS.has(id) ? 3 : -3;
@@ -1000,7 +1026,8 @@ function methodDiagnosticAnswer(id, diagnosticId) {
   if (diagnosticId === "D-PRAG1") return METHOD_PRAGMATISTS.has(id) ? 3 : -3;
   if (diagnosticId === "D-LP1") return METHOD_LEGAL_PROCESS.has(id) ? 3 : -3;
   if (diagnosticId === "D-LP2") return id === "wechsler" ? 3 : -3;
-  if (diagnosticId === "D-SOC1") return id === "pound" ? 3 : -3;
+  if (diagnosticId === "D-SOC1") return METHOD_SOCIOLOGICAL.has(id) ? 3 : -3;
+  if (diagnosticId === "D-GENY1") return id === "geny" ? 3 : -3;
   if (diagnosticId === "D-PLU1") return METHOD_PLURALISTS.has(id) ? 3 : -3;
   if (diagnosticId === "D-PLU2") return id === "eskridge_frickey" ? 3 : -3;
 
@@ -1044,7 +1071,8 @@ const methodExpectedIdentity = {
   llewellyn:"legal_realist",
   felix_cohen:"legal_realist",
   frank:"legal_realist",
-  pound:"sociological_jurist"
+  pound:"sociological_jurist",
+  geny:"sociological_jurist"
 };
 
 const methodExpectedModifier = {
@@ -1065,6 +1093,47 @@ for (const id of lockedMethodUnits) {
     assert.equal(result.resultTitle.modifier?.id, methodExpectedModifier[id],
       `${id} should surface its locked Method substantive modifier`);
   }
+}
+
+// Distinctive constitutional/remedial figures must also be reachable without
+// new core questions. Their specialist diagnostics may refine an already-live
+// public noun but may not manufacture a result from name recognition alone.
+function distinctiveDiagnosticAnswer(id, diagnosticId) {
+  if (diagnosticId === "D-RLS1") return -3;
+  if (diagnosticId === "D-QC1") return -2;
+  if (diagnosticId === "D-HAR1") return id === "harlan_ii" ? 3 : -3;
+  if (diagnosticId === "D-CLC1") return id === "robin_cooke" ? 3 : -3;
+  if (diagnosticId === "D-PIL1") return id === "bhagwati_iyer" ? 3 : -3;
+  if (diagnosticId === "D-SOC1") return id === "bhagwati_iyer" ? 3 : -3;
+  return -3;
+}
+
+const distinctiveExpectedIdentity = {
+  harlan_ii: "common_law_constitutionalist",
+  robin_cooke: "common_law_constitutionalist",
+  bhagwati_iyer: "sociological_jurist"
+};
+
+for (const id of Object.keys(distinctiveExpectedIdentity)) {
+  const responses = literalMethodCore(id);
+  const scores = scoring.scoreAll(responses);
+  const diagnosticResponses = {};
+  const diagnosticOrder = [];
+
+  for (let i = 0; i < classifier.MAX_DIAGNOSTICS; i += 1) {
+    const next = classifier.nextDiagnostic(scores, responses, diagnosticResponses);
+    if (!next) break;
+    diagnosticOrder.push(next.id);
+    diagnosticResponses[next.id] = distinctiveDiagnosticAnswer(id, next.id);
+  }
+
+  const result = classifier.classify(scores, responses, diagnosticResponses, { coreElapsedMs: 10 * 60 * 1000 });
+  assert.equal(result.identity.id, distinctiveExpectedIdentity[id],
+    `Distinctive path for ${id} must resolve through an existing public noun`);
+  assert.equal(result.champions[0]?.id, id,
+    `Distinctive path for ${id} must reach the intended champion; got ${result.champions.map((x) => x.id).join(",")}`);
+  assert.ok(diagnosticOrder.length <= classifier.MAX_DIAGNOSTICS,
+    `${id} must remain reachable within the seven-diagnostic cap`);
 }
 
 // The Alexander-v-Bork threshold is executable: these paired units differ by
@@ -1088,5 +1157,5 @@ console.log("PASS: Formalist and Functionalist public labels remain unchanged.")
 console.log("PASS: generic fit modifiers render Unmistakably a/an / blank / Some kind of, with correct articles and substantive modifiers taking priority.");
 console.log("PASS: all 10 locked Source champion units are reachable end-to-end from literal answers within the seven-diagnostic cap.");
 console.log("PASS: Method nouns/modifiers are locked, including Sociological Jurist and the three substantive Method modifiers.");
-console.log("PASS: all 17 locked Method champion units are reachable end-to-end from literal answers within the seven-diagnostic cap.");
+console.log("PASS: all 18 locked Method champion units are reachable end-to-end from literal answers within the seven-diagnostic cap.");
 console.log("PASS: champion matching is noun-conditioned: primary and cross-cutting compatibility are explicit, incompatible champions are excluded.");
