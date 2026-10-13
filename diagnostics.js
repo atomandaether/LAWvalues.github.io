@@ -406,6 +406,19 @@ globalThis.LAW_DIAGNOSTIC_QUESTIONS = Object.freeze([
     note: "Gény-specific Free Scientific Research discriminator; authoritative positive sources remain primary until they genuinely run out."
   },
   {
+    id: "D-HAR1",
+    family: "constitutionalism",
+    priority: "medium",
+    unlock: "Common-Law Constitutionalism is already live, but a restraint-heavy living-tradition profile could distinguish Harlan II from Strauss.",
+    prompt: "Constitutional liberty should develop through historically embedded traditions and the accumulated experience of the federal system: neither fixed founding-era expectations nor abstract moral reasoning should by itself determine the content of ordered liberty.",
+    agreeTraits: ["time.ordered_liberty_tradition"],
+    disagreeTraits: [],
+    nextOnAgree: [],
+    nextOnDisagree: [],
+    relatedIdentityIds: ["common_law_constitutionalist", "living_constitutionalist"],
+    note: "Harlan II discriminator: living tradition plus restraint, not generic living constitutionalism."
+  },
+  {
     id: "D-CLC1",
     family: "constitutionalism",
     priority: "deferred",
