@@ -657,9 +657,9 @@ assertClassifiedPhrase("source_positive", { ...phraseNeutral, cons: 100, sorc: 9
 assertClassifiedPhrase("source_nonpositive", { ...phraseNeutral, cons: 100, sorc: 10 });
 assertClassifiedPhrase(
   "objective_morality",
-  { ...phraseNeutral, time: 100, sorc: 20 },
+  { ...phraseNeutral, sorc: 20, post: 30, form: 5 },
   { S10: 3, S11: 3 },
-  { "D-NP1": 3 }
+  { "D-NP1": 3, "D-PROP1": 3 }
 );
 assertClassifiedPhrase("textual_constraint", { ...phraseNeutral, time: 100, cons: 90 });
 assertClassifiedPhrase("purposive", { ...phraseNeutral, time: 100, cons: 10 });
