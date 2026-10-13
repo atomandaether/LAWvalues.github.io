@@ -390,7 +390,7 @@ globalThis.LAW_CHAMPIONS = Object.freeze([
   },
   {
     id: "coleman_waluchow_kramer",
-    name: "Jules Coleman / Wil Waluchow / Matthew Kramer",
+    name: "Jules Coleman / Matthew Kramer",
     kind: "people",
     role: "subtype",
     eligibleIdentityIds: ["positivist"],
@@ -883,11 +883,41 @@ globalThis.LAW_CHAMPIONS = Object.freeze([
     id: "brennan",
     name: "William J. Brennan Jr.",
     kind: "person",
-    role: "historical",
+    role: "primary",
     eligibleIdentityIds: ["living_constitutionalist"],
     signatureTraits: ["time.living_content", "posture.countermajoritarian", "posture.rights_trumps"],
-    antiTraits: [],
-    note: "Recognizable judicial champion for a strong living-constitution/rights-protective profile, but not a theory-defining scholar."
+    antiTraits: ["time.common_law_development", "time.democratic_constitutionalism", "time.transformative_constitutionalism"],
+    note: "Contemporary-ratification Living Constitutionalism: broad constitutional commitments receive present-day meaning in light of contemporary understandings, dignity, and strong judicial responsibility for rights."
+  },
+  {
+    id: "post_siegel",
+    name: "Robert Post / Reva Siegel",
+    kind: "people",
+    role: "subtype",
+    eligibleIdentityIds: ["living_constitutionalist"],
+    signatureTraits: ["time.democratic_constitutionalism"],
+    antiTraits: ["time.transformative_constitutionalism"],
+    note: "Democratic Living Constitutionalism: sustained public contestation and political mobilization participate in constitutional development without eliminating judicially enforceable rights."
+  },
+  {
+    id: "klare_langa",
+    name: "Karl Klare / Pius Langa",
+    kind: "people",
+    role: "subtype",
+    eligibleIdentityIds: ["living_constitutionalist"],
+    signatureTraits: ["time.transformative_constitutionalism"],
+    antiTraits: ["time.democratic_constitutionalism"],
+    note: "Transformative Living Constitutionalism: constitutional interpretation and enforcement operate as a continuing project of institutional and social transformation."
+  },
+  {
+    id: "waluchow_common_law",
+    name: "Wil Waluchow",
+    kind: "person",
+    role: "subtype",
+    eligibleIdentityIds: ["common_law_constitutionalist", "positivist"],
+    signatureTraits: ["source.morality_incorporated", "time.common_law_development", "precedent.stability"],
+    antiTraits: ["source.source_thesis", "precedent.correctness_first"],
+    note: "Cross-axis champion for Inclusive Positivism plus common-law constitutional development; do not select from Inclusive Positivism alone."
   },
   {
     id: "vermeule",
