@@ -1584,7 +1584,7 @@ const structureFormExpectedIdentity = {
   schauer: "formalist",
   alexy: "proportionalist",
   barak: "proportionalist",
-  fiss: "legal_constitutionalist",
+  fiss: "interpretive_pluralist",
   bhagwati_iyer: "sociological_jurist"
 };
 
