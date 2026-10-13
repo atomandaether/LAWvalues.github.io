@@ -370,7 +370,7 @@ globalThis.LAW_PROFILES = Object.freeze([
     tier: "specialist",
     identityIds: ["formalist"],
     axisSignature: { form: { target: 98, weight: 1 } },
-    minAxisSalience: { form: 0.5 },
+    minAxisSalience: { form: 0.45 },
     signatureTraits: ["form.rules", "form.anti_discretion"],
     requiredTraits: [],
     antiTraits: ["form.proportionality"],
