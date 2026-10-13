@@ -47,19 +47,7 @@
       relatedIdentityIds: ["sociological_jurist"],
       note: "Noun-level Sociological Jurisprudence router and Roscoe Pound champion evidence."
     },
-    {
-      id: "D-STR1",
-      family: "structuralism",
-      priority: "high",
-      unlock: "Constitutional structure is salient but no text-, history-, or purpose-centered method fully explains the respondent's reasoning.",
-      prompt: "A constitutional rule can sometimes be legally inferred from the Constitution's overall design and the relationships among its institutions and powers even when no single clause expressly states that rule. The structure itself can supply the governing constitutional principle.",
-      agreeTraits: ["method.structural_reasoning", "method.structural_inference"],
-      disagreeTraits: [],
-      nextOnAgree: [],
-      nextOnDisagree: [],
-      relatedIdentityIds: ["structuralist"],
-      note: "Noun-level Structuralist router: overall constitutional architecture and necessary institutional relationships can generate legal implications beyond isolated clause-by-clause reading."
-    },
+
     {
       id: "D-PLU1",
       family: "pluralism",
@@ -361,7 +349,7 @@
     const singleProposition=new Set([
       "minimalist","thayerian","nonpositivist","fullerian",
       "intentionalist","political_process_jurist","legal_process_theorist",
-      "sociological_jurist","structuralist","proportionalist","common_good_constitutionalist"
+      "sociological_jurist","proportionalist","common_good_constitutionalist"
     ]);
     const output=[];
     for(const candidate of candidates) {
@@ -399,7 +387,6 @@
         focus=["cons"];
         if(id==="textualist")basis=left.cons;
         else if(id==="interpretive_pluralist"){focus=[];basis=Math.max(0.18,(traits["method.modal_pluralism"]||0)*0.45);}
-        else if(id==="structuralist"){focus=[];basis=Math.max(0.2,(traits["method.structural_reasoning"]||0)*0.5);}
         else basis=right.cons;
       }else if(id==="legal_realist"){basis=Math.max(0.25,(traits["realism.empirical_prediction"]||0)*0.55);}
       // Cooke's common-law-rights claim itself explains a nonpositive Source
@@ -507,9 +494,6 @@
     if ((traits["method.social_interests"] || 0) >= 0.5 &&
         (traits["method.law_in_action"] || 0) >= 0.5) {
       add("sociological_jurist", 0.92, "Law-in-action and explicit social-interest reasoning establish Sociological Jurisprudence.");
-    }
-    if ((traits["method.structural_reasoning"] || 0) >= 0.5) {
-      add("structuralist", 0.95, "Affirmative structural reasoning treats constitutional architecture and institutional relationships as an independent source of constitutional implications.");
     }
     if ((traits["method.pragmatic_priority"] || 0) >= 0.5) {
       add("pragmatist", 0.91, "Consequences and practical workability are independent adjudicative reasons rather than merely evidence of purpose.");
@@ -1058,15 +1042,6 @@
         offer("D-SEP4", 76);
     }
 
-    const structuralMethodEvidence = traits["method.structural_reasoning"] || 0;
-    const structuralMethodPlausible =
-      constraint >= 35 && constraint <= 65 &&
-      Math.max(salience(scores,"time"), salience(scores,"post"), salience(scores,"separ")) >= 0.30;
-    if (structuralMethodPlausible && structuralMethodEvidence < 0.5 &&
-        !hasAsked(diagnosticResponses,"D-STR1")) {
-      offer("D-STR1", 85);
-    }
-
     const originalistZone = time >= 64 &&
       resolveIdentity(scores,traits).candidates.some(c=>c.identity.id.includes("originalist"));
     if(originalistZone && (precedent >= 55 || precedent <= 38 || time >= 78) &&
@@ -1263,10 +1238,6 @@
         (traits["form.anti_discretion"] || 0) >= 0.45;
       if (blackPlausible && !hasAsked(diagnosticResponses, "D-TXT2")) {
         offer("D-TXT2", 83);
-      }
-      if ((traits["constraint.best_reading_context"] || 0) >= 0.5 &&
-          !hasAsked(diagnosticResponses, "D-SEP2")) {
-        offer("D-SEP2", 88);
       }
     }
 
