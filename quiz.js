@@ -184,6 +184,12 @@
         return globalThis.LAW_SCORING.scoreAll(state.responses);
     }
 
+    function finalScores() {
+        return globalThis.LAW_SCORING.scoreAllWithDiagnostics
+            ? globalThis.LAW_SCORING.scoreAllWithDiagnostics(state.responses, state.diagnosticResponses)
+            : coreScores();
+    }
+
     function beginOrContinueDiagnostics() {
         const next = globalThis.LAW_CLASSIFIER.nextDiagnostic(
             coreScores(),
@@ -260,7 +266,8 @@
     }
 
     function finish() {
-        const scored = coreScores();
+        const coreScored = coreScores();
+        const scored = finalScores();
         const completedAt = new Date().toISOString();
         const startedMs = Date.parse(state.startedAt);
         const coreCompletedMs = Date.parse(state.coreCompletedAt || '');
@@ -283,7 +290,7 @@
         );
         const params = new URLSearchParams({ v: globalThis.LAW_VERSION });
         globalThis.LAW_AXES.forEach((axis) => params.set(axis.id, String(scored[axis.id].score)));
-        params.set('n', globalThis.LAW_AXES.map((axis) => scored[axis.id].answered).join(','));
+        params.set('n', globalThis.LAW_AXES.map((axis) => coreScored[axis.id].answered).join(','));
         params.set('i', classification.identity.id);
         if (classification.champions.length > 0) {
             params.set('c', classification.champions.map((item) => item.id).join(','));
@@ -299,7 +306,7 @@
             startedAt: state.startedAt,
             coreCompletedAt: state.coreCompletedAt,
             scores: Object.fromEntries(globalThis.LAW_AXES.map((axis) => [axis.id, scored[axis.id].score])),
-            coverage: Object.fromEntries(globalThis.LAW_AXES.map((axis) => [axis.id, scored[axis.id].answered])),
+            coverage: Object.fromEntries(globalThis.LAW_AXES.map((axis) => [axis.id, coreScored[axis.id].answered])),
             strength: Object.fromEntries(globalThis.LAW_AXES.map((axis) => [axis.id, scored[axis.id].strength])),
             conflict: Object.fromEntries(globalThis.LAW_AXES.map((axis) => [axis.id, scored[axis.id].conflict])),
             poleSupport: Object.fromEntries(globalThis.LAW_AXES.map((axis) => [
