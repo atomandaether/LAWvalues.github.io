@@ -320,7 +320,7 @@ assert.equal(
 for (const id of [
   "positivist", "nonpositivist", "interpretivist", "natural_lawyer", "fullerian",
   "textualist", "intentionalist", "purposivist", "legal_process_theorist", "interpretive_pluralist",
-  "pragmatist", "legal_realist", "sociological_jurist",
+  "pragmatist", "legal_realist", "sociological_jurist", "structuralist",
   "originalist", "common_law_constitutionalist",
   "legal_constitutionalist", "political_constitutionalist", "thayerian",
   "weak_form_constitutionalist", "popular_constitutionalist", "departmentalist",
@@ -1137,12 +1137,13 @@ for (const id of lockedSourceUnits) {
 
 
 // Locked Interpretation / adjudicative-style champion units.
-// The approved roster contains 18 endpoints after adding Gény as the
-// source-gap / Free Scientific Research specialist inside Sociological Jurisprudence.
+// The approved Method roster now contains 20 endpoints, adding an
+// institutionalist contextual-Textualist Kagan cell and Structuralism via Marshall.
 const lockedMethodUnits = [
   "hugo_black",
   "scalia_manning_easterbrook",
   "kavanaugh_barrett",
+  "kagan",
   "ekins_intentionalism",
   "hand_posner_imaginative",
   "breyer",
@@ -1151,6 +1152,7 @@ const lockedMethodUnits = [
   "wechsler",
   "bobbitt",
   "eskridge_frickey",
+  "marshall_structuralist",
   "posner",
   "cardozo",
   "llewellyn",
@@ -1214,8 +1216,10 @@ function methodDiagnosticAnswer(id, diagnosticId) {
   if (diagnosticId === "D-RLS4") return id === "frank" ? 3 : -3;
   if (diagnosticId === "D-RLS5") return id === "felix_cohen" ? 3 : -3;
 
-  if (diagnosticId === "D-TXT1") return id === "kavanaugh_barrett" ? 3 : -3;
+  if (diagnosticId === "D-TXT1") return ["kavanaugh_barrett","kagan"].includes(id) ? 3 : -3;
   if (diagnosticId === "D-TXT2") return id === "hugo_black" ? 3 : -3;
+  if (diagnosticId === "D-SEP2") return id === "kagan" ? -3 : id === "kavanaugh_barrett" ? 3 : -3;
+  if (diagnosticId === "D-STR1") return id === "marshall_structuralist" ? 3 : -3;
 
   if (diagnosticId === "D-INT1") return METHOD_INTENTIONALISTS.has(id) ? 3 : -3;
   if (diagnosticId === "D-INT2") return id === "hand_posner_imaginative" ? 3 : -3;
@@ -1255,6 +1259,7 @@ const methodExpectedIdentity = {
   hugo_black:"textualist",
   scalia_manning_easterbrook:"textualist",
   kavanaugh_barrett:"textualist",
+  kagan:"textualist",
   ekins_intentionalism:"intentionalist",
   hand_posner_imaginative:"intentionalist",
   breyer:"purposivist",
@@ -1263,6 +1268,7 @@ const methodExpectedIdentity = {
   wechsler:"legal_process_theorist",
   bobbitt:"interpretive_pluralist",
   eskridge_frickey:"interpretive_pluralist",
+  marshall_structuralist:"structuralist",
   posner:"pragmatist",
   cardozo:"pragmatist",
   llewellyn:"legal_realist",
@@ -1719,7 +1725,8 @@ for(let i=0;i<600;i++){
   if(result.responseQuality)continue;
   validCases++;
   assert.equal(result.champions.length,1,"Each valid respondent gets exactly one champion unit");
-  assert.ok(result.identity?.public!==false,"A valid result may not expose an internal noun");
+  assert.ok(result.identity?.public!==false || result.identity?.id==="mixed_jurisprudence",
+    "A valid result may expose only the explicit Mixed Jurisprudence fallback, never another internal noun");
   assert.ok(result.resultTitle?.phrase?.text,
     "Every valid respondent gets noun + phrase, while the modifier may intentionally be blank");
   const source=scores.sorc.score;
@@ -1810,8 +1817,9 @@ for(const axisId of ["sorc","cons","time","separ"]){
     assert.equal(result.responseQuality,undefined,
       `Focused ${axisId}/${direction} respondent must not fail the mechanical-response check`);
     assert.equal(result.champions.length,1,"A focused respondent still receives exactly one champion");
-    assert.ok(result.resultTitle.modifier && result.resultTitle.phrase,
-      "A focused respondent still receives all three title components");
+    assert.ok(result.resultTitle.phrase &&
+      (result.identity.id==="mixed_jurisprudence" || result.resultTitle.modifier),
+      "A focused respondent still receives a phrase and either a fit modifier or the explicit Mixed fallback");
     assert.equal(scored[axisId].score,direction===1?100:0,
       "Fixture must firmly establish the advertised judicial commitment");
   }
@@ -1938,6 +1946,63 @@ console.log("PASS: hidden partisan override is symmetric, cross-domain, threshol
     "Passing the additional check does not punish unconventional substantive views");
 }
 
+
+// Champion matching may never jump to an incompatible thinker merely because
+// the noun's specialist gates are sparse. Mixed Jurisprudence is the only
+// honest no-school fallback and is explicitly paired with the O'Connor catchall.
+{
+  const genericPositive = { sorc:90, cons:50, time:50, prec:50, remed:50, post:50, separ:50, form:50 };
+  const pos = classifier.resolveIdentity(genericPositive,{});
+  assert.equal(pos.best.identity.id,"positivist");
+  const posChamp = classifier.resolveChampions(genericPositive,{},pos.best.identity);
+  assert.equal(posChamp.matches[0]?.profile?.id,"hart",
+    "Generic Positivism must stay inside the Positivist champion family");
+
+  const genericNegative = { sorc:15, cons:50, time:50, prec:50, remed:50, post:50, separ:50, form:50 };
+  const neg = classifier.resolveIdentity(genericNegative,{});
+  assert.equal(neg.best.identity.id,"mixed_jurisprudence",
+    "Bare nonpositive Source direction without a real theory must not pretend to be Non-Positivism");
+
+  const mixed = classifier.resolveIdentity(
+    { sorc:50, cons:50, time:50, prec:50, remed:50, post:50, separ:50, form:50 },{}
+  );
+  assert.equal(mixed.best.identity.id,"mixed_jurisprudence",
+    "No affirmative theory must use the honest Mixed fallback rather than Interpretive Pluralism");
+  const mixedChamp = classifier.resolveChampions(
+    { sorc:50, cons:50, time:50, prec:50, remed:50, post:50, separ:50, form:50 },{},
+    mixed.best.identity
+  );
+  assert.equal(mixedChamp.matches[0]?.profile?.id,"oconnor",
+    "The no-school fallback must use the explicitly designated low-theory catchall");
+}
+
+// Whole-profile coverage prevents a champion from earning high confidence by
+// simply omitting a respondent's strongest contradictory dimension.
+{
+  const textualist = identities.find(x=>x.id==="textualist");
+  const livingTextual = { sorc:70, cons:92, time:10, prec:85, remed:50, post:25, separ:50, form:85 };
+  const traits = {
+    "constraint.textual":0.9,
+    "constraint.enacted_bargain":0.8,
+    "form.anti_discretion":0.8
+  };
+  const champ = classifier.resolveChampions(livingTextual,traits,textualist);
+  assert.notEqual(champ.confidence,"high",
+    "A strongly Living profile may not receive a high-confidence Scalia-type match merely because Time is omitted from that champion's method profile");
+}
+
+// Cross-cutting compatibility requires affirmative evidence of the bridge.
+{
+  const commonLaw = identities.find(x=>x.id==="common_law_constitutionalist");
+  const noBridge = classifier.resolveChampions(
+    { sorc:50, cons:36, time:20, prec:82, remed:50, post:50, separ:50, form:42 },
+    {"method.pragmatic_priority":0.8,"method.consequences":0.8},
+    commonLaw
+  );
+  assert.notEqual(noBridge.matches[0]?.profile?.id,"cardozo",
+    "Cardozo may not enter Common-Law Constitutionalism without affirmative common-law-development evidence");
+}
+
 console.log("PASS: adversarial primary-commitment, modifier/phrase, share-link, and 600 adaptive fuzz invariants.");
 console.log("PASS: all 18 approved phrases are reachable and use the approved critic-rib wording.");
 console.log("PASS: Originalism resolves end-to-end from literal 88-item answers through adaptive routing to all 13 locked champion units.");
@@ -1945,8 +2010,8 @@ console.log("PASS: Alexyan and Bickelian are champion/modifier-level distinction
 console.log("PASS: Formalist and Functionalist public labels remain unchanged.");
 console.log("PASS: generic fit modifiers render Unmistakably a/an / blank / Some kind of, with correct articles and substantive modifiers taking priority.");
 console.log("PASS: all 10 locked Source champion units are reachable end-to-end from literal answers within the twelve-diagnostic cap.");
-console.log("PASS: Method nouns/modifiers are locked, including Sociological Jurist and the three substantive Method modifiers.");
-console.log("PASS: all 18 locked Method champion units are reachable end-to-end from literal answers within the twelve-diagnostic cap.");
+console.log("PASS: Method nouns/modifiers are locked, including Structuralist, Sociological Jurist, and the three substantive Method modifiers.");
+console.log("PASS: all 20 locked Method champion units are reachable end-to-end from literal answers within the twelve-diagnostic cap.");
 console.log("PASS: champion matching is noun-conditioned: primary and cross-cutting compatibility are explicit, incompatible champions are excluded.");
 console.log("PASS: Living/Common-Law constitutionalism resolves to all 7 locked non-originalist champion units, including Democratic/Transformative Living modifiers, within the twelve-diagnostic cap.");
 console.log("PASS: Judicial review / constitutional authority resolves to the 8 public champion units; broad legal/weak-form authority configurations stay internal.");
