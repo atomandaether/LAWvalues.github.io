@@ -441,9 +441,11 @@
     if (l.post >= 0.2 && clearError >= 0.5 && reasonableDisagreement < 0.5) {
       add("thayerian", 0.96, "Courts retain review but invalidate only constitutional judgments outside the range of reasonableness.");
     }
-    if (passiveVirtues >= 0.5) {
+    const authorityCanDominate =
+      s.time <= 0.55 && s.cons <= 0.55;
+    if (authorityCanDominate && passiveVirtues >= 0.5) {
       add("minimalist", 0.98, "Strategic avoidance and passive virtues establish a distinctive form of Judicial Minimalism.");
-    } else if (narrowShallow >= 0.5 && incremental >= 0.45) {
+    } else if (authorityCanDominate && narrowShallow >= 0.5 && incremental >= 0.45) {
       add("minimalist", 0.94, "Narrow, shallow, incremental adjudication establishes Judicial Minimalism.");
     }
 
