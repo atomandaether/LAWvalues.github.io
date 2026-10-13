@@ -584,7 +584,7 @@
     const antiDiscretion = traits["form.anti_discretion"] || 0;
     const ruleFormalistCanDominate =
       Math.max(s.sorc, s.cons, s.time, s.separ) <= 0.65;
-    if (ruleFormalistCanDominate && l.form >= 0.55 && antiDiscretion >= 0.55) {
+    if (ruleFormalistCanDominate && l.form >= 0.43 && antiDiscretion >= 0.65) {
       add("formalist", 0.93, "Rule-centered anti-discretion Formalism is the respondent's dominant jurisprudential commitment.");
     }
     if (r.separ >= 0.4) add("functionalist", 0.55 + 0.32 * s.separ, "Functional separation of powers is highly distinctive.");
