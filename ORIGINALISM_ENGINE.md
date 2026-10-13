@@ -64,7 +64,7 @@ The global quiz still caps adaptive questions at seven per respondent.  Original
 - **D-ORI2** — only on the OPM side when useful; Original Methods evidence for McGinnis/Rappaport.
 - **D-ORI5** — lower-priority OPM specialist question for Amar-style intratextualism.
 
-The 93-item core already supplies most remaining champion evidence: textual constraint, rules and anti-discretion, principle versus expected applications, early practice, precedent correction versus settlement, majoritarianism, rights enforcement, separation formalism, and natural-law/source commitments.
+The 88-item core already supplies most remaining champion evidence: textual constraint, rules and anti-discretion, principle versus expected applications, early practice, precedent correction versus settlement, majoritarianism, rights enforcement, separation formalism, and natural-law/source commitments.
 
 ## Reachability contract
 
