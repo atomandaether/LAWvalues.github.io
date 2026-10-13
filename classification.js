@@ -848,6 +848,49 @@
     return null;
   }
 
+
+  // Hidden, conservative partisan-outcome override. A matched pair offers the
+  // same judicial choice with opposed political beneficiaries. Ordinary
+  // ideological answers and unrelated case disagreements earn no points.
+  const OUTCOME_MIRRORS = Object.freeze([
+    { id: "avoidance", left: "C3", right: "C4", weight: 1 },
+    { id: "nationwide_relief", left: "R2", right: "R1", weight: 1 },
+    { id: "severability", left: "R7", right: "R6", weight: 1 },
+    { id: "prophylactic_remedies", left: "R10", right: "R9", weight: 1 },
+    // Less comparable: two different constitutional eras and subject areas.
+    // Corroboration only; this pair cannot satisfy the main-pair count.
+    { id: "historical_fixation", left: "T1", right: "T2", weight: 0.5 }
+  ]);
+
+  function detectOutcomeSelection(responses = {}) {
+    const getAnswer = (id) => {
+      if (!Object.prototype.hasOwnProperty.call(responses,id) ||
+          responses[id] === null) return 0;
+      const v = Number(responses[id]);
+      return Number.isInteger(v) && v >= -3 && v <= 3 ? v : 0;
+    };
+    const evidence = { left: { units: 0, direct: 0, pairs: [] },
+                       right: { units: 0, direct: 0, pairs: [] } };
+    for (const mirror of OUTCOME_MIRRORS) {
+      const l = getAnswer(mirror.left), r = getAnswer(mirror.right);
+      if (!l || !r || Math.sign(l) === Math.sign(r)) continue;
+      const side = l > 0 ? "left" : "right";
+      const unit = (Math.min(Math.abs(l),Math.abs(r)) === 1 ? 0.75 :
+                    Math.min(Math.abs(l),Math.abs(r)) === 2 ? 1 : 1.25) * mirror.weight;
+      evidence[side].units += unit;
+      if (mirror.weight === 1) evidence[side].direct += 1;
+      evidence[side].pairs.push(mirror.id);
+    }
+    // Three separate directly matched doctrines must reverse in the same
+    // political direction, and their combined evidence must be substantial.
+    // The T1/T2 contrast cannot, by itself, trigger the override.
+    const side = ["left","right"].find(s =>
+      evidence[s].direct >= 3 && evidence[s].units >= 3 &&
+      evidence[s].units >= evidence[s === "left" ? "right" : "left"].units + 1.5
+    ) || null;
+    return { side, evidence };
+  }
+
   function detectBroadIncoherence(responses) {
     const strongAgree = (id) => responseValue(responses, id) >= 2;
     const sourceContradiction = strongAgree("S7") && strongAgree("S8");
@@ -1226,6 +1269,26 @@
       }, scores, traits, traitEvidence);
     }
 
+
+    const outcomeSelection = detectOutcomeSelection(responses);
+    if (outcomeSelection.side) {
+      const left = outcomeSelection.side === "left";
+      return finalizeResult({
+        identity: identityFromCatalog(left ? "outcome_driven_left" : "outcome_driven_right"),
+        identityScore: 1,
+        identityReason: left
+          ? "Across several politically mirrored cases, you repeatedly changed your preferred legal approach when doing so favored the political left."
+          : "Across several politically mirrored cases, you repeatedly changed your preferred legal approach when doing so favored the political right.",
+        identityAlternatives: [],
+        champions: [],
+        championConfidence: "withheld",
+        traits,
+        diagnosticCount: Object.keys(diagnosticResponses || {}).length,
+        responseQuality: "partisan-outcome-selection",
+        calibration: "conservative-mirror-heuristic"
+      }, scores, traits, traitEvidence);
+    }
+
     const identityResolution = resolveIdentity(scores, traits);
     const championResolution = resolveChampions(scores, traits, identityResolution.best.identity);
     const historicalMethod = global.LAW_SCORING?.historicalMethodConsistency?.(responses) || null;
@@ -1260,6 +1323,7 @@
     buildTraitEvidence,
     detectMechanicalPattern,
     detectBroadIncoherence,
+    detectOutcomeSelection,
     resolveIdentity,
     championIdentityCompatibility,
     resolveChampions,
