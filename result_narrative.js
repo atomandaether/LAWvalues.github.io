@@ -358,6 +358,77 @@
   const has = (traits, key, min = 0.5) => Number(traits?.[key] || 0) >= min;
   const axis = (scores, id) => Number(scores?.[id] ?? 50);
 
+  const OPENINGS = Object.freeze({
+    constraint_correction: "You have a constraint-centered view of judging: courts should enforce law already made rather than improve it through present-day judgment. That makes you strict about enacted language, historically fixed constitutional meaning, and legal boundaries on government. But you are not deferential once government crosses a genuine legal line, and you are comparatively willing to overrule precedent that keeps the legal mistake in place.",
+    constraint_settlement: "You think judges are constrained by law that predates the case, but you also treat legal settlement as part of that constraint. Enacted language and historically grounded law matter, yet precedent, reliance, and continuity can limit how aggressively a court should correct old mistakes. Your restraint therefore comes from both fidelity to legal sources and respect for the legal order that has grown around them.",
+    constraint_general: "You have a strongly constraint-centered view of judging: courts should identify legal choices already made and resist improving them through present-day judgment. Text, historically grounded meaning, rules, or institutional boundaries do much of the constraining work. That can make you both restrained and assertive: restrained about changing law, but willing to enforce a genuine legal limit even when the political result is inconvenient.",
+    developmental_settlement: "You think constitutional law can develop, but you want that development to occur through law rather than free judicial updating. Precedent, practice, and accumulated institutional experience therefore matter heavily to what later judges inherit. You are more interested in continuity and legal settlement than in starting each case from first principles, while still accepting that constitutional doctrine can change as the legal tradition develops.",
+    developmental_rights: "You think constitutional commitments can develop over time and that courts have a real responsibility to make those commitments effective. Later doctrine, experience, and changing understandings can matter without turning constitutional judging into simple preference. Your approach is therefore developmental rather than historically fixed, but it still asks judges to justify change through legal principle rather than treating contemporary values alone as enough.",
+    moral_settlement: "You think moral principles help explain the authority and limits of law, but you do not treat morality as a standing permission for judges to replace positive law. One of law's central jobs is to settle questions that reasonable moral judgment leaves open. That makes your judging morally grounded yet unusually attentive to enacted rules, institutional authority, and the need for stable legal settlement.",
+    institutional_process: "You think faithful judging depends not only on the best abstract interpretation, but on how the legal system divided responsibility among institutions. Text, precedent, expertise, delegated authority, and reason-giving can all matter because courts are not the only bodies doing legal work. Your method is constrained without being rigid: the question is often not simply what answer is best, but whose lawful job it is to give it.",
+    adaptive_pragmatic: "You think hard cases sometimes leave genuine room for judgment, and you want that judgment to be candid about practical consequences and institutional workability. Rules and precedent matter when they make law predictable and coherent, but neither deserves protection simply because it is old or formal. Your judging is therefore comparatively adaptive: legal doctrine should work in the institutions and social conditions where it actually operates.",
+    democratic_process: "You usually leave ordinary substantive disagreement to democratic politics, but that deference is conditional on politics being able to correct itself. Courts gain a stronger role when representation is distorted, channels of change are blocked, or power becomes self-entrenching. Even then, your instinct is to target the democratic failure rather than convert every contested political question into a broad judicial mandate.",
+    democratic_deferential: "You give democratic institutions substantial room when constitutional meaning is reasonably contestable. Courts still have a legal role, but judicial disagreement alone does not automatically justify displacing a political judgment. Your theory therefore treats constitutional restraint as more than personal modesty: it reflects a view about institutional legitimacy and who should bear responsibility for resolving difficult disagreements in a constitutional democracy.",
+    rights_structured: "You give courts a strong responsibility to enforce legal rights even against political majorities, but you prefer that judgment to be disciplined rather than intuitive. Purpose, fit, necessity, or legal principle can matter to the analysis, and broad remedies may be justified when a violation is genuinely systemic. Your approach trusts reasoned judicial judgment more than categorical rules that end the inquiry before competing claims are examined.",
+    rule_formalist: "You think legal rules are valuable partly because they stop judges and officials from reconsidering everything in light of the particular case. Predictability, notice, and institutional boundaries are worth some imperfect outcomes if the alternative is discretionary reweighing whenever a rule feels inconvenient. Your judging therefore accepts harder edges than a balancing-oriented approach, especially when flexibility would weaken the rule's ability to constrain the decisionmaker.",
+    realist: "You are skeptical that formal legal doctrine fully explains what happens in genuinely hard cases. Legal materials can constrain without mechanically determining the result, leaving room for facts about judges, institutions, practical consequences, or social context to matter. That does not tell you to ignore law; it tells you that an honest account of judging must distinguish the reasons courts give from the broader forces that can shape difficult decisions.",
+    sociological: "You think law should be understood through what it actually does in social institutions, not only through rules written in statutes and cases. Real practices, social interests, and the norms people live under can reveal gaps between law on the books and law in action. Your judging therefore pays unusual attention to how doctrine operates in the relationships and institutions it is supposed to govern.",
+    low_theory: ROUTES.low_theory.opening
+  });
+
+  function selectOpeningId(classification, scores = {}) {
+    const id = classification?.identity?.id || "mixed_jurisprudence";
+    const t = classification?.traits || {};
+    if (SPECIAL_IDS.has(id)) return null;
+    if (id === "mixed_jurisprudence") return "low_theory";
+
+    if (id === "legal_realist" || has(t,"realism.underdetermination",0.6)) return "realist";
+    if (id === "sociological_jurist" || has(t,"method.law_in_action",0.65) || has(t,"source.institutional_legal_pluralism",0.5)) return "sociological";
+    if (id === "natural_lawyer" || id === "common_good_constitutionalist" ||
+        (has(t,"source.objective_morality",0.5) && has(t,"source.positive_law_settlement",0.4)))
+      return "moral_settlement";
+    if (id === "political_process_jurist" || id === "elyan" || has(t,"posture.process_reinforcement",0.5))
+      return "democratic_process";
+    if (id === "political_constitutionalist" || id === "thayerian" || id === "popular_constitutionalist" ||
+        id === "departmentalist" || axis(scores,"post") >= 72)
+      return "democratic_deferential";
+    if (id === "legal_process_theorist" || has(t,"method.institutional_competence",0.5) ||
+        has(t,"method.agency_interpretive_autonomy",0.5) ||
+        (id === "textualist" && has(t,"separation.interpretive_accommodation",0.5)))
+      return "institutional_process";
+    if (id === "proportionalist" || has(t,"form.proportionality",0.5) ||
+        (axis(scores,"post") <= 30 && axis(scores,"form") <= 32))
+      return "rights_structured";
+    if ((id === "living_constitutionalist" || id === "common_law_constitutionalist" || axis(scores,"time") <= 32) &&
+        axis(scores,"prec") >= 62)
+      return "developmental_settlement";
+    if (id === "living_constitutionalist" || id === "common_law_constitutionalist" || axis(scores,"time") <= 28)
+      return "developmental_rights";
+    if (id === "pragmatist" || id === "purposivist" ||
+        (axis(scores,"cons") <= 32 && axis(scores,"form") <= 38))
+      return "adaptive_pragmatic";
+
+    const constrained = axis(scores,"cons") >= 66 || axis(scores,"time") >= 66 ||
+      axis(scores,"separ") >= 66 || axis(scores,"form") >= 66;
+    if (constrained) {
+      if (axis(scores,"prec") <= 32) return "constraint_correction";
+      if (axis(scores,"prec") >= 68) return "constraint_settlement";
+      if (id === "formalist" && axis(scores,"form") >= 72) return "rule_formalist";
+      return "constraint_general";
+    }
+    if (id === "formalist" || axis(scores,"form") >= 74) return "rule_formalist";
+    return "low_theory";
+  }
+
+  function buildOpening(classification, scores = {}) {
+    const id = classification?.identity?.id || "mixed_jurisprudence";
+    if (id === "unusable_response") return ROUTES.special_unusable.opening;
+    if (id === "incoherent_response") return ROUTES.special_incoherent.opening;
+    if (id === "outcome_driven_left" || id === "outcome_driven_right") return ROUTES.special_outcome.opening;
+    const openingId = selectOpeningId(classification, scores);
+    return OPENINGS[openingId] || OPENINGS.low_theory;
+  }
+
   function selectContextId(classification, scores = {}) {
     const id = classification?.identity?.id || "mixed_jurisprudence";
     const t = classification?.traits || {};
@@ -365,14 +436,6 @@
     if (id === "unusable_response") return "special_unusable";
     if (id === "incoherent_response") return "special_incoherent";
     if (id === "outcome_driven_left" || id === "outcome_driven_right") return "special_outcome";
-
-    // Rare remedial theories are allowed to become the explanatory focus only
-    // when the dedicated proposition is actually established.
-    if (has(t,"remedies.equilibration",0.5)) return "remedial_equilibration";
-    if (has(t,"remedies.constitutional_common_law",0.5)) return "constitutional_common_law";
-    if (has(t,"remedies.universal_relief_theory",0.5) && axis(scores,"remed") <= 38) return "universal_relief";
-    if (has(t,"remedies.traditional_equity",0.5) && axis(scores,"remed") >= 62) return "traditional_equity";
-    if (has(t,"remedies.structural",0.8) && has(t,"remedies.supervision",0.6) && axis(scores,"remed") <= 24) return "structural_reform";
 
     // Originalism is selected from actual Originalist propositions, not merely
     // from the winning noun.
@@ -501,6 +564,15 @@
     }
     if (id === "weak_form_constitutionalist") return "weak_form";
 
+    // A remedial theory becomes the context focus only after the broader
+    // constitutional/source/method/authority theories above have had a chance
+    // to explain the respondent.
+    if (has(t,"remedies.equilibration",0.5)) return "remedial_equilibration";
+    if (has(t,"remedies.constitutional_common_law",0.5)) return "constitutional_common_law";
+    if (has(t,"remedies.universal_relief_theory",0.5) && axis(scores,"remed") <= 38) return "universal_relief";
+    if (has(t,"remedies.traditional_equity",0.5) && axis(scores,"remed") >= 62) return "traditional_equity";
+    if (has(t,"remedies.structural",0.8) && has(t,"remedies.supervision",0.6) && axis(scores,"remed") <= 24) return "structural_reform";
+
     // Structure / form.
     if (id === "formalist") {
       if (has(t,"separation.strong_nondelegation",0.5)) return "formalist_nondelegation";
@@ -528,7 +600,12 @@
 
   function build(classification, scores = {}, explicitId = null) {
     const id = explicitId && ROUTES[explicitId] ? explicitId : selectContextId(classification, scores);
-    return fromId(id);
+    const route = ROUTES[id] || ROUTES.low_theory;
+    return {
+      id: ROUTES[id] ? id : "low_theory",
+      opening: buildOpening(classification, scores),
+      context: route.context
+    };
   }
 
   function wordCount(text) {
@@ -537,6 +614,9 @@
 
   global.LAW_RESULT_NARRATIVE = Object.freeze({
     ROUTES,
+    OPENINGS,
+    selectOpeningId,
+    buildOpening,
     selectContextId,
     fromId,
     build,
