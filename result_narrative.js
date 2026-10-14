@@ -382,7 +382,7 @@
     if (SPECIAL_IDS.has(id)) return null;
     if (id === "mixed_jurisprudence") return "low_theory";
 
-    if (id === "legal_realist" || has(t,"realism.underdetermination",0.6)) return "realist";
+    if (id === "legal_realist") return "realist";
     if (id === "sociological_jurist" || has(t,"method.law_in_action",0.65) || has(t,"source.institutional_legal_pluralism",0.5)) return "sociological";
     if (id === "natural_lawyer" || id === "common_good_constitutionalist" ||
         (has(t,"source.objective_morality",0.5) && has(t,"source.positive_law_settlement",0.4)))
@@ -441,9 +441,7 @@
     // from the winning noun.
     const originalismEstablished =
       isOriginalist(id) ||
-      has(t,"time.originalism_independent_authority",0.5) ||
-      has(t,"time.public_meaning",0.55) ||
-      has(t,"time.original_intent",0.55);
+      has(t,"time.originalism_independent_authority",0.5);
     if (originalismEstablished) {
       if (id === "original_intent_originalist" || has(t,"time.original_intent",0.55)) {
         if (has(t,"time.construction_zone",0.5)) return "oi_construction";
@@ -467,7 +465,7 @@
     if (id === "common_good_constitutionalist" || has(t,"method.common_good",0.5)) return "common_good";
     if (id === "common_law_constitutionalist" || has(t,"time.common_law_development",0.55)) {
       if (has(t,"source.common_law_fundamental_rights",0.5)) return "common_law_strong_rights";
-      if (has(t,"source.morality_incorporated",0.5)) return "common_law_source_bound";
+      if (has(t,"source.morality_incorporated",0.5) || axis(scores,"sorc") >= 65) return "common_law_source_bound";
       if (has(t,"time.ordered_liberty_tradition",0.5)) return "common_law_tradition";
       return "common_law_mainstream";
     }
