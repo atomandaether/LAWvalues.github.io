@@ -61,42 +61,46 @@ Formal versus contextual Textualism is deliberately **not** a public modifier. I
 The separate locked Originalist **Scalia/Manning** unit remains in the Originalism engine. The Method engine uses a dedicated Textualist unit rather than letting the Originalist profile leak across nouns.
 
 ### Intentionalist
-5. **Richard Ekins** — modern institutional/group-agency Intentionalism.
-6. **Learned Hand / early Richard Posner** — Imaginative Reconstruction.
+5. **Richard Ekins** — group-agency Intentionalism: the legislature can possess a genuine collective lawmaking intention.
+6. **Robert A. Katzmann** — Congress-aware institutional Intentionalism: understand how Congress actually legislates and treat reliable legislative history as legitimate evidence of communicated legislative meaning.
+7. **Learned Hand / early Richard Posner** — Imaginative Reconstruction.
 
-Strong Intentionalism is important further reading but does not clear the Alexander-v-Bork champion threshold against Ekins-style actual-intent judging.
+Ekins and Katzmann clear the champion threshold because the adjudicative theory is materially different: Ekins supplies a philosophical account of genuine collective intention, while Katzmann grounds interpretation in Congress's actual institutional processes and reliable legislative materials. Victoria Nourse, Abbe Gluck, and Lisa Schultz Bressman remain closely related scholarship in the Katzmann cell rather than separate champion units.
 
 ### Purposivist
-7. **Stephen Breyer** — practical American purposivism: purpose, consequences, administrability, institutional workability.
-8. **Aharon Barak** — systematic/objective purposive interpretation with a much more rights/proportionality-heavy overall judicial package.
+8. **Stephen Breyer** — practical American purposivism: purpose, consequences, administrability, institutional workability.
+9. **Aharon Barak** — systematic/objective purposive interpretation with a much more rights/proportionality-heavy overall judicial package.
 
 Barak may also legitimately appear under Proportionalist when proportionality, rather than purpose, is the respondent's stronger fixation. The public title therefore distinguishes **Proportionalist Purposivist** from **Purposivist Proportionalist** depending on which commitment supplies the winning noun.
 
 ### Legal Process Jurist
-9. **Henry Hart / Albert Sacks** — institutional settlement, competence, and purposive reasoned elaboration.
-10. **Herbert Wechsler** — neutral-principles Legal Process; constitutional decisions should rest on generalizable principles.
+10. **Henry Hart / Albert Sacks** — institutional settlement, competence, and purposive reasoned elaboration.
+11. **Jerry L. Mashaw** — Administrative Legal Process: agency statutory interpretation is itself a disciplined legal enterprise with institutional competence, internal norms, and reason-giving obligations.
+12. **Herbert Wechsler** — neutral-principles Legal Process; constitutional decisions should rest on generalizable principles.
 
 ### Interpretive Pluralist
-11. **Philip Bobbitt** — modal constitutional pluralism.
-12. **William Eskridge / Philip Frickey** — Practical-Reasoning pluralism.
+13. **Philip Bobbitt** — modal constitutional pluralism.
+14. **William Eskridge / Philip Frickey** — Practical-Reasoning pluralism.
 
 Sandra Day O'Connor remains a low-theory catch-all rather than a theorist defining pluralism.
 
 
 ### Pragmatist
-13. **Richard Posner** — consequence-forward, workability-centered Pragmatism with comparatively weak doctrinal settlement.
-14. **Benjamin Cardozo** — bounded common-law Pragmatism constrained by precedent, custom, continuity, and incremental development.
+15. **Richard Posner** — consequence-forward, workability-centered Pragmatism with comparatively weak doctrinal settlement.
+16. **Guido Calabresi** — statutory-obsolescence Pragmatism: courts may use common-law-like updating or second-look mechanisms when old statutes become seriously out of phase with the later legal framework.
+17. **Benjamin Cardozo** — bounded common-law Pragmatism constrained by precedent, custom, continuity, and incremental development.
 
 ### Legal Realist
-15. **Karl Llewellyn** — mature/mainline Realism: underdetermination, situation sense, law in action.
-16. **Felix S. Cohen** — functional/anti-conceptual Realism: translate doctrinal labels into concrete conduct, consequences, and normative choices.
-17. **Jerome Frank** — fact-skeptical Realism.
-18. **Brian Leiter** — contemporary Realist/Positivist specialist: empirical and naturalized explanation of adjudication combined with a positivist account of law.
+18. **Karl Llewellyn** — mature/mainline Realism: underdetermination, situation sense, law in action.
+19. **Felix S. Cohen** — functional/anti-conceptual Realism: translate doctrinal labels into concrete conduct, consequences, and normative choices.
+20. **Jerome Frank** — fact-skeptical Realism.
+21. **Brian Leiter** — contemporary Realist/Positivist specialist: empirical and naturalized explanation of adjudication combined with a positivist account of law.
 
 ### Sociological Jurist
-19. **Roscoe Pound** — law in action, competing social interests, and practical social operation.
-20. **Eugen Ehrlich** — living-law Sociological Jurisprudence: socially operative norms of associations and communities are central legal phenomena.
-21. **François Gény** — *libre recherche scientifique*: positive sources govern until they genuinely run out, after which disciplined inquiry into social facts, justice, equity, and the nature of things supplies the missing rule. Cardozo is explicitly cross-cutting-compatible with Sociological Jurisprudence where the respondent's whole profile warrants it. Gény requires his dedicated source-gap diagnostic; generic open construction is not enough.
+22. **Roscoe Pound** — law in action, competing social interests, and practical social operation.
+23. **Eugen Ehrlich** — living-law Sociological Jurisprudence: socially operative norms of associations and communities are central legal phenomena.
+24. **Santi Romano** — institutional legal pluralism: organized nonstate institutions can themselves constitute genuine legal orders rather than merely producing socially influential norms.
+25. **François Gény** — *libre recherche scientifique*: positive sources govern until they genuinely run out, after which disciplined inquiry into social facts, justice, equity, and the nature of things supplies the missing rule. Cardozo is explicitly cross-cutting-compatible with Sociological Jurisprudence where the respondent's whole profile warrants it. Gény requires his dedicated source-gap diagnostic; generic open construction is not enough.
 
 ## Adaptive diagnostics
 
@@ -121,10 +125,14 @@ Neither becomes a public Textualist modifier.
 ### Open interpretive methods
 - **D-INT1** — Intentionalist versus objective Purposivist.
 - **D-INT2** — Imaginative Reconstruction.
+- **D-KAT1** — Katzmann Congress-aware interpretation / reliable legislative history.
 - **D-PRAG1** — Pragmatism versus Purposivism: consequences/workability as independent adjudicative reasons.
+- **D-CAL1** — Guido Calabresi statutory obsolescence / second-look discriminator.
 - **D-LP1** — Legal Process noun router.
 - **D-LP2** — Wechsler neutral-principles champion discriminator.
+- **D-MAS1** — Mashaw agency-interpretation-as-legal-enterprise discriminator.
 - **D-SOC1** — Sociological Jurisprudence noun router.
+- **D-ROM1** — Santi Romano institutional legal pluralism; this may establish Sociological Jurist directly because the defining proposition is a Source claim rather than Pound-style social-interest adjudication.
 - **D-EHR1** — Ehrlich living-law champion discriminator, asked only after Sociological Jurisprudence is live.
 - **D-GENY1** — Gény Free Scientific Research champion discriminator, asked only after Sociological Jurisprudence is already live.
 - **D-PLU1** — principled Interpretive Pluralism.
@@ -149,7 +157,7 @@ The audit suite requires every locked unit to have a coherent literal-answer pat
 
 ## Reachability contract
 
-The audit suite requires all twenty-one Method champion units to be separately reachable from literal 88-item answer vectors through the live adaptive router within the twelve-question cap.
+The audit suite requires all twenty-five Method champion units to be separately reachable from literal 88-item answer vectors through the live adaptive router within the twelve-question cap.
 
 It additionally verifies:
 - all eight Method nouns remain available;
