@@ -150,10 +150,6 @@
             })
             : null;
 
-        const narrative = params.get('x') && globalThis.LAW_RESULT_NARRATIVE?.fromId
-            ? globalThis.LAW_RESULT_NARRATIVE.fromId(params.get('x'))
-            : null;
-
         return {
             identity,
             identityReason: '',
@@ -161,7 +157,7 @@
             championConfidence: champions.length === 1 ? 'shared' : champions.length > 1 ? 'ambiguous' : 'low',
             diagnosticCount: Number(params.get('d')) || 0,
             resultTitle,
-            narrative,
+            narrativeId: params.get('x') || null,
             calibration: 'theory-derived'
         };
     }
@@ -223,7 +219,7 @@
         );
         const narrative = result.narrative || (
             globalThis.LAW_RESULT_NARRATIVE?.build
-                ? globalThis.LAW_RESULT_NARRATIVE.build(result, scores, params.get('x'))
+                ? globalThis.LAW_RESULT_NARRATIVE.build(result, scores, result.narrativeId || params.get('x'))
                 : null
         );
 
@@ -296,7 +292,7 @@
     function textSummary() {
         const summaryNarrative = classification?.narrative || (
             classification?.identity && globalThis.LAW_RESULT_NARRATIVE?.build
-                ? globalThis.LAW_RESULT_NARRATIVE.build(classification, scores, params.get('x'))
+                ? globalThis.LAW_RESULT_NARRATIVE.build(classification, scores, classification.narrativeId || params.get('x'))
                 : null
         );
         const classificationLines = classification?.identity
