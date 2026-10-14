@@ -356,7 +356,7 @@ for (const id of [
   "D-RLS1", "D-RLS2", "D-RLS3", "D-RLS4", "D-RLS5",
   "D-POS1", "D-POS2", "D-NP1", "D-NP2", "D-NP3", "D-NP4", "D-NP5", "D-NP6",
   "D-MAJ1", "D-MAJ2", "D-ELY1", "D-WAL1", "D-RESP1", "D-TXT1", "D-TXT2", "D-INT1", "D-INT2", "D-PRAG1",
-  "D-LP1", "D-LP2", "D-QC1", "D-SOC1", "D-GENY1", "D-BLK1", "D-LIV1", "D-LIV2", "D-HAR1", "D-CLC1", "D-PIL1", "D-PLU1", "D-PLU2", "D-OCO1",
+  "D-LP1", "D-LP2", "D-QC1", "D-SOC1", "D-GENY1", "D-BLK1", "D-GRD1", "D-MON1", "D-BRAY1", "D-LIV1", "D-LIV2", "D-HAR1", "D-CLC1", "D-PIL1", "D-PLU1", "D-PLU2", "D-OCO1",
   "D-ORI1", "D-ORI2", "D-ORI3", "D-ORI4", "D-ORI5", "D-MOR1", "D-PREC1", "D-QC2"
 ]) {
   assert.ok(diagnosticIds.has(id), `Missing high-value diagnostic ${id}`);
@@ -1145,12 +1145,13 @@ for (const id of lockedSourceUnits) {
 
 
 // Locked Interpretation / adjudicative-style champion units.
-// The approved roster contains 18 endpoints after adding Gény as the
-// source-gap / Free Scientific Research specialist inside Sociological Jurisprudence.
+// The approved Method roster contains 19 endpoints, including Kagan as the
+// institutionally accommodating contextual-Textualist specialist.
 const lockedMethodUnits = [
   "hugo_black",
   "scalia_manning_easterbrook",
   "kavanaugh_barrett",
+  "kagan",
   "ekins_intentionalism",
   "hand_posner_imaginative",
   "breyer",
@@ -1222,7 +1223,8 @@ function methodDiagnosticAnswer(id, diagnosticId) {
   if (diagnosticId === "D-RLS4") return id === "frank" ? 3 : -3;
   if (diagnosticId === "D-RLS5") return id === "felix_cohen" ? 3 : -3;
 
-  if (diagnosticId === "D-TXT1") return id === "kavanaugh_barrett" ? 3 : -3;
+  if (diagnosticId === "D-TXT1") return ["kavanaugh_barrett", "kagan"].includes(id) ? 3 : -3;
+  if (diagnosticId === "D-SEP2") return id === "kagan" ? -3 : id === "kavanaugh_barrett" ? 3 : -3;
   if (diagnosticId === "D-TXT2") return id === "hugo_black" ? 3 : -3;
 
   if (diagnosticId === "D-INT1") return METHOD_INTENTIONALISTS.has(id) ? 3 : -3;
@@ -1263,6 +1265,7 @@ const methodExpectedIdentity = {
   hugo_black:"textualist",
   scalia_manning_easterbrook:"textualist",
   kavanaugh_barrett:"textualist",
+  kagan:"textualist",
   ekins_intentionalism:"intentionalist",
   hand_posner_imaginative:"intentionalist",
   breyer:"purposivist",
@@ -1311,6 +1314,7 @@ function distinctiveDiagnosticAnswer(id, diagnosticId) {
   if (diagnosticId === "D-CLC1") return id === "robin_cooke" ? 3 : -3;
   if (diagnosticId === "D-PIL1") return id === "bhagwati_iyer" ? 3 : -3;
   if (diagnosticId === "D-SOC1") return id === "bhagwati_iyer" ? 3 : -3;
+  if (diagnosticId === "D-BRAY1") return id === "bray" ? 3 : -3;
   return -3;
 }
 
@@ -1569,8 +1573,59 @@ assert.equal(identities.find(x=>x.id==="legal_constitutionalist")?.public, false
   "Legal Constitutionalism must remain an internal authority descriptor");
 assert.equal(identities.find(x=>x.id==="weak_form_constitutionalist")?.public, false,
   "Weak-form review must remain an internal institutional-design descriptor");
-assert.equal(profileById.gardbaum?.selectable, false,
-  "Gardbaum remains weak-form lineage/explanation rather than a public champion endpoint");
+assert.notEqual(profileById.gardbaum?.selectable, false,
+  "Gardbaum is selectable only as a champion-level weak-form specialist; Weak-Form Constitutionalism remains nonpublic");
+
+// Gardbaum must be reachable without creating a Weak-Form Constitutionalist noun.
+{
+  const responses = literalMethodCore("gardbaum");
+  responses.O6 = 3;
+  responses.O3 = 2;
+  responses.O4 = 1;
+  responses.O13 = 2;
+  const scores = scoring.scoreAll(responses);
+  const diagnosticResponses = {};
+  const diagnosticOrder = [];
+  const answer = (id) => id === "D-QC1" ? -2 : id === "D-GRD1" ? 3 : -3;
+  for (let i = 0; i < classifier.MAX_DIAGNOSTICS; i += 1) {
+    const next = classifier.nextDiagnostic(scores, responses, diagnosticResponses);
+    if (!next) break;
+    diagnosticOrder.push(next.id);
+    diagnosticResponses[next.id] = answer(next.id);
+  }
+  const result = classifier.classify(scores, responses, diagnosticResponses, { coreElapsedMs: 10 * 60 * 1000 });
+  assert.notEqual(result.identity.id, "weak_form_constitutionalist",
+    "Gardbaum must never manufacture the nonpublic Weak-Form noun");
+  assert.equal(result.champions[0]?.id, "gardbaum",
+    "Strong confirmed weak-form evidence must be able to select Gardbaum as champion");
+  assert.ok(diagnosticOrder.includes("D-GRD1"),
+    "Gardbaum path must ask the dedicated structured-legislative-response diagnostic");
+}
+
+// Monaghan must be reachable as a champion-level constitutional-common-law specialist.
+{
+  const responses = literalMethodCore("monaghan");
+  responses.R9 = 3;
+  responses.R10 = 3;
+  responses.P3 = 2;
+  responses.P5 = 2;
+  responses.P7 = 2;
+  const scores = scoring.scoreAll(responses);
+  const diagnosticResponses = {};
+  const diagnosticOrder = [];
+  const answer = (id) => id === "D-QC1" ? -2 : id === "D-MON1" ? 3 : -3;
+  for (let i = 0; i < classifier.MAX_DIAGNOSTICS; i += 1) {
+    const next = classifier.nextDiagnostic(scores, responses, diagnosticResponses);
+    if (!next) break;
+    diagnosticOrder.push(next.id);
+    diagnosticResponses[next.id] = answer(next.id);
+  }
+  const result = classifier.classify(scores, responses, diagnosticResponses, { coreElapsedMs: 10 * 60 * 1000 });
+  assert.equal(result.champions[0]?.id, "monaghan",
+    "Confirmed constitutional-common-law evidence must be able to select Monaghan as champion");
+  assert.ok(diagnosticOrder.includes("D-MON1"),
+    "Monaghan path must ask the dedicated constitutional-common-law diagnostic");
+}
 
 // Locked institutional-structure / doctrinal-form / remedies champion paths.
 const lockedStructureFormUnits = [
@@ -1581,7 +1636,8 @@ const lockedStructureFormUnits = [
   "alexy",
   "barak",
   "fiss",
-  "bhagwati_iyer"
+  "bhagwati_iyer",
+  "bray"
 ];
 
 for (const id of lockedStructureFormUnits) {
@@ -1589,10 +1645,14 @@ for (const id of lockedStructureFormUnits) {
     `Locked structure/form/remedies champion unit ${id} must be selectable`);
 }
 
-for (const id of ["bray", "sohoni_frost", "chayes", "monaghan", "levinson"]) {
+for (const id of ["sohoni_frost", "chayes", "levinson"]) {
   assert.equal(profileById[id]?.selectable, false,
     `${id} must remain lineage/explanation only and cannot take the single champion slot`);
 }
+assert.notEqual(profileById.bray?.selectable, false,
+  "Bray must be selectable behind the traditional-equity whole-profile gate");
+assert.notEqual(profileById.monaghan?.selectable, false,
+  "Monaghan must be selectable behind the constitutional-common-law diagnostic");
 
 function literalStructureFormCore(id) {
   const profile = profileById[id];
@@ -1642,7 +1702,8 @@ const structureFormExpectedIdentity = {
   alexy: "proportionalist",
   barak: "proportionalist",
   fiss: "mixed_jurisprudence",
-  bhagwati_iyer: "sociological_jurist"
+  bhagwati_iyer: "sociological_jurist",
+  bray: "minimalist"
 };
 
 const structureFormExpectedModifier = {
@@ -1779,8 +1840,10 @@ for(let i=0;i<600;i++){
   {
     const winningProfile=profileById[result.champions[0].id];
     const compatibility=classifier.championIdentityCompatibility(winningProfile,result.identity);
-    assert.notEqual(compatibility,"incompatible",
-      "A valid respondent may never receive a champion outside the winning noun family");
+    if (compatibility === "incompatible") {
+      assert.equal(winningProfile.globalSpecialist, true,
+        "Only explicitly gated global specialists may win outside the noun family");
+    }
     if(compatibility==="cross-cutting") {
       assert.ok(winningProfile.crossCuttingRequirements?.[result.identity.id]?.length,
         "A cross-cutting champion must be supported by an explicit bridge contract");
@@ -1808,7 +1871,7 @@ const allLockedUnits=new Set([
   ...lockedOriginalistUnits,...lockedSourceUnits,...lockedMethodUnits,
   ...Object.keys(distinctiveExpectedIdentity),...lockedNonOriginalistUnits,
   ...lockedAuthorityUnits,...lockedStructureFormUnits,
-  "owen_dixon","vermeule","oconnor","charles_black"
+  "owen_dixon","vermeule","oconnor","charles_black","gardbaum","monaghan"
 ]);
 assert.deepEqual([...allLockedUnits].sort(),
   Array.from(profiles.filter(p=>p.selectable!==false && p.tier!=="lineage"),p=>p.id).sort(),
