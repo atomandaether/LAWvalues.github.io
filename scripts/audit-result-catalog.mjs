@@ -1724,8 +1724,8 @@ function literalStructureFormCore(id) {
 function structureFormDiagnosticAnswer(id, diagnosticId) {
   if (diagnosticId === "D-RLS1") return -3;
   if (diagnosticId === "D-QC1") return -2;
-  if (diagnosticId === "D-SEP1") return id === "lawson" ? 0 : id === "peter_strauss" ? 3 : -3;
-  if (diagnosticId === "D-SEP2") return id === "peter_strauss" ? -3 : 3;
+  if (diagnosticId === "D-SEP1") return id === "lawson" ? 0 : ["peter_strauss", "metzger"].includes(id) ? 3 : -3;
+  if (diagnosticId === "D-SEP2") return ["peter_strauss", "metzger"].includes(id) ? -3 : 3;
   if (diagnosticId === "D-SEP3") return id === "lawson" ? 3 : -3;
   if (diagnosticId === "D-SEP4") return id === "lawson" ? 3 : -3;
   if (diagnosticId === "D-MET1") return id === "metzger" ? 3 : -3;
