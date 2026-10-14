@@ -1189,6 +1189,11 @@ function literalMethodCore(id) {
     // without structured proportionality becoming the winning noun.
     if (id === "barak" && item.axis === "form") target = 34;
     if (id === "barak" && item.axis === "separ") target = 44;
+    // Kavanaugh is cross-cutting-compatible with Originalism as a whole-person
+    // match, but this Method fixture deliberately tests that the same champion
+    // remains reachable for a statutory Textualist whose constitutional Time
+    // commitments are neutral.
+    if (id === "kavanaugh_barrett" && item.axis === "time") target = 50;
 
     const agreeSignal = Number(item.signals?.agree?.[item.axis] || 0);
     const disagreeSignal = Number(item.signals?.disagree?.[item.axis] || 0);
