@@ -1,6 +1,6 @@
 \nImplementation note: this canon is now classified through sparse thinker signatures and adaptive diagnostics rather than full eight-axis coordinates. See `MATCHING_ARCHITECTURE.md`.\n# LAWvalues Canon Audit — Revised Identity Map
 
-> **Method implementation note (2026-10-12):** `METHOD_ENGINE.md` supersedes older Interpretation/adjudicative-style taxonomy and records the locked seventeen-unit champion layer.
+> **Method implementation note (2026-10-13):** `METHOD_ENGINE.md` supersedes older Interpretation/adjudicative-style taxonomy and records the locked twenty-unit champion layer.
 
 > **Source implementation note (2026-10-12):** `SOURCE_ENGINE.md` supersedes older Source taxonomy. Inclusive/Exclusive are Positivist modifiers; Interpretivist is public; Greenberg/Radbruch theories sit below the Non-Positivist noun; Fullerian remains public.
 
