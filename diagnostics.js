@@ -478,6 +478,19 @@ globalThis.LAW_DIAGNOSTIC_QUESTIONS = Object.freeze([
     note: "Gény-specific Free Scientific Research discriminator; authoritative positive sources remain primary until they genuinely run out."
   },
   {
+    id: "D-BLK1",
+    family: "constitutionalism",
+    priority: "medium",
+    unlock: "A non-originalist or source-centered constitutional profile remains plausible and Black-style structural inference could materially improve the champion match.",
+    prompt: "A constitutional rule can be legally binding because it follows from the relationships and structure created by the Constitution as a whole, even when no single clause expressly states that rule. The constitutional architecture itself can supply the governing legal implication.",
+    agreeTraits: ["method.structural_inference", "method.holistic_constitution"],
+    disagreeTraits: [],
+    nextOnAgree: [],
+    nextOnDisagree: [],
+    relatedIdentityIds: ["positivist", "interpretive_pluralist", "common_law_constitutionalist", "living_constitutionalist", "mixed_jurisprudence"],
+    note: "Charles Black champion discriminator. This is champion-level structural inference, not a Structuralist noun and not Amar-style Originalist intratextualism."
+  },
+  {
     id: "D-LIV1",
     family: "constitutionalism",
     priority: "high",
