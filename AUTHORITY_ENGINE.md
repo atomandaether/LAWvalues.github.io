@@ -22,7 +22,7 @@ Six public nouns are locked:
 ### Political Constitutionalist
 Functioning representative institutions retain the stronger claim to final constitutional authority under reasonable rights disagreement.
 
-1. **Jeremy Waldron / Richard Bellamy** — locked champion unit. Their philosophical rationales differ, but the current instrument does not measure enough to separate them without violating the Alexander/Kaye threshold.
+1. **Jeremy Waldron** — locked champion. Richard Bellamy remains closely related political-constitutional scholarship rather than part of the displayed champion unit.
 
 ### Thayerian
 Courts retain judicial review but invalidate legislation only when a legislative constitutional judgment falls outside the range of reasonable interpretation.

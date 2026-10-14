@@ -91,13 +91,12 @@ Sandra Day O'Connor remains a low-theory catch-all rather than a theorist defini
 15. **Karl Llewellyn** — mature/mainline Realism: underdetermination, situation sense, law in action.
 16. **Felix S. Cohen** — functional/anti-conceptual Realism: translate doctrinal labels into concrete conduct, consequences, and normative choices.
 17. **Jerome Frank** — fact-skeptical Realism.
-
-Brian Leiter remains major further reading/reconstruction rather than a separate closest-judge endpoint.
+18. **Brian Leiter** — contemporary Realist/Positivist specialist: empirical and naturalized explanation of adjudication combined with a positivist account of law.
 
 ### Sociological Jurist
-18. **Roscoe Pound** — law in action, competing social interests, and practical social operation.
-19. **Eugen Ehrlich** — living-law Sociological Jurisprudence: socially operative norms of associations and communities are central legal phenomena.
-20. **François Gény** — *libre recherche scientifique*: positive sources govern until they genuinely run out, after which disciplined inquiry into social facts, justice, equity, and the nature of things supplies the missing rule. Cardozo is explicitly cross-cutting-compatible with Sociological Jurisprudence where the respondent's whole profile warrants it. Gény requires his dedicated source-gap diagnostic; generic open construction is not enough.
+19. **Roscoe Pound** — law in action, competing social interests, and practical social operation.
+20. **Eugen Ehrlich** — living-law Sociological Jurisprudence: socially operative norms of associations and communities are central legal phenomena.
+21. **François Gény** — *libre recherche scientifique*: positive sources govern until they genuinely run out, after which disciplined inquiry into social facts, justice, equity, and the nature of things supplies the missing rule. Cardozo is explicitly cross-cutting-compatible with Sociological Jurisprudence where the respondent's whole profile warrants it. Gény requires his dedicated source-gap diagnostic; generic open construction is not enough.
 
 ## Adaptive diagnostics
 
@@ -113,8 +112,8 @@ The global cap remains twelve adaptive questions.
 A confirmed Realist can use up to six of seven slots because the Realist noun itself is an override and these distinctions determine the Realist champion.
 
 ### Textualism
-- **D-TXT1** — establishes modern best-reading/contextual Textualism against mainline Scalia/Manning/Easterbrook.
-- **D-SEP2**, once contextual Textualism is established, separates court-centered Kavanaugh/Barrett from institutionally accommodating Kagan.
+- **D-TXT1** — establishes modern best-reading/contextual Textualism against mainline Manning-style enacted-bargain Textualism.
+- **D-SEP2**, once contextual Textualism is established, separates court-centered Kavanaugh from institutionally accommodating Kagan.
 - **D-TXT2** — Hugo Black categorical-text-plus-rights discriminator.
 
 Neither becomes a public Textualist modifier.
@@ -150,7 +149,7 @@ The audit suite requires every locked unit to have a coherent literal-answer pat
 
 ## Reachability contract
 
-The audit suite requires all twenty Method champion units to be separately reachable from literal 88-item answer vectors through the live adaptive router within the twelve-question cap.
+The audit suite requires all twenty-one Method champion units to be separately reachable from literal 88-item answer vectors through the live adaptive router within the twelve-question cap.
 
 It additionally verifies:
 - all eight Method nouns remain available;

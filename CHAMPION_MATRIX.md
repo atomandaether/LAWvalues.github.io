@@ -85,7 +85,7 @@ Examples:
 | Radbruchian | Radbruch | extreme-injustice threshold |
 | Fullerian | Fuller | internal morality / legality conditions |
 | Proportionalist | Alexy for nonpositivist/correctness-heavy proportionality; Barak for purposive proportionality | structured proportionality is the noun; modifier + champion carry the Alexy/Barak split |
-| Legal Realist | Llewellyn; Leiter for Realist+Positivist/Naturalist; Holmes as precursor | Llewellyn = broad mature Realism; Leiter = modern naturalized/positivist reconstruction; Holmes = precursor + deference; Frank remains lineage until fact/psychology diagnostics exist |
+| Legal Realist | Llewellyn; Cohen; Frank; Leiter for Realist+Positivist/Naturalist; Holmes as precursor | Llewellyn = broad mature Realism; Cohen = functional anti-conceptualism; Frank = fact skepticism; Leiter = modern naturalized/positivist reconstruction; Holmes = precursor + deference |
 | Pragmatist | Posner; Breyer as judicial relative | consequences/workability; Breyer when purposivism/functionalism is stronger |
 | Textualist | Manning; Kavanaugh; Kagan; Hugo Black | mainline enacted-bargain text; court-centered best-reading textualism; institutionally accommodating contextual textualism; Black's categorical text/rights package |
 | Intentionalist | no default yet | diagnose actual legislative/enactor intent before choosing a champion |
@@ -99,7 +99,7 @@ Examples:
 | Living Constitutionalist | Brennan default; Post/Siegel after Democratic diagnostic; Klare/Langa after Transformative diagnostic | Brennan = contemporary ratification + rights; Post/Siegel = democratic constitutional development; Klare/Langa = transformative constitutional project |
 | Common-Law Constitutionalist | David Strauss default; Harlan II after ordered-liberty/living-tradition diagnostic; Lord Cooke after strong common-law-rights diagnostic; Waluchow for Inclusive Positivism + common-law development | Strauss = precedent/practice as constitutional law; Harlan = historically embedded ordered liberty + restraint; Cooke = fundamental common-law limits on ordinary legislative supremacy; Waluchow = inclusive-positivist living-tree/common-law combination |
 | Common-Good Constitutionalist | Vermeule | classical/common-good teleology, only after diagnostics |
-| Political Constitutionalist | Waldron / Bellamy | democratic finality under functioning institutions and reasonable rights disagreement |
+| Political Constitutionalist | Jeremy Waldron | democratic finality under functioning institutions and reasonable rights disagreement; Bellamy remains close related scholarship |
 | *Internal authority descriptors* | Legal Constitutionalism; Weak-Form Constitutionalism | measured strong-/weak-form judicial-review configurations; not public nouns or champion endpoints |
 | Thayerian | Thayer; Holmes/Hand/Frankfurter as historical practitioners | clear-error / reasonable-judgment deference |
 | Popular Constitutionalist | Kramer | anti-judicial supremacy + popular constitutional authority |
@@ -226,7 +226,7 @@ The following illustrates the marginal-coverage rule:
 - **Hugo Black** stays because text/rule absolutism + aggressive enumerated-rights enforcement occupies a very different region from Thayer and Scalia.
 - **Llewellyn** stays as the broad mature Legal Realist.
 - **Leiter** stays because Realism + Positivism/Naturalism is a distinctive modern theoretical combination.
-- **Frank** is lineage unless LAWvalues adds fact-skepticism / psychology diagnostics.
+- **Frank** stays as the fact-skeptical Realist because D-RLS4 directly diagnoses that subtype.
 - **Posner** stays because Pragmatism is a direct identity; his Law & Economics work is not what earns the slot.
 - **Bork** is only useful if Original Intent is actually diagnosed.
 - **Easterbrook** is presently redundant after excluding Law & Economics.

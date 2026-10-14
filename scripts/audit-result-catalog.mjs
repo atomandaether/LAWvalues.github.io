@@ -465,7 +465,7 @@ assert.equal(classifier.championIdentityCompatibility(
 assert.equal(classifier.championIdentityCompatibility(
   profileById.scalia_manning_easterbrook,
   identities.find((x) => x.id === "textualist")
-), "primary", "Scalia/Manning/Easterbrook should be the dedicated mainline Textualist unit");
+), "primary", "Manning should be the dedicated mainline Textualist unit");
 
 assert.equal(profileById.finnis_murphy_george.tier, "main",
   "Finnis/Murphy/George must remain the central modern Natural Law champion unit");
@@ -1148,7 +1148,7 @@ for (const id of lockedSourceUnits) {
 
 
 // Locked Interpretation / adjudicative-style champion units.
-// The approved Method roster contains 19 endpoints, including Kagan as the
+// The locked Method roster contains 20 direct endpoints, with Leiter audited separately as a cross-domain Realist/Positivist specialist; Kagan remains the
 // institutionally accommodating contextual-Textualist specialist.
 const lockedMethodUnits = [
   "hugo_black",
@@ -1189,6 +1189,11 @@ function literalMethodCore(id) {
     // without structured proportionality becoming the winning noun.
     if (id === "barak" && item.axis === "form") target = 34;
     if (id === "barak" && item.axis === "separ") target = 44;
+    // Kavanaugh is cross-cutting-compatible with Originalism as a whole-person
+    // match, but this Method fixture deliberately tests that the same champion
+    // remains reachable for a statutory Textualist whose constitutional Time
+    // commitments are neutral.
+    if (id === "kavanaugh_barrett" && item.axis === "time") target = 50;
 
     const agreeSignal = Number(item.signals?.agree?.[item.axis] || 0);
     const disagreeSignal = Number(item.signals?.disagree?.[item.axis] || 0);
@@ -1314,8 +1319,10 @@ for (const id of lockedMethodUnits) {
 // new core questions. Their specialist diagnostics may refine an already-live
 // public noun but may not manufacture a result from name recognition alone.
 function distinctiveDiagnosticAnswer(id, diagnosticId) {
-  if (diagnosticId === "D-RLS1") return -3;
+  if (diagnosticId === "D-RLS1") return id === "leiter" ? 3 : -3;
+  if (diagnosticId === "D-RLS2" || diagnosticId === "D-RLS3") return id === "leiter" ? 3 : -3;
   if (diagnosticId === "D-QC1") return -2;
+  if (diagnosticId === "D-POS1") return id === "leiter" ? -3 : -3;
   if (diagnosticId === "D-HAR1") return id === "harlan_ii" ? 3 : -3;
   if (diagnosticId === "D-CLC1") return id === "robin_cooke" ? 3 : -3;
   if (diagnosticId === "D-PIL1") return id === "bhagwati_iyer" ? 3 : -3;
@@ -1327,6 +1334,7 @@ function distinctiveDiagnosticAnswer(id, diagnosticId) {
 }
 
 const distinctiveExpectedIdentity = {
+  leiter: "positivist",
   harlan_ii: "common_law_constitutionalist",
   robin_cooke: "common_law_constitutionalist",
   bhagwati_iyer: "sociological_jurist"
@@ -1838,6 +1846,152 @@ console.log("PASS: public titles split broad phrase ranking from noun-conditione
   assert.equal(alsoRealist.identity.id,"public_meaning_originalist",
     "Descriptive Realism must not erase a dominating normative Originalist commitment");
 }
+// Adversarial named-person consistency battery.
+//
+// Literal champion fixtures prove that a target cell is reachable, but they do
+// not prove that a theorist's other major measured commitments will not push
+// the noun elsewhere and strand the champion. These cases intentionally combine
+// multiple well-known commitments and guard against the false-nearest-neighbor
+// failures that motivated the final champion audit.
+{
+  const namedCases = [
+    {
+      name: "Kavanaugh",
+      scores: {sorc:72,cons:92,time:86,prec:68,remed:58,post:48,separ:78,form:78},
+      traits: {
+        "constraint.textual":1,"constraint.contextual_textualism":1,
+        "constraint.best_reading_context":1,
+        "separation.independent_judicial_interpretation":1,
+        "time.public_meaning":0.8,"time.fixation":0.8,"form.anti_discretion":0.65
+      },
+      noun: "public_meaning_originalist", champion: "kavanaugh_barrett"
+    },
+    {
+      name: "Waldron",
+      scores: {sorc:90,cons:72,time:52,prec:70,remed:82,post:95,separ:52,form:82},
+      traits: {
+        "source.normative_positivism":1,"form.anti_discretion":0.8,
+        "posture.majoritarian":1,"posture.democratic_legitimacy":1,
+        "posture.reasonable_disagreement":1
+      },
+      noun: "political_constitutionalist", champion: "waldron"
+    },
+    {
+      name: "Lawson",
+      scores: {sorc:78,cons:84,time:92,prec:35,remed:75,post:68,separ:97,form:92},
+      traits: {
+        "time.public_meaning":0.8,"time.fixation":0.9,"separation.formalist":1,
+        "separation.nondelegation":1,"separation.strong_nondelegation":1,
+        "separation.judicial_power_boundary":1,"form.anti_discretion":0.7
+      },
+      noun: "public_meaning_originalist", champion: "lawson"
+    },
+    {
+      name: "Calabresi-Prakash",
+      scores: {sorc:78,cons:82,time:90,prec:55,remed:70,post:68,separ:95,form:88},
+      traits: {
+        "time.public_meaning":0.8,"time.fixation":0.8,"separation.formalist":1,
+        "separation.unitary_executive":1,"form.anti_discretion":0.65
+      },
+      noun: "public_meaning_originalist", champion: "calabresi_prakash"
+    },
+    {
+      name: "Vermeule",
+      scores: {sorc:8,cons:18,time:38,prec:62,remed:52,post:70,separ:25,form:35},
+      traits: {
+        "method.common_good":1,"time.classical_tradition":1,
+        "source.objective_morality":1,"source.positive_law_settlement":0.8,
+        "constraint.purpose":0.8,"separation.functionalist":0.8
+      },
+      noun: "common_good_constitutionalist", champion: "vermeule"
+    },
+    {
+      name: "Leiter",
+      scores: {sorc:92,cons:48,time:50,prec:48,remed:50,post:55,separ:50,form:48},
+      traits: {
+        "source.source_thesis":0.8,"realism.underdetermination":1,
+        "realism.extra_doctrinal":1,"realism.empirical_prediction":1
+      },
+      noun: "positivist", champion: "leiter"
+    },
+    {
+      name: "Schauer",
+      scores: {sorc:82,cons:75,time:50,prec:78,remed:75,post:70,separ:52,form:96},
+      traits: {
+        "source.normative_positivism":0.7,"form.rules":1,"form.anti_discretion":1
+      },
+      noun: "formalist", champion: "schauer"
+    },
+    {
+      name: "Waluchow",
+      scores: {sorc:92,cons:48,time:12,prec:92,remed:55,post:30,separ:50,form:45},
+      traits: {
+        "source.morality_incorporated":1,"source.positive_sources":0.9,
+        "time.common_law_development":1,"precedent.stability":0.9
+      },
+      noun: "positivist", champion: "waluchow_common_law"
+    },
+    {
+      name: "Posner",
+      scores: {sorc:70,cons:28,time:45,prec:28,remed:45,post:45,separ:24,form:15},
+      traits: {
+        "method.pragmatic_priority":1,"method.consequences":1,"method.workability":1,
+        "realism.underdetermination":0.8,"realism.extra_doctrinal":0.8,
+        "realism.empirical_prediction":0.8
+      },
+      noun: "pragmatist", champion: "posner"
+    },
+    {
+      name: "Kevin Walsh",
+      scores: {sorc:20,cons:80,time:88,prec:70,remed:75,post:86,separ:70,form:82},
+      traits: {
+        "source.objective_morality":0.7,"source.positive_law_settlement":0.8,
+        "time.public_meaning":0.8,"time.fixation":0.8,
+        "posture.anti_judicial_supremacy":0.8,"posture.branch_interpretation":1
+      },
+      noun: "public_meaning_originalist", champion: "natural_law_originalists"
+    },
+    {
+      name: "Holmes",
+      scores: {sorc:56,cons:40,time:28,prec:65,remed:78,post:95,separ:48,form:35},
+      traits: {
+        "realism.underdetermination":0.8,"realism.extra_doctrinal":0.8,
+        "realism.empirical_prediction":0.8,"posture.clear_error":1,
+        "time.living_content":0.7
+      },
+      noun: "thayerian", champion: "thayer"
+    },
+    {
+      name: "Tushnet",
+      scores: {sorc:68,cons:48,time:25,prec:55,remed:55,post:90,separ:50,form:45},
+      traits: {
+        "posture.anti_judicial_supremacy":1,"posture.popular_authority":0.9,
+        "posture.dialogic":0.8,"posture.weak_form":0.8,"time.living_content":0.7
+      },
+      noun: "popular_constitutionalist", champion: "kramer"
+    },
+    {
+      name: "Sotomayor",
+      scores: {sorc:38,cons:38,time:12,prec:72,remed:35,post:10,separ:42,form:28},
+      traits: {
+        "time.living_content":1,"posture.rights_trumps":1,
+        "posture.judicial_independence":1,"constraint.purpose":0.6
+      },
+      noun: "living_constitutionalist", champion: "brennan"
+    }
+  ];
+  for (const test of namedCases) {
+    const identityResolution = classifier.resolveIdentity(test.scores, test.traits);
+    assert.equal(identityResolution.best.identity.id, test.noun,
+      `Holistic named-person stress: ${test.name} should resolve to ${test.noun}, got ${identityResolution.best.identity.id}`);
+    const championResolution = classifier.resolveChampions(
+      test.scores, test.traits, identityResolution.best.identity
+    );
+    assert.equal(championResolution.matches[0]?.profile?.id, test.champion,
+      `Holistic named-person stress: ${test.name} should receive ${test.champion}, got ${championResolution.matches[0]?.profile?.id}`);
+  }
+}
+
 // End-to-end fuzzing exercises the actual adaptive router and literal core
 // responses, not unattainable synthetic coordinates or directly supplied traits.
 let fuzzSeed=20261013;
