@@ -24,7 +24,7 @@ Public child identities inherit compatibility from their public parent where app
 
 Examples:
 - Hugo Black is primarily **Textualist**, cross-cutting-compatible with **Formalist**, and incompatible with **Public-Meaning Originalist**.
-- Scalia/Manning are primarily **Originalist** champions while remaining cross-cutting-compatible with **Textualist** and **Formalist**.
+- Scalia is primarily an **Originalist** champion; Manning separately represents mainline **Textualism** rather than being welded into the same default unit.
 - Stephen Breyer is primarily **Purposivist** while remaining cross-cutting-compatible with **Pragmatist** and **Functionalist**.
 - Benjamin Cardozo is primarily **Pragmatist** while remaining cross-cutting-compatible with **Common-Law Constitutionalist**.
 
@@ -109,7 +109,7 @@ Savigny and the Historical School are the model case. The tradition is major jur
 
 This tier also accommodates academics whose work is illuminating but too narrow, insufficiently diagnosable, or redundant with a stronger selectable personality.
 
-Current remedies lineage includes Abram Chayes, Samuel Bray, Mila Sohoni / Amanda Frost, Henry Monaghan, and Daryl Levinson. Their ideas can inform the result explanation without consuming the user's single champion slot.
+Current remedies specialists include Bray, Sohoni/Frost, Monaghan, and Levinson behind dedicated affirmative gates; Abram Chayes remains lineage. Remedies still never create a public noun or a second champion slot.
 
 ## Catch-all without false theory
 
