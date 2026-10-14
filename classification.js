@@ -445,9 +445,16 @@
     }
     if (r.sorc >= 0.2 &&
         (traits["source.objective_morality"] || 0) >= 0.45 &&
-        (traits["source.positive_law_settlement"] || 0) >= 0.35 &&
+        ((traits["source.positive_law_settlement"] || 0) >= 0.35 ||
+         (traits["source.strong_natural_law"] || 0) >= 0.5) &&
         interpretivistEvidence < 0.65) {
-      add("natural_lawyer", 0.83 + 0.11 * s.sorc, "Objective morality plus a genuine settlement and coordination role for positive law.");
+      add(
+        "natural_lawyer",
+        0.83 + 0.11 * s.sorc,
+        (traits["source.strong_natural_law"] || 0) >= 0.5
+          ? "Objective morality is treated as bearing on legal validity itself."
+          : "Objective morality plus a genuine settlement and coordination role for positive law."
+      );
     }
     if ((traits["source.internal_legality"] || 0) >= 0.5) {
       add("fullerian", 0.9, "Internal morality/principles of legality diagnostic.");
@@ -809,6 +816,57 @@
       }
     }
 
+    const universal = profiles.find((profile) => profile.id === "sohoni_frost" && profile.selectable !== false);
+    if (universal && requiredTraitsSatisfied(universal, traits)) {
+      const remedialSalience = salience(scores, "remed");
+      const strongestOtherAxis = Math.max(
+        ...AXIS_IDS.filter((axisId) => axisId !== "remed").map((axisId) => salience(scores, axisId))
+      );
+      const universalSupport = traits["remedies.universal"] || 0;
+      const theory = traits["remedies.universal_relief_theory"] || 0;
+      const universalMayDisplace =
+        remedialSalience >= 0.75 &&
+        universalSupport >= 0.60 &&
+        theory >= 0.65 &&
+        (topNormal < 0.72 || remedialSalience >= strongestOtherAxis + 0.12);
+
+      if (universalMayDisplace) {
+        const { fit, shape } = axisProfileFit(universal, scores);
+        const traitFit = profileTraitFit(universal, traits);
+        const anti = Math.max(0, ...(universal.antiTraits || []).map((trait) => traits[trait] || 0));
+        const universalScore = clamp01(0.58 * fit + 0.17 * shape + 0.20 * traitFit - 0.20 * anti - 0.03);
+        pool = [...pool, { profile: universal, score: universalScore }].sort((a, b) =>
+          b.score - a.score ||
+          Number(b.profile.specificityBonus || 0) - Number(a.profile.specificityBonus || 0) ||
+          a.profile.id.localeCompare(b.profile.id)
+        );
+      }
+    }
+
+    const levinson = profiles.find((profile) => profile.id === "levinson" && profile.selectable !== false);
+    if (levinson && requiredTraitsSatisfied(levinson, traits)) {
+      const equilibration = traits["remedies.equilibration"] || 0;
+      const remedialSalience = salience(scores, "remed");
+      const prophylactic = traits["remedies.prophylactic"] || 0;
+      const strongestOtherAxis = Math.max(
+        ...AXIS_IDS.filter((axisId) => axisId !== "remed").map((axisId) => salience(scores, axisId))
+      );
+      const levinsonMayDisplace =
+        equilibration >= 0.65 &&
+        (remedialSalience >= 0.45 || prophylactic >= 0.65) &&
+        (topNormal < 0.72 || strongestOtherAxis <= 0.55);
+
+      if (levinsonMayDisplace) {
+        const traitFit = profileTraitFit(levinson, traits);
+        const levinsonScore = clamp01(0.68 + 0.22 * traitFit + Number(levinson.specificityBonus || 0));
+        pool = [...pool, { profile: levinson, score: levinsonScore }].sort((a, b) =>
+          b.score - a.score ||
+          Number(b.profile.specificityBonus || 0) - Number(a.profile.specificityBonus || 0) ||
+          a.profile.id.localeCompare(b.profile.id)
+        );
+      }
+    }
+
     for (const profile of catchalls) {
       const lowTheoryEvidence = Math.max(
         traits["method.case_by_case"] || 0,
@@ -1096,6 +1154,7 @@
       const originalMethods = traits["time.original_methods"] || 0;
       const intentAsMeaning = traits["time.intent_as_meaning"] || 0;
       const intratextual = traits["time.intratextualism"] || 0;
+      const originalLaw = traits["time.original_law"] || 0;
 
       // First resolve the public noun when the core did not already do it.
       if (Math.max(publicMeaning, originalIntent) < 0.5) offer("D-ORI1", 96);
@@ -1125,8 +1184,14 @@
         offer("D-ORI2", 74);
       }
 
-      // Amar-style intratextualism is a specialist tie-breaker.  It is lower
-      // priority than noun, construction, and Original Methods questions.
+      // Original Law is a distinct champion-level account of what originalism preserves.
+      if (looksOPM && originalLaw < 0.5 &&
+          hasAsked(diagnosticResponses, "D-ORI2") && !hasAsked(diagnosticResponses, "D-ORI6")) {
+        offer("D-ORI6", 62);
+      }
+
+      // Amar-style intratextualism is a specialist tie-breaker. It remains lower
+      // priority than noun, construction, Original Methods, and Original Law.
       if (looksOPM && intratextual < 0.5 && constraint >= 55 &&
           hasAsked(diagnosticResponses, "D-ORI2") && !hasAsked(diagnosticResponses, "D-ORI5")) {
         offer("D-ORI5", 54);
@@ -1146,6 +1211,13 @@
       strongLiving && provisionalTimeIdentity === "living_constitutionalist" && posture <= 45;
     const transformativeShape =
       pureLivingBranch && constraint <= 45 && remedies <= 35 && posture <= 35;
+
+    const constitutionalMoments = traits["time.constitutional_moments"] || 0;
+
+    if (pureLivingBranch && democraticLiving >= 0.5 && constitutionalMoments < 0.5 &&
+        !hasAsked(diagnosticResponses, "D-ACK1")) {
+      offer("D-ACK1", 99);
+    }
 
     if (pureLivingBranch && Math.max(democraticLiving, transformativeLiving) < 0.5) {
       if (transformativeShape) {
@@ -1176,8 +1248,21 @@
         const incorporated = traits["source.morality_incorporated"] || 0;
         const exclusive = traits["source.source_thesis"] || 0;
         const normative = traits["source.normative_positivism"] || 0;
+        const commandTheory = traits["source.command_theory"] || 0;
+        const basicNorm = traits["source.basic_norm"] || 0;
+        const planningTheory = traits["source.planning_theory"] || 0;
   
         if (Math.max(incorporated, exclusive) < 0.5) offer("D-POS1", 90);
+
+        // These are champion-level architectures of Positivism, not new nouns.
+        if (commandTheory < 0.5 && !hasAsked(diagnosticResponses, "D-AUS1"))
+          offer("D-AUS1", 84);
+        if (basicNorm < 0.5 && !hasAsked(diagnosticResponses, "D-KEL1"))
+          offer("D-KEL1", 82);
+        if (exclusive >= 0.5 && planningTheory < 0.5 &&
+            !hasAsked(diagnosticResponses, "D-SHA1"))
+          offer("D-SHA1", 86);
+
         if (normative < 0.5 &&
             (hasAsked(diagnosticResponses, "D-POS1") || source >= 78)) {
           offer("D-POS2", 70);
@@ -1209,7 +1294,14 @@
   
         const naturalEstablished =
           (traits["source.objective_morality"] || 0) >= 0.45 &&
-          (traits["source.positive_law_settlement"] || 0) >= 0.5;
+          ((traits["source.positive_law_settlement"] || 0) >= 0.5 ||
+           (traits["source.strong_natural_law"] || 0) >= 0.5);
+        if (naturalEstablished &&
+            (traits["source.strong_natural_law"] || 0) < 0.5 &&
+            !hasAsked(diagnosticResponses, "D-NL2")) {
+          offer("D-NL2", 88);
+        }
+
         const interpretivistEstablished =
           (traits["source.fit_and_justification"] || 0) >= 0.5 &&
           (traits["source.principles_are_law"] || 0) >= 0.35;
@@ -1348,9 +1440,26 @@
       offer("D-BRAY1", 94);
     }
 
+    if (remedies <= 18 &&
+        (traits["remedies.universal"] || 0) >= 0.60 &&
+        (traits["remedies.universal_relief_theory"] || 0) < 0.5 &&
+        !hasAsked(diagnosticResponses, "D-UNI1")) {
+      offer("D-UNI1", 94);
+    }
+
+    if (((traits["remedies.prophylactic"] || 0) >= 0.5 || salience(scores, "remed") >= 0.62) &&
+        (traits["remedies.equilibration"] || 0) < 0.5 &&
+        !hasAsked(diagnosticResponses, "D-LEV1")) {
+      offer("D-LEV1", 74);
+    }
+
     const freeScientific = traits["method.free_scientific_research"] || 0;
+    const livingLaw = traits["method.living_law"] || 0;
     const socialMethod = traits["method.social_interests"] || 0;
     const remediesScore = remedies;
+    if (socialMethod >= 0.5 && livingLaw < 0.5 && !hasAsked(diagnosticResponses, "D-EHR1")) {
+      offer("D-EHR1", 96);
+    }
     if (socialMethod >= 0.5 && freeScientific < 0.5 && remediesScore > 25) {
       offer("D-GENY1", 95);
     }
