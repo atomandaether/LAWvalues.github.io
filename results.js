@@ -150,6 +150,10 @@
             })
             : null;
 
+        const narrative = params.get('x') && globalThis.LAW_RESULT_NARRATIVE?.fromId
+            ? globalThis.LAW_RESULT_NARRATIVE.fromId(params.get('x'))
+            : null;
+
         return {
             identity,
             identityReason: '',
@@ -157,6 +161,7 @@
             championConfidence: champions.length === 1 ? 'shared' : champions.length > 1 ? 'ambiguous' : 'low',
             diagnosticCount: Number(params.get('d')) || 0,
             resultTitle,
+            narrative,
             calibration: 'theory-derived'
         };
     }
@@ -192,11 +197,8 @@
     function displayClassification(result) {
         const title = document.getElementById('result-title');
         const label = document.getElementById('classification-label');
-        const reason = document.getElementById('classification-reason');
-        const anchorExplanation = document.getElementById('anchor-explanation');
-        const modifierExplanation = document.getElementById('modifier-explanation');
-        const phraseExplanation = document.getElementById('phrase-explanation');
-        const bridge = document.getElementById('result-bridge');
+        const opening = document.getElementById('result-opening');
+        const context = document.getElementById('result-context');
         const championLine = document.getElementById('champion-line');
         const championDescription = document.getElementById('champion-description');
         const relatedLine = document.getElementById('related-line');
@@ -205,11 +207,8 @@
         if (!result?.identity) {
             title.textContent = 'No jurisprudential classification is stored with this result.';
             label.textContent = '';
-            reason.textContent = '';
-            anchorExplanation.textContent = '';
-            modifierExplanation.textContent = '';
-            phraseExplanation.textContent = '';
-            bridge.textContent = '';
+            opening.textContent = '';
+            context.textContent = '';
             championLine.textContent = '';
             championDescription.textContent = '';
             relatedLine.textContent = '';
@@ -222,13 +221,16 @@
                 ? globalThis.LAW_RESULT_CONTENT.assemble(result, scores, result.traits || {})
                 : null
         );
+        const narrative = result.narrative || (
+            globalThis.LAW_RESULT_NARRATIVE?.build
+                ? globalThis.LAW_RESULT_NARRATIVE.build(result, scores, params.get('x'))
+                : null
+        );
+
         title.textContent = assembled?.title || result.identity.label;
         label.textContent = assembled?.special ? '' : `Core identity: ${result.identity.label}`;
-        reason.textContent = result.identityReason ? result.identityReason : '';
-        anchorExplanation.textContent = assembled?.nounExplanation || '';
-        modifierExplanation.textContent = assembled?.modifier?.explanation || '';
-        phraseExplanation.textContent = assembled?.phrase?.explanation || '';
-        bridge.textContent = assembled?.bridge?.text || '';
+        opening.textContent = narrative?.opening || '';
+        context.textContent = narrative?.context || '';
 
         if (['unusable_response','incoherent_response','outcome_driven_left','outcome_driven_right'].includes(result.identity.id)) {
             championLine.textContent = 'Thinker match withheld.';
@@ -292,9 +294,16 @@
 
 
     function textSummary() {
+        const summaryNarrative = classification?.narrative || (
+            classification?.identity && globalThis.LAW_RESULT_NARRATIVE?.build
+                ? globalThis.LAW_RESULT_NARRATIVE.build(classification, scores, params.get('x'))
+                : null
+        );
         const classificationLines = classification?.identity
             ? [
                 `Jurisprudential fit: ${classification.resultTitle?.title || classification.identity.label}`,
+                summaryNarrative?.opening || null,
+                summaryNarrative?.context || null,
                 classification.champions?.length
                     ? `Closest thinker${classification.champions.length === 1 ? '' : 's'}: ${classification.champions.map((item) => item.name).join(', ')}`
                     : null
