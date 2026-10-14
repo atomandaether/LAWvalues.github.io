@@ -330,6 +330,26 @@
   "structural_reform": {
     "opening": "You think a court can sometimes do more than order the government to stop one unlawful act. When the violation is built into an institution, effective adjudication may require structural reform, continuing supervision, and judicial oversight of the process of bringing the institution into legal compliance.",
     "context": "Your most distinctive judicial-power commitment concerns structural remedies. Traditional litigation imagines a dispute between parties, followed by a judgment that tells the defendant what it owes the plaintiff. Structural-reform litigation treats some constitutional violations as institutional problems: a school system, prison, police department, or public bureaucracy may be organized in a way that continuously produces illegality. In that setting, a one-time party-specific order may leave the underlying violation intact. Your answers therefore allow courts to reshape policies, require institutional plans, monitor compliance, and retain jurisdiction over time. The theory treats adjudication as a means of vindicating public legal values through institutional reform, not merely resolving a private dispute. Its central controversy is institutional competence and democratic legitimacy. A court may be uniquely positioned to insist on compliance with rights, but judges can also become long-term managers of complex systems they do not operate. Your result accepts more of that managerial role when narrower remedies would not actually end the violation."
+  },
+  "nonpos_generic": {
+    "opening": "You think recognized legal sources do not fully exhaust what law can require, but your answers do not reduce that claim to one simple moral override. Legal principle has a role that a purely source-based account cannot completely explain.",
+    "context": "Your result belongs in the broad Non-Positivist family, but the important point is what that does and does not establish. You reject the claim that social sources alone always settle the existence and content of law. That still leaves several very different theories open. Interpretivists say legal principles emerge from the moral reading that best fits and justifies institutional practice. Natural-Law theories connect legality to objective practical reason while often preserving a strong settlement role for positive law. Other one-system theories treat legal rights as genuine moral rights shaped by institutional action. These are not interchangeable ways of saying that morality matters. They disagree about how moral facts enter law, how much source-based settlement survives, and whether hard cases contain preexisting legal answers. Your answers establish the rejection of source-only legality more clearly than they establish one narrower mechanism, so the honest description stays at that broader theoretical level."
+  },
+  "positivist_command": {
+    "opening": "You understand law in strongly sovereign terms: legal rules are fundamentally commands issued by a determinate political authority, backed by the prospect of sanctions and sustained by habitual obedience. That is a much older and harder-edged form of Positivism than the social-rule theories that dominate modern legal philosophy.",
+    "context": "Your Positivism follows the command-theory tradition. The basic idea is that law is best understood as the command of a sovereign to subjects, backed by sanctions and supported by a general habit of obedience. This was enormously influential in nineteenth-century analytic jurisprudence, but most modern Positivists moved away from it. Contemporary theories usually emphasize the practices through which officials identify valid law, the normative structure of legal systems, or the institutional plans through which legal authority is organized. The command model can struggle to explain continuity across changes of government, legal powers that do not look like threats, and constitutional rules that bind officials themselves. Your answers nevertheless take the sovereign-command structure seriously: what makes law distinctive is not moral merit but an institutional relationship of authoritative direction and obedience. That places you inside Legal Positivism while also locating you in a historically important branch that is no longer its mainstream form."
+  },
+  "positivist_pure": {
+    "opening": "You think legal validity is structured through a hierarchy of authorizing norms: one rule is valid because a higher legal rule authorizes its creation, with the system ultimately unified by a presupposed basic norm rather than by morality, sovereign command, or ordinary social habit alone.",
+    "context": "Your Positivism follows the Pure Theory of Law. Instead of explaining law mainly through a sovereign's commands or through the social rule officials accept for identifying law, this theory emphasizes the normative hierarchy of the legal system. A regulation is valid because a statute authorizes it; the statute is valid because the constitution authorizes its creation; and the unity of the system ultimately depends on a presupposed basic norm that lets the chain of legal validity operate as one normative order. The theory deliberately tries to keep legal science 'pure' of moral, political, and sociological explanation when describing validity. That makes your position a distinctive branch of Positivism rather than its ordinary modern form. Social facts still matter because legal acts occur in institutions, but validity is explained through the structure of authorizing norms, not simply through coercion or through a general moral judgment about whether the rule deserves obedience."
+  },
+  "positivist_planning": {
+    "opening": "You understand a legal system as a system of shared social planning. Legal institutions create, revise, and apply plans for coordinating conduct, and the authority of law is best explained through that planning structure rather than through sovereign commands or moral correctness.",
+    "context": "Your Positivism follows Planning Theory. The central idea is that law solves complex social problems by creating shared plans: institutions decide who has authority, which procedures must be followed, and what rules will guide conduct when individuals would otherwise disagree about what to do. A legal system therefore resembles an organized planning structure more than a collection of threats or isolated source rules. This preserves the Positivist claim that legal validity ultimately depends on social facts and institutional practices rather than on moral merit, but it offers a different explanation of those practices. The theory is especially useful for explaining how law coordinates large groups, delegates authority, and creates plans about how future plans will be made. Your result is therefore source-based without being merely conventionalist: the social facts matter because they establish and operate a shared planning system. Moral reasons may explain why a plan is good or why people should follow it, but they are not what makes the plan part of the law."
+  },
+  "legal_constitutionalist": {
+    "opening": "You give courts a strong independent responsibility to enforce constitutional rights and legal limits against political majorities. Judicial review is not merely a backstop for obvious mistakes; constitutional law can require courts to reach their own judgment even when elected institutions strongly disagree.",
+    "context": "Your result reflects a strong legal-constitutional view of judicial review. The central idea is that constitutional rights and structural limits are law, and courts have an independent duty to enforce that law rather than treating reasonable political disagreement as a sufficient reason to defer. That distinguishes your position from Thayerian restraint, which asks courts to uphold legislation unless the constitutional error is clear, and from Political Constitutionalism, which gives representative institutions a stronger claim to final authority under conditions of reasonable rights disagreement. Strong judicial review does not by itself decide how constitutional meaning should be found: an Originalist, Living Constitutionalist, Textualist, or principle-based theorist can each support robust judicial enforcement for different reasons. Your result is therefore primarily about institutional responsibility. Once a legal right or boundary is established, political popularity does not reduce the court's obligation to enforce it."
   }
 });
 
@@ -362,15 +382,16 @@
       has(t,"time.public_meaning",0.55) ||
       has(t,"time.original_intent",0.55);
     if (originalismEstablished) {
-      if (has(t,"source.objective_morality",0.5) && has(t,"source.positive_law_settlement",0.45))
-        return "opm_higher_law";
-      if (has(t,"time.original_intent",0.55)) {
+      if (id === "original_intent_originalist" || has(t,"time.original_intent",0.55)) {
         if (has(t,"time.construction_zone",0.5)) return "oi_construction";
         if (has(t,"time.intent_as_meaning",0.5)) return "oi_semantic";
         return "oi_mainstream";
       }
+      if (id === "original_methods_originalist" || has(t,"time.original_methods",0.5)) return "opm_methods";
+      if (id === "framework_originalist" || has(t,"time.construction_zone",0.5)) return "opm_construction";
+      if (has(t,"source.objective_morality",0.5) && has(t,"source.positive_law_settlement",0.45))
+        return "opm_higher_law";
       if (has(t,"time.original_law",0.5)) return "opm_original_law";
-      if (has(t,"time.original_methods",0.5)) return "opm_methods";
       if (has(t,"time.intratextualism",0.5)) return "opm_intratextual";
       if (has(t,"time.construction_zone",0.5)) return "opm_construction";
       if (has(t,"precedent.correctness_first",0.72) && axis(scores,"prec") <= 28) return "opm_correction";
@@ -402,15 +423,18 @@
     if (id === "interpretivist" || id === "dworkinian") return "interpretivist";
     if (id === "fullerian") return "fullerian";
     if (id === "nonpositivist" || id === "moral_impact_theorist" || id === "radbruchian") {
-      if (has(t,"source.moral_impact",0.5)) return "nonpos_moral_impact";
+      if (id === "moral_impact_theorist" || has(t,"source.moral_impact",0.5)) return "nonpos_moral_impact";
       if (has(t,"source.moral_practice",0.5)) return "nonpos_moral_practice";
-      if (has(t,"source.extreme_injustice",0.5)) return "nonpos_extreme";
-      return "interpretivist";
+      if (id === "radbruchian" || has(t,"source.extreme_injustice",0.5)) return "nonpos_extreme";
+      return "nonpos_generic";
     }
     if (id === "positivist" || id === "inclusive_positivist" || id === "exclusive_positivist") {
+      if (has(t,"source.command_theory",0.5)) return "positivist_command";
+      if (has(t,"source.basic_norm",0.5)) return "positivist_pure";
+      if (has(t,"source.planning_theory",0.5)) return "positivist_planning";
       if (has(t,"source.normative_positivism",0.5)) return "positivist_normative";
-      if (has(t,"source.morality_incorporated",0.5)) return "positivist_inclusive";
-      if (has(t,"source.source_thesis",0.5)) return "positivist_exclusive";
+      if (id === "inclusive_positivist" || has(t,"source.morality_incorporated",0.5)) return "positivist_inclusive";
+      if (id === "exclusive_positivist" || has(t,"source.source_thesis",0.5)) return "positivist_exclusive";
       return "positivist_mainstream";
     }
 
@@ -458,6 +482,7 @@
     }
 
     // Judicial authority.
+    if (id === "legal_constitutionalist") return "legal_constitutionalist";
     if (id === "thayerian") return "thayerian";
     if (id === "political_constitutionalist" || id === "waldronian") {
       if (has(t,"posture.weak_form",0.5)) return "weak_form";
