@@ -383,7 +383,46 @@ globalThis.LAW_DIAGNOSTIC_QUESTIONS = Object.freeze([
     nextOnAgree: [],
     nextOnDisagree: [],
     relatedIdentityIds: ["textualist"],
-    note: "Champion-level Kavanaugh/Barrett versus Scalia/Manning/Easterbrook discriminator; not a public Textualist modifier."
+    note: "Champion-level contextual-Textualism discriminator. D-SEP2 then separates court-centered Kavanaugh/Barrett from institutionally accommodating Kagan when material; no public Textualist modifier is created."
+  },
+  {
+    id: "D-GRD1",
+    family: "majoritarian",
+    priority: "medium",
+    unlock: "Strong dialogic / weak-form evidence is already present and a Gardbaum-style institutional model could materially change the champion.",
+    prompt: "A court's rights ruling should have immediate legal force, but the constitutional system may deliberately give the legislature a prescribed way to reconsider the rights issue and enact a contrary rule without using the constitutional-amendment process. Courts should judge rights independently, yet neither branch must possess an entrenched monopoly on the final word.",
+    agreeTraits: ["posture.structured_legislative_response", "posture.weak_form"],
+    disagreeTraits: [],
+    nextOnAgree: [],
+    nextOnDisagree: [],
+    relatedIdentityIds: ["political_constitutionalist", "political_process_jurist", "minimalist", "mixed_jurisprudence"],
+    note: "Gardbaum champion discriminator. It confirms a principled weak-form institutional design without creating a Weak-Form Constitutionalist public noun."
+  },
+  {
+    id: "D-MON1",
+    family: "remedies",
+    priority: "medium",
+    unlock: "Core prophylactic-remedy answers are strong and Monaghan-style constitutional common law could materially change the champion.",
+    prompt: "Courts may sometimes create implementing rules that go beyond what the Constitution itself minimally requires in order to make a constitutional guarantee workable. Those judicial rules can be genuine law while remaining conceptually distinct from the underlying constitutional command and therefore potentially subject to different rules of revision or displacement.",
+    agreeTraits: ["remedies.constitutional_common_law", "remedies.prophylactic"],
+    disagreeTraits: [],
+    nextOnAgree: [],
+    nextOnDisagree: [],
+    relatedIdentityIds: ["positivist", "legal_process_theorist", "common_law_constitutionalist", "mixed_jurisprudence"],
+    note: "Henry Monaghan champion discriminator: constitutional common law is narrower than merely approving useful prophylactic remedies."
+  },
+  {
+    id: "D-BRAY1",
+    family: "remedies",
+    priority: "medium",
+    unlock: "Party-specific remedies are extremely salient and traditional equitable authority could materially change the champion.",
+    prompt: "Even when broader relief would solve a legal problem more efficiently, a court's equitable remedy should ordinarily remain within historically grounded forms of equitable authority and protect the parties before the court rather than become a general power to restructure legal relations for everyone affected.",
+    agreeTraits: ["remedies.traditional_equity", "remedies.party_specific"],
+    disagreeTraits: [],
+    nextOnAgree: [],
+    nextOnDisagree: [],
+    relatedIdentityIds: ["minimalist", "formalist", "textualist", "originalist", "public_meaning_originalist", "common_law_constitutionalist"],
+    note: "Samuel Bray champion discriminator. These are only likely host identities for routing; this remains a champion-level theory of remedial authority and does not create a Remedies noun."
   },
   {
     id: "D-TXT2",

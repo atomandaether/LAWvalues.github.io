@@ -704,9 +704,29 @@ globalThis.LAW_PROFILES = Object.freeze([
     axisSignature: { cons: { target: 90, weight: 1 } },
     signatureTraits: ["constraint.textual", "constraint.contextual_textualism", "constraint.best_reading_context", "separation.independent_judicial_interpretation"],
     requiredTraits: [{ all: ["constraint.best_reading_context"], min: 0.5 }],
-    antiTraits: ["constraint.intent"],
-    description: "Modern best-reading Textualism: choose the better linguistic reading using ordinary usage and whole-text context rather than atomistic parsing or purposive repair.",
+    antiTraits: ["constraint.intent", "separation.interpretive_accommodation"],
+    description: "Modern best-reading Textualism: choose the better linguistic reading using ordinary usage and whole-text context, paired with comparatively court-centered responsibility for resolving legal ambiguity.",
     related: ["Brett Kavanaugh", "Amy Coney Barrett"]
+  },
+  {
+    id: "kagan",
+    name: "Elena Kagan",
+    tier: "specialist",
+    identityIds: ["textualist"],
+    axisSignature: {
+      cons: { target: 82, weight: 0.8 },
+      prec: { target: 88, weight: 0.6 },
+      separ: { target: 34, weight: 0.45 }
+    },
+    signatureTraits: ["constraint.textual", "constraint.contextual_textualism", "constraint.best_reading_context", "precedent.settlement", "separation.interpretive_accommodation"],
+    requiredTraits: [
+      { all: ["constraint.best_reading_context"], min: 0.5 },
+      { all: ["separation.interpretive_accommodation"], min: 0.5 }
+    ],
+    antiTraits: ["separation.independent_judicial_interpretation", "separation.strong_nondelegation"],
+    specificityBonus: 0.025,
+    description: "Institutionalist contextual Textualism: text and whole-statute context remain central while precedent, delegated institutional responsibility, expertise, and administrability retain substantial weight.",
+    related: ["Henry Hart / Albert Sacks", "Stephen Breyer", "Robert Katzmann"]
   },
   {
     id: "ekins_intentionalism",
@@ -842,14 +862,20 @@ globalThis.LAW_PROFILES = Object.freeze([
   {
     id: "gardbaum",
     name: "Stephen Gardbaum",
-    tier: "lineage",
-    selectable: false,
-    identityIds: ["weak_form_constitutionalist"],
-    axisSignature: { post: { target: 60, weight: 0.35 } },
-    signatureTraits: ["posture.dialogic", "posture.weak_form"],
-    requiredTraits: [{ all: ["posture.dialogic"], min: 0.5 }],
+    tier: "specialist",
+    identityIds: ["mixed_jurisprudence"],
+    crossCuttingIdentityIds: ["political_constitutionalist", "political_process_jurist", "minimalist"],
+    crossCuttingRequirements: {
+      political_constitutionalist: [{ all: ["posture.structured_legislative_response"], min: 0.5 }],
+      political_process_jurist: [{ all: ["posture.structured_legislative_response"], min: 0.5 }],
+      minimalist: [{ all: ["posture.structured_legislative_response"], min: 0.5 }]
+    },
+    axisSignature: { post: { target: 58, weight: 0.45 } },
+    signatureTraits: ["posture.dialogic", "posture.weak_form", "posture.structured_legislative_response"],
+    requiredTraits: [{ all: ["posture.structured_legislative_response"], min: 0.5 }],
     antiTraits: ["posture.judicial_supremacy", "posture.popular_authority"],
-    description: "Weak-form review / New Commonwealth model: courts independently adjudicate rights while ordinary democratic institutions retain a structured capacity to respond without constitutional amendment. Retained as institutional-design lineage rather than a public jurisprudential endpoint.",
+    specificityBonus: 0.03,
+    description: "Weak-form / New Commonwealth constitutionalism at champion level: courts independently adjudicate rights while legislatures retain a structured, legally authorized capacity to respond without constitutional amendment.",
     related: ["Mark Tushnet", "Rosalind Dixon", "Peter Hogg / Allison Bushell"]
   },
   {
@@ -1003,15 +1029,16 @@ globalThis.LAW_PROFILES = Object.freeze([
   {
     id: "bray",
     name: "Samuel Bray",
-    tier: "lineage",
-    selectable: false,
+    tier: "specialist",
+    globalSpecialist: true,
     identityIds: [],
     axisSignature: { remed: { target: 97, weight: 1 } },
-    signatureTraits: ["remedies.party_specific", "remedies.incremental"],
-    requiredTraits: [],
-    antiTraits: ["remedies.structural"],
-    description: "Lineage for plaintiff-specific, traditional-equity instincts and resistance to remedies broader than the case and parties require; not eligible for the single champion slot.",
-    related: ["Mila Sohoni", "Amanda Frost"]
+    minAxisSalience: { remed: 0.70 },
+    signatureTraits: ["remedies.party_specific", "remedies.incremental", "remedies.traditional_equity"],
+    requiredTraits: [{ all: ["remedies.traditional_equity"], min: 0.5 }],
+    antiTraits: ["remedies.structural", "remedies.universal"],
+    description: "Traditional-equity remedialism: judicial remedial authority is bounded by historically grounded equitable forms and ordinarily remains party-specific rather than expanding to whatever systemic relief seems most effective.",
+    related: ["John Harrison", "Mila Sohoni", "Amanda Frost"]
   },
   {
     id: "sohoni_frost",
@@ -1042,15 +1069,21 @@ globalThis.LAW_PROFILES = Object.freeze([
   {
     id: "monaghan",
     name: "Henry Monaghan",
-    tier: "lineage",
-    selectable: false,
-    identityIds: [],
+    tier: "specialist",
+    identityIds: ["mixed_jurisprudence"],
+    crossCuttingIdentityIds: ["positivist", "legal_process_theorist", "common_law_constitutionalist"],
+    crossCuttingRequirements: {
+      positivist: [{ all: ["remedies.constitutional_common_law"], min: 0.5 }],
+      legal_process_theorist: [{ all: ["remedies.constitutional_common_law"], min: 0.5 }],
+      common_law_constitutionalist: [{ all: ["remedies.constitutional_common_law"], min: 0.5 }]
+    },
     axisSignature: {},
-    signatureTraits: ["remedies.prophylactic"],
-    requiredTraits: [],
+    signatureTraits: ["remedies.prophylactic", "remedies.constitutional_common_law"],
+    requiredTraits: [{ all: ["remedies.constitutional_common_law"], min: 0.5 }],
     antiTraits: [],
-    description: "Constitutional-common-law lineage for judicially created prophylactic doctrine inspired by constitutional norms but not identical to the constitutional minimum.",
-    related: ["David Strauss"]
+    specificityBonus: 0.03,
+    description: "Constitutional-common-law specialist: courts may construct implementing doctrines broader than the constitutional minimum while treating those doctrines as legally distinct from the underlying constitutional command.",
+    related: ["Richard Fallon", "David Strauss"]
   },
   {
     id: "levinson",

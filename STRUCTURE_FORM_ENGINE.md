@@ -56,18 +56,20 @@ Remedies remain a cross-cutting characteristic shown through the title phrase an
 
 ### Selectable
 
-7. **Owen Fiss** — the only current cross-noun remedies exception. He can enter the global champion competition only if systemic Remedies are extremely salient, structural reform and continuing supervision are both strong, and the judicial-role profile is strongly counter-majoritarian. Fiss may displace a noun-compatible champion only if no strong compatible champion exists or Remedies are materially more distinctive than every other axis.
+7. **Owen Fiss** — cross-noun systemic-remedies exception. He can enter the global champion competition only if systemic Remedies are extremely salient, structural reform and continuing supervision are both strong, and the judicial-role profile is strongly counter-majoritarian.
 
 8. **P. N. Bhagwati / V. R. Krishna Iyer** — retained because social-action/PIL judging is not merely a remedies preference: it combines procedural-access innovation, systemic relief, strong judicial role, and an open social/purposive method. D-PIL1 remains required.
+
+9. **Samuel Bray** — the opposite-pole cross-noun exception. Extremely salient party-specific Remedies may unlock **D-BRAY1**; only affirmative traditional-equity reasoning allows Bray to displace the ordinary noun-compatible champion. Narrow remedies alone are insufficient.
+
+10. **Henry Monaghan** — champion-level constitutional-common-law specialist. Strong prophylactic-remedy evidence may unlock **D-MON1**; only agreement that implementing doctrine can exceed yet remain legally distinct from the constitutional minimum makes Monaghan eligible beneath compatible Positivist, Legal Process, Common-Law, or Mixed results.
 
 ### Lineage / explanation only
 
 The following never take the user's single champion slot:
 
 - **Abram Chayes** — public-law-litigation lineage closely overlapping Fiss.
-- **Samuel Bray** — plaintiff-specific / traditional-equity lineage.
 - **Mila Sohoni / Amanda Frost** — nationwide / universal-relief lineage.
-- **Henry Monaghan** — constitutional-common-law / prophylactic-doctrine lineage.
 - **Daryl Levinson** — remedial equilibration, whose defining feedback mechanism is not directly measured.
 
 Their ideas remain useful in result explanations and further-reading material.
@@ -78,7 +80,7 @@ Every valid classified result receives **exactly one champion unit**.
 
 The ordinary process remains noun-conditioned: primary-compatible champions receive the strongest advantage, cross-cutting-compatible champions remain eligible, and incompatible figures are normally excluded. Specific affirmative evidence resolves ties toward the narrower well-supported unit.
 
-Fiss is the only current cross-noun exception and is subject to the extreme whole-profile gate above.
+Fiss and Bray are the two global cross-noun remedies exceptions, each subject to an extreme whole-profile gate. Monaghan remains noun-compatible/cross-cutting rather than globally eligible.
 
 Close matches reduce confidence but never produce co-champions. If an otherwise valid result has no compatible selectable profile at all, the engine uses the best globally fitting eligible profile rather than leaving the champion slot empty. Response-quality/incoherence overrides still withhold thinker matching.
 
@@ -94,9 +96,11 @@ The audit suite separately requires these endpoints to remain reachable from lit
 - Aharon Barak → Purposivist Proportionalist
 - Owen Fiss → extreme structural-reform whole-profile champion
 - Bhagwati / Iyer → Sociological Jurist / PIL-social-action champion
+- Samuel Bray → extreme traditional-equity / party-specific whole-profile champion
+- Henry Monaghan → constitutional-common-law specialist under an existing noun
 
 It also verifies:
-- Bray, Sohoni/Frost, Chayes, Monaghan, and Levinson are nonselectable;
+- Bray and Monaghan are selectable only behind their dedicated champion-level gates; Sohoni/Frost, Chayes, and Levinson remain nonselectable;
 - Fiss does not displace an otherwise strong Barak match merely because Remedies become structural;
 - exact-zero axis values remain extreme title evidence rather than being silently converted to neutral 50;
 - every valid fixture returns exactly one champion unit;
