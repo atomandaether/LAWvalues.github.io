@@ -618,3 +618,191 @@ div.axis img {
         font-size: 9pt;
     }
 }
+
+
+/* Champion-neighborhood network on the result screen. */
+.champion-network-panel {
+    width: 70%;
+    margin: 18pt auto 26pt;
+    padding: 12pt;
+    border-radius: 8pt;
+    background: rgba(254, 252, 249, 0.45);
+    text-align: center;
+}
+
+.champion-network-panel h2 {
+    margin-top: 2pt;
+    margin-bottom: 5pt;
+    text-align: center;
+}
+
+.champion-network-intro {
+    margin: 0 auto 8pt;
+    max-width: 650pt;
+    font-size: 13pt;
+    line-height: 1.35;
+    opacity: 0.82;
+}
+
+.champion-network-legend {
+    max-width: 760pt;
+    margin: 0 auto 7pt;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 4pt 10pt;
+    font-size: 10pt;
+    line-height: 1.2;
+}
+
+.champion-network-legend-item {
+    display: inline-flex;
+    align-items: center;
+    gap: 4pt;
+}
+
+.champion-network-swatch {
+    width: 8pt;
+    height: 8pt;
+    flex: 0 0 8pt;
+    border-radius: 50%;
+    border: 1px solid rgba(74, 60, 29, 0.35);
+}
+
+.champion-network-frame {
+    width: 100%;
+    max-width: 900px;
+    margin: 0 auto;
+    overflow: hidden;
+    border: 1px solid rgba(107, 91, 66, 0.35);
+    border-radius: 8pt;
+    background: rgba(254, 252, 249, 0.62);
+}
+
+.champion-network-svg {
+    display: block;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 900 / 650;
+    user-select: none;
+    -webkit-user-select: none;
+}
+
+.champion-network-edge {
+    stroke: #8A8174;
+    stroke-width: 1.1;
+    stroke-opacity: 0.18;
+    vector-effect: non-scaling-stroke;
+    transition: stroke-opacity 0.12s ease, stroke-width 0.12s ease;
+}
+
+.champion-network-edge.mutual {
+    stroke-opacity: 0.34;
+    stroke-width: 1.45;
+}
+
+.champion-network-edge.selected {
+    stroke: #4A3C1D;
+    stroke-opacity: 0.72;
+    stroke-width: 2.2;
+}
+
+.champion-network-node {
+    stroke: #FEFCF9;
+    stroke-width: 2;
+    vector-effect: non-scaling-stroke;
+    transition: stroke 0.12s ease, stroke-width 0.12s ease, filter 0.12s ease;
+}
+
+.champion-network-node.user-champion {
+    stroke: #4A3C1D;
+    stroke-width: 3.5;
+}
+
+.champion-network-node.selected {
+    stroke: #211A0D;
+    stroke-width: 4.5;
+    filter: drop-shadow(0 0 2px rgba(33, 26, 13, 0.48));
+}
+
+.champion-network-hit {
+    fill: transparent;
+    stroke: none;
+    cursor: pointer;
+    outline: none;
+}
+
+.champion-network-hit:focus-visible {
+    fill: rgba(74, 60, 29, 0.08);
+    stroke: #4A3C1D;
+    stroke-width: 2;
+}
+
+.champion-network-selection {
+    min-height: 20pt;
+    margin: 7pt auto 0;
+    font-size: 12pt;
+    line-height: 1.25;
+    font-weight: 400;
+}
+
+.champion-network-selection.has-selection {
+    font-weight: 700;
+}
+
+@media (max-width: 900px) {
+    .champion-network-panel {
+        width: 100%;
+        padding: 9pt;
+    }
+
+    .champion-network-intro {
+        font-size: 12pt;
+    }
+
+    .champion-network-legend {
+        gap: 4pt 8pt;
+        font-size: 9.5pt;
+    }
+}
+
+@media (max-width: 540px) {
+    .champion-network-panel {
+        margin-top: 14pt;
+        padding: 7pt;
+    }
+
+    .champion-network-intro {
+        margin-bottom: 6pt;
+        font-size: 11pt;
+    }
+
+    .champion-network-legend {
+        margin-bottom: 5pt;
+        gap: 3pt 7pt;
+        font-size: 8.5pt;
+    }
+
+    .champion-network-swatch {
+        width: 7pt;
+        height: 7pt;
+        flex-basis: 7pt;
+    }
+
+    .champion-network-frame {
+        border-radius: 6pt;
+    }
+
+    .champion-network-selection {
+        min-height: 18pt;
+        margin-top: 5pt;
+        font-size: 11pt;
+    }
+}
+
+@media print {
+    .champion-network-panel {
+        width: 100%;
+        break-inside: avoid;
+    }
+}
