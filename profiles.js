@@ -789,9 +789,14 @@ globalThis.LAW_PROFILES = Object.freeze([
         { all: ["constraint.best_reading_context", "separation.independent_judicial_interpretation"], min: 0.5 }
       ]
     },
-    axisSignature: { cons: { target: 90, weight: 1 } },
+    axisSignature: {
+      cons: { target: 90, weight: 1 },
+      time: { target: 82, weight: 0.35 },
+      separ: { target: 78, weight: 0.3 }
+    },
     signatureTraits: ["constraint.textual", "constraint.contextual_textualism", "constraint.best_reading_context", "separation.independent_judicial_interpretation"],
     requiredTraits: [{ all: ["constraint.best_reading_context"], min: 0.5 }],
+    specificityBonus: 0.035,
     antiTraits: ["constraint.intent", "separation.interpretive_accommodation"],
     description: "Modern best-reading Textualism: choose the better linguistic reading using ordinary usage and whole-text context, paired with comparatively court-centered responsibility for resolving legal ambiguity.",
     related: ["Amy Coney Barrett"]
