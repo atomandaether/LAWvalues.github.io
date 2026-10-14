@@ -23,7 +23,7 @@ It may attach to either public noun:
 
 A second substantive Originalist hybrid is **Higher-law**. It is reserved for natural-law-grounded Originalism: objective morality plus the settlement authority of positive constitutional law. It is not triggered by generic non-positivism. The locked Pojanowski / Walsh / Alicea / Strang unit is the canonical **Higher-law Public-Meaning Originalist** endpoint.
 
-The OI+construction cell is principally represented by Keith Whittington.  The OPM+construction cell contains several champion units.
+The OI+construction cell is principally represented by Keith Whittington. The OPM+construction cell contains several champion units. Principle/application originalism remains measured but is no longer a separate selectable champion because that distinction is shared across several New Originalist theories.
 
 When no substantive modifier applies, generic fit language is used:
 
@@ -37,7 +37,7 @@ Current fit gates are theory-derived rather than population-calibrated: Unmistak
 
 ### Original Intent
 1. **Robert Bork / Raoul Berger** — first-generation intent, restraint, little construction.
-2. **Larry Alexander / Richard Kay / Saikrishna Prakash** — strong semantic intentionalism.
+2. **Larry Alexander / Richard Kay** — strong semantic intentionalism.
 3. **Keith Whittington** — Original Intent plus legitimate construction.
 
 ### New Public Meaning
@@ -46,13 +46,15 @@ Current fit gates are theory-derived rather than population-calibrated: Unmistak
 6. **Jack Balkin** — fixed framework plus comparatively extensive later construction.
 
 ### Other Public Meaning
-7. **Antonin Scalia / John Manning** — mainline text/rules/anti-discretion OPM.
+7. **Antonin Scalia** — mainline text/rules/anti-discretion OPM.
 8. **John McGinnis / Michael Rappaport** — Original Methods / historically accepted legal interpretive rules.
-9. **Michael McConnell / Christopher Green** — principle/application originalism.
+9. **William Baude / Stephen Sachs** — Original-Law Originalism.
 10. **Akhil Reed Amar** — holistic/intratextual OPM.
 11. **Clarence Thomas / Michael Stokes Paulsen** — correction-first/restorationist OPM.
 12. **Amy Coney Barrett** — precedent-accommodating OPM.
-13. **Pojanowski / Walsh / Alicea / Strang** — natural-law-grounded originalism.
+13. **Jeffrey Pojanowski / Kevin Walsh** — natural-law-grounded originalism.
+
+Michael McConnell / Christopher Green remain principle/application lineage rather than a separate champion endpoint.
 
 Gary Lawson is not an Originalist champion unit in this taxonomy; fiduciary constitutionalism is handled outside the Originalism engine.
 
@@ -64,6 +66,7 @@ The global quiz still caps adaptive questions at seven per respondent.  Original
 - **D-ORI3** — construction; drives the **New** modifier and Whittington/New-OPM routing.
 - **D-ORI4** — only for unresolved OI cases; separates modern semantic intentionalism from the Bork/Berger restraint package.
 - **D-ORI2** — only on the OPM side when useful; Original Methods evidence for McGinnis/Rappaport.
+- **D-ORI6** — Original-Law champion discriminator for Baude/Sachs.
 - **D-ORI5** — lower-priority OPM specialist question for Amar-style intratextualism.
 
 The 88-item core already supplies most remaining champion evidence: textual constraint, rules and anti-discretion, principle versus expected applications, early practice, precedent correction versus settlement, majoritarianism, rights enforcement, separation formalism, and natural-law/source commitments.
