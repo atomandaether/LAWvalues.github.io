@@ -400,7 +400,15 @@
         // Positivism, or another strong normative judicial philosophy.
         score=Math.min(score,0.96-0.35*other);
       }else{
-        if(singleProposition.has(id))score=Math.min(score,0.80+0.13*basis);
+        if(id==="common_good_constitutionalist"){
+          // D-CGC1 is a direct theory diagnostic offered only inside an already
+          // compatible classical/nonpositive profile. Do not let the generic
+          // single-proposition cap force Vermeule-shaped respondents back into
+          // the broader Natural-Law noun.
+          score=Math.min(score,0.94+0.04*basis);
+        }else if(singleProposition.has(id)){
+          score=Math.min(score,0.80+0.13*basis);
+        }
         score-=Math.max(0,other-basis-0.08)*(focus.length?0.39:0.17);
       }
       output.push({...candidate,score:clamp01(score),basis});
