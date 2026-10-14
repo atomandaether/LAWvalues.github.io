@@ -14,6 +14,11 @@ assert.ok(engine, "LAW_RESULT_NARRATIVE did not load");
 
 const neutralScores = { sorc:50, cons:50, time:50, prec:50, remed:50, post:50, separ:50, form:50 };
 
+for (const [id, opening] of Object.entries(engine.OPENINGS || {})) {
+  assert.ok(opening?.trim(), id + " has no full-profile opening");
+  assert.ok(engine.wordCount(opening) <= 70, id + " full-profile opening exceeds 70 words");
+}
+
 for (const [id, route] of Object.entries(engine.ROUTES)) {
   assert.ok(route.opening?.trim(), id + " has no opening");
   assert.ok(route.context?.trim(), id + " has no context");
@@ -26,6 +31,8 @@ for (const identity of globalThis.LAW_RESULT_IDENTITIES || []) {
   const result = engine.build({ identity, traits:{} }, neutralScores);
   assert.ok(result?.opening?.trim(), identity.id + " does not resolve to an opening");
   assert.ok(result?.context?.trim(), identity.id + " does not resolve to a context");
+  assert.ok(engine.wordCount(result.opening) <= 70, identity.id + " generated opening exceeds 70 words");
+  assert.ok(engine.wordCount(result.context) <= 230, identity.id + " generated context exceeds 230 words");
 }
 
 const cases = [
