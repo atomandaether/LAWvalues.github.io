@@ -26,6 +26,45 @@ globalThis.LAW_PROFILES = Object.freeze([
     related: ["Jules Coleman", "Wil Waluchow", "Joseph Raz", "Hans Kelsen"]
   },
   {
+    id: "kelsen",
+    name: "Hans Kelsen",
+    tier: "specialist",
+    identityIds: ["positivist"],
+    axisSignature: { sorc: { target: 98, weight: 1 } },
+    signatureTraits: ["source.normative_hierarchy", "source.basic_norm"],
+    requiredTraits: [{ all: ["source.basic_norm"], min: 0.5 }],
+    antiTraits: ["source.objective_morality", "source.planning_theory", "source.command_theory"],
+    specificityBonus: 0.03,
+    description: "Pure Theory positivism: legal validity is structured through a hierarchy of authorizing norms whose unity ultimately rests on a presupposed basic norm, rather than on moral correctness or a sovereign command.",
+    related: ["H. L. A. Hart", "Joseph Raz"]
+  },
+  {
+    id: "austin",
+    name: "John Austin",
+    tier: "specialist",
+    identityIds: ["positivist"],
+    axisSignature: { sorc: { target: 99, weight: 1 } },
+    signatureTraits: ["source.command_theory", "source.sovereign"],
+    requiredTraits: [{ all: ["source.command_theory"], min: 0.5 }],
+    antiTraits: ["source.objective_morality", "source.basic_norm", "source.planning_theory"],
+    specificityBonus: 0.03,
+    description: "Command-theory positivism: law is fundamentally the command of a determinate sovereign, backed by the prospect of sanction and sustained habits of obedience.",
+    related: ["Jeremy Bentham", "H. L. A. Hart"]
+  },
+  {
+    id: "shapiro",
+    name: "Scott Shapiro",
+    tier: "specialist",
+    identityIds: ["positivist"],
+    axisSignature: { sorc: { target: 96, weight: 0.9 } },
+    signatureTraits: ["source.planning_theory", "source.source_thesis"],
+    requiredTraits: [{ all: ["source.planning_theory"], min: 0.5 }],
+    antiTraits: ["source.morality_incorporated", "source.basic_norm", "source.command_theory"],
+    specificityBonus: 0.03,
+    description: "Planning Theory positivism: legal institutions are systems of shared social planning, and legal authority is explained through the creation, adoption, and operation of plans rather than Hartian rules or sovereign commands.",
+    related: ["H. L. A. Hart", "Joseph Raz"]
+  },
+  {
     id: "coleman_waluchow_kramer",
     name: "Jules Coleman / Matthew Kramer",
     tier: "specialist",
@@ -39,7 +78,7 @@ globalThis.LAW_PROFILES = Object.freeze([
   },
   {
     id: "raz_shapiro_marmor",
-    name: "Joseph Raz / Scott Shapiro / Andrei Marmor",
+    name: "Joseph Raz",
     tier: "specialist",
     identityIds: ["positivist"],
     axisSignature: { sorc: { target: 97, weight: 1 } },
@@ -47,11 +86,11 @@ globalThis.LAW_PROFILES = Object.freeze([
     requiredTraits: [{ all: ["source.source_thesis"], min: 0.5 }],
     antiTraits: ["source.morality_incorporated", "source.objective_morality"],
     description: "Exclusive Positivism: legal validity must remain identifiable from social/source facts without making moral merits themselves the test of what law exists.",
-    related: ["Joseph Raz", "Scott Shapiro", "Andrei Marmor", "Leslie Green"]
+    related: ["Andrei Marmor", "Leslie Green", "Scott Shapiro"]
   },
   {
     id: "campbell_waldron_schauer",
-    name: "Tom Campbell / Jeremy Waldron / Frederick Schauer",
+    name: "Tom Campbell",
     tier: "specialist",
     identityIds: ["positivist"],
     axisSignature: { sorc: { target: 94, weight: 1 } },
@@ -59,11 +98,11 @@ globalThis.LAW_PROFILES = Object.freeze([
     requiredTraits: [{ all: ["source.normative_positivism"], min: 0.5 }],
     antiTraits: ["source.objective_morality"],
     description: "Normative/Ethical Positivism: source-based legality is not just a conceptual fact but a desirable institutional discipline that limits contested merits-based judicial lawmaking.",
-    related: ["Tom Campbell", "Jeremy Waldron", "Frederick Schauer"]
+    related: ["Jeremy Waldron", "Frederick Schauer"]
   },
   {
     id: "dworkin_stavropoulos",
-    name: "Ronald Dworkin / Nicos Stavropoulos",
+    name: "Ronald Dworkin",
     tier: "main",
     identityIds: ["interpretivist"],
     crossCuttingIdentityIds: ["legal_constitutionalist"],
@@ -75,7 +114,7 @@ globalThis.LAW_PROFILES = Object.freeze([
     requiredTraits: [{ any: ["source.principles_are_law", "source.fit_and_justification"], min: 0.45 }],
     antiTraits: ["source.law_runs_out", "method.subjective_moral_override"],
     description: "Central legal Interpretivism: institutional practice bears on legal rights through the principles that best fit and justify that practice.",
-    related: ["Ronald Dworkin", "Nicos Stavropoulos", "T.R.S. Allan"]
+    related: ["Nicos Stavropoulos", "T.R.S. Allan"]
   },
   {
     id: "greenberg",
@@ -103,7 +142,7 @@ globalThis.LAW_PROFILES = Object.freeze([
   },
   {
     id: "finnis_murphy_george",
-    name: "John Finnis / Mark Murphy / Robert P. George",
+    name: "John Finnis",
     tier: "main",
     identityIds: ["natural_lawyer"],
     axisSignature: { sorc: { target: 6, weight: 1 } },
@@ -114,7 +153,20 @@ globalThis.LAW_PROFILES = Object.freeze([
     ],
     antiTraits: ["source.principles_are_law", "method.subjective_moral_override"],
     description: "Central modern Natural Law: objective practical morality matters to law, while positive law retains an important settlement, coordination, and institutional-authority function.",
-    related: ["Thomas Aquinas", "William Blackstone", "Jonathan Crowe"]
+    related: ["Mark Murphy", "Robert P. George", "Thomas Aquinas", "William Blackstone"]
+  },
+  {
+    id: "moore_strong_natural_law",
+    name: "Michael S. Moore",
+    tier: "specialist",
+    identityIds: ["natural_lawyer"],
+    axisSignature: { sorc: { target: 4, weight: 0.9 } },
+    signatureTraits: ["source.objective_morality", "source.strong_natural_law"],
+    requiredTraits: [{ all: ["source.strong_natural_law"], min: 0.5 }],
+    antiTraits: ["source.positive_law_settlement"],
+    specificityBonus: 0.03,
+    description: "Strong Natural Law: at least some sufficiently serious normative defects can defeat legal validity itself, rather than merely making an otherwise valid law morally defective.",
+    related: ["Jonathan Crowe", "Robert Alexy", "John Finnis"]
   },
   {
     id: "fuller",
@@ -178,7 +230,7 @@ globalThis.LAW_PROFILES = Object.freeze([
   },
   {
     id: "alexander_kay_prakash",
-    name: "Larry Alexander / Richard Kay / Saikrishna Prakash",
+    name: "Larry Alexander / Richard Kay",
     tier: "specialist",
     identityIds: ["original_intent_originalist", "originalist"],
     axisSignature: { time: { target: 94, weight: 1 } },
@@ -186,7 +238,7 @@ globalThis.LAW_PROFILES = Object.freeze([
     requiredTraits: [{ all: ["time.intent_as_meaning"], min: 0.5 }],
     antiTraits: ["time.public_meaning"],
     description: "Modern strong intentionalism: intended communication is the semantic object of interpretation, not merely a device for judicial restraint.",
-    related: ["Larry Alexander", "Richard Kay", "Saikrishna Prakash"]
+    related: ["Saikrishna Prakash"]
   },
   {
     id: "whittington",
@@ -248,7 +300,7 @@ globalThis.LAW_PROFILES = Object.freeze([
   },
   {
     id: "scalia_manning",
-    name: "Antonin Scalia / John Manning",
+    name: "Antonin Scalia",
     tier: "main",
     identityIds: ["public_meaning_originalist", "originalist"],
     crossCuttingIdentityIds: ["formalist"],
@@ -265,7 +317,7 @@ globalThis.LAW_PROFILES = Object.freeze([
     requiredTraits: [],
     antiTraits: ["constraint.purpose", "time.construction_zone"],
     description: "Mainline text-and-rule public-meaning originalism: text, legal context, rules, and anti-discretion do most of the work.",
-    related: ["Antonin Scalia", "John Manning"]
+    related: ["John Manning"]
   },
   {
     id: "mcginnis_rappaport",
@@ -283,16 +335,30 @@ globalThis.LAW_PROFILES = Object.freeze([
     related: ["Caleb Nelson", "Antonin Scalia", "John Manning"]
   },
   {
+    id: "baude_sachs",
+    name: "William Baude / Stephen Sachs",
+    tier: "specialist",
+    identityIds: ["public_meaning_originalist", "originalist"],
+    axisSignature: { time: { target: 91, weight: 0.9 }, cons: { target: 76, weight: 0.35 } },
+    signatureTraits: ["time.original_law", "time.fixation"],
+    requiredTraits: [{ all: ["time.original_law"], min: 0.5 }],
+    antiTraits: ["time.original_intent"],
+    specificityBonus: 0.03,
+    description: "Original-Law Originalism: constitutional interpretation should recover and apply the law that the Constitution originally made, including background legal rules and lawful mechanisms of change, rather than reducing originalism to ordinary semantic meaning alone.",
+    related: ["William Baude", "Stephen Sachs", "John McGinnis", "Michael Rappaport"]
+  },
+  {
     id: "mcconnell_green",
     name: "Michael McConnell / Christopher Green",
-    tier: "specialist",
+    tier: "lineage",
+    selectable: false,
     identityIds: ["public_meaning_originalist", "originalist"],
     axisSignature: { time: { target: 88, weight: 1 } },
     signatureTraits: ["time.public_meaning", "time.principle_originalism"],
-    requiredTraits: [{ all: ["time.principle_originalism"], min: 0.5 }],
-    antiTraits: ["time.expected_applications", "time.common_law_development"],
-    description: "Principle/application originalism: fixed historical principles can govern new circumstances even when the adopters expected different concrete applications.",
-    related: ["Michael McConnell", "Christopher Green"]
+    requiredTraits: [],
+    antiTraits: ["time.expected_applications"],
+    description: "Principle/application originalism remains useful lineage, but the measured distinction is shared broadly across New Originalist theories and does not clear the champion anti-redundancy threshold.",
+    related: ["Lawrence Solum", "Jack Balkin"]
   },
   {
     id: "amar",
@@ -341,7 +407,7 @@ globalThis.LAW_PROFILES = Object.freeze([
   },
   {
     id: "natural_law_originalists",
-    name: "Pojanowski / Walsh / Alicea / Strang",
+    name: "Jeffrey Pojanowski / Kevin Walsh",
     tier: "specialist",
     identityIds: ["public_meaning_originalist", "originalist"],
     axisSignature: {
@@ -352,7 +418,7 @@ globalThis.LAW_PROFILES = Object.freeze([
     requiredTraits: [{ all: ["source.objective_morality"], min: 0.35 }],
     antiTraits: ["time.living_content"],
     description: "Natural-law-grounded originalism: classical natural law explains why promulgated positive constitutional law has authoritative settlement force.",
-    related: ["Jeffrey Pojanowski", "Kevin Walsh", "J. Joel Alicea", "Lee Strang"]
+    related: ["J. Joel Alicea", "Lee Strang"]
   },
   {
     id: "owen_dixon",
@@ -661,6 +727,19 @@ globalThis.LAW_PROFILES = Object.freeze([
     related: ["Eugen Ehrlich", "Benjamin Cardozo"]
   },
   {
+    id: "ehrlich",
+    name: "Eugen Ehrlich",
+    tier: "specialist",
+    identityIds: ["sociological_jurist"],
+    axisSignature: { cons: { target: 32, weight: 0.35 }, sorc: { target: 48, weight: 0.25 } },
+    signatureTraits: ["method.living_law", "method.law_in_action", "source.social_norms"],
+    requiredTraits: [{ all: ["method.living_law"], min: 0.5 }],
+    antiTraits: ["source.positive_sources"],
+    specificityBonus: 0.03,
+    description: "Living-law Sociological Jurisprudence: the operative norms of associations and social life can constitute the most important law in practice even when they are not produced by legislatures or courts.",
+    related: ["Roscoe Pound", "François Gény"]
+  },
+  {
     id: "geny",
     name: "François Gény",
     tier: "specialist",
@@ -682,7 +761,7 @@ globalThis.LAW_PROFILES = Object.freeze([
   },
   {
     id: "scalia_manning_easterbrook",
-    name: "Antonin Scalia / John Manning / Frank Easterbrook",
+    name: "John Manning",
     tier: "main",
     identityIds: ["textualist"],
     axisSignature: {
@@ -694,11 +773,11 @@ globalThis.LAW_PROFILES = Object.freeze([
     requiredTraits: [],
     antiTraits: ["constraint.purpose", "constraint.best_reading_context", "method.categorical_textual_rights"],
     description: "Mainline New Textualism: enacted language and compromise control, judicial repair is disfavored, and rules constrain interpreters even when the result is awkward.",
-    related: ["Antonin Scalia", "John Manning", "Frank Easterbrook"]
+    related: ["Antonin Scalia", "Frank Easterbrook"]
   },
   {
     id: "kavanaugh_barrett",
-    name: "Brett Kavanaugh / Amy Coney Barrett",
+    name: "Brett Kavanaugh",
     tier: "specialist",
     identityIds: ["textualist"],
     axisSignature: { cons: { target: 90, weight: 1 } },
@@ -706,7 +785,7 @@ globalThis.LAW_PROFILES = Object.freeze([
     requiredTraits: [{ all: ["constraint.best_reading_context"], min: 0.5 }],
     antiTraits: ["constraint.intent", "separation.interpretive_accommodation"],
     description: "Modern best-reading Textualism: choose the better linguistic reading using ordinary usage and whole-text context, paired with comparatively court-centered responsibility for resolving legal ambiguity.",
-    related: ["Brett Kavanaugh", "Amy Coney Barrett"]
+    related: ["Amy Coney Barrett"]
   },
   {
     id: "kagan",
@@ -923,18 +1002,18 @@ globalThis.LAW_PROFILES = Object.freeze([
   {
     id: "ackerman",
     name: "Bruce Ackerman",
-    tier: "lineage",
-    selectable: false,
+    tier: "specialist",
     identityIds: ["living_constitutionalist"],
     axisSignature: {
       time: { target: 18, weight: 0.8 },
-      post: { target: 68, weight: 0.55 }
+      post: { target: 58, weight: 0.45 }
     },
-    signatureTraits: [],
-    requiredTraits: [],
-    antiTraits: [],
-    description: "A democratic constitutional-change fit: major constitutional development can occur through extraordinary episodes of sustained popular mobilization, not only formal amendment or ordinary judicial updating.",
-    related: ["Larry Kramer", "Jack Balkin"]
+    signatureTraits: ["time.constitutional_moments"],
+    requiredTraits: [{ all: ["time.constitutional_moments"], min: 0.5 }],
+    antiTraits: ["time.transformative_constitutionalism"],
+    specificityBonus: 0.03,
+    description: "Constitutional-moments theory: extraordinary episodes of sustained, higher-law popular mobilization can legitimately produce constitutional change outside ordinary politics and without Article V amendment.",
+    related: ["Larry Kramer", "Robert Post", "Reva Siegel", "Jack Balkin"]
   },
   {
     id: "bobbitt",
@@ -1043,14 +1122,15 @@ globalThis.LAW_PROFILES = Object.freeze([
   {
     id: "sohoni_frost",
     name: "Mila Sohoni / Amanda Frost",
-    tier: "lineage",
-    selectable: false,
+    tier: "specialist",
+    globalSpecialist: true,
     identityIds: [],
-    axisSignature: { remed: { target: 8, weight: 0.7 } },
-    signatureTraits: ["remedies.universal"],
-    requiredTraits: [],
+    axisSignature: { remed: { target: 6, weight: 1 } },
+    minAxisSalience: { remed: 0.70 },
+    signatureTraits: ["remedies.universal", "remedies.universal_relief_theory"],
+    requiredTraits: [{ all: ["remedies.universal_relief_theory"], min: 0.5 }],
     antiTraits: ["remedies.party_specific"],
-    description: "Lineage for the modern defense of nationwide or universal relief; the distinction remains result explanation rather than a single-champion endpoint.",
+    description: "Universal-relief specialist: courts may in appropriate cases restrain unlawful government action beyond the named plaintiff when broader relief is justified by the nature of the legal violation and the remedial authority being exercised.",
     related: ["Samuel Bray"]
   },
   {
@@ -1088,15 +1168,16 @@ globalThis.LAW_PROFILES = Object.freeze([
   {
     id: "levinson",
     name: "Daryl Levinson",
-    tier: "lineage",
-    selectable: false,
+    tier: "specialist",
+    globalSpecialist: true,
     identityIds: [],
     axisSignature: {},
     signatureTraits: ["remedies.equilibration"],
-    requiredTraits: [],
+    requiredTraits: [{ all: ["remedies.equilibration"], min: 0.5 }],
     antiTraits: [],
-    description: "Remedial-equilibration lineage: remedial consequences can feed back into the content of constitutional rights, a distinctive theory not directly measured by the current bank.",
-    related: []
+    specificityBonus: 0.03,
+    description: "Remedial equilibration: the anticipated costs and institutional consequences of remedies can feed back into how courts define the scope of the underlying constitutional right itself.",
+    related: ["Henry Monaghan", "Owen Fiss"]
   },
   {
     id: "peter_strauss",
