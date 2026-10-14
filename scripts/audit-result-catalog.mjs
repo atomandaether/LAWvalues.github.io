@@ -2002,9 +2002,11 @@ console.log("PASS: public titles split broad phrase ranking from noun-conditione
         "constraint.intent":1,"constraint.actual_group_intent":0.8,
         "constraint.purpose":0.7,"time.public_meaning":0.65,"time.fixation":0.6,
         "precedent.stability":0.8,"precedent.settlement":0.8,
-        "time.precedent_mediated_historicism":1
+        "time.precedent_mediated_historicism":1,
+        "method.congress_aware_interpretation":1,
+        "method.reliable_legislative_history":1
       },
-      noun: "intentionalist", champion: "ekins_intentionalism"
+      noun: "intentionalist", champion: "katzmann"
     },
     {
       name: "Barrett independent Originalism",
