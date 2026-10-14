@@ -67,6 +67,7 @@ The global quiz still caps adaptive questions at seven per respondent.  Original
 - **D-ORI4** — only for unresolved OI cases; separates modern semantic intentionalism from the Bork/Berger restraint package.
 - **D-ORI2** — only on the OPM side when useful; Original Methods evidence for McGinnis/Rappaport.
 - **D-ORI6** — Original-Law champion discriminator for Baude/Sachs.
+- **D-ORI7** — Originalism-authenticity gate for precedent-centered or methodologically eclectic judges: distinguishes an independent commitment to fixed original meaning from using historical meaning because current doctrine tells judges to do so.
 - **D-ORI5** — lower-priority OPM specialist question for Amar-style intratextualism.
 
 The 88-item core already supplies most remaining champion evidence: textual constraint, rules and anti-discretion, principle versus expected applications, early practice, precedent correction versus settlement, majoritarianism, rights enforcement, separation formalism, and natural-law/source commitments.
