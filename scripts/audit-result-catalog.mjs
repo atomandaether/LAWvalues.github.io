@@ -1710,6 +1710,8 @@ function structureFormDiagnosticAnswer(id, diagnosticId) {
   if (diagnosticId === "D-PIL1") return id === "bhagwati_iyer" ? 3 : -3;
   if (diagnosticId === "D-SOC1") return id === "bhagwati_iyer" ? 3 : -3;
   if (diagnosticId === "D-BRAY1") return id === "bray" ? 3 : -3;
+  if (diagnosticId === "D-UNI1") return id === "sohoni_frost" ? 3 : -3;
+  if (diagnosticId === "D-LEV1") return id === "levinson" ? 3 : -3;
   return -3;
 }
 
