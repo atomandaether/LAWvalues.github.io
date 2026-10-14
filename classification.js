@@ -1209,12 +1209,18 @@
     const strongLiving = time <= 32;
     const pureLivingBranch =
       strongLiving && provisionalTimeIdentity === "living_constitutionalist" && posture <= 45;
+    const ackermanLivingBranch =
+      strongLiving && provisionalTimeIdentity === "living_constitutionalist" &&
+      posture >= 48 && posture <= 78;
     const transformativeShape =
       pureLivingBranch && constraint <= 45 && remedies <= 35 && posture <= 35;
 
     const constitutionalMoments = traits["time.constitutional_moments"] || 0;
 
-    if (pureLivingBranch && democraticLiving >= 0.5 && constitutionalMoments < 0.5 &&
+    // Ackerman's dualist/higher-law democratic theory is deliberately not
+    // forced through the rights-protective Post/Siegel branch.
+    if ((ackermanLivingBranch || (pureLivingBranch && democraticLiving >= 0.5)) &&
+        constitutionalMoments < 0.5 &&
         !hasAsked(diagnosticResponses, "D-ACK1")) {
       offer("D-ACK1", 99);
     }
