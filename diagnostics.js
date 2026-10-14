@@ -211,6 +211,19 @@ globalThis.LAW_DIAGNOSTIC_QUESTIONS = Object.freeze([
     relatedIdentityIds: ["public_meaning_originalist", "originalist"],
     note: "Baude/Sachs champion discriminator. Original Law is champion-level evidence, not a new Originalist noun."
   },
+  {
+    id: "D-ORI7",
+    family: "originalism",
+    priority: "high",
+    unlock: "Historical meaning is strongly salient but the respondent is also unusually precedent-centered or otherwise methodologically eclectic, so the quiz must distinguish Originalism as an independently binding theory from historical method followed because current doctrine requires it.",
+    prompt: "Even if no Supreme Court precedent instructed judges to use founding-era history, the Constitution's original public meaning would still independently be the governing legal meaning today because that is what the Constitution itself means—not merely because existing doctrine tells courts to use that method.",
+    agreeTraits: ["time.originalism_independent_authority"],
+    disagreeTraits: ["time.precedent_mediated_historicism"],
+    nextOnAgree: [],
+    nextOnDisagree: [],
+    relatedIdentityIds: ["public_meaning_originalist", "original_intent_originalist", "originalist", "intentionalist", "legal_process_theorist", "interpretive_pluralist"],
+    note: "Noun-authenticity gate for precedent-centered historical interpretation. It prevents compliance with current historical doctrine from being mistaken for an affirmative Originalist jurisprudence."
+  },
 
   // Positivism / nonpositivism router
   {

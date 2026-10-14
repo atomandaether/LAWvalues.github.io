@@ -357,7 +357,7 @@ for (const id of [
   "D-POS1", "D-POS2", "D-AUS1", "D-KEL1", "D-SHA1", "D-NP1", "D-NL2", "D-NP2", "D-NP3", "D-NP4", "D-NP5", "D-NP6",
   "D-MAJ1", "D-MAJ2", "D-ELY1", "D-WAL1", "D-RESP1", "D-TXT1", "D-TXT2", "D-INT1", "D-INT2", "D-PRAG1",
   "D-LP1", "D-LP2", "D-QC1", "D-SOC1", "D-GENY1", "D-EHR1", "D-BLK1", "D-GRD1", "D-MON1", "D-BRAY1", "D-UNI1", "D-LEV1", "D-LIV1", "D-ACK1", "D-LIV2", "D-HAR1", "D-CLC1", "D-PIL1", "D-PLU1", "D-PLU2", "D-OCO1",
-  "D-ORI1", "D-ORI2", "D-ORI3", "D-ORI4", "D-ORI5", "D-ORI6", "D-MOR1", "D-PREC1", "D-QC2"
+  "D-ORI1", "D-ORI2", "D-ORI3", "D-ORI4", "D-ORI5", "D-ORI6", "D-ORI7", "D-MOR1", "D-PREC1", "D-QC2"
 ]) {
   assert.ok(diagnosticIds.has(id), `Missing high-value diagnostic ${id}`);
 }
@@ -853,6 +853,7 @@ function originalistDiagnosticAnswer(id, diagnosticId) {
   if (diagnosticId === "D-ORI2") return id === "mcginnis_rappaport" ? 3 : -3;
   if (diagnosticId === "D-ORI5") return id === "amar" ? 3 : -3;
   if (diagnosticId === "D-ORI6") return id === "baude_sachs" ? 3 : -3;
+  if (diagnosticId === "D-ORI7") return 3;
   if (diagnosticId === "D-NP1") return id === "natural_law_originalists" ? 3 : -3;
   if (["D-NP2", "D-NP3", "D-NP4", "D-POS1"].includes(diagnosticId)) return -3;
   return -3;
@@ -1978,6 +1979,28 @@ console.log("PASS: public titles split broad phrase ranking from noun-conditione
         "posture.judicial_independence":1,"constraint.purpose":0.6
       },
       noun: "living_constitutionalist", champion: "brennan"
+    },
+    {
+      name: "Jackson precedent-mediated historicism",
+      scores: {sorc:62,cons:38,time:70,prec:82,remed:48,post:32,separ:44,form:42},
+      traits: {
+        "constraint.intent":1,"constraint.actual_group_intent":0.8,
+        "constraint.purpose":0.7,"time.public_meaning":0.65,"time.fixation":0.6,
+        "precedent.stability":0.8,"precedent.settlement":0.8,
+        "time.precedent_mediated_historicism":1
+      },
+      noun: "intentionalist", champion: "ekins_intentionalism"
+    },
+    {
+      name: "Barrett independent Originalism",
+      scores: {sorc:76,cons:86,time:90,prec:84,remed:72,post:60,separ:76,form:78},
+      traits: {
+        "time.public_meaning":1,"time.fixation":1,
+        "time.originalism_independent_authority":1,
+        "precedent.stability":1,"precedent.settlement":1,
+        "precedent.protective_rule_stability":1,"constraint.textual":0.8
+      },
+      noun: "public_meaning_originalist", champion: "barrett"
     }
   ];
   for (const test of namedCases) {

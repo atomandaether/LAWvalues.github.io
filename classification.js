@@ -480,10 +480,17 @@
       add("nonpositivist", 0.88, "A distinctive nonpositivist theory is established below the noun layer.", "Non-Positivist");
     }
 
-    if (l.time >= 0.2 && (traits["time.original_intent"] || 0) >= 0.5) {
+    const precedentMediatedHistoricism = traits["time.precedent_mediated_historicism"] || 0;
+    const independentOriginalistAuthority = traits["time.originalism_independent_authority"] || 0;
+    const originalismAffirmativelyRejected =
+      precedentMediatedHistoricism >= 0.5 && independentOriginalistAuthority < 0.5;
+
+    if (!originalismAffirmativelyRejected &&
+        l.time >= 0.2 && (traits["time.original_intent"] || 0) >= 0.5) {
       add("original_intent_originalist", 0.88, "Affirmative original-intent evidence.");
     }
-    if (l.time >= 0.2 && (traits["time.public_meaning"] || 0) >= 0.45) {
+    if (!originalismAffirmativelyRejected &&
+        l.time >= 0.2 && (traits["time.public_meaning"] || 0) >= 0.45) {
       add("public_meaning_originalist", 0.78 + 0.14 * s.time, "Public meaning at adoption.");
     }
     if (r.time >= 0.15 && l.prec >= 0.2 && (traits["time.common_law_development"] || 0) >= 0.4) {
@@ -569,7 +576,8 @@
       add("minimalist", 0.94, "Narrow, shallow, incremental adjudication establishes Judicial Minimalism.");
     }
 
-    if (l.time >= 0.3) add("originalist", 0.56 + 0.34 * s.time, "Historical fixation is a dominant feature.");
+    if (!originalismAffirmativelyRejected && l.time >= 0.3)
+      add("originalist", 0.56 + 0.34 * s.time, "Historical fixation is a dominant feature.");
     const livingSubtypeEvidence = Math.max(
       traits["time.democratic_constitutionalism"] || 0,
       traits["time.transformative_constitutionalism"] || 0
@@ -1168,9 +1176,27 @@
       const intentAsMeaning = traits["time.intent_as_meaning"] || 0;
       const intratextual = traits["time.intratextualism"] || 0;
       const originalLaw = traits["time.original_law"] || 0;
+      const independentAuthority = traits["time.originalism_independent_authority"] || 0;
+      const precedentHistoricism = traits["time.precedent_mediated_historicism"] || 0;
 
       // First resolve the public noun when the core did not already do it.
       if (Math.max(publicMeaning, originalIntent) < 0.5) offer("D-ORI1", 96);
+
+      // A highly precedent-centered or methodologically eclectic judge may use
+      // founding-era meaning because current doctrine tells judges to do so
+      // without embracing Originalism as an independently authoritative theory.
+      // Test that distinction before spending specialist Originalist slots.
+      const precedentCenteredHistoricism =
+        precedent >= 72 ||
+        (traits["precedent.settlement"] || 0) >= 0.5 ||
+        (traits["constraint.intent"] || 0) >= 0.5 ||
+        (traits["method.institutional_competence"] || 0) >= 0.45;
+      if ((Math.max(publicMeaning, originalIntent) >= 0.4 || hasAsked(diagnosticResponses, "D-ORI1")) &&
+          precedentCenteredHistoricism &&
+          independentAuthority < 0.5 && precedentHistoricism < 0.5 &&
+          !hasAsked(diagnosticResponses, "D-ORI7")) {
+        offer("D-ORI7", 95);
+      }
 
       // Construction is the only substantive public Originalist modifier ("New").
       // Ask it once a noun is known or nearly known, because it also identifies

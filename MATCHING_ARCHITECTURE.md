@@ -162,6 +162,10 @@ This distinction matters. A Solum-like respondent may be a **Public-Meaning Orig
 
 Phrase selection still spends noun redundancy. Twist selection is noun-conditioned and also suppresses a twist when the trailing phrase already communicates the same concept. High-value cross-axis combinations may additionally produce an explanatory bridge paragraph. Closest-thinker matching remains a separate later step.
 
+## Precedent-mediated historical method is not automatically Originalism
+
+A respondent can use founding-era public meaning because current Supreme Court doctrine treats history as a required interpretive constraint without independently accepting Originalism as the theory that makes constitutional meaning legally binding. D-ORI7 distinguishes those positions when historical Time answers coexist with unusually strong precedent or an eclectic interpretive method. Rejection of independent Originalist authority prevents the Originalist noun from winning merely from doctrinal compliance.
+
 ## False-match rule
 
 Thinker matching is conservative. Numerical closeness is only the start.
