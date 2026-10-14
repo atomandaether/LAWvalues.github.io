@@ -792,7 +792,8 @@ globalThis.LAW_PROFILES = Object.freeze([
     axisSignature: {
       cons: { target: 90, weight: 1 },
       time: { target: 82, weight: 0.35 },
-      separ: { target: 78, weight: 0.3 }
+      separ: { target: 78, weight: 0.3 },
+      form: { target: 70, weight: 0.2 }
     },
     signatureTraits: ["constraint.textual", "constraint.contextual_textualism", "constraint.best_reading_context", "separation.independent_judicial_interpretation"],
     requiredTraits: [{ all: ["constraint.best_reading_context"], min: 0.5 }],
