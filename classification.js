@@ -782,6 +782,33 @@
       }
     }
 
+    const bray = profiles.find((profile) => profile.id === "bray" && profile.selectable !== false);
+    if (bray && requiredTraitsSatisfied(bray, traits)) {
+      const remedialSalience = salience(scores, "remed");
+      const strongestOtherAxis = Math.max(
+        ...AXIS_IDS.filter((axisId) => axisId !== "remed").map((axisId) => salience(scores, axisId))
+      );
+      const partySpecific = traits["remedies.party_specific"] || 0;
+      const traditionalEquity = traits["remedies.traditional_equity"] || 0;
+      const brayMayDisplace =
+        remedialSalience >= 0.75 &&
+        partySpecific >= 0.65 &&
+        traditionalEquity >= 0.65 &&
+        (topNormal < 0.72 || remedialSalience >= strongestOtherAxis + 0.12);
+
+      if (brayMayDisplace) {
+        const { fit, shape } = axisProfileFit(bray, scores);
+        const traitFit = profileTraitFit(bray, traits);
+        const anti = Math.max(0, ...(bray.antiTraits || []).map((trait) => traits[trait] || 0));
+        const brayScore = clamp01(0.58 * fit + 0.17 * shape + 0.20 * traitFit - 0.20 * anti - 0.03);
+        pool = [...pool, { profile: bray, score: brayScore }].sort((a, b) =>
+          b.score - a.score ||
+          Number(b.profile.specificityBonus || 0) - Number(a.profile.specificityBonus || 0) ||
+          a.profile.id.localeCompare(b.profile.id)
+        );
+      }
+    }
+
     for (const profile of catchalls) {
       const lowTheoryEvidence = Math.max(
         traits["method.case_by_case"] || 0,
@@ -1248,6 +1275,10 @@
 
     if (provisionalMethodIdentity === "textualist" && constraint >= 62) {
       if (!hasAsked(diagnosticResponses, "D-TXT1")) offer("D-TXT1", 74);
+      if ((traits["constraint.best_reading_context"] || 0) >= 0.5 &&
+          !hasAsked(diagnosticResponses, "D-SEP2")) {
+        offer("D-SEP2", 91);
+      }
       const blackPlausible =
         (traits["posture.rights_trumps"] || 0) >= 0.4 &&
         (traits["form.anti_discretion"] || 0) >= 0.45;
@@ -1290,6 +1321,33 @@
     // Champion-only refinements: these are deliberately gated behind a
     // profile that is already plausible from the core bank, so they cannot
     // consume scarce adaptive slots merely to search for exotic names.
+    const gardbaumCompatible = new Set([
+      "political_constitutionalist", "political_process_jurist", "minimalist", "mixed_jurisprudence"
+    ]);
+    if (gardbaumCompatible.has(provisionalMethodIdentity) &&
+        (traits["posture.dialogic"] || 0) >= 0.5 &&
+        (traits["posture.structured_legislative_response"] || 0) < 0.5 &&
+        !hasAsked(diagnosticResponses, "D-GRD1")) {
+      offer("D-GRD1", 92);
+    }
+
+    const monaghanCompatible = new Set([
+      "positivist", "legal_process_theorist", "common_law_constitutionalist", "mixed_jurisprudence"
+    ]);
+    if (monaghanCompatible.has(provisionalMethodIdentity) &&
+        (traits["remedies.prophylactic"] || 0) >= 0.5 &&
+        (traits["remedies.constitutional_common_law"] || 0) < 0.5 &&
+        !hasAsked(diagnosticResponses, "D-MON1")) {
+      offer("D-MON1", 89);
+    }
+
+    if (remedies >= 84 &&
+        (traits["remedies.party_specific"] || 0) >= 0.65 &&
+        (traits["remedies.traditional_equity"] || 0) < 0.5 &&
+        !hasAsked(diagnosticResponses, "D-BRAY1")) {
+      offer("D-BRAY1", 94);
+    }
+
     const freeScientific = traits["method.free_scientific_research"] || 0;
     const socialMethod = traits["method.social_interests"] || 0;
     const remediesScore = remedies;
