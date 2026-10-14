@@ -489,7 +489,7 @@
       );
     }
     if ((traits["method.common_good"] || 0) >= 0.5) {
-      add("common_good_constitutionalist", 0.9, "Direct common-good/classical-law diagnostic.");
+      add("common_good_constitutionalist", 0.99, "Direct common-good/classical-law diagnostic.");
     }
 
     if ((traits["method.institutional_competence"] || 0) >= 0.45) {
@@ -510,9 +510,14 @@
     }
 
     const establishedNonAuthorityScore = Math.max(0, ...candidates.map((item) => item.score));
+    const strongestNonAuthoritySalience = Math.max(s.sorc, s.cons, s.time, s.separ, s.form);
     const authorityCanDominate =
-      Math.max(s.sorc, s.cons, s.time, s.separ, s.form) <= 0.7 &&
-      establishedNonAuthorityScore < 0.85;
+      (strongestNonAuthoritySalience <= 0.7 && establishedNonAuthorityScore < 0.85) ||
+      // A directly diagnosed constitutional-authority theory should be allowed
+      // to become the noun when Posture is itself plainly the respondent's
+      // strongest measured commitment. This prevents a secondary Source or
+      // Method theory from swallowing figures such as Waldron.
+      s.post >= strongestNonAuthoritySalience + 0.05;
     const processReinforcement = traits["posture.process_reinforcement"] || 0;
     const responsiveReview = traits["posture.responsive_review"] || 0;
     const antiJudicialSupremacy = traits["posture.anti_judicial_supremacy"] || 0;
