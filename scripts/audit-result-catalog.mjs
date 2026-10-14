@@ -1691,6 +1691,7 @@ function structureFormDiagnosticAnswer(id, diagnosticId) {
   if (diagnosticId === "D-PROP1") return ["alexy", "barak"].includes(id) ? 3 : -3;
   if (diagnosticId === "D-PIL1") return id === "bhagwati_iyer" ? 3 : -3;
   if (diagnosticId === "D-SOC1") return id === "bhagwati_iyer" ? 3 : -3;
+  if (diagnosticId === "D-BRAY1") return id === "bray" ? 3 : -3;
   return -3;
 }
 
