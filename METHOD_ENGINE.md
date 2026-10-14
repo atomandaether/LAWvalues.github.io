@@ -54,8 +54,8 @@ Formal versus contextual Textualism is deliberately **not** a public modifier. I
 
 ### Textualist
 1. **Hugo Black** — categorical text + rules/anti-discretion + unusually aggressive enforcement of expressly protected rights.
-2. **Antonin Scalia / John Manning / Frank Easterbrook** — mainline/New Textualism: enacted language, enacted compromise, anti-repair, rules and constraint.
-3. **Brett Kavanaugh / Amy Coney Barrett** — modern best-reading/context-sensitive Textualism with comparatively court-centered responsibility for resolving legal ambiguity.
+2. **John Manning** — mainline/New Textualism: enacted language, enacted compromise, anti-repair, rules and constraint.
+3. **Brett Kavanaugh** — modern best-reading/context-sensitive Textualism with comparatively court-centered responsibility for resolving legal ambiguity.
 4. **Elena Kagan** — institutionalist contextual Textualism: the same text-and-context orientation combined with substantially greater accommodation of precedent, delegated institutional responsibility, expertise, and administration.
 
 The separate locked Originalist **Scalia/Manning** unit remains in the Originalism engine. The Method engine uses a dedicated Textualist unit rather than letting the Originalist profile leak across nouns.
@@ -96,9 +96,8 @@ Brian Leiter remains major further reading/reconstruction rather than a separate
 
 ### Sociological Jurist
 18. **Roscoe Pound** — law in action, competing social interests, and practical social operation.
-19. **François Gény** — *libre recherche scientifique*: positive sources govern until they genuinely run out, after which disciplined inquiry into social facts, justice, equity, and the nature of things supplies the missing rule.
-
-Eugen Ehrlich remains lineage/further reading. Cardozo is explicitly cross-cutting-compatible with Sociological Jurisprudence where the respondent's whole profile warrants it. Gény requires his dedicated source-gap diagnostic; generic open construction is not enough.
+19. **Eugen Ehrlich** — living-law Sociological Jurisprudence: socially operative norms of associations and communities are central legal phenomena.
+20. **François Gény** — *libre recherche scientifique*: positive sources govern until they genuinely run out, after which disciplined inquiry into social facts, justice, equity, and the nature of things supplies the missing rule. Cardozo is explicitly cross-cutting-compatible with Sociological Jurisprudence where the respondent's whole profile warrants it. Gény requires his dedicated source-gap diagnostic; generic open construction is not enough.
 
 ## Adaptive diagnostics
 
@@ -127,6 +126,7 @@ Neither becomes a public Textualist modifier.
 - **D-LP1** — Legal Process noun router.
 - **D-LP2** — Wechsler neutral-principles champion discriminator.
 - **D-SOC1** — Sociological Jurisprudence noun router.
+- **D-EHR1** — Ehrlich living-law champion discriminator, asked only after Sociological Jurisprudence is live.
 - **D-GENY1** — Gény Free Scientific Research champion discriminator, asked only after Sociological Jurisprudence is already live.
 - **D-PLU1** — principled Interpretive Pluralism.
 - **D-PLU2** — Practical-Reasoning pluralism.
@@ -150,7 +150,7 @@ The audit suite requires every locked unit to have a coherent literal-answer pat
 
 ## Reachability contract
 
-The audit suite requires all nineteen Method champion units to be separately reachable from literal 88-item answer vectors through the live adaptive router within the twelve-question cap.
+The audit suite requires all twenty Method champion units to be separately reachable from literal 88-item answer vectors through the live adaptive router within the twelve-question cap.
 
 It additionally verifies:
 - all eight Method nouns remain available;
@@ -158,5 +158,5 @@ It additionally verifies:
 - Interpretive Pluralist is diagnosable rather than merely a fallback;
 - the three method-internal subtype modifiers appear only in their locked cells, and Barak's Proportionalist/Purposivist hybrid appears only with confirmed structured proportionality;
 - Hugo Black can resolve as **Textualist → Hugo Black** but is excluded from incompatible Originalist nouns;
-- the dedicated Textualist Scalia/Manning/Easterbrook unit prevents duplication with the locked Originalist Scalia/Manning unit;
+- the dedicated Textualist Manning unit remains distinct from the locked Originalist Scalia unit;
 - existing Originalism and Source reachability contracts remain green.

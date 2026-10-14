@@ -198,6 +198,20 @@ globalThis.LAW_DIAGNOSTIC_QUESTIONS = Object.freeze([
     note: "Specialist Amar discriminator; ask only when the core profile leaves that methodology plausible."
   },
 
+  {
+    id: "D-ORI6",
+    family: "originalism",
+    priority: "medium",
+    unlock: "Public-Meaning Originalism is established and Original-Law theory could materially change the champion.",
+    prompt: "Originalism should ultimately ask what law the Constitution originally made, not merely what its words communicated to an ordinary reader. That inquiry can include background legal rules of interpretation and any lawful mechanisms the original legal system provided for later legal change.",
+    agreeTraits: ["time.original_law"],
+    disagreeTraits: [],
+    nextOnAgree: [],
+    nextOnDisagree: [],
+    relatedIdentityIds: ["public_meaning_originalist", "originalist"],
+    note: "Baude/Sachs champion discriminator. Original Law is champion-level evidence, not a new Originalist noun."
+  },
+
   // Positivism / nonpositivism router
   {
     id: "D-POS1",
@@ -226,6 +240,45 @@ globalThis.LAW_DIAGNOSTIC_QUESTIONS = Object.freeze([
     note: "Normative/Ethical Positivism: source-based adjudication is defended as an institutional and democratic virtue, not merely described as a conceptual feature of law."
   },
   {
+    id: "D-AUS1",
+    family: "positivism",
+    priority: "medium",
+    unlock: "Positivism is established and command theory could materially change the champion.",
+    prompt: "At bottom, law is best understood as commands issued by a determinate political sovereign to subjects who habitually obey, with the prospect of sanctions supplying the command's characteristic legal force.",
+    agreeTraits: ["source.command_theory", "source.sovereign"],
+    disagreeTraits: [],
+    nextOnAgree: [],
+    nextOnDisagree: [],
+    relatedIdentityIds: ["positivist"],
+    note: "John Austin champion discriminator; requires the command/sovereign theory itself, not generic respect for enacted law."
+  },
+  {
+    id: "D-KEL1",
+    family: "positivism",
+    priority: "medium",
+    unlock: "Positivism is established and Kelsen's Pure Theory architecture could materially change the champion.",
+    prompt: "A legal norm is valid because another legal norm authorizes its creation, producing a hierarchy of legal validity that ultimately depends on a presupposed basic norm. The legal system's unity is therefore fundamentally normative rather than just a sociological fact about which rules officials accept.",
+    agreeTraits: ["source.normative_hierarchy", "source.basic_norm"],
+    disagreeTraits: [],
+    nextOnAgree: [],
+    nextOnDisagree: [],
+    relatedIdentityIds: ["positivist"],
+    note: "Hans Kelsen champion discriminator; a direct Pure Theory proposition."
+  },
+  {
+    id: "D-SHA1",
+    family: "positivism",
+    priority: "medium",
+    unlock: "Positivism is established and Planning Theory could materially change the champion.",
+    prompt: "A legal system is best understood as a system of shared social plans: legal institutions create and apply plans for governing conduct, and the master plan of the system explains legal authority better than treating law simply as commands or as a social rule officials happen to accept.",
+    agreeTraits: ["source.planning_theory", "source.source_thesis"],
+    disagreeTraits: [],
+    nextOnAgree: [],
+    nextOnDisagree: [],
+    relatedIdentityIds: ["positivist"],
+    note: "Scott Shapiro champion discriminator; Planning Theory is a distinct positivist architecture, not merely Exclusive Positivism."
+  },
+  {
     id: "D-NP1",
     family: "nonpositivism",
     priority: "high",
@@ -237,6 +290,19 @@ globalThis.LAW_DIAGNOSTIC_QUESTIONS = Object.freeze([
     nextOnDisagree: ["D-NP2"],
     relatedIdentityIds: ["natural_lawyer", "originalist", "public_meaning_originalist", "original_intent_originalist"],
     note: "Central modern Natural Law discriminator: objective morality plus a genuine settlement and coordination role for positive law; also confirms natural-law-grounded Higher-law Originalism when the Originalist noun is already live."
+  },
+  {
+    id: "D-NL2",
+    family: "nonpositivism",
+    priority: "medium",
+    unlock: "Natural Law is established and the strong-versus-weak legal-validity distinction could materially change the champion.",
+    prompt: "Legal validity itself partly depends on moral merit: at least some sufficiently serious normative defects can make a purported rule legally invalid even when every ordinary social source and institutional practice treats it as valid. The defect is not merely that the rule is bad law; in such cases it fails as law.",
+    agreeTraits: ["source.strong_natural_law", "source.objective_morality"],
+    disagreeTraits: [],
+    nextOnAgree: [],
+    nextOnDisagree: [],
+    relatedIdentityIds: ["natural_lawyer"],
+    note: "Michael S. Moore strong-Natural-Law champion discriminator. This is broader than the separately modeled Radbruch extreme-injustice threshold."
   },
   {
     id: "D-NP2",
@@ -425,6 +491,32 @@ globalThis.LAW_DIAGNOSTIC_QUESTIONS = Object.freeze([
     note: "Samuel Bray champion discriminator. These are only likely host identities for routing; this remains a champion-level theory of remedial authority and does not create a Remedies noun."
   },
   {
+    id: "D-UNI1",
+    family: "remedies",
+    priority: "medium",
+    unlock: "Universal remedies are extremely salient and a general theory of nonparty relief could materially change the champion.",
+    prompt: "Federal equitable power is not categorically limited to protecting only the named plaintiff. When an unlawful government policy operates generally, a court may in an appropriate case lawfully issue relief that also protects affected nonparties rather than forcing each person to file a separate lawsuit.",
+    agreeTraits: ["remedies.universal_relief_theory", "remedies.universal"],
+    disagreeTraits: [],
+    nextOnAgree: [],
+    nextOnDisagree: [],
+    relatedIdentityIds: ["minimalist", "legal_process_theorist", "living_constitutionalist", "political_process_jurist", "mixed_jurisprudence"],
+    note: "Sohoni/Frost champion discriminator. This tests the legality of universal relief, not structural supervision or a Remedies noun."
+  },
+  {
+    id: "D-LEV1",
+    family: "remedies",
+    priority: "medium",
+    unlock: "Remedial consequences are highly salient and Levinson-style remedial equilibration could materially change the champion.",
+    prompt: "The practical consequences of a remedy can legitimately influence how courts define the constitutional right itself. If enforcing a broad understanding of a right would require remedies judges regard as intolerably costly or intrusive, courts may narrow the substantive right; rights and remedies can therefore adjust to one another.",
+    agreeTraits: ["remedies.equilibration"],
+    disagreeTraits: [],
+    nextOnAgree: [],
+    nextOnDisagree: [],
+    relatedIdentityIds: ["legal_process_theorist", "common_law_constitutionalist", "living_constitutionalist", "minimalist", "mixed_jurisprudence"],
+    note: "Daryl Levinson champion discriminator. Remedial equilibration is a rights/remedies feedback theory, not merely a preference for broad or narrow relief."
+  },
+  {
     id: "D-TXT2",
     family: "interpretation",
     priority: "medium",
@@ -517,6 +609,19 @@ globalThis.LAW_DIAGNOSTIC_QUESTIONS = Object.freeze([
     note: "Gény-specific Free Scientific Research discriminator; authoritative positive sources remain primary until they genuinely run out."
   },
   {
+    id: "D-EHR1",
+    family: "interpretation",
+    priority: "medium",
+    unlock: "Sociological Jurisprudence is live and Ehrlich's living-law thesis could materially change the champion.",
+    prompt: "The most important law governing much of social life can arise from the actual norms of families, associations, businesses, and communities even when those norms were never enacted by the state or announced by a court. Jurisprudence should treat that socially operative 'living law' as a central legal phenomenon.",
+    agreeTraits: ["method.living_law", "method.law_in_action", "source.social_norms"],
+    disagreeTraits: [],
+    nextOnAgree: [],
+    nextOnDisagree: [],
+    relatedIdentityIds: ["sociological_jurist"],
+    note: "Eugen Ehrlich champion discriminator; living law is distinct from Pound's interest-balancing and Gény's source-gap method."
+  },
+  {
     id: "D-BLK1",
     family: "constitutionalism",
     priority: "medium",
@@ -541,6 +646,19 @@ globalThis.LAW_DIAGNOSTIC_QUESTIONS = Object.freeze([
     nextOnDisagree: ["D-LIV2"],
     relatedIdentityIds: ["living_constitutionalist"],
     note: "Post/Siegel discriminator: democratic constitutional development is distinct from Popular Constitutionalism because judicially enforceable rights remain part of the account."
+  },
+  {
+    id: "D-ACK1",
+    family: "constitutionalism",
+    priority: "medium",
+    unlock: "Living Constitutionalism is established and extraordinary popular constitutional change could materially change the champion.",
+    prompt: "Article V amendment is not the only way Americans can legitimately make higher constitutional law. An extraordinary, sustained episode of popular mobilization that repeatedly wins elections and institutional ratification can sometimes create a constitutional settlement that courts should recognize even without a formal amendment.",
+    agreeTraits: ["time.constitutional_moments"],
+    disagreeTraits: [],
+    nextOnAgree: [],
+    nextOnDisagree: [],
+    relatedIdentityIds: ["living_constitutionalist"],
+    note: "Bruce Ackerman champion discriminator. Constitutional moments are narrower than ordinary democratic constitutional development."
   },
   {
     id: "D-LIV2",

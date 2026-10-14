@@ -30,7 +30,8 @@ All other Living results use the generic fit layer.
 
 1. **William J. Brennan Jr.** — default strong Living champion: contemporary ratification, present-day constitutional meaning, dignity, and strong judicial enforcement of rights.
 2. **Robert Post / Reva Siegel** — Democratic Living Constitutionalism; requires **D-LIV1**.
-3. **Karl Klare / Pius Langa** — Transformative Constitutionalism; requires **D-LIV2**.
+3. **Bruce Ackerman** — constitutional-moments / dualist-democracy specialist; requires **D-ACK1**.
+4. **Karl Klare / Pius Langa** — Transformative Constitutionalism; requires **D-LIV2**.
 
 ## Common-Law Constitutionalist
 
@@ -40,16 +41,17 @@ No separate substantive public modifier is locked. Distinctive variants remain c
 
 ### Locked Common-Law champions
 
-4. **David Strauss** — default common-law constitutionalist: precedent and accumulated practice are themselves major components of constitutional law.
-5. **John Marshall Harlan II** — living tradition / ordered liberty plus substantial restraint; requires **D-HAR1**.
-6. **Lord Cooke of Thorndon** — strong common-law constitutionalism in which fundamental common-law rights may constrain ordinary legislative supremacy; requires **D-CLC1**.
-7. **Wil Waluchow** — **Inclusive-Positivist Common-Law Constitutionalism**. This is a genuine hybrid rather than a generic Source-axis adjective: constitutional rights develop through common-law reasoning inside an inclusive-positivist theory of legal validity. When the Common-Law noun wins and both components are independently established, the public title uses **Inclusive-Positivist Common-Law Constitutionalist**.
+5. **David Strauss** — default common-law constitutionalist: precedent and accumulated practice are themselves major components of constitutional law.
+6. **John Marshall Harlan II** — living tradition / ordered liberty plus substantial restraint; requires **D-HAR1**.
+7. **Lord Cooke of Thorndon** — strong common-law constitutionalism in which fundamental common-law rights may constrain ordinary legislative supremacy; requires **D-CLC1**.
+8. **Wil Waluchow** — **Inclusive-Positivist Common-Law Constitutionalism**. This is a genuine hybrid rather than a generic Source-axis adjective: constitutional rights develop through common-law reasoning inside an inclusive-positivist theory of legal validity. When the Common-Law noun wins and both components are independently established, the public title uses **Inclusive-Positivist Common-Law Constitutionalist**.
 
 ## Adaptive routing
 
 The global cap remains twelve adaptive questions.
 
 - **D-LIV1** is offered only when the core already resolves strongly toward the Living noun rather than a Common-Law or other family. Agreement supplies Democratic Living evidence.
+- **D-ACK1** identifies Ackerman's extraordinary higher-law constitutional moments and is also available to strongly Living but more majoritarian profiles that would not naturally enter the Post/Siegel branch.
 - **D-LIV2** is prioritized for a strongly Living profile that is also open-construction, systemic-remedial, and counter-majoritarian enough to make Transformative Constitutionalism genuinely plausible. It may also follow rejection of D-LIV1 where the remaining profile warrants it.
 - **D-HAR1** remains a Common-Law champion discriminator.
 - **D-CLC1** remains the Cooke strong-common-law-rights discriminator.
@@ -59,15 +61,13 @@ The subtype diagnostics affirmatively strengthen the existing Living noun. They 
 
 ## Deliberate exclusions
 
-**Bruce Ackerman** remains lineage/further reading. Constitutional moments and extraordinary popular higher-law mobilization are genuinely distinctive but are not measured by the current core or diagnostics.
-
 **Living Tree** doctrine remains lineage/institutional context rather than a third public noun. The present quiz already decomposes its relevant commitments across Living time, purposive/open interpretation, precedent, and judicial posture.
 
 **Moral Reading**, **constitutional pluralism**, **Popular Constitutionalism**, and **weak-form/dialogic review** remain routed to Source, Method, or Posture because that is where their adjudicatively distinctive claims actually live.
 
 ## Reachability contract
 
-The audit suite requires all seven locked non-originalist constitutional-time champion units to be separately reachable from literal 88-item answer vectors through the live adaptive router within the twelve-question cap.
+The audit suite requires all eight locked non-originalist constitutional-time champion units to be separately reachable from literal 88-item answer vectors through the live adaptive router within the twelve-question cap.
 
 It additionally verifies:
 
@@ -77,5 +77,5 @@ It additionally verifies:
 - Strauss remains the default **Common-Law Constitutionalist**;
 - Harlan II and Cooke require their distinctive diagnostics;
 - Waluchow defeats both generic Strauss and generic Inclusive-Positivist alternatives only when the hybrid is present, and then surfaces **Inclusive-Positivist Common-Law Constitutionalist**;
-- Ackerman remains nonselectable;
+- Ackerman requires affirmative constitutional-moments evidence and remains inside the Living Constitutionalist noun;
 - all previously locked Originalism, Source, and Method reachability contracts remain green.

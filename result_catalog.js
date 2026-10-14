@@ -467,18 +467,18 @@ globalThis.LAW_CHAMPIONS = Object.freeze([
   },
   {
     id: "raz_shapiro_marmor",
-    name: "Joseph Raz / Scott Shapiro / Andrei Marmor",
-    kind: "people",
+    name: "Joseph Raz",
+    kind: "person",
     role: "subtype",
     eligibleIdentityIds: ["positivist"],
     signatureTraits: ["source.positive_sources", "source.source_thesis"],
     antiTraits: ["source.morality_incorporated"],
-    note: "Exclusive Positivist champion unit: legal validity remains identifiable through source/conventional/planning facts rather than moral merits."
+    note: "Exclusive Positivist champion: legal validity remains identifiable through social-source facts rather than moral merits; Planning Theory is separately represented by Shapiro."
   },
   {
     id: "campbell_waldron_schauer",
-    name: "Tom Campbell / Jeremy Waldron / Frederick Schauer",
-    kind: "people",
+    name: "Tom Campbell",
+    kind: "person",
     role: "subtype",
     eligibleIdentityIds: ["positivist"],
     signatureTraits: ["source.positive_sources", "source.normative_positivism", "form.anti_discretion", "posture.majoritarian"],
@@ -489,16 +489,36 @@ globalThis.LAW_CHAMPIONS = Object.freeze([
     id: "kelsen",
     name: "Hans Kelsen",
     kind: "person",
-    role: "historical",
+    role: "subtype",
     eligibleIdentityIds: ["positivist"],
-    signatureTraits: ["source.positive_sources"],
-    antiTraits: [],
-    note: "Major positivist lineage. The quiz does not test Pure Theory/basic-norm architecture closely enough for a separate selectable unit."
+    signatureTraits: ["source.normative_hierarchy", "source.basic_norm"],
+    antiTraits: ["source.objective_morality", "source.command_theory", "source.planning_theory"],
+    note: "Pure Theory champion: legal validity is organized through a hierarchy of authorizing norms culminating in a presupposed basic norm."
+  },
+  {
+    id: "austin",
+    name: "John Austin",
+    kind: "person",
+    role: "subtype",
+    eligibleIdentityIds: ["positivist"],
+    signatureTraits: ["source.command_theory", "source.sovereign"],
+    antiTraits: ["source.basic_norm", "source.planning_theory"],
+    note: "Command-theory champion: law is fundamentally sovereign command backed by sanction and habitual obedience."
+  },
+  {
+    id: "shapiro",
+    name: "Scott Shapiro",
+    kind: "person",
+    role: "subtype",
+    eligibleIdentityIds: ["positivist"],
+    signatureTraits: ["source.planning_theory", "source.source_thesis"],
+    antiTraits: ["source.morality_incorporated", "source.command_theory", "source.basic_norm"],
+    note: "Planning Theory champion: legal systems are systems of shared social planning rather than merely Hartian rules or sovereign commands."
   },
   {
     id: "dworkin_stavropoulos",
-    name: "Ronald Dworkin / Nicos Stavropoulos",
-    kind: "people",
+    name: "Ronald Dworkin",
+    kind: "person",
     role: "primary",
     eligibleIdentityIds: ["interpretivist"],
     signatureTraits: ["source.principles_are_law", "source.fit_and_justification", "source.right_answer"],
@@ -527,13 +547,23 @@ globalThis.LAW_CHAMPIONS = Object.freeze([
   },
   {
     id: "finnis_murphy_george",
-    name: "John Finnis / Mark Murphy / Robert P. George",
-    kind: "people",
+    name: "John Finnis",
+    kind: "person",
     role: "primary",
     eligibleIdentityIds: ["natural_lawyer"],
     signatureTraits: ["source.objective_morality", "source.positive_law_settlement"],
     antiTraits: ["source.principles_are_law"],
     note: "Central modern Natural Law unit: objective moral order matters while positive law performs a genuine settlement, coordination, and institutional-authority function."
+  },
+  {
+    id: "moore_strong_natural_law",
+    name: "Michael S. Moore",
+    kind: "person",
+    role: "subtype",
+    eligibleIdentityIds: ["natural_lawyer"],
+    signatureTraits: ["source.objective_morality", "source.strong_natural_law"],
+    antiTraits: ["source.positive_law_settlement"],
+    note: "Strong Natural Law champion: at least some serious normative defects can defeat legal validity itself, rather than merely making an otherwise valid law defective."
   },
   {
     id: "fuller",
@@ -650,8 +680,8 @@ globalThis.LAW_CHAMPIONS = Object.freeze([
   },
   {
     id: "scalia_manning_easterbrook",
-    name: "Antonin Scalia / John Manning / Frank Easterbrook",
-    kind: "people",
+    name: "John Manning",
+    kind: "person",
     role: "primary",
     eligibleIdentityIds: ["textualist"],
     signatureTraits: ["constraint.textual", "constraint.enacted_bargain", "form.anti_discretion"],
@@ -660,8 +690,8 @@ globalThis.LAW_CHAMPIONS = Object.freeze([
   },
   {
     id: "kavanaugh_barrett",
-    name: "Brett Kavanaugh / Amy Coney Barrett",
-    kind: "people",
+    name: "Brett Kavanaugh",
+    kind: "person",
     role: "subtype",
     eligibleIdentityIds: ["textualist"],
     signatureTraits: ["constraint.textual", "constraint.contextual_textualism", "constraint.best_reading_context"],
@@ -792,12 +822,11 @@ globalThis.LAW_CHAMPIONS = Object.freeze([
     id: "ehrlich",
     name: "Eugen Ehrlich",
     kind: "person",
-    role: "historical",
+    role: "subtype",
     eligibleIdentityIds: ["sociological_jurist"],
-    signatureTraits: ["method.law_in_action"],
-    antiTraits: [],
-    selectable: false,
-    note: "Living-law lineage and further reading rather than a separate judicial endpoint."
+    signatureTraits: ["method.living_law", "method.law_in_action", "source.social_norms"],
+    antiTraits: ["source.positive_sources"],
+    note: "Living-law champion: socially operative norms of associations and communities are themselves central legal phenomena even without state enactment."
   },
 
   // Originalism / constitutional time
@@ -816,7 +845,7 @@ globalThis.LAW_CHAMPIONS = Object.freeze([
   },
   {
     id: "alexander_kay_prakash",
-    name: "Larry Alexander / Richard Kay / Saikrishna Prakash",
+    name: "Larry Alexander / Richard Kay",
     kind: "people",
     role: "subtype",
     eligibleIdentityIds: ["original_intent_originalist", "originalist"],
@@ -866,8 +895,8 @@ globalThis.LAW_CHAMPIONS = Object.freeze([
   },
   {
     id: "scalia_manning",
-    name: "Antonin Scalia / John Manning",
-    kind: "people",
+    name: "Antonin Scalia",
+    kind: "person",
     role: "primary",
     eligibleIdentityIds: ["public_meaning_originalist", "originalist", "textualist", "formalist"],
     signatureTraits: ["time.public_meaning", "constraint.textual", "form.rules", "form.anti_discretion"],
@@ -885,14 +914,24 @@ globalThis.LAW_CHAMPIONS = Object.freeze([
     note: "Original Methods champion unit: historically accepted legal interpretive methods determine original meaning and minimize a free-standing construction zone."
   },
   {
-    id: "mcconnell_green",
-    name: "Michael McConnell / Christopher Green",
+    id: "baude_sachs",
+    name: "William Baude / Stephen Sachs",
     kind: "people",
     role: "subtype",
     eligibleIdentityIds: ["public_meaning_originalist", "originalist"],
+    signatureTraits: ["time.original_law", "time.fixation"],
+    antiTraits: ["time.original_intent"],
+    note: "Original-Law champion unit: recover and apply the law the Constitution originally made, including background legal rules and lawful mechanisms of change."
+  },
+  {
+    id: "mcconnell_green",
+    name: "Michael McConnell / Christopher Green",
+    kind: "people",
+    role: "historical",
+    eligibleIdentityIds: ["public_meaning_originalist", "originalist"],
     signatureTraits: ["time.public_meaning", "time.principle_originalism"],
     antiTraits: ["time.expected_applications"],
-    note: "Principle/application champion unit: fixed historical principles can require applications the adopters did not expect."
+    note: "Principle/application lineage. The distinction is important but shared broadly enough across New Originalism that it no longer earns a separate champion slot."
   },
   {
     id: "amar",
@@ -926,13 +965,24 @@ globalThis.LAW_CHAMPIONS = Object.freeze([
   },
   {
     id: "natural_law_originalists",
-    name: "Jeffrey Pojanowski / Kevin Walsh / J. Joel Alicea / Lee Strang",
+    name: "Jeffrey Pojanowski / Kevin Walsh",
     kind: "people",
     role: "subtype",
     eligibleIdentityIds: ["public_meaning_originalist", "originalist"],
     signatureTraits: ["time.fixation", "source.objective_morality", "source.positive_law_settlement"],
     antiTraits: ["time.living_content"],
     note: "Natural-law-grounded originalist unit: classical natural law explains the authority and settlement function of promulgated original constitutional law."
+  },
+
+  {
+    id: "ackerman",
+    name: "Bruce Ackerman",
+    kind: "person",
+    role: "subtype",
+    eligibleIdentityIds: ["living_constitutionalist"],
+    signatureTraits: ["time.constitutional_moments"],
+    antiTraits: ["time.transformative_constitutionalism"],
+    note: "Constitutional-moments champion: extraordinary episodes of sustained higher-law popular mobilization can produce constitutional change outside Article V."
   },
 
   // Adjacent constitutional-time champions
@@ -1204,11 +1254,11 @@ globalThis.LAW_CHAMPIONS = Object.freeze([
     id: "sohoni_frost",
     name: "Mila Sohoni / Amanda Frost",
     kind: "people",
-    role: "historical",
+    role: "subtype",
     eligibleIdentityIds: [],
-    signatureTraits: ["remedies.universal"],
+    signatureTraits: ["remedies.universal", "remedies.universal_relief_theory"],
     antiTraits: ["remedies.party_specific"],
-    note: "Lineage/explanatory source for nationwide or universal relief; not eligible for the single champion slot."
+    note: "Exceptional cross-noun universal-relief specialist. It can take the champion slot only when systemic Remedies are unusually salient and the dedicated universal-relief theory diagnostic is affirmed."
   },
   {
     id: "monaghan",
@@ -1224,11 +1274,11 @@ globalThis.LAW_CHAMPIONS = Object.freeze([
     id: "levinson",
     name: "Daryl Levinson",
     kind: "person",
-    role: "historical",
+    role: "subtype",
     eligibleIdentityIds: [],
     signatureTraits: ["remedies.equilibration"],
     antiTraits: [],
-    note: "Remedial-equilibration lineage. The current bank does not measure the feedback from remedial consequences into the content of constitutional rights."
+    note: "Exceptional cross-noun remedial-equilibration specialist: remedial consequences can feed back into the scope of the substantive constitutional right itself."
   },
 
   // Institutional / comparative champions

@@ -354,10 +354,10 @@ assert.equal(identities.find((x) => x.id === "weak_form_constitutionalist").publ
 
 for (const id of [
   "D-RLS1", "D-RLS2", "D-RLS3", "D-RLS4", "D-RLS5",
-  "D-POS1", "D-POS2", "D-NP1", "D-NP2", "D-NP3", "D-NP4", "D-NP5", "D-NP6",
+  "D-POS1", "D-POS2", "D-AUS1", "D-KEL1", "D-SHA1", "D-NP1", "D-NL2", "D-NP2", "D-NP3", "D-NP4", "D-NP5", "D-NP6",
   "D-MAJ1", "D-MAJ2", "D-ELY1", "D-WAL1", "D-RESP1", "D-TXT1", "D-TXT2", "D-INT1", "D-INT2", "D-PRAG1",
-  "D-LP1", "D-LP2", "D-QC1", "D-SOC1", "D-GENY1", "D-BLK1", "D-GRD1", "D-MON1", "D-BRAY1", "D-LIV1", "D-LIV2", "D-HAR1", "D-CLC1", "D-PIL1", "D-PLU1", "D-PLU2", "D-OCO1",
-  "D-ORI1", "D-ORI2", "D-ORI3", "D-ORI4", "D-ORI5", "D-MOR1", "D-PREC1", "D-QC2"
+  "D-LP1", "D-LP2", "D-QC1", "D-SOC1", "D-GENY1", "D-EHR1", "D-BLK1", "D-GRD1", "D-MON1", "D-BRAY1", "D-UNI1", "D-LEV1", "D-LIV1", "D-ACK1", "D-LIV2", "D-HAR1", "D-CLC1", "D-PIL1", "D-PLU1", "D-PLU2", "D-OCO1",
+  "D-ORI1", "D-ORI2", "D-ORI3", "D-ORI4", "D-ORI5", "D-ORI6", "D-MOR1", "D-PREC1", "D-QC2"
 ]) {
   assert.ok(diagnosticIds.has(id), `Missing high-value diagnostic ${id}`);
 }
@@ -429,13 +429,14 @@ assert.equal(classifier.championIdentityCompatibility(
   identities.find((x) => x.id === "public_meaning_originalist")
 ), "incompatible", "Hugo Black must not appear merely because an Originalist shares his rules/rights profile");
 
-// Distinctive-figure pass: the new specialists must be noun-compatible only
-// where the quiz can actually see their jurisprudence, and Ackerman must remain
-// further reading until constitutional-moments evidence exists.
-assert.equal(profileById.ackerman.tier, "lineage",
-  "Ackerman should remain lineage until the quiz measures constitutional moments");
-assert.equal(profileById.ackerman.selectable, false,
-  "Ackerman must not win from generic living-constitution scores");
+// Distinctive-figure pass: specialists must remain noun-compatible only
+// where the quiz can actually see their jurisprudence.
+assert.notEqual(profileById.ackerman.selectable, false,
+  "Ackerman must be selectable behind the constitutional-moments diagnostic");
+assert.equal(classifier.championIdentityCompatibility(
+  profileById.ackerman,
+  identities.find((x) => x.id === "living_constitutionalist")
+), "primary", "Ackerman should remain inside the existing Living Constitutionalist noun");
 assert.equal(classifier.championIdentityCompatibility(
   profileById.harlan_ii,
   identities.find((x) => x.id === "common_law_constitutionalist")
@@ -724,7 +725,7 @@ assert.ok(balkinLike.champions.some((x) => x.id === "balkin"),
 const lockedOriginalistUnits = [
   "bork_berger", "alexander_kay_prakash", "whittington",
   "solum", "barnett_bernick", "balkin",
-  "scalia_manning", "mcginnis_rappaport", "mcconnell_green", "amar",
+  "scalia_manning", "mcginnis_rappaport", "baude_sachs", "amar",
   "thomas_paulsen", "barrett", "natural_law_originalists"
 ];
 for (const id of lockedOriginalistUnits) {
@@ -765,9 +766,9 @@ assertOriginalistChampion("scalia_manning", "public_meaning_originalist",
 assertOriginalistChampion("mcginnis_rappaport", "public_meaning_originalist",
   { ...OBASE, time:94, cons:86 },
   { "time.original_methods":1, "time.fixation":1, "time.no_construction":1 });
-assertOriginalistChampion("mcconnell_green", "public_meaning_originalist",
-  { ...OBASE, time:88 },
-  { "time.public_meaning":1, "time.principle_originalism":1 });
+assertOriginalistChampion("baude_sachs", "public_meaning_originalist",
+  { ...OBASE, time:91, cons:76 },
+  { "time.public_meaning":1, "time.fixation":1, "time.original_law":1 });
 assertOriginalistChampion("amar", "public_meaning_originalist",
   { ...OBASE, time:84, cons:78 },
   { "time.public_meaning":1, "time.intratextualism":1, "method.holistic_constitution":1 });
@@ -786,7 +787,7 @@ assertOriginalistChampion("natural_law_originalists", "public_meaning_originalis
 const ORIGINALIST_OI = new Set(["bork_berger", "alexander_kay_prakash", "whittington"]);
 const ORIGINALIST_PM = new Set([
   "solum", "barnett_bernick", "balkin", "scalia_manning", "mcginnis_rappaport",
-  "mcconnell_green", "amar", "thomas_paulsen", "barrett", "natural_law_originalists"
+  "baude_sachs", "amar", "thomas_paulsen", "barrett", "natural_law_originalists"
 ]);
 const ORIGINALIST_NEW = new Set(["whittington", "solum", "barnett_bernick", "balkin"]);
 
@@ -814,7 +815,7 @@ function literalOriginalistCore(id) {
   if (ORIGINALIST_PM.has(id)) responses.T7 = 3;
   if (ORIGINALIST_OI.has(id)) responses.T7 = -3;
 
-  if (["solum", "mcconnell_green", "balkin"].includes(id)) responses.T8 = 3;
+  if (["solum", "balkin"].includes(id)) responses.T8 = 3;
   if (id === "solum") responses.T10 = 3;
   if (id === "balkin") {
     responses.T12 = 3;
@@ -830,17 +831,6 @@ function literalOriginalistCore(id) {
     for (const questionId of ["C1", "C2", "C7", "C9", "C11", "C17", "C18", "F1", "F3", "F7", "F8"]) {
       responses[questionId] = 3;
     }
-  }
-
-  // Keep McConnell/Green out of the Barrett/Thomas precedent poles while
-  // preserving strong principle/application evidence.
-  if (id === "mcconnell_green") {
-    responses.T12 = -3;
-    const precedentItems = questions.filter((item) => item.axis === "prec");
-    precedentItems.forEach((item, index) => { responses[item.id] = index % 2 ? 1 : -1; });
-    responses.T7 = 3;
-    responses.T8 = 3;
-    responses.T9 = 3;
   }
 
   // Natural-law originalism must be reachable without the Natural Lawyer or
@@ -862,6 +852,7 @@ function originalistDiagnosticAnswer(id, diagnosticId) {
   if (diagnosticId === "D-ORI4") return id === "alexander_kay_prakash" ? 3 : -3;
   if (diagnosticId === "D-ORI2") return id === "mcginnis_rappaport" ? 3 : -3;
   if (diagnosticId === "D-ORI5") return id === "amar" ? 3 : -3;
+  if (diagnosticId === "D-ORI6") return id === "baude_sachs" ? 3 : -3;
   if (diagnosticId === "D-NP1") return id === "natural_law_originalists" ? 3 : -3;
   if (["D-NP2", "D-NP3", "D-NP4", "D-POS1"].includes(diagnosticId)) return -3;
   return -3;
@@ -1021,6 +1012,9 @@ assert.ok(greenberg.champions.some((x) => x.id === "greenberg"),
 // Locked Source champion units and literal-answer reachability.
 const lockedSourceUnits = [
   "hart",
+  "kelsen",
+  "austin",
+  "shapiro",
   "coleman_waluchow_kramer",
   "raz_shapiro_marmor",
   "campbell_waldron_schauer",
@@ -1028,6 +1022,7 @@ const lockedSourceUnits = [
   "greenberg",
   "hershovitz",
   "finnis_murphy_george",
+  "moore_strong_natural_law",
   "fuller",
   "radbruch_soper"
 ];
@@ -1037,7 +1032,7 @@ for (const id of lockedSourceUnits) {
 }
 
 const SOURCE_POSITIVISTS = new Set([
-  "hart", "coleman_waluchow_kramer", "raz_shapiro_marmor", "campbell_waldron_schauer"
+  "hart", "kelsen", "austin", "shapiro", "coleman_waluchow_kramer", "raz_shapiro_marmor", "campbell_waldron_schauer"
 ]);
 
 function literalSourceCore(id) {
@@ -1055,7 +1050,7 @@ function literalSourceCore(id) {
     Object.assign(responses, {
       S1:-2, S2:-1, S3:-2, S4:-2, S5:-1, S6:2, S7:-3, S8:3, S10:-1, S11:-1
     });
-  } else if (id === "finnis_murphy_george") {
+  } else if (["finnis_murphy_george", "moore_strong_natural_law"].includes(id)) {
     Object.assign(responses, {
       S1:-1, S2:2, S3:-1, S4:-1, S5:-1, S6:2, S7:-2, S8:-3, S10:3, S11:3
     });
@@ -1076,11 +1071,15 @@ function sourceDiagnosticAnswer(id, diagnosticId) {
   if (diagnosticId === "D-QC1") return -2;
   if (diagnosticId === "D-POS1") {
     if (id === "coleman_waluchow_kramer") return 3;
-    if (id === "raz_shapiro_marmor") return -3;
+    if (["raz_shapiro_marmor", "shapiro"].includes(id)) return -3;
     return 0;
   }
+  if (diagnosticId === "D-AUS1") return id === "austin" ? 3 : -3;
+  if (diagnosticId === "D-KEL1") return id === "kelsen" ? 3 : -3;
+  if (diagnosticId === "D-SHA1") return id === "shapiro" ? 3 : -3;
   if (diagnosticId === "D-POS2") return id === "campbell_waldron_schauer" ? 3 : -3;
   if (diagnosticId === "D-NP1") return id === "finnis_murphy_george" ? 3 : -3;
+  if (diagnosticId === "D-NL2") return id === "moore_strong_natural_law" ? 3 : -3;
   if (diagnosticId === "D-NP2") return id === "dworkin_stavropoulos" ? 3 : -3;
   if (diagnosticId === "D-NP4") return id === "greenberg" ? 3 : -3;
   if (diagnosticId === "D-NP5") return id === "hershovitz" ? 3 : -3;
@@ -1110,6 +1109,9 @@ function runLiteralSourceFixture(id) {
 
 const sourceExpectedIdentity = {
   hart:"positivist",
+  kelsen:"positivist",
+  austin:"positivist",
+  shapiro:"positivist",
   coleman_waluchow_kramer:"positivist",
   raz_shapiro_marmor:"positivist",
   campbell_waldron_schauer:"positivist",
@@ -1117,6 +1119,7 @@ const sourceExpectedIdentity = {
   greenberg:"nonpositivist",
   hershovitz:"nonpositivist",
   finnis_murphy_george:"natural_lawyer",
+  moore_strong_natural_law:"natural_lawyer",
   fuller:"fullerian",
   radbruch_soper:"nonpositivist"
 };
@@ -1166,6 +1169,7 @@ const lockedMethodUnits = [
   "felix_cohen",
   "frank",
   "pound",
+  "ehrlich",
   "geny"
 ];
 for (const id of lockedMethodUnits) {
@@ -1232,7 +1236,8 @@ function methodDiagnosticAnswer(id, diagnosticId) {
   if (diagnosticId === "D-PRAG1") return METHOD_PRAGMATISTS.has(id) ? 3 : -3;
   if (diagnosticId === "D-LP1") return METHOD_LEGAL_PROCESS.has(id) ? 3 : -3;
   if (diagnosticId === "D-LP2") return id === "wechsler" ? 3 : -3;
-  if (diagnosticId === "D-SOC1") return METHOD_SOCIOLOGICAL.has(id) ? 3 : -3;
+  if (diagnosticId === "D-SOC1") return METHOD_SOCIOLOGICAL.has(id) || id === "ehrlich" ? 3 : -3;
+  if (diagnosticId === "D-EHR1") return id === "ehrlich" ? 3 : -3;
   if (diagnosticId === "D-GENY1") return id === "geny" ? 3 : -3;
   if (diagnosticId === "D-PLU1") return METHOD_PLURALISTS.has(id) ? 3 : -3;
   if (diagnosticId === "D-PLU2") return id === "eskridge_frickey" ? 3 : -3;
@@ -1280,6 +1285,7 @@ const methodExpectedIdentity = {
   felix_cohen:"legal_realist",
   frank:"legal_realist",
   pound:"sociological_jurist",
+  ehrlich:"sociological_jurist",
   geny:"sociological_jurist"
 };
 
@@ -1315,6 +1321,8 @@ function distinctiveDiagnosticAnswer(id, diagnosticId) {
   if (diagnosticId === "D-PIL1") return id === "bhagwati_iyer" ? 3 : -3;
   if (diagnosticId === "D-SOC1") return id === "bhagwati_iyer" ? 3 : -3;
   if (diagnosticId === "D-BRAY1") return id === "bray" ? 3 : -3;
+  if (diagnosticId === "D-UNI1") return id === "sohoni_frost" ? 3 : -3;
+  if (diagnosticId === "D-LEV1") return id === "levinson" ? 3 : -3;
   return -3;
 }
 
@@ -1401,6 +1409,7 @@ for (const id of Object.keys(distinctiveExpectedIdentity)) {
 const lockedNonOriginalistUnits = [
   "brennan",
   "post_siegel",
+  "ackerman",
   "klare_langa",
   "david_strauss",
   "harlan_ii",
@@ -1416,7 +1425,8 @@ for (const id of lockedNonOriginalistUnits) {
 function nonOriginalistDiagnosticAnswer(id, diagnosticId) {
   if (diagnosticId === "D-RLS1") return -3;
   if (diagnosticId === "D-QC1") return -2;
-  if (diagnosticId === "D-LIV1") return id === "post_siegel" ? 3 : -3;
+  if (diagnosticId === "D-LIV1") return ["post_siegel", "ackerman"].includes(id) ? 3 : -3;
+  if (diagnosticId === "D-ACK1") return id === "ackerman" ? 3 : -3;
   if (diagnosticId === "D-LIV2") return id === "klare_langa" ? 3 : -3;
   if (diagnosticId === "D-HAR1") return id === "harlan_ii" ? 3 : -3;
   if (diagnosticId === "D-CLC1") return id === "robin_cooke" ? 3 : -3;
@@ -1427,6 +1437,7 @@ function nonOriginalistDiagnosticAnswer(id, diagnosticId) {
 const nonOriginalistExpectedIdentity = {
   brennan: "living_constitutionalist",
   post_siegel: "living_constitutionalist",
+  ackerman: "living_constitutionalist",
   klare_langa: "living_constitutionalist",
   david_strauss: "common_law_constitutionalist",
   harlan_ii: "common_law_constitutionalist",
@@ -1465,9 +1476,6 @@ for (const id of lockedNonOriginalistUnits) {
       `${id} must surface its locked Living modifier`);
   }
 }
-
-assert.equal(profileById.ackerman.selectable, false,
-  "Ackerman must remain lineage-only until constitutional-moments evidence exists");
 
 // Locked judicial-review / constitutional-authority champion paths.
 const lockedAuthorityUnits = [
@@ -1637,7 +1645,9 @@ const lockedStructureFormUnits = [
   "barak",
   "fiss",
   "bhagwati_iyer",
-  "bray"
+  "bray",
+  "sohoni_frost",
+  "levinson"
 ];
 
 for (const id of lockedStructureFormUnits) {
@@ -1645,7 +1655,7 @@ for (const id of lockedStructureFormUnits) {
     `Locked structure/form/remedies champion unit ${id} must be selectable`);
 }
 
-for (const id of ["sohoni_frost", "chayes", "levinson"]) {
+for (const id of ["chayes"]) {
   assert.equal(profileById[id]?.selectable, false,
     `${id} must remain lineage/explanation only and cannot take the single champion slot`);
 }
@@ -1653,6 +1663,10 @@ assert.notEqual(profileById.bray?.selectable, false,
   "Bray must be selectable behind the traditional-equity whole-profile gate");
 assert.notEqual(profileById.monaghan?.selectable, false,
   "Monaghan must be selectable behind the constitutional-common-law diagnostic");
+assert.notEqual(profileById.sohoni_frost?.selectable, false,
+  "Sohoni/Frost must be selectable behind the universal-relief gate");
+assert.notEqual(profileById.levinson?.selectable, false,
+  "Levinson must be selectable behind the remedial-equilibration gate");
 
 function literalStructureFormCore(id) {
   const profile = profileById[id];
@@ -1678,6 +1692,10 @@ function literalStructureFormCore(id) {
   // Structural Formalism without the unitary-executive proposition should
   // remain Lawson rather than Calabresi/Prakash.
   if (id === "lawson") responses.E2 = 3;
+  if (id === "levinson") {
+    responses.R9 = 3;
+    responses.R10 = 3;
+  }
   return responses;
 }
 
@@ -1692,6 +1710,8 @@ function structureFormDiagnosticAnswer(id, diagnosticId) {
   if (diagnosticId === "D-PIL1") return id === "bhagwati_iyer" ? 3 : -3;
   if (diagnosticId === "D-SOC1") return id === "bhagwati_iyer" ? 3 : -3;
   if (diagnosticId === "D-BRAY1") return id === "bray" ? 3 : -3;
+  if (diagnosticId === "D-UNI1") return id === "sohoni_frost" ? 3 : -3;
+  if (diagnosticId === "D-LEV1") return id === "levinson" ? 3 : -3;
   return -3;
 }
 
@@ -1704,7 +1724,9 @@ const structureFormExpectedIdentity = {
   barak: "proportionalist",
   fiss: "mixed_jurisprudence",
   bhagwati_iyer: "sociological_jurist",
-  bray: "minimalist"
+  bray: "minimalist",
+  sohoni_frost: "mixed_jurisprudence",
+  levinson: "mixed_jurisprudence"
 };
 
 const structureFormExpectedModifier = {
