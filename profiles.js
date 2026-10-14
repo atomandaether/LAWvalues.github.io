@@ -731,7 +731,7 @@ globalThis.LAW_PROFILES = Object.freeze([
     name: "Eugen Ehrlich",
     tier: "specialist",
     identityIds: ["sociological_jurist"],
-    axisSignature: {},
+    axisSignature: { cons: { target: 38, weight: 0.5 } },
     signatureTraits: ["method.living_law", "method.law_in_action", "source.social_norms"],
     requiredTraits: [{ all: ["method.living_law"], min: 0.5 }],
     antiTraits: ["source.positive_sources"],
