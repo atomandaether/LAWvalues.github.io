@@ -669,6 +669,16 @@ globalThis.LAW_CHAMPIONS = Object.freeze([
     note: "Modern best-reading/context-sensitive Textualism: ordinary usage and whole-text context without abandoning enacted text as the governing object."
   },
   {
+    id: "kagan",
+    name: "Elena Kagan",
+    kind: "person",
+    role: "subtype",
+    eligibleIdentityIds: ["textualist"],
+    signatureTraits: ["constraint.textual", "constraint.contextual_textualism", "constraint.best_reading_context", "precedent.settlement", "separation.interpretive_accommodation"],
+    antiTraits: ["separation.independent_judicial_interpretation"],
+    note: "Institutionalist contextual Textualism: text and whole-statute context remain central while precedent, delegated institutional responsibility, expertise, and administrability retain substantial weight."
+  },
+  {
     id: "ekins_intentionalism",
     name: "Richard Ekins",
     kind: "person",
@@ -1032,11 +1042,11 @@ globalThis.LAW_CHAMPIONS = Object.freeze([
     id: "gardbaum",
     name: "Stephen Gardbaum",
     kind: "person",
-    role: "primary",
-    eligibleIdentityIds: ["weak_form_constitutionalist"],
-    signatureTraits: ["posture.dialogic", "posture.weak_form"],
+    role: "subtype",
+    eligibleIdentityIds: ["political_constitutionalist", "political_process_jurist", "minimalist", "mixed_jurisprudence"],
+    signatureTraits: ["posture.dialogic", "posture.weak_form", "posture.structured_legislative_response"],
     antiTraits: ["posture.judicial_supremacy", "posture.popular_authority"],
-    note: "New Commonwealth / weak-form-review champion: independent judicial rights review without entrenched judicial supremacy."
+    note: "Champion-level New Commonwealth / weak-form review: independent judicial rights adjudication combined with a structured legislative response mechanism. No public Weak-Form noun is created."
   },
   {
     id: "kramer",
@@ -1184,11 +1194,11 @@ globalThis.LAW_CHAMPIONS = Object.freeze([
     id: "bray",
     name: "Samuel Bray",
     kind: "person",
-    role: "historical",
+    role: "subtype",
     eligibleIdentityIds: [],
-    signatureTraits: ["remedies.party_specific", "remedies.incremental"],
-    antiTraits: ["remedies.universal"],
-    note: "Lineage/explanatory source for plaintiff-specific traditional-equity instincts; not eligible for the single champion slot."
+    signatureTraits: ["remedies.party_specific", "remedies.incremental", "remedies.traditional_equity"],
+    antiTraits: ["remedies.universal", "remedies.structural"],
+    note: "Exceptional cross-noun traditional-equity specialist. It can take the single champion slot only when narrow remedies are unusually salient and the dedicated traditional-equity diagnostic is affirmed."
   },
   {
     id: "sohoni_frost",
@@ -1204,11 +1214,11 @@ globalThis.LAW_CHAMPIONS = Object.freeze([
     id: "monaghan",
     name: "Henry Monaghan",
     kind: "person",
-    role: "historical",
-    eligibleIdentityIds: [],
-    signatureTraits: ["remedies.prophylactic"],
+    role: "subtype",
+    eligibleIdentityIds: ["positivist", "legal_process_theorist", "common_law_constitutionalist", "mixed_jurisprudence"],
+    signatureTraits: ["remedies.prophylactic", "remedies.constitutional_common_law"],
     antiTraits: [],
-    note: "Constitutional-common-law lineage for prophylactic doctrine; current questions capture the idea but not enough of Monaghan's broader theory for the single champion slot."
+    note: "Champion-level constitutional-common-law specialist: implementing doctrine may exceed the constitutional minimum while remaining legally distinct from the underlying constitutional command."
   },
   {
     id: "levinson",
