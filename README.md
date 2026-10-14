@@ -1,16 +1,16 @@
 # LAWvalues
 
-> Method/interpretation classifier details are documented in [`METHOD_ENGINE.md`](METHOD_ENGINE.md): eight public nouns, three substantive modifiers, eighteen locked champion units, noun-conditioned compatibility, and literal-answer reachability.
+> Method/interpretation classifier details are documented in [`METHOD_ENGINE.md`](METHOD_ENGINE.md): eight public nouns, three substantive modifiers, twenty locked champion units, noun-conditioned compatibility, and literal-answer reachability.
 
-> Source-of-law classifier details are documented in [`SOURCE_ENGINE.md`](SOURCE_ENGINE.md): public nouns, substantive modifiers, ten champion units, adaptive routing, article-aware fit labels, and end-to-end reachability.
+> Source-of-law classifier details are documented in [`SOURCE_ENGINE.md`](SOURCE_ENGINE.md): public nouns, substantive modifiers, fourteen champion units, adaptive routing, article-aware fit labels, and end-to-end reachability.
 
 > Originalism classifier details are documented in [`ORIGINALISM_ENGINE.md`](ORIGINALISM_ENGINE.md): OPM/OI public nouns, New construction modifier, fit modifiers, thirteen champion units, and adaptive routing under the twelve-question cap.
 
-> Non-originalist constitutional-time details are documented in [`NONORIGINALISM_ENGINE.md`](NONORIGINALISM_ENGINE.md): Living/Common-Law public nouns, Democratic/Transformative Living modifiers, seven locked champion units, and end-to-end reachability under the twelve-question cap.
+> Non-originalist constitutional-time details are documented in [`NONORIGINALISM_ENGINE.md`](NONORIGINALISM_ENGINE.md): Living/Common-Law public nouns, Democratic/Transformative Living modifiers, eight locked champion units, and end-to-end reachability under the twelve-question cap.
 
 > Judicial-review / constitutional-authority details are documented in [`AUTHORITY_ENGINE.md`](AUTHORITY_ENGINE.md): six narrow public authority nouns, Responsive/Passive-virtues modifiers, eight locked public champion units, and strong-/weak-form review retained as nonpublic descriptors.
 
-> Institutional-structure / doctrinal-form / remedies details are documented in [`STRUCTURE_FORM_ENGINE.md`](STRUCTURE_FORM_ENGINE.md): Formalist/Functionalist/Proportionalist, eight locked selectable champion units across this zone, tightly gated Fiss cross-noun matching, remedies lineage, and the exactly-one-champion rule.
+> Institutional-structure / doctrinal-form / remedies details are documented in [`STRUCTURE_FORM_ENGINE.md`](STRUCTURE_FORM_ENGINE.md): Formalist/Functionalist/Proportionalist plus twelve selectable structure/form/remedies champion units, tightly gated cross-noun remedies specialists, and the exactly-one-champion rule.
 
 LAWvalues is a static, client-side legal-philosophy quiz. The current public label is **Version 0.7 Beta**. It maps respondents across eight bipolar dimensions:
 
