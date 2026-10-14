@@ -1284,6 +1284,14 @@
   
         // Core S2 can make the threshold theory visible immediately.
         if (extremePlausible && (traits["source.objective_morality"] || 0) < 0.5) offer("D-NP6", 94);
+
+        // Strong Natural Law can establish the Natural-Law noun through a direct
+        // legal-validity thesis even when Finnis-style settlement is rejected.
+        if ((traits["source.objective_morality"] || 0) >= 0.45 &&
+            (traits["source.strong_natural_law"] || 0) < 0.5 &&
+            !hasAsked(diagnosticResponses, "D-NL2")) {
+          offer("D-NL2", 91);
+        }
   
         if (naturalPlausible && (traits["source.positive_law_settlement"] || 0) < 0.5) {
           offer("D-NP1", 92);
