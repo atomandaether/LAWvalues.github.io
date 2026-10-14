@@ -62,31 +62,36 @@ Current fit gates remain theory-derived rather than population-calibrated: Unmis
 
 ### Positivist
 1. **H. L. A. Hart** — baseline social-rule/open-texture positivism.
-2. **Jules Coleman / Matthew Kramer** — generic Inclusive Positivism.
+2. **Hans Kelsen** — Pure Theory: hierarchical legal validity culminating in a presupposed basic norm.
+3. **John Austin** — command/sovereign positivism.
+4. **Scott Shapiro** — Planning Theory.
+5. **Jules Coleman / Matthew Kramer** — generic Inclusive Positivism.
 
 **Wil Waluchow** is split out only when Inclusive Positivism combines with Common-Law Constitutionalism; that cross-axis combination is handled by the non-originalist constitutional-time champion layer rather than making Waluchow the default Inclusive-Positivist endpoint.
-3. **Joseph Raz / Scott Shapiro / Andrei Marmor** — Exclusive Positivism.
-4. **Tom Campbell / Jeremy Waldron / Frederick Schauer** — Normative/Ethical Positivism.
 
-Kelsen, Austin, Gardner, Green, Himma, and related figures remain important lineage/further reading unless later work reveals a distinct judge-type gap.
+6. **Joseph Raz** — Exclusive Positivism.
+7. **Tom Campbell** — Normative/Ethical Positivism.
+
+Gardner, Green, Himma, Marmor, and related figures remain further reading unless a separately measured phenotype requires them.
 
 ### Interpretivist
-5. **Ronald Dworkin / Nicos Stavropoulos** — central legal Interpretivism: institutional practice bears on law through the principles that best fit and justify it.
+8. **Ronald Dworkin** — central legal Interpretivism: institutional practice bears on law through the principles that best fit and justify it.
 
-T.R.S. Allan remains important further reading pending the later Common-Law Constitutionalism / interpretive-method review.
+Nicos Stavropoulos and T.R.S. Allan remain important related scholarship.
 
 ### Natural Lawyer
-6. **John Finnis / Mark Murphy / Robert P. George** — central modern Natural Law: objective moral order plus a substantial settlement, coordination, and institutional-authority role for positive law.
+9. **John Finnis** — weak/central-case modern Natural Law: objective moral order plus a substantial settlement, coordination, and institutional-authority role for positive law.
+10. **Michael S. Moore** — Strong Natural Law: some serious normative defects can defeat legal validity itself.
 
-Aquinas, Blackstone, Jonathan Crowe, and related thinkers remain lineage/further reading.
+Aquinas, Blackstone, Mark Murphy, Robert George, Jonathan Crowe, and related thinkers remain lineage/further reading.
 
 ### Fullerian
-7. **Lon Fuller** — internal morality/principles of legality.
+11. **Lon Fuller** — internal morality/principles of legality.
 
 ### Non-Positivist subtype branches
 8. **Mark Greenberg** — Moral Impact Theory.
-9. **Scott Hershovitz** — moral-practice / one-system nonpositivism.
-10. **Gustav Radbruch / Philip Soper** — extreme-injustice threshold.
+13. **Scott Hershovitz** — moral-practice / one-system nonpositivism.
+14. **Gustav Radbruch / Philip Soper** — extreme-injustice threshold.
 
 Robert Alexy remains primarily a Proportionalist champion rather than a duplicate Extreme-Injustice Source champion.
 
@@ -95,11 +100,15 @@ Robert Alexy remains primarily a Proportionalist champion rather than a duplicat
 The global adaptive cap remains twelve questions.
 
 - **D-POS1** — Inclusive versus Exclusive Positivism.
+- **D-AUS1** — Austinian command/sovereign theory.
+- **D-KEL1** — Kelsenian normative hierarchy/basic norm.
+- **D-SHA1** — Shapiro Planning Theory.
 - **D-POS2** — Normative/Ethical Positivism.
 - **D-NP1** — Natural Law: objective morality plus positive-law settlement.
 - **D-NP2** — Interpretivism: principles, fit, justification, and discovery rather than judicial creation.
 - **D-NP4** — Moral Impact Theory / Greenberg.
 - **D-NP5** — Moral-Practice nonpositivism / Hershovitz.
+- **D-NL2** — Strong Natural Law / Michael Moore.
 - **D-NP6** — Extreme-Injustice threshold / Radbruch-Soper.
 - **D-NP3** — Fullerian internal legality.
 
