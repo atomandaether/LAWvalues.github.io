@@ -288,6 +288,14 @@
                     : null
             }
         );
+        const narrativeScores = Object.fromEntries(
+            globalThis.LAW_AXES.map((axis) => [axis.id, scored[axis.id].score])
+        );
+        const narrative = globalThis.LAW_RESULT_NARRATIVE?.build
+            ? globalThis.LAW_RESULT_NARRATIVE.build(classification, narrativeScores)
+            : null;
+        if (narrative) classification.narrative = narrative;
+
         const params = new URLSearchParams({ v: globalThis.LAW_VERSION });
         globalThis.LAW_AXES.forEach((axis) => params.set(axis.id, String(scored[axis.id].score)));
         params.set('n', globalThis.LAW_AXES.map((axis) => coreScored[axis.id].answered).join(','));
@@ -298,6 +306,7 @@
         if (classification.resultTitle?.modifier?.id) params.set('m', classification.resultTitle.modifier.id);
         if (classification.resultTitle?.phrase?.id) params.set('p', classification.resultTitle.phrase.id);
         if (classification.resultTitle?.bridge?.id) params.set('b', classification.resultTitle.bridge.id);
+        if (narrative?.id) params.set('x', narrative.id);
         params.set('d', String(classification.diagnosticCount));
 
 
