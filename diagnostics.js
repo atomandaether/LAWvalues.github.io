@@ -421,8 +421,8 @@ globalThis.LAW_DIAGNOSTIC_QUESTIONS = Object.freeze([
     disagreeTraits: [],
     nextOnAgree: [],
     nextOnDisagree: [],
-    relatedIdentityIds: [],
-    note: "Samuel Bray champion discriminator. This is a champion-level theory of remedial authority, not a Remedies noun."
+    relatedIdentityIds: ["minimalist", "formalist", "textualist", "originalist", "public_meaning_originalist", "common_law_constitutionalist"],
+    note: "Samuel Bray champion discriminator. These are only likely host identities for routing; this remains a champion-level theory of remedial authority and does not create a Remedies noun."
   },
   {
     id: "D-TXT2",
