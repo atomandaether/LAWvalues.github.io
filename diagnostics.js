@@ -47,6 +47,20 @@ globalThis.LAW_DIAGNOSTIC_QUESTIONS = Object.freeze([
     note: "Constitutional nondelegation despite perfectly clear authorization, separated from a mere statutory clear-statement or major-questions rule."
   },
   {
+    id: "D-MET1",
+    family: "separation",
+    priority: "medium",
+    unlock: "Functional administration is plausible and the distinction between constitutional supervision and plenary presidential control could materially change the champion.",
+    prompt: "The Constitution can require an accountable system of supervision over administration—especially a real duty to ensure lawful execution—without giving the President authority to replace every lawful judgment that Congress assigned to subordinate officials. Constitutional supervision and presidential control are not the same thing.",
+    signals: {"agree":{"separ":-0.25},"disagree":{"separ":0.1}},
+    agreeTraits: ["separation.supervisory_duty", "separation.administrative_constitutionalism", "separation.functionalist"],
+    disagreeTraits: [],
+    nextOnAgree: [],
+    nextOnDisagree: [],
+    relatedIdentityIds: ["functionalist", "legal_process_theorist"],
+    note: "Metzger champion discriminator: affirmative constitutional supervision of administration without collapsing it into strong unitary-executive control."
+  },
+  {
     id: "D-SEP4",
     family: "separation",
     priority: "high",
@@ -569,6 +583,32 @@ globalThis.LAW_DIAGNOSTIC_QUESTIONS = Object.freeze([
     note: "Substantive Imaginative-Reconstruction modifier and Learned Hand/early Posner champion discriminator."
   },
   {
+    id: "D-KAT1",
+    family: "interpretation",
+    priority: "medium",
+    unlock: "Intentionalism is established and a Congress-aware institutional account of legislative intent could materially change the champion.",
+    prompt: "When statutory text is genuinely ambiguous, courts should treat reliable committee reports and other legislative materials that Congress itself uses to communicate a bill's meaning as legitimate evidence of what Congress intended, because interpretation should account for how Congress actually makes and explains law.",
+    agreeTraits: ["constraint.intent", "method.congress_aware_interpretation", "method.reliable_legislative_history"],
+    disagreeTraits: [],
+    nextOnAgree: [],
+    nextOnDisagree: [],
+    relatedIdentityIds: ["intentionalist", "legal_process_theorist", "purposivist"],
+    note: "Katzmann champion discriminator: institutional knowledge of Congress and reliable legislative history, not Ekins-style group-agency theory or imaginative reconstruction."
+  },
+  {
+    id: "D-CAL1",
+    family: "interpretation",
+    priority: "medium",
+    unlock: "Pragmatist, Common-Law, or pluralist judging is live and statutory obsolescence could materially change the champion.",
+    prompt: "An old statute can become so badly out of step with the later legal framework that a court should not mechanically extend it forever. In an extreme case, courts may use common-law-like reasoning or a second-look device that effectively requires today's political branches to reaffirm the obsolete rule before it continues to govern.",
+    agreeTraits: ["method.statutory_obsolescence", "method.second_look", "method.common_law_statutory_updating", "method.consequences"],
+    disagreeTraits: [],
+    nextOnAgree: [],
+    nextOnDisagree: [],
+    relatedIdentityIds: ["pragmatist", "common_law_constitutionalist", "interpretive_pluralist"],
+    note: "Guido Calabresi champion discriminator: statutory obsolescence and second-look/common-law updating rather than generic purposive interpretation."
+  },
+  {
     id: "D-PRAG1",
     family: "interpretation",
     priority: "high",
@@ -606,6 +646,34 @@ globalThis.LAW_DIAGNOSTIC_QUESTIONS = Object.freeze([
     nextOnDisagree: [],
     relatedIdentityIds: ["legal_process_theorist"],
     note: "Champion-level Herbert Wechsler discriminator."
+  },
+
+  {
+    id: "D-MAS1",
+    family: "interpretation",
+    priority: "medium",
+    unlock: "Legal Process or Functionalism is live and an agency-centered theory of legal interpretation could materially change the champion.",
+    prompt: "An agency charged with administering a statute is not merely a policy actor waiting for courts to supply the law. Its statutory interpretation can itself be a disciplined legal enterprise, guided by institutional expertise, internal norms, reason-giving, and responsibility for making the legislative program work.",
+    agreeTraits: ["method.agency_interpretive_autonomy", "method.administrative_reason_giving", "method.institutional_competence", "separation.interpretive_accommodation"],
+    disagreeTraits: [],
+    nextOnAgree: [],
+    nextOnDisagree: [],
+    relatedIdentityIds: ["legal_process_theorist", "functionalist"],
+    note: "Mashaw champion discriminator: agency interpretation as an autonomous legal enterprise rather than merely deference or branch overlap."
+  },
+
+  {
+    id: "D-ROM1",
+    family: "sociological",
+    priority: "medium",
+    unlock: "The Source profile does not establish a moral nonpositivist theory and institutional legal pluralism could materially change the noun/champion.",
+    prompt: "A sufficiently organized institution—such as a church, union, university, professional body, or other association—can constitute a genuine legal order even if the state did not create it and does not recognize its rules as state law. The state is not the only kind of institution capable of producing law.",
+    agreeTraits: ["source.institutional_legal_pluralism", "source.nonstate_legal_orders"],
+    disagreeTraits: [],
+    nextOnAgree: [],
+    nextOnDisagree: [],
+    relatedIdentityIds: ["sociological_jurist"],
+    note: "Santi Romano noun/champion discriminator: institutional legal pluralism, distinct from Ehrlich's living-law sociology and from morality-based nonpositivism."
   },
 
   {
