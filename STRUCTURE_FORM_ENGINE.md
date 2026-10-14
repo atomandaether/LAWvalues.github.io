@@ -64,15 +64,17 @@ Remedies remain a cross-cutting characteristic shown through the title phrase an
 
 10. **Henry Monaghan** — champion-level constitutional-common-law specialist. Strong prophylactic-remedy evidence may unlock **D-MON1**; only agreement that implementing doctrine can exceed yet remain legally distinct from the constitutional minimum makes Monaghan eligible beneath compatible Positivist, Legal Process, Common-Law, or Mixed results.
 
+### Additional champion-level remedies specialists
+
+11. **Mila Sohoni / Amanda Frost** — universal-relief specialist. Extremely systemic Remedies can unlock **D-UNI1**; only affirmative agreement that federal equitable power can in appropriate cases lawfully protect nonparties makes this unit eligible.
+
+12. **Daryl Levinson** — remedial-equilibration specialist. **D-LEV1** directly tests whether remedial consequences may feed back into the definition of the substantive constitutional right itself.
+
 ### Lineage / explanation only
 
-The following never take the user's single champion slot:
-
 - **Abram Chayes** — public-law-litigation lineage closely overlapping Fiss.
-- **Mila Sohoni / Amanda Frost** — nationwide / universal-relief lineage.
-- **Daryl Levinson** — remedial equilibration, whose defining feedback mechanism is not directly measured.
 
-Their ideas remain useful in result explanations and further-reading material.
+These champion-level remedies theories do not create a Remedies noun.
 
 ## One champion rule
 
@@ -98,9 +100,11 @@ The audit suite separately requires these endpoints to remain reachable from lit
 - Bhagwati / Iyer → Sociological Jurist / PIL-social-action champion
 - Samuel Bray → extreme traditional-equity / party-specific whole-profile champion
 - Henry Monaghan → constitutional-common-law specialist under an existing noun
+- Mila Sohoni / Amanda Frost → universal-relief whole-profile specialist
+- Daryl Levinson → remedial-equilibration whole-profile specialist
 
 It also verifies:
-- Bray and Monaghan are selectable only behind their dedicated champion-level gates; Sohoni/Frost, Chayes, and Levinson remain nonselectable;
+- Bray, Monaghan, Sohoni/Frost, and Levinson are selectable only behind their dedicated champion-level gates; Chayes remains nonselectable;
 - Fiss does not displace an otherwise strong Barak match merely because Remedies become structural;
 - exact-zero axis values remain extreme title evidence rather than being silently converted to neutral 50;
 - every valid fixture returns exactly one champion unit;
