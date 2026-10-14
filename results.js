@@ -268,6 +268,29 @@
 
     displayClassification(classification);
 
+    const networkContainer = document.getElementById('champion-network');
+    const networkSelection = document.getElementById('champion-network-selection');
+    const networkLegend = document.getElementById('champion-network-legend');
+    if (networkContainer && globalThis.LAW_CHAMPION_NETWORK?.render) {
+        const championId = classification?.champions?.length === 1
+            ? classification.champions[0].id
+            : null;
+        globalThis.LAW_CHAMPION_NETWORK.render({
+            container: networkContainer,
+            selectionElement: networkSelection,
+            championId
+        });
+
+        if (networkLegend) {
+            const colors = globalThis.LAW_CHAMPION_NETWORK.colors || {};
+            networkLegend.innerHTML = (globalThis.LAW_CHAMPION_NETWORK.camps || []).map((camp) => {
+                const swatch = '<span class="champion-network-swatch" style="background:' + colors[camp] + '"></span>';
+                return '<span class="champion-network-legend-item">' + swatch + camp + '</span>';
+            }).join('');
+        }
+    }
+
+
     function textSummary() {
         const classificationLines = classification?.identity
             ? [
