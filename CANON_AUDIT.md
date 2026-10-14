@@ -106,7 +106,7 @@ Therefore Realism gets one universal soft probe and two follow-ups only if unloc
 Champions:
 - **Karl Llewellyn** = best general mature-American-Realist champion.
 - **Brian Leiter** = modern champion for the distinctive Realist + Positivist/Naturalist combination; his reconstruction of Realism and naturalized jurisprudence gives him marginal coverage the historical figures do not.
-- **Jerome Frank** = important psychological/fact-skeptical lineage, but not selectable until LAWvalues actually diagnoses that subtype.
+- **Jerome Frank** = selectable fact-skeptical Realist after the dedicated D-RLS4 diagnostic.
 - **Oliver Wendell Holmes Jr.** = crucial precursor; potentially informative specifically when Realism combines with strong democratic deference.
 
 ## Pragmatist
@@ -217,7 +217,7 @@ The Posture zone uses six public nouns. Broad strong-form legal constitutionalis
 ## Political Constitutionalist
 Functioning representative institutions retain the stronger claim to final constitutional authority under reasonable rights disagreement.
 
-Champion unit: **Jeremy Waldron / Richard Bellamy**. Their philosophical rationales differ, but the present instrument does not measure enough to separate them without violating the Alexander/Kaye threshold. Griffith, Tomkins, and Webber remain related reading.
+Champion: **Jeremy Waldron**. Richard Bellamy, Griffith, Tomkins, and Webber remain closely related political-constitutional scholarship. Waldron may also appear beneath a Positivist noun when his normative-positivist commitments dominate, but a strongly Posture-dominant Waldron profile resolves to Political Constitutionalist.
 
 **Waldronian** is retained only as an internal legacy alias.
 
@@ -450,7 +450,7 @@ Current implications:
 - Hugo Black adds a different measurable combination: text/rule absolutism plus strong enumerated-rights enforcement.
 - Llewellyn remains the general mature-Realist champion.
 - Brian Leiter adds a modern Realist + Positivist/Naturalist combination and therefore fills a different region.
-- Frank remains lineage until fact/psychology diagnostics exist.
+- Frank remains separately selectable because D-RLS4 directly diagnoses his fact-skeptical subtype.
 - Posner remains because Pragmatism itself is a direct identity; Law & Economics is irrelevant to why he is included.
 - Bork should be considered only if Original-Intent Originalism is affirmatively diagnosed; he is not needed as another generic Originalist.
 - Easterbrook is presently redundant once Law & Economics is excluded.
