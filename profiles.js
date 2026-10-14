@@ -1258,20 +1258,14 @@ globalThis.LAW_PROFILES = Object.freeze([
     id: "leiter",
     name: "Brian Leiter",
     tier: "specialist",
-    identityIds: ["legal_realist"],
-    crossCuttingIdentityIds: ["positivist"],
-    crossCuttingRequirements: {
-      positivist: [
-        { all: ["realism.underdetermination", "realism.empirical_prediction"], min: 0.45 }
-      ]
-    },
+    identityIds: ["legal_realist", "positivist"],
     axisSignature: { sorc: { target: 92, weight: 0.7 } },
     signatureTraits: ["realism.underdetermination", "realism.empirical_prediction", "source.source_thesis"],
     requiredTraits: [
       { all: ["realism.underdetermination", "realism.empirical_prediction"], min: 0.45 }
     ],
     antiTraits: ["realism.fact_skepticism", "realism.functional_anti_conceptual"],
-    specificityBonus: 0.025,
+    specificityBonus: 0.05,
     description: "Naturalized contemporary Legal Realism: empirical explanation of adjudication and rational indeterminacy are combined with a positivist account of law rather than a freestanding normative theory of judging.",
     related: ["Karl Llewellyn", "H. L. A. Hart"]
   },
