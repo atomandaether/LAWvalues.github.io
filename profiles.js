@@ -737,8 +737,8 @@ globalThis.LAW_PROFILES = Object.freeze([
       functionalist: [{ all: ["method.agency_interpretive_autonomy"], min: 0.5 }]
     },
     axisSignature: {
-      cons: { target: 36, weight: 0.35 },
-      separ: { target: 20, weight: 0.55 }
+      cons: { target: 36, weight: 0.45 },
+      prec: { target: 68, weight: 0.35 }
     },
     signatureTraits: ["method.agency_interpretive_autonomy", "method.administrative_reason_giving", "method.institutional_competence", "separation.interpretive_accommodation"],
     requiredTraits: [{ all: ["method.agency_interpretive_autonomy"], min: 0.5 }],
@@ -1299,13 +1299,13 @@ globalThis.LAW_PROFILES = Object.freeze([
       legal_process_theorist: [{ all: ["separation.supervisory_duty"], min: 0.5 }]
     },
     axisSignature: {
-      separ: { target: 18, weight: 0.7 },
-      post: { target: 48, weight: 0.25 }
+      separ: { target: 8, weight: 0.8 },
+      post: { target: 48, weight: 0.2 }
     },
     signatureTraits: ["separation.supervisory_duty", "separation.administrative_constitutionalism", "separation.functionalist"],
     requiredTraits: [{ all: ["separation.supervisory_duty"], min: 0.5 }],
     antiTraits: ["separation.unitary_executive", "separation.strong_nondelegation"],
-    specificityBonus: 0.04,
+    specificityBonus: 0.08,
     description: "Supervisory administrative constitutionalism: modern administration is constitutionally legitimate and itself implements constitutional norms, while constitutional structure still requires meaningful systemic supervision and accountability without collapsing supervision into plenary presidential control.",
     related: ["Peter Strauss", "Jerry Mashaw"]
   },
