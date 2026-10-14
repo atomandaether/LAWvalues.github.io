@@ -82,7 +82,7 @@ Every valid classified result receives **exactly one champion unit**.
 
 The ordinary process remains noun-conditioned: primary-compatible champions receive the strongest advantage, cross-cutting-compatible champions remain eligible, and incompatible figures are normally excluded. Specific affirmative evidence resolves ties toward the narrower well-supported unit.
 
-Fiss and Bray are the two global cross-noun remedies exceptions, each subject to an extreme whole-profile gate. Monaghan remains noun-compatible/cross-cutting rather than globally eligible.
+Fiss, Bray, Sohoni/Frost, and Levinson are tightly gated global cross-noun remedies specialists. Monaghan remains noun-compatible/cross-cutting rather than globally eligible.
 
 Close matches reduce confidence but never produce co-champions. If an otherwise valid result has no compatible selectable profile at all, the engine uses the best globally fitting eligible profile rather than leaving the champion slot empty. Response-quality/incoherence overrides still withhold thinker matching.
 
