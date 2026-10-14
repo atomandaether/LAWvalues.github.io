@@ -31,7 +31,8 @@ Scalia remains cross-cutting when Originalism or Textualism is the respondent's 
 
 Functionalism remains the established separation-of-powers noun centered on workability, accountability, checks, and tolerated institutional overlap.
 
-4. **Peter Strauss** — locked default champion.
+4. **Peter Strauss** — default functional separation-of-powers champion.
+5. **Gillian E. Metzger** — supervisory administrative constitutionalism: modern administration is legitimate and itself implements constitutional norms, while constitutional structure still requires meaningful supervision without equating supervision with plenary presidential control.
 
 Breyer and Justice White remain related judicial exemplars rather than additional units.
 
@@ -39,8 +40,8 @@ Breyer and Justice White remain related judicial exemplars rather than additiona
 
 Generic balancing is not enough. **D-PROP1** must affirm the structured proportionality sequence.
 
-5. **Robert Alexy** — non-positivist, principles-heavy Proportionalism.
-6. **Aharon Barak** — purposive and strongly rights-protective Proportionalism.
+6. **Robert Alexy** — non-positivist, principles-heavy Proportionalism.
+7. **Aharon Barak** — purposive and strongly rights-protective Proportionalism.
 
 The title layer preserves:
 - **Non-Positivist Proportionalist** for Alexy-like profiles;
@@ -56,19 +57,19 @@ Remedies remain a cross-cutting characteristic shown through the title phrase an
 
 ### Selectable
 
-7. **Owen Fiss** — cross-noun systemic-remedies exception. He can enter the global champion competition only if systemic Remedies are extremely salient, structural reform and continuing supervision are both strong, and the judicial-role profile is strongly counter-majoritarian.
+8. **Owen Fiss** — cross-noun systemic-remedies exception. He can enter the global champion competition only if systemic Remedies are extremely salient, structural reform and continuing supervision are both strong, and the judicial-role profile is strongly counter-majoritarian.
 
-8. **P. N. Bhagwati / V. R. Krishna Iyer** — retained because social-action/PIL judging is not merely a remedies preference: it combines procedural-access innovation, systemic relief, strong judicial role, and an open social/purposive method. D-PIL1 remains required.
+9. **P. N. Bhagwati / V. R. Krishna Iyer** — retained because social-action/PIL judging is not merely a remedies preference: it combines procedural-access innovation, systemic relief, strong judicial role, and an open social/purposive method. D-PIL1 remains required.
 
-9. **Samuel Bray** — the opposite-pole cross-noun exception. Extremely salient party-specific Remedies may unlock **D-BRAY1**; only affirmative traditional-equity reasoning allows Bray to displace the ordinary noun-compatible champion. Narrow remedies alone are insufficient.
+10. **Samuel Bray** — the opposite-pole cross-noun exception. Extremely salient party-specific Remedies may unlock **D-BRAY1**; only affirmative traditional-equity reasoning allows Bray to displace the ordinary noun-compatible champion. Narrow remedies alone are insufficient.
 
-10. **Henry Monaghan** — champion-level constitutional-common-law specialist. Strong prophylactic-remedy evidence may unlock **D-MON1**; only agreement that implementing doctrine can exceed yet remain legally distinct from the constitutional minimum makes Monaghan eligible beneath compatible Positivist, Legal Process, Common-Law, or Mixed results.
+11. **Henry Monaghan** — champion-level constitutional-common-law specialist. Strong prophylactic-remedy evidence may unlock **D-MON1**; only agreement that implementing doctrine can exceed yet remain legally distinct from the constitutional minimum makes Monaghan eligible beneath compatible Positivist, Legal Process, Common-Law, or Mixed results.
 
 ### Additional champion-level remedies specialists
 
-11. **Mila Sohoni / Amanda Frost** — universal-relief specialist. Extremely systemic Remedies can unlock **D-UNI1**; only affirmative agreement that federal equitable power can in appropriate cases lawfully protect nonparties makes this unit eligible.
+12. **Mila Sohoni / Amanda Frost** — universal-relief specialist. Extremely systemic Remedies can unlock **D-UNI1**; only affirmative agreement that federal equitable power can in appropriate cases lawfully protect nonparties makes this unit eligible.
 
-12. **Daryl Levinson** — remedial-equilibration specialist. **D-LEV1** directly tests whether remedial consequences may feed back into the definition of the substantive constitutional right itself.
+13. **Daryl Levinson** — remedial-equilibration specialist. **D-LEV1** directly tests whether remedial consequences may feed back into the definition of the substantive constitutional right itself.
 
 ### Lineage / explanation only
 
@@ -91,6 +92,7 @@ Close matches reduce confidence but never produce co-champions. If an otherwise 
 The audit suite separately requires these endpoints to remain reachable from literal 88-item answer profiles through the live adaptive router within the twelve-question cap:
 
 - Peter Strauss → Functionalist
+- Gillian Metzger → Functionalist / supervisory administrative constitutionalism
 - Gary Lawson → Formalist
 - Calabresi / Prakash → Formalist
 - Frederick Schauer → Formalist
@@ -112,4 +114,4 @@ It also verifies:
 
 ## Theory-based Separation diagnostics (0.7 Beta)
 
-Four conditional diagnostics, D-SEP1–D-SEP4, distinguish theories of presidential direction of executive officers, independent judicial construction of delegated statutory authority, nondelegation despite clear legislative authorization, and the constitutional limits on administrative adjudication. They use no new public axis. When actually asked, they carry modest Separation-axis weight in addition to narrower champion evidence; adaptive routing itself still uses the 88-core scores, so the follow-ups refine rather than recursively determine their own eligibility. They are routed by the strength and relevance of an existing structural judicial philosophy and supply narrower champion signals for Lawson, Calabresi/Prakash, Peter Strauss and appropriate Textualist/Purposivist profiles. The 88-core + up-to-12-adaptive allocation retains the 100-response limit. All four must be reachable on tested Formalist/Functionalist paths.
+Five conditional institutional diagnostics—D-SEP1 through D-SEP4 plus D-MET1—distinguish presidential direction of executive officers, independent judicial construction of delegated statutory authority, nondelegation despite clear legislative authorization, administrative adjudication, and Metzger-style constitutional supervision without plenary presidential control. They use no new public axis. When actually asked, they carry modest Separation-axis weight in addition to narrower champion evidence; adaptive routing itself still uses the 88-core scores, so the follow-ups refine rather than recursively determine their own eligibility. They are routed by the strength and relevance of an existing structural judicial philosophy and supply narrower champion signals for Lawson, Calabresi/Prakash, Peter Strauss and appropriate Textualist/Purposivist profiles. The 88-core + up-to-12-adaptive allocation retains the 100-response limit. All four must be reachable on tested Formalist/Functionalist paths.
