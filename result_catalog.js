@@ -641,12 +641,11 @@ globalThis.LAW_CHAMPIONS = Object.freeze([
     id: "leiter",
     name: "Brian Leiter",
     kind: "person",
-    role: "historical",
-    eligibleIdentityIds: ["legal_realist"],
-    signatureTraits: ["realism.underdetermination", "realism.empirical_prediction", "realism.naturalism"],
-    antiTraits: [],
-    selectable: false,
-    note: "Major contemporary interpreter and defender of naturalized Legal Realism; further reading rather than a distinct closest-judge endpoint."
+    role: "subtype",
+    eligibleIdentityIds: ["legal_realist", "positivist"],
+    signatureTraits: ["realism.underdetermination", "realism.empirical_prediction", "source.source_thesis"],
+    antiTraits: ["realism.fact_skepticism", "realism.functional_anti_conceptual"],
+    note: "Cross-cutting Realist/Positivist specialist: empirical explanation of adjudication and rational indeterminacy are combined with a positivist account of law."
   },
   {
     id: "posner",
@@ -693,8 +692,8 @@ globalThis.LAW_CHAMPIONS = Object.freeze([
     name: "Brett Kavanaugh",
     kind: "person",
     role: "subtype",
-    eligibleIdentityIds: ["textualist"],
-    signatureTraits: ["constraint.textual", "constraint.contextual_textualism", "constraint.best_reading_context"],
+    eligibleIdentityIds: ["textualist", "public_meaning_originalist", "originalist"],
+    signatureTraits: ["constraint.textual", "constraint.contextual_textualism", "constraint.best_reading_context", "separation.independent_judicial_interpretation"],
     antiTraits: ["constraint.intent"],
     note: "Modern best-reading/context-sensitive Textualism: ordinary usage and whole-text context without abandoning enacted text as the governing object."
   },
@@ -1080,10 +1079,10 @@ globalThis.LAW_CHAMPIONS = Object.freeze([
   },
   {
     id: "waldron",
-    name: "Jeremy Waldron / Richard Bellamy",
-    kind: "people",
+    name: "Jeremy Waldron",
+    kind: "person",
     role: "primary",
-    eligibleIdentityIds: ["political_constitutionalist"],
+    eligibleIdentityIds: ["political_constitutionalist", "positivist"],
     signatureTraits: ["posture.democratic_legitimacy", "posture.reasonable_disagreement"],
     antiTraits: ["posture.judicial_supremacy"],
     note: "Political-Constitutionalist champion unit: rights-respecting democratic institutions retain the stronger claim to final constitutional authority."
@@ -1185,7 +1184,7 @@ globalThis.LAW_CHAMPIONS = Object.freeze([
     name: "Gary Lawson",
     kind: "person",
     role: "primary",
-    eligibleIdentityIds: ["formalist"],
+    eligibleIdentityIds: ["formalist", "public_meaning_originalist", "originalist"],
     signatureTraits: ["separation.formalist", "separation.nondelegation"],
     antiTraits: ["separation.functionalist"],
     note: "Structural-formalism champion: assigned powers, prescribed processes, and anti-delegation constraints rather than incidental Originalist Time."
@@ -1205,7 +1204,7 @@ globalThis.LAW_CHAMPIONS = Object.freeze([
     name: "Steven Calabresi / Saikrishna Prakash",
     kind: "people",
     role: "subtype",
-    eligibleIdentityIds: ["formalist"],
+    eligibleIdentityIds: ["formalist", "public_meaning_originalist", "originalist"],
     signatureTraits: ["separation.formalist", "separation.unitary_executive"],
     antiTraits: ["separation.functionalist"],
     note: "Unitary-executive Formalist unit: executive administration remains subject to presidential control rather than congressional insulation."
