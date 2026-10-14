@@ -116,6 +116,9 @@ Champion matching is noun-conditioned and whole-profile-sensitive. Incompatible 
 
 ## Important figures that should not automatically become middle labels
 
+### Charles L. Black Jr.
+Black is a champion-level specialist, not a public noun or modifier. A dedicated diagnostic tests whether constitutional architecture and institutional relationships can themselves generate controlling legal implications. Strong agreement can route an otherwise Positivist, Interpretive Pluralist, Common-Law Constitutionalist, Living Constitutionalist, or Mixed respondent to Black. Amar remains the Originalist/intratextual specialist; Black covers the non-Originalist structural-inference version.
+
 ### Blackstone
 Blackstone is canonically important, but the current quiz does not isolate one "Blackstonian" package. He is best treated as lineage / possible champion for traditional natural-law + common-law + stability combinations.
 
