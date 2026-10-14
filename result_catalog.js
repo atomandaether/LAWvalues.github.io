@@ -739,6 +739,16 @@ globalThis.LAW_CHAMPIONS = Object.freeze([
     note: "Modal constitutional pluralism: several recognized modalities of constitutional argument are legitimately available."
   },
   {
+    id: "charles_black",
+    name: "Charles L. Black Jr.",
+    kind: "person",
+    role: "subtype",
+    eligibleIdentityIds: ["positivist", "interpretive_pluralist", "common_law_constitutionalist", "living_constitutionalist", "mixed_jurisprudence"],
+    signatureTraits: ["method.structural_inference", "method.holistic_constitution"],
+    antiTraits: [],
+    note: "Champion-level structural constitutional inference: architecture and institutional relationships can themselves generate constitutional implications. No Structuralist noun is created."
+  },
+  {
     id: "eskridge_frickey",
     name: "William Eskridge / Philip Frickey",
     kind: "people",

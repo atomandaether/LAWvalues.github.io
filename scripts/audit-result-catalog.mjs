@@ -356,7 +356,7 @@ for (const id of [
   "D-RLS1", "D-RLS2", "D-RLS3", "D-RLS4", "D-RLS5",
   "D-POS1", "D-POS2", "D-NP1", "D-NP2", "D-NP3", "D-NP4", "D-NP5", "D-NP6",
   "D-MAJ1", "D-MAJ2", "D-ELY1", "D-WAL1", "D-RESP1", "D-TXT1", "D-TXT2", "D-INT1", "D-INT2", "D-PRAG1",
-  "D-LP1", "D-LP2", "D-QC1", "D-SOC1", "D-GENY1", "D-LIV1", "D-LIV2", "D-HAR1", "D-CLC1", "D-PIL1", "D-PLU1", "D-PLU2", "D-OCO1",
+  "D-LP1", "D-LP2", "D-QC1", "D-SOC1", "D-GENY1", "D-BLK1", "D-LIV1", "D-LIV2", "D-HAR1", "D-CLC1", "D-PIL1", "D-PLU1", "D-PLU2", "D-OCO1",
   "D-ORI1", "D-ORI2", "D-ORI3", "D-ORI4", "D-ORI5", "D-MOR1", "D-PREC1", "D-QC2"
 ]) {
   assert.ok(diagnosticIds.has(id), `Missing high-value diagnostic ${id}`);
@@ -1342,6 +1342,55 @@ for (const id of Object.keys(distinctiveExpectedIdentity)) {
     `${id} must remain reachable within the twelve-diagnostic cap`);
 }
 
+// Charles Black is a champion-level structural-inference specialist, not a noun.
+// His path deliberately uses an existing Positivist noun to prove that the
+// diagnostic can change the champion without manufacturing a Structuralist result.
+{
+  const targets = { sorc:84, cons:61, time:29, prec:84, remed:27, post:9, separ:57, form:43 };
+  const responses = {};
+  for (let i = 0; i < questions.length; i += 1) {
+    const item = questions[i];
+    const target = targets[item.axis] ?? 50;
+    const agreeSignal = Number(item.signals?.agree?.[item.axis] || 0);
+    const disagreeSignal = Number(item.signals?.disagree?.[item.axis] || 0);
+    const desired = target > 55 ? 1 : target < 45 ? -1 : 0;
+    if (desired !== 0) {
+      const positiveAnswer = desired * agreeSignal >= desired * disagreeSignal;
+      const extremity = Math.abs(target - 50);
+      const magnitude = extremity >= 32 ? 3 : extremity >= 18 ? 2 : 1;
+      responses[item.id] = (positiveAnswer ? 1 : -1) * magnitude;
+    } else {
+      responses[item.id] = i % 2 ? 1 : -1;
+    }
+  }
+  const scores = scoring.scoreAll(responses);
+  const diagnosticResponses = {};
+  const diagnosticOrder = [];
+  const blackAnswer = (diagnosticId) => {
+    if (diagnosticId === "D-RLS1") return -3;
+    if (diagnosticId === "D-QC1") return -2;
+    if (diagnosticId === "D-POS1") return 3;
+    if (diagnosticId === "D-POS2") return -3;
+    if (diagnosticId === "D-BLK1") return 3;
+    return -3;
+  };
+  for (let i = 0; i < classifier.MAX_DIAGNOSTICS; i += 1) {
+    const next = classifier.nextDiagnostic(scores, responses, diagnosticResponses);
+    if (!next) break;
+    diagnosticOrder.push(next.id);
+    diagnosticResponses[next.id] = blackAnswer(next.id);
+  }
+  const result = classifier.classify(scores, responses, diagnosticResponses, { coreElapsedMs: 10 * 60 * 1000 });
+  assert.equal(result.identity.id, "positivist",
+    "Charles Black specialist path must retain an existing public noun rather than create Structuralism");
+  assert.equal(result.champions[0]?.id, "charles_black",
+    "Black-style structural inference must be able to change the champion to Charles Black");
+  assert.ok(diagnosticOrder.includes("D-BLK1"),
+    "Charles Black path must actually ask the dedicated structural-inference diagnostic");
+  assert.ok(diagnosticOrder.length <= classifier.MAX_DIAGNOSTICS,
+    "Charles Black must remain reachable within the twelve-diagnostic cap");
+}
+
 // Locked non-originalist constitutional-time champion paths.
 // Living and Common-Law remain the only public nouns in this family;
 // Democratic and Transformative are substantive Living modifiers.
@@ -1759,7 +1808,7 @@ const allLockedUnits=new Set([
   ...lockedOriginalistUnits,...lockedSourceUnits,...lockedMethodUnits,
   ...Object.keys(distinctiveExpectedIdentity),...lockedNonOriginalistUnits,
   ...lockedAuthorityUnits,...lockedStructureFormUnits,
-  "owen_dixon","vermeule","oconnor"
+  "owen_dixon","vermeule","oconnor","charles_black"
 ]);
 assert.deepEqual([...allLockedUnits].sort(),
   Array.from(profiles.filter(p=>p.selectable!==false && p.tier!=="lineage"),p=>p.id).sort(),

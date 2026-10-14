@@ -923,6 +923,26 @@ globalThis.LAW_PROFILES = Object.freeze([
     related: ["Philip Bobbitt", "William Eskridge", "Philip Frickey"]
   },
   {
+    id: "charles_black",
+    name: "Charles L. Black Jr.",
+    tier: "specialist",
+    identityIds: ["mixed_jurisprudence"],
+    crossCuttingIdentityIds: ["positivist", "interpretive_pluralist", "common_law_constitutionalist", "living_constitutionalist"],
+    crossCuttingRequirements: {
+      positivist: [{ all: ["method.structural_inference"], min: 0.5 }],
+      interpretive_pluralist: [{ all: ["method.structural_inference"], min: 0.5 }],
+      common_law_constitutionalist: [{ all: ["method.structural_inference"], min: 0.5 }],
+      living_constitutionalist: [{ all: ["method.structural_inference"], min: 0.5 }]
+    },
+    axisSignature: {},
+    signatureTraits: ["method.structural_inference", "method.holistic_constitution"],
+    requiredTraits: [{ all: ["method.structural_inference"], min: 0.5 }],
+    antiTraits: [],
+    specificityBonus: 0.025,
+    description: "Structural constitutional inference: constitutional rules can follow from the relationships and architecture created by the Constitution as a whole even when no single clause expressly states the rule.",
+    related: ["Akhil Reed Amar", "Philip Bobbitt"]
+  },
+  {
     id: "vermeule",
     name: "Adrian Vermeule",
     tier: "specialist",
