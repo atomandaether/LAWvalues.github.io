@@ -780,6 +780,15 @@ globalThis.LAW_PROFILES = Object.freeze([
     name: "Brett Kavanaugh",
     tier: "specialist",
     identityIds: ["textualist"],
+    crossCuttingIdentityIds: ["public_meaning_originalist", "originalist"],
+    crossCuttingRequirements: {
+      public_meaning_originalist: [
+        { all: ["constraint.best_reading_context", "separation.independent_judicial_interpretation"], min: 0.5 }
+      ],
+      originalist: [
+        { all: ["constraint.best_reading_context", "separation.independent_judicial_interpretation"], min: 0.5 }
+      ]
+    },
     axisSignature: { cons: { target: 90, weight: 1 } },
     signatureTraits: ["constraint.textual", "constraint.contextual_textualism", "constraint.best_reading_context", "separation.independent_judicial_interpretation"],
     requiredTraits: [{ all: ["constraint.best_reading_context"], min: 0.5 }],
@@ -900,15 +909,21 @@ globalThis.LAW_PROFILES = Object.freeze([
   },
   {
     id: "waldron",
-    name: "Jeremy Waldron / Richard Bellamy",
+    name: "Jeremy Waldron",
     tier: "main",
     identityIds: ["political_constitutionalist"],
+    crossCuttingIdentityIds: ["positivist"],
+    crossCuttingRequirements: {
+      positivist: [
+        { all: ["source.normative_positivism", "posture.reasonable_disagreement"], min: 0.5 }
+      ]
+    },
     axisSignature: { post: { target: 96, weight: 1 } },
     signatureTraits: ["posture.democratic_legitimacy", "posture.reasonable_disagreement"],
     requiredTraits: [{ all: ["posture.reasonable_disagreement"], min: 0.5 }],
     antiTraits: ["posture.judicial_supremacy", "posture.clear_error_only"],
     description: "Political Constitutionalism: under functioning democratic institutions and reasonable rights disagreement, representative political processes retain the stronger claim to final constitutional authority.",
-    related: ["J. A. G. Griffith", "Adam Tomkins", "Grégoire Webber"]
+    related: ["Richard Bellamy", "J. A. G. Griffith", "Adam Tomkins", "Grégoire Webber"]
   },
   {
     id: "kramer",
@@ -1197,6 +1212,11 @@ globalThis.LAW_PROFILES = Object.freeze([
     name: "Gary Lawson",
     tier: "specialist",
     identityIds: ["formalist"],
+    crossCuttingIdentityIds: ["public_meaning_originalist", "originalist"],
+    crossCuttingRequirements: {
+      public_meaning_originalist: [{ all: ["separation.strong_nondelegation"], min: 0.5 }],
+      originalist: [{ all: ["separation.strong_nondelegation"], min: 0.5 }]
+    },
     axisSignature: {
       separ: { target: 97, weight: 1 }
     },
@@ -1212,6 +1232,11 @@ globalThis.LAW_PROFILES = Object.freeze([
     name: "Steven Calabresi / Saikrishna Prakash",
     tier: "specialist",
     identityIds: ["formalist"],
+    crossCuttingIdentityIds: ["public_meaning_originalist", "originalist"],
+    crossCuttingRequirements: {
+      public_meaning_originalist: [{ all: ["separation.unitary_executive"], min: 0.5 }],
+      originalist: [{ all: ["separation.unitary_executive"], min: 0.5 }]
+    },
     axisSignature: {
       separ: { target: 95, weight: 0.9 }
     },
@@ -1222,6 +1247,27 @@ globalThis.LAW_PROFILES = Object.freeze([
     antiTraits: ["separation.functionalist"],
     description: "Unitary-executive Formalism: Article II places executive administration under presidential control rather than permitting Congress to insulate executive officers from presidential supervision.",
     related: ["Gary Lawson"]
+  },
+  {
+    id: "leiter",
+    name: "Brian Leiter",
+    tier: "specialist",
+    identityIds: ["legal_realist"],
+    crossCuttingIdentityIds: ["positivist"],
+    crossCuttingRequirements: {
+      positivist: [
+        { all: ["realism.underdetermination", "realism.empirical_prediction"], min: 0.45 }
+      ]
+    },
+    axisSignature: { sorc: { target: 92, weight: 0.7 } },
+    signatureTraits: ["realism.underdetermination", "realism.empirical_prediction", "source.source_thesis"],
+    requiredTraits: [
+      { all: ["realism.underdetermination", "realism.empirical_prediction"], min: 0.45 }
+    ],
+    antiTraits: ["realism.fact_skepticism", "realism.functional_anti_conceptual"],
+    specificityBonus: 0.025,
+    description: "Naturalized contemporary Legal Realism: empirical explanation of adjudication and rational indeterminacy are combined with a positivist account of law rather than a freestanding normative theory of judging.",
+    related: ["Karl Llewellyn", "H. L. A. Hart"]
   },
   {
     id: "llewellyn",
