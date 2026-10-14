@@ -356,7 +356,7 @@ for (const id of [
   "D-RLS1", "D-RLS2", "D-RLS3", "D-RLS4", "D-RLS5",
   "D-POS1", "D-POS2", "D-AUS1", "D-KEL1", "D-SHA1", "D-NP1", "D-NL2", "D-NP2", "D-NP3", "D-NP4", "D-NP5", "D-NP6",
   "D-MAJ1", "D-MAJ2", "D-ELY1", "D-WAL1", "D-RESP1", "D-TXT1", "D-TXT2", "D-INT1", "D-INT2", "D-PRAG1",
-  "D-LP1", "D-LP2", "D-QC1", "D-SOC1", "D-GENY1", "D-EHR1", "D-BLK1", "D-GRD1", "D-MON1", "D-BRAY1", "D-UNI1", "D-LEV1", "D-LIV1", "D-ACK1", "D-LIV2", "D-HAR1", "D-CLC1", "D-PIL1", "D-PLU1", "D-PLU2", "D-OCO1",
+  "D-LP1", "D-LP2", "D-KAT1", "D-CAL1", "D-MAS1", "D-ROM1", "D-MET1", "D-QC1", "D-SOC1", "D-GENY1", "D-EHR1", "D-BLK1", "D-GRD1", "D-MON1", "D-BRAY1", "D-UNI1", "D-LEV1", "D-LIV1", "D-ACK1", "D-LIV2", "D-HAR1", "D-CLC1", "D-PIL1", "D-PLU1", "D-PLU2", "D-OCO1",
   "D-ORI1", "D-ORI2", "D-ORI3", "D-ORI4", "D-ORI5", "D-ORI6", "D-ORI7", "D-MOR1", "D-PREC1", "D-QC2"
 ]) {
   assert.ok(diagnosticIds.has(id), `Missing high-value diagnostic ${id}`);
@@ -1157,20 +1157,24 @@ const lockedMethodUnits = [
   "kavanaugh_barrett",
   "kagan",
   "ekins_intentionalism",
+  "katzmann",
   "hand_posner_imaginative",
   "breyer",
   "barak",
   "hart_sacks",
+  "mashaw",
   "wechsler",
   "bobbitt",
   "eskridge_frickey",
   "posner",
+  "guido_calabresi",
   "cardozo",
   "llewellyn",
   "felix_cohen",
   "frank",
   "pound",
   "ehrlich",
+  "santi_romano",
   "geny"
 ];
 for (const id of lockedMethodUnits) {
@@ -1237,13 +1241,17 @@ function methodDiagnosticAnswer(id, diagnosticId) {
   if (diagnosticId === "D-SEP2") return id === "kagan" ? -3 : id === "kavanaugh_barrett" ? 3 : -3;
   if (diagnosticId === "D-TXT2") return id === "hugo_black" ? 3 : -3;
 
-  if (diagnosticId === "D-INT1") return METHOD_INTENTIONALISTS.has(id) ? 3 : -3;
+  if (diagnosticId === "D-INT1") return METHOD_INTENTIONALISTS.has(id) || id === "katzmann" ? 3 : -3;
   if (diagnosticId === "D-INT2") return id === "hand_posner_imaginative" ? 3 : -3;
-  if (diagnosticId === "D-PRAG1") return METHOD_PRAGMATISTS.has(id) ? 3 : -3;
-  if (diagnosticId === "D-LP1") return METHOD_LEGAL_PROCESS.has(id) ? 3 : -3;
+  if (diagnosticId === "D-KAT1") return id === "katzmann" ? 3 : -3;
+  if (diagnosticId === "D-PRAG1") return METHOD_PRAGMATISTS.has(id) || id === "guido_calabresi" ? 3 : -3;
+  if (diagnosticId === "D-CAL1") return id === "guido_calabresi" ? 3 : -3;
+  if (diagnosticId === "D-LP1") return METHOD_LEGAL_PROCESS.has(id) || id === "mashaw" ? 3 : -3;
   if (diagnosticId === "D-LP2") return id === "wechsler" ? 3 : -3;
+  if (diagnosticId === "D-MAS1") return id === "mashaw" ? 3 : -3;
   if (diagnosticId === "D-SOC1") return METHOD_SOCIOLOGICAL.has(id) || id === "ehrlich" ? 3 : -3;
   if (diagnosticId === "D-EHR1") return id === "ehrlich" ? 3 : -3;
+  if (diagnosticId === "D-ROM1") return id === "santi_romano" ? 3 : -3;
   if (diagnosticId === "D-GENY1") return id === "geny" ? 3 : -3;
   if (diagnosticId === "D-PLU1") return METHOD_PLURALISTS.has(id) ? 3 : -3;
   if (diagnosticId === "D-PLU2") return id === "eskridge_frickey" ? 3 : -3;
@@ -1278,20 +1286,24 @@ const methodExpectedIdentity = {
   kavanaugh_barrett:"textualist",
   kagan:"textualist",
   ekins_intentionalism:"intentionalist",
+  katzmann:"intentionalist",
   hand_posner_imaginative:"intentionalist",
   breyer:"purposivist",
   barak:"purposivist",
   hart_sacks:"legal_process_theorist",
+  mashaw:"legal_process_theorist",
   wechsler:"legal_process_theorist",
   bobbitt:"interpretive_pluralist",
   eskridge_frickey:"interpretive_pluralist",
   posner:"pragmatist",
+  guido_calabresi:"pragmatist",
   cardozo:"pragmatist",
   llewellyn:"legal_realist",
   felix_cohen:"legal_realist",
   frank:"legal_realist",
   pound:"sociological_jurist",
   ehrlich:"sociological_jurist",
+  santi_romano:"sociological_jurist",
   geny:"sociological_jurist"
 };
 
@@ -1647,6 +1659,7 @@ assert.notEqual(profileById.gardbaum?.selectable, false,
 // Locked institutional-structure / doctrinal-form / remedies champion paths.
 const lockedStructureFormUnits = [
   "peter_strauss",
+  "metzger",
   "lawson",
   "calabresi_prakash",
   "schauer",
@@ -1715,6 +1728,7 @@ function structureFormDiagnosticAnswer(id, diagnosticId) {
   if (diagnosticId === "D-SEP2") return id === "peter_strauss" ? -3 : 3;
   if (diagnosticId === "D-SEP3") return id === "lawson" ? 3 : -3;
   if (diagnosticId === "D-SEP4") return id === "lawson" ? 3 : -3;
+  if (diagnosticId === "D-MET1") return id === "metzger" ? 3 : -3;
   if (diagnosticId === "D-PROP1") return ["alexy", "barak"].includes(id) ? 3 : -3;
   if (diagnosticId === "D-PIL1") return id === "bhagwati_iyer" ? 3 : -3;
   if (diagnosticId === "D-SOC1") return id === "bhagwati_iyer" ? 3 : -3;
@@ -1726,6 +1740,7 @@ function structureFormDiagnosticAnswer(id, diagnosticId) {
 
 const structureFormExpectedIdentity = {
   peter_strauss: "functionalist",
+  metzger: "functionalist",
   lawson: "formalist",
   calabresi_prakash: "formalist",
   schauer: "formalist",
