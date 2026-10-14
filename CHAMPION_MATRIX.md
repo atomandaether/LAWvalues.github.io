@@ -36,7 +36,7 @@ This is why:
 ### Level 0 — lineage only
 The figure is historically important but the quiz does not test the distinctive theory closely enough.
 
-Examples: Blackstone, Aquinas, Austin/Bentham, Kelsen for Pure Theory, Holmes as a Realist precursor.
+Examples: Blackstone, Aquinas, Bentham as historical command-theory lineage, and Holmes as a Realist precursor. Austin and Kelsen are now selectable because dedicated diagnostics directly measure their distinctive theories.
 
 ### Level 1 — family champion
 The respondent clearly belongs to a broad identity and the champion is a canonical exemplar.
@@ -87,7 +87,7 @@ Examples:
 | Proportionalist | Alexy for nonpositivist/correctness-heavy proportionality; Barak for purposive proportionality | structured proportionality is the noun; modifier + champion carry the Alexy/Barak split |
 | Legal Realist | Llewellyn; Leiter for Realist+Positivist/Naturalist; Holmes as precursor | Llewellyn = broad mature Realism; Leiter = modern naturalized/positivist reconstruction; Holmes = precursor + deference; Frank remains lineage until fact/psychology diagnostics exist |
 | Pragmatist | Posner; Breyer as judicial relative | consequences/workability; Breyer when purposivism/functionalism is stronger |
-| Textualist | Scalia/Manning/Easterbrook; Kavanaugh/Barrett; Hugo Black | mainline enacted-bargain text; modern best-reading/context-sensitive text; Black's categorical text/rights package |
+| Textualist | Manning; Kavanaugh; Kagan; Hugo Black | mainline enacted-bargain text; court-centered best-reading textualism; institutionally accommodating contextual textualism; Black's categorical text/rights package |
 | Intentionalist | no default yet | diagnose actual legislative/enactor intent before choosing a champion |
 | Purposivist | Hart & Sacks; Breyer; Barak | Hart/Sacks = legal process; Breyer = pragmatic judging; Barak = purposive + proportionality |
 | Legal-Process Theorist | Hart & Sacks | institutional competence + reasoned elaboration |
@@ -123,7 +123,7 @@ Black is a champion-level specialist, not a public noun or modifier. A dedicated
 Blackstone is canonically important, but the current quiz does not isolate one "Blackstonian" package. He is best treated as lineage / possible champion for traditional natural-law + common-law + stability combinations.
 
 ### Kelsen
-Kelsen is a central positivist architect, but the Pure Theory's distinctive normative hierarchy/basic-norm structure is not measured. Keep him in the canon, not as a default respondent label.
+Kelsen is now a selectable Positivist specialist because **D-KEL1** directly tests the Pure Theory's normative hierarchy/basic-norm architecture. He remains unavailable from generic Positivism alone.
 
 ### Holmes
 Holmes is a crucial precursor to Realism and a practicing Thayerian. He stays useful only because the **cross-combination** Realism + strong democratic deference is measurable. He should not occupy a separate slot merely as another Thayer follower.
@@ -151,7 +151,8 @@ Remedies do not create a public noun and do not receive a separate secondary cha
 
 - **Bhagwati/Iyer** remain selectable because PIL/social-action judging is a multi-axis jurisprudential package.
 - **Fiss** remains selectable only through an extreme whole-profile structural-reform gate and can displace a noun-compatible champion only when that package is genuinely more explanatory overall.
-- **Chayes, Bray, Sohoni/Frost, Monaghan, and Levinson** are lineage/result-explanation only and never compete for the user's single champion slot.
+- **Bray, Sohoni/Frost, Monaghan, and Levinson** are selectable only behind their dedicated champion-level gates.
+- **Chayes** remains lineage/result-explanation only.
 
 ## Champion matching rule
 
