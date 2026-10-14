@@ -465,7 +465,7 @@ assert.equal(classifier.championIdentityCompatibility(
 assert.equal(classifier.championIdentityCompatibility(
   profileById.scalia_manning_easterbrook,
   identities.find((x) => x.id === "textualist")
-), "primary", "Scalia/Manning/Easterbrook should be the dedicated mainline Textualist unit");
+), "primary", "Manning should be the dedicated mainline Textualist unit");
 
 assert.equal(profileById.finnis_murphy_george.tier, "main",
   "Finnis/Murphy/George must remain the central modern Natural Law champion unit");
@@ -1148,7 +1148,7 @@ for (const id of lockedSourceUnits) {
 
 
 // Locked Interpretation / adjudicative-style champion units.
-// The approved Method roster contains 19 endpoints, including Kagan as the
+// The locked Method roster contains 20 direct endpoints, with Leiter audited separately as a cross-domain Realist/Positivist specialist; Kagan remains the
 // institutionally accommodating contextual-Textualist specialist.
 const lockedMethodUnits = [
   "hugo_black",
