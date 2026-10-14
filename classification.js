@@ -1231,6 +1231,21 @@
 
     const provisionalMethodIdentity = resolveIdentity(scores, traits).best.identity.id;
 
+    const blackCompatible = new Set([
+      "positivist", "interpretive_pluralist", "common_law_constitutionalist",
+      "living_constitutionalist", "mixed_jurisprudence"
+    ]);
+    const blackStructuralSalience = Math.max(
+      salience(scores, "time"), salience(scores, "prec"),
+      salience(scores, "post"), salience(scores, "separ")
+    );
+    if (blackCompatible.has(provisionalMethodIdentity) &&
+        blackStructuralSalience >= 0.30 &&
+        (traits["method.structural_inference"] || 0) < 0.5 &&
+        !hasAsked(diagnosticResponses, "D-BLK1")) {
+      offer("D-BLK1", 72);
+    }
+
     if (provisionalMethodIdentity === "textualist" && constraint >= 62) {
       if (!hasAsked(diagnosticResponses, "D-TXT1")) offer("D-TXT1", 74);
       const blackPlausible =
