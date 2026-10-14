@@ -51,6 +51,9 @@ Narrow, shallow, incompletely theorized adjudication that resolves no more than 
 7. **Cass Sunstein** — default modern minimalist.
 8. **Alexander Bickel** — Passive-virtues specialist.
 
+### Cross-cutting weak-form specialist
+**Stephen Gardbaum** is a champion-level specialist, not a public noun. Strong O6 dialogic evidence may unlock **D-GRD1**, which confirms a principled New Commonwealth model: courts independently adjudicate rights while legislatures retain a structured legal mechanism for responding without constitutional amendment. Gardbaum may then win beneath an otherwise compatible Political Constitutionalist, Political Process Jurist, Judicial Minimalist, or Mixed result. **Weak-Form Constitutionalist remains nonpublic.**
+
 ## Substantive modifiers
 
 Only two substantive authority modifiers are locked:
@@ -71,6 +74,7 @@ The global cap remains twelve adaptive questions.
 - **D-ELY1** establishes Political Process Jurisprudence.
 - Agreement with **D-ELY1** immediately routes to **D-RESP1**.
 - **D-RESP1** distinguishes Dixon's Responsive Judicial Review from baseline Elyan representation reinforcement.
+- **D-GRD1** is a champion-only confirmation of structured weak-form/dialogic review; it cannot create a Weak-Form Constitutionalist noun.
 
 No additional minimalist diagnostic is needed:
 - O6 still measures weak-form/dialogic review as an institutional-design characteristic, but no longer creates a noun.
@@ -83,7 +87,7 @@ Authority identities may not displace an already-established non-authority speci
 
 ## Reachability contract
 
-The audit suite requires these eight named public champion units to be separately reachable from literal 88-item answers through the live adaptive router within the twelve-question cap:
+The audit suite requires these eight named noun-family champion units to be separately reachable from literal 88-item answers through the live adaptive router within the twelve-question cap:
 
 1. Thayer
 2. Waldron / Bellamy
@@ -95,6 +99,7 @@ The audit suite requires these eight named public champion units to be separatel
 8. Sunstein
 
 It additionally verifies:
+- Gardbaum is separately reachable as a champion without making **Weak-Form Constitutionalism** public;
 - **Legal Constitutionalism** and **Weak-Form Constitutionalism** are nonpublic descriptors and cannot displace a more informative noun;
 - **Responsive Political Process Jurist** renders for Dixon;
 - **Passive-virtues Judicial Minimalist** renders for Bickel;
