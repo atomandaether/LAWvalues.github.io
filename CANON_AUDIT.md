@@ -318,14 +318,9 @@ Thus a Barak-like respondent with broad remedies remains Barak. Fiss wins only w
 
 ### Lineage / explanation only
 
-The following are deliberately **not selectable** for the single champion slot:
-- **Abram Chayes** — public-law-litigation lineage closely overlapping Fiss.
-- **Samuel Bray** — plaintiff-specific / traditional-equity explanation for narrow-remedy results.
-- **Mila Sohoni / Amanda Frost** — universal-relief lineage.
-- **Henry Monaghan** — constitutional-common-law / prophylactic-doctrine lineage.
-- **Daryl Levinson** — remedial equilibration, which the current bank does not directly measure.
+Champion-level remedies specialists now include **Samuel Bray** (traditional equity), **Mila Sohoni / Amanda Frost** (universal relief), **Henry Monaghan** (constitutional common law), and **Daryl Levinson** (remedial equilibration). Each requires affirmative dedicated diagnostic evidence and none creates a Remedies noun.
 
-R1/R2, R3-R5/R8, R9/R10, and R11 may still explain these traditions in result text or further reading without displacing the user's one whole-profile champion.
+**Abram Chayes** remains nonselectable lineage closely overlapping Fiss.
 
 ## Single champion rule
 
@@ -347,10 +342,10 @@ Canonical and useful, but not currently a clean modern identity. His jurispruden
 Foundational natural-law lineage.
 
 ## Austin / Bentham
-Foundational modern positivist/command-theory lineage.
+Austin is now a selectable command-theory Positivist specialist behind **D-AUS1**. Bentham remains foundational lineage.
 
 ## Kelsen
-Major modern positivist architect, but LAWvalues does not test the Pure Theory / basic-norm architecture closely enough for "Kelsenian."
+Kelsen is now a selectable Pure-Theory Positivist specialist behind **D-KEL1**; the basic-norm architecture is directly tested rather than inferred from generic source-positivism.
 
 ## Holmes
 Canonical precursor to Realism and a major restraint figure, but mature Realism is better represented by Llewellyn/Frank when the Realist identity is actually confirmed.
