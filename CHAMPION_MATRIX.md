@@ -86,11 +86,11 @@ Examples:
 | Fullerian | Fuller | internal morality / legality conditions |
 | Proportionalist | Alexy for nonpositivist/correctness-heavy proportionality; Barak for purposive proportionality | structured proportionality is the noun; modifier + champion carry the Alexy/Barak split |
 | Legal Realist | Llewellyn; Cohen; Frank; Leiter for Realist+Positivist/Naturalist; Holmes as precursor | Llewellyn = broad mature Realism; Cohen = functional anti-conceptualism; Frank = fact skepticism; Leiter = modern naturalized/positivist reconstruction; Holmes = precursor + deference |
-| Pragmatist | Posner; Breyer as judicial relative | consequences/workability; Breyer when purposivism/functionalism is stronger |
+| Pragmatist | Posner; Guido Calabresi for statutory obsolescence; Cardozo for precedent-bounded common-law pragmatism | consequences/workability; Calabresi when obsolete statutes trigger common-law-like updating or second-look logic; Cardozo when continuity constrains creativity |
 | Textualist | Manning; Kavanaugh; Kagan; Hugo Black | mainline enacted-bargain text; court-centered best-reading textualism; institutionally accommodating contextual textualism; Black's categorical text/rights package |
-| Intentionalist | no default yet | diagnose actual legislative/enactor intent before choosing a champion |
+| Intentionalist | Ekins; Katzmann; Hand/early Posner | Ekins = genuine group-agency intent; Katzmann = Congress-aware institutional intent and reliable legislative history; Hand/Posner = imaginative reconstruction |
 | Purposivist | Hart & Sacks; Breyer; Barak | Hart/Sacks = legal process; Breyer = pragmatic judging; Barak = purposive + proportionality |
-| Legal-Process Theorist | Hart & Sacks | institutional competence + reasoned elaboration |
+| Legal-Process Theorist | Hart & Sacks; Mashaw for agency-centered legal process | institutional competence + reasoned elaboration; Mashaw when agency interpretation itself is treated as a disciplined legal enterprise |
 | Originalist | no single default | use subtype/axes before championing |
 | Public-Meaning Originalist | Solum, Scalia, Barrett depending rest of profile | principle/construction vs rules/formalism vs precedent |
 | Original-Intent Originalist | historical old-originalist lineage; no forced modern champion | do not invent a champion without evidence |
@@ -107,7 +107,7 @@ Examples:
 | Political Process Jurist | Ely default; Dixon after Responsive diagnostic | representation reinforcement; Dixon calibrates intervention to specific democratic dysfunctions |
 | Judicial Minimalist | Sunstein default; Bickel when passive virtues/avoidance dominate | narrow/shallow adjudication; modifier + champion carry the Bickel/Sunstein split |
 | Formalist | Lawson default structural; Schauer rule-formalism; Calabresi/Prakash unitary-executive subtype; Scalia only when Originalism/Textualism is primary | structural formalism vs rule formalism vs directly evidenced unitary-executive formalism |
-| Functionalist | Peter Strauss; Breyer only with affirmative functional/interpretive-accommodation bridge evidence | workable institutional overlap; moderate Separation scores alone no longer manufacture the noun |
+| Functionalist | Peter Strauss; Gillian Metzger for supervision-without-plenary-control; Breyer only with affirmative functional/interpretive-accommodation bridge evidence | workable institutional overlap; Metzger when modern administration plus constitutional supervision is the distinctive package |
 | Proportionalist | Alexy for Higher-law/nonpositivist proportionality; Barak for Purpose-led proportionality | affirmative structured proportionality, not generic balancing |
 
 ## Champion guardrails
