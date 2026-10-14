@@ -1,6 +1,6 @@
 # LAWvalues
 
-> Method/interpretation classifier details are documented in [`METHOD_ENGINE.md`](METHOD_ENGINE.md): eight public nouns, three substantive modifiers, twenty-one locked champion units, noun-conditioned compatibility, and literal-answer reachability.
+> Method/interpretation classifier details are documented in [`METHOD_ENGINE.md`](METHOD_ENGINE.md): eight public nouns, three substantive modifiers, twenty-five locked champion units, noun-conditioned compatibility, and literal-answer reachability.
 
 > Source-of-law classifier details are documented in [`SOURCE_ENGINE.md`](SOURCE_ENGINE.md): public nouns, substantive modifiers, fourteen champion units, adaptive routing, article-aware fit labels, and end-to-end reachability.
 
@@ -10,7 +10,7 @@
 
 > Judicial-review / constitutional-authority details are documented in [`AUTHORITY_ENGINE.md`](AUTHORITY_ENGINE.md): six narrow public authority nouns, Responsive/Passive-virtues modifiers, eight locked public champion units, and strong-/weak-form review retained as nonpublic descriptors.
 
-> Institutional-structure / doctrinal-form / remedies details are documented in [`STRUCTURE_FORM_ENGINE.md`](STRUCTURE_FORM_ENGINE.md): Formalist/Functionalist/Proportionalist plus twelve selectable structure/form/remedies champion units, tightly gated cross-noun remedies specialists, and the exactly-one-champion rule.
+> Institutional-structure / doctrinal-form / remedies details are documented in [`STRUCTURE_FORM_ENGINE.md`](STRUCTURE_FORM_ENGINE.md): Formalist/Functionalist/Proportionalist plus thirteen selectable structure/form/remedies champion units, tightly gated cross-noun remedies specialists, and the exactly-one-champion rule.
 
 LAWvalues is a static, client-side legal-philosophy quiz. The current public label is **Version 0.7 Beta**. It maps respondents across eight bipolar dimensions:
 
@@ -82,7 +82,7 @@ The current result-title grammar exposes **19 public substantive modifiers** plu
 
 ## Theory-based institutional diagnostics
 
-The seven common Separation questions continue to determine the displayed Formalist–Functionalist percentage. Four **conditional** specialist questions (D-SEP1 through D-SEP4) instead investigate the justification for those answers: whether the President can override officers' congressionally assigned discretion, whether courts independently determine the limits of delegated statutory authority, whether broad major-policy delegation remains unconstitutional despite clear authorization, and whether serious executive-branch civil adjudication is compatible with the judicial role. These diagnostics supply narrower champion/identity evidence and modestly refine the final Separation percentage when they are actually asked; they do not add another public axis. The router offers them only when the existing Separation profile or linked interpretive commitments make the dispute live, and routing itself continues to use the 88-core scores so a diagnostic cannot create a feedback loop.
+The seven common Separation questions continue to determine the displayed Formalist–Functionalist percentage. Five **conditional** institutional specialist questions (D-SEP1 through D-SEP4 plus D-MET1) investigate the justification for those answers: whether the President can override officers' congressionally assigned discretion, whether courts independently determine the limits of delegated statutory authority, whether broad major-policy delegation remains unconstitutional despite clear authorization, and whether serious executive-branch civil adjudication is compatible with the judicial role. These diagnostics supply narrower champion/identity evidence and modestly refine the final Separation percentage when they are actually asked; they do not add another public axis. The router offers them only when the existing Separation profile or linked interpretive commitments make the dispute live, and routing itself continues to use the 88-core scores so a diagnostic cannot create a feedback loop.
 
 ## Exceptional results and political mirrors
 

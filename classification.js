@@ -513,7 +513,9 @@
     if ((traits["constraint.intent"] || 0) >= 0.5) {
       add("intentionalist", 0.89, "Legislative/enactor intention is the primary interpretive target.");
     }
-    if ((traits["method.social_interests"] || 0) >= 0.5 &&
+    if ((traits["source.institutional_legal_pluralism"] || 0) >= 0.5) {
+      add("sociological_jurist", 0.97, "Institutional legal pluralism establishes a sociological/institutional account in which organized nonstate bodies can constitute genuine legal orders.");
+    } else if ((traits["method.social_interests"] || 0) >= 0.5 &&
         (traits["method.law_in_action"] || 0) >= 0.5) {
       add("sociological_jurist", 0.92, "Law-in-action and explicit social-interest reasoning establish Sociological Jurisprudence.");
     }
@@ -1138,6 +1140,13 @@
       // policymaking without equating this with hostility to delegation.
       if ((constraint >= 60 || constraint <= 42 || structuralSalience >= 0.57) &&
           !hasAsked(diagnosticResponses,"D-SEP2")) offer("D-SEP2", 83);
+      if (separ <= 38 &&
+          (traits["separation.unitary_executive"] || 0) < 0.5 &&
+          (traits["separation.supervisory_duty"] || 0) < 0.5 &&
+          !hasAsked(diagnosticResponses, "D-MET1")) {
+        offer("D-MET1", 84);
+      }
+
       // Some strict separationists allow Congress to delegate if it speaks
       // clearly; other theories reject the transfer even then.
       if (separ >= 68 && !hasAsked(diagnosticResponses,"D-SEP3"))
@@ -1403,6 +1412,16 @@
 
     const provisionalMethodIdentity = resolveIdentity(scores, traits).best.identity.id;
 
+    const calabresiCompatible = new Set([
+      "pragmatist", "common_law_constitutionalist", "interpretive_pluralist"
+    ]);
+    if (calabresiCompatible.has(provisionalMethodIdentity) &&
+        (traits["method.statutory_obsolescence"] || 0) < 0.5 &&
+        (constraint <= 45 || commonLawCore >= 0.4) &&
+        !hasAsked(diagnosticResponses, "D-CAL1")) {
+      offer("D-CAL1", 76);
+    }
+
     const blackCompatible = new Set([
       "positivist", "interpretive_pluralist", "common_law_constitutionalist",
       "living_constitutionalist", "mixed_jurisprudence"
@@ -1441,6 +1460,11 @@
       // refinements when Intentionalism is still untested.
       if (intent < 0.5 && !hasAsked(diagnosticResponses, "D-INT1")) offer("D-INT1", 86);
       if (intent >= 0.5 && !hasAsked(diagnosticResponses, "D-INT2")) offer("D-INT2", 91);
+      if (intent >= 0.5 &&
+          (traits["method.congress_aware_interpretation"] || 0) < 0.5 &&
+          !hasAsked(diagnosticResponses, "D-KAT1")) {
+        offer("D-KAT1", 92);
+      }
 
       if ((traits["method.pragmatic_priority"] || 0) < 0.5 &&
           !hasAsked(diagnosticResponses, "D-PRAG1")) {
@@ -1454,6 +1478,11 @@
       if (institutional >= 0.5 && !hasAsked(diagnosticResponses, "D-LP2")) {
         offer("D-LP2", 88);
       }
+      if (institutional >= 0.5 &&
+          (traits["method.agency_interpretive_autonomy"] || 0) < 0.5 &&
+          !hasAsked(diagnosticResponses, "D-MAS1")) {
+        offer("D-MAS1", 87);
+      }
 
       if (social < 0.5 && !hasAsked(diagnosticResponses, "D-SOC1")) {
         // Strong balancing/open-construction profiles need the Sociological
@@ -1466,6 +1495,12 @@
     // Champion-only refinements: these are deliberately gated behind a
     // profile that is already plausible from the core bank, so they cannot
     // consume scarce adaptive slots merely to search for exotic names.
+    if (provisionalMethodIdentity === "functionalist" &&
+        (traits["method.agency_interpretive_autonomy"] || 0) < 0.5 &&
+        !hasAsked(diagnosticResponses, "D-MAS1")) {
+      offer("D-MAS1", 86);
+    }
+
     const gardbaumCompatible = new Set([
       "political_constitutionalist", "political_process_jurist", "minimalist", "mixed_jurisprudence"
     ]);
@@ -1504,6 +1539,16 @@
         (traits["remedies.equilibration"] || 0) < 0.5 &&
         !hasAsked(diagnosticResponses, "D-LEV1")) {
       offer("D-LEV1", 74);
+    }
+
+    const institutionalPluralism = traits["source.institutional_legal_pluralism"] || 0;
+    const romanoPlausible =
+      source >= 35 && source <= 68 &&
+      (traits["source.objective_morality"] || 0) < 0.35 &&
+      (traits["source.fit_and_justification"] || 0) < 0.45;
+    if (romanoPlausible && institutionalPluralism < 0.5 &&
+        !hasAsked(diagnosticResponses, "D-ROM1")) {
+      offer("D-ROM1", 63);
     }
 
     const freeScientific = traits["method.free_scientific_research"] || 0;

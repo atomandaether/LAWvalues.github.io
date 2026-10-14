@@ -658,6 +658,16 @@ globalThis.LAW_CHAMPIONS = Object.freeze([
     note: "Forward-looking consequential/practical Pragmatism."
   },
   {
+    id: "guido_calabresi",
+    name: "Guido Calabresi",
+    kind: "person",
+    role: "subtype",
+    eligibleIdentityIds: ["pragmatist", "common_law_constitutionalist", "interpretive_pluralist"],
+    signatureTraits: ["method.statutory_obsolescence", "method.second_look", "method.common_law_statutory_updating"],
+    antiTraits: ["constraint.enacted_bargain"],
+    note: "Statutory-obsolescence specialist: obsolete statutes may justify common-law-like updating or a second-look mechanism that requires contemporary political reaffirmation."
+  },
+  {
     id: "cardozo",
     name: "Benjamin Cardozo",
     kind: "person",
@@ -718,6 +728,16 @@ globalThis.LAW_CHAMPIONS = Object.freeze([
     note: "Main modern Intentionalist champion: legislature as a genuine group agent with an intended meaning inferable from the enacted choice in context."
   },
   {
+    id: "katzmann",
+    name: "Robert A. Katzmann",
+    kind: "person",
+    role: "subtype",
+    eligibleIdentityIds: ["intentionalist", "legal_process_theorist", "purposivist"],
+    signatureTraits: ["constraint.intent", "method.congress_aware_interpretation", "method.reliable_legislative_history"],
+    antiTraits: ["constraint.imaginative_reconstruction", "constraint.enacted_bargain"],
+    note: "Congress-aware Intentionalism: reliable legislative history and actual congressional process are legitimate evidence of statutory meaning because interpretation should respect how Congress itself makes and communicates law."
+  },
+  {
     id: "hand_posner_imaginative",
     name: "Learned Hand / early Richard Posner",
     kind: "people",
@@ -756,6 +776,16 @@ globalThis.LAW_CHAMPIONS = Object.freeze([
     signatureTraits: ["method.institutional_competence", "method.reasoned_elaboration", "constraint.purpose"],
     antiTraits: ["method.neutral_principles"],
     note: "Core Legal Process: institutional settlement and competence followed by purposive reasoned elaboration."
+  },
+  {
+    id: "mashaw",
+    name: "Jerry L. Mashaw",
+    kind: "person",
+    role: "subtype",
+    eligibleIdentityIds: ["legal_process_theorist", "functionalist"],
+    signatureTraits: ["method.agency_interpretive_autonomy", "method.administrative_reason_giving", "method.institutional_competence", "separation.interpretive_accommodation"],
+    antiTraits: ["separation.independent_judicial_interpretation"],
+    note: "Administrative Legal Process: agency statutory interpretation is itself a disciplined legal enterprise with institutional competence, internal norms, and reason-giving obligations."
   },
   {
     id: "wechsler",
@@ -816,6 +846,16 @@ globalThis.LAW_CHAMPIONS = Object.freeze([
     signatureTraits: ["method.free_scientific_research", "method.law_in_action"],
     antiTraits: ["constraint.textual"],
     note: "Free Scientific Research: positive sources control until they genuinely run out, after which disciplined social, equitable, and practical inquiry supplies the missing rule."
+  },
+  {
+    id: "santi_romano",
+    name: "Santi Romano",
+    kind: "person",
+    role: "subtype",
+    eligibleIdentityIds: ["sociological_jurist"],
+    signatureTraits: ["source.institutional_legal_pluralism", "source.nonstate_legal_orders"],
+    antiTraits: ["source.objective_morality"],
+    note: "Institutional legal pluralism: organized nonstate institutions can constitute genuine legal orders, so state law is not conceptually exhaustive of law."
   },
   {
     id: "ehrlich",
@@ -1178,6 +1218,16 @@ globalThis.LAW_CHAMPIONS = Object.freeze([
     signatureTraits: ["separation.functionalist", "separation.combined_functions"],
     antiTraits: ["separation.formalist"],
     note: "Canonical scholarly champion for functional separation-of-powers analysis."
+  },
+  {
+    id: "metzger",
+    name: "Gillian E. Metzger",
+    kind: "person",
+    role: "subtype",
+    eligibleIdentityIds: ["functionalist", "legal_process_theorist"],
+    signatureTraits: ["separation.supervisory_duty", "separation.administrative_constitutionalism", "separation.functionalist"],
+    antiTraits: ["separation.unitary_executive", "separation.strong_nondelegation"],
+    note: "Supervisory administrative constitutionalism: modern administration is constitutionally legitimate, agencies participate in constitutional implementation, and meaningful supervision is required without equating supervision with plenary presidential control."
   },
   {
     id: "lawson",

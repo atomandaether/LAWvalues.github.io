@@ -114,8 +114,10 @@ Champions:
 
 Use when forward-looking consequences and workability systematically dominate across domains.
 
-Champion:
-- **Richard Posner** = cleanest general champion.
+Champions:
+- **Richard Posner** = cleanest general consequence/workability champion.
+- **Guido Calabresi** = statutory-obsolescence / common-law-updating specialist.
+- **Benjamin Cardozo** = precedent- and continuity-bounded common-law pragmatism.
 - **Stephen Breyer** = important judicial relative when purposivism + consequences + functionalism are central.
 
 Law & Economics remains outside scope as a separate identity: Posner's pragmatism matters to this quiz even when efficiency theory does not.
@@ -142,6 +144,11 @@ The adaptive router should distinguish:
 from
 - objective statutory purpose.
 
+Champion-level Intentionalist distinctions:
+- **Richard Ekins** — genuine legislative group agency and collective lawmaking intention.
+- **Robert Katzmann** — Congress-aware institutional interpretation using reliable legislative history and actual congressional process.
+- **Learned Hand / early Richard Posner** — imaginative reconstruction when actual intent does not exist.
+
 ## Purposivist
 Core identity.
 
@@ -153,10 +160,16 @@ Possible champions depend on the rest of the profile:
 ## Legal-Process Theorist
 Real identity when purposive interpretation combines with institutional competence, role allocation, settlement, and reasoned elaboration.
 
-Champions: **Henry Hart & Albert Sacks**.
+Champions: **Henry Hart & Albert Sacks** by default; **Jerry Mashaw** when agency statutory interpretation itself is treated as an autonomous, reason-giving legal enterprise.
 
 ## Interpretive Pluralist
 Real fallback, not a glamorous headline. Use only when several recognized methods are coherently combined and no one method deserves to win. It is distinct from Chaos/Dummy.
+
+---
+
+## Sociological Jurist specialist update
+
+**Santi Romano** is separately selectable from Pound and Ehrlich. His defining proposition is institutional legal pluralism: organized nonstate institutions can themselves constitute genuine legal orders. Ehrlich's living law remains sociological/operative norms; Romano's claim is about the existence of multiple legal orders.
 
 ---
 
@@ -282,8 +295,9 @@ Scalia remains cross-cutting only when Textualism/Originalism is the stronger ov
 ## Functionalist
 Core separation-of-powers identity centered on workability, accountability, tolerated institutional overlap, and preservation of each branch's core capacities.
 
-Locked champion:
+Locked champions:
 - **Peter Strauss** — default Functionalist.
+- **Gillian Metzger** — supervisory administrative constitutionalism: legitimate modern administration plus a constitutional duty of supervision that does not imply plenary presidential control.
 Breyer and Justice White remain related judicial exemplars rather than separate endpoints.
 
 ## Proportionalist

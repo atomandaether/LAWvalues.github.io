@@ -466,6 +466,28 @@ globalThis.LAW_PROFILES = Object.freeze([
     related: ["Aharon Barak", "German Federal Constitutional Court"]
   },
   {
+    id: "guido_calabresi",
+    name: "Guido Calabresi",
+    tier: "specialist",
+    identityIds: ["pragmatist"],
+    crossCuttingIdentityIds: ["common_law_constitutionalist", "interpretive_pluralist"],
+    crossCuttingRequirements: {
+      common_law_constitutionalist: [{ all: ["method.statutory_obsolescence"], min: 0.5 }],
+      interpretive_pluralist: [{ all: ["method.statutory_obsolescence"], min: 0.5 }]
+    },
+    axisSignature: {
+      cons: { target: 30, weight: 0.4 },
+      time: { target: 34, weight: 0.35 },
+      form: { target: 34, weight: 0.3 }
+    },
+    signatureTraits: ["method.statutory_obsolescence", "method.second_look", "method.common_law_statutory_updating", "method.consequences"],
+    requiredTraits: [{ all: ["method.statutory_obsolescence"], min: 0.5 }],
+    antiTraits: ["constraint.enacted_bargain"],
+    specificityBonus: 0.04,
+    description: "Statutory-obsolescence pragmatism: when an old statute becomes seriously out of phase with the surrounding legal order, courts may use common-law-like techniques or a second-look mechanism that forces contemporary political institutions to reaffirm or revise it.",
+    related: ["William Eskridge", "Henry Friendly"]
+  },
+  {
     id: "cardozo",
     name: "Benjamin Cardozo",
     tier: "main",
@@ -706,6 +728,26 @@ globalThis.LAW_PROFILES = Object.freeze([
     related: ["Henry Hart", "Albert Sacks", "Herbert Wechsler"]
   },
   {
+    id: "mashaw",
+    name: "Jerry L. Mashaw",
+    tier: "specialist",
+    identityIds: ["legal_process_theorist"],
+    crossCuttingIdentityIds: ["functionalist"],
+    crossCuttingRequirements: {
+      functionalist: [{ all: ["method.agency_interpretive_autonomy"], min: 0.5 }]
+    },
+    axisSignature: {
+      cons: { target: 36, weight: 0.45 },
+      prec: { target: 68, weight: 0.35 }
+    },
+    signatureTraits: ["method.agency_interpretive_autonomy", "method.administrative_reason_giving", "method.institutional_competence", "separation.interpretive_accommodation"],
+    requiredTraits: [{ all: ["method.agency_interpretive_autonomy"], min: 0.5 }],
+    antiTraits: ["separation.independent_judicial_interpretation"],
+    specificityBonus: 0.04,
+    description: "Administrative Legal Process: agency statutory interpretation is a genuine legal enterprise with its own institutional competence, internal norms, reason-giving duties, and practical responsibility for implementing legislative programs.",
+    related: ["Peter Strauss", "John Willis"]
+  },
+  {
     id: "pound",
     name: "Roscoe Pound",
     tier: "main",
@@ -738,6 +780,19 @@ globalThis.LAW_PROFILES = Object.freeze([
     specificityBonus: 0.03,
     description: "Living-law Sociological Jurisprudence: the operative norms of associations and social life can constitute the most important law in practice even when they are not produced by legislatures or courts.",
     related: ["Roscoe Pound", "François Gény"]
+  },
+  {
+    id: "santi_romano",
+    name: "Santi Romano",
+    tier: "specialist",
+    identityIds: ["sociological_jurist"],
+    axisSignature: {},
+    signatureTraits: ["source.institutional_legal_pluralism", "source.nonstate_legal_orders"],
+    requiredTraits: [{ all: ["source.institutional_legal_pluralism"], min: 0.5 }],
+    antiTraits: ["source.objective_morality"],
+    specificityBonus: 0.05,
+    description: "Institutional legal pluralism: sufficiently organized social institutions can themselves constitute genuine legal orders, so the state is one legal order among others rather than the conceptual monopoly source of law.",
+    related: ["Maurice Hauriou", "Otto von Gierke", "Eugen Ehrlich"]
   },
   {
     id: "geny",
@@ -833,6 +888,27 @@ globalThis.LAW_PROFILES = Object.freeze([
     antiTraits: ["constraint.imaginative_reconstruction"],
     description: "Modern institutional Intentionalism: the legislature can form a genuine lawmaking intention whose intended meaning is inferred from the enacted choice and its context.",
     related: ["Richard Ekins", "Steven Knapp", "Walter Benn Michaels"]
+  },
+  {
+    id: "katzmann",
+    name: "Robert A. Katzmann",
+    tier: "specialist",
+    identityIds: ["intentionalist"],
+    crossCuttingIdentityIds: ["legal_process_theorist", "purposivist"],
+    crossCuttingRequirements: {
+      legal_process_theorist: [{ all: ["method.congress_aware_interpretation"], min: 0.5 }],
+      purposivist: [{ all: ["method.congress_aware_interpretation"], min: 0.5 }]
+    },
+    axisSignature: {
+      cons: { target: 38, weight: 0.65 },
+      prec: { target: 80, weight: 0.35 }
+    },
+    signatureTraits: ["constraint.intent", "method.congress_aware_interpretation", "method.reliable_legislative_history"],
+    requiredTraits: [{ all: ["method.congress_aware_interpretation"], min: 0.5 }],
+    antiTraits: ["constraint.imaginative_reconstruction", "constraint.enacted_bargain"],
+    specificityBonus: 0.04,
+    description: "Congress-aware Intentionalism: statutory meaning should be informed by how Congress actually legislates and communicates its purposes, including reliable legislative history and institutional process rather than an abstract reconstruction of a unitary legislative mind.",
+    related: ["Victoria Nourse", "Abbe Gluck", "Lisa Schultz Bressman"]
   },
   {
     id: "hand_posner_imaginative",
@@ -1212,6 +1288,26 @@ globalThis.LAW_PROFILES = Object.freeze([
     antiTraits: ["separation.formalist"],
     description: "The specialist for functional separation-of-powers analysis: institutional overlap can be legitimate when accountability and each branch's core capacities remain workable.",
     related: ["Stephen Breyer"]
+  },
+  {
+    id: "metzger",
+    name: "Gillian E. Metzger",
+    tier: "specialist",
+    identityIds: ["functionalist"],
+    crossCuttingIdentityIds: ["legal_process_theorist"],
+    crossCuttingRequirements: {
+      legal_process_theorist: [{ all: ["separation.supervisory_duty"], min: 0.5 }]
+    },
+    axisSignature: {
+      separ: { target: 8, weight: 0.8 },
+      post: { target: 48, weight: 0.2 }
+    },
+    signatureTraits: ["separation.supervisory_duty", "separation.administrative_constitutionalism", "separation.functionalist"],
+    requiredTraits: [{ all: ["separation.supervisory_duty"], min: 0.5 }],
+    antiTraits: ["separation.unitary_executive", "separation.strong_nondelegation"],
+    specificityBonus: 0.08,
+    description: "Supervisory administrative constitutionalism: modern administration is constitutionally legitimate and itself implements constitutional norms, while constitutional structure still requires meaningful systemic supervision and accountability without collapsing supervision into plenary presidential control.",
+    related: ["Peter Strauss", "Jerry Mashaw"]
   },
   {
     id: "lawson",
