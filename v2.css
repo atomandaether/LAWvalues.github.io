@@ -192,6 +192,28 @@ div.axis img {
     text-align: center;
 }
 
+.result-narrative {
+    width: min(860px, 100%);
+    margin: 14pt auto 18pt;
+    text-align: left;
+}
+
+.result-narrative p {
+    margin: 0 0 14pt;
+    line-height: 1.48;
+}
+
+.result-narrative .result-opening {
+    font-size: 18pt;
+    line-height: 1.4;
+    font-weight: 500;
+}
+
+.result-narrative .result-context {
+    font-size: 15.5pt;
+    line-height: 1.55;
+}
+
 .error-box {
     width: 70%;
     margin: 30pt auto;
@@ -374,6 +396,21 @@ div.axis img {
     .classification-placeholder,
     .error-box {
         width: 100%;
+    }
+
+    .result-narrative {
+        width: 100%;
+        margin: 10pt auto 14pt;
+    }
+
+    .result-narrative .result-opening {
+        font-size: 16pt;
+        line-height: 1.4;
+    }
+
+    .result-narrative .result-context {
+        font-size: 14pt;
+        line-height: 1.5;
     }
 }
 
