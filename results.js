@@ -57,7 +57,7 @@
     const versionNotice = compatibility.noticeForVersion(version);
     const versionNote = document.getElementById('version-note');
     versionNote.textContent = versionNotice || `Questionnaire version ${version.version}.`;
-    versionNote.hidden = false;
+    versionNote.hidden = true;
 
     function setBarValue(name, value) {
         const inner = document.getElementById(name);
@@ -82,7 +82,8 @@
                 Number.isFinite(row.coreContribution) && Number.isFinite(row.contribution))
             : [];
         if (core === final && !ledger.length) return;
-        details.hidden = false;
+        // Retain provenance for export, without explanatory UI on the results page.
+        details.hidden = true;
         const lines = [`Core estimate ${core}%, final ${final}%.`];
         if (!ledger.length) {
             lines.push(coreProvenance.source === 'share'
@@ -247,28 +248,11 @@
         );
 
         title.textContent = assembled?.title || result.identity.label;
-        // Keep the complete saved title, emphasizing only its identity noun.
-        // Escape all content: shared-link and saved-record data are plain text.
+        // The full title is emphasized; saved/share text is always escaped.
         const escapeHtml = (text) => String(text).replace(/[&<>"']/g, (character) => ({
             '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'
         })[character]);
-        const parts = !assembled?.special && globalThis.LAW_RESULT_CONTENT?.titleParts
-            ? globalThis.LAW_RESULT_CONTENT.titleParts(result.identity, assembled?.modifier, assembled?.phrase)
-            : null;
-        if (parts && parts.map((part) => part.text).join(' ') === title.textContent) {
-            title.innerHTML = parts.map((part) => part.role === 'noun'
-                ? '<strong>' + escapeHtml(part.text) + '</strong>'
-                : escapeHtml(part.text)).join(' ');
-        } else {
-            const noun = assembled?.noun || result.identity.label;
-            const nounIndex = title.textContent.indexOf(noun);
-            if (noun && nounIndex >= 0) {
-                const fullTitle = title.textContent;
-                title.innerHTML = escapeHtml(fullTitle.slice(0, nounIndex)) +
-                    '<strong>' + escapeHtml(noun) + '</strong>' +
-                    escapeHtml(fullTitle.slice(nounIndex + noun.length));
-            }
-        }
+        title.innerHTML = '<strong>' + escapeHtml(title.textContent) + '</strong>';
         opening.textContent = narrative?.opening || '';
         context.textContent = narrative?.context || '';
 

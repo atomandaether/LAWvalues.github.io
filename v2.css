@@ -877,7 +877,7 @@ body.results-page {
     margin: 4pt auto 8pt;
     font-size: clamp(24px, 3vw, 40px);
     line-height: 1.18;
-    font-weight: 400;
+    font-weight: 700;
     text-align: center;
 }
 
@@ -946,3 +946,36 @@ body.results-page {
 .axis-evidence summary { cursor: pointer; }
 .axis-evidence p { white-space: pre-line; font-size: .85rem; line-height: 1.4; font-weight: normal; }
 @media (max-width: 540px) { .quiz-guidance { font-size: .65rem; line-height: 1.1; margin-top: .2rem; } }
+
+/* Hidden results metadata must never become visible through component styles. */
+.results-page [hidden] { display: none !important; }
+
+/* Keep each description directly below its central bar, between the symbols. */
+.results-page .axis-track { flex: 1 1 auto; min-width: 0; }
+.results-page .axis-track .axis-explanation {
+    max-width: none;
+    margin: 4px 0 0;
+    padding: 0;
+    font-size: .85rem;
+    line-height: 1.25;
+    font-weight: 400;
+    text-align: center;
+}
+.results-page div.axis { align-items: flex-start; }
+@media (max-width: 540px) {
+    .results-page .axis-track .axis-explanation { font-size: .7rem; }
+}
+
+.results-page .axis-track h2 {
+    margin: 0 0 4px;
+    padding: 0;
+    font-size: clamp(14px, 1.8vw, 24px);
+    line-height: 1.15;
+    overflow-wrap: anywhere;
+}
+.results-page div.axis { margin-top: 12px; margin-bottom: 12px; }
+@media (max-width: 540px) {
+    /* Keep visible 11–12% labels legible inside narrow colored segments. */
+    .results-page .axis-bars div.bar { padding: 0 1px; }
+    .results-page .axis-bars div.text-wrapper { font-size: 12px; }
+}

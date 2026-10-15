@@ -18,7 +18,7 @@ const modifier='<script>alert(2)</script>',phrase='who <svg onload=alert(3)>';
 r.storage.setItem(`lawvalues-latest-${c.LAW_VERSION}`,JSON.stringify({version:c.LAW_VERSION,resultQuery:r.location.search,scores,responses:{},classification:{identity:{id:'positivist',label:noun},champions:[],traits:{},resultTitle:{title:`${modifier} ${noun} ${phrase}`,noun,modifier:{text:modifier},phrase:{text:phrase}}}}));
 r.run('results.js');
 const html=r.nodes.get('result-title').innerHTML;
-assert.ok(html.includes('<strong>&lt;img'));
+assert.ok(html.startsWith('<strong>&lt;script&gt;'));
 assert.ok(html.includes('&lt;script&gt;'));assert.ok(html.includes('&amp; &quot;law&quot;'));
 assert.ok(!/<(?:script|img|svg)\b/i.test(html));
 for(const query of [{...scores,i:'unknown-legacy',c:'unknown'},{sorc:'NaN'},{}]) {
