@@ -229,6 +229,11 @@ assert.ok(htmlByFile["results.html"].includes('<script src="classification.js"><
   "Results must load the jurisprudence classifier");
 assert.ok(htmlByFile["results.html"].includes('id="result-title"'),
   "Results must expose the assembled modifier + identity + phrase title");
+const resultsScript = fs.readFileSync(path.join(root, "results.js"), "utf8");
+assert.ok(resultsScript.includes("answered Separation diagnostics can modestly refine the Separation score"),
+  "The result explanation must disclose the scored Separation follow-ups");
+assert.ok(!resultsScript.includes("axis scores themselves come only from the 88-question core"),
+  "The result explanation must not claim that answered scored diagnostics are excluded");
 assert.ok(!htmlByFile["results.html"].includes("Print / PDF"), "Results should not show Print / PDF");
 assert.ok(!htmlByFile["results.html"].includes(">Retake<"), "Results should not show Retake");
 
@@ -239,3 +244,4 @@ console.log("PASS: all 88 questions inform at least one axis in at least one res
 console.log("PASS: C13 now scores disagreement toward contextual textualism.");
 console.log("PASS: asymmetric pole evidence; no forced acquiescence normalization.");
 console.log("PASS: visible question copy and Version 0.7 Beta preserved.");
+

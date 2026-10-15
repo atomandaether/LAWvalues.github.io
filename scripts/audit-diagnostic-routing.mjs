@@ -34,7 +34,68 @@ function run(scores, responses, answerFor) {
     diagnosticResponses[next.id] = answerFor(next.id);
   }
   assert.ok(order.length <= classifier.MAX_DIAGNOSTICS);
+  assert.equal(classifier.nextDiagnostic(scores, responses, diagnosticResponses), null,
+    "Completed or exhausted routes must stop");
   return { order, diagnosticResponses };
+}
+
+// A moderately nonpositive Source core can legitimately start as Mixed: the
+// Source nouns require the affirmative diagnostic evidence still being sought.
+// Test the actual 88-answer path rather than injecting that missing evidence.
+const sourceProbes = new Set([
+  "D-NP1", "D-NP2", "D-NP3", "D-NP4", "D-NP5", "D-NP6", "D-NL2"
+]);
+function unresolvedSourceCore() {
+  return Object.assign(Object.fromEntries(questions.map((q) => [q.id, 0])), {
+    S1:-3, S2:-1, S3:-3, S4:-3, S5:-3, S6:3, S7:-3, S8:-1, S10:0, S11:0
+  });
+}
+{
+  const responses = unresolvedSourceCore();
+  const scores = scoring.scoreAll(responses);
+  assert.ok(scores.sorc.score > 18 && scores.sorc.score <= 38);
+  assert.equal(classifier.resolveIdentity(scores, classifier.buildTraits(scores, responses, {}))
+    .best.identity.id, "mixed_jurisprudence");
+
+  for (const acceptImpact of [false, true]) {
+    const { order, diagnosticResponses } = run(scores, responses, (id) =>
+      id === "D-QC1" ? -2 : id === "D-NP4" && acceptImpact ? 3 : -3
+    );
+    assert.ok(order.includes("D-NP4"), "Mixed must be able to test Moral Impact Theory");
+    const result = classifier.classify(scoring.scoreAllWithDiagnostics(responses, diagnosticResponses),
+      responses, diagnosticResponses, { coreElapsedMs: 10 * 60 * 1000 });
+    assert.equal(result.identity.id, acceptImpact ? "nonpositivist" : "mixed_jurisprudence");
+    assert.equal(result.champions[0]?.id, acceptImpact ? "greenberg" : "oconnor");
+    if (acceptImpact) {
+      assert.ok(!order.includes("D-NP5") && !order.includes("D-NP3"),
+        "An established Moral-Impact theory must stop competing Source probes");
+    } else {
+      assert.ok(order.includes("D-NP5") && order.includes("D-NP3"),
+        "Rejected theories must allow the remaining existing Source alternatives to be tested");
+    }
+  }
+
+  const failedCheck = run(scores, responses, (id) => id === "D-QC1" ? 0 : -3);
+  assert.deepEqual(failedCheck.order, ["D-RLS1", "D-QC1"],
+    "Source exploration must not bypass response-quality checks");
+}
+
+// Established competing families retain their slots. This literal Originalist
+// core also has moderate nonpositive Source answers but no confirmed Source noun.
+{
+  const responses = unresolvedSourceCore();
+  for (const q of questions.filter((q) => q.axis === "time")) {
+    responses[q.id] = Number(q.signals?.agree?.time || 0) >=
+      Number(q.signals?.disagree?.time || 0) ? 3 : -3;
+  }
+  const scores = scoring.scoreAll(responses);
+  assert.ok(scores.sorc.score > 18 && scores.sorc.score <= 38);
+  const { order } = run(scores, responses, (id) =>
+    id === "D-QC1" ? -2 : id === "D-ORI1" ? 3 : -3
+  );
+  assert.ok(order.includes("D-ORI1"), "The established Originalist branch must retain its noun refinement");
+  assert.ok(!order.some((id) => sourceProbes.has(id)),
+    "The Mixed-only Source repair must not spend an established competing family's budget");
 }
 
 // Regression: a strong Source result must not lose Positivist architecture
@@ -114,3 +175,4 @@ function structuralAnswers(side) {
 }
 
 console.log("PASS: candidate-aware diagnostic routing stays inside the 100-question cap.");
+

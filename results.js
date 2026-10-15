@@ -260,7 +260,7 @@
 
         const diagnosticCount = Number(result.diagnosticCount) || 0;
         note.textContent = diagnosticCount > 0
-            ? `The thinker match uses the eight-axis profile plus ${diagnosticCount} adaptive tie-breaker question${diagnosticCount === 1 ? '' : 's'}. The eight axis scores themselves come only from the 88-question core. Thinker locations are theory-derived prototypes pending empirical calibration.`
+            ? `The thinker match uses the eight-axis profile plus ${diagnosticCount} adaptive tie-breaker question${diagnosticCount === 1 ? '' : 's'}. The axis scores start with the 88-question core; answered Separation diagnostics can modestly refine the Separation score. Other follow-ups refine the jurisprudential match without changing axis scores. Thinker locations are theory-derived prototypes pending empirical calibration.`
             : 'The thinker match uses sparse theory-derived signatures: unmodeled axes are ignored rather than treated as moderate. The eight axis scores themselves come from the 88-question core. Thinker locations remain provisional pending empirical calibration.';
     }
 
@@ -376,3 +376,4 @@
     error.hidden = true;
     main.hidden = false;
 })();
+

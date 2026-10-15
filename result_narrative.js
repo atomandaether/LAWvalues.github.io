@@ -1,4 +1,5 @@
-/* Integrated public result narratives: <=70-word opening + single-paragraph literature context. */
+/* Integrated public result narratives: <=70-word opening + one academic thread.
+   Context target: roughly 180–300 words; 300 is a cap, not a reason to pad. */
 (function attachResultNarrative(global) {
   "use strict";
 
@@ -41,11 +42,11 @@
   },
   "opm_correction": {
     "opening": "You think constitutional meaning was fixed at adoption, and you give relatively little weight to precedent once you are convinced that a later court replaced that law with a mistaken rule. Stability matters, but it cannot permanently turn a judicial error into the Constitution itself.",
-    "context": "Modern public-meaning Originalism shifted the historical inquiry away from private framers' intentions and toward the meaning carried by the enacted Constitution. That leaves a separate question about judicial precedent. Correction-first writers treat stare decisis as a doctrine of adjudication subordinate to the constitutional source. Their debates often turn on forms of reliance: completed transactions and property arrangements create stronger settlement interests than abstract reliance on a line of doctrine. A precedent can also generate later rules that make reversal institutionally costly. Restorationist Originalism accepts more of those costs when continued adherence would let judicial doctrine displace the superior law that gave courts authority in the first place."
+    "context": "Originalist theories fix constitutional law historically while disagreeing about whether the relevant object is public meaning, lawmaking intention, or historical legal rules. That leaves a separate question about judicial precedent. Correction-first approaches treat stare decisis as a doctrine of adjudication subordinate to the constitutional source. Their debates often turn on forms of reliance: completed transactions and property arrangements create stronger settlement interests than abstract reliance on a line of doctrine. A precedent can also generate later rules that make reversal institutionally costly. A restorationist approach accepts more of those costs when continued adherence would let judicial doctrine displace the superior law that gave courts authority in the first place."
   },
   "opm_settlement": {
     "opening": "You think the Constitution has fixed historical meaning, but you do not treat every departure from that meaning as something courts must immediately erase. Judges inherit an already-developed legal system, so precedent, reliance, and institutional continuity can matter even when fresh historical analysis points elsewhere.",
-    "context": "Public-meaning Originalism fixes constitutional meaning at adoption, yet that historical rule does not mechanically dictate the treatment of later precedent. Stare decisis can operate as an implementation doctrine that mediates between the original law and the legal system courts actually inherit. Reliance comes in different forms—private ordering, governmental institutions, doctrinal dependence—and each can strengthen the case for continuity. Some precedent-accommodating theories also distinguish the certainty of historical error from the cost of correction. The result is a layered account: the old decision may remain wrong about the Constitution while still generating legal reasons that constrain what today's court should do."
+    "context": "Originalism fixes constitutional law historically, yet that commitment does not mechanically dictate the treatment of later precedent. Stare decisis can operate as an implementation doctrine that mediates between the original law and the legal system courts actually inherit. Reliance comes in different forms—private ordering, governmental institutions, doctrinal dependence—and each can strengthen the case for continuity. Some precedent-accommodating theories also distinguish the certainty of historical error from the cost of correction. The result is a layered account: the old decision may remain wrong about the Constitution while still generating legal reasons that constrain what today's court should do. This issue arises for intentionalist and public-meaning approaches alike."
   },
   "opm_higher_law": {
     "opening": "You think objective moral principles help explain why law can have authority, but you also think law exists to settle questions judges could otherwise keep reopening. That makes historically fixed constitutional law compatible with Natural Law: moral reasoning helps explain why legitimate positive law binds rather than giving judges a standing license to replace it.",
@@ -125,7 +126,7 @@
   },
   "natural_law_strong": {
     "opening": "You think moral defect can sometimes reach beyond making a rule unjust and undermine its status as law itself. Positive law normally settles questions and deserves authority, but sufficiently serious violations of objective moral requirements can defeat that legal claim.",
-    "context": "Strong Natural Law places a moral limit on legal validity itself. Ordinary injustice leaves room for bad but binding law; severe injustice can destroy the law's claim to authority. The difficulty lies in the threshold. If every serious moral error defeats validity, adjudication collapses into ordinary moral disagreement and judges gain a sweeping power to disregard enactments. If the threshold is unreachable, the doctrine adds nothing. Strong theories reserve invalidity for extreme cases and retain a substantial role for positive law in ordinary governance."
+    "context": "Strong Natural-Law theories make moral requirements relevant to legal validity itself. An enactment's institutional pedigree does not fully answer whether it is law: some serious normative defects can defeat that status. The difficult work lies in specifying which moral requirements are constitutive and how their violation affects the rule's authority. That inquiry is distinct from whether a judge may disregard an enactment in a particular case; institutional powers and duties still require explanation. The commitment also leaves room for disagreement about ordinary unjust laws and the legal force of positive settlement. A strong Natural-Law result establishes the validity thesis without assigning every respondent the same exceptional-injustice threshold or a complete theory of judicial review."
   },
   "interpretivist": {
     "opening": "You think legal practice contains principles as well as enacted rules, and those principles can supply real legal answers in hard cases. Judges should interpret the existing legal system in the way that best fits its history while giving its institutions and rights the strongest coherent justification.",
@@ -133,7 +134,7 @@
   },
   "nonpos_moral_impact": {
     "opening": "You think legislatures and courts make law by changing people's actual moral rights and obligations. The legal institutions matter because of the moral impact their actions produce, not because they create a separate source-based category of obligation alongside morality.",
-    "context": "Moral Impact Theory asks what moral change legal institutions actually produce. Legislation, adjudication, and official action alter people's genuine rights and obligations; the resulting moral situation constitutes the law. Source facts remain indispensable because the institutional action causes the change, yet pedigree alone does not determine the legal content. The judge must work out the normative consequences of what the institution did. Interpretivism focuses on fit and justification within legal practice. Traditional Natural Law begins from broader principles of practical reason. Moral Impact Theory is centered on the moral effects of institutional action itself."
+    "context": "Moral Impact Theory asks how legal institutions alter genuine rights and obligations. An enactment can coordinate conduct, create expectations, or change the options available to citizens. Those changes can produce duties whose content differs from the literal message communicated by the lawmakers. Legal interpretation traces this normative effect of institutional action. The theory also limits which effects count as law. An oppressive decision can generate moral duties to resist or undo it, but those duties do not become legal obligations just because an institution caused them. Greenberg describes the relevant changes as arising in the legally proper way. The account needs an explanation of that condition, making the relationship between legal institutions and their moral purpose central to its theory of adjudication."
   },
   "nonpos_moral_practice": {
     "opening": "You think a person who claims a legal right is ultimately claiming a genuine moral right, not invoking a separate kind of obligation that exists only because legal sources created it. Legal practice is one part of our broader moral practice rather than a separate normative world.",
@@ -378,19 +379,19 @@
   },
   "profile_nonpositive_textual": {
     "opening": "Principles can belong to law even when no explicit rule states them. Judicial freedom remains constrained by the legal practice those principles must explain.",
-    "context": "Non-Positivism and Textualism allocate normative reasoning asymmetrically. Principles can contribute to legal content in hard cases, yet enacted statutes remain deliberate institutional settlements whose wording places severe limits on judicial reconstruction. The legal practice itself determines where principle has room to operate. A broad constitutional standard may invite constructive interpretation, while a precisely drafted statute may leave almost none. This profile avoids a simple equation between moral relevance and interpretive freedom. Normative reasoning can be legally indispensable in one domain and sharply cabined in another because different legal materials generate different kinds of interpretive responsibility."
+    "context": "Moral grounds of law and tight textual constraint address different parts of legal judgment. An account of what gives law authority can include moral reasons while still treating enacted statutes as deliberate institutional settlements. Precisely drafted provisions sharply limit what judges can do in the name of an attractive purpose; open constitutional standards leave different questions for legal reasoning. The combination requires an account of why the chosen words bind and where their authority ends. Acknowledging moral limits on law does not, by itself, authorize judicial repair of every bad legislative choice. Textual discipline can preserve coordination, notice, and the allocation of decisionmaking even within a theory that denies source pedigree is the whole explanation of law."
   },
   "profile_nonpositive_purposive": {
     "opening": "Principles can belong to law even when no explicit rule states them. Judicial freedom remains constrained by the legal practice those principles must explain.",
-    "context": "Non-Positivism and purposive interpretation reinforce a view of adjudication in which legal materials require constructive judgment. Principles, statutory purposes, institutional history, and enacted language all contribute to identifying the law's best account. The judge remains tied to the existing legal practice: purpose must come from the law being interpreted, and principle must fit the institutional record. Hard cases become questions of justification across several forms of legal evidence. No single source mechanically resolves the dispute. This is a jurisprudence with substantial room for judicial reasoning, and that reasoning earns legal authority through fit with an already structured practice."
+    "context": "Moral grounds of law and purposive interpretation meet in the question of what legal institutions are entitled to require. Statutory purposes help explain the project an enactment undertakes, while normative reasoning helps identify the authority and limits of that project. The words, institutional setting, and consequences of competing readings all remain relevant. This combination gives courts substantial interpretive responsibility without making a preferred policy self-authorizing. Its difficulty is to distinguish reasons that belong to the law from reasons for changing the law. Its recurring problem is control: courts need an account of why a purpose has legal force, what limits its use, and how a defensible reading can be distinguished from rewriting."
   },
   "profile_nonpositive_rights": {
     "opening": "Principles can belong to law even when no explicit rule states them. Judicial freedom remains constrained by the legal practice those principles must explain.",
-    "context": "Non-Positivism becomes especially consequential when paired with strong-form rights review. Principles embedded in the legal order can generate enforceable claims even when no explicit rule exhausts their content, and courts possess authority to apply those principles against political majorities. The resulting judicial role is broader than source enforcement alone. A court may have to decide which interpretation of the institutional history best justifies the rights the legal system claims to recognize. Fit remains a legal constraint, while moral and political principle help determine the content of the right. This combination places great confidence in courts as interpreters of the legal order's underlying commitments."
+    "context": "A moral account of law takes on an additional institutional commitment when paired with strong judicial review. The first claim concerns the grounds of legal rights; the second gives courts responsibility for enforcing those rights against political majorities. Neither claim establishes the other automatically. A moral theory can recognize reasons for democratic decisionmaking, and a source-based theory can authorize powerful courts. In this combination, legal rights require normative reasoning and courts have a substantial role in applying them. The central challenge is explaining what makes that reasoning legally authoritative and how judges remain accountable for it. Institutional authority, the character of the right, and the limits of judicial reasoning all bear on that explanation. Confidence in judicial enforcement needs justification alongside the moral account of the law being enforced."
   },
   "profile_originalist_formal": {
     "opening": "The Constitution was settled before the present judge arrived. New circumstances do not create a power to rewrite it.",
-    "context": "Originalism and rule formalism share an anti-discretion logic. Fixed historical meaning constrains constitutional interpretation; rules, categories, and structural boundaries constrain application. Each device reduces the occasions on which a judge can replace law already made with an all-things-considered judgment about the better outcome. The package can still produce aggressive judicial review because a historically grounded boundary may require courts to invalidate politically attractive arrangements. Its restraint is methodological, not deferential. The judge is powerful when enforcing an external legal limit and deliberately weak when the claimed authority depends on present-day balancing or policy judgment."
+    "context": "Originalism can combine with categorical rules or firm structural boundaries to limit judicial discretion. Fixed historical meaning constrains interpretation; the independent commitment to rules or assigned powers constrains how the law operates. A judge can enforce a strict allocation of government authority while using contextual standards elsewhere, so structural formalism does not require categorical doctrine in every field. The combination can support forceful judicial review when historical law establishes a boundary that political institutions have crossed. It can also support restraint where that law leaves a choice to another decisionmaker. The shared concern is whether an institution has legal authority for its action, with the respondent's additional commitments determining how strictly that authority is bounded."
   },
   "profile_originalist_deferential": {
     "opening": "The Constitution was settled before the present judge arrived. New circumstances do not create a power to rewrite it.",
@@ -428,6 +429,10 @@
     "opening": "One jurisprudential commitment is clear; the rest of the judicial philosophy is not yet comparably developed.",
     "context": "A clear answer to one jurisprudential question does not by itself amount to a complete theory of judging. Here the primary commitment is real, but the answers on interpretation, precedent, judicial authority, remedies, institutional structure, and doctrinal form stay too close to the middle to generate a stable second-order method. That matters because hard cases usually force those dimensions into conflict. A judge needs some account of what happens when source fidelity collides with precedent, rights collide with deference, or rules collide with consequences. This profile has a recognizable center of gravity without a comparably definite theory for resolving those collisions."
   },
+  "profile_unresolved_commitments": {
+    "opening": "Your answers contain definite legal commitments, but they do not establish one supported account of how those commitments govern hard cases.",
+    "context": "A profile can contain strong legal commitments without establishing a single jurisprudential school. Firm positions on different questions need an account of how they interact when a case brings them into conflict. That account cannot be inferred from distance from the midpoint alone. It may remain unresolved, or the available questions may not distinguish it clearly enough. Interpretive Pluralism would require affirmative support for several forms of argument as legitimate parts of a method. Direct contradiction requires separate evidence of incompatible answers to matched propositions. Neither follows merely from a mixed profile. LAWvalues preserves the measured commitments while withholding a theoretical synthesis the responses have not established."
+  },
   "profile_low_commitment": {
     "opening": "Your answers do not organize legal judgment around a stable hierarchy of reasons.",
     "context": "A near-center profile says less than it first appears to say. Moderate scores across text, history, precedent, remedies, judicial power, structure, and doctrinal form do not automatically combine into a sophisticated synthesis. They can instead reflect weak commitments, unresolved tensions, or a case-by-case style that lacks a stable rule for deciding which legal reason should prevail when several conflict. Direct contradiction is a separate problem and triggers a different result. Here the limitation is theoretical depth: the answers supply legal instincts, but they do not yet supply a durable second-order account of how those instincts fit together."
@@ -438,6 +443,8 @@
   const isOriginalist = (id) => ["originalist","public_meaning_originalist","original_intent_originalist","original_methods_originalist","framework_originalist"].includes(id);
   const has = (traits, key, min = 0.5) => Number(traits?.[key] || 0) >= min;
   const axis = (scores, id) => Number(scores?.[id] ?? 50);
+  const nearCenter = (scores) => ["sorc","cons","time","prec","remed","post","separ","form"]
+    .every((id) => Math.abs(axis(scores,id)-50) <= 22);
 
   const OPENINGS = Object.freeze({
     constraint_correction: "You trust judges least when they preserve a rule they believe the law never authorized. Stability has value, but it cannot turn judicial repetition into a source superior to the Constitution or statute itself. Once the mistake is clear enough, you would rather absorb the disruption of correction than make fidelity depend on how long courts have been wrong.",
@@ -449,12 +456,22 @@
     institutional_process: "You think good judging often begins by asking whether the judge should be the one deciding at all. Legal systems divide authority among institutions for reasons of competence, procedure, accountability, and settlement. A court that reaches the substantively best answer through the wrong institutional role can still get the law wrong.",
     adaptive_pragmatic: "You care less about theoretical purity than whether legal doctrine survives contact with institutions, incentives, and actual human behavior. Hard cases expose choices that doctrine cannot always hide. When genuine room remains, you want judges to confront consequences openly and prefer rules that can be administered without making the legal system ridiculous.",
     democratic_process: "You distrust democracy least when it can correct itself and courts least when they repair the machinery that makes correction possible. Exclusion, entrenchment, and blocked political channels justify judicial aggression. Ordinary policy disagreement does not. The court's strongest claim to power is restoring a political process capable of taking the fight back.",
-    democratic_deferential: "You think constitutional disagreement is usually a reason to leave room for politics, not a reason to give judges the final word. Courts still enforce genuine legal limits, but reasonable disagreement weakens the case for displacement. Judicial authority is strongest when the law is clear and weakest when the judge is simply another participant in the dispute.",
+    democratic_deferential: "You think reasonable constitutional disagreement gives politics a stronger claim to decide who governs and how. Courts still enforce genuine legal limits, but reasonable disagreement weakens the case for displacement. Judicial authority is strongest when the law is clear and weakest when the judge is simply another participant in the dispute.",
     rights_structured: "You think rights become ornamental if courts retreat whenever enforcement becomes politically expensive. Judicial review should be strong enough to bind majorities, but the court must show its work through disciplined legal structure rather than intuition. The harder the intervention, the more exacting the justification has to be.",
     rule_formalist: "You distrust discretion enough to accept ugly results from clear rules. A legal category earns its value by continuing to bind when the equities tempt the decisionmaker to escape it. The point is not neatness; it is denying judges and officials the power to reopen every settled boundary whenever a sympathetic case appears.",
     realist: "You think judicial opinions often tell a cleaned-up story about decisions made under genuine legal uncertainty. Doctrine constrains, but hard cases leave room for institutional incentives, politics, psychology, factual framing, and consequences to shape outcomes. A serious theory of judging has to explain that remaining space instead of pretending the formal opinion exhausts it.",
     sociological: "You think a rule that looks elegant in the books and absurd in the world is still absurd. Legal analysis has to account for the institutions, relationships, incentives, and social norms through which rules actually operate. A court that never looks beyond doctrine can misunderstand the legal order it is supposedly governing.",
     source_positive: "You think judges get into trouble when they confuse what law is with what law should be. Legal authority should be traceable to institutions and practices the system actually recognizes. Moral judgment still matters, but it cannot silently manufacture a source of law whenever the recognized materials produce an unattractive answer.",
+    nonpositive_general: "You think identifying the institution that made a rule leaves an important legal question unanswered. Moral reasons can help determine the authority or content of law itself. Judges still need an account of how those reasons operate within public institutions; dissatisfaction with an outcome does not supply that account on its own.",
+    moral_impact: "You think an official decision can bind people for reasons its authors never fully understood. Passing a statute changes expectations, dependencies, and the terms on which people can fairly deal with one another. A judge must follow those changes through, including when the duties they create reach beyond the message lawmakers intended to communicate.",
+    moral_practice: "You distrust a legal answer that ends at 'those are the rules.' Public decisions can change what fair treatment requires, and judging has to explain why one person may demand something from another. The courtroom is part of that continuing moral relationship, with official materials shaping its responsibilities and limits.",
+    strong_natural_law: "You think an institution's authority to issue a rule cannot settle every question about its legal validity. Some moral defects undermine the rule's status as law itself. A judge must explain where that limit lies and what authority courts have to enforce it; identifying a moral failure does not answer every institutional question.",
+    popular_authority: "You distrust a constitutional order in which citizens can debate everything except what their own Constitution means. Courts decide cases, but public movements and democratic politics retain constitutional responsibility. A judicial ruling can settle a dispute without closing the people's continuing argument about the commitments under which they govern themselves.",
+    departmental_authority: "You think every branch has to take responsibility for the Constitution when exercising its own powers. A court's judgment binds the case it decides, but its reasoning does not relieve other officials of their constitutional duties. The hard problem is coordinating those responsibilities without turning one branch into the permanent constitutional supervisor of all the others.",
+    purposive_method: "You think a judge can get the words right and still misunderstand the law's project. An enactment addresses a problem through a particular institutional design, and interpretation has to make sense of that design. The judge must explain how the reading serves the enacted scheme without replacing its compromises with a more attractive policy.",
+    proportionality_method: "You want public power to justify the burdens it places on rights through a disciplined sequence of questions. Does the measure serve a legitimate goal, does it work, and could a less restrictive measure do the job? Any remaining burden needs its own justification. The method demands reasons without deciding in advance which institution always gets the final word.",
+    structural_formalist: "You think constitutional allocations of power should bind even when ignoring them would make government work more smoothly. A useful arrangement still needs legal authority. Judges protect the boundaries of each institution's role, leaving political actors to pursue their goals through powers and procedures the constitutional system actually gives them.",
+    unresolved_commitments: "You take definite positions on important legal questions, but your answers leave unresolved how those commitments fit together when they collide. A preference about one kind of case does not establish the rule for another. The evidence supports parts of a judicial outlook without yet supporting one account of what should control the hardest decisions.",
     principled_nonpositive: "You distrust the idea that a judge can call a hard case a gap and then openly make new law. Principles of justice and legal coherence can already belong to the law through the practice itself. Judicial freedom is constrained by the institutional history those principles must explain, even when no explicit rule states the answer.",
     extreme_injustice: "You think legality has a floor. Ordinary injustice can remain law, and judges cannot treat every moral error as permission to disregard an enactment. Some wrongs are so radical that the claim to legal authority collapses. The theory is powerful only if that breaking point remains exceptional.",
     legality_form: "You think a regime can fail as law through the way it governs. Secret, retroactive, contradictory, impossible, or routinely ignored rules destroy the conditions that make legal guidance possible. The legal defect exists even before asking whether the substantive policy is just.",
@@ -472,30 +489,38 @@
     const id = classification?.identity?.id || "mixed_jurisprudence";
     const t = classification?.traits || {};
     if (SPECIAL_IDS.has(id)) return null;
-    if (id === "mixed_jurisprudence") return "low_theory";
+    if (id === "mixed_jurisprudence") return nearCenter(scores) ? "low_theory" : "unresolved_commitments";
 
     if (id === "legal_realist") return "realist";
     if (id === "sociological_jurist" || has(t,"method.law_in_action",0.65) ||
         has(t,"source.institutional_legal_pluralism",0.5)) return "sociological";
 
-    if (id === "natural_lawyer" || id === "common_good_constitutionalist" ||
-        (has(t,"source.objective_morality",0.5) && has(t,"source.positive_law_settlement",0.4)))
+    if (id === "radbruchian" ||
+        (id === "nonpositivist" && has(t,"source.extreme_injustice",0.5))) return "extreme_injustice";
+    if (id === "fullerian") return "legality_form";
+    if (id === "natural_lawyer" && has(t,"source.strong_natural_law",0.5)) return "strong_natural_law";
+    if (id === "natural_lawyer" || id === "common_good_constitutionalist") return "moral_settlement";
+    if (id === "moral_impact_theorist" ||
+        (id === "nonpositivist" && has(t,"source.moral_impact",0.5))) return "moral_impact";
+    if (id === "nonpositivist" && has(t,"source.moral_practice",0.5)) return "moral_practice";
+    if (id === "interpretivist" || id === "dworkinian") return "principled_nonpositive";
+    if (id === "nonpositivist") return "nonpositive_general";
+    if (["positivist","inclusive_positivist","exclusive_positivist"].includes(id)) return "source_positive";
+
+    if (has(t,"source.objective_morality",0.5) && has(t,"source.positive_law_settlement",0.4))
       return "moral_settlement";
-    if (id === "interpretivist" || id === "dworkinian" || id === "moral_impact_theorist" ||
-        id === "nonpositivist" || has(t,"source.fit_and_justification",0.5) ||
-        has(t,"source.principles_are_law",0.5))
+    if (has(t,"source.fit_and_justification",0.5) && has(t,"source.principles_are_law",0.35))
       return "principled_nonpositive";
-    if (id === "radbruchian" || has(t,"source.extreme_injustice",0.67)) return "extreme_injustice";
-    if (id === "fullerian" || has(t,"source.internal_legality",0.5)) return "legality_form";
-    if (["positivist","inclusive_positivist","exclusive_positivist"].includes(id))
-      return "source_positive";
+    if (has(t,"source.extreme_injustice",0.67)) return "extreme_injustice";
+    if (has(t,"source.internal_legality",0.5)) return "legality_form";
 
     if (id === "political_process_jurist" || id === "elyan" || has(t,"posture.process_reinforcement",0.5))
       return "democratic_process";
     if (id === "weak_form_constitutionalist" || has(t,"posture.weak_form",0.65))
       return "dialogic_authority";
-    if (id === "political_constitutionalist" || id === "thayerian" ||
-        id === "popular_constitutionalist" || id === "departmentalist" || id === "waldronian" ||
+    if (id === "popular_constitutionalist") return "popular_authority";
+    if (id === "departmentalist") return "departmental_authority";
+    if (id === "political_constitutionalist" || id === "thayerian" || id === "waldronian" ||
         axis(scores,"post") >= 72)
       return "democratic_deferential";
     if (id === "legal_constitutionalist") return "rights_structured";
@@ -504,9 +529,9 @@
         has(t,"method.agency_interpretive_autonomy",0.5) ||
         (id === "textualist" && has(t,"separation.interpretive_accommodation",0.5)))
       return "institutional_process";
-    if (id === "proportionalist" || id === "alexyan" || has(t,"form.proportionality",0.5) ||
-        (axis(scores,"post") <= 30 && axis(scores,"form") <= 32))
-      return "rights_structured";
+    if (id === "proportionalist" || id === "alexyan" || has(t,"form.proportionality",0.5))
+      return axis(scores,"post") <= 30 ? "rights_structured" : "proportionality_method";
+    if (axis(scores,"post") <= 30 && axis(scores,"form") <= 32) return "rights_structured";
 
     if (id === "minimalist" || id === "bickelian" || has(t,"method.narrow_shallow",0.75))
       return "minimalist_opening";
@@ -532,7 +557,8 @@
     }
     if (id === "intentionalist") return "intentional_method";
     if (id === "interpretive_pluralist") return "pluralist_method";
-    if (id === "pragmatist" || id === "purposivist" ||
+    if (id === "purposivist") return "purposive_method";
+    if (id === "pragmatist" ||
         (axis(scores,"cons") <= 32 && axis(scores,"form") <= 38))
       return "adaptive_pragmatic";
 
@@ -546,7 +572,8 @@
       if (id === "formalist" && axis(scores,"form") >= 72) return "rule_formalist";
       return "constraint_general";
     }
-    if (id === "formalist" || axis(scores,"form") >= 74) return "rule_formalist";
+    if (id === "formalist") return "structural_formalist";
+    if (axis(scores,"form") >= 74) return "rule_formalist";
     return "low_theory";
   }
 
@@ -592,10 +619,13 @@
       return "positivist_mainstream";
     }
 
+    if(id==="common_good_constitutionalist") return "common_good";
+    if(id==="nonpositivist" && has(t,"source.extreme_injustice",0.5)) return "nonpos_extreme";
+
     if(sourceNonpositive && id!=="fullerian" && id!=="radbruchian"){
       if(axis(scores,"cons")>=82) return "profile_nonpositive_textual";
       if(axis(scores,"cons")<=18) return "profile_nonpositive_purposive";
-      if(axis(scores,"post")<=18 || axis(scores,"form")<=18) return "profile_nonpositive_rights";
+      if(axis(scores,"post")<=18) return "profile_nonpositive_rights";
       if(id==="moral_impact_theorist"||has(t,"source.moral_impact",0.5)) return "nonpos_moral_impact";
       if(has(t,"source.moral_practice",0.5)) return "nonpos_moral_practice";
       if(id==="interpretivist"||id==="dworkinian") return "interpretivist";
@@ -723,8 +753,9 @@
       return "proportionalist_mainstream";
     }
 
-    if(id==="mixed_jurisprudence" || Math.max(...["sorc","cons","time","prec","remed","post","separ","form"].map(a=>Math.abs(axis(scores,a)-50)))<=22)
-      return "profile_low_commitment";
+    if(id==="mixed_jurisprudence")
+      return nearCenter(scores) ? "profile_low_commitment" : "profile_unresolved_commitments";
+    if(nearCenter(scores)) return "profile_low_commitment";
 
     return "low_theory";
   }
@@ -759,3 +790,4 @@
     wordCount
   });
 })(globalThis);
+

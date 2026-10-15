@@ -33,7 +33,7 @@ The questions are written as plain-language legal problems rather than definitio
 
 ## Jurisprudential matching
 
-After the 88-question core, LAWvalues may ask up to twelve adaptive tie-breakers, keeping the full quiz at 100 questions or fewer. Most follow-ups refine only jurisprudential identity and champion matching. The four theory-based Separation diagnostics also carry modest Separation-axis weight when actually asked, so they can sharpen an otherwise thinly measured structural profile without being forced on every respondent. The first two adaptive questions are a soft Realism probe and a response check; particularly noisy and low-salience response patterns may receive a second explicit response check; remaining questions are routed only when they can refine a live jurisprudential distinction.
+After the 88-question core, LAWvalues may ask up to twelve adaptive tie-breakers, keeping the full quiz at 100 questions or fewer. Most follow-ups refine only jurisprudential identity and champion matching. The five institutional diagnostics (D-SEP1 through D-SEP4 and D-MET1) also carry modest Separation-axis weight when actually asked, so they can sharpen an otherwise thinly measured structural profile without being forced on every respondent. The first two adaptive questions are a soft Realism probe and a response check; particularly noisy and low-salience response patterns may receive a second explicit response check; remaining questions are routed only when they can refine a live jurisprudential distinction.
 
 Public results use the three-part grammar **[noun-conditioned twist] [real jurisprudential identity] [broad residual phrase]**. The middle noun is the nearest real jurisprudential neighbor. The trailing phrase carries the strongest broad, well-supported characteristic that noun does not already communicate; it is drawn from the eight axis poles plus only the few narrower traits that the existing 88 questions genuinely measure with enough independent evidence. The front modifier is no longer "third place" in the same ranking. It is a **twist on the noun**: a narrower, noun-conditioned feature that explains what is unusual about this respondent's particular version of that jurisprudential identity. This lets a Solum-like Public-Meaning Originalist, for example, surface a construction-zone twist without pretending that one narrow distinction is the person's third-largest worldview axis. Closest-thinker matching remains separate.
 
@@ -64,13 +64,17 @@ Then open `http://localhost:8000`.
 
 ## Audit
 
-The repository includes dependency-free structural, scoring, and profile audits:
+The repository includes four dependency-free audits covering questions/scoring, the result catalog, adaptive routing, and result narratives. Use Node.js 22 or later (CI uses Node.js 22):
 
 ```bash
 npm test
 ```
 
-They check the 88-item core, asymmetric scoring, source references, local asset references, sparse profile validity, specialist gates, major jurisprudential-family coverage, phrase reachability, noun-conditioned twist assembly, the twelve-question diagnostic cap, explicit response-quality safeguards, and several false-match tests such as preventing a positivist from winning a strong Natural Law profile.
+All four run even if an earlier audit fails; the command reports each result and exits unsuccessfully if any audit fails. The same command runs in the Instrument audit GitHub Actions workflow. Individual checks are available as `npm run audit:questions`, `npm run audit:catalog`, `npm run audit:routing`, and `npm run audit:narrative`.
+
+They check the 88-item core, asymmetric scoring, source references, local asset references, sparse profile validity, specialist gates, major jurisprudential-family coverage, literal-answer adaptive reachability (including unresolved Mixed-to-Source paths), phrase reachability, noun-conditioned twist assembly, the twelve-question diagnostic cap, explicit response-quality safeguards, narrative evidence consistency, and several false-match tests such as preventing a positivist from winning a strong Natural Law profile.
+
+The audit workflow does not configure GitHub Pages deployment or branch protection. When Pages publishes directly from a branch, a separate audit run does not automatically block publishing; changes should only be promoted after the full audit passes on the exact revision being published.
 
 ## Validation status
 
@@ -108,3 +112,4 @@ It does not affect the eight plotted scores. Ordinary, valid cases retain
 exactly one champion unit and a modifier, noun and phrase. Broad incoherence
 requires direct contradictions in more than one jurisprudential domain; mixed
 scores and sincere methodological uncertainty do not qualify.
+
