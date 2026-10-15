@@ -1288,6 +1288,46 @@
     } : null;
   }
 
+  function fallbackPhrase(identity,scores,blockedPhraseIds=new Set()) {
+    const byAxis=new Map();
+    for(const feature of PHRASE_FEATURES) {
+      if(!feature.axis) continue;
+      if(!byAxis.has(feature.axis)) byAxis.set(feature.axis,[]);
+      byAxis.get(feature.axis).push(feature);
+    }
+
+    // "Secondary" means genuinely residual: if the noun already spends either
+    // pole of an axis, or the selected modifier spends it, that axis cannot
+    // manufacture the fallback phrase.
+    const residualAxes=Array.from(byAxis.entries())
+      .filter(([,features]) =>
+        !features.some(feature=>nounSpendsPhrase(identity,feature)) &&
+        !features.some(feature=>blockedPhraseIds.has(feature.id)))
+      .map(([axis])=>axis);
+
+    const conflict=residualAxes
+      .map(axis=>{
+        const detail=scores?.[axis];
+        return {
+          axis,
+          strength:Number(detail?.strength)||0,
+          conflict:Number(detail?.conflict)||0
+        };
+      })
+      .filter(item=>item.conflict>=45)
+      .sort((a,b)=>b.conflict-a.conflict || b.strength-a.strength || a.axis.localeCompare(b.axis))[0]||null;
+
+    const chosen=conflict ? FALLBACK_PHRASES.contradiction : FALLBACK_PHRASES.neutral;
+    return {
+      id:chosen.id,
+      text:chosen.text,
+      axis:conflict?.axis||null,
+      direction:null,
+      adds:[],
+      explanation:chosen.explanation
+    };
+  }
+
   function indefiniteArticle(phrase) {
     const spoken=String(phrase||"").trim();
     if(!spoken) return "a";
@@ -1360,10 +1400,24 @@
     "fact_skeptical_realism"
   ]);
 
-  // No generic public fallback phrase. Public titles may use only the approved
-  // PHRASE_FEATURES pool; if no approved phrase clears the evidence threshold,
-  // the title ends after its modifier + noun.
-  const MIXED_PHRASE=null;
+  // The phrase layer is supposed to report the strongest meaningful residual
+  // characteristic after noun/modifier content is spent. If the residual signal
+  // never becomes directional enough for a substantive phrase, distinguish
+  // strong answers that cancel from genuinely weak/neutral answers.
+  const FALLBACK_PHRASES=Object.freeze({
+    contradiction:Object.freeze({
+      id:"secondary_contradiction",
+      text:"who is a walking contradiction",
+      explanation:"Your strongest remaining dimension contains substantial support for opposing positions, so the apparent neutrality comes from strong answers cancelling rather than from indifference."
+    }),
+    neutral:Object.freeze({
+      id:"secondary_neutral",
+      text:"who needs to stop fence sitting",
+      explanation:"After your main jurisprudential commitments are accounted for, the remaining dimensions do not show a strong enough directional commitment for a substantive phrase."
+    })
+  });
+  // Legacy shared links used mixed_profile for the old no-phrase state.
+  const MIXED_PHRASE=FALLBACK_PHRASES.neutral;
 
   function specialTitle(classification) {
     const id=classification?.identity?.id;
@@ -1436,7 +1490,8 @@
     const blockedPhraseIds=new Set(selectedTwist?.blockedPhraseIds||[]);
     const phrasePick=phraseRanking.find(item=>
       item.score>=0.18 && !blockedPhraseIds.has(item.feature.id))||null;
-    const phrase=asPhrase(phrasePick?.feature||null);
+    const phrase=asPhrase(phrasePick?.feature||null) ||
+      fallbackPhrase(identity,scores,blockedPhraseIds);
 
     const title=[modifier?.text,identity.label,phrase?.text].filter(Boolean).join(" ");
     const bridge=BRIDGES.find(item=>item.when(scores,traits,identity))||null;
@@ -1741,6 +1796,7 @@
     PUBLIC_MODIFIERS,
     INTERNAL_TWIST_IDS,
     PHRASES,
+    FALLBACK_PHRASES,
     BRIDGES,
     phraseEvidence,
     phraseQuality,
