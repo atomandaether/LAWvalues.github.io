@@ -1314,11 +1314,15 @@
       }
     }
 
-    // Source refinement is controlled by whether Source is actually live in the
-    // result race, not by an unrelated Time-axis cutoff. This prevents a strong
-    // Positivist from losing Austin/Kelsen/Shapiro-level discrimination merely
-    // because the same respondent also has a historical constitutional tilt.
-    const sourceFamilyLive = routingFamilies.has("source") || source >= 82 || source <= 18;
+    // Source refinement follows the live race, but Mixed is not an established
+    // competing theory. Nonpositive Source scores cannot create a public noun
+    // without affirmative diagnostic evidence, so requiring that noun to be
+    // live before asking its identifying questions would be circular. Explore
+    // the existing nonpositive zone while Mixed is leading; neutral Source and
+    // already-established competing families keep their conservative routing.
+    const unresolvedSource = bestRoutingId === "mixed_jurisprudence" && source <= 38;
+    const sourceFamilyLive = routingFamilies.has("source") || unresolvedSource ||
+      source >= 82 || source <= 18;
     if (sourceFamilyLive) {
       const extremeSourcePlausible = (traits["source.extreme_injustice"] || 0) >= 0.35;
       if (extremeSourcePlausible &&
@@ -1419,7 +1423,11 @@
   
         // If the core supplied no clue at all, use remaining capacity to test the
         // two broad nonpositivist nouns before settling for the generic fallback.
+        // Affirmed Fullerian legality already supplies a noun: absent core clues,
+        // do not spend slots on alternatives. Independently supported Source
+        // theories still receive the targeted probes above, even alongside Fuller.
         if (!naturalEstablished && !interpretivistEstablished &&
+            internalLegality < 0.5 &&
             !naturalCorePlausible && !interpretivistCorePlausible &&
             hasAsked(diagnosticResponses, "D-NP3")) {
           if (!hasAsked(diagnosticResponses, "D-NP1")) offer("D-NP1", 58);
@@ -1427,7 +1435,7 @@
         }
       }
   
-      }
+    }
 
     const dialogicPosture = traits["posture.dialogic"] || 0;
     if (posture >= 62 && dialogicPosture < 0.5) {
@@ -1951,3 +1959,4 @@
     classify
   });
 })(globalThis);
+

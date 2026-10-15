@@ -89,7 +89,7 @@ Aquinas, Blackstone, Mark Murphy, Robert George, Jonathan Crowe, and related thi
 11. **Lon Fuller** — internal morality/principles of legality.
 
 ### Non-Positivist subtype branches
-8. **Mark Greenberg** — Moral Impact Theory.
+12. **Mark Greenberg** — Moral Impact Theory.
 13. **Scott Hershovitz** — moral-practice / one-system nonpositivism.
 14. **Gustav Radbruch / Philip Soper** — extreme-injustice threshold.
 
@@ -112,7 +112,9 @@ The global adaptive cap remains twelve questions.
 - **D-NP6** — Extreme-Injustice threshold / Radbruch-Soper.
 - **D-NP3** — Fullerian internal legality.
 
-The router stops probing competing Source theories once a real noun or narrow branch is affirmatively established. If the respondent is nonpositive on the broad Source axis but rejects the diagnosable nonpositivist theories, Source alone does not manufacture a Non-Positivist noun; another established jurisprudential commitment wins, or the explicit Mixed fallback is used. Source probes also do not consume the diagnostic budget when a respondent is already squarely inside the Originalist refinement zone; Originalist source-sensitive champions use the 88-item core Source evidence.
+The router stops speculative searches for competing Source theories once a real noun or narrow branch is affirmatively established. In particular, affirmed Fullerian internal legality ends the fallback search for Natural Law and Interpretivism when the core supplies no clue to either. Independently supported Source theories retain their targeted probes, including when Fullerian evidence is also present. If the respondent is nonpositive on the broad Source axis but rejects the diagnosable nonpositivist theories, Source alone does not manufacture a Non-Positivist noun; another established jurisprudential commitment wins, or the explicit Mixed fallback is used.
+
+Source refinement is eligible when the Source family is live in the identity race or the Source score is extreme (at most 18 or at least 82). It also explores an unresolved Mixed result when the Source score lies in the existing nonpositive diagnostic zone (at most 38). This avoids a circular gate: Natural Law and distinctive nonpositivist theories need affirmative diagnostic evidence before they can enter the public identity race. Neutral Source scores do not unlock that exploration, and an already-established competing family keeps the ordinary candidate-aware gate. A secondary historical Time score never suppresses a live Source family; Originalist source-sensitive champions also retain their targeted Source-evidence refinement.
 
 ## Reachability contract
 
@@ -126,3 +128,4 @@ It also requires:
 - Radbruch/Soper to resolve as Extreme-Injustice Non-Positivist even when the respondent is otherwise comparatively source-positive.
 - Fullerian to remain its own public noun.
 - Generic fit output to include the correct indefinite article, e.g. **Unmistakably a Positivist** and **Unmistakably an Interpretivist**.
+

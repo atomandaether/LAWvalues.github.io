@@ -1167,8 +1167,10 @@ function sourceDiagnosticAnswer(id, diagnosticId) {
   return -3;
 }
 
-function runLiteralSourceFixture(id) {
-  const responses = literalSourceCore(id);
+function runLiteralSourceFixture(id, {
+  responses = literalSourceCore(id),
+  answer = (diagnosticId) => sourceDiagnosticAnswer(id, diagnosticId)
+} = {}) {
   const scores = scoring.scoreAll(responses);
   const diagnosticResponses = {};
   const diagnosticOrder = [];
@@ -1176,13 +1178,21 @@ function runLiteralSourceFixture(id) {
   for (let i = 0; i < classifier.MAX_DIAGNOSTICS; i += 1) {
     const next = classifier.nextDiagnostic(scores, responses, diagnosticResponses);
     if (!next) break;
+    assert.ok(!diagnosticOrder.includes(next.id), `${id} must not repeat a diagnostic`);
     diagnosticOrder.push(next.id);
-    diagnosticResponses[next.id] = sourceDiagnosticAnswer(id, next.id);
+    diagnosticResponses[next.id] = answer(next.id);
   }
 
+  assert.equal(classifier.nextDiagnostic(scores, responses, diagnosticResponses), null,
+    `${id} must stop when its adaptive route is complete or its budget is exhausted`);
+
   return {
-    result: classifier.classify(scores, responses, diagnosticResponses, { coreElapsedMs: 10 * 60 * 1000 }),
-    diagnosticOrder
+    result: classifier.classify(scoring.scoreAllWithDiagnostics(responses, diagnosticResponses),
+      responses, diagnosticResponses, { coreElapsedMs: 10 * 60 * 1000 }),
+    diagnosticOrder,
+    diagnosticResponses,
+    scores,
+    responses
   };
 }
 
@@ -1223,6 +1233,112 @@ for (const id of lockedSourceUnits) {
     assert.equal(result.resultTitle.modifier?.id, sourceExpectedModifier[id],
       `${id} should surface its locked descriptive Source modifier`);
   }
+}
+
+// Regression: moderately nonpositive Source answers need not establish a noun
+// before the router asks the diagnostic that would establish it. Exercise all
+// five previously stranded endpoints with both neutral and mildly mixed shells,
+// and with weaker (still informative) Source answers. None relies on Source <=18.
+const unresolvedSourceUnits = [
+  "greenberg", "hershovitz", "finnis_murphy_george", "moore_strong_natural_law", "fuller"
+];
+const sourceProbe = (id) => /^D-(?:NP[1-6]|NL2|POS[12]|AUS1|KEL1|SHA1)$/.test(id);
+for (const id of unresolvedSourceUnits) {
+  for (const sourceCap of [3, 2]) {
+    for (const mixedShell of [false, true]) {
+      const responses = literalSourceCore(id);
+      questions.forEach((question, index) => {
+        responses[question.id] = question.axis === "sorc"
+          ? Math.sign(responses[question.id]) * Math.min(sourceCap, Math.abs(responses[question.id]))
+          : mixedShell ? [-1, 0, 1][index % 3] : 0;
+      });
+      const { result, diagnosticOrder, scores } = runLiteralSourceFixture(id, { responses });
+      assert.ok(scores.sorc.score > 18 && scores.sorc.score <= 38,
+        `${id} regression must exercise moderate nonpositive Source, not the extreme escape hatch`);
+      assert.equal(classifier.resolveIdentity(scores, classifier.buildTraits(scores, responses, {}))
+        .best.identity.id, "mixed_jurisprudence",
+      `${id} regression must start before a Source noun has been established`);
+      assert.ok(diagnosticOrder.some(sourceProbe), `${id} must reach identifying Source diagnostics`);
+      assert.equal(result.identity.id, sourceExpectedIdentity[id]);
+      assert.equal(result.champions[0]?.id, id,
+        `${id} must remain reachable with Source strength ${sourceCap} and mixed shell ${mixedShell}`);
+      assert.equal(result.champions.length, 1);
+      assert.ok(questions.length + diagnosticOrder.length <= classifier.MAX_TOTAL_QUESTIONS);
+      if (sourceExpectedModifier[id]) {
+        assert.equal(result.resultTitle.modifier?.id, sourceExpectedModifier[id]);
+      }
+      if (id === "fuller") {
+        assert.ok(!diagnosticOrder.slice(diagnosticOrder.indexOf("D-NP3") + 1).some(sourceProbe),
+          "Affirmed Fullerian legality must stop competing Source-theory exploration");
+      }
+    }
+  }
+}
+
+// Exploring a theory is never evidence for it. Rejecting every Source probe
+// must retain the conservative fallback rather than manufacture a school.
+for (const id of unresolvedSourceUnits) {
+  const { result, diagnosticOrder } = runLiteralSourceFixture(id, {
+    answer: (diagnosticId) => diagnosticId === "D-QC1" ? -2 : -3
+  });
+  assert.ok(diagnosticOrder.some(sourceProbe), `${id} rejection fixture must actually explore Source`);
+  assert.equal(result.identity.id, "mixed_jurisprudence");
+  assert.equal(result.champions[0]?.id, "oconnor");
+  assert.notEqual(result.championConfidence, "high",
+    "Rejected Source theories must not create a high-confidence specialist match");
+}
+
+// A neutral or weakly nonpositive Source axis should not open the new path.
+for (const sourceCap of [0, 1]) {
+  const responses = literalSourceCore("greenberg");
+  for (const id of Object.keys(responses)) {
+    responses[id] = Math.sign(responses[id]) * Math.min(sourceCap, Math.abs(responses[id]));
+  }
+  const { diagnosticOrder, scores } = runLiteralSourceFixture("greenberg", { responses });
+  assert.ok(scores.sorc.score > 38);
+  assert.ok(!diagnosticOrder.some(sourceProbe),
+    "Neutral/weak Source evidence must not trigger nonpositivist theory hunting");
+}
+
+console.log("PASS: unresolved moderate Source profiles reach all five diagnostic-dependent endpoints; rejected and neutral profiles stay conservative.");
+
+// Fullerian evidence closes only the no-core-clue fallback, not independently
+// plausible Source distinctions. A saved/direct evidence combination can contain
+// more than one supported theory even though the ordinary clean route establishes
+// a broad Source theory before it searches for Fullerian legality.
+{
+  const responses = literalSourceCore("moore_strong_natural_law");
+  const scores = scoring.scoreAll(responses);
+  const diagnosticResponses = { "D-RLS1": -2, "D-QC1": -2, "D-NP3": 3 };
+  const order = [];
+  while (Object.keys(diagnosticResponses).length < classifier.MAX_DIAGNOSTICS) {
+    const next = classifier.nextDiagnostic(scores, responses, diagnosticResponses);
+    if (!next) break;
+    assert.ok(!Object.hasOwn(diagnosticResponses, next.id));
+    order.push(next.id);
+    diagnosticResponses[next.id] = sourceDiagnosticAnswer("moore_strong_natural_law", next.id);
+  }
+  assert.ok(order.includes("D-NP1") && order.includes("D-NL2"),
+    "Fullerian legality must not suppress independently supported Natural-Law distinctions");
+  const result = classifier.classify(scoring.scoreAllWithDiagnostics(responses, diagnosticResponses),
+    responses, diagnosticResponses, { coreElapsedMs: 10 * 60 * 1000 });
+  assert.ok(result.traits["source.internal_legality"] >= 0.5);
+  assert.ok(result.traits["source.strong_natural_law"] >= 0.5);
+  assert.equal(result.champions.length, 1, "Combined Source evidence must preserve the single-champion contract");
+  assert.ok(Object.keys(diagnosticResponses).length <= classifier.MAX_DIAGNOSTICS);
+}
+
+// A real adaptive path may also weakly endorse a rival Source theory before
+// affirming Fuller. Partial support is retained but cannot invent another noun.
+{
+  const { result, diagnosticOrder } = runLiteralSourceFixture("fuller", {
+    answer: (id) => id === "D-NP4" ? 1 : sourceDiagnosticAnswer("fuller", id)
+  });
+  assert.ok(diagnosticOrder.includes("D-NP4") && diagnosticOrder.includes("D-NP3"));
+  assert.ok(result.traits["source.moral_impact"] > 0 && result.traits["source.moral_impact"] < 0.5);
+  assert.ok(result.traits["source.internal_legality"] >= 0.5);
+  assert.equal(result.identity.id, "fullerian");
+  assert.equal(result.champions[0]?.id, "fuller");
 }
 
 
@@ -2428,10 +2544,11 @@ console.log("PASS: Originalism resolves end-to-end from literal 88-item answers 
 console.log("PASS: Alexyan and Bickelian are champion/modifier-level distinctions, not public nouns.");
 console.log("PASS: Formalist and Functionalist public labels remain unchanged.");
 console.log("PASS: generic fit modifiers render Unmistakably a/an / blank / Some kind of, with correct articles and substantive modifiers taking priority.");
-console.log("PASS: all 10 locked Source champion units are reachable end-to-end from literal answers within the twelve-diagnostic cap.");
+console.log(`PASS: all ${lockedSourceUnits.length} locked Source champion units are reachable end-to-end from literal answers within the twelve-diagnostic cap.`);
 console.log("PASS: Method nouns/modifiers are locked, including Sociological Jurist and the three substantive Method modifiers.");
-console.log("PASS: all 18 locked Method champion units are reachable end-to-end from literal answers within the twelve-diagnostic cap.");
+console.log(`PASS: all ${lockedMethodUnits.length} locked Method champion units are reachable end-to-end from literal answers within the twelve-diagnostic cap.`);
 console.log("PASS: champion matching is noun-conditioned: primary and cross-cutting compatibility are explicit, incompatible champions are excluded.");
-console.log("PASS: Living/Common-Law constitutionalism resolves to all 7 locked non-originalist champion units, including Democratic/Transformative Living modifiers, within the twelve-diagnostic cap.");
+console.log(`PASS: Living/Common-Law constitutionalism resolves to all ${lockedNonOriginalistUnits.length} locked non-originalist champion units, including Democratic/Transformative Living modifiers, within the twelve-diagnostic cap.`);
 console.log("PASS: Judicial review / constitutional authority resolves to the 8 public champion units; broad legal/weak-form authority configurations stay internal.");
 console.log("PASS: Institutional structure / doctrinal form resolves to Lawson, Calabresi-Prakash, Schauer, Peter Strauss, Alexy, and Barak; remedies retain Bhagwati-Iyer and tightly gated Fiss under the single-champion rule.");
+
