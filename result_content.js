@@ -1360,7 +1360,10 @@
     "fact_skeptical_realism"
   ]);
 
-  const MIXED_PHRASE=Object.freeze({id:"mixed_profile",text:"who keeps the hard cases open",explanation:"No secondary judicial commitment was strong enough to justify a more definite description."});
+  // No generic public fallback phrase. Public titles may use only the approved
+  // PHRASE_FEATURES pool; if no approved phrase clears the evidence threshold,
+  // the title ends after its modifier + noun.
+  const MIXED_PHRASE=null;
 
   function specialTitle(classification) {
     const id=classification?.identity?.id;
@@ -1433,7 +1436,7 @@
     const blockedPhraseIds=new Set(selectedTwist?.blockedPhraseIds||[]);
     const phrasePick=phraseRanking.find(item=>
       item.score>=0.18 && !blockedPhraseIds.has(item.feature.id))||null;
-    const phrase=asPhrase(phrasePick?.feature||null)||MIXED_PHRASE;
+    const phrase=asPhrase(phrasePick?.feature||null);
 
     const title=[modifier?.text,identity.label,phrase?.text].filter(Boolean).join(" ");
     const bridge=BRIDGES.find(item=>item.when(scores,traits,identity))||null;
