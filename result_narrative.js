@@ -350,6 +350,83 @@
   "legal_constitutionalist": {
     "opening": "You give courts a strong independent responsibility to enforce constitutional rights and legal limits against political majorities. Judicial review is not merely a backstop for obvious mistakes; constitutional law can require courts to reach their own judgment even when elected institutions strongly disagree.",
     "context": "Strong-form judicial review concerns finality after the interpretive work is done. A court with this authority can invalidate legislation on its own best constitutional judgment and make that judgment legally controlling unless later doctrine or formal constitutional change displaces it. Clear-error approaches preserve more room for legislative interpretation; weak-form systems create formal routes for legislative response. Strong-form constitutionalism concentrates final legal responsibility in courts because constitutional limits are treated as ordinary law for judges to enforce in cases. The remaining debates—Originalism, Living Constitutionalism, principle-based interpretation—concern how the court identifies the constitutional rule it will enforce."
+
+  },
+  "profile_source_textual": {
+    "opening": "Law comes from legal institutions and recognized sources. Moral judgment does not manufacture authority on its own.",
+    "context": "Your source theory and your interpretive method reinforce each other. Legal authority comes from institutional settlement, and statutory language is the form in which a legislature makes that settlement public and binding. That makes textual constraint more than a linguistic preference: it is part of the same account of why enacted law outranks a judge's preferred policy. Moral standards can still enter when the legal system itself incorporates them, but the court does not gain a general power to improve ordinary statutes in their name. The result is a judge who is source-bound twice over—first about what counts as law, then about how much room an enacted source leaves for judicial reconstruction."
+  },
+  "profile_source_purposive": {
+    "opening": "Law comes from legal institutions and recognized sources. Moral judgment does not manufacture authority on its own.",
+    "context": "Your source theory does not make your judging linguistically rigid. Legal authority still comes from recognized institutions, yet those institutions can legislate through broad standards, purposive schemes, and delegations that leave real judgment to later interpreters. Open construction is lawful here because the source itself created the space. This separates two questions that hard Textualism tends to fuse: where legal authority comes from, and how completely the authoritative source resolved the present dispute. You are strict about pedigree and comparatively open about implementation, a combination that fits institutional and Legal-Process accounts of adjudication better than a mechanically source-bound picture of judging."
+  },
+  "profile_source_originalist": {
+    "opening": "Law comes from legal institutions and recognized sources. Moral judgment does not manufacture authority on its own.",
+    "context": "Your jurisprudence ties two forms of legal authority together. Positivism explains law through socially recognized sources; Originalism identifies the Constitution's historical enactment as the controlling source of constitutional meaning. History therefore matters as law, not as cultural reverence. The same instinct also limits judicial innovation: a present court cannot acquire superior authority merely by believing its answer morally or politically better. The difficult issue is precedent, because an entrenched judicial doctrine is itself a social source with institutional weight. Your broader theory turns that conflict into a contest between different forms of legal settlement rather than a choice between history and morality."
+  },
+  "profile_source_developmental": {
+    "opening": "Law comes from legal institutions and recognized sources. Moral judgment does not manufacture authority on its own.",
+    "context": "Source-based legality does not freeze constitutional law at the founding if precedent and official practice are themselves recognized sources. Your view allows constitutional doctrine to grow through institutions without treating judicial moral judgment as an independent source of law. That places enormous weight on the practices by which a legal system accepts precedent, governmental custom, and settled constitutional understandings. The constitutional question becomes partly social: which later practices have acquired enough legal authority to become part of what courts inherit? This is a natural bridge between Positivism and Common-Law Constitutionalism, with change occurring through institutional acceptance rather than through a free-standing power to update the Constitution."
+  },
+  "profile_source_deferential": {
+    "opening": "Law comes from legal institutions and recognized sources. Moral judgment does not manufacture authority on its own.",
+    "context": "Your source theory supports a restrained account of judicial authority. If law derives its force from recognized institutions and practices, reasonable disagreement inside those institutions does not automatically create a warrant for courts to displace elected government. The judge's comparative authority is strongest when the legal source clearly settles the question and weaker when the source leaves room for contestable judgment. This turns deference into a consequence of institutional legitimacy rather than personal modesty. Courts remain responsible for enforcing genuine limits, but they do not receive a general commission to convert every uncertain legal question into a judicially final one."
+  },
+  "profile_source_rights": {
+    "opening": "Law comes from legal institutions and recognized sources. Moral judgment does not manufacture authority on its own.",
+    "context": "Your source theory coexists with a strong judicial role because source-based legality and judicial supremacy answer different questions. The Constitution, precedent, or another recognized source can create rights whose enforcement does not depend on present political approval. Once the source establishes the right, a court may be obligated to enforce it aggressively against elected government without abandoning Positivism. The combination produces a judge who is conservative about where law comes from and comparatively bold about what follows after the law is identified. Judicial power is justified through fidelity to legal sources, not through a claim that judges possess superior moral insight."
+  },
+  "profile_nonpositive_textual": {
+    "opening": "Principles can belong to law even when no explicit rule states them. Judicial freedom remains constrained by the legal practice those principles must explain.",
+    "context": "Your jurisprudence combines a non-Positivist theory of legal content with a highly constrained approach to enacted text. Moral or justificatory principles can help determine what law requires, yet statutes remain deliberate institutional settlements whose wording sharply limits judicial reconstruction. The combination channels normative reasoning into places where the legal practice genuinely calls for it instead of treating every awkward statute as unfinished moral work. A court can therefore be ambitious about principle in hard cases and severe about textual limits in ordinary legislation. The governing distinction is institutional: principles help constitute law, but enacted legal choices retain their own authoritative form."
+  },
+  "profile_nonpositive_purposive": {
+    "opening": "Principles can belong to law even when no explicit rule states them. Judicial freedom remains constrained by the legal practice those principles must explain.",
+    "context": "Your theory of legal content and your interpretive method both resist reducing adjudication to source retrieval. Principles, purposes, and institutional justification can participate in determining what the law requires, especially where enacted language is broad or incomplete. That does not make the judge a free moral legislator, because the reasoning must fit the existing legal practice and the purposes embedded in the law actually adopted. The profile is therefore demanding in two directions at once: legal materials constrain the available principles, and principles help explain the legal materials. Hard cases become exercises in constructive justification rather than searches for a single decisive source."
+  },
+  "profile_nonpositive_rights": {
+    "opening": "Principles can belong to law even when no explicit rule states them. Judicial freedom remains constrained by the legal practice those principles must explain.",
+    "context": "Your non-Positivism carries directly into constitutional authority. Rights are not exhausted by whatever a political institution happened to enact in explicit terms; principles already embedded in the legal order can generate judicially enforceable claims against government. That gives courts a substantial role, but the justification remains legal rather than simply moral: the principle must fit and explain the institutional history it governs. The strongest version of this profile treats adjudication as an effort to make coercive state practice answer to a coherent scheme of rights. Political majorities remain part of that history without having final authority over its best legal interpretation."
+  },
+  "profile_originalist_formal": {
+    "opening": "The Constitution was settled before the present judge arrived. New circumstances do not create a power to rewrite it.",
+    "context": "Your Originalism is reinforced by a broader distrust of discretionary legal judgment. Fixed historical meaning supplies one external constraint; rules, categories, and structural boundaries supply others. The attraction of the package is cumulative: each doctrine narrows the points at which a judge may substitute an all-things-considered assessment for law already made. This can produce aggressive judicial review when government crosses a historically grounded structural line, even while the same judge refuses to update rights or statutes in the name of present policy. The unifying concern is institutional self-restraint—making legal authority depend as little as possible on the preferences of the official applying it."
+  },
+  "profile_originalist_deferential": {
+    "opening": "The Constitution was settled before the present judge arrived. New circumstances do not create a power to rewrite it.",
+    "context": "Your historical theory of constitutional meaning is paired with substantial respect for political decisionmaking. Originalism fixes the legal benchmark, while deference governs the space left after that benchmark has been recovered. Courts should enforce determinate historical limits, but uncertainty does not automatically transfer final authority from elected institutions to judges. This places your restraint at the boundary between interpretation and institutional power: a judge may have a preferred historical reading and still conclude that the Constitution leaves room for political choice. The profile is therefore more majoritarian than the common picture of Originalism as a vehicle for aggressive judicial invalidation."
+  },
+  "profile_developmental_source": {
+    "opening": "Constitutional law develops through an inherited legal tradition. Change has to grow out of what courts and institutions have already built.",
+    "context": "Your developmental constitutionalism remains tightly linked to institutional sources. Precedent, practice, and accumulated doctrine matter because the legal system recognizes them as authoritative, not because later judges possess a general moral power to modernize the Constitution. That makes constitutional change look more like common-law development than philosophical updating. Each generation receives a body of law already altered by prior decisions and official practice, then works from that inherited material. The profile combines real constitutional evolution with a comparatively positivist account of how that evolution becomes law: authority accumulates through recognized institutions over time."
+  },
+  "profile_developmental_rights": {
+    "opening": "Constitutional commitments have to remain capable of governing a society the adopters could not fully imagine.",
+    "context": "Your constitutional development is strongly rights-centered. Later doctrine and social experience can reveal applications of equality, liberty, or dignity that earlier generations failed to recognize, and courts have independent authority to enforce those developed commitments against political majorities. The legal theory therefore treats constitutional history as a trajectory rather than a fixed catalogue of expected applications. Precedent and principle supply continuity while allowing the content of rights doctrine to become more demanding over time. The strongest criticism of this position concerns judicial authority: the same mechanism that lets courts correct inherited exclusion can also give them broad control over contested moral development."
+  },
+  "profile_legal_process_textual": {
+    "opening": "Good judging begins with institutional role. The best substantive answer can still be legally wrong when the wrong institution claims the power to give it.",
+    "context": "Your Legal-Process instincts are unusually text-centered. Institutional competence matters, but the allocation of authority begins with the words through which legislatures assign powers, duties, and limits. Courts should take those enacted boundaries seriously before asking which institution seems better suited to the problem. This makes textual interpretation part of the architecture of institutional settlement: wording defines the legal space within which agencies, courts, and political actors may exercise judgment. The profile is less court-supremacist than hard Textualism can sound and less flexible than free-standing institutional balancing. Authority follows the enacted allocation first, then competence helps explain how to operate inside it."
+  },
+  "profile_legal_process_purposive": {
+    "opening": "Good judging begins with institutional role. The best substantive answer can still be legally wrong when the wrong institution claims the power to give it.",
+    "context": "Your Legal-Process theory is purposive in a broad institutional sense. Statutes are read as schemes assigning problems to institutions, and interpretation asks how those assignments can be made coherent and workable over time. Purpose matters because it helps identify the function Congress gave a court, agency, or other decisionmaker, while competence and reason-giving discipline how that function is exercised. This is a thicker account of law than simple deference to expertise: institutions earn authority through legal assignment, procedure, and the quality of reasons appropriate to their role. The judge's task is to preserve that division of labor while keeping the statutory scheme intelligible."
+  },
+  "profile_legal_process_deferential": {
+    "opening": "Good judging begins with institutional role. The best substantive answer can still be legally wrong when the wrong institution claims the power to give it.",
+    "context": "Your institutional theory points toward judicial restraint because courts are one decisionmaker inside a larger legal system. Legislatures possess democratic authority, agencies may possess expertise and delegated responsibility, and lower courts develop factual records that appellate judges do not. Legal Process gives those allocations normative force instead of treating them as obstacles to an ideal judicial answer. Deference therefore depends on role: courts still police jurisdiction, legality, and reason-giving, but they should hesitate before substituting their judgment where the system deliberately assigned responsibility elsewhere. The result is restraint grounded in institutional design rather than a general preference for political outcomes."
+  },
+  "profile_pragmatic_rights": {
+    "opening": "Doctrine has to survive contact with institutions, incentives, and actual human behavior.",
+    "context": "Your Pragmatism is paired with a strong judicial commitment to rights. Consequences matter because rights enforcement itself has institutional consequences: weak remedies can make a nominal right meaningless, while overbroad doctrine can create costs courts are poorly positioned to manage. The judge therefore evaluates both sides of the legal design problem—what protection the right needs and what judicial rule can actually deliver it. This is more interventionist than classical restraint and more practical than categorical rights formalism. The legitimacy of judicial power comes from making legal guarantees work in the institutions and social conditions where violations actually occur."
+  },
+  "profile_pragmatic_rules": {
+    "opening": "Doctrine has to survive contact with institutions, incentives, and actual human behavior.",
+    "context": "Your Pragmatism has a rule-bound streak. You care about consequences, but predictable rules are themselves consequential: they reduce litigation, constrain bias, coordinate behavior, and make institutions easier to administer. The practical question is therefore not rules versus consequences; it is which level of generality produces the best legal system over time. A rigid rule can outperform case-by-case balancing even when it produces some bad individual outcomes, because the rule changes incentives and limits decisionmaker discretion. This profile is pragmatic about why constraint matters rather than formalist about constraint for its own sake."
+  },
+  "profile_low_commitment": {
+    "opening": "Your answers do not organize legal judgment around a stable hierarchy of reasons.",
+    "context": "The striking feature of this profile is the absence of a durable second-order theory. Text, history, precedent, institutional role, consequences, and rights all receive some weight, yet none consistently governs the others across hard cases. That can reflect genuine case-by-case judgment, weak commitments, or unresolved tensions among different legal instincts. It is not automatically incoherent: contradiction requires stronger evidence than moderation. Still, the jurisprudence is thin at the point where theories usually become useful—when two plausible legal reasons collide and the judge needs a principled account of which one should yield."
   }
 });
 
@@ -483,309 +560,165 @@
   // (for example Dworkin, Fuller, Kelsen, or Ely), but route selection and prose
   // must never depend on which champion the matching layer selected.
   function selectContextId(classification, scores = {}) {
-    const id = classification?.identity?.id || "mixed_jurisprudence";
-    const t = classification?.traits || {};
+    const id=classification?.identity?.id||"mixed_jurisprudence";
+    const t=classification?.traits||{};
+    if(id==="unusable_response") return "special_unusable";
+    if(id==="incoherent_response") return "special_incoherent";
+    if(id==="outcome_driven_left"||id==="outcome_driven_right") return "special_outcome";
 
-    if (id === "unusable_response") return "special_unusable";
-    if (id === "incoherent_response") return "special_incoherent";
-    if (id === "outcome_driven_left" || id === "outcome_driven_right") return "special_outcome";
+    const sourcePositive=["positivist","inclusive_positivist","exclusive_positivist"].includes(id);
+    const sourceNonpositive=["interpretivist","dworkinian","nonpositivist","moral_impact_theorist","radbruchian","fullerian"].includes(id);
+    const originalist=isOriginalist(id)||has(t,"time.originalism_independent_authority",0.5);
+    const developmental=id==="living_constitutionalist"||id==="common_law_constitutionalist";
 
-    // Context follows the whole-profile opening lens, not the noun or champion.
-    // Narrow diagnostics (agency autonomy, universal relief, unitary executive,
-    // etc.) do not get to hijack the jurisprudential-context paragraph merely
-    // because they helped distinguish a champion.
-    const openingId = selectOpeningId(classification, scores);
-    const originalist = isOriginalist(id) || has(t,"time.originalism_independent_authority",0.5);
-
-    if (openingId === "source_positive") {
-      if (has(t,"source.command_theory",0.5)) return "positivist_command";
-      if (has(t,"source.basic_norm",0.5)) return "positivist_pure";
-      if (has(t,"source.planning_theory",0.5)) return "positivist_planning";
-      if (has(t,"source.normative_positivism",0.5)) return "positivist_normative";
-      if (id === "inclusive_positivist" || has(t,"source.morality_incorporated",0.5)) return "positivist_inclusive";
-      if (id === "exclusive_positivist" || has(t,"source.source_thesis",0.5)) return "positivist_exclusive";
+    if(sourcePositive){
+      if(axis(scores,"cons")>=82) return "profile_source_textual";
+      if(axis(scores,"cons")<=18) return "profile_source_purposive";
+      if(axis(scores,"time")>=82) return "profile_source_originalist";
+      if(axis(scores,"time")<=18 && axis(scores,"prec")>=62) return "profile_source_developmental";
+      if(axis(scores,"post")>=82) return "profile_source_deferential";
+      if(axis(scores,"post")<=18) return "profile_source_rights";
+      if(has(t,"source.command_theory",0.5)) return "positivist_command";
+      if(has(t,"source.basic_norm",0.5)) return "positivist_pure";
+      if(has(t,"source.planning_theory",0.5)) return "positivist_planning";
+      if(has(t,"source.normative_positivism",0.5)) return "positivist_normative";
+      if(id==="inclusive_positivist"||has(t,"source.morality_incorporated",0.5)) return "positivist_inclusive";
+      if(id==="exclusive_positivist"||has(t,"source.source_thesis",0.5)) return "positivist_exclusive";
       return "positivist_mainstream";
     }
 
-    if (openingId === "principled_nonpositive") {
-      if (id === "moral_impact_theorist" || has(t,"source.moral_impact",0.5)) return "nonpos_moral_impact";
-      if (has(t,"source.moral_practice",0.5)) return "nonpos_moral_practice";
-      if (id === "interpretivist" || id === "dworkinian" ||
-          has(t,"source.fit_and_justification",0.5)) return "interpretivist";
+    if(sourceNonpositive && id!=="fullerian" && id!=="radbruchian"){
+      if(axis(scores,"cons")>=82) return "profile_nonpositive_textual";
+      if(axis(scores,"cons")<=18) return "profile_nonpositive_purposive";
+      if(axis(scores,"post")<=18 || axis(scores,"form")<=18) return "profile_nonpositive_rights";
+      if(id==="moral_impact_theorist"||has(t,"source.moral_impact",0.5)) return "nonpos_moral_impact";
+      if(has(t,"source.moral_practice",0.5)) return "nonpos_moral_practice";
+      if(id==="interpretivist"||id==="dworkinian") return "interpretivist";
       return "nonpos_generic";
     }
+    if(id==="radbruchian") return "nonpos_extreme";
+    if(id==="fullerian") return "fullerian";
 
-    if (openingId === "extreme_injustice") return "nonpos_extreme";
-    if (openingId === "legality_form") return "fullerian";
-
-    if (openingId === "moral_settlement") {
-      if (originalist) return "opm_higher_law";
-      if (id === "common_good_constitutionalist" || has(t,"method.common_good",0.5)) return "common_good";
-      if (has(t,"source.strong_natural_law",0.5)) return "natural_law_strong";
+    if(id==="natural_lawyer"){
+      if(axis(scores,"cons")>=82) return "profile_nonpositive_textual";
+      if(axis(scores,"cons")<=18) return "profile_nonpositive_purposive";
+      if(axis(scores,"post")<=18) return "profile_nonpositive_rights";
+      if(has(t,"source.strong_natural_law",0.5)) return "natural_law_strong";
       return "natural_law_mainstream";
     }
 
-    if (openingId === "originalist_fixed" ||
-        openingId === "constraint_correction" ||
-        openingId === "constraint_settlement") {
-      if (originalist) {
-        if (id === "original_intent_originalist" || has(t,"time.original_intent",0.55)) {
-          if (has(t,"time.construction_zone",0.5)) return "oi_construction";
-          if (has(t,"time.intent_as_meaning",0.5)) return "oi_semantic";
-          return "oi_mainstream";
-        }
-        if (openingId === "constraint_correction" &&
-            has(t,"precedent.correctness_first",0.5)) return "opm_correction";
-        if (openingId === "constraint_settlement" ||
-            (has(t,"precedent.stability",0.65) && axis(scores,"prec") >= 66)) return "opm_settlement";
-        if (id === "original_methods_originalist" || has(t,"time.original_methods",0.5)) return "opm_methods";
-        if (id === "framework_originalist" || has(t,"time.construction_zone",0.5)) return "opm_construction";
-        if (has(t,"time.original_law",0.5)) return "opm_original_law";
-        if (has(t,"time.intratextualism",0.5)) return "opm_intratextual";
-        if (id === "originalist" && !has(t,"time.public_meaning",0.5)) return "originalist_generic";
-        return "opm_mainstream";
+    if(originalist){
+      if(axis(scores,"prec")<=28 && has(t,"precedent.correctness_first",0.45)) return "opm_correction";
+      if(axis(scores,"prec")>=72) return "opm_settlement";
+      if(axis(scores,"separ")>=82 || axis(scores,"form")>=82) return "profile_originalist_formal";
+      if(axis(scores,"post")>=82) return "profile_originalist_deferential";
+      if(id==="original_intent_originalist"||has(t,"time.original_intent",0.55)){
+        if(has(t,"time.construction_zone",0.5)) return "oi_construction";
+        if(has(t,"time.intent_as_meaning",0.5)) return "oi_semantic";
+        return "oi_mainstream";
       }
-      if (id === "textualist") {
-        if (has(t,"method.categorical_textual_rights",0.5)) return "textualist_categorical";
-        if (has(t,"constraint.enacted_bargain",0.55)) return "textualist_bargain";
-        return "textualist_mainstream";
-      }
-      if (id === "formalist") return "formalist_mainstream";
-      if (id === "common_law_constitutionalist") {
-        if (has(t,"time.ordered_liberty_tradition",0.5)) return "common_law_tradition";
-        return "common_law_mainstream";
-      }
+      if(id==="original_methods_originalist"||has(t,"time.original_methods",0.5)) return "opm_methods";
+      if(id==="framework_originalist"||has(t,"time.construction_zone",0.5)) return "opm_construction";
+      if(has(t,"source.objective_morality",0.5)&&has(t,"source.positive_law_settlement",0.45)) return "opm_higher_law";
+      if(has(t,"time.original_law",0.5)) return "opm_original_law";
+      if(has(t,"time.intratextualism",0.5)) return "opm_intratextual";
+      return id==="originalist" ? "originalist_generic" : "opm_mainstream";
     }
 
-    if (openingId === "developmental_settlement") {
-      if (id === "common_law_constitutionalist" || has(t,"time.common_law_development",0.55)) {
-        if (has(t,"source.common_law_fundamental_rights",0.5)) return "common_law_strong_rights";
-        if (has(t,"source.morality_incorporated",0.5) || axis(scores,"sorc") >= 65) return "common_law_source_bound";
-        if (has(t,"time.ordered_liberty_tradition",0.5)) return "common_law_tradition";
+    if(developmental){
+      if(axis(scores,"sorc")>=82) return "profile_developmental_source";
+      if(axis(scores,"post")<=18) return "profile_developmental_rights";
+      if(id==="common_law_constitutionalist"||has(t,"time.common_law_development",0.55)){
+        if(has(t,"source.common_law_fundamental_rights",0.5)) return "common_law_strong_rights";
+        if(has(t,"time.ordered_liberty_tradition",0.5)) return "common_law_tradition";
         return "common_law_mainstream";
       }
-      if (id === "living_constitutionalist") return "living_mainstream";
-      if (originalist) return "opm_settlement";
-    }
-
-    if (openingId === "developmental_rights") {
-      if (id === "common_law_constitutionalist" || has(t,"time.common_law_development",0.55)) {
-        if (has(t,"time.ordered_liberty_tradition",0.5)) return "common_law_tradition";
-        return "common_law_mainstream";
-      }
-      if (has(t,"time.democratic_constitutionalism",0.5)) return "living_democratic";
-      if (has(t,"time.transformative_constitutionalism",0.5)) return "living_transformative";
-      if (has(t,"time.constitutional_moments",0.5)) return "living_moments";
+      if(has(t,"time.democratic_constitutionalism",0.5)) return "living_democratic";
+      if(has(t,"time.transformative_constitutionalism",0.5)) return "living_transformative";
+      if(has(t,"time.constitutional_moments",0.5)) return "living_moments";
       return "living_mainstream";
     }
 
-    if (openingId === "textual_constraint") {
-      if (has(t,"method.categorical_textual_rights",0.5)) return "textualist_categorical";
-      if (has(t,"constraint.enacted_bargain",0.55)) return "textualist_bargain";
-      return "textualist_mainstream";
-    }
-
-    if (openingId === "intentional_method") {
-      if (has(t,"method.congress_aware_interpretation",0.5)) return "intentionalist_congress";
-      if (has(t,"constraint.imaginative_reconstruction",0.5)) return "intentionalist_imaginative";
-      return "intentionalist_mainstream";
-    }
-
-    if (openingId === "institutional_process") {
-      if (id === "textualist") return "textualist_institutional";
-      // Agency autonomy, neutral principles, and similar diagnostics refine the
-      // institutional story but do not replace the broad Legal-Process context.
+    if(id==="legal_process_theorist"){
+      if(axis(scores,"cons")>=82) return "profile_legal_process_textual";
+      if(axis(scores,"cons")<=18) return "profile_legal_process_purposive";
+      if(axis(scores,"post")>=82) return "profile_legal_process_deferential";
       return "legal_process_mainstream";
     }
 
-    if (openingId === "adaptive_pragmatic") {
-      if (id === "purposivist") {
-        if (has(t,"form.proportionality",0.5)) return "purposivist_proportional";
+    if(id==="pragmatist"||id==="purposivist"){
+      if(axis(scores,"post")<=18) return "profile_pragmatic_rights";
+      if(axis(scores,"form")>=82) return "profile_pragmatic_rules";
+      if(id==="purposivist"){
+        if(has(t,"form.proportionality",0.5)) return "purposivist_proportional";
         return "purposivist_mainstream";
       }
-      if (has(t,"method.statutory_obsolescence",0.5)) return "pragmatist_obsolescence";
+      if(has(t,"method.statutory_obsolescence",0.5)) return "pragmatist_obsolescence";
       return "pragmatist_mainstream";
     }
 
-    if (openingId === "pluralist_method") {
-      if (has(t,"method.practical_reasoning",0.5)) return "pluralist_practical";
+    if(id==="textualist"){
+      if(has(t,"method.categorical_textual_rights",0.5)) return "textualist_categorical";
+      if(has(t,"constraint.enacted_bargain",0.55)) return "textualist_bargain";
+      return "textualist_mainstream";
+    }
+    if(id==="intentionalist"){
+      if(has(t,"method.congress_aware_interpretation",0.5)) return "intentionalist_congress";
+      if(has(t,"constraint.imaginative_reconstruction",0.5)) return "intentionalist_imaginative";
+      return "intentionalist_mainstream";
+    }
+    if(id==="interpretive_pluralist"){
+      if(has(t,"method.practical_reasoning",0.5)) return "pluralist_practical";
       return "pluralist_mainstream";
     }
-
-    if (openingId === "realist") {
-      if (has(t,"realism.fact_skepticism",0.5)) return "realist_fact";
-      if (has(t,"realism.functional_anti_conceptual",0.5)) return "realist_functional";
+    if(id==="sociological_jurist"){
+      if(has(t,"source.institutional_legal_pluralism",0.5)) return "sociological_pluralism";
+      if(has(t,"method.living_law",0.5)) return "sociological_living";
+      if(has(t,"method.free_scientific_research",0.5)) return "sociological_free";
+      return "sociological_mainstream";
+    }
+    if(id==="legal_realist"){
+      if(has(t,"realism.fact_skepticism",0.5)) return "realist_fact";
+      if(has(t,"realism.functional_anti_conceptual",0.5)) return "realist_functional";
       return "realist_mainstream";
     }
 
-    if (openingId === "sociological") {
-      if (has(t,"source.institutional_legal_pluralism",0.5)) return "sociological_pluralism";
-      if (has(t,"method.living_law",0.5)) return "sociological_living";
-      if (has(t,"method.free_scientific_research",0.5)) return "sociological_free";
-      return "sociological_mainstream";
-    }
-
-    if (openingId === "democratic_process") {
-      if (has(t,"posture.responsive_review",0.5)) return "political_process_responsive";
+    if(id==="political_process_jurist"||id==="elyan"){
+      if(has(t,"posture.responsive_review",0.5)) return "political_process_responsive";
       return "political_process";
     }
-
-    if (openingId === "democratic_deferential") {
-      if (id === "thayerian") return "thayerian";
-      if (id === "popular_constitutionalist") return "popular";
-      if (id === "departmentalist") return "departmentalist";
-      if (id === "weak_form_constitutionalist" || has(t,"posture.weak_form",0.65)) return "weak_form";
+    if(id==="political_constitutionalist"||id==="waldronian"){
+      if(has(t,"posture.weak_form",0.5)) return "weak_form";
       return "political_constitutionalist";
     }
-
-    if (openingId === "dialogic_authority") return "weak_form";
-
-    if (openingId === "rights_structured") {
-      if (id === "proportionalist" || id === "alexyan" || has(t,"form.proportionality",0.5)) {
-        if (axis(scores,"sorc") <= 35 || has(t,"source.principles_are_law",0.5))
-          return "proportionalist_nonpositive";
-        return "proportionalist_mainstream";
-      }
-      if (id === "purposivist" && has(t,"form.proportionality",0.5)) return "purposivist_proportional";
-      return "legal_constitutionalist";
-    }
-
-    if (openingId === "rule_formalist") return "formalist_rules";
-    if (openingId === "functional_structure") return "functionalist_mainstream";
-
-    if (openingId === "minimalist_opening") {
-      if (has(t,"posture.passive_virtues",0.5)) return "minimalist_passive";
-      if (has(t,"posture.weak_form",0.5)) return "weak_form";
+    if(id==="thayerian") return "thayerian";
+    if(id==="popular_constitutionalist") return "popular";
+    if(id==="departmentalist") return "departmentalist";
+    if(id==="minimalist"||id==="bickelian"){
+      if(has(t,"posture.passive_virtues",0.5)) return "minimalist_passive";
+      if(has(t,"posture.weak_form",0.5)) return "weak_form";
       return "minimalist";
     }
+    if(id==="weak_form_constitutionalist") return "weak_form";
+    if(id==="legal_constitutionalist") return "legal_constitutionalist";
 
-    // Fallbacks stay broad. Specialist remedy/administrative diagnostics remain
-    // available to the future champion paragraph rather than becoming the whole
-    // intellectual-context paragraph.
-    if (id === "textualist") return "textualist_mainstream";
-    if (id === "intentionalist") return "intentionalist_mainstream";
-    if (id === "purposivist") return "purposivist_mainstream";
-    if (id === "legal_process_theorist") return "legal_process_mainstream";
-    if (id === "pragmatist") return "pragmatist_mainstream";
-    if (id === "interpretive_pluralist") return "pluralist_mainstream";
-    if (id === "formalist") return "formalist_mainstream";
-    if (id === "functionalist") return "functionalist_mainstream";
-    if (id === "minimalist" || id === "bickelian") return "minimalist";
+    if(id==="formalist"){
+      if(axis(scores,"time")>=82) return "profile_originalist_formal";
+      if(has(t,"separation.strong_nondelegation",0.5)) return "formalist_nondelegation";
+      if(has(t,"separation.unitary_executive",0.5)) return "formalist_unitary";
+      if(has(t,"form.anti_discretion",0.65)||has(t,"form.rules",0.78)) return "formalist_rules";
+      return "formalist_mainstream";
+    }
+    if(id==="functionalist") return "functionalist_mainstream";
+    if(id==="proportionalist"||id==="alexyan"){
+      if(axis(scores,"sorc")<=35||has(t,"source.principles_are_law",0.5)) return "proportionalist_nonpositive";
+      return "proportionalist_mainstream";
+    }
+
+    if(id==="mixed_jurisprudence" || Math.max(...["sorc","cons","time","prec","remed","post","separ","form"].map(a=>Math.abs(axis(scores,a)-50)))<=22)
+      return "profile_low_commitment";
+
     return "low_theory";
-  }
-
-  const CONTEXT_ROUTE_AXES = Object.freeze({
-    special_unusable:[], special_incoherent:[], special_outcome:[], low_theory:[],
-    opm_mainstream:["time"], opm_construction:["time"], opm_methods:["time"],
-    opm_original_law:["time"], opm_intratextual:["time"], opm_correction:["time","prec"],
-    opm_settlement:["time","prec"], opm_higher_law:["time","sorc"],
-    oi_mainstream:["time"], oi_semantic:["time"], oi_construction:["time"],
-    originalist_generic:["time"],
-    living_mainstream:["time"], living_democratic:["time"], living_transformative:["time"],
-    living_moments:["time"], common_law_mainstream:["time","prec"],
-    common_law_tradition:["time","prec"], common_law_strong_rights:["time"],
-    common_law_source_bound:["time","sorc"], common_good:["sorc"],
-    positivist_mainstream:["sorc"], positivist_inclusive:["sorc"], positivist_exclusive:["sorc"],
-    positivist_normative:["sorc"], positivist_command:["sorc"], positivist_pure:["sorc"],
-    positivist_planning:["sorc"], natural_law_mainstream:["sorc"], natural_law_strong:["sorc"],
-    interpretivist:["sorc"], nonpos_moral_impact:["sorc"], nonpos_moral_practice:["sorc"],
-    nonpos_extreme:["sorc"], nonpos_generic:["sorc"], fullerian:["sorc"],
-    textualist_mainstream:["cons"], textualist_institutional:["cons"], textualist_bargain:["cons"],
-    textualist_categorical:["cons","form"], intentionalist_mainstream:["cons"],
-    intentionalist_imaginative:["cons"], intentionalist_congress:["cons"],
-    purposivist_mainstream:["cons"], purposivist_proportional:["cons","form"],
-    legal_process_mainstream:["cons","separ"], legal_process_agency:["cons","separ"],
-    legal_process_neutral:["cons"], pragmatist_mainstream:["cons"], pragmatist_obsolescence:["cons"],
-    pluralist_mainstream:["cons"], pluralist_practical:["cons"], sociological_mainstream:[],
-    sociological_pluralism:["sorc"], sociological_living:[], sociological_free:["cons"],
-    realist_mainstream:[], realist_fact:[], realist_functional:[],
-    political_constitutionalist:["post"], thayerian:["post"], popular:["post"],
-    departmentalist:["post"], political_process:["post"], political_process_responsive:["post"],
-    minimalist:["post"], minimalist_passive:["post"], weak_form:["post"],
-    legal_constitutionalist:["post"], formalist_mainstream:["separ"],
-    formalist_nondelegation:["separ"], formalist_unitary:["separ"], formalist_rules:["form"],
-    functionalist_mainstream:["separ"], functionalist_supervisory:["separ"],
-    functionalist_admin:["separ"], proportionalist_mainstream:["form"],
-    proportionalist_nonpositive:["form","sorc"], traditional_equity:["remed"],
-    universal_relief:["remed"], constitutional_common_law:["remed"],
-    remedial_equilibration:["remed"], structural_reform:["remed"]
-  });
-
-  const OPENING_AXES = Object.freeze({
-    constraint_correction:["time","prec"], constraint_settlement:["time","prec"],
-    constraint_general:[], developmental_settlement:["time","prec"],
-    developmental_rights:["time"], moral_settlement:["sorc"],
-    institutional_process:["cons","separ"], adaptive_pragmatic:["cons","form"],
-    democratic_process:["post"], democratic_deferential:["post"],
-    rights_structured:["post","form"], rule_formalist:["form"], realist:[],
-    sociological:[], source_positive:["sorc"], principled_nonpositive:["sorc"],
-    extreme_injustice:["sorc"], legality_form:["sorc"], textual_constraint:["cons"],
-    intentional_method:["cons"], originalist_fixed:["time"], pluralist_method:["cons"],
-    minimalist_opening:["post","remed"], functional_structure:["separ"],
-    dialogic_authority:["post"], low_theory:[]
-  });
-
-  const CONTEXT_AXIS_IDS = Object.freeze(["sorc","cons","time","prec","remed","post","separ","form"]);
-
-  function axisSalience(scores, id) {
-    return Math.min(1, Math.abs(axis(scores,id)-50)/50);
-  }
-
-  function crossCuttingSentence(axisId, score) {
-    const high=score>=50;
-    if(axisId==="sorc") return high
-      ? "On legal validity, recognized sources and institutional practice do the decisive work even when the resulting rule is morally defective."
-      : "On legal validity, moral principle can contribute to the law itself, so source pedigree does not exhaust what a court may have to identify.";
-    if(axisId==="cons") return high
-      ? "On statutes, enacted wording and legal context control aggressively; purpose and policy cannot repair a rule Congress actually wrote."
-      : "On statutes, purpose, context, and anti-evasion reasoning have real authority in specifying open-ended language, even when the most literal reading points elsewhere.";
-    if(axisId==="time") return high
-      ? "Constitutionally, adoption fixes the governing meaning, and later courts apply that historical law to new facts without updating its content."
-      : "Constitutionally, precedent, practice, and later understandings can become part of the law courts enforce, giving post-adoption development genuine legal authority.";
-    if(axisId==="prec") return high
-      ? "Precedent has strong settlement force in your judging: reliance and continuity can preserve a rule after serious doubts arise about its original correctness."
-      : "Precedent yields quickly once the underlying law points elsewhere; stare decisis has little claim to preserve a judicial mistake indefinitely.";
-    if(axisId==="remed") return high
-      ? "Remedially, courts stay close to the parties and violation before them, resisting relief that turns one case into general supervision of government."
-      : "Remedially, courts can reach beyond the immediate plaintiff and reshape institutions when narrower orders cannot actually end the violation.";
-    if(axisId==="post") return high
-      ? "On judicial authority, elected institutions retain substantial room to resolve contestable constitutional questions, with invalidation reserved for firmer legal ground."
-      : "On judicial authority, courts owe constitutional rights independent enforcement even when the political majority has deliberately chosen the opposite rule.";
-    if(axisId==="separ") return high
-      ? "Separation of powers operates as a set of legal boundaries: assigned functions and prescribed procedures can defeat arrangements that look efficient in practice."
-      : "Separation of powers turns on the working distribution of power, with accountability, checks, and institutional capacity carrying more weight than clean branch categories.";
-    if(axisId==="form") return high
-      ? "In doctrinal form, rules and categories should settle cases in advance and deliberately withhold some case-specific equities from the judge."
-      : "In doctrinal form, standards keep competing facts and interests in play, accepting more judicial judgment to avoid rigid edge-case results.";
-    return "";
-  }
-
-  function buildContext(classification, scores, routeId) {
-    const route=ROUTES[routeId]||ROUTES.low_theory;
-    if(SPECIAL_IDS.has(classification?.identity?.id)) return route.context;
-
-    const openingId=selectOpeningId(classification,scores);
-    const spent=new Set([
-      ...(CONTEXT_ROUTE_AXES[routeId]||[]),
-      ...(OPENING_AXES[openingId]||[])
-    ]);
-
-    const candidates=CONTEXT_AXIS_IDS
-      .filter(id=>!spent.has(id))
-      .map(id=>({id,score:axis(scores,id),salience:axisSalience(scores,id)}))
-      .filter(item=>item.salience>=0.38)
-      .sort((a,b)=>b.salience-a.salience||a.id.localeCompare(b.id));
-
-    const selected=[];
-    if(candidates[0]) selected.push(candidates[0]);
-    if(candidates[1] && candidates[1].salience>=0.58) selected.push(candidates[1]);
-
-    const additions=selected
-      .map(item=>crossCuttingSentence(item.id,item.score))
-      .filter(Boolean);
-
-    const joined=[route.context,...additions].join(" ");
-    return wordCount(joined)<=230 ? joined : route.context;
   }
 
   function fromId(id) {
@@ -799,7 +732,7 @@
     return {
       id: ROUTES[id] ? id : "low_theory",
       opening: buildOpening(classification, scores),
-      context: buildContext(classification, scores, id)
+      context: route.context
     };
   }
 
@@ -813,7 +746,6 @@
     selectOpeningId,
     buildOpening,
     selectContextId,
-    buildContext,
     fromId,
     build,
     wordCount
