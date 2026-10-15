@@ -154,7 +154,7 @@ const cases = [
     neutralScores, "political_process_responsive"],
   ["traditional equity remains secondary context",
     { identity:{id:"formalist"}, traits:{"remedies.traditional_equity":1} },
-    {...neutralScores,remed:90}, "formalist_rules"]
+    {...neutralScores,remed:90}, "formalist_mainstream"]
 ];
 
 for (const [name, classification, scores, expected] of cases) {
