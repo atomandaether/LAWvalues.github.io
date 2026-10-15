@@ -1799,7 +1799,8 @@
     const assembled=assemble({identity},scores,traits||{},{});
     if(ids.phraseId) {
       const feature=phraseByAnyId(ids.phraseId);
-      assembled.phrase=ids.phraseId==="mixed_profile"?MIXED_PHRASE:feature?asPhrase(feature):legacyRendering(ids.phraseId,"phrase")||assembled.phrase;
+      const fallback=Object.values(FALLBACK_PHRASES).find(phrase=>phrase.id===ids.phraseId);
+      assembled.phrase=fallback || (ids.phraseId==="mixed_profile"?MIXED_PHRASE:feature?asPhrase(feature):legacyRendering(ids.phraseId,"phrase")||assembled.phrase);
     }
     if(ids.modifierId) {
       const twist=twistByAnyId(ids.modifierId);

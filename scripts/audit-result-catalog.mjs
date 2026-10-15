@@ -2327,7 +2327,7 @@ assert.ok(validCases>=550,"Fuzz must check enough valid completed profiles");
 // Exhaustive public roster accounting, including the three endpoints missing
 // from prior end-to-end fixtures.
 const allLockedUnits=new Set([
-  ...lockedOriginalistUnits,...lockedSourceUnits,...lockedMethodUnits,
+  ...lockedOriginalistUnits,...lockedSourceUnits.map(sourceExpectedChampion),...lockedMethodUnits,
   ...Object.keys(distinctiveExpectedIdentity),...lockedNonOriginalistUnits,
   ...lockedAuthorityUnits,...lockedStructureFormUnits,
   "owen_dixon","vermeule","oconnor","charles_black","gardbaum","monaghan"

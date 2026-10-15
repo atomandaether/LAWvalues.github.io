@@ -26,7 +26,7 @@ Unmodified former-Kavanaugh statutory-only responses now select Manning. The fro
 - Every diagnostic ID, prompt, agree/disagree semantics, and scoring effect is unchanged.
 - The 12-diagnostic / 100-total hard cap is unchanged.
 - No public noun, modifier, phrase, or result prose inventory changes.
-- `classification.js`, `scoring.js`, `questions.js`, `axes.js`, `result_content.js`, and `result_narrative.js` are byte-identical to the base.
+- `classification.js`, `scoring.js`, `questions.js`, `axes.js`, and `result_narrative.js` are byte-identical to the base.
 - Historic Greenberg, Hershovitz, and Kavanaugh share links render and copy their original IDs; both new combined-profile modifier routes replay.
 - No simulated answer was retuned and no preservation snapshot was edited. Existing reachability assertions now expect the consolidated ID for each unchanged Source answer path; the frozen retired-Kavanaugh paths test their actual remaining-roster result.
 
@@ -42,3 +42,7 @@ The supplied source-realism and originalist-statutory roster audits establish th
 ## Verification
 
 The two dedicated audits cover alternative/dual moral evidence, unknown and mixed cases, no unsupported match, score equality, historical/new shared-result replay, Kagan's accommodation gate, the frozen former-Kavanaugh vector, and Barrett preservation. The existing catalog suite retains both literal Source paths and adds the unchanged statutory-only retirement regression. The aggregate runner includes all nine previous audits plus both new audits. Full-suite results are recorded separately when the run finishes.
+
+### Replay defect exposed by the final fuzz run
+
+The changed candidate roster reached an existing serialization gap: `fromIds` did not recognize `secondary_neutral` or `secondary_contradiction`, and could recompute a different phrase from shared axes without answer-level evidence. The repair explicitly resolves these two existing fallback objects before recomputation. Their IDs, wording, and inventories are unchanged. The focused audit checks both the API and actual fresh-session renderer. This is the sole `result_content.js` change.

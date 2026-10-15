@@ -53,3 +53,14 @@ for(const [champion,modifier] of [['greenberg','moral_impact_nonpositivism'],['h
  assert.equal(copied.searchParams.get('m'),modifier);
 }
 console.log('PASS: moral-rights consolidation, either signature, dual agreement, mixed/unknown evidence, historical/new share replay, 88+12 cap');
+
+// Roster-dependent fuzz exposed a pre-existing replay gap for residual fallback
+// phrases. Explicit saved IDs must win over recomputation without answer traits.
+for(const phrase of Object.values(c.LAW_RESULT_CONTENT.FALLBACK_PHRASES)){
+ const replay=c.LAW_RESULT_CONTENT.fromIds(identity,scores,{}, {phraseId:phrase.id});
+ assert.equal(replay.phrase.id,phrase.id);assert.equal(replay.phrase.text,phrase.text);
+ const params=new URLSearchParams({...scores,i:'nonpositivist',c:id,p:phrase.id});
+ const rr=runtime(root,{search:'?'+params});rr.run('results.js');
+ assert.ok(rr.nodes.get('result-title').textContent.endsWith(phrase.text));
+}
+console.log('PASS: both existing residual fallback phrase IDs replay without changing their wording');
