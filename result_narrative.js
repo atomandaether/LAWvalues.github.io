@@ -490,59 +490,14 @@
     if (id === "incoherent_response") return "special_incoherent";
     if (id === "outcome_driven_left" || id === "outcome_driven_right") return "special_outcome";
 
-    // Originalism is selected from actual Originalist propositions, not merely
-    // from the winning noun.
-    const originalismEstablished =
-      isOriginalist(id) ||
-      has(t,"time.originalism_independent_authority",0.5);
-    if (originalismEstablished) {
-      if (id === "original_intent_originalist" || has(t,"time.original_intent",0.55)) {
-        if (has(t,"time.construction_zone",0.5)) return "oi_construction";
-        if (has(t,"time.intent_as_meaning",0.5)) return "oi_semantic";
-        return "oi_mainstream";
-      }
-      if (id === "original_methods_originalist" || has(t,"time.original_methods",0.5)) return "opm_methods";
-      if (id === "framework_originalist" || has(t,"time.construction_zone",0.5)) return "opm_construction";
-      if (has(t,"source.objective_morality",0.5) && has(t,"source.positive_law_settlement",0.45))
-        return "opm_higher_law";
-      if (has(t,"time.original_law",0.5)) return "opm_original_law";
-      if (has(t,"time.intratextualism",0.5)) return "opm_intratextual";
-      if (has(t,"time.construction_zone",0.5)) return "opm_construction";
-      if (has(t,"precedent.correctness_first",0.72) && axis(scores,"prec") <= 28) return "opm_correction";
-      if (has(t,"precedent.stability",0.65) && axis(scores,"prec") >= 66) return "opm_settlement";
-      if (id === "originalist" && !has(t,"time.public_meaning",0.5)) return "originalist_generic";
-      return "opm_mainstream";
-    }
+    // Context follows the whole-profile opening lens, not the noun or champion.
+    // Narrow diagnostics (agency autonomy, universal relief, unitary executive,
+    // etc.) do not get to hijack the jurisprudential-context paragraph merely
+    // because they helped distinguish a champion.
+    const openingId = selectOpeningId(classification, scores);
+    const originalist = isOriginalist(id) || has(t,"time.originalism_independent_authority",0.5);
 
-    // Living / common-law constitutional development.
-    if (id === "common_good_constitutionalist" || has(t,"method.common_good",0.5)) return "common_good";
-    if (id === "common_law_constitutionalist" || has(t,"time.common_law_development",0.55)) {
-      if (has(t,"source.common_law_fundamental_rights",0.5)) return "common_law_strong_rights";
-      if (has(t,"source.morality_incorporated",0.5) || axis(scores,"sorc") >= 65) return "common_law_source_bound";
-      if (has(t,"time.ordered_liberty_tradition",0.5)) return "common_law_tradition";
-      return "common_law_mainstream";
-    }
-    if (id === "living_constitutionalist" || has(t,"time.living_content",0.7)) {
-      if (has(t,"time.democratic_constitutionalism",0.5)) return "living_democratic";
-      if (has(t,"time.transformative_constitutionalism",0.5)) return "living_transformative";
-      if (has(t,"time.constitutional_moments",0.5)) return "living_moments";
-      return "living_mainstream";
-    }
-
-    // Source-of-law theories.
-    if (id === "natural_lawyer") {
-      if (has(t,"source.strong_natural_law",0.5)) return "natural_law_strong";
-      return "natural_law_mainstream";
-    }
-    if (id === "interpretivist" || id === "dworkinian") return "interpretivist";
-    if (id === "fullerian") return "fullerian";
-    if (id === "nonpositivist" || id === "moral_impact_theorist" || id === "radbruchian") {
-      if (id === "moral_impact_theorist" || has(t,"source.moral_impact",0.5)) return "nonpos_moral_impact";
-      if (has(t,"source.moral_practice",0.5)) return "nonpos_moral_practice";
-      if (id === "radbruchian" || has(t,"source.extreme_injustice",0.5)) return "nonpos_extreme";
-      return "nonpos_generic";
-    }
-    if (id === "positivist" || id === "inclusive_positivist" || id === "exclusive_positivist") {
+    if (openingId === "source_positive") {
       if (has(t,"source.command_theory",0.5)) return "positivist_command";
       if (has(t,"source.basic_norm",0.5)) return "positivist_pure";
       if (has(t,"source.planning_theory",0.5)) return "positivist_planning";
@@ -552,95 +507,170 @@
       return "positivist_mainstream";
     }
 
-    // Statutory / adjudicative methods.
-    if (id === "textualist") {
+    if (openingId === "principled_nonpositive") {
+      if (id === "moral_impact_theorist" || has(t,"source.moral_impact",0.5)) return "nonpos_moral_impact";
+      if (has(t,"source.moral_practice",0.5)) return "nonpos_moral_practice";
+      if (id === "interpretivist" || id === "dworkinian" ||
+          has(t,"source.fit_and_justification",0.5)) return "interpretivist";
+      return "nonpos_generic";
+    }
+
+    if (openingId === "extreme_injustice") return "nonpos_extreme";
+    if (openingId === "legality_form") return "fullerian";
+
+    if (openingId === "moral_settlement") {
+      if (originalist) return "opm_higher_law";
+      if (id === "common_good_constitutionalist" || has(t,"method.common_good",0.5)) return "common_good";
+      if (has(t,"source.strong_natural_law",0.5)) return "natural_law_strong";
+      return "natural_law_mainstream";
+    }
+
+    if (openingId === "originalist_fixed" ||
+        openingId === "constraint_correction" ||
+        openingId === "constraint_settlement") {
+      if (originalist) {
+        if (id === "original_intent_originalist" || has(t,"time.original_intent",0.55)) {
+          if (has(t,"time.construction_zone",0.5)) return "oi_construction";
+          if (has(t,"time.intent_as_meaning",0.5)) return "oi_semantic";
+          return "oi_mainstream";
+        }
+        if (openingId === "constraint_correction" &&
+            has(t,"precedent.correctness_first",0.5)) return "opm_correction";
+        if (openingId === "constraint_settlement" ||
+            (has(t,"precedent.stability",0.65) && axis(scores,"prec") >= 66)) return "opm_settlement";
+        if (id === "original_methods_originalist" || has(t,"time.original_methods",0.5)) return "opm_methods";
+        if (id === "framework_originalist" || has(t,"time.construction_zone",0.5)) return "opm_construction";
+        if (has(t,"time.original_law",0.5)) return "opm_original_law";
+        if (has(t,"time.intratextualism",0.5)) return "opm_intratextual";
+        if (id === "originalist" && !has(t,"time.public_meaning",0.5)) return "originalist_generic";
+        return "opm_mainstream";
+      }
+      if (id === "textualist") {
+        if (has(t,"method.categorical_textual_rights",0.5)) return "textualist_categorical";
+        if (has(t,"constraint.enacted_bargain",0.55)) return "textualist_bargain";
+        return "textualist_mainstream";
+      }
+      if (id === "formalist") return "formalist_mainstream";
+      if (id === "common_law_constitutionalist") {
+        if (has(t,"time.ordered_liberty_tradition",0.5)) return "common_law_tradition";
+        return "common_law_mainstream";
+      }
+    }
+
+    if (openingId === "developmental_settlement") {
+      if (id === "common_law_constitutionalist" || has(t,"time.common_law_development",0.55)) {
+        if (has(t,"source.common_law_fundamental_rights",0.5)) return "common_law_strong_rights";
+        if (has(t,"source.morality_incorporated",0.5) || axis(scores,"sorc") >= 65) return "common_law_source_bound";
+        if (has(t,"time.ordered_liberty_tradition",0.5)) return "common_law_tradition";
+        return "common_law_mainstream";
+      }
+      if (id === "living_constitutionalist") return "living_mainstream";
+      if (originalist) return "opm_settlement";
+    }
+
+    if (openingId === "developmental_rights") {
+      if (id === "common_law_constitutionalist" || has(t,"time.common_law_development",0.55)) {
+        if (has(t,"time.ordered_liberty_tradition",0.5)) return "common_law_tradition";
+        return "common_law_mainstream";
+      }
+      if (has(t,"time.democratic_constitutionalism",0.5)) return "living_democratic";
+      if (has(t,"time.transformative_constitutionalism",0.5)) return "living_transformative";
+      if (has(t,"time.constitutional_moments",0.5)) return "living_moments";
+      return "living_mainstream";
+    }
+
+    if (openingId === "textual_constraint") {
       if (has(t,"method.categorical_textual_rights",0.5)) return "textualist_categorical";
-      if (has(t,"constraint.contextual_textualism",0.5) &&
-          (has(t,"separation.interpretive_accommodation",0.5) || has(t,"precedent.settlement",0.55)))
-        return "textualist_institutional";
       if (has(t,"constraint.enacted_bargain",0.55)) return "textualist_bargain";
       return "textualist_mainstream";
     }
-    if (id === "intentionalist") {
+
+    if (openingId === "intentional_method") {
       if (has(t,"method.congress_aware_interpretation",0.5)) return "intentionalist_congress";
       if (has(t,"constraint.imaginative_reconstruction",0.5)) return "intentionalist_imaginative";
       return "intentionalist_mainstream";
     }
-    if (id === "purposivist") {
-      if (has(t,"form.proportionality",0.5)) return "purposivist_proportional";
-      return "purposivist_mainstream";
-    }
-    if (id === "legal_process_theorist") {
-      if (has(t,"method.agency_interpretive_autonomy",0.5)) return "legal_process_agency";
-      if (has(t,"method.neutral_principles",0.5)) return "legal_process_neutral";
+
+    if (openingId === "institutional_process") {
+      if (id === "textualist") return "textualist_institutional";
+      // Agency autonomy, neutral principles, and similar diagnostics refine the
+      // institutional story but do not replace the broad Legal-Process context.
       return "legal_process_mainstream";
     }
-    if (id === "pragmatist") {
+
+    if (openingId === "adaptive_pragmatic") {
+      if (id === "purposivist") {
+        if (has(t,"form.proportionality",0.5)) return "purposivist_proportional";
+        return "purposivist_mainstream";
+      }
       if (has(t,"method.statutory_obsolescence",0.5)) return "pragmatist_obsolescence";
       return "pragmatist_mainstream";
     }
-    if (id === "interpretive_pluralist") {
+
+    if (openingId === "pluralist_method") {
       if (has(t,"method.practical_reasoning",0.5)) return "pluralist_practical";
       return "pluralist_mainstream";
     }
-    if (id === "sociological_jurist") {
-      if (has(t,"source.institutional_legal_pluralism",0.5)) return "sociological_pluralism";
-      if (has(t,"method.living_law",0.5)) return "sociological_living";
-      if (has(t,"method.free_scientific_research",0.5)) return "sociological_free";
-      return "sociological_mainstream";
-    }
-    if (id === "legal_realist") {
+
+    if (openingId === "realist") {
       if (has(t,"realism.fact_skepticism",0.5)) return "realist_fact";
       if (has(t,"realism.functional_anti_conceptual",0.5)) return "realist_functional";
       return "realist_mainstream";
     }
 
-    // Judicial authority.
-    if (id === "legal_constitutionalist") return "legal_constitutionalist";
-    if (id === "thayerian") return "thayerian";
-    if (id === "political_constitutionalist" || id === "waldronian") {
-      if (has(t,"posture.weak_form",0.5)) return "weak_form";
-      return "political_constitutionalist";
+    if (openingId === "sociological") {
+      if (has(t,"source.institutional_legal_pluralism",0.5)) return "sociological_pluralism";
+      if (has(t,"method.living_law",0.5)) return "sociological_living";
+      if (has(t,"method.free_scientific_research",0.5)) return "sociological_free";
+      return "sociological_mainstream";
     }
-    if (id === "popular_constitutionalist") return "popular";
-    if (id === "departmentalist") return "departmentalist";
-    if (id === "political_process_jurist" || id === "elyan") {
+
+    if (openingId === "democratic_process") {
       if (has(t,"posture.responsive_review",0.5)) return "political_process_responsive";
       return "political_process";
     }
-    if (id === "minimalist" || id === "bickelian") {
+
+    if (openingId === "democratic_deferential") {
+      if (id === "thayerian") return "thayerian";
+      if (id === "popular_constitutionalist") return "popular";
+      if (id === "departmentalist") return "departmentalist";
+      if (id === "weak_form_constitutionalist" || has(t,"posture.weak_form",0.65)) return "weak_form";
+      return "political_constitutionalist";
+    }
+
+    if (openingId === "dialogic_authority") return "weak_form";
+
+    if (openingId === "rights_structured") {
+      if (id === "proportionalist" || id === "alexyan" || has(t,"form.proportionality",0.5)) {
+        if (axis(scores,"sorc") <= 35 || has(t,"source.principles_are_law",0.5))
+          return "proportionalist_nonpositive";
+        return "proportionalist_mainstream";
+      }
+      if (id === "purposivist" && has(t,"form.proportionality",0.5)) return "purposivist_proportional";
+      return "legal_constitutionalist";
+    }
+
+    if (openingId === "rule_formalist") return "formalist_rules";
+    if (openingId === "functional_structure") return "functionalist_mainstream";
+
+    if (openingId === "minimalist_opening") {
       if (has(t,"posture.passive_virtues",0.5)) return "minimalist_passive";
       if (has(t,"posture.weak_form",0.5)) return "weak_form";
       return "minimalist";
     }
-    if (id === "weak_form_constitutionalist") return "weak_form";
 
-    // A remedial theory becomes the context focus only after the broader
-    // constitutional/source/method/authority theories above have had a chance
-    // to explain the respondent.
-    if (has(t,"remedies.equilibration",0.5)) return "remedial_equilibration";
-    if (has(t,"remedies.constitutional_common_law",0.5)) return "constitutional_common_law";
-    if (has(t,"remedies.universal_relief_theory",0.5) && axis(scores,"remed") <= 38) return "universal_relief";
-    if (has(t,"remedies.traditional_equity",0.5) && axis(scores,"remed") >= 62) return "traditional_equity";
-    if (has(t,"remedies.structural",0.8) && has(t,"remedies.supervision",0.6) && axis(scores,"remed") <= 24) return "structural_reform";
-
-    // Structure / form.
-    if (id === "formalist") {
-      if (has(t,"separation.strong_nondelegation",0.5)) return "formalist_nondelegation";
-      if (has(t,"separation.unitary_executive",0.5)) return "formalist_unitary";
-      if (has(t,"form.anti_discretion",0.65) || has(t,"form.rules",0.78)) return "formalist_rules";
-      return "formalist_mainstream";
-    }
-    if (id === "functionalist") {
-      if (has(t,"separation.supervisory_duty",0.5)) return "functionalist_supervisory";
-      if (has(t,"separation.administrative_adjudication",0.5)) return "functionalist_admin";
-      return "functionalist_mainstream";
-    }
-    if (id === "proportionalist" || id === "alexyan") {
-      if (axis(scores,"sorc") <= 35 || has(t,"source.principles_are_law",0.5)) return "proportionalist_nonpositive";
-      return "proportionalist_mainstream";
-    }
-
+    // Fallbacks stay broad. Specialist remedy/administrative diagnostics remain
+    // available to the future champion paragraph rather than becoming the whole
+    // intellectual-context paragraph.
+    if (id === "textualist") return "textualist_mainstream";
+    if (id === "intentionalist") return "intentionalist_mainstream";
+    if (id === "purposivist") return "purposivist_mainstream";
+    if (id === "legal_process_theorist") return "legal_process_mainstream";
+    if (id === "pragmatist") return "pragmatist_mainstream";
+    if (id === "interpretive_pluralist") return "pluralist_mainstream";
+    if (id === "formalist") return "formalist_mainstream";
+    if (id === "functionalist") return "functionalist_mainstream";
+    if (id === "minimalist" || id === "bickelian") return "minimalist";
     return "low_theory";
   }
 
