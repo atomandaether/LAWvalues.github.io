@@ -109,7 +109,7 @@
   },
   "positivist_inclusive": {
     "opening": "You think law is ultimately grounded in social rules and institutions, but those rules can themselves tell courts to apply genuine moral standards. Morality can become part of legal validity without ceasing to be incorporated through a source-based legal system.",
-    "context": "Inclusive Positivism keeps social sources at the foundation while allowing those sources to incorporate moral criteria. A constitution can make concepts such as equality, cruelty, or reasonableness legally operative, forcing courts to engage in genuine moral reasoning because the legal system itself assigned that task. The competing Exclusive Positivist view resists morality becoming a criterion of legal validity. Dworkinian Interpretivism reaches moral reasoning through a different route, treating principles as part of law through the best justification of legal practice. Inclusive Positivism preserves the source thesis: morality enters only because socially recognized law made it relevant."
+    "context": "Inclusive Positivism keeps social sources at the foundation while allowing those sources to incorporate moral criteria. A constitution can make concepts such as equality, cruelty, or reasonableness legally operative, forcing courts to engage in genuine moral reasoning because the legal system itself assigned that task. The legal system remains source-grounded because the moral criterion has legal force through a socially recognized rule of recognition or other accepted source practice. The hard question is how far incorporation goes: some legal systems may authorize moral tests in particular domains without making moral correctness a general condition of legal validity."
   },
   "positivist_exclusive": {
     "opening": "You think legal validity must remain identifiable from social and institutional sources without making moral correctness itself the test of what law exists. Morality may guide criticism or political reform, but it should not become an independent criterion for identifying valid law.",
@@ -674,6 +674,118 @@
     return "low_theory";
   }
 
+  const CONTEXT_ROUTE_AXES = Object.freeze({
+    special_unusable:[], special_incoherent:[], special_outcome:[], low_theory:[],
+    opm_mainstream:["time"], opm_construction:["time"], opm_methods:["time"],
+    opm_original_law:["time"], opm_intratextual:["time"], opm_correction:["time","prec"],
+    opm_settlement:["time","prec"], opm_higher_law:["time","sorc"],
+    oi_mainstream:["time"], oi_semantic:["time"], oi_construction:["time"],
+    originalist_generic:["time"],
+    living_mainstream:["time"], living_democratic:["time"], living_transformative:["time"],
+    living_moments:["time"], common_law_mainstream:["time","prec"],
+    common_law_tradition:["time","prec"], common_law_strong_rights:["time"],
+    common_law_source_bound:["time","sorc"], common_good:["sorc"],
+    positivist_mainstream:["sorc"], positivist_inclusive:["sorc"], positivist_exclusive:["sorc"],
+    positivist_normative:["sorc"], positivist_command:["sorc"], positivist_pure:["sorc"],
+    positivist_planning:["sorc"], natural_law_mainstream:["sorc"], natural_law_strong:["sorc"],
+    interpretivist:["sorc"], nonpos_moral_impact:["sorc"], nonpos_moral_practice:["sorc"],
+    nonpos_extreme:["sorc"], nonpos_generic:["sorc"], fullerian:["sorc"],
+    textualist_mainstream:["cons"], textualist_institutional:["cons"], textualist_bargain:["cons"],
+    textualist_categorical:["cons","form"], intentionalist_mainstream:["cons"],
+    intentionalist_imaginative:["cons"], intentionalist_congress:["cons"],
+    purposivist_mainstream:["cons"], purposivist_proportional:["cons","form"],
+    legal_process_mainstream:["cons","separ"], legal_process_agency:["cons","separ"],
+    legal_process_neutral:["cons"], pragmatist_mainstream:["cons"], pragmatist_obsolescence:["cons"],
+    pluralist_mainstream:["cons"], pluralist_practical:["cons"], sociological_mainstream:[],
+    sociological_pluralism:["sorc"], sociological_living:[], sociological_free:["cons"],
+    realist_mainstream:[], realist_fact:[], realist_functional:[],
+    political_constitutionalist:["post"], thayerian:["post"], popular:["post"],
+    departmentalist:["post"], political_process:["post"], political_process_responsive:["post"],
+    minimalist:["post"], minimalist_passive:["post"], weak_form:["post"],
+    legal_constitutionalist:["post"], formalist_mainstream:["separ"],
+    formalist_nondelegation:["separ"], formalist_unitary:["separ"], formalist_rules:["form"],
+    functionalist_mainstream:["separ"], functionalist_supervisory:["separ"],
+    functionalist_admin:["separ"], proportionalist_mainstream:["form"],
+    proportionalist_nonpositive:["form","sorc"], traditional_equity:["remed"],
+    universal_relief:["remed"], constitutional_common_law:["remed"],
+    remedial_equilibration:["remed"], structural_reform:["remed"]
+  });
+
+  const OPENING_AXES = Object.freeze({
+    constraint_correction:["time","prec"], constraint_settlement:["time","prec"],
+    constraint_general:[], developmental_settlement:["time","prec"],
+    developmental_rights:["time"], moral_settlement:["sorc"],
+    institutional_process:["cons","separ"], adaptive_pragmatic:["cons","form"],
+    democratic_process:["post"], democratic_deferential:["post"],
+    rights_structured:["post","form"], rule_formalist:["form"], realist:[],
+    sociological:[], source_positive:["sorc"], principled_nonpositive:["sorc"],
+    extreme_injustice:["sorc"], legality_form:["sorc"], textual_constraint:["cons"],
+    intentional_method:["cons"], originalist_fixed:["time"], pluralist_method:["cons"],
+    minimalist_opening:["post","remed"], functional_structure:["separ"],
+    dialogic_authority:["post"], low_theory:[]
+  });
+
+  function axisSalience(scores, id) {
+    return Math.min(1, Math.abs(axis(scores,id)-50)/50);
+  }
+
+  function crossCuttingSentence(axisId, score) {
+    const high=score>=50;
+    if(axisId==="sorc") return high
+      ? "On legal validity, recognized sources and institutional practice do the decisive work even when the resulting rule is morally defective."
+      : "On legal validity, moral principle can contribute to the law itself, so source pedigree does not exhaust what a court may have to identify.";
+    if(axisId==="cons") return high
+      ? "On statutes, enacted wording and legal context control aggressively; purpose and policy cannot repair a rule Congress actually wrote."
+      : "On statutes, purpose, context, and anti-evasion reasoning have real authority in specifying open-ended language, even when the most literal reading points elsewhere.";
+    if(axisId==="time") return high
+      ? "Constitutionally, adoption fixes the governing meaning, and later courts apply that historical law to new facts without updating its content."
+      : "Constitutionally, precedent, practice, and later understandings can become part of the law courts enforce, giving post-adoption development genuine legal authority.";
+    if(axisId==="prec") return high
+      ? "Precedent has strong settlement force in your judging: reliance and continuity can preserve a rule after serious doubts arise about its original correctness."
+      : "Precedent yields quickly once the underlying law points elsewhere; stare decisis has little claim to preserve a judicial mistake indefinitely.";
+    if(axisId==="remed") return high
+      ? "Remedially, courts stay close to the parties and violation before them, resisting relief that turns one case into general supervision of government."
+      : "Remedially, courts can reach beyond the immediate plaintiff and reshape institutions when narrower orders cannot actually end the violation.";
+    if(axisId==="post") return high
+      ? "On judicial authority, elected institutions retain substantial room to resolve contestable constitutional questions, with invalidation reserved for firmer legal ground."
+      : "On judicial authority, courts owe constitutional rights independent enforcement even when the political majority has deliberately chosen the opposite rule.";
+    if(axisId==="separ") return high
+      ? "Separation of powers operates as a set of legal boundaries: assigned functions and prescribed procedures can defeat arrangements that look efficient in practice."
+      : "Separation of powers turns on the working distribution of power, with accountability, checks, and institutional capacity carrying more weight than clean branch categories.";
+    if(axisId==="form") return high
+      ? "In doctrinal form, rules and categories should settle cases in advance and deliberately withhold some case-specific equities from the judge."
+      : "In doctrinal form, standards keep competing facts and interests in play, accepting more judicial judgment to avoid rigid edge-case results.";
+    return "";
+  }
+
+  function buildContext(classification, scores, routeId) {
+    const route=ROUTES[routeId]||ROUTES.low_theory;
+    if(SPECIAL_IDS.has(classification?.identity?.id)) return route.context;
+
+    const openingId=selectOpeningId(classification,scores);
+    const spent=new Set([
+      ...(CONTEXT_ROUTE_AXES[routeId]||[]),
+      ...(OPENING_AXES[openingId]||[])
+    ]);
+
+    const candidates=AXIS_IDS
+      .filter(id=>!spent.has(id))
+      .map(id=>({id,score:axis(scores,id),salience:axisSalience(scores,id)}))
+      .filter(item=>item.salience>=0.38)
+      .sort((a,b)=>b.salience-a.salience||a.id.localeCompare(b.id));
+
+    const selected=[];
+    if(candidates[0]) selected.push(candidates[0]);
+    if(candidates[1] && candidates[1].salience>=0.58) selected.push(candidates[1]);
+
+    const additions=selected
+      .map(item=>crossCuttingSentence(item.id,item.score))
+      .filter(Boolean);
+
+    const joined=[route.context,...additions].join(" ");
+    return wordCount(joined)<=230 ? joined : route.context;
+  }
+
   function fromId(id) {
     const route = ROUTES[id] || ROUTES.low_theory;
     return { id: ROUTES[id] ? id : "low_theory", opening: route.opening, context: route.context };
@@ -685,7 +797,7 @@
     return {
       id: ROUTES[id] ? id : "low_theory",
       opening: buildOpening(classification, scores),
-      context: route.context
+      context: buildContext(classification, scores, id)
     };
   }
 
@@ -699,6 +811,7 @@
     selectOpeningId,
     buildOpening,
     selectContextId,
+    buildContext,
     fromId,
     build,
     wordCount
