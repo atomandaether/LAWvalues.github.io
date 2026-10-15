@@ -62,12 +62,12 @@ assert.ok(order.includes('D-DYN1'),'Reachable supported practical path: '+order.
 assert.ok(order.indexOf('D-DYN1')>order.indexOf('D-PLU2'));
 assert.equal(classifier.nextDiagnostic(neutral,core,responses),null);
 assert.equal(c.LAW_QUESTIONS.length,88);assert.equal(classifier.MAX_DIAGNOSTICS,12);assert.equal(classifier.MAX_TOTAL_QUESTIONS,100);
-// Direct diagnostics never change any of the eight core scores.
+// The statutory-dynamic diagnostic does not alter any axis percentage.
 assert.deepEqual(c.LAW_SCORING.scoreAllWithDiagnostics(core,{...base,'D-DYN1':3}),c.LAW_SCORING.scoreAllWithDiagnostics(core,base));
 // Replay with fresh browser state and no traits: new IDs carry the evidence;
 // old practical IDs do not acquire new claims.
 for(const narrative of [practical,dynamic]){
- const params=new URLSearchParams({...neutral,i:identity.id,c:'eskridge_frickey',x:narrative.id,o:narrative.openingId});
+ const params=new URLSearchParams({...neutral,v:c.LAW_VERSION,i:identity.id,c:'eskridge_frickey',x:narrative.id,o:narrative.openingId});
  r.storage.clear();r.location.search='?'+params;r.newDocument();r.run('results.js');
  const shown=r.ctx.document.getElementById('result-context').textContent;
  assert.equal(shown,narrative.context);

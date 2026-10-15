@@ -1,8 +1,14 @@
+// Historical 0.8 literal-answer regressions. Current-instrument controls live
+// in audit-time-construct and audit-diagnostic-routing. Frozen answers are unchanged.
+import {selectLegacy08Instrument} from './fixtures/instrument-context.mjs';
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import vm from 'node:vm';
 const c = vm.createContext({console});
-for (const f of ['axes.js','questions.js','scoring.js','result_catalog.js','diagnostics.js','profiles.js','result_content.js','classification.js']) vm.runInContext(fs.readFileSync(new URL('../'+f,import.meta.url),'utf8'),c);
+for (const f of ['axes.js','questions.js','scoring.js','result_catalog.js','diagnostics.js','profiles.js','result_content.js','classification.js']) {
+ vm.runInContext(fs.readFileSync(new URL('../'+f,import.meta.url),'utf8'),c);
+ if(f==='questions.js') selectLegacy08Instrument(c);
+}
 const cl=c.LAW_CLASSIFIER;
 const neutral=Object.fromEntries(cl.AXIS_IDS.map(id=>[id,50]));
 const scores={...neutral,sorc:85,time:90};

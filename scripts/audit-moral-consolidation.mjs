@@ -43,7 +43,7 @@ assert.equal(cl.MAX_TOTAL_QUESTIONS,100);
 // Exercise actual fresh-session renderer and copy-link for both historical IDs
 // and the new combined ID, preserving each link's selected champion and modifier.
 for(const [champion,modifier] of [['greenberg','moral_impact_nonpositivism'],['hershovitz','moral_practice_nonpositivism'],[id,'moral_impact_nonpositivism'],[id,'moral_practice_nonpositivism']]){
- const params=new URLSearchParams({...scores,i:'nonpositivist',c:champion,m:modifier});
+ const params=new URLSearchParams({...scores,v:['greenberg','hershovitz'].includes(champion)?'0.8':c.LAW_VERSION,i:'nonpositivist',c:champion,m:modifier});
  const rr=runtime(root,{search:'?'+params});rr.run('results.js');
  assert.equal(rr.nodes.get('champion-line').textContent,'Champion: '+profiles[champion].name);
  assert.ok(rr.nodes.get('champion-description').textContent.startsWith(profiles[champion].description));
@@ -59,7 +59,7 @@ console.log('PASS: moral-rights consolidation, either signature, dual agreement,
 for(const phrase of Object.values(c.LAW_RESULT_CONTENT.FALLBACK_PHRASES)){
  const replay=c.LAW_RESULT_CONTENT.fromIds(identity,scores,{}, {phraseId:phrase.id});
  assert.equal(replay.phrase.id,phrase.id);assert.equal(replay.phrase.text,phrase.text);
- const params=new URLSearchParams({...scores,i:'nonpositivist',c:id,p:phrase.id});
+ const params=new URLSearchParams({...scores,v:c.LAW_VERSION,i:'nonpositivist',c:id,p:phrase.id});
  const rr=runtime(root,{search:'?'+params});rr.run('results.js');
  assert.ok(rr.nodes.get('result-title').textContent.endsWith(phrase.text));
 }

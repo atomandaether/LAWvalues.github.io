@@ -1,3 +1,6 @@
+// Historical 0.8 literal-answer regressions. Current-instrument controls live
+// in audit-time-construct and audit-diagnostic-routing. Frozen answers are unchanged.
+import {selectLegacy08Instrument} from './fixtures/instrument-context.mjs';
 import assert from "node:assert/strict";
 import fs from "node:fs";
 import path from "node:path";
@@ -11,6 +14,7 @@ context.globalThis = context;
 
 for (const filename of ["axes.js", "questions.js", "scoring.js", "result_catalog.js", "diagnostics.js", "profiles.js", "result_content.js", "classification.js"]) {
   vm.runInContext(fs.readFileSync(path.join(root, filename), "utf8"), context, { filename });
+  if (filename === "questions.js") selectLegacy08Instrument(context);
 }
 
 const identities = context.LAW_RESULT_IDENTITIES;

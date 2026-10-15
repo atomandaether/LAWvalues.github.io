@@ -4,7 +4,7 @@
    separately because rejecting a proposition does not always imply its opposite.
    Signed values point toward the first (+) or second (-) pole of an axis; fractional
    cross-loadings capture secondary jurisprudential implications. */
-globalThis.LAW_QUESTIONS = Object.freeze([
+globalThis.LAW_LEGACY_QUESTIONS = Object.freeze([
   {
     "id": "S1",
     "axis": "sorc",
@@ -1636,3 +1636,582 @@ globalThis.LAW_QUESTIONS = Object.freeze([
     }
   }
 ]);
+
+
+/* Instrument 0.9: old raw responses retain the exact 0.8 bank above.
+   Historical semantics/tradition remain small hints, never full fixation tests.
+   Revised scenarios ask for the respondent's governing method, not obedience
+   to an existing judicial instruction. Disagreement with independent original
+   authority (T11) is not affirmative support for evolving meaning. */
+(function buildCurrentInstrument(global) {
+  const changes = {
+  "T1": {
+    "prompt": "The constitutional amendments adopted after the American Civil War established an equality guarantee with a determinate legal meaning. That original equality rule should govern today even if contemporary society has turned against it: its authority does not depend on whether current judges favor the historical approach."
+  },
+  "T2": {
+    "prompt": "Assume the First Amendment’s original legal meaning permitted government-funded legislative chaplains, not merely that founding-era officials happened to allow them. No later amendment changed that meaning. The original permission should still govern even if contemporary Americans regard official prayers as inconsistent with religious equality."
+  },
+  "T3": {
+    "prompt": "A state constitution guarantees “trial by jury.” Assume its original legal meaning required twelve jurors, rather than leaving the number open. During a pandemic the state proposes ten jurors, who can do the same practical job. Courts should require twelve because the original constitutional rule still governs, even though the smaller jury would work equally well."
+  },
+  "T4": {
+    "prompt": "Assume a constitutional guarantee’s original legal meaning clearly excluded a particular personal freedom; this is not just a case its adopters failed to foresee. If later generations come to understand that freedom as fundamental to liberty, courts may legitimately recognize it as constitutionally protected without an amendment, even though doing so goes beyond that original meaning."
+  },
+  "T5": {
+    "prompt": "Assume the Fourteenth Amendment’s original legal meaning permitted a race-neutral fee for voting. A century later, wealth has come to be regarded as irrelevant to a citizen’s right to vote. Courts may legitimately interpret equal protection to prohibit the fee without an amendment, even though this changes what the original constitutional rule permitted."
+  },
+  "T6": {
+    "prompt": "Assume the Bill of Rights’ original legal meaning permitted capital punishment and did not leave its constitutional permissibility open. If later generations come to regard execution as incompatible with human dignity, courts may legitimately hold it unconstitutional without an amendment, despite that original permission."
+  },
+  "T11": {
+    "prompt": "Suppose the Supreme Court stopped instructing judges to consult founding-era history. When deciding what constitutional rules ought to govern, the Constitution’s original meaning would still independently constrain legitimate interpretation. Its authority is not merely borrowed from whichever interpretive method current precedent happens to require.",
+    "signals": {
+      "agree": {
+        "time": 1
+      },
+      "disagree": {}
+    }
+  },
+  "T12": {
+    "prompt": "A broad constitutional guarantee can acquire new legal content through decades of judicial decisions and practical experience, without a formal amendment. That development can legitimately go beyond a constraint its original meaning clearly imposed; it need not be only a new application or an elaboration of something the original meaning left unresolved.",
+    "signals": {
+      "agree": {
+        "time": -1,
+        "prec": 0.4
+      },
+      "disagree": {
+        "time": 1,
+        "prec": -0.4
+      }
+    }
+  },
+  "S5": {
+    "signals": {
+      "agree": {
+        "sorc": 1,
+        "prec": 0.3
+      },
+      "disagree": {
+        "sorc": -1
+      }
+    }
+  },
+  "P3": {
+    "signals": {
+      "agree": {
+        "prec": 1,
+        "sorc": 0.4,
+        "time": -0.1
+      },
+      "disagree": {
+        "prec": -1
+      }
+    }
+  },
+  "T7": {
+    "signals": {
+      "agree": {
+        "time": 0.1,
+        "cons": 0.3
+      },
+      "disagree": {}
+    }
+  },
+  "T8": {
+    "signals": {
+      "agree": {
+        "time": 0.25
+      },
+      "disagree": {}
+    }
+  },
+  "T9": {
+    "signals": {
+      "agree": {
+        "time": -0.1,
+        "form": -0.2
+      },
+      "disagree": {
+        "time": 0.1
+      }
+    }
+  },
+  "T10": {
+    "signals": {
+      "agree": {
+        "time": 0.1,
+        "cons": 0.25
+      },
+      "disagree": {}
+    }
+  }
+};
+  const refinements = {
+  "S3": {
+    "agree": {
+      "sorc": 0.4,
+      "cons": 0.3
+    },
+    "disagree": {
+      "sorc": -0.35
+    }
+  },
+  "S4": {
+    "agree": {
+      "sorc": 0.35
+    },
+    "disagree": {
+      "sorc": -0.35
+    }
+  },
+  "S5": {
+    "agree": {
+      "sorc": 0.5,
+      "prec": 0.1
+    },
+    "disagree": {
+      "sorc": -0.5
+    }
+  },
+  "S7": {
+    "agree": {
+      "sorc": 1
+    },
+    "disagree": {
+      "sorc": -0.35
+    }
+  },
+  "S8": {
+    "agree": {
+      "sorc": -1
+    },
+    "disagree": {
+      "sorc": 0.35
+    }
+  },
+  "C2": {
+    "agree": {
+      "cons": 0.65,
+      "form": 0.3
+    },
+    "disagree": {
+      "cons": -0.65,
+      "form": -0.3
+    }
+  },
+  "C3": {
+    "agree": {
+      "cons": 0.5
+    },
+    "disagree": {
+      "cons": -0.5
+    }
+  },
+  "C4": {
+    "agree": {
+      "cons": 0.5
+    },
+    "disagree": {
+      "cons": -0.5
+    }
+  },
+  "C8": {
+    "agree": {
+      "cons": -0.5
+    },
+    "disagree": {
+      "cons": 0.5
+    }
+  },
+  "C9": {
+    "agree": {
+      "cons": 0.6,
+      "form": 0.35
+    },
+    "disagree": {
+      "cons": -0.6,
+      "form": -0.35
+    }
+  },
+  "C18": {
+    "agree": {
+      "cons": 0.65,
+      "form": 0.35
+    },
+    "disagree": {
+      "cons": -0.65,
+      "form": -0.35
+    }
+  },
+  "T4": {
+    "agree": {
+      "time": -1
+    },
+    "disagree": {
+      "time": 1
+    }
+  },
+  "T5": {
+    "agree": {
+      "time": -1
+    },
+    "disagree": {
+      "time": 1
+    }
+  },
+  "T6": {
+    "agree": {
+      "time": -1
+    },
+    "disagree": {
+      "time": 1
+    }
+  },
+  "T12": {
+    "agree": {
+      "time": -1,
+      "prec": 0.15
+    },
+    "disagree": {
+      "time": 1
+    }
+  },
+  "P3": {
+    "agree": {
+      "prec": 1,
+      "time": -0.1
+    },
+    "disagree": {
+      "prec": -1
+    }
+  },
+  "P4": {
+    "agree": {
+      "prec": 1
+    },
+    "disagree": {
+      "prec": -1
+    }
+  },
+  "P9": {
+    "agree": {
+      "prec": 1
+    },
+    "disagree": {
+      "prec": -1
+    }
+  },
+  "P10": {
+    "agree": {
+      "prec": -0.4,
+      "remed": 0.1,
+      "separ": 0.2,
+      "post": 0.1
+    },
+    "disagree": {
+      "prec": 0.4
+    }
+  },
+  "P11": {
+    "agree": {
+      "prec": -0.4,
+      "remed": 0.1,
+      "separ": 0.3,
+      "post": 0.15
+    },
+    "disagree": {
+      "prec": 0.4
+    }
+  },
+  "R6": {
+    "agree": {
+      "remed": 1
+    },
+    "disagree": {
+      "remed": -1
+    }
+  },
+  "R7": {
+    "agree": {
+      "remed": 1
+    },
+    "disagree": {
+      "remed": -1
+    }
+  },
+  "R11": {
+    "agree": {
+      "remed": 1
+    },
+    "disagree": {
+      "remed": -1
+    }
+  },
+  "R9": {
+    "agree": {
+      "remed": -1,
+      "post": -0.1
+    },
+    "disagree": {
+      "remed": 1
+    }
+  },
+  "R10": {
+    "agree": {
+      "remed": -1,
+      "post": -0.1
+    },
+    "disagree": {
+      "remed": 1
+    }
+  },
+  "O3": {
+    "agree": {
+      "post": -0.25
+    },
+    "disagree": {
+      "post": 0.25
+    }
+  },
+  "O5": {
+    "agree": {
+      "post": 0.5
+    },
+    "disagree": {
+      "post": -0.2
+    }
+  },
+  "O13": {
+    "agree": {
+      "post": -0.25
+    },
+    "disagree": {
+      "post": 0.15
+    }
+  },
+  "R1": {
+    "agree": {
+      "remed": -1,
+      "post": -0.1
+    },
+    "disagree": {
+      "remed": 1,
+      "post": 0.1
+    }
+  },
+  "R2": {
+    "agree": {
+      "remed": -1,
+      "post": -0.1
+    },
+    "disagree": {
+      "remed": 1,
+      "post": 0.1
+    }
+  },
+  "R3": {
+    "agree": {
+      "remed": -1,
+      "post": -0.1
+    },
+    "disagree": {
+      "remed": 1,
+      "post": 0.1
+    }
+  },
+  "R4": {
+    "agree": {
+      "remed": -1,
+      "post": -0.1
+    },
+    "disagree": {
+      "remed": 1,
+      "post": 0.1
+    }
+  },
+  "R5": {
+    "agree": {
+      "remed": -1,
+      "post": -0.1,
+      "separ": -0.3
+    },
+    "disagree": {
+      "remed": 1,
+      "post": 0.1
+    }
+  },
+  "R8": {
+    "agree": {
+      "remed": -1,
+      "post": -0.1
+    },
+    "disagree": {
+      "remed": 1,
+      "post": 0.1
+    }
+  }
+};
+  const weakLinks = {
+  "S3": [
+    "sorc"
+  ],
+  "S4": [
+    "sorc"
+  ],
+  "S5": [
+    "sorc",
+    "prec"
+  ],
+  "C2": [
+    "form"
+  ],
+  "C6": [
+    "form"
+  ],
+  "C8": [
+    "cons"
+  ],
+  "C9": [
+    "form"
+  ],
+  "C10": [
+    "form"
+  ],
+  "C11": [
+    "form"
+  ],
+  "C12": [
+    "form"
+  ],
+  "C14": [
+    "form"
+  ],
+  "C17": [
+    "post"
+  ],
+  "C18": [
+    "form"
+  ],
+  "T3": [
+    "form"
+  ],
+  "T7": [
+    "time"
+  ],
+  "T8": [
+    "time"
+  ],
+  "T9": [
+    "time",
+    "form"
+  ],
+  "T10": [
+    "time"
+  ],
+  "T12": [
+    "prec"
+  ],
+  "P2": [
+    "post"
+  ],
+  "P3": [
+    "time"
+  ],
+  "P10": [
+    "prec",
+    "remed",
+    "separ",
+    "post"
+  ],
+  "P11": [
+    "prec",
+    "remed",
+    "separ",
+    "post"
+  ],
+  "P12": [
+    "post"
+  ],
+  "R1": [
+    "post"
+  ],
+  "R2": [
+    "post"
+  ],
+  "R3": [
+    "post"
+  ],
+  "R4": [
+    "post"
+  ],
+  "R5": [
+    "post"
+  ],
+  "R8": [
+    "post"
+  ],
+  "R9": [
+    "post"
+  ],
+  "R10": [
+    "post"
+  ],
+  "O3": [
+    "post"
+  ],
+  "O5": [
+    "post"
+  ],
+  "O7": [
+    "remed"
+  ],
+  "O13": [
+    "post"
+  ],
+  "E1": [
+    "form"
+  ],
+  "E3": [
+    "post",
+    "form"
+  ],
+  "E4": [
+    "form"
+  ],
+  "E5": [
+    "form"
+  ],
+  "E6": [
+    "form"
+  ],
+  "E7": [
+    "form"
+  ]
+};
+  for (const [id, signals] of Object.entries(refinements)) {
+    changes[id] = { ...(changes[id] || {}), signals };
+  }
+  for (const [id, axes] of Object.entries(weakLinks)) {
+    changes[id] = { ...(changes[id] || {}), evidenceKinds: Object.fromEntries(axes.map(axis => [axis, "hint"])) };
+  }
+  // Final 0.9 construct review: source-based custom must not be mistaken
+  // for independent morality; finality/avoidance/accountability are only weak
+  // evidence about how searching judicial review should be on the merits.
+  changes.S6 = { ...(changes.S6 || {}), prompt: "Assume no constitution, statute, precedent, or accepted legal practice creates a duty to compensate. A city destroys several homes for a public project that benefits everyone. The city's action nevertheless creates a genuine legal duty to compensate the owners, independently of those recognized legal sources." };
+  changes.O6 = { signals: { agree: { post: 0.35 }, disagree: { post: -0.35 } }, evidenceKinds: { post: "hint" } };
+  changes.O7 = { signals: { agree: { post: 0.35, remed: 0.3 }, disagree: { post: -0.2 } }, evidenceKinds: { post: "hint", remed: "hint" } };
+  changes.O12 = { signals: { agree: { post: 0.25 }, disagree: { post: -0.25 } }, evidenceKinds: { post: "hint" } };
+  function freezeDeep(value) {
+    if (value && typeof value === "object" && !Object.isFrozen(value)) {
+      Object.values(value).forEach(freezeDeep);
+      Object.freeze(value);
+    } else if (value && typeof value === "object") {
+      Object.values(value).forEach(freezeDeep);
+    }
+    return value;
+  }
+  global.LAW_QUESTIONS = freezeDeep(global.LAW_LEGACY_QUESTIONS.map(question =>
+    ({ ...JSON.parse(JSON.stringify(question)), ...(changes[question.id] || {}) })
+  ));
+  freezeDeep(global.LAW_LEGACY_QUESTIONS);
+})(globalThis);

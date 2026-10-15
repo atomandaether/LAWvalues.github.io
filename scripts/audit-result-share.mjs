@@ -41,7 +41,7 @@ function makeRuntime() {
     navigator:{clipboard:{async writeText(text){clipboard=text;}}}
   });
   const run=name=>vm.runInContext(source(name),ctx,{filename:name});
-  for (const file of ["axes.js","questions.js","scoring.js","result_catalog.js","profiles.js","result_content.js","result_narrative.js"]) run(file);
+  for (const file of ["axes.js","questions.js","scoring.js","result_compatibility.js","result_catalog.js","profiles.js","result_content.js","result_narrative.js","axis_labels.js"]) run(file);
   return {ctx,run,storage,location,clipboard:()=>clipboard};
 }
 

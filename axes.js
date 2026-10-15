@@ -1,5 +1,5 @@
 /* LAWvalues axis definitions. The first pole is scored toward 100; the second toward 0. */
-globalThis.LAW_VERSION = "0.8 Beta";
+globalThis.LAW_VERSION = "0.9 Beta";
 globalThis.LAW_QUESTION_COUNT = 88;
 
 globalThis.LAW_AXES = Object.freeze([
@@ -38,9 +38,9 @@ globalThis.LAW_AXES = Object.freeze([
     rightShort: "Evolving meaning",
     leftColor: "#3157b7",
     rightColor: "#bf6f21",
-    question: "At what time is constitutional meaning anchored?",
-    leftDescription: "Meaning is fixed at adoption and informed by original public usage, early practice, and inherited legal tradition.",
-    rightDescription: "Constitutional content may develop through precedent, changed facts, experience, and contemporary understandings."
+    question: "Does original constitutional meaning independently constrain legitimate constitutional development?",
+    leftDescription: "Original constitutional meaning independently constrains legitimate interpretation; changing applications and implementing doctrine need not change that meaning.",
+    rightDescription: "Constitutional content may legitimately develop beyond original constraints through precedent, experience, and contemporary understandings without formal amendment."
   },
   {
     id: "prec",

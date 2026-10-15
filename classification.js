@@ -93,7 +93,7 @@
     }
   ]);
 
-  const CORE_TRAIT_RULES = Object.freeze({
+  const LEGACY_TRAIT_RULES = Object.freeze({
     "source.social_practice": [["S5", 1, 1]],
     "source.law_runs_out": [["S7", 1, 1], ["S8", -1, 0.35]],
     "source.principles_are_law": [["S8", 1, 1], ["S7", -1, 0.35]],
@@ -140,6 +140,37 @@
     "form.cliff_skepticism": [["F9", 1, 1]]
   });
 
+  const CURRENT_INSTRUMENT = Number.parseFloat(global.LAW_VERSION) >= 0.9;
+  const CORE_TRAIT_RULES = CURRENT_INSTRUMENT ? Object.freeze({
+    ...LEGACY_TRAIT_RULES,
+    "time.expected_applications": [["T9", -1, 0.35]],
+    "time.early_practice": [],
+    "time.originalism_independent_authority": [["T11", 1, 1]],
+    "time.independent_fixation_core": [["T1", 1, 1], ["T2", 1, 1], ["T3", 1, 1]],
+    "time.independent_authority_rejected": [["T11", -1, 1]],
+    "time.common_law_development": [["T12", 1, 1], ["P3", 1, 0.5]],
+    "separation.unitary_executive": [["E2", -1, 0.35]],
+    "posture.rights_trumps": [["O4", 1, 0.8], ["O11", 1, 1]],
+    "method.narrow_shallow": [["R11", 1, 1]]
+  }) : LEGACY_TRAIT_RULES;
+
+  function cleanCurrentResponses(responses) {
+    if (!CURRENT_INSTRUMENT) return responses || {};
+    return Object.fromEntries(Object.entries(responses || {}).filter(([, value]) =>
+      value === null || (typeof value === "number" && Number.isInteger(value) && value >= -3 && value <= 3)
+    ));
+  }
+
+  function diagnosticTags(item, value, responses) {
+    const tags = value > 0 ? item.agreeTraits : item.disagreeTraits;
+    if (!CURRENT_INSTRUMENT) return tags || [];
+    return (tags || []).filter(trait =>
+      !(item.id === "D-TXT1" && value < 0 && trait === "constraint.enacted_bargain") &&
+      !(item.id === "D-MAJ2" && value < 0 && trait === "posture.branch_interpretation" &&
+        !(Number(responses?.["D-MAJ1"]) >= 2))
+    );
+  }
+
   function clamp(value, min, max) {
     return Math.min(max, Math.max(min, value));
   }
@@ -169,7 +200,7 @@
   function responseSupport(responses, id, direction) {
     if (!responses || !Object.prototype.hasOwnProperty.call(responses, id)) return 0;
     const value = Number(responses[id]);
-    if (!Number.isFinite(value)) return 0;
+    if (!Number.isFinite(value) || (CURRENT_INSTRUMENT && (!Number.isInteger(responses[id]) || Math.abs(value) > 3))) return 0;
     return Math.max(0, direction * value / 3);
   }
 
@@ -181,7 +212,7 @@
       numerator += responseSupport(responses, id, direction) * weight;
       denominator += weight;
     }
-    return denominator ? clamp01(numerator / denominator) : 0;
+    return denominator ? clamp01(numerator / (CURRENT_INSTRUMENT ? Math.max(1, denominator) : denominator)) : 0;
   }
 
   function setMax(target, trait, value) {
@@ -189,6 +220,8 @@
   }
 
   function buildTraitEvidence(responses = {}, diagnosticResponses = {}) {
+    responses = cleanCurrentResponses(responses);
+    diagnosticResponses = cleanCurrentResponses(diagnosticResponses);
     const evidence = {};
 
     const ensure = (trait) => {
@@ -215,11 +248,11 @@
       const answered = new Set();
       const supportByQuestion = new Map();
 
-      for (const [id, direction] of rules) {
+      for (const [id, direction, weight] of rules) {
         available.add(id);
         if (!Object.prototype.hasOwnProperty.call(responses || {}, id) || responses[id] === null) continue;
         answered.add(id);
-        const support = responseSupport(responses, id, direction);
+        const support = responseSupport(responses, id, direction) * (CURRENT_INSTRUMENT ? weight : 1);
         supportByQuestion.set(id, Math.max(supportByQuestion.get(id) || 0, support));
       }
 
@@ -239,7 +272,7 @@
       if (!Number.isFinite(value) || value === 0) continue;
 
       const magnitude = Math.min(1, Math.abs(value) / 3);
-      const tags = value > 0 ? diagnostic.agreeTraits : diagnostic.disagreeTraits;
+      const tags = diagnosticTags(diagnostic, value, diagnosticResponses);
       for (const trait of tags || []) {
         const item = ensure(trait);
         if (!item.diagnosticSupporting.includes(id)) item.diagnosticSupporting.push(id);
@@ -263,7 +296,7 @@
       ["cons", "constraint.textual_axis", "constraint.open_construction"],
       ["time", "time.fixation", "time.living_content"],
       ["prec", "precedent.stability", "precedent.correction"],
-      ["remed", "remedies.party_specific", "remedies.structural"],
+      ["remed", "remedies.party_specific", CURRENT_INSTRUMENT ? "remedies.systemic" : "remedies.structural"],
       ["post", "posture.majoritarian", "posture.countermajoritarian"],
       ["separ", "separation.formalist", "separation.functionalist"],
       ["form", "form.rules", "form.balancing"]
@@ -276,7 +309,7 @@
     setMax(traits, "constraint.textual", Math.max(traits["constraint.textual"] || 0, leftStrength(scores, "cons")));
     setMax(traits, "precedent.correctness_first", rightStrength(scores, "prec"));
     setMax(traits, "remedies.incremental", leftStrength(scores, "remed"));
-    setMax(traits, "remedies.supervision", rightStrength(scores, "remed"));
+    if (!CURRENT_INSTRUMENT) setMax(traits, "remedies.supervision", rightStrength(scores, "remed"));
     setMax(traits, "separation.formalist", leftStrength(scores, "separ"));
     setMax(traits, "separation.functionalist", rightStrength(scores, "separ"));
     setMax(traits, "form.rules", leftStrength(scores, "form"));
@@ -347,7 +380,7 @@
       const value = Number(raw);
       if (!Number.isFinite(value) || value === 0) continue;
       const magnitude = Math.min(1, Math.abs(value) / 3);
-      const tags = value > 0 ? item.agreeTraits : item.disagreeTraits;
+      const tags = diagnosticTags(item, value, diagnosticResponses);
       for (const trait of tags || []) setMax(traits, trait, magnitude);
     }
     if ((traits["posture.dialogic"] || 0) > 0) setMax(traits, "posture.weak_form", traits["posture.dialogic"]);
@@ -363,10 +396,16 @@
       setMax(traits, "source.interpretivism_rejected",
         Math.abs(Number(diagnosticResponses["D-NP2"])) / 3);
     }
+    if (CURRENT_INSTRUMENT && Number(diagnosticResponses?.["D-SEP1"]) >= 2) {
+      // A specific prosecutor objection is not a general unitary-executive theory.
+      traits["separation.unitary_executive"] = 0;
+    }
     return traits;
   }
 
   function buildTraits(scores, responses, diagnosticResponses) {
+    responses = cleanCurrentResponses(responses);
+    diagnosticResponses = cleanCurrentResponses(diagnosticResponses);
     return applyDiagnosticTraits(buildCoreTraits(scores, responses), diagnosticResponses);
   }
 
@@ -495,15 +534,18 @@
     if (((axisValue(scores, "sorc") <= 60 && narrowOneSystem >= 0.5) ||
          (extremeInjustice >= 0.5 && (traits["source.objective_morality"] || 0) < 0.5)) &&
         interpretivistEvidence < 0.5 &&
-        (traits["source.positive_law_settlement"] || 0) < 0.5 &&
+        (CURRENT_INSTRUMENT || (traits["source.positive_law_settlement"] || 0) < 0.5) &&
         (traits["source.internal_legality"] || 0) < 0.5) {
       add("nonpositivist", 0.88, "A distinctive nonpositivist theory is established below the noun layer.", "Non-Positivist");
     }
 
     const precedentMediatedHistoricism = traits["time.precedent_mediated_historicism"] || 0;
     const independentOriginalistAuthority = traits["time.originalism_independent_authority"] || 0;
-    const originalismAffirmativelyRejected =
-      precedentMediatedHistoricism >= 0.5 && independentOriginalistAuthority < 0.5;
+    const independentFixation = Math.max(independentOriginalistAuthority,
+      traits["time.independent_fixation_core"] || 0, traits["time.original_law"] || 0);
+    const originalismAffirmativelyRejected = CURRENT_INSTRUMENT
+      ? independentFixation < 0.5
+      : precedentMediatedHistoricism >= 0.5 && independentOriginalistAuthority < 0.5;
 
     if (!originalismAffirmativelyRejected &&
         l.time >= 0.2 && (traits["time.original_intent"] || 0) >= 0.5) {
@@ -1068,7 +1110,7 @@
   // ideological answers and unrelated case disagreements earn no points.
   const OUTCOME_MIRRORS = Object.freeze([
     { id: "avoidance", left: "C3", right: "C4", weight: 1 },
-    { id: "nationwide_relief", left: "R2", right: "R1", weight: 1 },
+    { id: "nationwide_relief", left: "R2", right: "R1", weight: CURRENT_INSTRUMENT ? 0 : 1 },
     { id: "severability", left: "R7", right: "R6", weight: 1 },
     { id: "prophylactic_remedies", left: "R10", right: "R9", weight: 1 },
     // Less comparable: two different constitutional eras and subject areas.
@@ -1150,12 +1192,12 @@
         (coreAtLeast("S7", 2) && coreAtLeast("S8", 2)) ||
         (coreAtLeast("S2", 2) && diagnosticAtMost("D-NP6", -2)),
       form:
-        ((coreAtLeast("F1", 2) || coreAtLeast("F3", 2)) && coreAtLeast("F5", 2)),
+        !CURRENT_INSTRUMENT && ((coreAtLeast("F1", 2) || coreAtLeast("F3", 2)) && coreAtLeast("F5", 2)),
       constitutional_time:
         (coreAtLeast("T7", 2) && diagnosticAtMost("D-ORI1", -2)) ||
         (coreAtMost("T7", -2) && diagnosticAtLeast("D-ORI1", 2)),
       separation:
-        coreAtMost("E3", -2) && diagnosticAtLeast("D-SEP3", 2)
+        !CURRENT_INSTRUMENT && coreAtMost("E3", -2) && diagnosticAtLeast("D-SEP3", 2)
     };
 
     return Object.values(domains).filter(Boolean).length >= 2;
@@ -1180,6 +1222,8 @@
   }
 
   function nextDiagnostic(scores, responses, diagnosticResponses = {}) {
+    responses = cleanCurrentResponses(responses);
+    diagnosticResponses = cleanCurrentResponses(diagnosticResponses);
     const askedCount = Object.keys(diagnosticResponses).length;
     if (askedCount >= MAX_DIAGNOSTICS) return null;
     const byId = Object.fromEntries(diagnosticBank().map((item) => [item.id, item]));
@@ -2051,6 +2095,8 @@
   }
 
   function classify(scored, responses = {}, diagnosticResponses = {}, meta = {}) {
+    responses = cleanCurrentResponses(responses);
+    diagnosticResponses = cleanCurrentResponses(diagnosticResponses);
     const scores = Object.fromEntries(AXIS_IDS.map((id) => [id, axisValue(scored, id)]));
     const traits = buildTraits(scores, responses, diagnosticResponses);
     const traitEvidence = buildTraitEvidence(responses, diagnosticResponses);

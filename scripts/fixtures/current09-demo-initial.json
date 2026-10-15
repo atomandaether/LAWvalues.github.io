@@ -1,0 +1,954 @@
+{
+  "id": "current09-casey",
+  "instrumentVersion": "0.9 Beta",
+  "fictional": true,
+  "createdBeforeRouting": true,
+  "worldview": "Casey is a new fictional respondent. Socially recognized sources determine legal validity and may incorporate moral standards. Original public meaning independently binds, while implementing doctrine may develop within unresolved meaning and settled precedent can have legal force without changing that meaning. Casey reads enacted text contextually, protects reliance, supports remedies targeted to proven violations, independently enforces rights, allows accountable administration within prescribed procedures, and favors rules with bounded equitable exceptions.",
+  "priorityOrder": [
+    "source",
+    "method",
+    "time",
+    "structure",
+    "posture",
+    "form",
+    "realism",
+    "common_good"
+  ],
+  "noTargetOutcome": "No expected title, identity, champion, label list, or score is specified. All responses and the diagnostic policy are fixed before the actual adaptive route.",
+  "coreAnswers": {
+    "S1": {
+      "value": 3,
+      "rationale": "Valid enactment can remain legally valid despite grave moral wrong."
+    },
+    "S2": {
+      "value": -2,
+      "rationale": "Moral condemnation alone does not erase legal status when recognized sources supply no such test."
+    },
+    "S3": {
+      "value": 3,
+      "rationale": "An exhaustive legal list cannot be supplemented by personal moral preference."
+    },
+    "S4": {
+      "value": 3,
+      "rationale": "Foolish policy is not absence of legal validity."
+    },
+    "S5": {
+      "value": 3,
+      "rationale": "Settled recognition practice determines the authoritative legal copy."
+    },
+    "S6": {
+      "value": -2,
+      "rationale": "An unrecognized moral duty is not automatically an existing legal duty."
+    },
+    "S7": {
+      "value": 2,
+      "rationale": "Authoritative law can leave genuine gaps requiring judicial lawmaking."
+    },
+    "S8": {
+      "value": -2,
+      "rationale": "Fit and moral justification do not guarantee a preexisting legal answer in every gap."
+    },
+    "S10": {
+      "value": -3,
+      "rationale": "Independent moral truth is not itself law without legal incorporation."
+    },
+    "S11": {
+      "value": -3,
+      "rationale": "Even serious moral wrongdoing does not itself supply a legally recognized invalidity rule."
+    },
+    "C1": {
+      "value": 3,
+      "rationale": "Ordinary enacted coverage controls over uncommunicated expectations about particular workers."
+    },
+    "C2": {
+      "value": 3,
+      "rationale": "A deliberate express exemption survives disagreement with its policy outcome."
+    },
+    "C3": {
+      "value": 2,
+      "rationale": "Use the reasonable statutory reading and decide its constitutionality openly."
+    },
+    "C4": {
+      "value": 2,
+      "rationale": "Use the same reading rule regardless of the political beneficiary."
+    },
+    "C5": {
+      "value": 3,
+      "rationale": "Context determines ordinary enacted meaning; a bolted memorial is not a transport vehicle in this context."
+    },
+    "C6": {
+      "value": -2,
+      "rationale": "The better explanation is contextual meaning, rather than a free-standing purpose exception to clear coverage."
+    },
+    "C7": {
+      "value": 3,
+      "rationale": "Clear enacted words prevail over a conflicting sponsor report."
+    },
+    "C8": {
+      "value": 1,
+      "rationale": "The historical labor category may permit a contextual narrower reading, but purpose alone is not decisive."
+    },
+    "C9": {
+      "value": 2,
+      "rationale": "Unanticipated consequences do not defeat a clear statutory prohibition."
+    },
+    "C10": {
+      "value": 1,
+      "rationale": "A narrow ordinary-context accommodation is plausible, but the question does not establish a general power to rewrite coverage."
+    },
+    "C11": {
+      "value": 3,
+      "rationale": "Courts must respect a deliberate legislative omission."
+    },
+    "C12": {
+      "value": -2,
+      "rationale": "Similar purpose does not make a tiger a dog in a specific enacted prohibition."
+    },
+    "C13": {
+      "value": -3,
+      "rationale": "The list limits other vehicles to the same road-vehicle context."
+    },
+    "C14": {
+      "value": -3,
+      "rationale": "A genuinely distinct omitted category requires legislation even when avoidance was deliberate."
+    },
+    "C15": {
+      "value": -2,
+      "rationale": "Begin with enacted meaning in context; do not make a reconstructed purpose control all wording."
+    },
+    "C17": {
+      "value": 3,
+      "rationale": "Enacted text supplies the authoritative compromise while contextual evidence helps identify its meaning."
+    },
+    "C18": {
+      "value": 3,
+      "rationale": "The express compromise remains binding despite a particularly bad beneficiary."
+    },
+    "T1": {
+      "value": 3,
+      "rationale": "The stipulated determinate original equality rule binds independently of current judges or public approval."
+    },
+    "T2": {
+      "value": 3,
+      "rationale": "The hypothetical stipulates original legal permission, not merely old practice; changed attitudes alone do not amend it."
+    },
+    "T3": {
+      "value": 2,
+      "rationale": "The stipulated original twelve-person legal requirement controls despite functional equivalence and emergency inconvenience."
+    },
+    "T4": {
+      "value": -3,
+      "rationale": "Construction of open meaning cannot extend to reversing an expressly stipulated original exclusion."
+    },
+    "T5": {
+      "value": -3,
+      "rationale": "Under the stipulated premise, eliminating the original permission requires lawful constitutional change, not a new value judgment alone."
+    },
+    "T6": {
+      "value": -3,
+      "rationale": "Under the stipulated premise, changed dignity judgments do not themselves reverse an original legal permission."
+    },
+    "T7": {
+      "value": 3,
+      "rationale": "Publicly communicated ratified meaning prevails over contrary uncommunicated private intentions."
+    },
+    "T8": {
+      "value": 3,
+      "rationale": "A fixed general anti-caste principle can have applications its adopters did not expect."
+    },
+    "T9": {
+      "value": 0,
+      "rationale": "The premise does not establish which level of generality the original meaning adopted; neither tradition nor abstraction alone decides it."
+    },
+    "T10": {
+      "value": 3,
+      "rationale": "An accidental change in the ordinary modern meaning of a phrase cannot substitute a different original legal subject."
+    },
+    "T11": {
+      "value": 3,
+      "rationale": "Independent original authority survives the disappearance of a judicial instruction to consult history."
+    },
+    "T12": {
+      "value": -3,
+      "rationale": "Precedent may elaborate open meaning and implement rights, but cannot transform a clearly imposed original constraint into different constitutional meaning."
+    },
+    "P2": {
+      "value": 2,
+      "rationale": "Longstanding statutory settlements deserve substantial reliance and legislative-correction weight."
+    },
+    "P3": {
+      "value": 2,
+      "rationale": "Precedent is genuine law with institutional force, while remaining distinct from changing original constitutional meaning."
+    },
+    "P4": {
+      "value": 2,
+      "rationale": "Deep reliance can justify retaining a mistaken constitutional rule without reclassifying its meaning as correct."
+    },
+    "P5": {
+      "value": 3,
+      "rationale": "The burden of displacing an established rule should exceed ordinary disagreement over first principles."
+    },
+    "P6": {
+      "value": -2,
+      "rationale": "Following precedent is not automatically a betrayal of constitutional interpretation; settlement has independent legal weight."
+    },
+    "P7": {
+      "value": 3,
+      "rationale": "Stable doctrine should not track each change in the Court's philosophical membership."
+    },
+    "P9": {
+      "value": 1,
+      "rationale": "Embedded implementing safeguards merit retention, though their revision may differ from revision of the underlying right."
+    },
+    "P10": {
+      "value": -2,
+      "rationale": "A lawful implementing remedy can exceed the bare constitutional minimum when needed to enforce the right."
+    },
+    "P11": {
+      "value": -1,
+      "rationale": "A settled damages remedy should not be discarded merely because it originated judicially; institutional authority remains a genuine concern."
+    },
+    "P12": {
+      "value": 2,
+      "rationale": "Protecting substantial pension reliance favors legislative rather than abrupt judicial correction."
+    },
+    "R1": {
+      "value": -2,
+      "rationale": "A first plaintiff's win does not itself justify immediate relief for every nonparty."
+    },
+    "R2": {
+      "value": -2,
+      "rationale": "The same remedial limit applies to worker claims; convenience alone does not establish universal scope."
+    },
+    "R3": {
+      "value": 3,
+      "rationale": "A proven institution-wide violation requires the only remedy capable of curing it."
+    },
+    "R4": {
+      "value": 1,
+      "rationale": "Narrow ongoing supervision may become necessary, but the broad supervisory proposal warrants caution."
+    },
+    "R5": {
+      "value": 2,
+      "rationale": "A structural caseload limit can be justified by the proven systemic violation despite budget consequences."
+    },
+    "R6": {
+      "value": 3,
+      "rationale": "Preserve independently workable lawful provisions after removing the proven defect."
+    },
+    "R7": {
+      "value": 3,
+      "rationale": "Apply the same severability rule to a law with different political beneficiaries."
+    },
+    "R8": {
+      "value": -2,
+      "rationale": "A more effective regional remedy alone does not justify imposing obligations on uninvolved districts."
+    },
+    "R9": {
+      "value": 2,
+      "rationale": "A bounded protective deadline can be needed to stop persistent violations without redefining the underlying right."
+    },
+    "R10": {
+      "value": 2,
+      "rationale": "The same protective deadline principle applies to voting rights."
+    },
+    "R11": {
+      "value": 3,
+      "rationale": "Resolve the proven injury without unnecessary invalidation of unrelated provisions."
+    },
+    "O1": {
+      "value": -1,
+      "rationale": "Courts should decide the best legal reading, although genuine construction space may support legislative choice."
+    },
+    "O2": {
+      "value": -2,
+      "rationale": "Sincere public disagreement does not generally eliminate independent judicial enforcement of legal rights."
+    },
+    "O3": {
+      "value": 3,
+      "rationale": "Judicial review can enforce the higher constitutional law rather than assert personal supremacy."
+    },
+    "O4": {
+      "value": 3,
+      "rationale": "Popularity does not reduce the legal force of a right."
+    },
+    "O5": {
+      "value": 2,
+      "rationale": "Judicial authority does not depend on superior personal moral expertise."
+    },
+    "O6": {
+      "value": -2,
+      "rationale": "Ordinary reenactment should not by itself override a binding constitutional right."
+    },
+    "O7": {
+      "value": 1,
+      "rationale": "Legitimate narrow procedural grounds may warrant restraint, but not simply delay enforcement indefinitely."
+    },
+    "O8": {
+      "value": -2,
+      "rationale": "Judges' authority comes from their assigned legal role and reasoning, not a claim that five votes are democratically superior."
+    },
+    "O9": {
+      "value": -1,
+      "rationale": "Reasonableness of the legislative interpretation alone does not displace independent judicial judgment."
+    },
+    "O10": {
+      "value": 3,
+      "rationale": "Apply the legal right independently despite strong contrary popular support."
+    },
+    "O11": {
+      "value": 3,
+      "rationale": "Reenactment and electoral support do not cure a constitutional violation."
+    },
+    "O12": {
+      "value": -3,
+      "rationale": "Removing judges for unpopular good-faith rights enforcement threatens judicial independence."
+    },
+    "O13": {
+      "value": 3,
+      "rationale": "Secure tenure enables independent protection of unpopular rights holders."
+    },
+    "E1": {
+      "value": -3,
+      "rationale": "Practical oversight does not authorize bypassing constitutionally prescribed lawmaking procedures."
+    },
+    "E2": {
+      "value": 2,
+      "rationale": "A limited removal protection can support the independent legal task Congress assigned."
+    },
+    "E3": {
+      "value": -1,
+      "rationale": "Clear delegations under meaningful standards may be permissible; major policy discretion is not invariably forbidden."
+    },
+    "E4": {
+      "value": 3,
+      "rationale": "The executive cannot rewrite completed legislation merely because selective cancellation would be useful."
+    },
+    "E5": {
+      "value": 3,
+      "rationale": "Administrative combination can be permissible with meaningful judicial review and accountability."
+    },
+    "E6": {
+      "value": 2,
+      "rationale": "Emergencies do not dispense with prescribed constitutional procedures."
+    },
+    "E7": {
+      "value": -1,
+      "rationale": "Overlap alone is not fatal, but functional danger is not the only possible violation of an express procedural allocation."
+    },
+    "F1": {
+      "value": 2,
+      "rationale": "Rules provide a strong baseline of predictability and equal treatment without eliminating every defined exception."
+    },
+    "F3": {
+      "value": 3,
+      "rationale": "A rule must sometimes withstand an individual claim of fairness or it ceases to constrain."
+    },
+    "F4": {
+      "value": 1,
+      "rationale": "Categories matter, but not every legal question is categorical."
+    },
+    "F5": {
+      "value": -3,
+      "rationale": "Unrestricted individualized weighing cannot replace legally binding rules."
+    },
+    "F6": {
+      "value": 2,
+      "rationale": "Government-induced lateness supplies a bounded equitable reason for relief, not a general power to ignore every deadline."
+    },
+    "F7": {
+      "value": 2,
+      "rationale": "A demonstrated discriminatory exception system may need a strict rule unless reliable bounded standards replace it."
+    },
+    "F8": {
+      "value": 3,
+      "rationale": "A clear juvenile boundary protects equal treatment against biased discretionary transfers."
+    },
+    "F9": {
+      "value": -2,
+      "rationale": "A difficult edge case alone does not justify reopening the protected categorical boundary."
+    }
+  },
+  "corePrompts": {
+    "S1": "A government properly passes a cruel law through every required step and procedure. Decades later, a court may condemn it and refuse to repeat it, but it was nonetheless a legally valid law.",
+    "S2": "A statute properly enacted through every required step declares one racial group outside the protection of all courts. Nothing in the written laws could or should bar this. A court should treat the injustice as so extreme that the statute loses its claim to be law.",
+    "S3": "A licensing law gives every permitted reason for denying a license and contains no broader moral test. A judge who believes another reason is morally compelling should not treat that belief as an additional rule of law.",
+    "S4": "A legislature properly passes a harsh and foolish tax through every required step. A court should recognize that it is law.",
+    "S5": "Two officially signed copies of a law differ. The constitution does not say which one controls. For generations, every branch has treated the copy stored by the clerk as the final, authoritative copy. Do you agree that settled practice makes the clerk’s copy \"the law\"? In this specific case the other version would produce a fairer result.",
+    "S6": "Assume no constitution, statute, or past case requires compensation (i.e. no \"takings clause\" or \"just compensation\" for \"eminent domain\"). A city destroys several homes for a public project that benefits everyone. Do you agree the city’s action itself creates a legal duty to compensate the owners, despite no actual written law requiring it.",
+    "S7": "Sometimes the law \"runs out\" in novel cases, where there's no direct answer anywhere to lean on. In such a case, a judge is making new law and \"picking a winner.\" Meaning neither party was owed a legal right when they entered the room, and the judge has now created it, rather than discovered the correct answer.",
+    "S8": "The law never \"runs out\" in novel cases, where there's no direct answer written anywhere to lean on. This is because legal principles are themselves also part of the law. A judge choosing the most coherent and morally defensible option among reasonable interpretations is \"the correct answer,\" and it was there the whole time, because the principles are also the law.",
+    "S10": "Two large companies sign a voluntary contract that every constitution, statute, precedent, and accepted legal practice treats as valid. Unlike a judge’s personal moral opinion, assume that the contract really does violate an objectively true moral rule—one that remains true regardless of anyone’s beliefs, even though no government has recognized it. The court should treat that independent moral rule itself as part of the law and refuse to enforce the contract.",
+    "S11": "Two people sign a contract requiring one to publish a statement it knows is false in order to ruin a competitor. Assume every constitution, statute, past decision, and accepted legal practice treats the contract as valid. Nevertheless, the court should treat the moral rule that \"a deliberate harmful lie cannot create genuine obligations\" as part of the law and refuse to enforce the contract.",
+    "C1": "A wage law says \"every person employed for wages\" must receive overtime pay. During debate, lawmakers discussed factory workers and repeatedly assumed farm workers were outside the bill, but the enacted law contains no farm-worker exception. A farm worker should receive overtime pay.",
+    "C2": "A clean-water law’s stated purpose is to prevent river pollution, but it expressly exempts farms smaller than fifty acres. A forty-nine-acre farm causes vastly disproportionate pollution the law was written to prevent. The court should enforce the exemption in favor of the farm.",
+    "C3": "A surveillance law clearly authorizes police to collect a certain kind of record without a warrant. That reading raises a serious constitutional question. The court could either read the law narrowly and strangely to save it, or they could declare it unconstitutional. They should declare it unconstitutional by its reasonable reading.",
+    "C4": "A gun-safety law clearly authorizes the federal government to ban and confiscate civilian possession of every firearm, including ordinary handguns kept at home for self-defense. That reading raises a serious Second Amendment question. The court could either read the law narrowly and strangely as banning only unusually dangerous weapons, or declare it unconstitutional. They should declare it unconstitutional by its reasonable reading.",
+    "C5": "A city ordinance says, \"No vehicles in the park.\" A restored Army truck (a vehicle) is permanently bolted to a platform as a war memorial (in the park). Everyone agrees the memorial doesn't count, but disagree why. The answer, of course, is clear: context shows vehicle is about transportation, and this is not functioning as a \"vehicle\" in that context at all.",
+    "C6": "A city ordinance says, \"No vehicles in the park.\" A restored Army truck (a vehicle) is permanently bolted to a platform as a war memorial (in the park). Everyone agrees the memorial doesn't count, but disagree why. The answer, of course, is clear: the purpose of the ordinance was to prevent traffic, noise, and danger, so the court should recognize an exception for the truck even though the enacted words literally cover it.",
+    "C7": "A tax law’s enacted words very clearly allow a deduction. Nonetheless, a committee report from the Senate written by the tax bill's sponsor very explicitly and directly says the committee intended to deny the deduction in cases like this one. The court should follow the enacted words rather than the report.",
+    "C8": "A law intended to stop companies from importing cheap foreign manual labor was written so broadly that it also literally covers a university hiring a professor. Because the law’s target was labor exploitation, the professor should not be banned.",
+    "C9": "An endangered-species law says federal agencies may not take actions that would destroy a protected species. A nearly completed dam threatens one small regional variation of fish species. The court should stop the dam even though Congress probably never expected the law to sacrifice such an expensive project for such a weak case.",
+    "C10": "A park rule says, \"No dogs.\" No other laws apply. A trained guide dog is quiet, under control, and creates none of the safety or sanitation problems the rule was adopted to prevent. The rule should not apply to the guide dog.",
+    "C11": "A benefits law names four groups that qualify. A fifth group seems equally deserving and equally fit to the context, but lawmakers left it out while bargaining over the bill. A court should apply the enacted list rather than add the fifth group.",
+    "C12": "A park rule says, \"No dogs.\" A saber-tooth tiger is not a dog, but it creates the exact same safety and sanitation problems the rule was adopted to prevent. The rule should apply to the tiger.",
+    "C13": "A tax provision applies to \"cars, trucks, motorcycles, and other vehicles.\" A boat fits one dictionary definition of \"vehicle,\" but every specific example in the list is a road vehicle. An administration uses it to tax luxury yachts. The tax provision should apply to boats.",
+    "C14": "A law prohibits six specifically named kinds of financial contracts and contains no general catchall. A company creates a genuinely different contract that falls outside all six categories but produces the same economic result and was designed solely to evade the law. The court should prohibit the new contract anyway because excluding it would defeat the law’s purpose.",
+    "C15": "First determine the statute's purpose; then interpret its words to carry that purpose out.",
+    "C17": "Different lawmakers may vote for the same bill for completely different reasons. The only thing both houses of Congress and the President necessarily agreed to is the text that became law. Courts should therefore treat that enacted text—not committee reports, floor speeches, or a judge’s reconstruction of Congress’s overall purpose—as the authoritative expression of what Congress decided.",
+    "C18": "Congress wants to stop factories from dumping toxic chemicals into drinking-water sources, but the bill always fails to pass. Only after lawmakers add an exemption for companies with fewer than 50 employees does it pass. A 30-employee factory knowingly dumps 600% more dangerous chemical into a town’s water supply than anyone else, causing exactly the catastrophic harm the law was meant to prevent. The court should still enforce the exemption: Congress enacted the compromise that got the votes, not the broader purpose standing alone.",
+    "T1": "The constitutional amendments adopted after the American Civil War established an equality guarantee with a determinate legal meaning. That original equality rule should govern today even if contemporary society has turned against it: its authority does not depend on whether current judges favor the historical approach.",
+    "T2": "Assume the First Amendment’s original legal meaning permitted government-funded legislative chaplains, not merely that founding-era officials happened to allow them. No later amendment changed that meaning. The original permission should still govern even if contemporary Americans regard official prayers as inconsistent with religious equality.",
+    "T3": "A state constitution guarantees “trial by jury.” Assume its original legal meaning required twelve jurors, rather than leaving the number open. During a pandemic the state proposes ten jurors, who can do the same practical job. Courts should require twelve because the original constitutional rule still governs, even though the smaller jury would work equally well.",
+    "T4": "Assume a constitutional guarantee’s original legal meaning clearly excluded a particular personal freedom; this is not just a case its adopters failed to foresee. If later generations come to understand that freedom as fundamental to liberty, courts may legitimately recognize it as constitutionally protected without an amendment, even though doing so goes beyond that original meaning.",
+    "T5": "Assume the Fourteenth Amendment’s original legal meaning permitted a race-neutral fee for voting. A century later, wealth has come to be regarded as irrelevant to a citizen’s right to vote. Courts may legitimately interpret equal protection to prohibit the fee without an amendment, even though this changes what the original constitutional rule permitted.",
+    "T6": "Assume the Bill of Rights’ original legal meaning permitted capital punishment and did not leave its constitutional permissibility open. If later generations come to regard execution as incompatible with human dignity, courts may legitimately hold it unconstitutional without an amendment, despite that original permission.",
+    "T7": "A state constitution adopted by popular vote says a governor may serve \"no more than two terms.\" Ordinary voters at the time understood that to mean two terms total. Years later, private convention notes are discovered showing that the drafters actually intended only to prohibit more than two consecutive terms. A governor who has already served two terms cannot run again. What the public ratified controls over the drafters’ uncommunicated intent.",
+    "T8": "Assume that in 1868 \"equal protection\" publicly expressed a general constitutional rule against arbitrary legal caste distinctions. Also assume that almost everyone in 1868 expected states would still be allowed to exclude women from certain professions. If faithfully applying the rule shows that such a sex restriction is arbitrary, a court should strike it down—and would be doing so without changing or adding to the Fourteenth Amendment's meaning.",
+    "T9": "A married woman has a child fathered by another man. The biological father wants constitutional protection for his relationship with the child. Assume there is a longstanding historical tradition specifically denying legal protection to biological fathers in that situation, but parent-child relationships more generally have long been treated as part of constitutional \"liberty.\" Courts should define \"liberty\" using the broader principle of protected parenthood rather than treating the historically specific exclusion as controlling.",
+    "T10": "Article IV says the federal government may protect states against \"domestic Violence.\" At the founding, \"domestic violence\" meant internal insurrection or violent civil disorder. Today the phrase ordinarily means abuse within a household. Suppose a state now faces an epidemic of intimate-partner violence and asks the President to send federal forces to help protect victims of spousal abuse. They cannot use Article IV just because that is what \"domestic violence\" means today.",
+    "T11": "Suppose the Supreme Court stopped instructing judges to consult founding-era history. When deciding what constitutional rules ought to govern, the Constitution’s original meaning would still independently constrain legitimate interpretation. Its authority is not merely borrowed from whichever interpretive method current precedent happens to require.",
+    "T12": "A broad constitutional guarantee can acquire new legal content through decades of judicial decisions and practical experience, without a formal amendment. That development can legitimately go beyond a constraint its original meaning clearly imposed; it need not be only a new application or an elaboration of something the original meaning left unresolved.",
+    "P2": "The Supreme Court interpreted a federal employment law forty years ago. Congress has amended nearby parts of the law several times without changing that interpretation. Even if today's Court thinks the old interpretation was wrong, it should leave the rule in place and let Congress change it.",
+    "P3": "Precedent and accumulated practice are themselves major components of constitutional law, not merely defeasible mistakes sitting underneath the \"real\" Constitution.",
+    "P4": "Even a clearly erroneous constitutional precedent can become too deeply embedded to overrule when institutions, private rights, and later law have been built around it.",
+    "P5": "Stare decisis (adherence to prior rulings) should act as a referee between competing visions of the Constitution: when judges reasonably disagree about first principles, the side seeking to overturn the existing rule should bear an extra burden.",
+    "P6": "A doctrine telling judges to follow a precedent they believe contradicts the Constitution corrupts whatever theory of constitutional interpretation they claim to follow; the Constitution should control over an inconsistent judicial decision.",
+    "P7": "Courts should use stare decisis to preserve a single, impersonal body of law across generations of judges, rather than allowing constitutional doctrine to track whichever interpretive philosophy happens to control the Court at a given moment.",
+    "P9": "The Fifth Amendment forbids compelled self-incrimination, while Miranda warnings also exclude some completely voluntary statements that were not compelled at all. The Supreme Court has nevertheless treated those warnings as a constitutional issue, and thus Congress is not allowed to touch it despite the inconsistency. Even if everyone, everywhere thinks this judicial safeguard goes beyond the Fifth Amendment, the courts should still preserve Miranda warnings because it has become deeply embedded in American criminal justice.",
+    "P10": "The Fourth Amendment forbids unreasonable searches, but it does not say that illegally obtained evidence must be thrown out at trial. The Supreme Court itself describes exclusion as a \"judicially created remedy,\" not a personal constitutional right, designed mainly to deter police misconduct. Even if excluding evidence is useful and has become a basic protection against illegal searches, courts should stop doing it if the Constitution itself does not require that remedy (Congress, of course, is free to pass a law fixing that).",
+    "P11": "The Constitution forbids federal officers from violating constitutional rights, but Congress never created a general law letting victims sue those officers for money damages. Congress has created damages remedies in other contexts when it wanted them, yet the Supreme Court created one here on its own—judicial activism by any other name. Without that judicially created remedy, some people whose constitutional rights are violated may have no damages remedy at all. Courts should stop allowing these lawsuits and leave creation of a damages remedy to Congress.",
+    "P12": "Fifty years ago, the Supreme Court interpreted a federal pension law to let retirement plans deny survivor benefits to certain widows, even though the better reading of the law would cover them. Thousands of elderly widows now lose the income they expected to live on, and some face poverty or losing their homes. But pension funds have spent fifty years setting contribution rates and promising benefits to millions of other retirees based on the old rule; overruling it would suddenly create enormous unfunded obligations and could force plans to cut other benefits or become insolvent. Congress has repeatedly amended the pension laws without changing the Court’s interpretation. The Court should keep the mistaken precedent and leave any correction to Congress.",
+    "R1": "A federal agency adopts a nationwide rule requiring power plants to sharply reduce toxic air pollution. One power company convinces a single federal trial judge that the agency exceeded the authority Congress gave it. The judge should block the rule nationwide—not merely excuse that company from following it—even though no appeals court has yet reviewed the case, enabling pollution to continue.",
+    "R2": "A federal agency adopts a nationwide rule denying a certain group of workers overtime pay. One worker successfully proves that the rule violates federal law. The judge should block the rule for everyone affected, rather than give relief only to that worker and leave thousands of others to sue separately.",
+    "R3": "A prison is so overcrowded that sick prisoners routinely go untreated, and years of narrower court orders have failed. The only remedy that will actually fix the violation is reducing the prison population by thousands. A federal judge should order the state to release or transfer enough prisoners to make the prison constitutional, even though state law says those prisoners should still be incarcerated.",
+    "R4": "A police department repeatedly uses unconstitutional stops and searches. Earlier court orders simply telling officers to stop have failed. Unelected judges and court-appointed officials should effectively supervise major parts of the police department for years until it's fixed.",
+    "R5": "A state foster-care system leaves children in dangerous homes because each caseworker is responsible for far too many children. A court finds that the system violates the children’s state constitutional rights. The judge should be allowed to impose a maximum caseload even if complying would require the state to hire thousands of workers and redirect hundreds of millions of dollars that lawmakers had budgeted for other public programs.",
+    "R6": "A state passes a sweeping election law that makes voting harder in several ways. One provision requiring voters to pay for a special ID is unconstitutional, but the rest of the law can operate without it. The court should strike only the unconstitutional ID-fee provision and leave the remaining restrictions in force, rather than invalidate the broader law.",
+    "R7": "A state passes a large worker-protection law. One section lets labor inspectors search workplaces without a warrant, which the state constitution forbids. The other wage, safety, and anti-retaliation protections work perfectly well without that section. The court should cut out only the unconstitutional search power and leave the rest of the law standing, rather than invalidate the whole package.",
+    "R8": "A city deliberately segregated its schools, and the effects cannot realistically be undone using only schools inside the city. Nearby suburban districts did not participate in the segregation, but including them in a regional attendance plan would make desegregation far more effective. A court should be allowed to require those suburban districts to participate even though they were not themselves found to have violated the Constitution.",
+    "R9": "A state repeatedly violates people’s gun rights by delaying lawful handgun permits for months without justification. Narrow court orders have failed because officials keep inventing new reasons for delay. The Constitution does not itself require permits to be issued within 30 days, but a judge should be allowed to impose a 30-day deadline anyway as a protective rule to make sure the constitutional violations actually stop.",
+    "R10": "A state repeatedly violates people’s voting rights by leaving valid voter-registration applications unresolved until after elections. Narrow court orders have failed because officials keep inventing new administrative reasons for delay. The Constitution does not itself require registrations to be approved within 30 days, but a judge should be allowed to impose a 30-day deadline anyway as a protective rule to make sure the constitutional violations actually stop.",
+    "R11": "A state law has several constitutionally doubtful provisions, but striking one specific provision would fully resolve the plaintiffs’ injury. The court should strike only that provision and leave the broader questions about the rest of the law for future cases.",
+    "O1": "When the Constitution permits more than one reasonable interpretation, elected lawmakers are entitled to choose among them; judges should invalidate their choice only when it falls outside the range of reasonable constitutional judgment. The whole point is that judicial review is not ordinary error correction.",
+    "O2": "When democratic institutions are functioning and citizens sincerely disagree about what rights require, that disagreement should ordinarily be settled through representative politics rather than by giving unelected judges the final word.",
+    "O3": "When a court strikes down an unconstitutional law, it is not placing judges above the people; it is enforcing the people’s higher constitutional command against the temporary choices of their elected representatives.",
+    "O4": "Constitutional rights matter most when the political majority wants to violate them; overwhelming democratic support for a law is therefore no reason for courts to become more deferential.",
+    "O5": "Judges have no special moral expertise that makes five unelected lawyers better than a functioning democracy at deciding difficult questions about liberty, equality, and fairness.",
+    "O6": "A supreme court holds that a popular law violates freedom of expression. The legislature publicly considers the ruling, holds another vote, and reenacts the same law by a clear majority for five years, after which it must vote again if it wants the law to continue. A constitutional system should allow that: courts should force legislatures to confront rights objections, but judges should not necessarily have the final word.",
+    "O7": "A deeply divisive constitutional issue reaches the Supreme Court, but the case can be dismissed on a narrow procedural ground without deciding the constitutional question. Millions of people want a definitive answer now. The Court should avoid deciding anyway, giving elected institutions and public debate more time to work before nine judges impose a national constitutional settlement.",
+    "O8": "Everyone agrees that a disputed law turns on a genuine, reasonable disagreement about the meaning of a constitutional right. The legislature debates that right openly and passes the law after an election fought largely over the issue. The Supreme Court then strikes it down 5–4. There is no obvious democratic reason why the majority vote of five unelected judges should have greater authority than the majority vote of elected representatives on a question where both answers are reasonable.",
+    "O9": "A state constitution protects “personal liberty,” but reasonable judges disagree about whether that includes a right to abortion. After an election fought almost entirely over the issue, the legislature passes a 15-week abortion ban. If both constitutional readings are genuinely reasonable, courts should uphold the law rather than substitute their own view of liberty for the electorate’s.",
+    "O10": "After a mass shooting, 80% of voters approve a law banning ordinary handguns in the home. The state constitution protects an individual right to keep and bear arms, and judges reasonably conclude that the right includes ordinary handguns. The court should strike the law down even though an overwhelming majority deliberately voted for it.",
+    "O11": "A law restricting an unpopular group's speech is debated for months, becomes the central issue in an election, wins a large majority, and is reenacted after the state supreme court warns that it may violate free speech. If the justices ultimately conclude that the law does violate the constitutional right, all that democratic deliberation should make no difference: the law still has to fall.",
+    "O12": "A judge who repeatedly strikes down popular laws on debatable constitutional grounds should be removable by the voters at the next election. Judicial independence should protect honest judging, not insulate judges from democratic accountability forever.",
+    "O13": "Judges need secure tenure precisely so they can enforce constitutional rights when doing so is deeply unpopular; if judges can lose their jobs for protecting an unpopular person or minority, constitutional rights become dependent on majority approval.",
+    "E1": "Congress gives the President emergency authority to raise tariffs quickly during a trade crisis, but reserves the right for either house of Congress acting alone to cancel any tariff increase. That is a sensible check on delegated power, even though the Constitution normally requires both houses and the President to make or repeal federal law.",
+    "E2": "A special prosecutor is investigating the President and senior White House officials. To prevent the President from simply firing the prosecutor, Congress allows removal only for serious misconduct or failure to do the job. That protection is constitutional because an investigation of the President cannot be meaningfully independent if the President can end it at will.",
+    "E3": "Congress tells an environmental agency to set whatever nationwide pollution limits it considers “necessary to protect public health while avoiding unreasonable economic costs.” Even if experts are better equipped to make those judgments, Congress itself should make the major policy choices rather than hand such broad lawmaking discretion to an executive agency.",
+    "E4": "Congress passes a spending bill containing hundreds of individual projects, then gives the President power to cancel particular projects after signing the bill. Allowing the President to remove wasteful spending is not enough to justify letting one branch effectively rewrite legislation after it has passed through the constitutionally prescribed process.",
+    "E5": "Congress creates a financial regulator that writes rules, investigates violations, prosecutes companies, and decides many enforcement cases internally. Concentrating all of those functions in one agency is acceptable if courts remain available for meaningful review and the arrangement makes a complicated regulatory system workable.",
+    "E6": "During a severe national emergency, following the ordinary division of powers would make the government respond substantially more slowly. The branches should still use the constitutionally assigned procedures rather than treat necessity or efficiency as permission to blur those boundaries.",
+    "E7": "Separation of powers is violated only when an arrangement seriously threatens one branch’s independence or concentrates power dangerously; overlap between legislative, executive, and judicial functions is not itself a constitutional problem.",
+    "F1": "General rules constrain judges, improve predictability, and treat like cases alike. Even though really straightforward and broad rules can produce ugly edge cases, they are vastly superior to the alternative.",
+    "F3": "The point of a legal rule is that it sometimes requires the same answer even when the particular circumstances make another answer seem fairer; because if every compelling circumstance creates an exception, there stops being a rule entirely.",
+    "F4": "Legal questions are more about categories than balancing: you fight over whether facts fit a category and know your answer from which side it falls on, rather than fighting over how to weigh specific values at hand.",
+    "F5": "Judges should not be able to hide behind made-up rules and say \"sorry, my hands are tied.\" They should take all the facts into consideration at all times and do everything in their ability to weigh all of those facts into their decision. Ultimately they have full responsibility for an individual decision, and need to act like it.",
+    "F6": "A benefits law gives people exactly 30 days to appeal a denial. A government employee mistakenly tells an elderly woman she has 45 days, so she files on day 40 and loses benefits she needs for rent and medicine. Courts should be allowed to excuse late filings when enforcing the deadline would be unfair or they have \"good cause.\"",
+    "F7": "A benefits law gives people exactly 30 days to appeal, but courts may excuse a late filing whenever they think there is \"good cause.\" An audit finds that judges routinely accept white claimants' excuses while rejecting essentially identical excuses from Black claimants. The 30-day deadline should be enforced strictly for everyone rather than leave room for that kind of discretionary judgment.",
+    "F8": "A state has a rule that anyone who commits a crime before age 18 must be sentenced as a juvenile and cannot receive adult sentencing enhancements. This is good: judges should not get to decide that one child was unusually mature, vicious, or “adult enough” for adult punishment while another was not. The state has also found serious racial and class disparities under discretionary transfer systems, where wealthy white teenagers were much more often judged “still children” than otherwise similar poor or Black teenagers. The fixed age rule is preferable because punishment this serious should not depend on a judge’s subjective assessment of a child.",
+    "F9": "Two teenagers commit the same violent crime together. One is 17 years and 350 days old and planned the attack, carried the weapon, deliberately hurt the victim, and added needless cruelty. The other turned 18 the day before, played a minor role, tried to stop the attack, and has no prior record. Both are convicted, but the state’s bright-line age rule means only the 18 year old will serve substantial time while the 17 year old gets a slap on the wrist. This is bad, the court should have discretion to make sure similar cases are getting similar results, and unfair outcomes like this are corrected for on the margins."
+  },
+  "diagnosticAnswerPlan": {
+    "D-SEP1": {
+      "value": 2,
+      "rationale": "Allow accountable administrative flexibility and assigned independence, preserve prescribed procedures, and retain independent judicial interpretation of legal limits.",
+      "prompt": "Congress can assign an executive officer a judgment to make under a law without allowing the President to replace that officer's lawful decision with the President's own. Being responsible for executing the law does not mean controlling every judgment made under it."
+    },
+    "D-SEP2": {
+      "value": 3,
+      "rationale": "Allow accountable administrative flexibility and assigned independence, preserve prescribed procedures, and retain independent judicial interpretation of legal limits.",
+      "prompt": "When an agency's authority depends on genuinely ambiguous statutory language, a judge should enforce the judge's own best interpretation even if the agency has a different, equally reasonable interpretation informed by greater subject-matter expertise. Deciding the law's limits is the court's responsibility."
+    },
+    "D-SEP3": {
+      "value": -2,
+      "rationale": "Allow accountable administrative flexibility and assigned independence, preserve prescribed procedures, and retain independent judicial interpretation of legal limits.",
+      "prompt": "Even if Congress clearly and deliberately authorizes an agency to make major policy choices under a broad standard, courts should invalidate that delegation: some lawmaking decisions must constitutionally remain with Congress, no matter how unambiguous its authorization."
+    },
+    "D-MET1": {
+      "value": 2,
+      "rationale": "Allow accountable administrative flexibility and assigned independence, preserve prescribed procedures, and retain independent judicial interpretation of legal limits.",
+      "prompt": "The Constitution can require an accountable system of supervision over administration—especially a real duty to ensure lawful execution—without giving the President authority to replace every lawful judgment that Congress assigned to subordinate officials. Constitutional supervision and presidential control are not the same thing."
+    },
+    "D-SEP4": {
+      "value": -2,
+      "rationale": "Allow accountable administrative flexibility and assigned independence, preserve prescribed procedures, and retain independent judicial interpretation of legal limits.",
+      "prompt": "The government should not impose serious civil penalties through an executive agency's own adjudicators, even if Congress authorized the procedure and an independent court can review the result afterward. Deciding that kind of liability belongs to courts."
+    },
+    "D-MOR1": {
+      "value": -3,
+      "rationale": "Socially recognized sources determine validity and can incorporate moral standards. Independent moral merit alone does not confer legal status; command, hierarchy, and planning are not the defining explanation.",
+      "prompt": "Two large companies sign a voluntary contract that every constitution, statute, precedent, and accepted legal practice treats as valid. The judge personally believes the contract is immoral, but assume that this is only the judge’s own sincerely held moral view: there is no established objective moral rule against the contract, and reasonable people disagree. The court should still refuse to enforce the contract based solely on the judge’s personal moral judgment."
+    },
+    "D-PREC1": {
+      "value": -1,
+      "rationale": "Use enacted text in legal context, respect deliberate compromises, and permit institution-sensitive elaboration only in genuine legal gaps; avoid an unrestricted hierarchy-free balancing method.",
+      "prompt": "A state constitution says that newspapers may be sued for false statements under the same rules as everyone else. Fifty years ago, the state supreme court nevertheless created a special rule out of nowhere protecting investigative journalism and political criticism from inclusion in that liability. The court should now abolish it because the constitution never authorized the special protection."
+    },
+    "D-RLS1": {
+      "value": 2,
+      "rationale": "Empirical uncertainty and human influence are real but are secondary observations, not the defining normative method; abstract legal categories retain legal force.",
+      "prompt": "In genuinely hard appellate cases, legal materials often support more than one defensible answer. Which answer a judge actually chooses therefore often depends substantially on things outside legal doctrine—such as the judge’s background views, experience, politics, psychology, or sense of practical consequences."
+    },
+    "D-RLS2": {
+      "value": 1,
+      "rationale": "Empirical uncertainty and human influence are real but are secondary observations, not the defining normative method; abstract legal categories retain legal force.",
+      "prompt": "A theory of judging that studies only statutes, precedents, and legal reasoning misses an important part of how courts actually work. Predicting hard cases also requires empirical knowledge about judges and the institutions around them."
+    },
+    "D-RLS3": {
+      "value": 1,
+      "rationale": "Empirical uncertainty and human influence are real but are secondary observations, not the defining normative method; abstract legal categories retain legal force.",
+      "prompt": "A judge may sincerely describe a difficult decision as compelled by legal doctrine even when equally respectable legal arguments supported the opposite result and nonlegal considerations did much of the actual deciding."
+    },
+    "D-RLS4": {
+      "value": 2,
+      "rationale": "Empirical uncertainty and human influence are real but are secondary observations, not the defining normative method; abstract legal categories retain legal force.",
+      "prompt": "Even if appellate legal doctrine became much clearer, court outcomes would remain deeply uncertain because trials depend on contested facts, witness credibility, memory, and the individual psychology of judges and juries."
+    },
+    "D-RLS5": {
+      "value": -1,
+      "rationale": "Empirical uncertainty and human influence are real but are secondary observations, not the defining normative method; abstract legal categories retain legal force.",
+      "prompt": "When a legal argument turns on an abstract label like 'property,' 'corporation,' or 'jurisdiction,' the judge should translate that label into the concrete conduct, social consequences, and policy choices it represents rather than letting the label itself decide the case."
+    },
+    "D-ORI1": {
+      "value": 3,
+      "rationale": "Original public meaning independently binds; construction is legitimate only within genuinely unresolved meaning. Private intent or historically privileged methods do not automatically displace communicated meaning.",
+      "prompt": "Suppose the public meaning of a constitutional provision at ratification clearly points one way, but reliable private records show that its drafters intended something different. The public meaning should control."
+    },
+    "D-ORI2": {
+      "value": -1,
+      "rationale": "Original public meaning independently binds; construction is legitimate only within genuinely unresolved meaning. Private intent or historically privileged methods do not automatically displace communicated meaning.",
+      "prompt": "The Constitution should be interpreted using the legal rules and interpretive methods that were accepted when it was adopted, even when those historical methods produce a different answer from simply asking what the words meant to an ordinary reader."
+    },
+    "D-ORI3": {
+      "value": 3,
+      "rationale": "Original public meaning independently binds; construction is legitimate only within genuinely unresolved meaning. Private intent or historically privileged methods do not automatically displace communicated meaning.",
+      "prompt": "When the Constitution’s fixed original meaning genuinely leaves a question unresolved, later generations may legitimately develop constitutional doctrine within that unresolved space without changing the Constitution’s original meaning."
+    },
+    "D-ORI4": {
+      "value": -3,
+      "rationale": "Original public meaning independently binds; construction is legitimate only within genuinely unresolved meaning. Private intent or historically privileged methods do not automatically displace communicated meaning.",
+      "prompt": "Original intent should control because interpreting a text means recovering what its authors intended to communicate, even if that approach sometimes produces results that are not especially deferential to legislatures."
+    },
+    "D-ORI5": {
+      "value": 2,
+      "rationale": "Original public meaning independently binds; construction is legitimate only within genuinely unresolved meaning. Private intent or historically privileged methods do not automatically displace communicated meaning.",
+      "prompt": "When a constitutional phrase is ambiguous, judges should give substantial weight to how the Constitution uses the same or related words elsewhere and to how the provision fits the document’s overall structure, even if an isolated reading of the clause points another way."
+    },
+    "D-ORI6": {
+      "value": 1,
+      "rationale": "Original public meaning independently binds; construction is legitimate only within genuinely unresolved meaning. Private intent or historically privileged methods do not automatically displace communicated meaning.",
+      "prompt": "Originalism should ultimately ask what law the Constitution originally made, not merely what its words communicated to an ordinary reader. That inquiry can include background legal rules of interpretation and any lawful mechanisms the original legal system provided for later legal change."
+    },
+    "D-ORI7": {
+      "value": 3,
+      "rationale": "Original public meaning independently binds; construction is legitimate only within genuinely unresolved meaning. Private intent or historically privileged methods do not automatically displace communicated meaning.",
+      "prompt": "Even if no Supreme Court precedent instructed judges to use founding-era history, the Constitution's original public meaning would still independently be the governing legal meaning today because that is what the Constitution itself means—not merely because existing doctrine tells courts to use that method."
+    },
+    "D-POS1": {
+      "value": 3,
+      "rationale": "Socially recognized sources determine validity and can incorporate moral standards. Independent moral merit alone does not confer legal status; command, hierarchy, and planning are not the defining explanation.",
+      "prompt": "A legal system can make moral correctness part of its own test for legal validity—for example, by adopting a constitutional rule that no law is valid unless it respects human dignity. Morality matters there because the legal system’s accepted rule itself points to that moral standard."
+    },
+    "D-POS2": {
+      "value": 2,
+      "rationale": "Socially recognized sources determine validity and can incorporate moral standards. Independent moral merit alone does not confer legal status; command, hierarchy, and planning are not the defining explanation.",
+      "prompt": "Even if judges sometimes could identify morally better answers, a legal system generally works better when courts treat enacted and otherwise recognized legal sources as settling the law and leave contested moral lawmaking to politically accountable institutions."
+    },
+    "D-AUS1": {
+      "value": -3,
+      "rationale": "Socially recognized sources determine validity and can incorporate moral standards. Independent moral merit alone does not confer legal status; command, hierarchy, and planning are not the defining explanation.",
+      "prompt": "At bottom, law is best understood as commands issued by a determinate political sovereign to subjects who habitually obey, with the prospect of sanctions supplying the command's characteristic legal force."
+    },
+    "D-KEL1": {
+      "value": -2,
+      "rationale": "Socially recognized sources determine validity and can incorporate moral standards. Independent moral merit alone does not confer legal status; command, hierarchy, and planning are not the defining explanation.",
+      "prompt": "A legal norm is valid because another legal norm authorizes its creation, producing a hierarchy of legal validity that ultimately depends on a presupposed basic norm. The legal system's unity is therefore fundamentally normative rather than just a sociological fact about which rules officials accept."
+    },
+    "D-SHA1": {
+      "value": -1,
+      "rationale": "Socially recognized sources determine validity and can incorporate moral standards. Independent moral merit alone does not confer legal status; command, hierarchy, and planning are not the defining explanation.",
+      "prompt": "A legal system is best understood as a system of shared social plans: legal institutions create and apply plans for governing conduct, and the master plan of the system explains legal authority better than treating law simply as commands or as a social rule officials happen to accept."
+    },
+    "D-NP1": {
+      "value": 2,
+      "rationale": "Socially recognized sources determine validity and can incorporate moral standards. Independent moral merit alone does not confer legal status; command, hierarchy, and planning are not the defining explanation.",
+      "prompt": "Natural law does not give judges a general license to replace clear positive law with whichever result seems morally best. One important purpose of positive law is to authoritatively settle questions that practical morality itself leaves open."
+    },
+    "D-NL2": {
+      "value": -3,
+      "rationale": "Socially recognized sources determine validity and can incorporate moral standards. Independent moral merit alone does not confer legal status; command, hierarchy, and planning are not the defining explanation.",
+      "prompt": "Legal validity itself partly depends on moral merit: at least some sufficiently serious normative defects can make a purported rule legally invalid even when every ordinary social source and institutional practice treats it as valid. The defect is not merely that the rule is bad law; in such cases it fails as law."
+    },
+    "D-NP2": {
+      "value": -2,
+      "rationale": "Socially recognized sources determine validity and can incorporate moral standards. Independent moral merit alone does not confer legal status; command, hierarchy, and planning are not the defining explanation.",
+      "prompt": "When statutes and precedents do not uniquely settle a hard case, the legal answer can be the moral principle that best fits and justifies the legal system as a whole. The judge can be discovering part of the existing law rather than creating a new rule."
+    },
+    "D-NP4": {
+      "value": -3,
+      "rationale": "Socially recognized sources determine validity and can incorporate moral standards. Independent moral merit alone does not confer legal status; command, hierarchy, and planning are not the defining explanation.",
+      "prompt": "When legislatures and courts act, what matters legally is the change those institutional actions make to people's actual moral rights and obligations. Those resulting moral obligations are the law; they are not merely moral reasons for obeying a separate source-based legal rule."
+    },
+    "D-NP5": {
+      "value": -3,
+      "rationale": "Socially recognized sources determine validity and can incorporate moral standards. Independent moral merit alone does not confer legal status; command, hierarchy, and planning are not the defining explanation.",
+      "prompt": "A person who goes to court claiming a legal right is ultimately claiming a genuine moral right that the court should recognize; there is no separate kind of 'legal right' whose existence is independent of the parties’ real moral rights and responsibilities."
+    },
+    "D-NP6": {
+      "value": -3,
+      "rationale": "Socially recognized sources determine validity and can incorporate moral standards. Independent moral merit alone does not confer legal status; command, hierarchy, and planning are not the defining explanation.",
+      "prompt": "An unjust enactment can still be law in ordinary cases, but there is a point of sufficiently extreme injustice at which the purported rule loses its legal status rather than merely becoming a gravely immoral law."
+    },
+    "D-NP3": {
+      "value": 1,
+      "rationale": "Socially recognized sources determine validity and can incorporate moral standards. Independent moral merit alone does not confer legal status; command, hierarchy, and planning are not the defining explanation.",
+      "prompt": "A system that rules mainly through secret, retroactive, contradictory, or constantly changing commands can fail as law in an important sense even if every command came from the formally authorized ruler."
+    },
+    "D-MAJ1": {
+      "value": -1,
+      "rationale": "Public debate and precedent can influence legitimate construction, but ordinary political change does not alter a clearly fixed original constitutional constraint.",
+      "prompt": "Even after the Supreme Court announces what the Constitution means, Congress and the President remain entitled to form and act on their own good-faith constitutional interpretations rather than treating the Court’s interpretation as uniquely authoritative."
+    },
+    "D-MAJ2": {
+      "value": -2,
+      "rationale": "Public debate and precedent can influence legitimate construction, but ordinary political change does not alter a clearly fixed original constitutional constraint.",
+      "prompt": "Constitutional meaning should also remain open to development through ordinary democratic politics, social movements, elections, and sustained public contestation rather than becoming the exclusive property of courts or any single branch of government."
+    },
+    "D-ELY1": {
+      "value": 1,
+      "rationale": "Courts independently enforce legal rights and tailor remedies to institutional problems; democratic malfunction matters but is not the sole ground for review or an automatic legislative override.",
+      "prompt": "Courts should ordinarily defer to democratic government, but intervene much more aggressively when the political process itself is distorted or when a minority is effectively shut out of ordinary political bargaining."
+    },
+    "D-WAL1": {
+      "value": -2,
+      "rationale": "Courts independently enforce legal rights and tailor remedies to institutional problems; democratic malfunction matters but is not the sole ground for review or an automatic legislative override.",
+      "prompt": "When democratic institutions are functioning well and citizens disagree in good faith about what rights require, the strongest reason for legislative rather than judicial finality is that elected institutions have the better claim to make the community’s authoritative decision."
+    },
+    "D-RESP1": {
+      "value": 2,
+      "rationale": "Courts independently enforce legal rights and tailor remedies to institutional problems; democratic malfunction matters but is not the sole ground for review or an automatic legislative override.",
+      "prompt": "When democratic institutions malfunction, courts should calibrate how strongly they intervene to the particular problem: stronger remedies for entrenched exclusion or monopoly, more limited or dialogic intervention for temporary blind spots or inertia, and restraint where courts lack comparative capacity."
+    },
+    "D-DYN1": {
+      "value": -2,
+      "rationale": "Use enacted text in legal context, respect deliberate compromises, and permit institution-sensitive elaboration only in genuine legal gaps; avoid an unrestricted hierarchy-free balancing method.",
+      "prompt": "An old statute leaves a genuine choice between interpretations. Later legal developments and changes in social conditions may justify interpreting it differently today, even without an amendment. Those developments can help shape the statute's legal meaning, not merely provide new facts to which its fixed original meaning applies."
+    },
+    "D-TXT1": {
+      "value": 3,
+      "rationale": "Use enacted text in legal context, respect deliberate compromises, and permit institution-sensitive elaboration only in genuine legal gaps; avoid an unrestricted hierarchy-free balancing method.",
+      "prompt": "When two readings of enacted text are linguistically plausible, the court should choose the better reading by asking how the words work in the whole statute and in ordinary usage, rather than treating every awkward omission or compromise as a reason to stop with the more literal-looking reading."
+    },
+    "D-GRD1": {
+      "value": -2,
+      "rationale": "Courts independently enforce legal rights and tailor remedies to institutional problems; democratic malfunction matters but is not the sole ground for review or an automatic legislative override.",
+      "prompt": "A court's rights ruling should have immediate legal force, but the constitutional system may deliberately give the legislature a prescribed way to reconsider the rights issue and enact a contrary rule without using the constitutional-amendment process. Courts should judge rights independently, yet neither branch must possess an entrenched monopoly on the final word."
+    },
+    "D-MON1": {
+      "value": 3,
+      "rationale": "Repair the proven violation with necessary and bounded measures; distinguish implementing rules from rights, avoid automatic universal scope, and do not redefine rights merely to cheapen remedies.",
+      "prompt": "Courts may sometimes create implementing rules that go beyond what the Constitution itself minimally requires in order to make a constitutional guarantee workable. Those judicial rules can be genuine law while remaining conceptually distinct from the underlying constitutional command and therefore potentially subject to different rules of revision or displacement."
+    },
+    "D-BRAY1": {
+      "value": 1,
+      "rationale": "Repair the proven violation with necessary and bounded measures; distinguish implementing rules from rights, avoid automatic universal scope, and do not redefine rights merely to cheapen remedies.",
+      "prompt": "Even when broader relief would solve a legal problem more efficiently, a court's equitable remedy should ordinarily remain within historically grounded forms of equitable authority and protect the parties before the court rather than become a general power to restructure legal relations for everyone affected."
+    },
+    "D-UNI1": {
+      "value": 1,
+      "rationale": "Repair the proven violation with necessary and bounded measures; distinguish implementing rules from rights, avoid automatic universal scope, and do not redefine rights merely to cheapen remedies.",
+      "prompt": "Federal equitable power is not categorically limited to protecting only the named plaintiff. When an unlawful government policy operates generally, a court may in an appropriate case lawfully issue relief that also protects affected nonparties rather than forcing each person to file a separate lawsuit."
+    },
+    "D-LEV1": {
+      "value": -2,
+      "rationale": "Repair the proven violation with necessary and bounded measures; distinguish implementing rules from rights, avoid automatic universal scope, and do not redefine rights merely to cheapen remedies.",
+      "prompt": "The practical consequences of a remedy can legitimately influence how courts define the constitutional right itself. If enforcing a broad understanding of a right would require remedies judges regard as intolerably costly or intrusive, courts may narrow the substantive right; rights and remedies can therefore adjust to one another."
+    },
+    "D-TXT2": {
+      "value": 2,
+      "rationale": "Use enacted text in legal context, respect deliberate compromises, and permit institution-sensitive elaboration only in genuine legal gaps; avoid an unrestricted hierarchy-free balancing method.",
+      "prompt": "When constitutional text states a right in categorical terms, courts should enforce that categorical command rather than convert it into a balancing test against governmental interests, even when doing so invalidates popular laws."
+    },
+    "D-INT1": {
+      "value": -2,
+      "rationale": "Use enacted text in legal context, respect deliberate compromises, and permit institution-sensitive elaboration only in genuine legal gaps; avoid an unrestricted hierarchy-free balancing method.",
+      "prompt": "When enacted words are genuinely unclear, the court’s goal should be to recover what the lawmakers who enacted them actually intended, even if that intention differs from the statute’s best objective purpose."
+    },
+    "D-INT2": {
+      "value": -2,
+      "rationale": "Use enacted text in legal context, respect deliberate compromises, and permit institution-sensitive elaboration only in genuine legal gaps; avoid an unrestricted hierarchy-free balancing method.",
+      "prompt": "If the legislature never considered the precise problem before the court, the judge should ask what the legislature would have intended had it confronted that problem, even though no actual historical intention on the point existed."
+    },
+    "D-KAT1": {
+      "value": 1,
+      "rationale": "Use enacted text in legal context, respect deliberate compromises, and permit institution-sensitive elaboration only in genuine legal gaps; avoid an unrestricted hierarchy-free balancing method.",
+      "prompt": "When statutory text is genuinely ambiguous, courts should treat reliable committee reports and other legislative materials that Congress itself uses to communicate a bill's meaning as legitimate evidence of what Congress intended, because interpretation should account for how Congress actually makes and explains law."
+    },
+    "D-CAL1": {
+      "value": -2,
+      "rationale": "Use enacted text in legal context, respect deliberate compromises, and permit institution-sensitive elaboration only in genuine legal gaps; avoid an unrestricted hierarchy-free balancing method.",
+      "prompt": "An old statute can become so badly out of step with the later legal framework that a court should not mechanically extend it forever. In an extreme case, courts may use common-law-like reasoning or a second-look device that effectively requires today's political branches to reaffirm the obsolete rule before it continues to govern."
+    },
+    "D-PRAG1": {
+      "value": 1,
+      "rationale": "Use enacted text in legal context, respect deliberate compromises, and permit institution-sensitive elaboration only in genuine legal gaps; avoid an unrestricted hierarchy-free balancing method.",
+      "prompt": "In a genuinely hard case, practical consequences and workable legal development can be independent reasons for the court’s decision, not merely evidence of what the legislature intended or what statutory purpose it pursued."
+    },
+    "D-LP1": {
+      "value": 2,
+      "rationale": "Use enacted text in legal context, respect deliberate compromises, and permit institution-sensitive elaboration only in genuine legal gaps; avoid an unrestricted hierarchy-free balancing method.",
+      "prompt": "In a hard case, one of the first legal questions should be which institution was assigned the decision and is best equipped to make it; courts should then reason from the purposes and principles appropriate to that institution’s role."
+    },
+    "D-LP2": {
+      "value": 3,
+      "rationale": "Use enacted text in legal context, respect deliberate compromises, and permit institution-sensitive elaboration only in genuine legal gaps; avoid an unrestricted hierarchy-free balancing method.",
+      "prompt": "A constitutional ruling should rest on a principle the court is prepared to apply consistently in materially similar cases even when doing so helps a different side; a result-specific rationale is not enough merely because the immediate outcome seems just."
+    },
+    "D-MAS1": {
+      "value": 2,
+      "rationale": "Use enacted text in legal context, respect deliberate compromises, and permit institution-sensitive elaboration only in genuine legal gaps; avoid an unrestricted hierarchy-free balancing method.",
+      "prompt": "An agency charged with administering a statute is not merely a policy actor waiting for courts to supply the law. Its statutory interpretation can itself be a disciplined legal enterprise, guided by institutional expertise, internal norms, reason-giving, and responsibility for making the legislative program work."
+    },
+    "D-ROM1": {
+      "value": 0,
+      "rationale": "Socially recognized sources determine validity and can incorporate moral standards. Independent moral merit alone does not confer legal status; command, hierarchy, and planning are not the defining explanation.",
+      "prompt": "A sufficiently organized institution—such as a church, union, university, professional body, or other association—can constitute a genuine legal order even if the state did not create it and does not recognize its rules as state law. The state is not the only kind of institution capable of producing law."
+    },
+    "D-GENY1": {
+      "value": 2,
+      "rationale": "Use enacted text in legal context, respect deliberate compromises, and permit institution-sensitive elaboration only in genuine legal gaps; avoid an unrestricted hierarchy-free balancing method.",
+      "prompt": "When enacted law, established custom, and other authoritative legal materials genuinely do not answer a case, the judge should openly construct the missing rule through disciplined inquiry into social facts, practical needs, equity, justice, and the nature of the legal relationship rather than pretending the answer was already contained in the text."
+    },
+    "D-EHR1": {
+      "value": 1,
+      "rationale": "Socially recognized sources determine validity and can incorporate moral standards. Independent moral merit alone does not confer legal status; command, hierarchy, and planning are not the defining explanation.",
+      "prompt": "The most important law governing much of social life can arise from the actual norms of families, associations, businesses, and communities even when those norms were never enacted by the state or announced by a court. Jurisprudence should treat that socially operative 'living law' as a central legal phenomenon."
+    },
+    "D-BLK1": {
+      "value": 2,
+      "rationale": "Use enacted text in legal context, respect deliberate compromises, and permit institution-sensitive elaboration only in genuine legal gaps; avoid an unrestricted hierarchy-free balancing method.",
+      "prompt": "A constitutional rule can be legally binding because it follows from the relationships and structure created by the Constitution as a whole, even when no single clause expressly states that rule. The constitutional architecture itself can supply the governing legal implication."
+    },
+    "D-LIV1": {
+      "value": -3,
+      "rationale": "Public debate and precedent can influence legitimate construction, but ordinary political change does not alter a clearly fixed original constitutional constraint.",
+      "prompt": "Sustained political mobilization and public constitutional argument can legitimately reshape the constitutional meaning that courts enforce over time, even though courts still retain an independent responsibility to enforce constitutional rights rather than simply following current majority opinion."
+    },
+    "D-ACK1": {
+      "value": -3,
+      "rationale": "Public debate and precedent can influence legitimate construction, but ordinary political change does not alter a clearly fixed original constitutional constraint.",
+      "prompt": "Article V amendment is not the only way Americans can legitimately make higher constitutional law. An extraordinary, sustained episode of popular mobilization that repeatedly wins elections and institutional ratification can sometimes create a constitutional settlement that courts should recognize even without a formal amendment."
+    },
+    "D-LIV2": {
+      "value": 0,
+      "rationale": "Public debate and precedent can influence legitimate construction, but ordinary political change does not alter a clearly fixed original constitutional constraint.",
+      "prompt": "A constitution may properly be interpreted as an ongoing project of transforming inherited social and political institutions toward its commitments to democracy, participation, equality, and dignity, rather than merely preserving existing legal settlements while adapting them case by case."
+    },
+    "D-HAR1": {
+      "value": -2,
+      "rationale": "Public debate and precedent can influence legitimate construction, but ordinary political change does not alter a clearly fixed original constitutional constraint.",
+      "prompt": "Constitutional liberty should develop through historically embedded traditions and the accumulated experience of the federal system: neither fixed founding-era expectations nor abstract moral reasoning should by itself determine the content of ordered liberty."
+    },
+    "D-CLC1": {
+      "value": -3,
+      "rationale": "Public debate and precedent can influence legitimate construction, but ordinary political change does not alter a clearly fixed original constitutional constraint.",
+      "prompt": "Even without a written higher-law provision expressly authorizing it, a court may treat some fundamental common-law rights as so basic to the constitutional order that Parliament cannot validly abolish them by ordinary legislation."
+    },
+    "D-PIL1": {
+      "value": 1,
+      "rationale": "Repair the proven violation with necessary and bounded measures; distinguish implementing rules from rights, avoid automatic universal scope, and do not redefine rights merely to cheapen remedies.",
+      "prompt": "When poor or otherwise disadvantaged people cannot realistically bring their own constitutional claims, courts should be willing to relax ordinary standing and filing rules—even treating letters or public-interest petitions as sufficient—to get the rights violation before the court and fashion effective relief."
+    },
+    "D-CGC1": {
+      "value": -3,
+      "rationale": "Public debate and precedent can influence legitimate construction, but ordinary political change does not alter a clearly fixed original constitutional constraint.",
+      "prompt": "Constitutional interpretation should understand public authority as ordered toward the common good of the political community, rather than treating individual autonomy or historically fixed meaning as the law’s overriding constitutional aim."
+    },
+    "D-PROP1": {
+      "value": -1,
+      "rationale": "Use enacted text in legal context, respect deliberate compromises, and permit institution-sensitive elaboration only in genuine legal gaps; avoid an unrestricted hierarchy-free balancing method.",
+      "prompt": "When government limits a constitutional right, courts should use a structured proportionality inquiry: ask whether the measure serves a proper purpose, is suitably connected to that purpose, is no more restrictive than necessary, and strikes a justified balance between the public benefit and the burden on the right."
+    },
+    "D-QC2": {
+      "value": 1,
+      "rationale": "Follow the explicit response-check instruction.",
+      "prompt": "Response check: please select Slightly Agree for this item."
+    },
+    "D-QC1": {
+      "value": -2,
+      "rationale": "Follow the explicit response-check instruction.",
+      "prompt": "Response check: please select Disagree for this item."
+    },
+    "D-SOC1": {
+      "value": 2,
+      "rationale": "Use enacted text in legal context, respect deliberate compromises, and permit institution-sensitive elaboration only in genuine legal gaps; avoid an unrestricted hierarchy-free balancing method.",
+      "prompt": "When legal doctrine leaves real room for judgment, courts should openly identify the competing social interests, examine how the rule actually operates in society, and shape the doctrine so those interests are reconciled as well as the legal materials permit."
+    },
+    "D-PLU1": {
+      "value": -2,
+      "rationale": "Use enacted text in legal context, respect deliberate compromises, and permit institution-sensitive elaboration only in genuine legal gaps; avoid an unrestricted hierarchy-free balancing method.",
+      "prompt": "Constitutional interpretation legitimately uses several different forms of argument—text, history, precedent, structure, consequences, and broader constitutional principles—and no one of those methods should control every hard case."
+    },
+    "D-PLU2": {
+      "value": -3,
+      "rationale": "Use enacted text in legal context, respect deliberate compromises, and permit institution-sensitive elaboration only in genuine legal gaps; avoid an unrestricted hierarchy-free balancing method.",
+      "prompt": "The legitimate interpretive tools do not have a fixed hierarchy. Their weight should shift with the case: text may dominate one dispute, while purpose, legal context, consequences, or policy may legitimately carry more weight in another."
+    },
+    "D-OCO1": {
+      "value": -2,
+      "rationale": "Use enacted text in legal context, respect deliberate compromises, and permit institution-sensitive elaboration only in genuine legal gaps; avoid an unrestricted hierarchy-free balancing method.",
+      "prompt": "In genuinely hard cases, I would rather decide narrowly from the concrete facts and practical circumstances than commit to a comprehensive theory that is supposed to determine the correct method across very different cases."
+    },
+    "D-PRI-source-time": {
+      "value": 2,
+      "rationale": "The predeclared defining-priority order is source, method, time, structure, posture, form, realism, then common good; these compatible commitments are compared with moderate strength.",
+      "prompt": "Both can matter. In what most defines your approach to law, deciding what counts as law in the first place is more central than deciding how constitutional meaning can change over time. Agree favors the first; disagree favors the second; neither means neither consistently defines you more."
+    },
+    "D-PRI-source-method": {
+      "value": 2,
+      "rationale": "The predeclared defining-priority order is source, method, time, structure, posture, form, realism, then common good; these compatible commitments are compared with moderate strength.",
+      "prompt": "Both can matter. In what most defines your approach to law, deciding what counts as law in the first place is more central than deciding how judges should read laws. Agree favors the first; disagree favors the second; neither means neither consistently defines you more."
+    },
+    "D-PRI-source-posture": {
+      "value": 2,
+      "rationale": "The predeclared defining-priority order is source, method, time, structure, posture, form, realism, then common good; these compatible commitments are compared with moderate strength.",
+      "prompt": "Both can matter. In what most defines your approach to law, deciding what counts as law in the first place is more central than deciding when courts should overrule elected officials. Agree favors the first; disagree favors the second; neither means neither consistently defines you more."
+    },
+    "D-PRI-source-structure": {
+      "value": 2,
+      "rationale": "The predeclared defining-priority order is source, method, time, structure, posture, form, realism, then common good; these compatible commitments are compared with moderate strength.",
+      "prompt": "Both can matter. In what most defines your approach to law, deciding what counts as law in the first place is more central than deciding which powers belong to each branch of government. Agree favors the first; disagree favors the second; neither means neither consistently defines you more."
+    },
+    "D-PRI-source-form": {
+      "value": 2,
+      "rationale": "The predeclared defining-priority order is source, method, time, structure, posture, form, realism, then common good; these compatible commitments are compared with moderate strength.",
+      "prompt": "Both can matter. In what most defines your approach to law, deciding what counts as law in the first place is more central than choosing between firm rules and case-by-case judgment. Agree favors the first; disagree favors the second; neither means neither consistently defines you more."
+    },
+    "D-PRI-source-realism": {
+      "value": 2,
+      "rationale": "The predeclared defining-priority order is source, method, time, structure, posture, form, realism, then common good; these compatible commitments are compared with moderate strength.",
+      "prompt": "Both can matter. In what most defines your approach to law, deciding what counts as law in the first place is more central than explaining what actually drives judges’ decisions. Agree favors the first; disagree favors the second; neither means neither consistently defines you more."
+    },
+    "D-PRI-source-common_good": {
+      "value": 2,
+      "rationale": "The predeclared defining-priority order is source, method, time, structure, posture, form, realism, then common good; these compatible commitments are compared with moderate strength.",
+      "prompt": "Both can matter. In what most defines your approach to law, deciding what counts as law in the first place is more central than directing public power toward the common good of the political community. Agree favors the first; disagree favors the second; neither means neither consistently defines you more."
+    },
+    "D-PRI-time-method": {
+      "value": -2,
+      "rationale": "The predeclared defining-priority order is source, method, time, structure, posture, form, realism, then common good; these compatible commitments are compared with moderate strength.",
+      "prompt": "Both can matter. In what most defines your approach to law, deciding how constitutional meaning can change over time is more central than deciding how judges should read laws. Agree favors the first; disagree favors the second; neither means neither consistently defines you more."
+    },
+    "D-PRI-time-posture": {
+      "value": 2,
+      "rationale": "The predeclared defining-priority order is source, method, time, structure, posture, form, realism, then common good; these compatible commitments are compared with moderate strength.",
+      "prompt": "Both can matter. In what most defines your approach to law, deciding how constitutional meaning can change over time is more central than deciding when courts should overrule elected officials. Agree favors the first; disagree favors the second; neither means neither consistently defines you more."
+    },
+    "D-PRI-time-structure": {
+      "value": 2,
+      "rationale": "The predeclared defining-priority order is source, method, time, structure, posture, form, realism, then common good; these compatible commitments are compared with moderate strength.",
+      "prompt": "Both can matter. In what most defines your approach to law, deciding how constitutional meaning can change over time is more central than deciding which powers belong to each branch of government. Agree favors the first; disagree favors the second; neither means neither consistently defines you more."
+    },
+    "D-PRI-time-form": {
+      "value": 2,
+      "rationale": "The predeclared defining-priority order is source, method, time, structure, posture, form, realism, then common good; these compatible commitments are compared with moderate strength.",
+      "prompt": "Both can matter. In what most defines your approach to law, deciding how constitutional meaning can change over time is more central than choosing between firm rules and case-by-case judgment. Agree favors the first; disagree favors the second; neither means neither consistently defines you more."
+    },
+    "D-PRI-time-realism": {
+      "value": 2,
+      "rationale": "The predeclared defining-priority order is source, method, time, structure, posture, form, realism, then common good; these compatible commitments are compared with moderate strength.",
+      "prompt": "Both can matter. In what most defines your approach to law, deciding how constitutional meaning can change over time is more central than explaining what actually drives judges’ decisions. Agree favors the first; disagree favors the second; neither means neither consistently defines you more."
+    },
+    "D-PRI-time-common_good": {
+      "value": 2,
+      "rationale": "The predeclared defining-priority order is source, method, time, structure, posture, form, realism, then common good; these compatible commitments are compared with moderate strength.",
+      "prompt": "Both can matter. In what most defines your approach to law, deciding how constitutional meaning can change over time is more central than directing public power toward the common good of the political community. Agree favors the first; disagree favors the second; neither means neither consistently defines you more."
+    },
+    "D-PRI-method-posture": {
+      "value": 2,
+      "rationale": "The predeclared defining-priority order is source, method, time, structure, posture, form, realism, then common good; these compatible commitments are compared with moderate strength.",
+      "prompt": "Both can matter. In what most defines your approach to law, deciding how judges should read laws is more central than deciding when courts should overrule elected officials. Agree favors the first; disagree favors the second; neither means neither consistently defines you more."
+    },
+    "D-PRI-method-structure": {
+      "value": 2,
+      "rationale": "The predeclared defining-priority order is source, method, time, structure, posture, form, realism, then common good; these compatible commitments are compared with moderate strength.",
+      "prompt": "Both can matter. In what most defines your approach to law, deciding how judges should read laws is more central than deciding which powers belong to each branch of government. Agree favors the first; disagree favors the second; neither means neither consistently defines you more."
+    },
+    "D-PRI-method-form": {
+      "value": 2,
+      "rationale": "The predeclared defining-priority order is source, method, time, structure, posture, form, realism, then common good; these compatible commitments are compared with moderate strength.",
+      "prompt": "Both can matter. In what most defines your approach to law, deciding how judges should read laws is more central than choosing between firm rules and case-by-case judgment. Agree favors the first; disagree favors the second; neither means neither consistently defines you more."
+    },
+    "D-PRI-method-realism": {
+      "value": 2,
+      "rationale": "The predeclared defining-priority order is source, method, time, structure, posture, form, realism, then common good; these compatible commitments are compared with moderate strength.",
+      "prompt": "Both can matter. In what most defines your approach to law, deciding how judges should read laws is more central than explaining what actually drives judges’ decisions. Agree favors the first; disagree favors the second; neither means neither consistently defines you more."
+    },
+    "D-PRI-method-common_good": {
+      "value": 2,
+      "rationale": "The predeclared defining-priority order is source, method, time, structure, posture, form, realism, then common good; these compatible commitments are compared with moderate strength.",
+      "prompt": "Both can matter. In what most defines your approach to law, deciding how judges should read laws is more central than directing public power toward the common good of the political community. Agree favors the first; disagree favors the second; neither means neither consistently defines you more."
+    },
+    "D-PRI-posture-structure": {
+      "value": -2,
+      "rationale": "The predeclared defining-priority order is source, method, time, structure, posture, form, realism, then common good; these compatible commitments are compared with moderate strength.",
+      "prompt": "Both can matter. In what most defines your approach to law, deciding when courts should overrule elected officials is more central than deciding which powers belong to each branch of government. Agree favors the first; disagree favors the second; neither means neither consistently defines you more."
+    },
+    "D-PRI-posture-form": {
+      "value": 2,
+      "rationale": "The predeclared defining-priority order is source, method, time, structure, posture, form, realism, then common good; these compatible commitments are compared with moderate strength.",
+      "prompt": "Both can matter. In what most defines your approach to law, deciding when courts should overrule elected officials is more central than choosing between firm rules and case-by-case judgment. Agree favors the first; disagree favors the second; neither means neither consistently defines you more."
+    },
+    "D-PRI-posture-realism": {
+      "value": 2,
+      "rationale": "The predeclared defining-priority order is source, method, time, structure, posture, form, realism, then common good; these compatible commitments are compared with moderate strength.",
+      "prompt": "Both can matter. In what most defines your approach to law, deciding when courts should overrule elected officials is more central than explaining what actually drives judges’ decisions. Agree favors the first; disagree favors the second; neither means neither consistently defines you more."
+    },
+    "D-PRI-posture-common_good": {
+      "value": 2,
+      "rationale": "The predeclared defining-priority order is source, method, time, structure, posture, form, realism, then common good; these compatible commitments are compared with moderate strength.",
+      "prompt": "Both can matter. In what most defines your approach to law, deciding when courts should overrule elected officials is more central than directing public power toward the common good of the political community. Agree favors the first; disagree favors the second; neither means neither consistently defines you more."
+    },
+    "D-PRI-structure-form": {
+      "value": 2,
+      "rationale": "The predeclared defining-priority order is source, method, time, structure, posture, form, realism, then common good; these compatible commitments are compared with moderate strength.",
+      "prompt": "Both can matter. In what most defines your approach to law, deciding which powers belong to each branch of government is more central than choosing between firm rules and case-by-case judgment. Agree favors the first; disagree favors the second; neither means neither consistently defines you more."
+    },
+    "D-PRI-structure-realism": {
+      "value": 2,
+      "rationale": "The predeclared defining-priority order is source, method, time, structure, posture, form, realism, then common good; these compatible commitments are compared with moderate strength.",
+      "prompt": "Both can matter. In what most defines your approach to law, deciding which powers belong to each branch of government is more central than explaining what actually drives judges’ decisions. Agree favors the first; disagree favors the second; neither means neither consistently defines you more."
+    },
+    "D-PRI-structure-common_good": {
+      "value": 2,
+      "rationale": "The predeclared defining-priority order is source, method, time, structure, posture, form, realism, then common good; these compatible commitments are compared with moderate strength.",
+      "prompt": "Both can matter. In what most defines your approach to law, deciding which powers belong to each branch of government is more central than directing public power toward the common good of the political community. Agree favors the first; disagree favors the second; neither means neither consistently defines you more."
+    },
+    "D-PRI-form-realism": {
+      "value": 2,
+      "rationale": "The predeclared defining-priority order is source, method, time, structure, posture, form, realism, then common good; these compatible commitments are compared with moderate strength.",
+      "prompt": "Both can matter. In what most defines your approach to law, choosing between firm rules and case-by-case judgment is more central than explaining what actually drives judges’ decisions. Agree favors the first; disagree favors the second; neither means neither consistently defines you more."
+    },
+    "D-PRI-form-common_good": {
+      "value": 2,
+      "rationale": "The predeclared defining-priority order is source, method, time, structure, posture, form, realism, then common good; these compatible commitments are compared with moderate strength.",
+      "prompt": "Both can matter. In what most defines your approach to law, choosing between firm rules and case-by-case judgment is more central than directing public power toward the common good of the political community. Agree favors the first; disagree favors the second; neither means neither consistently defines you more."
+    },
+    "D-PRI-realism-common_good": {
+      "value": 2,
+      "rationale": "The predeclared defining-priority order is source, method, time, structure, posture, form, realism, then common good; these compatible commitments are compared with moderate strength.",
+      "prompt": "Both can matter. In what most defines your approach to law, explaining what actually drives judges’ decisions is more central than directing public power toward the common good of the political community. Agree favors the first; disagree favors the second; neither means neither consistently defines you more."
+    }
+  }
+}

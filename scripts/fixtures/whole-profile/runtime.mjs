@@ -1,6 +1,7 @@
 import fs from 'node:fs';
 import vm from 'node:vm';
-export const runtimeFiles=['axes.js','questions.js','scoring.js','result_catalog.js','diagnostics.js','profiles.js','result_content.js','classification.js','result_narrative.js'];
+import {selectLegacy08Instrument} from '../instrument-context.mjs';
+export const runtimeFiles=['axes.js','questions.js','scoring.js','result_compatibility.js','result_catalog.js','diagnostics.js','profiles.js','result_content.js','classification.js','result_narrative.js','axis_labels.js'];
 class NodeStub {
   constructor(id='') {this.id=id;this.textContent='';this.innerHTML='';this.hidden=false;this.style={};this.dataset={};this.events={};this.attributes={};this.scrollHeight=0;this.clientHeight=1000;this.scrollWidth=0;this.clientWidth=1000;this.classList={toggle(){},add(){},remove(){}};}
   setAttribute(k,v){this.attributes[k]=v;}
@@ -31,6 +32,11 @@ export function runtime(root,opts={}){
  const window={innerWidth:1280,innerHeight:900,location,addEventListener(){},requestAnimationFrame(fn){fn();},confirm(){return true;},setTimeout(){}};
  const ctx=vm.createContext({console,Date:VirtualDate,Math:seededMath,URLSearchParams,URL,Blob,document,window,sessionStorage:storage,navigator:{clipboard:{async writeText(text){clipboard=text;}}},setTimeout(){}});
  const run=file=>vm.runInContext(fs.readFileSync(root+'/'+file,'utf8'),ctx,{filename:root+'/'+file,timeout:60000});
- runtimeFiles.forEach(run);
+ runtimeFiles.forEach(file=>{
+   // Reproduce the historical instrument without current answer-label semantics.
+   if(file==='axis_labels.js' && opts.instrumentVersion==='0.8') return;
+   run(file);
+   if(file==='questions.js' && opts.instrumentVersion==='0.8') selectLegacy08Instrument(ctx);
+ });
  return{ctx,run,nodes,buttons,storage,location,clipboard:()=>clipboard,advance:(ms=20000)=>virtualMs+=ms,newDocument:()=>{const d=makeDocument();ctx.document=d.document;return d;}};
 }

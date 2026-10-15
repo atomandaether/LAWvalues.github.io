@@ -59,7 +59,9 @@ for (const item of questions) {
 
 // Verify the Reconstruction-meaning anchor and the genuinely distinct moral
 // premises of S9 (personal moral discretion) and S10 (objective moral law).
-const t1 = questions.find(q=>q.id==="T1");
+const legacyQuestions = context.LAW_LEGACY_QUESTIONS;
+assert.equal(legacyQuestions.length,88,"Preserve all historical core questions");
+const t1 = legacyQuestions.find(q=>q.id==="T1");
 const s10 = questions.find(q=>q.id==="S10");
 const oldSource = context.LAW_DIAGNOSTIC_QUESTIONS.find(q=>q.id==="D-MOR1");
 const oldPrecedent = context.LAW_DIAGNOSTIC_QUESTIONS.find(q=>q.id==="D-PREC1");
@@ -99,7 +101,7 @@ assert.equal(scoring.signalFor(e3, "agree", "post"), 0.15,
 assert.equal(scoring.signalFor(f5, "agree", "post"), 0,
   "Individualized adjudicative responsibility should not itself imply Countermajoritarian posture");
 
-const t8 = questions.find((item) => item.id === "T8");
+const t8 = legacyQuestions.find((item) => item.id === "T8");
 assert.ok(scoring.signalFor(t8, "agree", "time") > 0, "Principle originalism should register as historical");
 assert.equal(scoring.signalFor(t8, "disagree", "time"), 0,
   "Rejecting principle originalism should not automatically count as living constitutionalism");
@@ -166,21 +168,22 @@ for (const axis of axes) {
   }
 }
 
-// Every diagnostic and response, including skip, must leave all axis details
-// identical to core-only scoring. Exercise neutral, directional, and sparse core.
+// The historical 0.8 instrument retains its exhaustive core-only guarantee.
+// Current 0.9 bounded, named contribution reinterpretations have separate tests.
+// Every diagnostic and response, including skip, leaves historical scores intact.
 for (const coreResponses of [responsesFrom(() => 0), responsesFrom(() => 3),
   Object.fromEntries(questions.map((item, index) => [item.id, index % 3 ? -2 : null]))]) {
-  const expected = scoring.scoreAll(coreResponses, axes, questions);
+  const expected = scoring.scoreAll(coreResponses, axes, legacyQuestions);
   for (const diagnostic of context.LAW_DIAGNOSTIC_QUESTIONS) {
     for (const response of [-3, -2, -1, 0, 1, 2, 3, null]) {
       assert.deepEqual(scoring.scoreAllWithDiagnostics(coreResponses,
-        {[diagnostic.id]:response}, axes, questions, context.LAW_DIAGNOSTIC_QUESTIONS), expected,
+        {[diagnostic.id]:response}, axes, legacyQuestions, context.LAW_DIAGNOSTIC_QUESTIONS), expected,
         `${diagnostic.id}=${response} must not change displayed core-derived axes`);
     }
   }
   for (const response of [-3, 0, 3, null]) {
     const all = Object.fromEntries(context.LAW_DIAGNOSTIC_QUESTIONS.map(q=>[q.id,response]));
-    assert.deepEqual(scoring.scoreAllWithDiagnostics(coreResponses, all, axes, questions,
+    assert.deepEqual(scoring.scoreAllWithDiagnostics(coreResponses, all, axes, legacyQuestions,
       context.LAW_DIAGNOSTIC_QUESTIONS), expected);
   }
 }
@@ -213,7 +216,7 @@ for (const filename of htmlFiles) {
   }
 }
 
-assert.ok(htmlByFile["index.html"].includes("Version 0.8 Beta"), "Front page must show Version 0.8 Beta");
+assert.ok(htmlByFile["index.html"].includes("Version 0.9 Beta"), "Front page must show Version 0.9 Beta");
 assert.ok(htmlByFile["instructions.html"].includes("You will be presented with a series of statements about legal interpretation and judicial philosophy. For each one, click the button with your opinion on it."),
   "Instructions must retain the original wording");
 assert.ok(htmlByFile["quiz.html"].includes('aria-valuemax="100"'), "Quiz progress maximum must allow 88 core plus up to 12 diagnostics");
@@ -234,8 +237,8 @@ assert.ok(htmlByFile["results.html"].includes('<script src="classification.js"><
 assert.ok(htmlByFile["results.html"].includes('id="result-title"'),
   "Results must expose the assembled modifier + identity + phrase title");
 const resultsScript = fs.readFileSync(path.join(root, "results.js"), "utf8");
-assert.ok(resultsScript.includes("The eight axis scores come only from the core questions."),
-  "New results must explain core-only axis scoring");
+assert.ok(resultsScript.includes("The eight saved axis scores come only from the 0.8 core questions."),
+  "Historical 0.8 results must retain their core-only scoring guarantee");
 assert.ok(resultsScript.includes("earlier scoring version"),
   "Legacy shared scores must retain an accurate version-specific explanation");
 assert.ok(!htmlByFile["results.html"].includes("Print / PDF"), "Results should not show Print / PDF");
@@ -247,5 +250,5 @@ console.log("All-disagree scores:", Object.fromEntries(axes.map((axis)=>[axis.id
 console.log("PASS: all 88 questions inform at least one axis in at least one response direction.");
 console.log("PASS: C13 now scores disagreement toward contextual textualism.");
 console.log("PASS: asymmetric pole evidence; no forced acquiescence normalization.");
-console.log("PASS: visible question copy and Version 0.8 Beta preserved.");
+console.log("PASS: current 0.9 questionnaire with explicit historical 0.8 prompt checks.");
 

@@ -1,0 +1,137 @@
+{
+  "instrumentVersion": "0.8 Beta",
+  "bankSha256": "e9574a33364a5730acd114eda9558887fa8a19e8b309c5f2e1943e5a84f78b41",
+  "note": "Captured from the unmodified pre-revision HEAD scoring and bank, with bank hash verified against the working bank recorded before edits. Frozen response files are unchanged.",
+  "fixtures": [
+    {
+      "id": "mara",
+      "scores": {
+        "sorc": 34,
+        "cons": 59,
+        "time": 31,
+        "prec": 81,
+        "remed": 34,
+        "post": 18,
+        "separ": 39,
+        "form": 50
+      }
+    },
+    {
+      "id": "alex",
+      "scores": {
+        "sorc": 94,
+        "cons": 91,
+        "time": 80,
+        "prec": 69,
+        "remed": 62,
+        "post": 45,
+        "separ": 70,
+        "form": 83
+      }
+    },
+    {
+      "id": "imani",
+      "scores": {
+        "sorc": 80,
+        "cons": 59,
+        "time": 37,
+        "prec": 84,
+        "remed": 42,
+        "post": 42,
+        "separ": 44,
+        "form": 50
+      }
+    },
+    {
+      "id": "dev",
+      "scores": {
+        "sorc": 94,
+        "cons": 91,
+        "time": 80,
+        "prec": 69,
+        "remed": 62,
+        "post": 45,
+        "separ": 70,
+        "form": 83
+      }
+    },
+    {
+      "id": "ellis",
+      "scores": {
+        "sorc": 94,
+        "cons": 91,
+        "time": 80,
+        "prec": 69,
+        "remed": 62,
+        "post": 45,
+        "separ": 70,
+        "form": 83
+      }
+    },
+    {
+      "id": "finley",
+      "scores": {
+        "sorc": 94,
+        "cons": 91,
+        "time": 80,
+        "prec": 69,
+        "remed": 62,
+        "post": 45,
+        "separ": 70,
+        "form": 83
+      }
+    },
+    {
+      "id": "jules",
+      "scores": {
+        "sorc": 80,
+        "cons": 59,
+        "time": 37,
+        "prec": 84,
+        "remed": 42,
+        "post": 42,
+        "separ": 44,
+        "form": 50
+      }
+    },
+    {
+      "id": "kai",
+      "scores": {
+        "sorc": 80,
+        "cons": 59,
+        "time": 37,
+        "prec": 84,
+        "remed": 42,
+        "post": 42,
+        "separ": 44,
+        "form": 50
+      }
+    },
+    {
+      "id": "noor",
+      "scores": {
+        "sorc": 34,
+        "cons": 59,
+        "time": 31,
+        "prec": 81,
+        "remed": 34,
+        "post": 18,
+        "separ": 39,
+        "form": 50
+      }
+    },
+    {
+      "id": "rowan",
+      "scores": {
+        "sorc": 34,
+        "cons": 59,
+        "time": 31,
+        "prec": 81,
+        "remed": 34,
+        "post": 18,
+        "separ": 39,
+        "form": 50
+      }
+    }
+  ]
+}

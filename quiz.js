@@ -51,6 +51,7 @@
     function freshState() {
         return {
             version: globalThis.LAW_VERSION,
+            instrumentVersion: globalThis.LAW_VERSION,
             order: buildOrder(),
             index: 0,
             responses: {},
@@ -68,21 +69,24 @@
             const stored = JSON.parse(sessionStorage.getItem(STORAGE_KEY));
             const validIds = new Set(globalThis.LAW_QUESTIONS.map((question) => question.id));
             const valid = stored?.version === globalThis.LAW_VERSION &&
+                (!Object.hasOwn(stored, 'instrumentVersion') || stored.instrumentVersion === globalThis.LAW_VERSION) &&
                 Array.isArray(stored.order) &&
                 stored.order.length === globalThis.LAW_QUESTIONS.length &&
+                new Set(stored.order).size === validIds.size &&
                 stored.order.every((id) => validIds.has(id)) &&
                 Number.isInteger(stored.index) &&
                 stored.index >= 0 &&
                 stored.index < stored.order.length &&
-                stored.responses && typeof stored.responses === 'object';
+                globalThis.LAW_RESULT_COMPAT.validResponses(stored.responses) &&
+                Object.keys(stored.responses).every(id => validIds.has(id));
             if (valid) {
                 stored.phase = stored.phase === 'diagnostic' ? 'diagnostic' : 'core';
                 stored.coreCompletedAt = stored.coreCompletedAt || null;
                 stored.diagnosticOrder = Array.isArray(stored.diagnosticOrder)
-                    ? stored.diagnosticOrder.filter((id) => diagnosticById[id])
+                    ? stored.diagnosticOrder.filter((id) => Object.hasOwn(diagnosticById, id))
                     : [];
-                stored.diagnosticResponses = stored.diagnosticResponses && typeof stored.diagnosticResponses === 'object'
-                    ? stored.diagnosticResponses
+                stored.diagnosticResponses = globalThis.LAW_RESULT_COMPAT.validResponses(stored.diagnosticResponses)
+                    ? Object.fromEntries(Object.entries(stored.diagnosticResponses).filter(([id]) => Object.hasOwn(diagnosticById, id)))
                     : {};
                 stored.diagnosticIndex = Number.isInteger(stored.diagnosticIndex)
                     ? Math.max(0, Math.min(stored.diagnosticIndex, Math.max(0, stored.diagnosticOrder.length - 1)))
@@ -192,7 +196,7 @@
 
     function beginOrContinueDiagnostics() {
         const next = globalThis.LAW_CLASSIFIER.nextDiagnostic(
-            coreScores(),
+            finalScores(),
             state.responses,
             state.diagnosticResponses
         );
@@ -296,9 +300,24 @@
             : null;
         if (narrative) classification.narrative = narrative;
 
+        const axisLabels = globalThis.LAW_AXIS_LABELS?.describeAll({
+            scores: scored,
+            responses: state.responses,
+            diagnosticResponses: state.diagnosticResponses,
+            version: globalThis.LAW_VERSION
+        }) || null;
         const params = new URLSearchParams({ v: globalThis.LAW_VERSION });
+        const axisLabelIds = axisLabels && globalThis.LAW_AXIS_LABELS.toIds(axisLabels);
+        if (axisLabelIds) {
+            params.set('alv', '1');
+            params.set('al', axisLabelIds);
+        }
         globalThis.LAW_AXES.forEach((axis) => params.set(axis.id, String(scored[axis.id].score)));
         params.set('n', globalThis.LAW_AXES.map((axis) => coreScored[axis.id].answered).join(','));
+        if (globalThis.LAW_AXES.some(axis => coreScored[axis.id].score !== scored[axis.id].score)) {
+            params.set('cs', globalThis.LAW_AXES.map(axis => coreScored[axis.id].score).join(','));
+            params.set('sp', 'reviewed-hints-20pct-v1');
+        }
         params.set('i', classification.identity.id);
         if (classification.champions.length > 0) {
             params.set('c', classification.champions.map((item) => item.id).join(','));
@@ -319,7 +338,12 @@
 
         const record = {
             version: globalThis.LAW_VERSION,
+            instrumentVersion: globalThis.LAW_VERSION,
             resultQuery: params.toString(),
+            axisLabelVersion: axisLabelIds ? 1 : null,
+            axisLabels,
+            coreScores: Object.fromEntries(globalThis.LAW_AXES.map((axis) => [axis.id, coreScored[axis.id].score])),
+            scoringDetails: scored,
             startedAt: state.startedAt,
             coreCompletedAt: state.coreCompletedAt,
             scores: Object.fromEntries(globalThis.LAW_AXES.map((axis) => [axis.id, scored[axis.id].score])),

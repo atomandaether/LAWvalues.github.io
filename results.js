@@ -1,16 +1,18 @@
 (function renderResults() {
     'use strict';
 
-    const LATEST_KEY = `lawvalues-latest-${globalThis.LAW_VERSION}`;
-    const axisContributingCounts = Object.fromEntries(
-        globalThis.LAW_AXES.map((axis) => [
-            axis.id,
-            globalThis.LAW_QUESTIONS.filter(
-                (item) => globalThis.LAW_SCORING.contributesToAxis(item, axis.id)
-            ).length
-        ])
-    );
+    const compatibility = globalThis.LAW_RESULT_COMPAT;
     const params = new URLSearchParams(window.location.search);
+    const version = compatibility.versionFromParams(params);
+    const resultAxes = compatibility.axesForVersion(version.version);
+    const resultAxisMap = Object.fromEntries(resultAxes.map(axis => [axis.id, axis]));
+    const questions = version.kind === 'current' ? globalThis.LAW_QUESTIONS :
+        (globalThis.LAW_LEGACY_QUESTIONS || []);
+    const axisContributingCounts = Object.fromEntries(
+        resultAxes.map((axis) => [axis.id, questions.filter(
+            item => globalThis.LAW_SCORING.contributesToAxis(item, axis.id)
+        ).length])
+    );
     const error = document.getElementById('results-error');
     const main = document.getElementById('results-main');
 
@@ -25,41 +27,37 @@
         { axisId: 'form', label: 'form-label', leftId: 'rules', rightId: 'balancing' }
     ];
 
-    function parseScores() {
-        const scores = {};
-        for (const axis of globalThis.LAW_AXES) {
-            const raw = params.get(axis.id);
-            const value = Number(raw);
-            if (raw === null || !Number.isFinite(value) || value < 0 || value > 100) return null;
-            scores[axis.id] = Math.round(value);
-        }
-        return scores;
-    }
-
     function parseCoverage() {
-        const encoded = params.get('n');
-        const fullCoverage = Object.fromEntries(
-            globalThis.LAW_AXES.map((axis) => [axis.id, axisContributingCounts[axis.id]])
-        );
-        if (!encoded) return fullCoverage;
-
-        const parts = encoded.split(',');
-        if (parts.length !== globalThis.LAW_AXES.length) return fullCoverage;
-
-        return Object.fromEntries(globalThis.LAW_AXES.map((axis, index) => {
-            const maximum = axisContributingCounts[axis.id];
-            const value = Number(parts[index]);
-            return [axis.id, Number.isInteger(value) && value >= 0 && value <= maximum ? value : maximum];
+        const encoded = params.getAll('n').length === 1 ? params.get('n') : null;
+        const parts = encoded ? encoded.split(',') : [];
+        return Object.fromEntries(resultAxes.map((axis, index) => {
+            const raw = parts[index];
+            const value = Number(raw);
+            const valid = parts.length === resultAxes.length && /^\d+$/.test(raw || '') &&
+                Number.isInteger(value) && value >= 0 && value <= axisContributingCounts[axis.id];
+            return [axis.id, valid ? value : null];
         }));
     }
 
-    const scores = parseScores();
+    const scores = compatibility.parseScores(params);
     const coverage = parseCoverage();
     if (!scores) {
         error.hidden = false;
         main.hidden = true;
         return;
     }
+    let record = null;
+    try {
+        record = compatibility.loadLocalRecord({ storage: sessionStorage, params, scores });
+    } catch (_) {
+        // Some browsers deny access to the sessionStorage property itself.
+    }
+    const axisDescriptions = compatibility.descriptionsForResult({ scores, params, record });
+    const coreProvenance = compatibility.coreScoresForResult({ params, record });
+    const versionNotice = compatibility.noticeForVersion(version);
+    const versionNote = document.getElementById('version-note');
+    versionNote.textContent = versionNotice || `Questionnaire version ${version.version}.`;
+    versionNote.hidden = false;
 
     function setBarValue(name, value) {
         const inner = document.getElementById(name);
@@ -72,17 +70,61 @@
         outer.setAttribute('aria-label', `${value} percent`);
     }
 
+    function showScoreEvidence(entry) {
+        const details = document.getElementById(`${entry.label}-evidence`);
+        if (!details) return;
+        details.hidden = true;
+        if (!coreProvenance) return;
+        const core = coreProvenance.scores[entry.axisId];
+        const final = scores[entry.axisId];
+        const ledger = coreProvenance.source === 'record' && Array.isArray(record?.scoringDetails?.[entry.axisId]?.contributions)
+            ? record.scoringDetails[entry.axisId].contributions.filter(row => row.adjustment &&
+                Number.isFinite(row.coreContribution) && Number.isFinite(row.contribution))
+            : [];
+        if (core === final && !ledger.length) return;
+        details.hidden = false;
+        const lines = [`Core estimate ${core}%, final ${final}%.`];
+        if (!ledger.length) {
+            lines.push(coreProvenance.source === 'share'
+                ? 'This shared link does not include the answer-level ledger.'
+                : 'This saved record does not include the answer-level ledger.');
+        } else {
+            const evidenceValue = value => `${value > 0 ? '+' : ''}${Number(value.toFixed(4))}`;
+            for (const row of ledger) {
+                const question = globalThis.LAW_QUESTIONS.find(item => item.id === row.id);
+                const diagnostic = (globalThis.LAW_DIAGNOSTIC_QUESTIONS || []).find(item => item.id === row.adjustment.diagnosticId);
+                lines.push(`${row.id}${question ? ': ' + question.prompt : ''}`);
+                lines.push(`Weighted evidence ${evidenceValue(row.coreContribution)} → ${evidenceValue(row.contribution)}. ${row.adjustment.reason || ''}`);
+                if (diagnostic) lines.push(`${diagnostic.id}: ${diagnostic.prompt}`);
+            }
+            lines.push('Only the identified weak contributions are clarified. The direct core answers remain intact.');
+        }
+        document.getElementById(`${entry.label}-evidence-text`).textContent = lines.join('\n\n');
+    }
+
     display.forEach((entry) => {
-        const axis = globalThis.LAW_AXIS_MAP[entry.axisId];
+        const axis = resultAxisMap[entry.axisId];
         const left = scores[entry.axisId];
         const right = 100 - left;
-        document.getElementById(entry.label).textContent = globalThis.LAW_SCORING.axisLabel(axis, left);
+        const description = axisDescriptions?.[entry.axisId];
+        const label = document.getElementById(entry.label);
+        label.textContent = description?.label ||
+            (version.kind === 'current' ? 'Score only' : globalThis.LAW_SCORING.axisLabel(axis, left));
+        label.setAttribute('data-label-status', description?.status ||
+            (version.kind === 'current' ? 'score-only' : 'legacy-score'));
+        const explanation = document.getElementById(`${entry.label}-explanation`);
+        if (explanation) {
+            explanation.textContent = description?.explanation || (version.kind === 'current'
+                ? 'This link has no valid answer-based label. The saved score alone does not establish a particular commitment.'
+                : 'Earlier score-based wording is retained for this saved result.');
+        }
         setBarValue(entry.leftId, left);
         setBarValue(entry.rightId, right);
+        showScoreEvidence(entry);
     });
 
     const incomplete = globalThis.LAW_AXES.filter(
-        (axis) => coverage[axis.id] < axisContributingCounts[axis.id]
+        (axis) => coverage[axis.id] !== null && coverage[axis.id] < axisContributingCounts[axis.id]
     );
     if (incomplete.length > 0) {
         const note = document.getElementById('coverage-note');
@@ -90,25 +132,8 @@
         note.textContent = '“Not sure” responses are excluded from any axis they would have informed. Some questions contribute to more than one axis.';
     }
 
-    function loadLocalRecord() {
-        try {
-            const record = JSON.parse(sessionStorage.getItem(LATEST_KEY));
-            const storedParams = new URLSearchParams(record?.resultQuery || '');
-            const hasMatchingQuery = Boolean(record?.resultQuery) &&
-                [...storedParams.entries()].every(([key, value]) => params.get(key) === value) &&
-                ['v','i','c','m','p','b','x','o','d','u','cf','ua'].every(key => params.get(key) === storedParams.get(key));
-            const matches = hasMatchingQuery && record?.version === globalThis.LAW_VERSION &&
-                record.responses &&
-                globalThis.LAW_AXES.every((axis) => Number(record.scores?.[axis.id]) === scores[axis.id]);
-            return matches ? record : null;
-        } catch (_) {
-            return null;
-        }
-    }
-
-    const record = loadLocalRecord();
-
     function classificationFromUrl() {
+        if (!['current', 'legacy'].includes(version.kind)) return null;
         const identityId = params.get('i');
         if (!identityId) return null;
 
@@ -134,13 +159,13 @@
                 related: profile.related || []
             }));
 
-        const resultTitle = globalThis.LAW_RESULT_CONTENT?.fromIds
+        const resultTitle = version.kind === 'current' && globalThis.LAW_RESULT_CONTENT?.fromIds
             ? globalThis.LAW_RESULT_CONTENT.fromIds(identity, scores, {}, {
                 modifierId: params.get('m'),
                 phraseId: params.get('p'),
                 bridgeId: params.get('b')
             })
-            : null;
+            : compatibility.legacyTitleFromIds(identity, params);
 
         return {
             identity,
@@ -153,6 +178,7 @@
                 .filter(id => globalThis.LAW_AXES.some(axis => axis.id === id)),
             diagnosticCount: Number(params.get('d')) || 0,
             resultTitle,
+            narrative: compatibility.legacyNarrativeFromIds(params),
             narrativeId: params.get('x') || null,
             narrativeOpeningId: params.get('o') || null,
             calibration: 'theory-derived'
@@ -161,7 +187,7 @@
 
     function getClassification() {
         if (record?.classification) return record.classification;
-        if (record && globalThis.LAW_CLASSIFIER) {
+        if (record && version.canInterpretResponses && globalThis.LAW_CLASSIFIER) {
             const startedMs = Date.parse(record.startedAt || '');
             const coreCompletedMs = Date.parse(record.coreCompletedAt || '');
             const completedMs = Date.parse(record.completedAt || '');
@@ -208,11 +234,13 @@
         }
 
         const assembled = result.resultTitle || (
+            version.kind === 'current' &&
             globalThis.LAW_RESULT_CONTENT?.assemble
                 ? globalThis.LAW_RESULT_CONTENT.assemble(result, scores, result.traits || {})
                 : null
         );
         const narrative = result.narrative || (
+            version.kind === 'current' &&
             globalThis.LAW_RESULT_NARRATIVE?.build
                 ? globalThis.LAW_RESULT_NARRATIVE.build(result, scores, result.narrativeId || params.get('x'), result.narrativeOpeningId || params.get('o'))
                 : null
@@ -258,8 +286,8 @@
             return;
         }
 
-        const resultVersion = Number.parseFloat(params.get('v') || record?.version || '');
-        const coreOnlyAxes = Number.isFinite(resultVersion) && resultVersion >= 0.8;
+        const coreOnlyAxes = version.version === '0.8 Beta';
+        const modernProfile = version.kind === 'current' || coreOnlyAxes;
         const champions = Array.isArray(result.champions) ? result.champions : [];
         if (champions.length === 1) {
             championLine.textContent = `Champion: ${champions[0].name}`;
@@ -267,7 +295,7 @@
             const thinkerProfile = (globalThis.LAW_PROFILES || []).find(item => item.id === champions[0].id);
             const specificAffinity = champions[0].evidence?.scope === 'specific-affinity' ||
                 (thinkerProfile && Object.keys(thinkerProfile.axisSignature || {}).length === 0);
-            if (coreOnlyAxes && specificAffinity) {
+            if (modernProfile && specificAffinity) {
                 championDescription.textContent += ' This is a specific theoretical affinity; the available thinker profile does not establish a broad match across your other commitments.';
             }
         } else if (champions.length > 1) {
@@ -283,13 +311,15 @@
         relatedLine.textContent = related.length ? `Related reading: ${related.join(' · ')}` : '';
 
         const diagnosticCount = Number(result.diagnosticCount) || 0;
-        const axisExplanation = coreOnlyAxes
-            ? 'The eight axis scores come only from the core questions. Adaptive answers refine the jurisprudential match without changing axis scores.'
-            : 'These saved axis scores use the earlier scoring version; answered Separation diagnostics could modestly refine Separation.';
+        const axisExplanation = version.kind === 'current'
+            ? 'The axis scores combine core evidence with narrowly targeted diagnostic clarifications where present. Adaptive answers also refine the jurisprudential match.'
+            : coreOnlyAxes
+                ? 'The eight saved axis scores come only from the 0.8 core questions. Adaptive answers refined the jurisprudential match without changing those scores.'
+                : 'These saved axis scores use an earlier scoring version; answered Separation diagnostics could modestly refine Separation.';
         note.textContent = diagnosticCount > 0
             ? `The thinker match uses the eight-axis profile plus ${diagnosticCount} adaptive tie-breaker question${diagnosticCount === 1 ? '' : 's'}. ${axisExplanation} Thinker locations are theory-derived prototypes pending empirical calibration.`
-            : 'The thinker match uses theory-derived profiles. Unmodeled commitments are unknown, not evidence of agreement. The eight axis scores come from the core questions. Thinker matches remain provisional pending empirical calibration.';
-        if (coreOnlyAxes && champions.length === 1) {
+            : `The thinker match uses theory-derived profiles. Unmodeled commitments are unknown, not evidence of agreement. ${axisExplanation} Thinker matches remain provisional pending empirical calibration.`;
+        if (modernProfile && champions.length === 1) {
             const matchConfidence = result.championConfidence;
             const unknown = champions[0].evidence?.unknownAxes || result.sharedUnknownAxes || [];
             const axisNames = {sorc:'legal authority',cons:'interpretation',time:'constitutional change',prec:'precedent',remed:'remedies',post:'judicial role',separ:'institutional structure',form:'rules and standards'};
@@ -301,7 +331,7 @@
                 note.textContent += ` The thinker profile leaves these important commitments unmodeled: ${unknownNames.join(', ')}.`;
             }
         }
-        if (coreOnlyAxes && result.identityPriority?.unresolved) {
+        if (modernProfile && result.identityPriority?.unresolved) {
             note.textContent = 'Your leading commitments remain close; the headline is provisional. ' + note.textContent;
         }
     }
@@ -324,7 +354,7 @@
 
     function textSummary() {
         const summaryNarrative = classification?.narrative || (
-            classification?.identity && globalThis.LAW_RESULT_NARRATIVE?.build
+            version.kind === 'current' && classification?.identity && globalThis.LAW_RESULT_NARRATIVE?.build
                 ? globalThis.LAW_RESULT_NARRATIVE.build(classification, scores, classification.narrativeId || params.get('x'), classification.narrativeOpeningId || params.get('o'))
                 : null
         );
@@ -339,13 +369,16 @@
             ].filter(Boolean)
             : [];
         return [
-            'LAWvalues',
+            `LAWvalues${version.version ? ' ' + version.version : ''}`,
+            versionNotice || null,
             ...classificationLines,
-            ...globalThis.LAW_AXES.map((axis) =>
-                `${axis.name}: ${scores[axis.id]}% ${axis.left} / ${100 - scores[axis.id]}% ${axis.right}`
+            ...(coreProvenance ? resultAxes.filter(axis => coreProvenance.scores[axis.id] !== scores[axis.id]).map(axis =>
+                `${axis.name} clarification: core estimate ${coreProvenance.scores[axis.id]}%, final ${scores[axis.id]}%.`) : []),
+            ...resultAxes.map((axis) =>
+                `${axis.name}: ${axisDescriptions?.[axis.id]?.label ? axisDescriptions[axis.id].label + '. ' : ''}${scores[axis.id]}% ${axis.left} / ${100 - scores[axis.id]}% ${axis.right}`
             ),
             window.location.href
-        ].join('\n');
+        ].filter(Boolean).join('\n');
     }
 
     async function copyText(text, button, success) {
@@ -371,21 +404,12 @@
     if (record) {
         download.hidden = false;
         download.addEventListener('click', () => {
+            // Keep the original raw answers, numbers, and classification intact.
+            // In particular, a 0.8 record must never be exported as version 0.9.
             const exportRecord = {
+                ...record,
                 instrument: 'LAWvalues',
-                version: globalThis.LAW_VERSION,
-                startedAt: record.startedAt || null,
-                coreCompletedAt: record.coreCompletedAt || null,
-                completedAt: record.completedAt,
-                scores: record.scores,
-                coverage: record.coverage,
-                strength: record.strength,
-                conflict: record.conflict,
-                poleSupport: record.poleSupport,
-                responses: record.responses,
-                diagnosticResponses: record.diagnosticResponses || {},
-                diagnosticOrder: record.diagnosticOrder || [],
-                classification
+                instrumentVersion: record.instrumentVersion || record.version
             };
             const blob = new Blob([JSON.stringify(exportRecord, null, 2)], { type: 'application/json' });
             const url = URL.createObjectURL(blob);

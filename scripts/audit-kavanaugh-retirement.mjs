@@ -28,7 +28,7 @@ for(const accommodation of [undefined,0,.3]){
 assert.ok(cl.resolveChampions({...scores,separ:34,prec:88},{...traits,'separation.interpretive_accommodation':1},textualist).candidates.some(x=>x.profile.id==='kagan'));
 const barrettTraits={'time.public_meaning':1,'time.fixation':1,'time.originalism_independent_authority':1,'precedent.stability':1,'precedent.settlement':1,'precedent.protective_rule_stability':1,'constraint.textual':.8};
 assert.equal(cl.resolveChampions({sorc:76,cons:86,time:90,prec:84,remed:72,post:60,separ:76,form:78},barrettTraits,originalist).matches[0].profile.id,'barrett');
-const params=new URLSearchParams({...scores,i:'textualist',c:'kavanaugh_barrett'});
+const params=new URLSearchParams({...scores,v:'0.8',i:'textualist',c:'kavanaugh_barrett'});
 const rr=runtime(root,{search:'?'+params});rr.run('results.js');
 assert.equal(rr.nodes.get('champion-line').textContent,'Champion: Brett Kavanaugh');
 rr.nodes.get('copy-link').click();assert.equal(new URL(rr.clipboard()).searchParams.get('c'),'kavanaugh_barrett');

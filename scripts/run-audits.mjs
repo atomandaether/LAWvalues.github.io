@@ -18,7 +18,10 @@ const audits = [
   "audit-kavanaugh-retirement.mjs",
   "audit-results-layout.mjs",
   "audit-result-title-rendering.mjs",
-  "audit-evidenced-result-narrative.mjs"
+  "audit-evidenced-result-narrative.mjs",
+  "audit-result-compatibility.mjs",
+  "audit-time-construct.mjs",
+  "audit-axis-labels.mjs"
 ];
 const results = [];
 
