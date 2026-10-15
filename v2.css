@@ -877,7 +877,7 @@ body.results-page {
     margin: 4pt auto 8pt;
     font-size: clamp(24px, 3vw, 40px);
     line-height: 1.18;
-    font-weight: 400;
+    font-weight: 700;
     text-align: center;
 }
 
@@ -946,3 +946,6 @@ body.results-page {
 .axis-evidence summary { cursor: pointer; }
 .axis-evidence p { white-space: pre-line; font-size: .85rem; line-height: 1.4; font-weight: normal; }
 @media (max-width: 540px) { .quiz-guidance { font-size: .65rem; line-height: 1.1; margin-top: .2rem; } }
+
+/* Hidden results metadata must never become visible through component styles. */
+.results-page [hidden] { display: none !important; }

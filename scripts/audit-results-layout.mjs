@@ -13,8 +13,12 @@ for (const obsolete of ['Your jurisprudential profile', 'Your jurisprudential fi
     assert.ok(!html.includes(obsolete), `Obsolete duplicate UI: ${obsolete}`);
 }
 assert.match(css, /html\.results-document\s*\{[^}]*overflow: auto/s);
-assert.match(css, /\.results-page \.result-title\s*\{[^}]*font-weight: 400/s);
+assert.match(css, /\.results-page \.result-title\s*\{[^}]*font-weight: 700/s);
 assert.match(css, /\.results-page \.result-narrative p\s*\{[^}]*font-weight: 400/s);
+assert.match(html, /id="classification-panel" hidden/);
+assert.match(html, /id="version-note" hidden/);
+assert.equal((html.match(/class="axis-explanation" hidden/g) || []).length, 8);
+assert.equal((html.match(/class="axis-evidence"[^>]* hidden/g) || []).length, 8);
 class Element {
     constructor() { this.textContent = ''; this.innerHTML = ''; this.style = {}; this.hidden = false; }
     setAttribute() {}
@@ -38,14 +42,15 @@ for (const [id, expected] of [['public_meaning_originalist', 'Public-Meaning'], 
     // Use catalog IDs rather than silently treating a missing fixture as a match.
     assert.ok(context.LAW_RESULT_IDENTITIES.some(identity => identity.id === id), `Missing identity: ${id}`);
     const title = render(id, 'new_originalism');
-    assert.match(title.innerHTML, new RegExp(`<strong>${expected}</strong> New <strong>Originalist</strong>`));
+    assert.match(title.innerHTML, new RegExp(`^<strong>${expected} New Originalist.*</strong>$`));
     assert.equal(nodes.get('champion-line').textContent, 'Champion: H. L. A. Hart');
     assert.ok(nodes.get('champion-description').textContent.length > 0);
 }
 const regular = render('positivist', 'fit_unmistakable');
-assert.match(regular.innerHTML, /<strong>Positivist<\/strong>/);
-assert.ok(!regular.innerHTML.includes('<strong>Unmistakable'));
+assert.match(regular.innerHTML, /^<strong>.*Positivist.*<\/strong>$/);
+assert.equal(regular.innerHTML, '<strong>' + regular.textContent + '</strong>');
 const legacy = render('',undefined,'0.8');
 assert.match(legacy.textContent, /No jurisprudential classification/);
 assert.equal(nodes.get('results-main').hidden, false);
-console.log('Results layout audit passed: top hierarchy, noun-only emphasis, champion preservation, legacy fallback, and responsive scrolling.');
+assert.equal(nodes.get('version-note').hidden, true);
+console.log('Results layout audit passed: top hierarchy, full-title emphasis, champion preservation, legacy fallback, and responsive scrolling.');

@@ -233,12 +233,12 @@ const clarifiedRecord = {
 clarification.storage.setItem('lawvalues-latest-' + cr.LAW_VERSION, JSON.stringify(clarifiedRecord));
 clarification.location.search = '?' + clarifiedQuery;
 clarification.run('results.js');
-assert.equal(clarification.nodes.get('time-label-evidence').hidden, false);
+assert.equal(clarification.nodes.get('time-label-evidence').hidden, true);
 assert.match(clarification.nodes.get('time-label-evidence-text').textContent, /Weighted evidence/);
 assert.match(clarification.nodes.get('time-label-evidence-text').textContent, /T7/);
 assert.match(clarification.nodes.get('time-label-evidence-text').textContent, /D-ORI7/);
 clarification.storage.clear(); clarification.newDocument(); clarification.run('results.js');
-assert.equal(cr.document.getElementById('time-label-evidence').hidden, false);
+assert.equal(cr.document.getElementById('time-label-evidence').hidden, true);
 assert.match(cr.document.getElementById('time-label-evidence-text').textContent, /shared link does not include the answer-level ledger/);
 assert.ok(!cr.document.getElementById('time-label-evidence-text').textContent.includes('D-ORI7'));
 cr.document.getElementById('copy-summary').click();
