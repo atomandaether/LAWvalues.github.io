@@ -19,12 +19,32 @@ for (const [id, opening] of Object.entries(engine.OPENINGS || {})) {
   assert.ok(engine.wordCount(opening) <= 70, id + " full-profile opening exceeds 70 words");
 }
 
+const bannedNarrativePhrases = [
+  "that distinction matters",
+  "that separation matters",
+  "the key point",
+  "the important point",
+  "your result",
+  "your theory therefore",
+  "your distinctive move",
+  "that is the deeper",
+  "in that sense",
+  "the attraction is",
+  "the real fight",
+  "the practical consequence is important"
+];
+
 for (const [id, route] of Object.entries(engine.ROUTES)) {
   assert.ok(route.opening?.trim(), id + " has no opening");
   assert.ok(route.context?.trim(), id + " has no context");
   assert.ok(engine.wordCount(route.opening) <= 70, id + " opening exceeds 70 words");
   assert.ok(engine.wordCount(route.context) <= 230, id + " context exceeds 230 words");
   assert.ok(!route.context.includes("\n"), id + " context must remain one paragraph");
+  const lowerContext = route.context.toLowerCase();
+  for (const phrase of bannedNarrativePhrases) {
+    assert.ok(!lowerContext.includes(phrase),
+      id + " contains banned meta-signposting phrase: " + phrase);
+  }
 }
 
 for (const identity of globalThis.LAW_RESULT_IDENTITIES || []) {
