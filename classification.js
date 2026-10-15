@@ -1082,11 +1082,6 @@
 
     const maxSalienceEarly = Math.max(...AXIS_IDS.map((id) => salience(scores, id)));
 
-    if (Number(diagnosticResponses["D-RLS1"]) > 0) {
-      if (!hasAsked(diagnosticResponses, "D-RLS2")) return byId["D-RLS2"];
-      if (!hasAsked(diagnosticResponses, "D-RLS3")) return byId["D-RLS3"];
-    }
-
     const traits = buildTraits(scores, responses, diagnosticResponses);
     const priorities = [];
     const offer = (id, priority) => {
@@ -1111,22 +1106,25 @@
       (traits["realism.extra_doctrinal"] || 0) >= 0.45 &&
       ((traits["realism.empirical_prediction"] || 0) >= 0.35 ||
        (traits["realism.law_in_action"] || 0) >= 0.5);
+    if (Number(diagnosticResponses["D-RLS1"]) > 0) {
+      if (!hasAsked(diagnosticResponses, "D-RLS2")) offer("D-RLS2", 90);
+      if (!hasAsked(diagnosticResponses, "D-RLS3")) offer("D-RLS3", 89);
+    }
     if (realismConfirmed) {
       if (!hasAsked(diagnosticResponses, "D-RLS4")) offer("D-RLS4", 99);
       else if (!hasAsked(diagnosticResponses, "D-RLS5")) offer("D-RLS5", 98);
     }
-
     if (!realismConfirmed &&
         hasAsked(diagnosticResponses, "D-MAJ1") &&
         Number(diagnosticResponses["D-MAJ1"]) > 0 &&
         !hasAsked(diagnosticResponses, "D-MAJ2")) {
-      return byId["D-MAJ2"];
+      offer("D-MAJ2", 96);
     }
     if (!realismConfirmed &&
         hasAsked(diagnosticResponses, "D-ELY1") &&
         Number(diagnosticResponses["D-ELY1"]) > 0 &&
         !hasAsked(diagnosticResponses, "D-RESP1")) {
-      return byId["D-RESP1"];
+      offer("D-RESP1", 94);
     }
 
     const time = axisValue(scores, "time");
