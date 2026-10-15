@@ -42,6 +42,36 @@ assert.ok(typeof classifier.buildTraitEvidence === "function",
   "Classifier must expose breadth/confidence metadata for narrow phrase gates");
 assert.ok(typeof resultContent.rankPhrases === "function", "Need separate broad phrase ranking");
 assert.ok(typeof resultContent.rankTwists === "function", "Need separate noun-conditioned twist ranking");
+assert.equal(questions.length + classifier.MAX_DIAGNOSTICS, classifier.MAX_TOTAL_QUESTIONS,
+  "Adaptive budget must derive from the 100-question total cap");
+
+/* Routing must follow the live identity race rather than suppressing one family
+   because an unrelated axis is also salient. A strongly Positivist respondent
+   with a secondary historical constitutional tilt still needs the Positivist
+   architecture questions that distinguish Hart/Austin/Kelsen/Shapiro. */
+{
+  const scores = {sorc:96,cons:70,time:65,prec:75,remed:90,post:65,separ:25,form:65};
+  const responses = {};
+  const diagnostics = {};
+  const order = [];
+  const answer = (id) =>
+    id === "D-QC1" ? -2 :
+    id === "D-POS1" ? -3 :
+    id === "D-AUS1" ? 3 :
+    id === "D-RLS1" ? 0 : -2;
+
+  for (let i = 0; i < classifier.MAX_DIAGNOSTICS; i += 1) {
+    const next = classifier.nextDiagnostic(scores, responses, diagnostics);
+    if (!next) break;
+    order.push(next.id);
+    diagnostics[next.id] = answer(next.id);
+  }
+
+  assert.ok(order.includes("D-POS1"),
+    "A source-leading profile must receive the core Positivist refinement even when Time is historical");
+  assert.ok(order.includes("D-AUS1"),
+    "A source-leading profile must be able to reach the Austin command-theory discriminator despite a historical Time score");
+}
 
 
 /* Public modifier contract: the public result grammar exposes only genuine
