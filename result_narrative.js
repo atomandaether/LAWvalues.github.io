@@ -485,10 +485,11 @@
     low_theory: "You have legal instincts without a stable hierarchy telling you which one wins when they collide. Text, history, precedent, purpose, institutions, and consequences all matter, but your answers do not yet organize them into a durable theory of judicial choice. That can produce flexibility; it can also make hard cases depend heavily on case-specific judgment."
   });
 
-  function selectOpeningId(classification, scores = {}) {
+  function selectOpeningId(classification, scores = {}, explicitOpeningId = null) {
     const id = classification?.identity?.id || "mixed_jurisprudence";
     const t = classification?.traits || {};
     if (SPECIAL_IDS.has(id)) return null;
+    if (typeof explicitOpeningId === "string" && Object.hasOwn(OPENINGS, explicitOpeningId)) return explicitOpeningId;
     if (id === "mixed_jurisprudence") return nearCenter(scores) ? "low_theory" : "unresolved_commitments";
 
     if (id === "legal_realist") return "realist";
@@ -577,12 +578,12 @@
     return "low_theory";
   }
 
-  function buildOpening(classification, scores = {}) {
+  function buildOpening(classification, scores = {}, explicitOpeningId = null) {
     const id = classification?.identity?.id || "mixed_jurisprudence";
     if (id === "unusable_response") return ROUTES.special_unusable.opening;
     if (id === "incoherent_response") return ROUTES.special_incoherent.opening;
     if (id === "outcome_driven_left" || id === "outcome_driven_right") return ROUTES.special_outcome.opening;
-    const openingId = selectOpeningId(classification, scores);
+    const openingId = selectOpeningId(classification, scores, explicitOpeningId);
     return OPENINGS[openingId] || OPENINGS.low_theory;
   }
 
@@ -761,16 +762,22 @@
   }
 
   function fromId(id) {
-    const route = ROUTES[id] || ROUTES.low_theory;
-    return { id: ROUTES[id] ? id : "low_theory", opening: route.opening, context: route.context };
+    const valid = typeof id === "string" && Object.hasOwn(ROUTES, id);
+    const route = valid ? ROUTES[id] : ROUTES.low_theory;
+    return { id: valid ? id : "low_theory", opening: route.opening, context: route.context };
   }
 
-  function build(classification, scores = {}, explicitId = null) {
-    const id = explicitId && ROUTES[explicitId] ? explicitId : selectContextId(classification, scores);
+  function build(classification, scores = {}, explicitId = null, explicitOpeningId = null) {
+    // Share links preserve two independently selected paragraphs. Only catalog
+    // IDs are accepted; older links without an opening ID keep inferred prose.
+    const id = typeof explicitId === "string" && Object.hasOwn(ROUTES, explicitId)
+      ? explicitId : selectContextId(classification, scores);
     const route = ROUTES[id] || ROUTES.low_theory;
+    const openingId = selectOpeningId(classification, scores, explicitOpeningId);
     return {
-      id: ROUTES[id] ? id : "low_theory",
-      opening: buildOpening(classification, scores),
+      id: Object.hasOwn(ROUTES, id) ? id : "low_theory",
+      openingId,
+      opening: buildOpening(classification, scores, openingId),
       context: route.context
     };
   }

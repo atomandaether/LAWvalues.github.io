@@ -17,9 +17,13 @@ The target is not a minimum. A shorter explanation is preferable to unsupported 
 - A mixed profile with strong commitments is distinct from a near-center profile. Neither alone establishes direct contradiction or affirmative Interpretive Pluralism. The classifier's explicit exceptional identities control withheld narratives.
 - Legacy catalog identities remain supported for compatibility. For example, Common-Good Constitutionalism resolves to its existing theory paragraph rather than falling through to a near-center explanation. This does not add a public noun or champion.
 
+## Shared results
+
+New result URLs preserve the context route in `x` and the independently selected opening route in `o`. Both accept only own-property IDs from their respective catalogs; no prose or raw answers are added to the URL. Missing or invalid opening IDs use the established identity/score-based fallback, preserving older links. An ordinary opening ID cannot replace an exceptional withheld diagnosis. The on-page explanation and copied summary use the same reconstruction.
+
 ## Audit
 
-Run `node scripts/audit-result-narrative.mjs` or the aggregate `npm test`.
+Run `node scripts/audit-result-narrative.mjs` and `npm run audit:share`, or the aggregate `npm test`.
 
 The narrative audit covers:
 
@@ -27,6 +31,7 @@ The narrative audit covers:
 - Semantic differentiation between text-bound and open-construction Positivist profiles without depending on obsolete literal sentences
 - Source-branch and legacy identity routing, whole-profile versus narrow-specialist priority, axis-evidence boundaries, and exceptional-result precedence
 - Four literal 88-answer Source paths through the live adaptive router and classifier into the narrative
+- Actual quiz completion and fresh-session result/copy handlers, legacy and malformed links, and all 3,888 opening/context combinations with champion swaps
 - All 301,806 low/middle/high combinations on the eight axes across the 46 catalog identities, including champion-swap invariance
 
 The finite grid is exhaustive over those specified inputs, not over every possible answer vector or diagnostic combination. Automated lexical checks do not replace substantive editorial review or empirical validation of the instrument.

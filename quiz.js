@@ -307,6 +307,7 @@
         if (classification.resultTitle?.phrase?.id) params.set('p', classification.resultTitle.phrase.id);
         if (classification.resultTitle?.bridge?.id) params.set('b', classification.resultTitle.bridge.id);
         if (narrative?.id) params.set('x', narrative.id);
+        if (narrative?.openingId) params.set('o', narrative.openingId);
         params.set('d', String(classification.diagnosticCount));
 
 
@@ -360,3 +361,4 @@
     render();
     window.requestAnimationFrame(fitQuestionText);
 })();
+

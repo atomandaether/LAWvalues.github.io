@@ -64,15 +64,15 @@ Then open `http://localhost:8000`.
 
 ## Audit
 
-The repository includes four dependency-free audits covering questions/scoring, the result catalog, adaptive routing, and result narratives. Use Node.js 22 or later (CI uses Node.js 22):
+The repository includes five dependency-free audits covering questions/scoring, the result catalog, adaptive routing, result narratives, and shared-result reconstruction. Use Node.js 22 or later (CI uses Node.js 22):
 
 ```bash
 npm test
 ```
 
-All four run even if an earlier audit fails; the command reports each result and exits unsuccessfully if any audit fails. The same command runs in the Instrument audit GitHub Actions workflow. Individual checks are available as `npm run audit:questions`, `npm run audit:catalog`, `npm run audit:routing`, and `npm run audit:narrative`.
+All five run even if an earlier audit fails; the command reports each result and exits unsuccessfully if any audit fails. The same command runs in the Instrument audit GitHub Actions workflow. Individual checks are available as `npm run audit:questions`, `npm run audit:catalog`, `npm run audit:routing`, `npm run audit:narrative`, and `npm run audit:share`.
 
-They check the 88-item core, asymmetric scoring, source references, local asset references, sparse profile validity, specialist gates, major jurisprudential-family coverage, literal-answer adaptive reachability (including unresolved Mixed-to-Source paths), phrase reachability, noun-conditioned twist assembly, the twelve-question diagnostic cap, explicit response-quality safeguards, narrative evidence consistency, and several false-match tests such as preventing a positivist from winning a strong Natural Law profile.
+They check the 88-item core, asymmetric scoring, source references, local asset references, sparse profile validity, specialist gates, major jurisprudential-family coverage, literal-answer adaptive reachability (including unresolved Mixed-to-Source paths), phrase reachability, noun-conditioned twist assembly, the twelve-question diagnostic cap, explicit response-quality safeguards, narrative evidence consistency, fresh-session share-link reconstruction of both paragraphs, and several false-match tests such as preventing a positivist from winning a strong Natural Law profile.
 
 The audit workflow does not configure GitHub Pages deployment or branch protection. When Pages publishes directly from a branch, a separate audit run does not automatically block publishing; changes should only be promoted after the full audit passes on the exact revision being published.
 
