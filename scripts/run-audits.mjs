@@ -13,7 +13,9 @@ const audits = [
   "audit-title-contract.mjs",
   "audit-primary-commitment.mjs",
   "audit-whole-profile.mjs",
-  "audit-eskridge-dynamic.mjs"
+  "audit-eskridge-dynamic.mjs",
+  "audit-moral-consolidation.mjs",
+  "audit-kavanaugh-retirement.mjs"
 ];
 const results = [];
 

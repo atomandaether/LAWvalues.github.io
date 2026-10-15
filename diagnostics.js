@@ -355,7 +355,7 @@ globalThis.LAW_DIAGNOSTIC_QUESTIONS = Object.freeze([
     nextOnAgree: [],
     nextOnDisagree: [],
     relatedIdentityIds: ["moral_impact_theorist", "nonpositivist"],
-    note: "Moral-Impact modifier and Mark Greenberg champion discriminator."
+    note: "Moral-Impact modifier and shared Greenberg/Hershovitz champion evidence."
   },
   {
     id: "D-NP5",
@@ -368,7 +368,7 @@ globalThis.LAW_DIAGNOSTIC_QUESTIONS = Object.freeze([
     nextOnAgree: [],
     nextOnDisagree: [],
     relatedIdentityIds: ["nonpositivist"],
-    note: "Moral-Practice modifier and Scott Hershovitz champion discriminator."
+    note: "Moral-Practice modifier and shared Greenberg/Hershovitz champion evidence."
   },
   {
     id: "D-NP6",
@@ -483,14 +483,14 @@ globalThis.LAW_DIAGNOSTIC_QUESTIONS = Object.freeze([
     id: "D-TXT1",
     family: "interpretation",
     priority: "medium",
-    unlock: "Textualist is a leading noun and the modern best-reading/contextual unit remains competitive with mainline enacted-bargain textualism.",
+    unlock: "Textualist is a leading noun and contextual reading may clarify the available evidence.",
     prompt: "When two readings of enacted text are linguistically plausible, the court should choose the better reading by asking how the words work in the whole statute and in ordinary usage, rather than treating every awkward omission or compromise as a reason to stop with the more literal-looking reading.",
     agreeTraits: ["constraint.best_reading_context", "constraint.contextual_textualism"],
     disagreeTraits: ["constraint.enacted_bargain"],
     nextOnAgree: [],
     nextOnDisagree: [],
     relatedIdentityIds: ["textualist"],
-    note: "Champion-level contextual-Textualism discriminator. D-SEP2 then separates court-centered Kavanaugh/Barrett from institutionally accommodating Kagan when material; no public Textualist modifier is created."
+    note: "Contextual-Textualism evidence, compatible with mainline textualism. D-SEP2 separately tests the institutional accommodation required for Kagan; no public Textualist modifier is created."
   },
   {
     id: "D-GRD1",

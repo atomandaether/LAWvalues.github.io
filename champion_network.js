@@ -42,7 +42,7 @@
             'raz_shapiro_marmor','campbell_waldron_schauer','waluchow_common_law'
         ]),
         'Natural law / Nonpositivism': new Set([
-            'dworkin_stavropoulos','greenberg','hershovitz','finnis_murphy_george',
+            'dworkin_stavropoulos','greenberg_hershovitz','greenberg','hershovitz','finnis_murphy_george',
             'moore_strong_natural_law','fuller','radbruch_soper','alexy','vermeule'
         ]),
         'Living / Common-law constitutionalism': new Set([
