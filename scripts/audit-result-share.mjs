@@ -70,7 +70,7 @@ run("quiz.js");
 await ctx.document.querySelectorAll("[data-response]")[0].click();
 const shareUrl=new URL(location.href);
 assert.equal(shareUrl.pathname,"/results.html");
-assert.equal(shareUrl.searchParams.get("cev"),"1");
+assert.equal(shareUrl.searchParams.get("cev"),"2");
 assert.ok(shareUrl.searchParams.get("ce").includes("remedies.constitutional_common_law"));
 assert.equal(shareUrl.searchParams.get("x"),"portrait_continuity_rights_extreme");
 assert.equal(shareUrl.searchParams.get("o"),"portrait_continuity_rights_extreme");

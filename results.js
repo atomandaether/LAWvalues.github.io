@@ -158,8 +158,8 @@
                 tier: profile.tier,
                 description: profile.description,
                 related: profile.related || [],
-                evidence: version.kind === 'current' && params.get('cev') === '1' && globalThis.LAW_CHAMPION_CARDS
-                    ? { supportedTraits: globalThis.LAW_CHAMPION_CARDS.fromIds(profile.id, params.get('ce')) }
+                evidence: version.kind === 'current' && ['1','2'].includes(params.get('cev')) && globalThis.LAW_CHAMPION_CARDS
+                    ? globalThis.LAW_CHAMPION_CARDS.decodeEvidence(profile.id, params.get('ce'), params.get('cev'), params.get('ca'))
                     : undefined
             }));
 
@@ -332,7 +332,7 @@
     const championPortrait = document.getElementById('champion-portrait');
     const championLineText = document.getElementById('champion-line').textContent;
     championCard.hidden = !championLineText;
-    const card = globalThis.LAW_CHAMPION_CARDS?.build(classification, scores, { legacy: version.kind !== 'current' });
+    const card = globalThis.LAW_CHAMPION_CARDS?.build(classification, scores, { legacy: version.kind !== 'current', responses:record?.responses, diagnosticResponses:record?.diagnosticResponses });
     if (card) document.getElementById('champion-line').textContent = `Champion: ${card.name}`;
     championTagline.textContent = card?.tagline || '';
     championTagline.hidden = !card?.tagline;

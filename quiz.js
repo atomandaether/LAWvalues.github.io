@@ -322,10 +322,11 @@
         if (classification.champions.length > 0) {
             params.set('c', classification.champions.map((item) => item.id).join(','));
         }
-        const championEvidenceIds = globalThis.LAW_CHAMPION_CARDS?.toIds(classification);
-        if (championEvidenceIds) {
-            params.set('cev', '1');
-            params.set('ce', championEvidenceIds);
+        const championEvidence = globalThis.LAW_CHAMPION_CARDS?.toShare(classification, {responses:state.responses, diagnosticResponses:state.diagnosticResponses});
+        if (championEvidence) {
+            params.set('cev', String(championEvidence.version));
+            params.set('ce', championEvidence.ids);
+            if (championEvidence.affinityId) params.set('ca', championEvidence.affinityId);
         }
         if (classification.resultTitle?.modifier?.id) params.set('m', classification.resultTitle.modifier.id);
         if (classification.resultTitle?.phrase?.id) params.set('p', classification.resultTitle.phrase.id);
