@@ -466,6 +466,20 @@ globalThis.LAW_DIAGNOSTIC_QUESTIONS = Object.freeze([
 
   // Statutory-method / adjudicative-style routers
   {
+    id: "D-DYN1",
+    family: "pluralism",
+    priority: "medium",
+    unlock: "Supported practical pluralism is live; direct evidence can refine its account of statutory evolution without changing the public title.",
+    prompt: "An old statute leaves a genuine choice between interpretations. Later legal developments and changes in social conditions may justify interpreting it differently today, even without an amendment. Those developments can help shape the statute's legal meaning, not merely provide new facts to which its fixed original meaning applies.",
+    agreeTraits: ["method.dynamic_statutory"],
+    disagreeTraits: [],
+    nextOnAgree: [],
+    nextOnDisagree: [],
+    relatedIdentityIds: ["interpretive_pluralist"],
+    sourceIds: ["eskridge1987"],
+    note: "Optional Eskridge/Frickey refinement. Does not establish practical reasoning, constitutional living meaning, or authority to override clear text. Missing or negative answers do not reject practical pluralism."
+  },
+  {
     id: "D-TXT1",
     family: "interpretation",
     priority: "medium",

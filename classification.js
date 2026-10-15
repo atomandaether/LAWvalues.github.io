@@ -723,7 +723,8 @@
     const traitDisagreements = (profile.antiTraits || []).filter(trait => (traits[trait] || 0) >= 0.5);
     return { coverage, modeledAxes: [...modeled], supportedAxes: covered,
       unknownAxes: important.filter(id => !modeled.has(id)), knownDisagreements, traitDisagreements,
-      supportedTraits: (profile.signatureTraits || []).filter(trait => (traits[trait] || 0) >= 0.5),
+      supportedTraits: [...(profile.signatureTraits || []), ...(profile.supportingTraits || [])]
+        .filter(trait => (traits[trait] || 0) >= 0.5),
       scope: modeled.size ? "modeled-profile" : "specific-affinity" };
   }
 
@@ -802,6 +803,11 @@
     }
     if (profile.tier === "main") score += 0.015;
     score += Number(profile.specificityBonus || 0);
+    // Optional refinements add affinity only on direct affirmative evidence.
+    // They neither dilute old signature scores nor create new eligibility.
+    const support = Math.max(0, ...(profile.supportingTraits || [])
+      .map(trait => (traits[trait] || 0) >= 0.5 ? traits[trait] : 0));
+    score += 0.025 * support;
     // A proposition-only affinity cannot claim broad agreement from absent data.
     return clamp01(modeledAxes ? score : Math.min(0.69, score));
   }
@@ -1191,6 +1197,9 @@
     const priorities = [];
     const offer = (id, priority) => {
       if (!byId[id] || hasAsked(diagnosticResponses, id)) return;
+      // All offer paths, including generic fallback, respect this prerequisite.
+      if (id === "D-DYN1" && ((traits["method.practical_reasoning"] || 0) < 0.5 ||
+          (traits["method.modal_pluralism"] || 0) < 0.5)) return;
       const existing = priorities.find((item) => item.id === id);
       if (existing) {
         existing.priority = Math.max(existing.priority, priority);
@@ -1823,6 +1832,12 @@
     }
     const fallbackCandidates = [];
     const routingChampion = resolveChampions(scores, traits, routingResolution.best.identity,routingResolution);
+    // A low-priority optional refinement, after foundational/priority questions.
+    // Ask only while the practical-pluralist champion is a credible live match.
+    const eskridgeCandidate = (routingChampion.candidates || []).find(c => c.profile.id === "eskridge_frickey");
+    const championLeader = routingChampion.matches[0]?.score ?? 0;
+    if (routingIds.has("interpretive_pluralist") && eskridgeCandidate &&
+        championLeader - eskridgeCandidate.score <= 0.11) offer("D-DYN1", 60);
     const championPool = routingChampion.candidates || routingChampion.matches || [];
     const championTop = championPool.slice(0, 3).filter((candidate, index) =>
       index === 0 || (championPool[0]?.score ?? 0) - candidate.score <= 0.11
