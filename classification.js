@@ -3,6 +3,8 @@
   "use strict";
 
   const AXIS_IDS = ["sorc", "cons", "time", "prec", "remed", "post", "separ", "form"];
+  const IDENTITY_CATALOG = new Map((global.LAW_RESULT_IDENTITIES || []).map(item => [item.id,item]));
+  const IDENTITY_LINEAGES = new Map();
   const MAX_TOTAL_QUESTIONS = 100;
   const CORE_QUESTION_COUNT = Array.isArray(global.LAW_QUESTIONS) ? global.LAW_QUESTIONS.length : 88;
   const MAX_DIAGNOSTICS = Math.max(0, MAX_TOTAL_QUESTIONS - CORE_QUESTION_COUNT);
@@ -26,7 +28,7 @@
       id: "D-QC1",
       family: "quality",
       priority: "high",
-      unlock: "Asked once after the universal Realism probe before any other adaptive routing.",
+      unlock: "Asked before substantive adaptive routing.",
       prompt: "Response check: please select Disagree for this item.",
       agreeTraits: [],
       disagreeTraits: [],
@@ -97,6 +99,8 @@
     "source.principles_are_law": [["S8", 1, 1], ["S7", -1, 0.35]],
     "source.extreme_injustice": [["S2", 1, 1]],
     "source.objective_morality": [["S10", 1, 1], ["S11", 1, 1]],
+    "source.independent_moral_validity": [["S10", 1, 1], ["S11", 1, 1]],
+    "source.independent_moral_validity_rejected": [["S10", -1, 1], ["S11", -1, 1]],
     "constraint.purpose": [["C8", 1, 0.8], ["C12", 1, 0.8], ["C14", 1, 0.9], ["C15", 1, 1]],
     "constraint.textual": [["C1", 1, 0.6], ["C2", 1, 0.7], ["C7", 1, 0.8], ["C9", 1, 0.7], ["C11", 1, 0.7], ["C17", 1, 1], ["C18", 1, 0.8]],
     "constraint.contextual_textualism": [["C5", 1, 0.8], ["C13", -1, 1]],
@@ -296,11 +300,43 @@
     return traits;
   }
 
+  // These probes ask about characteristic priority, not logical incompatibility.
+  // Neutral and skipped answers leave the comparison unresolved.
+  const PRIORITY_CONTEXTS = Object.freeze({
+    source: "deciding what counts as law in the first place",
+    time: "deciding how constitutional meaning can change over time",
+    method: "deciding how judges should read laws",
+    posture: "deciding when courts should overrule elected officials",
+    structure: "deciding which powers belong to each branch of government",
+    form: "choosing between firm rules and case-by-case judgment",
+    realism: "explaining what actually drives judges’ decisions",
+    common_good: "directing public power toward the common good of the political community"
+  });
+  const PRIORITY_DIAGNOSTICS = Object.entries(PRIORITY_CONTEXTS).flatMap(([a, aText], i, entries) =>
+    entries.slice(i + 1).map(([b, bText]) => ({
+      id: `D-PRI-${a}-${b}`, family: "priority", priority: "high",
+      evidenceRoles: ["relative-priority"], priorityComparison: [a, b],
+      prompt: `Both can matter. In what most defines your approach to law, ${aText} is more central than ${bText}. Agree favors the first; disagree favors the second; neither means neither consistently defines you more.`,
+      agreeTraits: [`priority.${a}.over.${b}`], disagreeTraits: [`priority.${b}.over.${a}`],
+      nextOnAgree: [], nextOnDisagree: [], relatedIdentityIds: (global.LAW_RESULT_IDENTITIES || []).filter(item => [a,b].includes(priorityDomain(item))).map(item => item.id),
+      note: "Comparative self-reported importance only; does not change any axis or establish a substantive doctrine."
+    })));
+
+  // Historical catalog families group title inventories; they are not always
+  // the subject of a meaningful defining-priority question.
+  function priorityDomain(identity) {
+    if (identity.id === "legal_realist") return "realism";
+    if (identity.id === "common_good_constitutionalist") return "common_good";
+    return identity.family;
+  }
+
   function diagnosticBank() {
     return [
       ...(Array.isArray(global.LAW_DIAGNOSTIC_QUESTIONS) ? global.LAW_DIAGNOSTIC_QUESTIONS : []),
-      ...EXTRA_DIAGNOSTICS
-    ];
+      ...EXTRA_DIAGNOSTICS,
+      ...PRIORITY_DIAGNOSTICS
+    ].map(item => item.evidenceRoles ? item : {...item,
+      evidenceRoles: item.family === "quality" ? ["quality-check"] : ["compatibility", "champion-discriminator"]});
   }
 
   function applyDiagnosticTraits(traits, diagnosticResponses) {
@@ -335,7 +371,7 @@
   }
 
   function identityFromCatalog(id, fallbackLabel) {
-    const found = (global.LAW_RESULT_IDENTITIES || []).find((item) => item.id === id);
+    const found = IDENTITY_CATALOG.get(id);
     return found ? { id: found.id, label: found.label, family: found.family, status: found.status } :
       { id, label: fallbackLabel || id, family: "fallback", status: "fallback" };
   }
@@ -348,11 +384,6 @@
     const sal=Object.fromEntries(AXIS_IDS.map(id=>[id,salience(scores,id)]));
     const left=Object.fromEntries(AXIS_IDS.map(id=>[id,leftStrength(scores,id)]));
     const right=Object.fromEntries(AXIS_IDS.map(id=>[id,rightStrength(scores,id)]));
-    const singleProposition=new Set([
-      "minimalist","thayerian","nonpositivist","fullerian",
-      "intentionalist","political_process_jurist","legal_process_theorist",
-      "sociological_jurist","proportionalist","common_good_constitutionalist"
-    ]);
     const output=[];
     for(const candidate of candidates) {
       const id=candidate.identity.id, family=candidate.identity.family;
@@ -391,29 +422,16 @@
         else if(id==="interpretive_pluralist"){focus=[];basis=Math.max(0.18,(traits["method.modal_pluralism"]||0)*0.45);}
         else basis=right.cons;
       }else if(id==="legal_realist"){basis=Math.max(0.25,(traits["realism.empirical_prediction"]||0)*0.55);}
-      // Cooke's common-law-rights claim itself explains a nonpositive Source
-      // score; treating that same axis as a rival theory double-counts it.
-      if(id==="common_law_constitutionalist" &&
-         (traits["source.common_law_fundamental_rights"]||0)>=0.5) focus.push("sorc");
-      const other=Math.max(0,...AXIS_IDS.filter(axis=>!focus.includes(axis)).map(axis=>sal[axis]));
-      let score=candidate.score;
-      if(id==="legal_realist"){
-        // A descriptive view of judicial behavior can accompany Originalism,
-        // Positivism, or another strong normative judicial philosophy.
-        score=Math.min(score,0.96-0.35*other);
-      }else{
-        if(id==="common_good_constitutionalist"){
-          // D-CGC1 is a direct theory diagnostic offered only inside an already
-          // compatible classical/nonpositive profile. Do not let the generic
-          // single-proposition cap force Vermeule-shaped respondents back into
-          // the broader Natural-Law noun.
-          score=Math.min(score,0.94+0.04*basis);
-        }else if(singleProposition.has(id)){
-          score=Math.min(score,0.80+0.13*basis);
-        }
-        score-=Math.max(0,other-basis-0.08)*(focus.length?0.39:0.17);
-      }
-      output.push({...candidate,score:clamp01(score),basis});
+      // Compatibility and subtype confidence are established above. Neither
+      // gives a family a larger intercept in the defining-priority comparison.
+      const priorityFamily = priorityDomain(candidate.identity);
+      const comparisons = Object.keys(PRIORITY_CONTEXTS).filter(other => other !== priorityFamily);
+      const priorityEvidence = comparisons.reduce((sum, other) => sum +
+        (traits[`priority.${priorityFamily}.over.${other}`] || 0) -
+        (traits[`priority.${other}.over.${priorityFamily}`] || 0), 0);
+      const score = 0.56 + 0.34 * basis + 0.22 * priorityEvidence;
+      output.push({...candidate, score:clamp01(score), basis, focus,
+        compatibilityScore:candidate.score, priorityFamily, priorityEvidence});
     }
     return output;
   }
@@ -528,15 +546,8 @@
       add("proportionalist", 0.99, "Affirmative structured-proportionality evidence establishes Proportionalism rather than generic balancing.");
     }
 
-    const establishedNonAuthorityScore = Math.max(0, ...candidates.map((item) => item.score));
-    const strongestNonAuthoritySalience = Math.max(s.sorc, s.cons, s.time, s.separ, s.form);
-    const authorityCanDominate =
-      (strongestNonAuthoritySalience <= 0.7 && establishedNonAuthorityScore < 0.85) ||
-      // A directly diagnosed constitutional-authority theory should be allowed
-      // to become the noun when Posture is itself plainly the respondent's
-      // strongest measured commitment. This prevents a secondary Source or
-      // Method theory from swallowing figures such as Waldron.
-      s.post >= strongestNonAuthoritySalience + 0.05;
+    // Eligibility must not disappear because an unrelated subtype was revealed.
+    const authorityCanDominate = true;
     const processReinforcement = traits["posture.process_reinforcement"] || 0;
     const responsiveReview = traits["posture.responsive_review"] || 0;
     const antiJudicialSupremacy = traits["posture.anti_judicial_supremacy"] || 0;
@@ -600,7 +611,7 @@
     if (l.sorc >= 0.25) {
       add(
         "positivist",
-        positivistSpecificity >= 0.5 ? 0.8 + 0.12 * s.sorc : 0.56 + 0.34 * s.sorc,
+        0.56 + 0.34 * s.sorc,
         positivistSpecificity >= 0.5
           ? "Positive-law grounding plus a distinctive Positivist branch."
           : "Positive legal sources dominate the Source axis."
@@ -612,8 +623,7 @@
       add("formalist", 0.55 + 0.32 * s.separ, "Formal separation of powers is highly distinctive.");
     }
     const antiDiscretion = traits["form.anti_discretion"] || 0;
-    const ruleFormalistCanDominate =
-      Math.max(s.sorc, s.cons, s.time, s.separ) <= 0.65;
+    const ruleFormalistCanDominate = true;
     if (ruleFormalistCanDominate && l.form >= 0.43 && antiDiscretion >= 0.65) {
       add("formalist", 0.93, "Rule-centered anti-discretion Formalism is the respondent's dominant jurisprudential commitment.");
     }
@@ -632,8 +642,35 @@
 
     const calibrated=calibrateIdentityCandidates(candidates,scores,traits);
     if(!calibrated.length) calibrated.push({identity:identityFromCatalog("mixed_jurisprudence"),score:0.5,basis:0,reason:"No dominant, internally consistent judicial philosophy emerges."});
-    calibrated.sort((a,b)=>b.score-a.score || b.basis-a.basis || a.identity.id.localeCompare(b.identity.id));
-    return {best:calibrated[0],candidates:calibrated.slice(0,5)};
+    // Select the family on a common support scale, then resolve its doctrinal
+    // form using compatibility evidence. A CLC subtype must not lose to generic
+    // Living merely because its support spans two axes rather than one.
+    for (const candidate of calibrated) {
+      const familyBasis = Math.max(...calibrated.filter(other => other.priorityFamily === candidate.priorityFamily).map(other => other.basis));
+      candidate.familyBasis = familyBasis;
+      candidate.score = clamp01(0.56 + 0.34 * familyBasis + 0.22 * (candidate.priorityEvidence || 0));
+    }
+    const families = [...new Set(calibrated.map(candidate => candidate.priorityFamily))];
+    const preferredOver = (a,b) => (traits[`priority.${a}.over.${b}`] || 0) >= 0.5;
+    const visiting = new Set(), visited = new Set();
+    const hasCycle = family => {
+      if (visiting.has(family)) return true;
+      if (visited.has(family)) return false;
+      visiting.add(family);
+      if (families.some(other => other !== family && preferredOver(family,other) && hasCycle(other))) return true;
+      visiting.delete(family); visited.add(family); return false;
+    };
+    const priorityConflict = families.some(hasCycle);
+    for (const candidate of calibrated) candidate.priorityDefeated = !priorityConflict &&
+      families.some(other => other !== candidate.priorityFamily && preferredOver(other,candidate.priorityFamily));
+    // A clear direct preference cannot be canceled merely by beating a third
+    // family. A cycle instead remains unresolved and falls back deterministically.
+    calibrated.sort((a,b)=>Number(a.priorityDefeated)-Number(b.priorityDefeated) ||
+      b.score-a.score || b.compatibilityScore-a.compatibilityScore || b.basis-a.basis || a.identity.id.localeCompare(b.identity.id));
+    const distinct = calibrated.filter(candidate => !calibrated.some(other =>
+      other !== candidate && other.score >= candidate.score &&
+      identityLineageIds(other.identity.id).slice(1).includes(candidate.identity.id)));
+    return {best:distinct[0],candidates:distinct,priorityConflict};
   }
 
   function requiredTraitsSatisfied(profile, traits) {
@@ -674,21 +711,26 @@
     return tags.reduce((sum, trait) => sum + (traits[trait] || 0), 0) / tags.length;
   }
 
-  function profileUnexplainedSalience(profile, scores) {
+  function profileEvidenceCoverage(profile, scores, traits) {
     const modeled = new Set(Object.keys(profile.axisSignature || {}));
-    // Profiles with no axis model are intentionally proposition-level theories;
-    // do not pretend an omitted axis is a known disagreement. Once a profile
-    // does model axes, however, very strong respondent commitments outside that
-    // model count as unexplained rather than as a free match.
-    if (modeled.size === 0) return 0;
-    const unexplained = AXIS_IDS
-      .filter((axisId) => !modeled.has(axisId))
-      .map((axisId) => salience(scores, axisId))
-      .filter((value) => value >= 0.55);
-    if (!unexplained.length) return 0;
-    const max = Math.max(...unexplained);
-    const mean = unexplained.reduce((sum, value) => sum + value, 0) / unexplained.length;
-    return clamp01(0.10 * max + 0.06 * mean);
+    const important = AXIS_IDS.filter(id => salience(scores, id) >= 0.35);
+    const total = important.reduce((sum, id) => sum + salience(scores,id), 0);
+    const covered = important.filter(id => modeled.has(id));
+    const coverage = total ? covered.reduce((sum,id) => sum + salience(scores,id),0) / total : 0;
+    const knownDisagreements = Object.entries(profile.axisSignature || {}).filter(([id,spec]) =>
+      salience(scores,id) >= 0.35 && Math.abs(axisValue(scores,id)-Number(spec.target)) >= 40
+    ).map(([id]) => id);
+    const traitDisagreements = (profile.antiTraits || []).filter(trait => (traits[trait] || 0) >= 0.5);
+    return { coverage, modeledAxes: [...modeled], supportedAxes: covered,
+      unknownAxes: important.filter(id => !modeled.has(id)), knownDisagreements, traitDisagreements,
+      supportedTraits: (profile.signatureTraits || []).filter(trait => (traits[trait] || 0) >= 0.5),
+      scope: modeled.size ? "modeled-profile" : "specific-affinity" };
+  }
+
+  function profileUnexplainedSalience(profile, scores) {
+    // This is uncertainty discounting, never an assertion of disagreement.
+    const evidence = profileEvidenceCoverage(profile, scores, {});
+    return 0.22 * (1 - evidence.coverage);
   }
 
   function crossCuttingRequirementsSatisfied(profile, identity, traits) {
@@ -703,8 +745,8 @@
   }
 
   function identityLineageIds(identityId) {
-    const catalog = Array.isArray(global.LAW_RESULT_IDENTITIES) ? global.LAW_RESULT_IDENTITIES : [];
-    const byId = Object.fromEntries(catalog.map((item) => [item.id, item]));
+    if (IDENTITY_LINEAGES.has(identityId)) return IDENTITY_LINEAGES.get(identityId);
+    const byId = Object.fromEntries(IDENTITY_CATALOG);
     const ids = [];
     const seen = new Set();
     let cursor = byId[identityId] || null;
@@ -713,6 +755,7 @@
       seen.add(cursor.id);
       cursor = cursor.parentId ? byId[cursor.parentId] || null : null;
     }
+    IDENTITY_LINEAGES.set(identityId,Object.freeze(ids));
     return ids;
   }
 
@@ -753,26 +796,68 @@
 
     let score;
     if (modeledAxes === 0) {
-      score = 0.5 + 0.34 * traitFit + identityBonus - 0.22 * anti;
+      score = 0.5 + 0.34 * traitFit + identityBonus - 0.22 * anti - unexplained;
     } else {
       score = 0.62 * fit + 0.18 * shape + 0.15 * traitFit + identityBonus - 0.22 * anti - unexplained;
     }
     if (profile.tier === "main") score += 0.015;
     score += Number(profile.specificityBonus || 0);
-    return clamp01(score);
+    // A proposition-only affinity cannot claim broad agreement from absent data.
+    return clamp01(modeledAxes ? score : Math.min(0.69, score));
   }
 
-  function resolveChampions(scores, traits, identity) {
+  function resolveChampions(scores, traits, identity, identityResolution = null) {
     const profiles = Array.isArray(global.LAW_PROFILES) ? global.LAW_PROFILES : [];
     const normal = [];
     const catchalls = [];
+    const resolution = identityResolution || resolveIdentity(scores, traits);
+    const primaryChoice = resolution.candidates.find(candidate => candidate.identity.id === identity.id);
+    // Hard representation guards require material doctrine and priority evidence;
+    // a weak tilt can still have its best whole-person fit in an adjacent school.
+    const explicitPrimary = (primaryChoice?.priorityEvidence || 0) >= 0.5 &&
+      (primaryChoice?.basis || 0) >= 0.35;
+    const primaryTraits = new Set((IDENTITY_CATALOG.get(identity.id)?.covers || []));
+    const representsPrimary = profile => {
+      const compatibility = championIdentityCompatibility(profile,identity);
+      if (compatibility === "primary") return true;
+      if (compatibility !== "cross-cutting" || !crossCuttingRequirementsSatisfied(profile,identity,traits)) return false;
+      // A bridge can establish affinity without representing the explicitly
+      // defining doctrine. Require actual modeled primary-domain or signature
+      // coverage, not just an unrelated specialty tagged onto the noun.
+      return (primaryChoice?.focus || []).some(axis => profile.axisSignature?.[axis]) ||
+        (profile.signatureTraits || []).some(trait => primaryTraits.has(trait));
+    };
+    const supportedIdentities = resolution.candidates.filter(candidate =>
+      candidate.score >= 0.62 && candidate.basis >= 0.2).map(candidate => candidate.identity);
+    // A provisional noun should not outweigh a better supported whole-profile
+    // match merely through canonicality. Keep only the small compatibility
+    // distinction while defining priority remains unresolved.
+    const primaryUnresolved = identityPrioritySummary(resolution).unresolved;
+    const bestDirect = primaryUnresolved ? profiles.map(profile => ({profile,
+      score: scoreProfile(profile,scores,traits,identity)}))
+      .filter(item=>item.score!==null).sort((a,b)=>b.score-a.score)[0] : null;
+    const directCoverage = bestDirect ? profileEvidenceCoverage(bestDirect.profile,scores,traits).coverage : 0;
+    const profileScore = profile => {
+      const evidence = profileEvidenceCoverage(profile,scores,traits);
+      const clearerBroadEvidence = primaryUnresolved && evidence.coverage > directCoverage + 0.15 &&
+        evidence.knownDisagreements.length === 0 && evidence.traitDisagreements.length === 0;
+      const secondaryPenalty = clearerBroadEvidence ? 0.025 : 0.09;
+      if (explicitPrimary && !representsPrimary(profile)) return null;
+      const direct = scoreProfile(profile, scores, traits, identity);
+      // A primary label is not an exhaustive worldview. Independently evidenced
+      // compatible commitments retain their thinkers; no invented identity maps.
+      const secondary = supportedIdentities.filter(other => !explicitPrimary && supportedIdentities.some(primary => primary.id === identity.id) && other.id !== identity.id)
+        .map(other => scoreProfile(profile, scores, traits, other))
+        .filter(value => value !== null).map(value => value - secondaryPenalty);
+      return direct === null && !secondary.length ? null : Math.max(direct ?? -1, ...secondary);
+    };
 
     for (const profile of profiles) {
       if (profile.tier === "catchall") {
         if (championIdentityCompatibility(profile, identity) !== "incompatible") catchalls.push(profile);
         continue;
       }
-      const score = scoreProfile(profile, scores, traits, identity);
+      const score = profileScore(profile);
       if (score !== null) normal.push({ profile, score });
     }
     normal.sort((a, b) =>
@@ -893,6 +978,8 @@
     }
 
     for (const profile of catchalls) {
+      if (explicitPrimary && identity.id !== "mixed_jurisprudence" &&
+          Math.max(traits["method.case_by_case"]||0,traits["method.anti_grand_theory"]||0) < 0.5) continue;
       const lowTheoryEvidence = Math.max(
         traits["method.case_by_case"] || 0,
         traits["method.anti_grand_theory"] || 0,
@@ -910,15 +997,23 @@
       }
     }
 
+    if (explicitPrimary) pool = pool.filter(item => representsPrimary(item.profile));
+
     // Never rescue a noun by jumping to an incompatible thinker. If this is
     // empty, the noun/profile contracts are wrong and the audit should fail.
     if (pool.length === 0) return { matches: [], confidence: "withheld", candidates: [] };
 
+    // Apply evidence limits to every route, including special remedial overrides.
+    pool = pool.map(item => {
+      const evidence = profileEvidenceCoverage(item.profile, scores, traits);
+      return {...item, evidence, score: evidence.modeledAxes.length ? item.score : Math.min(item.score, 0.69)};
+    }).sort((a,b) => b.score-a.score || a.profile.id.localeCompare(b.profile.id));
     const first = pool[0];
     const second = pool[1];
     const margin = second ? first.score - second.score : 1;
     const confidence =
-      first.score >= 0.76 && margin >= 0.055 ? "high" :
+      first.score >= 0.76 && margin >= 0.055 && first.evidence.coverage >= 0.70 &&
+      !first.evidence.knownDisagreements.length && !first.evidence.traitDisagreements.length ? "high" :
       first.score >= 0.63 ? "medium" : "low";
     return { matches: [first], confidence, candidates: pool.slice(0, 5) };
   }
@@ -1060,6 +1155,17 @@
     return Object.values(domains).filter(Boolean).length >= 2;
   }
 
+  function identityPrioritySummary(resolution) {
+    return {
+      evidence: resolution.best.priorityEvidence || 0,
+      basis: "core-axis-support-plus-explicit-comparative-priority",
+      conflictingComparisons: !!resolution.priorityConflict,
+      unresolved: !!resolution.priorityConflict || resolution.candidates.some(candidate =>
+        !candidate.priorityDefeated && candidate.priorityFamily !== resolution.best.priorityFamily &&
+        resolution.best.score - candidate.score <= 0.12)
+    };
+  }
+
   function finalizeResult(result, scores, traits, traitEvidence) {
     if (global.LAW_RESULT_CONTENT?.assemble) {
       result.resultTitle = global.LAW_RESULT_CONTENT.assemble(result, scores, traits, traitEvidence);
@@ -1072,7 +1178,6 @@
     if (askedCount >= MAX_DIAGNOSTICS) return null;
     const byId = Object.fromEntries(diagnosticBank().map((item) => [item.id, item]));
 
-    if (!hasAsked(diagnosticResponses, "D-RLS1")) return byId["D-RLS1"];
     if (!hasAsked(diagnosticResponses, "D-QC1")) return byId["D-QC1"];
     if (Number(diagnosticResponses["D-QC1"]) !== -2) return null;
     if(detectRandomLikePattern(responses,scores) && !hasAsked(diagnosticResponses,"D-QC2"))
@@ -1098,11 +1203,43 @@
     // A family is "live" when it is leading or close enough that one targeted
     // diagnostic could reasonably move the noun/champion result.
     const routingResolution = resolveIdentity(scores, traits);
-    const routingLeading = routingResolution.candidates.slice(0, 5).filter((candidate, index) =>
-      index === 0 || routingResolution.best.score - candidate.score <= 0.16
+    const routingLeading = routingResolution.candidates.filter((candidate, index, all) =>
+      (index === 0 || routingResolution.best.score - candidate.score <= 0.26) &&
+      all.findIndex(other => other.priorityFamily === candidate.priorityFamily) === index
     );
     const routingIds = new Set(routingLeading.map((candidate) => candidate.identity.id));
     const routingFamilies = new Set(routingLeading.map((candidate) => candidate.identity.family));
+    const confirmedPriorityFamilies = new Set(routingLeading.map(candidate => candidate.priorityFamily));
+    // Axis moderation is compatible with a principled pluralist or institutional
+    // method. Discretion evidence is compatible with, but never proves, Realism.
+    // Ask relative importance before buying a discovery chain, rather than
+    // requiring the as-yet-unasked doctrine to exist in the noun shortlist.
+    const exploratoryFamilies = [];
+    if (MAX_DIAGNOSTICS - askedCount >= 3 && !confirmedPriorityFamilies.has("method") && axisValue(scores,"cons") >= 30 &&
+        axisValue(scores,"cons") <= 70) exploratoryFamilies.push("method");
+    if (MAX_DIAGNOSTICS - askedCount >= 3 && !confirmedPriorityFamilies.has("realism") &&
+        ((traits["source.law_runs_out"] || 0) >= 0.33 || maxSalienceEarly <= 0.70)) exploratoryFamilies.push("realism");
+    const priorityFamilies = [...routingLeading.filter(candidate =>
+      candidate.priorityFamily !== routingResolution.best.priorityFamily &&
+      (candidate.familyBasis >= 0.35 || routingResolution.best.score - candidate.score <= 0.12)
+    ).map(candidate => candidate.priorityFamily), ...exploratoryFamilies];
+    const priorityProbe = [...new Set(priorityFamilies)].map(family => {
+      const pair = [routingResolution.best.priorityFamily,family];
+      return PRIORITY_DIAGNOSTICS.find(item => pair.every(f => item.priorityComparison.includes(f)));
+    }).find(probe => probe && !hasAsked(diagnosticResponses,probe.id));
+    if (priorityProbe) offer(priorityProbe.id,112);
+    const explicitlyCentral = family => Object.keys(PRIORITY_CONTEXTS).some(other =>
+      (traits[`priority.${family}.over.${other}`] || 0) >= 0.5);
+    const methodDiscovery = explicitlyCentral("method");
+    const realismDiscovery = explicitlyCentral("realism");
+    if (methodDiscovery && axisValue(scores,"cons") < 65) {
+      if ((traits["method.modal_pluralism"]||0) < 0.5) offer("D-PLU1",116);
+      if ((traits["method.institutional_competence"]||0) < 0.5) offer("D-LP1",112);
+      else offer("D-LP2",108);
+    }
+    // Realism remains available without automatic precedence. Affirmed relative
+    // centrality justifies its short compatibility chain before fine subtypes.
+    offer("D-RLS1",realismDiscovery ? 116 : maxSalienceEarly <= 0.55 ? 78 : 48);
     const bestRoutingId = routingResolution.best.identity.id;
     const identityLive = (id) => routingIds.has(id);
     const anyIdentityLive = (ids) => ids.some((id) => routingIds.has(id));
@@ -1113,12 +1250,12 @@
       ((traits["realism.empirical_prediction"] || 0) >= 0.35 ||
        (traits["realism.law_in_action"] || 0) >= 0.5);
     if (Number(diagnosticResponses["D-RLS1"]) > 0) {
-      if (!hasAsked(diagnosticResponses, "D-RLS2")) offer("D-RLS2", 90);
-      if (!hasAsked(diagnosticResponses, "D-RLS3")) offer("D-RLS3", 89);
+      if (!hasAsked(diagnosticResponses, "D-RLS2")) offer("D-RLS2", realismDiscovery ? 116 : 90);
+      if (!hasAsked(diagnosticResponses, "D-RLS3")) offer("D-RLS3", realismDiscovery ? 115 : 89);
     }
     if (realismConfirmed) {
-      if (!hasAsked(diagnosticResponses, "D-RLS4")) offer("D-RLS4", 99);
-      else if (!hasAsked(diagnosticResponses, "D-RLS5")) offer("D-RLS5", 98);
+      if (!hasAsked(diagnosticResponses, "D-RLS4")) offer("D-RLS4", 80);
+      else if (!hasAsked(diagnosticResponses, "D-RLS5")) offer("D-RLS5", 79);
     }
     if (!realismConfirmed &&
         hasAsked(diagnosticResponses, "D-MAJ1") &&
@@ -1651,8 +1788,41 @@
     // This fallback is conservative: it excludes deferred/exotic diagnostics and
     // only considers questions tied to a live identity or a trait that separates
     // nearby compatible champions.
+    // Missing required evidence is an unanswered question, not negative evidence.
+    // Offer affordable prerequisite chains for compatible, plausible thinkers.
+    const remainingSlots = MAX_DIAGNOSTICS - askedCount;
+    for (const profile of global.LAW_PROFILES || []) {
+      if (profile.selectable === false || profile.tier === "lineage" || profile.tier === "catchall") continue;
+      if (!routingLeading.some(c => championIdentityCompatibility(profile,c.identity) !== "incompatible")) continue;
+      const fit = axisProfileFit(profile,scores);
+      if (fit.modeledAxes && fit.fit < 0.55) continue;
+      const missing = (profile.requiredTraits || []).filter(rule =>
+        !requiredTraitsSatisfied({requiredTraits:[rule]},traits));
+      if (!missing.length) continue;
+      const needed = new Set(missing.flatMap(rule => [...(rule.all||[]),...(rule.any||[])]));
+      const questions = Object.values(byId).filter(q =>
+        !hasAsked(diagnosticResponses,q.id) && q.family !== "quality" &&
+        [...(q.agreeTraits||[]),...(q.disagreeTraits||[])].some(t => needed.has(t)) &&
+        (!(q.relatedIdentityIds || []).some(id =>
+          ["natural_lawyer","nonpositivist","interpretivist","fullerian"].includes(id)) ||
+          priorities.some(item => item.id === q.id)));
+      const after = (base,q,positive) => {
+        const hypothetical = {...base};
+        for (const trait of (positive ? q.agreeTraits : q.disagreeTraits) || []) setMax(hypothetical,trait,1);
+        return hypothetical;
+      };
+      const feasible = new Map();
+      for (const q of questions) for (const positive of [true,false]) {
+        const one = after(traits,q,positive);
+        if (requiredTraitsSatisfied(profile,one)) { feasible.set(q.id,1); continue; }
+        if (remainingSlots < 2 || feasible.get(q.id) === 1) continue;
+        if (questions.some(second => second.id !== q.id && [true,false].some(sign =>
+          requiredTraitsSatisfied(profile,after(one,second,sign))))) feasible.set(q.id,2);
+      }
+      for (const [id,cost] of feasible) offer(id,76 - 5*(cost-1));
+    }
     const fallbackCandidates = [];
-    const routingChampion = resolveChampions(scores, traits, routingResolution.best.identity);
+    const routingChampion = resolveChampions(scores, traits, routingResolution.best.identity,routingResolution);
     const championPool = routingChampion.candidates || routingChampion.matches || [];
     const championTop = championPool.slice(0, 3).filter((candidate, index) =>
       index === 0 || (championPool[0]?.score ?? 0) - candidate.score <= 0.11
@@ -1679,8 +1849,10 @@
 
       for (const diagnostic of Object.values(byId)) {
         if (hasAsked(diagnosticResponses, diagnostic.id) ||
-            diagnostic.family === "quality" ||
+            diagnostic.family === "quality" || diagnostic.priorityComparison ||
             diagnostic.priority === "deferred") continue;
+        if (/^D-(NP[1-6]|NL2)$/.test(diagnostic.id) &&
+            !priorities.some(item => item.id === diagnostic.id)) continue;
         const covers = diagnostic.relatedIdentityIds || [];
         const identityRelevant =
           covers.includes(routingResolution.best.identity.id) ||
@@ -1704,8 +1876,10 @@
       const topIds = routingResolution.candidates.slice(0, 2).map((candidate) => candidate.identity.id);
       for (const diagnostic of Object.values(byId)) {
         if (hasAsked(diagnosticResponses, diagnostic.id) ||
-            diagnostic.family === "quality" ||
+            diagnostic.family === "quality" || diagnostic.priorityComparison ||
             diagnostic.priority === "deferred") continue;
+        if (/^D-(NP[1-6]|NL2)$/.test(diagnostic.id) &&
+            !priorities.some(item => item.id === diagnostic.id)) continue;
         const covers = diagnostic.relatedIdentityIds || [];
         const coveredTop = topIds.filter((id) => covers.includes(id));
         if (coveredTop.length === 1) {
@@ -1719,13 +1893,13 @@
       .slice(0, 8)
       .forEach((candidate) => offer(candidate.id, candidate.priority));
 
-    // Rank questions by expected information value. Hand-authored gates decide
+    // Rank questions by decision-sensitivity proxies, not calibrated information gain. Hand-authored gates decide
     // which distinctions are jurisprudentially plausible; the sorter decides
     // which live distinction is most valuable *now*.
     const resolution = routingResolution;
     const leading = routingLeading;
     const relevant = routingIds;
-    const currentChampion = resolveChampions(scores, traits, resolution.best.identity);
+    const currentChampion = routingChampion;
     const currentChampionId = currentChampion.matches[0]?.profile?.id || "none";
     const currentMargin = resolution.candidates.length > 1
       ? resolution.best.score - resolution.candidates[1].score : 1;
@@ -1747,13 +1921,16 @@
       return false;
     };
 
+    const hypotheticalCache = new Map();
     const hypothetical = (diagnosticId, value) => {
       const hypotheticalTraits = buildTraits(
         scores, responses, { ...diagnosticResponses, [diagnosticId]: value }
       );
+      const cacheKey = JSON.stringify(hypotheticalTraits);
+      if (hypotheticalCache.has(cacheKey)) return hypotheticalCache.get(cacheKey);
       const identityResolution = resolveIdentity(scores, hypotheticalTraits);
       const championResolution = resolveChampions(
-        scores, hypotheticalTraits, identityResolution.best.identity
+        scores, hypotheticalTraits, identityResolution.best.identity,identityResolution
       );
       const championId = championResolution.matches[0]?.profile?.id || "none";
       const margin = identityResolution.candidates.length > 1
@@ -1763,12 +1940,13 @@
         const assembled = global.LAW_RESULT_CONTENT.assemble({
           identity: identityResolution.best.identity,
           identityScore: identityResolution.best.score,
+          identityPriority: identityPrioritySummary(identityResolution),
           primaryStrength: identityResolution.best.basis,
-          identityAlternatives: identityResolution.candidates.slice(1, 4)
+          identityAlternatives: identityResolution.candidates.filter(candidate => candidate.priorityFamily !== identityResolution.best.priorityFamily).slice(0, 3)
         }, scores, hypotheticalTraits, {});
         modifierId = assembled?.modifier?.id || "none";
       }
-      return {
+      const outcome = {
         identityId: identityResolution.best.identity.id,
         identityScore: identityResolution.best.score,
         championId,
@@ -1776,6 +1954,8 @@
         margin,
         modifierId
       };
+      hypotheticalCache.set(cacheKey,outcome);
+      return outcome;
     };
 
     const targeted = priorities.map((p) => {
@@ -1787,13 +1967,14 @@
       const nearDirect = !bestDirect && covers.some((id) => relevant.has(id));
       const followUp = triggeredFollowUp(p.id);
 
-      const agree = hypothetical(p.id, 3);
-      const disagree = hypothetical(p.id, -3);
+      const outcomes = [-3, -2, -1, 0, 1, 2, 3, null].map(value => hypothetical(p.id, value));
+      const agree = outcomes[6];
+      const disagree = outcomes[0];
 
       let information = 0;
-      if (agree.identityId !== disagree.identityId) information += 22;
-      if (agree.championId !== disagree.championId) information += 16;
-      if (agree.modifierId !== disagree.modifierId) information += 8;
+      if (new Set(outcomes.map(o => o.identityId)).size > 1) information += 14;
+      if (new Set(outcomes.map(o => o.championId)).size > 1) information += 28;
+      if (new Set(outcomes.map(o => o.modifierId)).size > 1) information += 3;
       information += Math.min(7, Math.abs(agree.margin - disagree.margin) * 35);
       information += Math.min(5, Math.abs(agree.identityScore - disagree.identityScore) * 18);
 
@@ -1805,7 +1986,8 @@
       }
 
       let relevance = bestDirect ? 26 : nearDirect ? 13 : 0;
-      if (followUp) relevance += 22;
+      if (followUp) relevance += 6;
+      if (diagnostic.priorityComparison) relevance += 20;
       if (resolution.best.score >= 0.83 && resolution.best.basis >= 0.34 &&
           !bestDirect && !nearDirect && !followUp) {
         relevance -= 12;
@@ -1815,8 +1997,8 @@
       // themselves opened a chain or the question can still alter a public result.
       const familyCount = askedFamilyCounts[diagnostic.family] || 0;
       const repetitionPenalty =
-        familyCount >= 3 && !followUp && information < 16
-          ? (familyCount - 2) * 5
+        familyCount >= 2
+          ? (familyCount - 1) * 10
           : 0;
 
       const rank = p.priority + relevance + information - repetitionPenalty;
@@ -1918,18 +2100,20 @@
     }
 
     const identityResolution = resolveIdentity(scores, traits);
-    const championResolution = resolveChampions(scores, traits, identityResolution.best.identity);
+    const championResolution = resolveChampions(scores, traits, identityResolution.best.identity,identityResolution);
     return finalizeResult({
       identity: identityResolution.best.identity,
       identityScore: identityResolution.best.score,
       primaryStrength: identityResolution.best.basis,
+      identityPriority: identityPrioritySummary(identityResolution),
       identityReason: identityResolution.best.reason,
-      identityAlternatives: identityResolution.candidates.slice(1, 4),
-      champions: championResolution.matches.map(({ profile, score }) => ({
+      identityAlternatives: identityResolution.candidates.filter(candidate => candidate.priorityFamily !== identityResolution.best.priorityFamily).slice(0, 3),
+      champions: championResolution.matches.map(({ profile, score, evidence }) => ({
         id: profile.id,
         name: profile.name,
         tier: profile.tier,
         score,
+        evidence,
         description: profile.description,
         related: profile.related || []
       })),
@@ -1954,6 +2138,7 @@
     detectOutcomeSelection,
     resolveIdentity,
     championIdentityCompatibility,
+    profileEvidenceCoverage,
     resolveChampions,
     nextDiagnostic,
     classify

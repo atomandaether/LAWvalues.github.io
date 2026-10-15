@@ -309,10 +309,17 @@
         if (narrative?.id) params.set('x', narrative.id);
         if (narrative?.openingId) params.set('o', narrative.openingId);
         params.set('d', String(classification.diagnosticCount));
+        if (classification.identityPriority?.unresolved) params.set('u', '1');
+        if (['low', 'medium', 'high'].includes(classification.championConfidence)) {
+            params.set('cf', classification.championConfidence);
+        }
+        const unknownAxes = classification.champions[0]?.evidence?.unknownAxes || [];
+        if (unknownAxes.length) params.set('ua', unknownAxes.filter(id => globalThis.LAW_AXES.some(axis => axis.id === id)).join(','));
 
 
         const record = {
             version: globalThis.LAW_VERSION,
+            resultQuery: params.toString(),
             startedAt: state.startedAt,
             coreCompletedAt: state.coreCompletedAt,
             scores: Object.fromEntries(globalThis.LAW_AXES.map((axis) => [axis.id, scored[axis.id].score])),

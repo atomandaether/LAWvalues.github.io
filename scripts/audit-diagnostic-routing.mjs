@@ -76,7 +76,7 @@ function unresolvedSourceCore() {
   }
 
   const failedCheck = run(scores, responses, (id) => id === "D-QC1" ? 0 : -3);
-  assert.deepEqual(failedCheck.order, ["D-RLS1", "D-QC1"],
+  assert.deepEqual(failedCheck.order, ["D-QC1"],
     "Source exploration must not bypass response-quality checks");
 }
 

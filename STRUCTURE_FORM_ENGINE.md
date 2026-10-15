@@ -85,7 +85,7 @@ The ordinary process remains noun-conditioned: primary-compatible champions rece
 
 Fiss, Bray, Sohoni/Frost, and Levinson are tightly gated global cross-noun remedies specialists. Monaghan remains noun-compatible/cross-cutting rather than globally eligible.
 
-Close matches reduce confidence but never produce co-champions. If an otherwise valid result has no compatible selectable profile at all, the engine uses the best globally fitting eligible profile rather than leaving the champion slot empty. Response-quality/incoherence overrides still withhold thinker matching.
+Close matches reduce confidence but never produce co-champions. Eligibility requires supported jurisprudential compatibility; an arbitrary numerically nearby but incompatible thinker is not an acceptable fallback. Separately supported commitments may preserve compatible alternatives beyond the winning noun, with a reduced compatibility advantage. Response-quality/incoherence overrides still withhold thinker matching.
 
 ## Reachability contract
 
@@ -112,6 +112,6 @@ It also verifies:
 - every valid fixture returns exactly one champion unit;
 - all previously locked Originalism, Source, Method, non-originalist Time, and Authority reachability contracts remain green.
 
-## Theory-based Separation diagnostics (0.7 Beta)
+## Theory-based Separation diagnostics (0.8 Beta)
 
-Five conditional institutional diagnostics—D-SEP1 through D-SEP4 plus D-MET1—distinguish presidential direction of executive officers, independent judicial construction of delegated statutory authority, nondelegation despite clear legislative authorization, administrative adjudication, and Metzger-style constitutional supervision without plenary presidential control. They use no new public axis. When actually asked, they carry modest Separation-axis weight in addition to narrower champion evidence; adaptive routing itself still uses the 88-core scores, so the follow-ups refine rather than recursively determine their own eligibility. They are routed by the strength and relevance of an existing structural judicial philosophy and supply narrower champion signals for Lawson, Calabresi/Prakash, Peter Strauss and appropriate Textualist/Purposivist profiles. The 88-core + up-to-12-adaptive allocation retains the 100-response limit. All four must be reachable on tested Formalist/Functionalist paths.
+Five conditional institutional diagnostics—D-SEP1 through D-SEP4 plus D-MET1—distinguish presidential direction of executive officers, independent judicial construction of delegated statutory authority, nondelegation despite clear legislative authorization, administrative adjudication, and Metzger-style constitutional supervision without plenary presidential control. They use no new public axis. In 0.8 they refine only identity and champion evidence. The displayed Separation score, like the other seven axes, uses core answers only. Version 0.7 gave these diagnostics modest Separation-axis weight; already-saved scores remain unchanged. They are routed by the strength and relevance of an existing structural judicial philosophy and supply narrower champion signals for Lawson, Calabresi/Prakash, Peter Strauss and appropriate Textualist/Purposivist profiles. The 88-core + up-to-12-adaptive allocation retains the 100-response limit. All four must be reachable on tested Formalist/Functionalist paths.

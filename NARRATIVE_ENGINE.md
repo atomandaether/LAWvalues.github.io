@@ -1,46 +1,46 @@
 # Result narrative contract
 
-`result_narrative.js` supplies two distinct paragraphs:
+The result consists of one portrait expressed in two paragraphs:
 
-1. A plain-English diagnosis of the respondent as a judge, capped at 70 words.
-2. One cohesive academic explanation of the profile, with an editorial target of roughly 180–300 words and a hard cap of 300 words.
+1. A plain-English opening of at most 70 words describing the respondent's judicial outlook.
+2. A connected explanation of the outlook's mechanism, place in legal thought, and unresolved difficulty, at most 300 words. Roughly 180–300 words is an editorial target, not a minimum.
 
-The target is not a minimum. A shorter explanation is preferable to unsupported detail, repeated diagnosis, or a list of unrelated axis clauses. The context must explain a relationship among commitments when that relationship changes the theory. It must not append stock sentences such as “On statutes, …” to a generic noun description. Narrow agency and remedies diagnostics remain subordinate to the broader intellectual explanation.
+## Relationship-first selection
 
-## Evidence and compatibility
+`selectPortrait` selects a relationship supported by at least two commitments. Current plans cover continuity with explicitly prioritized, diagnostically confirmed empirical Realism or practical Interpretive Pluralism; continuity with development or rights; historical authority with reliance, correction, or general rules; public text/history/rules qualified by reliance; rules with rights; text or purpose with democratic restraint; text with general rules; development with rights or democratic authority; practical interpretation with continuity; and contextual rights review.
 
-- Narrative selection uses the public identity, supported traits, and axis scores. Champion IDs, names, and confidence do not determine either paragraph. Authors may be named when their work is the subject of the explanation.
-- Source theories are not interchangeable. Moral Impact, moral-practice, extreme-injustice, and strong Natural-Law evidence must not silently become an Interpretivist fit-and-justification diagnosis. The public Non-Positivist umbrella preserves its diagnostic branch.
-- Contextual doctrine on Form does not establish strong judicial review on Posture. Proportionality identifies a justificatory method without independently settling judicial finality.
-- Structural formalism does not imply rigid categorical doctrine in every field. Statutory Purposivism does not establish that consequences carry the independent weight they have in Pragmatism.
-- Originalist precedent discussions accommodate both public meaning and lawmaking intention. Giving precedent greater or lesser weight does not change the respondent's historical object of interpretation.
-- A mixed profile with strong commitments is distinct from a near-center profile. Neither alone establishes direct contradiction or affirmative Interpretive Pluralism. The classifier's explicit exceptional identities control withheld narratives.
-- Legacy catalog identities remain supported for compatibility. For example, Common-Good Constitutionalism resolves to its existing theory paragraph rather than falling through to a near-center explanation. This does not add a public noun or champion.
+Moderate combinations matter: Time at 42 or below and Precedent at 62 or above support continuity through development. They do not require an extreme Living score. A common-law trait cannot by itself erase a strongly Historical temporal score. Several eligible relationships use an explicit, deterministic priority; this is an editorial choice, not an empirically calibrated ranking.
 
-## Shared results
+Each relationship has one opening, one explanatory mechanism, and one unresolved problem. Source-aware openings and explanations connect the selected relationship to its legal authority. Fully authored combinations cover public constraint with incorporated morality, continuity through source-based development, and continuity with independent rights, including natural-law settlement qualified by independent principles and extreme injustice. Remaining combinations use a relationship-specific authority sentence before the unresolved problem, producing finite catalog entries. Both paragraphs select that same entry. Explicit Realism requires extra-doctrinal and empirical evidence; explicit pluralist continuity requires affirmative modal pluralism, without requiring the stronger practical-reasoning subtype. In both cases a supported priority must accompany the evidence, and neither the noun nor champion activates it. These are reusable patterns, with no respondent names, biographies, occupations, answer rationales, or champion inputs.
 
-New result URLs preserve the context route in `x` and the independently selected opening route in `o`. Both accept only own-property IDs from their respective catalogs; no prose or raw answers are added to the URL. Missing or invalid opening IDs use the established identity/score-based fallback, preserving older links. An ordinary opening ID cannot replace an exceptional withheld diagnosis. The on-page explanation and copied summary use the same reconstruction.
+When the evidence does not establish one of these relationships, the supported specialist route retains its own matching opening. This deliberately avoids manufacturing a whole-profile synthesis from neutral or missing evidence. It also means some profiles still receive narrower specialist explanations; the finite set is not a bespoke essay generator or a promise to mention every score.
 
-## Audit
+## Source compatibility
 
-Run `node scripts/audit-result-narrative.mjs` and `npm run audit:share`, or the aggregate `npm test`.
+Source qualifies the portrait without usually supplying its subject. Frames distinguish recognized public sources, incorporated morality, exclusive sources, source-based answers qualified by extreme injustice, independent principles, independent principles plus extreme injustice, extreme-injustice-only evidence, interpretivism, moral impact, moral practice, legality, natural law, strong natural law, and strong natural law combined with independently binding principles.
 
-The narrative audit covers:
+- Core-only `source.independent_moral_validity` comes from S10/S11. D-NP1 settlement support and D-CLC1 common-law rights cannot establish this proposition. Positive-law settlement does not turn a strongly source-based profile into an independent-moral-validity profile.
+- Independent principles must not vanish behind an extreme-injustice gate. Endorsing both is broader than an extreme-injustice-only thesis.
+- A source-based respondent who gives even qualified support to extreme injustice is not described as excluding that possibility categorically. The narrative does not invent an explanation for that answer.
+- Inclusive positivism does not make every good moral claim law. Moral impact does not make every moral consequence of official conduct a legal obligation.
+- Natural law, legality, and interpretivism are not interchangeable explanations.
+- The Form axis cannot establish judicial supremacy or strong review. Purpose is not identical to practical consequences. Historical interpretation can concern public meaning, intention, or historical legal methods.
+- Special unusable, incoherent, and outcome-driven identities take precedence over supplied prose IDs. Ordinary mixed profiles do not independently establish contradiction.
 
-- Every stored route and diagnosis for nonempty copy, paragraph shape, word limits, style guardrails, and excessive opening/context repetition
-- Semantic differentiation between text-bound and open-construction Positivist profiles without depending on obsolete literal sentences
-- Source-branch and legacy identity routing, whole-profile versus narrow-specialist priority, axis-evidence boundaries, and exceptional-result precedence
-- Four literal 88-answer Source paths through the live adaptive router and classifier into the narrative
-- Actual quiz completion and fresh-session result/copy handlers, legacy and malformed links, and all 3,888 opening/context combinations with champion swaps
-- All 301,806 low/middle/high combinations on the eight axes across the 46 catalog identities, including champion-swap invariance
+## Share replay and compatibility
 
-The finite grid is exhaustive over those specified inputs, not over every possible answer vector or diagnostic combination. Automated lexical checks do not replace substantive editorial review or empirical validation of the instrument.
+`build(classification, scores, x, o)` retains its existing API. New `portrait_*` IDs are finite own-property entries in both `ROUTES` and `OPENINGS`. They serialize in the existing `x` and `o` parameters without storing prose or raw answers. An integrated context is atomic: its opening comes from the same plan, even if an unrelated valid `o` is supplied. It can reconstruct both paragraphs without session traits or champion information.
 
-## Theory references for the repaired distinctions
+Legacy context/opening pairs remain supported and replay independently. A valid legacy context with missing or malformed opening uses its historical opening inference, preserving pre-opening-ID links. Missing or malformed context IDs fall back to the supported inferred plan. `fromId` retains its safe legacy fallback. All public catalogs are frozen after construction. Modifier and phrase catalogs and their wording are outside this module and unchanged by this revision.
 
-The detailed Source architecture and diagnostic meanings are recorded in [SOURCE_ENGINE.md](SOURCE_ENGINE.md).
+## Testing and limits
 
-- Mark Greenberg, [The Moral Impact Theory of Law](https://yalelawjournal.org/article/the-moral-impact-theory-of-law). Legal institutional action changes moral obligations; only changes arising in the legally proper way constitute law. Obligations to resist an oppressive act do not become legal obligations merely because the act caused them.
-- Scott Hershovitz, [research and *Law Is a Moral Practice*](https://www.scotthershovitz.com/research). Courtroom claims concern genuine rights and responsibilities, with legal institutions shaping their moral significance.
+Run `node scripts/audit-result-narrative.mjs` and `node scripts/audit-result-share.mjs`, or `npm test`.
 
-These references explain theory content. They do not authorize the narrative to assume a respondent accepts a theory without the corresponding evidence.
+Tests cover opening/context limits, all catalog identities, moderate paired evidence, historical/developmental near-neighbors, Source distinctions, exceptional precedence, narrow-diagnostic limits, 301,806 finite axis-grid/champion swaps, actual quiz completion, fresh-session render/copy handlers, malformed/legacy links, and all stored opening/context replay combinations.
+
+The three frozen fictional runs supplied editorial acceptance examples. Their actual score/trait records were inspected separately from their biographies: historical constraint with reliance, continuity enabling source-grounded development, and continuity supporting independent rights must not collapse to interchangeable prose. Their unchanged answers can still produce different scores under a revised scorer; review the live classified results as well as the frozen baseline.
+
+These checks establish structural properties and selected semantic boundaries. They do not validate the quiz empirically, prove every possible answer pattern coherent, or replace reading both paragraphs together. The engine expresses tendencies and unresolved conflicts, not a diagnosis of someone's life, politics, or personal motivations.
+
+The detailed Source theory distinctions and references remain in [SOURCE_ENGINE.md](SOURCE_ENGINE.md).

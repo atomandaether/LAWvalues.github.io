@@ -1,0 +1,133 @@
+{
+  "recordedAt": "2026-10-15T03:15:48.723Z",
+  "authorization": "Parent requested wording-only plain-language revision; classifier worker reported implementation. Numeric answers and rationales unchanged. Compared against original domains: plain-language equivalents preserve intended comparisons; no output-based answer updates.",
+  "originalPromptsSha256": "2b467c0bfadafc7be9c23af7ebb2ed97e13d2baedf1740203232a3d312b9eed5",
+  "prompts": [
+    {
+      "id": "D-PRI-source-time",
+      "prompt": "Both can matter. In what most defines your approach to law, deciding what counts as law in the first place is more central than deciding how constitutional meaning can change over time. Agree favors the first; disagree favors the second; neither means neither consistently defines you more.",
+      "a": "source",
+      "b": "time"
+    },
+    {
+      "id": "D-PRI-source-method",
+      "prompt": "Both can matter. In what most defines your approach to law, deciding what counts as law in the first place is more central than deciding how judges should read laws. Agree favors the first; disagree favors the second; neither means neither consistently defines you more.",
+      "a": "source",
+      "b": "method"
+    },
+    {
+      "id": "D-PRI-source-posture",
+      "prompt": "Both can matter. In what most defines your approach to law, deciding what counts as law in the first place is more central than deciding when courts should overrule elected officials. Agree favors the first; disagree favors the second; neither means neither consistently defines you more.",
+      "a": "source",
+      "b": "posture"
+    },
+    {
+      "id": "D-PRI-source-structure",
+      "prompt": "Both can matter. In what most defines your approach to law, deciding what counts as law in the first place is more central than deciding which powers belong to each branch of government. Agree favors the first; disagree favors the second; neither means neither consistently defines you more.",
+      "a": "source",
+      "b": "structure"
+    },
+    {
+      "id": "D-PRI-source-form",
+      "prompt": "Both can matter. In what most defines your approach to law, deciding what counts as law in the first place is more central than choosing between firm rules and case-by-case judgment. Agree favors the first; disagree favors the second; neither means neither consistently defines you more.",
+      "a": "source",
+      "b": "form"
+    },
+    {
+      "id": "D-PRI-source-realism",
+      "prompt": "Both can matter. In what most defines your approach to law, deciding what counts as law in the first place is more central than explaining what actually drives judges’ decisions. Agree favors the first; disagree favors the second; neither means neither consistently defines you more.",
+      "a": "source",
+      "b": "realism"
+    },
+    {
+      "id": "D-PRI-time-method",
+      "prompt": "Both can matter. In what most defines your approach to law, deciding how constitutional meaning can change over time is more central than deciding how judges should read laws. Agree favors the first; disagree favors the second; neither means neither consistently defines you more.",
+      "a": "time",
+      "b": "method"
+    },
+    {
+      "id": "D-PRI-time-posture",
+      "prompt": "Both can matter. In what most defines your approach to law, deciding how constitutional meaning can change over time is more central than deciding when courts should overrule elected officials. Agree favors the first; disagree favors the second; neither means neither consistently defines you more.",
+      "a": "time",
+      "b": "posture"
+    },
+    {
+      "id": "D-PRI-time-structure",
+      "prompt": "Both can matter. In what most defines your approach to law, deciding how constitutional meaning can change over time is more central than deciding which powers belong to each branch of government. Agree favors the first; disagree favors the second; neither means neither consistently defines you more.",
+      "a": "time",
+      "b": "structure"
+    },
+    {
+      "id": "D-PRI-time-form",
+      "prompt": "Both can matter. In what most defines your approach to law, deciding how constitutional meaning can change over time is more central than choosing between firm rules and case-by-case judgment. Agree favors the first; disagree favors the second; neither means neither consistently defines you more.",
+      "a": "time",
+      "b": "form"
+    },
+    {
+      "id": "D-PRI-time-realism",
+      "prompt": "Both can matter. In what most defines your approach to law, deciding how constitutional meaning can change over time is more central than explaining what actually drives judges’ decisions. Agree favors the first; disagree favors the second; neither means neither consistently defines you more.",
+      "a": "time",
+      "b": "realism"
+    },
+    {
+      "id": "D-PRI-method-posture",
+      "prompt": "Both can matter. In what most defines your approach to law, deciding how judges should read laws is more central than deciding when courts should overrule elected officials. Agree favors the first; disagree favors the second; neither means neither consistently defines you more.",
+      "a": "method",
+      "b": "posture"
+    },
+    {
+      "id": "D-PRI-method-structure",
+      "prompt": "Both can matter. In what most defines your approach to law, deciding how judges should read laws is more central than deciding which powers belong to each branch of government. Agree favors the first; disagree favors the second; neither means neither consistently defines you more.",
+      "a": "method",
+      "b": "structure"
+    },
+    {
+      "id": "D-PRI-method-form",
+      "prompt": "Both can matter. In what most defines your approach to law, deciding how judges should read laws is more central than choosing between firm rules and case-by-case judgment. Agree favors the first; disagree favors the second; neither means neither consistently defines you more.",
+      "a": "method",
+      "b": "form"
+    },
+    {
+      "id": "D-PRI-method-realism",
+      "prompt": "Both can matter. In what most defines your approach to law, deciding how judges should read laws is more central than explaining what actually drives judges’ decisions. Agree favors the first; disagree favors the second; neither means neither consistently defines you more.",
+      "a": "method",
+      "b": "realism"
+    },
+    {
+      "id": "D-PRI-posture-structure",
+      "prompt": "Both can matter. In what most defines your approach to law, deciding when courts should overrule elected officials is more central than deciding which powers belong to each branch of government. Agree favors the first; disagree favors the second; neither means neither consistently defines you more.",
+      "a": "posture",
+      "b": "structure"
+    },
+    {
+      "id": "D-PRI-posture-form",
+      "prompt": "Both can matter. In what most defines your approach to law, deciding when courts should overrule elected officials is more central than choosing between firm rules and case-by-case judgment. Agree favors the first; disagree favors the second; neither means neither consistently defines you more.",
+      "a": "posture",
+      "b": "form"
+    },
+    {
+      "id": "D-PRI-posture-realism",
+      "prompt": "Both can matter. In what most defines your approach to law, deciding when courts should overrule elected officials is more central than explaining what actually drives judges’ decisions. Agree favors the first; disagree favors the second; neither means neither consistently defines you more.",
+      "a": "posture",
+      "b": "realism"
+    },
+    {
+      "id": "D-PRI-structure-form",
+      "prompt": "Both can matter. In what most defines your approach to law, deciding which powers belong to each branch of government is more central than choosing between firm rules and case-by-case judgment. Agree favors the first; disagree favors the second; neither means neither consistently defines you more.",
+      "a": "structure",
+      "b": "form"
+    },
+    {
+      "id": "D-PRI-structure-realism",
+      "prompt": "Both can matter. In what most defines your approach to law, deciding which powers belong to each branch of government is more central than explaining what actually drives judges’ decisions. Agree favors the first; disagree favors the second; neither means neither consistently defines you more.",
+      "a": "structure",
+      "b": "realism"
+    },
+    {
+      "id": "D-PRI-form-realism",
+      "prompt": "Both can matter. In what most defines your approach to law, choosing between firm rules and case-by-case judgment is more central than explaining what actually drives judges’ decisions. Agree favors the first; disagree favors the second; neither means neither consistently defines you more.",
+      "a": "form",
+      "b": "realism"
+    }
+  ]
+}

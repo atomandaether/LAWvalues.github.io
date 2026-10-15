@@ -1,5 +1,5 @@
 /* LAWvalues axis definitions. The first pole is scored toward 100; the second toward 0. */
-globalThis.LAW_VERSION = "0.7 Beta";
+globalThis.LAW_VERSION = "0.8 Beta";
 globalThis.LAW_QUESTION_COUNT = 88;
 
 globalThis.LAW_AXES = Object.freeze([
@@ -112,3 +112,4 @@ globalThis.LAW_AXES = Object.freeze([
 globalThis.LAW_AXIS_MAP = Object.freeze(
   Object.fromEntries(globalThis.LAW_AXES.map((axis) => [axis.id, axis]))
 );
+

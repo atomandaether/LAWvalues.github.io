@@ -1,0 +1,18 @@
+{
+  "frozenAt": "2026-10-15T02:13:31.963Z",
+  "meaning": "All personas and all potential answer choices frozen before first classification run. No retuning after outcomes.",
+  "files": {
+    "frozen-personas.json": {
+      "sha256": "887e00d0ba9f9ff588498795515c3b7ea5bd4e5e360993ab293eb8b060062a6c"
+    },
+    "mara-answer-plan.json": {
+      "sha256": "5e4e44cf3d7ecba94ec86019e5eb8168beb8e18b986211bf62caba35e9aa53da"
+    },
+    "alex-answer-plan.json": {
+      "sha256": "3cb91a24632644d9794843b13d8f078614c7bfebfae907db578e50b5b768e4d9"
+    },
+    "imani-answer-plan.json": {
+      "sha256": "55d906dcfe33d59f24a8194c66ee0b7a726499905a8deda26becaebbbe61bf0b"
+    }
+  }
+}

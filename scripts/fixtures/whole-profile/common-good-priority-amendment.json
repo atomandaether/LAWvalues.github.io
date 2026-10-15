@@ -1,0 +1,336 @@
+{
+  "frozenAt": "2026-10-15T03:49:01.865357+00:00",
+  "reason": "New common-good priority domain added after the original plans. None of the ten biographies explicitly compares this constitutional aim with each existing priority domain. Unknown is skipped, not treated as equal importance. Preserve every original answer, including the previous 21 priority answers. No new outputs inspected before this amendment.",
+  "prompts": [
+    {
+      "id": "D-PRI-source-common_good",
+      "prompt": "Both can matter. In what most defines your approach to law, deciding what counts as law in the first place is more central than directing public power toward the common good of the political community. Agree favors the first; disagree favors the second; neither means neither consistently defines you more."
+    },
+    {
+      "id": "D-PRI-time-common_good",
+      "prompt": "Both can matter. In what most defines your approach to law, deciding how constitutional meaning can change over time is more central than directing public power toward the common good of the political community. Agree favors the first; disagree favors the second; neither means neither consistently defines you more."
+    },
+    {
+      "id": "D-PRI-method-common_good",
+      "prompt": "Both can matter. In what most defines your approach to law, deciding how judges should read laws is more central than directing public power toward the common good of the political community. Agree favors the first; disagree favors the second; neither means neither consistently defines you more."
+    },
+    {
+      "id": "D-PRI-posture-common_good",
+      "prompt": "Both can matter. In what most defines your approach to law, deciding when courts should overrule elected officials is more central than directing public power toward the common good of the political community. Agree favors the first; disagree favors the second; neither means neither consistently defines you more."
+    },
+    {
+      "id": "D-PRI-structure-common_good",
+      "prompt": "Both can matter. In what most defines your approach to law, deciding which powers belong to each branch of government is more central than directing public power toward the common good of the political community. Agree favors the first; disagree favors the second; neither means neither consistently defines you more."
+    },
+    {
+      "id": "D-PRI-form-common_good",
+      "prompt": "Both can matter. In what most defines your approach to law, choosing between firm rules and case-by-case judgment is more central than directing public power toward the common good of the political community. Agree favors the first; disagree favors the second; neither means neither consistently defines you more."
+    },
+    {
+      "id": "D-PRI-realism-common_good",
+      "prompt": "Both can matter. In what most defines your approach to law, explaining what actually drives judges’ decisions is more central than directing public power toward the common good of the political community. Agree favors the first; disagree favors the second; neither means neither consistently defines you more."
+    }
+  ],
+  "answersByFixture": {
+    "mara": {
+      "D-PRI-source-common_good": {
+        "value": null,
+        "rationale": "No explicit comparative commitment to directing public power toward the common good is established by this frozen biography; skip rather than infer priority from other doctrinal answers."
+      },
+      "D-PRI-time-common_good": {
+        "value": null,
+        "rationale": "No explicit comparative commitment to directing public power toward the common good is established by this frozen biography; skip rather than infer priority from other doctrinal answers."
+      },
+      "D-PRI-method-common_good": {
+        "value": null,
+        "rationale": "No explicit comparative commitment to directing public power toward the common good is established by this frozen biography; skip rather than infer priority from other doctrinal answers."
+      },
+      "D-PRI-posture-common_good": {
+        "value": null,
+        "rationale": "No explicit comparative commitment to directing public power toward the common good is established by this frozen biography; skip rather than infer priority from other doctrinal answers."
+      },
+      "D-PRI-structure-common_good": {
+        "value": null,
+        "rationale": "No explicit comparative commitment to directing public power toward the common good is established by this frozen biography; skip rather than infer priority from other doctrinal answers."
+      },
+      "D-PRI-form-common_good": {
+        "value": null,
+        "rationale": "No explicit comparative commitment to directing public power toward the common good is established by this frozen biography; skip rather than infer priority from other doctrinal answers."
+      },
+      "D-PRI-realism-common_good": {
+        "value": null,
+        "rationale": "No explicit comparative commitment to directing public power toward the common good is established by this frozen biography; skip rather than infer priority from other doctrinal answers."
+      }
+    },
+    "alex": {
+      "D-PRI-source-common_good": {
+        "value": null,
+        "rationale": "No explicit comparative commitment to directing public power toward the common good is established by this frozen biography; skip rather than infer priority from other doctrinal answers."
+      },
+      "D-PRI-time-common_good": {
+        "value": null,
+        "rationale": "No explicit comparative commitment to directing public power toward the common good is established by this frozen biography; skip rather than infer priority from other doctrinal answers."
+      },
+      "D-PRI-method-common_good": {
+        "value": null,
+        "rationale": "No explicit comparative commitment to directing public power toward the common good is established by this frozen biography; skip rather than infer priority from other doctrinal answers."
+      },
+      "D-PRI-posture-common_good": {
+        "value": null,
+        "rationale": "No explicit comparative commitment to directing public power toward the common good is established by this frozen biography; skip rather than infer priority from other doctrinal answers."
+      },
+      "D-PRI-structure-common_good": {
+        "value": null,
+        "rationale": "No explicit comparative commitment to directing public power toward the common good is established by this frozen biography; skip rather than infer priority from other doctrinal answers."
+      },
+      "D-PRI-form-common_good": {
+        "value": null,
+        "rationale": "No explicit comparative commitment to directing public power toward the common good is established by this frozen biography; skip rather than infer priority from other doctrinal answers."
+      },
+      "D-PRI-realism-common_good": {
+        "value": null,
+        "rationale": "No explicit comparative commitment to directing public power toward the common good is established by this frozen biography; skip rather than infer priority from other doctrinal answers."
+      }
+    },
+    "imani": {
+      "D-PRI-source-common_good": {
+        "value": null,
+        "rationale": "No explicit comparative commitment to directing public power toward the common good is established by this frozen biography; skip rather than infer priority from other doctrinal answers."
+      },
+      "D-PRI-time-common_good": {
+        "value": null,
+        "rationale": "No explicit comparative commitment to directing public power toward the common good is established by this frozen biography; skip rather than infer priority from other doctrinal answers."
+      },
+      "D-PRI-method-common_good": {
+        "value": null,
+        "rationale": "No explicit comparative commitment to directing public power toward the common good is established by this frozen biography; skip rather than infer priority from other doctrinal answers."
+      },
+      "D-PRI-posture-common_good": {
+        "value": null,
+        "rationale": "No explicit comparative commitment to directing public power toward the common good is established by this frozen biography; skip rather than infer priority from other doctrinal answers."
+      },
+      "D-PRI-structure-common_good": {
+        "value": null,
+        "rationale": "No explicit comparative commitment to directing public power toward the common good is established by this frozen biography; skip rather than infer priority from other doctrinal answers."
+      },
+      "D-PRI-form-common_good": {
+        "value": null,
+        "rationale": "No explicit comparative commitment to directing public power toward the common good is established by this frozen biography; skip rather than infer priority from other doctrinal answers."
+      },
+      "D-PRI-realism-common_good": {
+        "value": null,
+        "rationale": "No explicit comparative commitment to directing public power toward the common good is established by this frozen biography; skip rather than infer priority from other doctrinal answers."
+      }
+    },
+    "dev": {
+      "D-PRI-source-common_good": {
+        "value": null,
+        "rationale": "No explicit comparative commitment to directing public power toward the common good is established by this frozen biography; skip rather than infer priority from other doctrinal answers."
+      },
+      "D-PRI-time-common_good": {
+        "value": null,
+        "rationale": "No explicit comparative commitment to directing public power toward the common good is established by this frozen biography; skip rather than infer priority from other doctrinal answers."
+      },
+      "D-PRI-method-common_good": {
+        "value": null,
+        "rationale": "No explicit comparative commitment to directing public power toward the common good is established by this frozen biography; skip rather than infer priority from other doctrinal answers."
+      },
+      "D-PRI-posture-common_good": {
+        "value": null,
+        "rationale": "No explicit comparative commitment to directing public power toward the common good is established by this frozen biography; skip rather than infer priority from other doctrinal answers."
+      },
+      "D-PRI-structure-common_good": {
+        "value": null,
+        "rationale": "No explicit comparative commitment to directing public power toward the common good is established by this frozen biography; skip rather than infer priority from other doctrinal answers."
+      },
+      "D-PRI-form-common_good": {
+        "value": null,
+        "rationale": "No explicit comparative commitment to directing public power toward the common good is established by this frozen biography; skip rather than infer priority from other doctrinal answers."
+      },
+      "D-PRI-realism-common_good": {
+        "value": null,
+        "rationale": "No explicit comparative commitment to directing public power toward the common good is established by this frozen biography; skip rather than infer priority from other doctrinal answers."
+      }
+    },
+    "ellis": {
+      "D-PRI-source-common_good": {
+        "value": null,
+        "rationale": "No explicit comparative commitment to directing public power toward the common good is established by this frozen biography; skip rather than infer priority from other doctrinal answers."
+      },
+      "D-PRI-time-common_good": {
+        "value": null,
+        "rationale": "No explicit comparative commitment to directing public power toward the common good is established by this frozen biography; skip rather than infer priority from other doctrinal answers."
+      },
+      "D-PRI-method-common_good": {
+        "value": null,
+        "rationale": "No explicit comparative commitment to directing public power toward the common good is established by this frozen biography; skip rather than infer priority from other doctrinal answers."
+      },
+      "D-PRI-posture-common_good": {
+        "value": null,
+        "rationale": "No explicit comparative commitment to directing public power toward the common good is established by this frozen biography; skip rather than infer priority from other doctrinal answers."
+      },
+      "D-PRI-structure-common_good": {
+        "value": null,
+        "rationale": "No explicit comparative commitment to directing public power toward the common good is established by this frozen biography; skip rather than infer priority from other doctrinal answers."
+      },
+      "D-PRI-form-common_good": {
+        "value": null,
+        "rationale": "No explicit comparative commitment to directing public power toward the common good is established by this frozen biography; skip rather than infer priority from other doctrinal answers."
+      },
+      "D-PRI-realism-common_good": {
+        "value": null,
+        "rationale": "No explicit comparative commitment to directing public power toward the common good is established by this frozen biography; skip rather than infer priority from other doctrinal answers."
+      }
+    },
+    "finley": {
+      "D-PRI-source-common_good": {
+        "value": null,
+        "rationale": "No explicit comparative commitment to directing public power toward the common good is established by this frozen biography; skip rather than infer priority from other doctrinal answers."
+      },
+      "D-PRI-time-common_good": {
+        "value": null,
+        "rationale": "No explicit comparative commitment to directing public power toward the common good is established by this frozen biography; skip rather than infer priority from other doctrinal answers."
+      },
+      "D-PRI-method-common_good": {
+        "value": null,
+        "rationale": "No explicit comparative commitment to directing public power toward the common good is established by this frozen biography; skip rather than infer priority from other doctrinal answers."
+      },
+      "D-PRI-posture-common_good": {
+        "value": null,
+        "rationale": "No explicit comparative commitment to directing public power toward the common good is established by this frozen biography; skip rather than infer priority from other doctrinal answers."
+      },
+      "D-PRI-structure-common_good": {
+        "value": null,
+        "rationale": "No explicit comparative commitment to directing public power toward the common good is established by this frozen biography; skip rather than infer priority from other doctrinal answers."
+      },
+      "D-PRI-form-common_good": {
+        "value": null,
+        "rationale": "No explicit comparative commitment to directing public power toward the common good is established by this frozen biography; skip rather than infer priority from other doctrinal answers."
+      },
+      "D-PRI-realism-common_good": {
+        "value": null,
+        "rationale": "No explicit comparative commitment to directing public power toward the common good is established by this frozen biography; skip rather than infer priority from other doctrinal answers."
+      }
+    },
+    "jules": {
+      "D-PRI-source-common_good": {
+        "value": null,
+        "rationale": "No explicit comparative commitment to directing public power toward the common good is established by this frozen biography; skip rather than infer priority from other doctrinal answers."
+      },
+      "D-PRI-time-common_good": {
+        "value": null,
+        "rationale": "No explicit comparative commitment to directing public power toward the common good is established by this frozen biography; skip rather than infer priority from other doctrinal answers."
+      },
+      "D-PRI-method-common_good": {
+        "value": null,
+        "rationale": "No explicit comparative commitment to directing public power toward the common good is established by this frozen biography; skip rather than infer priority from other doctrinal answers."
+      },
+      "D-PRI-posture-common_good": {
+        "value": null,
+        "rationale": "No explicit comparative commitment to directing public power toward the common good is established by this frozen biography; skip rather than infer priority from other doctrinal answers."
+      },
+      "D-PRI-structure-common_good": {
+        "value": null,
+        "rationale": "No explicit comparative commitment to directing public power toward the common good is established by this frozen biography; skip rather than infer priority from other doctrinal answers."
+      },
+      "D-PRI-form-common_good": {
+        "value": null,
+        "rationale": "No explicit comparative commitment to directing public power toward the common good is established by this frozen biography; skip rather than infer priority from other doctrinal answers."
+      },
+      "D-PRI-realism-common_good": {
+        "value": null,
+        "rationale": "No explicit comparative commitment to directing public power toward the common good is established by this frozen biography; skip rather than infer priority from other doctrinal answers."
+      }
+    },
+    "kai": {
+      "D-PRI-source-common_good": {
+        "value": null,
+        "rationale": "No explicit comparative commitment to directing public power toward the common good is established by this frozen biography; skip rather than infer priority from other doctrinal answers."
+      },
+      "D-PRI-time-common_good": {
+        "value": null,
+        "rationale": "No explicit comparative commitment to directing public power toward the common good is established by this frozen biography; skip rather than infer priority from other doctrinal answers."
+      },
+      "D-PRI-method-common_good": {
+        "value": null,
+        "rationale": "No explicit comparative commitment to directing public power toward the common good is established by this frozen biography; skip rather than infer priority from other doctrinal answers."
+      },
+      "D-PRI-posture-common_good": {
+        "value": null,
+        "rationale": "No explicit comparative commitment to directing public power toward the common good is established by this frozen biography; skip rather than infer priority from other doctrinal answers."
+      },
+      "D-PRI-structure-common_good": {
+        "value": null,
+        "rationale": "No explicit comparative commitment to directing public power toward the common good is established by this frozen biography; skip rather than infer priority from other doctrinal answers."
+      },
+      "D-PRI-form-common_good": {
+        "value": null,
+        "rationale": "No explicit comparative commitment to directing public power toward the common good is established by this frozen biography; skip rather than infer priority from other doctrinal answers."
+      },
+      "D-PRI-realism-common_good": {
+        "value": null,
+        "rationale": "No explicit comparative commitment to directing public power toward the common good is established by this frozen biography; skip rather than infer priority from other doctrinal answers."
+      }
+    },
+    "noor": {
+      "D-PRI-source-common_good": {
+        "value": null,
+        "rationale": "No explicit comparative commitment to directing public power toward the common good is established by this frozen biography; skip rather than infer priority from other doctrinal answers."
+      },
+      "D-PRI-time-common_good": {
+        "value": null,
+        "rationale": "No explicit comparative commitment to directing public power toward the common good is established by this frozen biography; skip rather than infer priority from other doctrinal answers."
+      },
+      "D-PRI-method-common_good": {
+        "value": null,
+        "rationale": "No explicit comparative commitment to directing public power toward the common good is established by this frozen biography; skip rather than infer priority from other doctrinal answers."
+      },
+      "D-PRI-posture-common_good": {
+        "value": null,
+        "rationale": "No explicit comparative commitment to directing public power toward the common good is established by this frozen biography; skip rather than infer priority from other doctrinal answers."
+      },
+      "D-PRI-structure-common_good": {
+        "value": null,
+        "rationale": "No explicit comparative commitment to directing public power toward the common good is established by this frozen biography; skip rather than infer priority from other doctrinal answers."
+      },
+      "D-PRI-form-common_good": {
+        "value": null,
+        "rationale": "No explicit comparative commitment to directing public power toward the common good is established by this frozen biography; skip rather than infer priority from other doctrinal answers."
+      },
+      "D-PRI-realism-common_good": {
+        "value": null,
+        "rationale": "No explicit comparative commitment to directing public power toward the common good is established by this frozen biography; skip rather than infer priority from other doctrinal answers."
+      }
+    },
+    "rowan": {
+      "D-PRI-source-common_good": {
+        "value": null,
+        "rationale": "No explicit comparative commitment to directing public power toward the common good is established by this frozen biography; skip rather than infer priority from other doctrinal answers."
+      },
+      "D-PRI-time-common_good": {
+        "value": null,
+        "rationale": "No explicit comparative commitment to directing public power toward the common good is established by this frozen biography; skip rather than infer priority from other doctrinal answers."
+      },
+      "D-PRI-method-common_good": {
+        "value": null,
+        "rationale": "No explicit comparative commitment to directing public power toward the common good is established by this frozen biography; skip rather than infer priority from other doctrinal answers."
+      },
+      "D-PRI-posture-common_good": {
+        "value": null,
+        "rationale": "No explicit comparative commitment to directing public power toward the common good is established by this frozen biography; skip rather than infer priority from other doctrinal answers."
+      },
+      "D-PRI-structure-common_good": {
+        "value": null,
+        "rationale": "No explicit comparative commitment to directing public power toward the common good is established by this frozen biography; skip rather than infer priority from other doctrinal answers."
+      },
+      "D-PRI-form-common_good": {
+        "value": null,
+        "rationale": "No explicit comparative commitment to directing public power toward the common good is established by this frozen biography; skip rather than infer priority from other doctrinal answers."
+      },
+      "D-PRI-realism-common_good": {
+        "value": null,
+        "rationale": "No explicit comparative commitment to directing public power toward the common good is established by this frozen biography; skip rather than infer priority from other doctrinal answers."
+      }
+    }
+  }
+}

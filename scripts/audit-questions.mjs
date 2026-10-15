@@ -166,20 +166,24 @@ for (const axis of axes) {
   }
 }
 
-// Only scored diagnostics that were actually offered join the final axis
-// calculation. Core routing scores remain unchanged.
-const neutralCoreResponses = responsesFrom(() => 0);
-assert.equal(scoring.scoreAll(neutralCoreResponses, axes, questions).separ.score, 50);
-const sepAgree = scoring.scoreAllWithDiagnostics(
-  neutralCoreResponses, { "D-SEP3": 3 }, axes, questions, context.LAW_DIAGNOSTIC_QUESTIONS
-);
-const sepDisagree = scoring.scoreAllWithDiagnostics(
-  neutralCoreResponses, { "D-SEP3": -3 }, axes, questions, context.LAW_DIAGNOSTIC_QUESTIONS
-);
-assert.ok(sepAgree.separ.score > 50 && sepAgree.separ.score < 60,
-  "Strong nondelegation diagnostic should modestly, not overwhelmingly, raise Formalist Separation");
-assert.ok(sepDisagree.separ.score < 50 && sepDisagree.separ.score > 40,
-  "Delegation-accepting diagnostic should modestly lower Formalist Separation");
+// Every diagnostic and response, including skip, must leave all axis details
+// identical to core-only scoring. Exercise neutral, directional, and sparse core.
+for (const coreResponses of [responsesFrom(() => 0), responsesFrom(() => 3),
+  Object.fromEntries(questions.map((item, index) => [item.id, index % 3 ? -2 : null]))]) {
+  const expected = scoring.scoreAll(coreResponses, axes, questions);
+  for (const diagnostic of context.LAW_DIAGNOSTIC_QUESTIONS) {
+    for (const response of [-3, -2, -1, 0, 1, 2, 3, null]) {
+      assert.deepEqual(scoring.scoreAllWithDiagnostics(coreResponses,
+        {[diagnostic.id]:response}, axes, questions, context.LAW_DIAGNOSTIC_QUESTIONS), expected,
+        `${diagnostic.id}=${response} must not change displayed core-derived axes`);
+    }
+  }
+  for (const response of [-3, 0, 3, null]) {
+    const all = Object.fromEntries(context.LAW_DIAGNOSTIC_QUESTIONS.map(q=>[q.id,response]));
+    assert.deepEqual(scoring.scoreAllWithDiagnostics(coreResponses, all, axes, questions,
+      context.LAW_DIAGNOSTIC_QUESTIONS), expected);
+  }
+}
 
 // Every axis must be capable of accumulating evidence for both poles somewhere in the bank.
 for (const axis of axes) {
@@ -209,7 +213,7 @@ for (const filename of htmlFiles) {
   }
 }
 
-assert.ok(htmlByFile["index.html"].includes("Version 0.7 Beta"), "Front page must show Version 0.7 Beta");
+assert.ok(htmlByFile["index.html"].includes("Version 0.8 Beta"), "Front page must show Version 0.8 Beta");
 assert.ok(htmlByFile["instructions.html"].includes("You will be presented with a series of statements about legal interpretation and judicial philosophy. For each one, click the button with your opinion on it."),
   "Instructions must retain the original wording");
 assert.ok(htmlByFile["quiz.html"].includes('aria-valuemax="100"'), "Quiz progress maximum must allow 88 core plus up to 12 diagnostics");
@@ -230,10 +234,10 @@ assert.ok(htmlByFile["results.html"].includes('<script src="classification.js"><
 assert.ok(htmlByFile["results.html"].includes('id="result-title"'),
   "Results must expose the assembled modifier + identity + phrase title");
 const resultsScript = fs.readFileSync(path.join(root, "results.js"), "utf8");
-assert.ok(resultsScript.includes("answered Separation diagnostics can modestly refine the Separation score"),
-  "The result explanation must disclose the scored Separation follow-ups");
-assert.ok(!resultsScript.includes("axis scores themselves come only from the 88-question core"),
-  "The result explanation must not claim that answered scored diagnostics are excluded");
+assert.ok(resultsScript.includes("The eight axis scores come only from the core questions."),
+  "New results must explain core-only axis scoring");
+assert.ok(resultsScript.includes("earlier scoring version"),
+  "Legacy shared scores must retain an accurate version-specific explanation");
 assert.ok(!htmlByFile["results.html"].includes("Print / PDF"), "Results should not show Print / PDF");
 assert.ok(!htmlByFile["results.html"].includes(">Retake<"), "Results should not show Retake");
 
@@ -243,5 +247,5 @@ console.log("All-disagree scores:", Object.fromEntries(axes.map((axis)=>[axis.id
 console.log("PASS: all 88 questions inform at least one axis in at least one response direction.");
 console.log("PASS: C13 now scores disagreement toward contextual textualism.");
 console.log("PASS: asymmetric pole evidence; no forced acquiescence normalization.");
-console.log("PASS: visible question copy and Version 0.7 Beta preserved.");
+console.log("PASS: visible question copy and Version 0.8 Beta preserved.");
 

@@ -12,7 +12,7 @@
 
 > Institutional-structure / doctrinal-form / remedies details are documented in [`STRUCTURE_FORM_ENGINE.md`](STRUCTURE_FORM_ENGINE.md): Formalist/Functionalist/Proportionalist plus thirteen selectable structure/form/remedies champion units, tightly gated cross-noun remedies specialists, and the exactly-one-champion rule.
 
-LAWvalues is a static, client-side legal-philosophy quiz. The current public label is **Version 0.7 Beta**. It maps respondents across eight bipolar dimensions:
+LAWvalues is a static, client-side legal-philosophy quiz. The current public label is **Version 0.8 Beta**. It maps respondents across eight bipolar dimensions:
 
 - Source: Positivist ↔ Non-positivist
 - Constraint: Textualist ↔ Open construction
@@ -33,20 +33,26 @@ The questions are written as plain-language legal problems rather than definitio
 
 ## Jurisprudential matching
 
-After the 88-question core, LAWvalues may ask up to twelve adaptive tie-breakers, keeping the full quiz at 100 questions or fewer. Most follow-ups refine only jurisprudential identity and champion matching. The five institutional diagnostics (D-SEP1 through D-SEP4 and D-MET1) also carry modest Separation-axis weight when actually asked, so they can sharpen an otherwise thinly measured structural profile without being forced on every respondent. The first two adaptive questions are a soft Realism probe and a response check; particularly noisy and low-salience response patterns may receive a second explicit response check; remaining questions are routed only when they can refine a live jurisprudential distinction.
+After the 88-question core, LAWvalues may ask up to twelve adaptive questions, with a hard maximum of 100 total. All eight displayed axes now use core answers only. Adaptive answers establish defining priorities, refine doctrinal distinctions, and distinguish compatible thinker matches. The earlier Separation-axis diagnostic refinement is retired for new results; old shared scores are preserved as saved.
 
-Public results use the three-part grammar **[noun-conditioned twist] [real jurisprudential identity] [broad residual phrase]**. The middle noun is the nearest real jurisprudential neighbor. The trailing phrase carries the strongest broad, well-supported characteristic that noun does not already communicate; it is drawn from the eight axis poles plus only the few narrower traits that the existing 88 questions genuinely measure with enough independent evidence. The front modifier is no longer "third place" in the same ranking. It is a **twist on the noun**: a narrower, noun-conditioned feature that explains what is unusual about this respondent's particular version of that jurisprudential identity. This lets a Solum-like Public-Meaning Originalist, for example, surface a construction-zone twist without pretending that one narrow distinction is the person's third-largest worldview axis. Closest-thinker matching remains separate.
+Public results retain the approved **[modifier] [noun] [phrase]** inventory. The noun names the best-supported primary commitment, rather than every belief the person holds. The modifier identifies a meaningful subtype within that noun or expresses strength of fit. The phrase reports the strongest remaining commitment after accounting for what the noun and its modifier already communicate. Catalog entries and their wording are unchanged; tests freeze their contents.
+
+Subtype precision is not automatically evidence of defining importance. In particular, answering Inclusive versus Exclusive Positivism no longer promotes Positivism over other supported commitments. Conditional comparative-priority questions can distinguish which supported family is more central; they do not change axis scores or establish acceptance of a doctrine on their own. Missing priority answers remain missing evidence.
+
+Champion matching receives fine-grained adaptive attention to supported differences and known disagreements. Questions are evaluated for their ability to resolve live noun/champion uncertainty, including useful prerequisite questions, rather than following an automatically privileged chain. These routing weights are design heuristics, not measured information gain or population probabilities.
+
+The opening and context paragraphs explain a coherent relationship among the full response profile's commitments. They are independent of the selected champion and do not merely define the headline noun. See `NARRATIVE_ENGINE.md` for evidence and legacy-link rules.
 
 The matching model is deliberately sparse:
 
-- a thinker has positions only on axes that meaningfully characterize that thinker; an unmodeled axis is ignored rather than treated as a neutral 50;
+- a thinker has positions only on axes that meaningfully characterize that thinker; an unmodeled axis is unknown rather than treated as a neutral 50 or as agreement; coverage and known disagreements qualify the match;
 - major jurisprudential families remain first-class results, including Legal Positivism, Natural Law, Dworkinian jurisprudence, Greenbergian Moral Impact Theory, Legal Process, Originalism, Purposivism, Living/Common-Law Constitutionalism, judicial-restraint traditions, popular/weak-form constitutionalism, and proportionality;
 - specialist thinkers can win only when their distinctive proposition is affirmatively supported;
 - lineage/further-reading figures can enrich a result without being eligible to win it;
 - anti-traits and minimum-salience gates prevent a numerically nearby thinker from being selected when the respondent rejects the idea that makes that thinker distinctive;
 - every valid classified result returns exactly one champion unit; close races reduce confidence rather than creating co-champions.
 
-Legal Realism remains a special meta-position because it asks how determinative legal doctrine actually is rather than taking a position on the eight normative axes. A universal soft Realism probe can unlock follow-up questions.
+Legal Realism remains a special meta-position because it asks how determinative legal doctrine actually is rather than taking a position on the eight normative axes. Realism probes compete with other useful diagnostics; accepting that judgment is not mechanical does not automatically make Realism the primary identity.
 
 Current specialist examples include Lawrence Solum for principle/construction-sensitive originalism, Roscoe Pound for sociological jurisprudence, Frederick Schauer for unusually rule-centered judging, James Bradley Thayer for clear-error deference, Robert Alexy for structured proportionality, and Owen Fiss for structural remedies. Friedrich Carl von Savigny is retained as Historical School lineage rather than forced into the modern Historical/Living axis. Sandra Day O'Connor is available conservatively as a low-theory, contextual catch-all when no grand jurisprudential theory explains an otherwise moderate case-by-case profile.
 
@@ -64,13 +70,13 @@ Then open `http://localhost:8000`.
 
 ## Audit
 
-The repository includes five dependency-free audits covering questions/scoring, the result catalog, adaptive routing, result narratives, and shared-result reconstruction. Use Node.js 22 or later (CI uses Node.js 22):
+The repository includes eight dependency-free audits covering questions/scoring, the result catalog, adaptive routing, result narratives, shared-result reconstruction, title-inventory preservation, defining-priority matching, and frozen full-quiz profiles. Use Node.js 22 or later (CI uses Node.js 22):
 
 ```bash
 npm test
 ```
 
-All five run even if an earlier audit fails; the command reports each result and exits unsuccessfully if any audit fails. The same command runs in the Instrument audit GitHub Actions workflow. Individual checks are available as `npm run audit:questions`, `npm run audit:catalog`, `npm run audit:routing`, `npm run audit:narrative`, and `npm run audit:share`.
+All eight run even if an earlier audit fails; the command reports each result and exits unsuccessfully if any audit fails. The same command runs in the Instrument audit GitHub Actions workflow. Individual checks are available as `npm run audit:questions`, `npm run audit:catalog`, `npm run audit:routing`, `npm run audit:narrative`, `npm run audit:share`, `npm run audit:title`, `npm run audit:primary`, and `npm run audit:whole-profile`.
 
 They check the 88-item core, asymmetric scoring, source references, local asset references, sparse profile validity, specialist gates, major jurisprudential-family coverage, literal-answer adaptive reachability (including unresolved Mixed-to-Source paths), phrase reachability, noun-conditioned twist assembly, the twelve-question diagnostic cap, explicit response-quality safeguards, narrative evidence consistency, fresh-session share-link reconstruction of both paragraphs, and several false-match tests such as preventing a positivist from winning a strong Natural Law profile.
 
@@ -86,7 +92,7 @@ The current result-title grammar exposes **19 public substantive modifiers** plu
 
 ## Theory-based institutional diagnostics
 
-The seven common Separation questions continue to determine the displayed Formalist–Functionalist percentage. Five **conditional** institutional specialist questions (D-SEP1 through D-SEP4 plus D-MET1) investigate the justification for those answers: whether the President can override officers' congressionally assigned discretion, whether courts independently determine the limits of delegated statutory authority, whether broad major-policy delegation remains unconstitutional despite clear authorization, and whether serious executive-branch civil adjudication is compatible with the judicial role. These diagnostics supply narrower champion/identity evidence and modestly refine the final Separation percentage when they are actually asked; they do not add another public axis. The router offers them only when the existing Separation profile or linked interpretive commitments make the dispute live, and routing itself continues to use the 88-core scores so a diagnostic cannot create a feedback loop.
+The seven common Separation questions continue to determine the displayed Formalist–Functionalist percentage. Five **conditional** institutional specialist questions (D-SEP1 through D-SEP4 plus D-MET1) investigate the justification for those answers: whether the President can override officers' congressionally assigned discretion, whether courts independently determine the limits of delegated statutory authority, whether broad major-policy delegation remains unconstitutional despite clear authorization, and whether serious executive-branch civil adjudication is compatible with the judicial role. These diagnostics supply narrower champion/identity evidence without changing the displayed Separation percentage or adding another public axis. The router offers them only when the existing Separation profile or linked interpretive commitments make the dispute live, and routing itself continues to use the 88-core scores so a diagnostic cannot create a feedback loop.
 
 ## Exceptional results and political mirrors
 

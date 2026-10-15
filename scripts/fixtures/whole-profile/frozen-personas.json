@@ -1,0 +1,24 @@
+{
+  "frozenAt": "2026-10-15T02:06:33.233Z",
+  "purpose": "Three fictional adult legal thinkers. Answer the production quiz from these beliefs before inspecting any resulting classification or champions. No answer changes to improve an output.",
+  "personas": [
+    {
+      "id": "mara",
+      "name": "Mara",
+      "role": "Fictional adult constitutional-rights lawyer",
+      "beliefs": "Moral facts and legal principles are real. Public law makes a serious claim to legitimate authority only through its connection to human dignity, equal standing, and justice. Routine unjust or unwise rules can still be law, but radically unjust rules and practices inconsistent with fundamental moral principles can lose legal authority even when institutions endorse them. Fundamental moral principles can ground legal duties without an enacted source; personal intuitions alone cannot. Interpretation seeks the most coherent morally justified account of legal practice and purpose, while respecting genuine textual limits and fair notice. Rights constrain aggregate welfare; equality sometimes requires accommodating unequal starting positions. Constitutional commitments can apply differently as circumstances and moral understanding develop. Precedent deserves weight for stability but fundamental injustice is a sufficient reason to depart. Punishment must be proportionate and humane, with rehabilitation and repair ordinarily preferable to suffering for its own sake. Fair procedures and review matter, though they do not redeem a substantively monstrous rule. She is not an anarchist, does not demand perfect justice for every rule, and does not think judges can replace statutes whenever they personally dislike them."
+    },
+    {
+      "id": "alex",
+      "name": "Alex",
+      "role": "Fictional adult legislative counsel",
+      "beliefs": "Legal existence is settled by recognized public sources and institutional practices, not objective moral truth or the judge’s assessment of justice. A valid law can be seriously immoral and should sometimes be resisted morally, repealed, or openly changed, while remaining identifiable as law. Judges should ordinarily honor enacted text, public meaning at enactment, fair notice, and the institutional allocation of authority. Where sources leave genuine gaps they exercise limited lawmaking rather than discover an always-existing moral answer. Democracy is important but does not make every policy wise; he supports civil liberty, equal legal treatment, and meaningful procedural checks. Institutions should protect individual rights and predictable limits on government, even at some efficiency cost. Existing doctrine and precedent deserve substantial but defeasible weight; original mistakes can be corrected, and ordinary legislation should adapt through elected lawmakers. Punishment can express deserved and proportionate censure; deterrence and rehabilitation matter but cannot justify punishing the innocent or exceeding desert. Personal hardship usually belongs in legislated discretion, not ad hoc judicial exceptions. He is not absolutist about dictionary literalism, precedent, state power, or retribution."
+    },
+    {
+      "id": "imani",
+      "name": "Imani",
+      "role": "Fictional adult common-law trial judge",
+      "beliefs": "Law grows through public institutions, shared legal practice, precedent, and the practical resolution of disputes. Moral reasons and social effects guide development, but an unrecognized moral conviction is not automatically an existing legal rule. Some legal questions are genuinely unsettled; judges should admit limited constructive choice. Internal requirements such as notice, intelligibility, consistency, and nonarbitrary treatment are important to whether governance functions as law, without making every immoral policy legally nonexistent. Decide through careful analogy, statutory purpose, institutional competence, and real-world context rather than abstract grand principles or literal words alone. Strong but defeasible respect for precedent, reliance, and gradual evolution; willingness to distinguish or revise rules when experience exposes serious harm. Seek workable and inclusive outcomes, giving substantial weight to consequences, rehabilitation, repair, and the circumstances of vulnerable parties, but preserving basic procedural safeguards and proportionality. Equal concern can require differentiated treatment and attention to structural power. Democratic choices matter, yet courts have a legitimate bounded role protecting participation and correcting failures. She distrusts both unchecked judicial moral certainty and mechanical formalism. She values stable rules but accepts reasonable individualized discretion when institutions can administer it fairly."
+    }
+  ]
+}

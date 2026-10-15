@@ -70,14 +70,14 @@ run("quiz.js");
 await ctx.document.querySelectorAll("[data-response]")[0].click();
 const shareUrl=new URL(location.href);
 assert.equal(shareUrl.pathname,"/results.html");
-assert.equal(shareUrl.searchParams.get("x"),"profile_developmental_rights");
-assert.equal(shareUrl.searchParams.get("o"),"extreme_injustice");
+assert.equal(shareUrl.searchParams.get("x"),"portrait_continuity_rights_extreme");
+assert.equal(shareUrl.searchParams.get("o"),"portrait_continuity_rights_extreme");
 const record=JSON.parse(storage.getItem("lawvalues-latest-"+ctx.LAW_VERSION));
-assert.equal(record.classification.narrative.openingId,"extreme_injustice");
+assert.equal(record.classification.narrative.openingId,"portrait_continuity_rights_extreme");
 run("results.js");
 const fields=["result-title","result-opening","result-context","champion-line"];
 const displayed=Object.fromEntries(fields.map(id=>[id,ctx.document.getElementById(id).textContent]));
-assert.match(displayed["result-opening"],/^You think legality has a floor/);
+assert.match(displayed["result-opening"],/^You want courts to make rights effective/);
 
 function renderShared(url=shareUrl) {
   storage.clear(); ctx.document=makeDocument(); location.href=String(url); location.search=new URL(url).search;
@@ -95,9 +95,15 @@ const engine=ctx.LAW_RESULT_NARRATIVE;
 const sharedClassification={identity,traits:{}};
 const legacy=new URL(shareUrl); legacy.searchParams.delete("o");
 const legacyDisplay=renderShared(legacy);
-assert.equal(legacyDisplay["result-opening"],engine.buildOpening(sharedClassification,scores),
+assert.equal(legacyDisplay["result-opening"],displayed["result-opening"],
   "Old links cannot recover missing traits and retain the established inferred opening");
 assert.equal(legacyDisplay["result-context"],displayed["result-context"]);
+// Pre-opening-ID legacy links retain their historical inference, while new
+// integrated contexts carry enough information to recover both paragraphs.
+const oldLink=new URL(shareUrl); oldLink.searchParams.set("x","profile_developmental_rights"); oldLink.searchParams.delete("o");
+const oldDisplay=renderShared(oldLink);
+assert.equal(oldDisplay["result-opening"],engine.OPENINGS.developmental_settlement);
+assert.equal(oldDisplay["result-context"],engine.ROUTES.profile_developmental_rights.context);
 for (const invalid of ["", "not_a_route", "__proto__", "constructor", "toString", "<script>alert(1)</script>"]) {
   const url=new URL(shareUrl); url.searchParams.set("o",invalid);
   assert.equal(renderShared(url)["result-opening"],legacyDisplay["result-opening"],"Invalid opening must fall back: "+invalid);
@@ -114,18 +120,18 @@ for (const special of ["unusable_response","incoherent_response","outcome_driven
   assert.equal(supplied.openingId,null);
 }
 
-// Every opening can round-trip separately from every context. This finite
+// Legacy pairs replay independently; integrated contexts enforce their plan. This finite
 // check also proves no champion field is needed for reconstructing the prose.
 let combinations=0;
 for (const openingId of Object.keys(engine.OPENINGS)) {
   for (const contextId of Object.keys(engine.ROUTES)) {
     const a=engine.build({...sharedClassification,champions:[{id:"monaghan"}]},scores,contextId,openingId);
     const b=engine.build({...sharedClassification,champions:[{id:"unrelated"}]},scores,contextId,openingId);
-    assert.equal(a.opening,engine.OPENINGS[openingId]);
+    assert.equal(a.opening,engine.OPENINGS[contextId.startsWith("portrait_") ? contextId : openingId]);
     assert.equal(a.context,engine.ROUTES[contextId].context);
-    assert.equal(a.openingId,openingId);
+    assert.equal(a.openingId,contextId.startsWith("portrait_") ? contextId : openingId);
     assert.deepEqual(a,b);
     combinations+=1;
   }
 }
-console.log(`result share audit passed: quiz completion, fresh-session display/copy, legacy/malformed links, ${combinations} independent paragraph/champion combinations`);
+console.log(`result share audit passed: quiz completion, fresh-session display/copy, legacy/malformed links, ${combinations} legacy/atomic paragraph and champion combinations`);

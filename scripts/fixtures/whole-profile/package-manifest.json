@@ -1,0 +1,15 @@
+{
+  "mara-answer-plan-extended.json": "de5e4a6b3991ec113aceed55a6b7e863dc20d9c5f30e82c7f35938cc3f091a66",
+  "alex-answer-plan-extended.json": "b20684aca23033fb23a376730682a50a072423233d1a6d3dac19415384ff9994",
+  "imani-answer-plan-extended.json": "2feaa8bc545d4538824416bbac258588fc0eca06914a0c836de130da27697f4d",
+  "extended-input-manifest.json": "9f04fbfdc1eedb90a1913e31e7edebbe8a06922a5d48a8bb2fbfdfc9a9ffbc7c",
+  "priority-prompts-frozen.json": "2b467c0bfadafc7be9c23af7ebb2ed97e13d2baedf1740203232a3d312b9eed5",
+  "priority-wording-amendment.json": "079090719b5ed6d0f370e0e8602886f0e7bf299050cfb0c4b578d91946cf1e46",
+  "prospective-controls-frozen.json": "61ad4f91f2bc7d50d7b6ef98978b1f14c9f19f94f0865e15d0b58947ea6c6840",
+  "prospective-controls-manifest.json": "9206b939a2ae62e6fb07c1918aa1f4a43b357fdb5d31823c4981039c1e86f701",
+  "baseline-prompts.json": "306461702b8e30040fd1b5a27a1ac565eb9e9fc1bd72e2ce485d5292b090e3ca",
+  "baseline-inventories.json": "ed72457b4d2bfe925d0a4a99928f4d521ea00b3ceae1fd3b6040aed75b883324",
+  "frozen-personas.json": "887e00d0ba9f9ff588498795515c3b7ea5bd4e5e360993ab293eb8b060062a6c",
+  "frozen-input-manifest.json": "958ff6db9f989dcf0e56d25ec6ba9918176938a8fcbf97a4066ee32f5bf6591b",
+  "common-good-priority-amendment.json": "e58e7b6358db8b3d5b3fc6abb3dbf676a374d670f6ac4cffaac33c3efd4f157f"
+}

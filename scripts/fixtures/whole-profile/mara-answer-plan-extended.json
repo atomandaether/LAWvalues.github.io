@@ -1,0 +1,812 @@
+{
+  "personaId": "mara",
+  "preparedAt": "2026-10-15T02:11:33.145Z",
+  "interpretationNotes": [
+    "F9 is read as permitting mitigation for the minimally adult defendant while retaining the juvenile protection endorsed in F8. The item does not explicitly distinguish downward mitigation from upward transfer.",
+    "C18 differs from C2 in stipulated catastrophic danger to residents; the negative answer invokes a fundamental-rights limit, not a general license to rewrite exceptions.",
+    "S1 rejects an unconditional validity claim while S4 accepts ordinary unjust law; this is the frozen threshold view."
+  ],
+  "answers": {
+    "S1": {
+      "value": -1,
+      "rationale": "Cruelty is not automatically disqualifying, but the unconditional claim ignores the possibility of injustice severe enough to defeat legal validity."
+    },
+    "S2": {
+      "value": 3,
+      "rationale": "Denying a racial group all legal protection destroys the fundamental equal standing required for a genuine law."
+    },
+    "S3": {
+      "value": 2,
+      "rationale": "A judge's personal belief alone is not an established moral principle capable of supplementing an exhaustive legal scheme."
+    },
+    "S4": {
+      "value": 3,
+      "rationale": "Ordinary harshness and foolishness do not prevent a properly enacted tax from being law."
+    },
+    "S5": {
+      "value": 1,
+      "rationale": "Settled public practice can resolve a source ambiguity, and a merely fairer alternative need not defeat that practice."
+    },
+    "S6": {
+      "value": 3,
+      "rationale": "Public benefit does not erase the owners' principled legal claim to fair compensation for the forced sacrifice of their homes."
+    },
+    "S7": {
+      "value": -2,
+      "rationale": "A lack of explicit rules need not erase the preexisting rights supplied by legal principles."
+    },
+    "S8": {
+      "value": 2,
+      "rationale": "The best moral justification of legal practice can disclose an existing answer, though the word never understates genuine epistemic difficulty."
+    },
+    "S10": {
+      "value": 2,
+      "rationale": "An objectively established moral rule can constrain enforceability even without official recognition, although the unspecified seriousness counsels moderation."
+    },
+    "S11": {
+      "value": 3,
+      "rationale": "Deliberate harmful deceit cannot acquire a genuine enforceable obligation merely through institutional endorsement."
+    },
+    "C1": {
+      "value": 3,
+      "rationale": "The enacted universal language protects the worker despite some legislators' narrower expectations."
+    },
+    "C2": {
+      "value": 1,
+      "rationale": "A precise exemption deserves substantial respect, absent a demonstrated violation of fundamental rights rather than policy inconsistency alone."
+    },
+    "C3": {
+      "value": 3,
+      "rationale": "Courts should confront a genuine constitutional conflict rather than disguise it through an implausible reading."
+    },
+    "C4": {
+      "value": 3,
+      "rationale": "The same candid constitutional analysis applies to gun rights regardless of her policy preferences."
+    },
+    "C5": {
+      "value": 2,
+      "rationale": "Ordinary language in context can exclude a fixed memorial from a transportation rule."
+    },
+    "C6": {
+      "value": 1,
+      "rationale": "The ordinance's protective purpose also supports excluding the memorial, although contextual meaning is a more precise explanation than a new exception."
+    },
+    "C7": {
+      "value": 2,
+      "rationale": "A committee report cannot displace clear enacted public language by itself."
+    },
+    "C8": {
+      "value": 2,
+      "rationale": "Reading the law in light of its anti-exploitation purpose supports distinguishing the professor from the targeted labor practice."
+    },
+    "C9": {
+      "value": 2,
+      "rationale": "The statute's explicit protection and environmental purpose deserve enforcement despite an unexpectedly costly application."
+    },
+    "C10": {
+      "value": 3,
+      "rationale": "Equal access and the rule's protective purpose strongly support allowing the harmless guide dog."
+    },
+    "C11": {
+      "value": 1,
+      "rationale": "A deliberate enacted list normally binds courts unless independent higher principles justify intervention."
+    },
+    "C12": {
+      "value": 1,
+      "rationale": "The protective purpose can support preventive application to the tiger, though the wording and fair-notice concern make this a qualified agreement."
+    },
+    "C13": {
+      "value": -1,
+      "rationale": "The surrounding road-vehicle examples supply a plausible contextual limit on the general phrase."
+    },
+    "C14": {
+      "value": -1,
+      "rationale": "Purpose alone ordinarily cannot add a genuinely different category to an expressly closed prohibition."
+    },
+    "C15": {
+      "value": 2,
+      "rationale": "Purpose is central to understanding a law's justified operation, subject to genuine textual limits."
+    },
+    "C17": {
+      "value": 1,
+      "rationale": "Enacted text is authoritative, but context and objective purpose remain legitimate aids rather than being excluded altogether."
+    },
+    "C18": {
+      "value": -1,
+      "rationale": "The catastrophic danger to residents raises a more fundamental life-and-security objection than an ordinary mismatch between policy and exemption."
+    },
+    "T1": {
+      "value": 1,
+      "rationale": "The equality commitment should endure, while its justified application can develop rather than freezing every original expectation."
+    },
+    "T2": {
+      "value": -2,
+      "rationale": "Historical acceptance alone does not permanently settle whether official religious practice respects equal constitutional standing."
+    },
+    "T3": {
+      "value": 1,
+      "rationale": "The explicit reference to the historical jury right warrants fidelity even when a temporary alternative seems workable."
+    },
+    "T4": {
+      "value": 2,
+      "rationale": "A broad liberty guarantee can develop as the community better understands the rights it protects."
+    },
+    "T5": {
+      "value": 3,
+      "rationale": "Equal citizenship can forbid a wealth barrier without requiring a new amendment for each improved understanding of equality."
+    },
+    "T6": {
+      "value": 3,
+      "rationale": "An evolving constitutional understanding of human dignity can ultimately rule out execution."
+    },
+    "T7": {
+      "value": 3,
+      "rationale": "The public ratification controls over an uncommunicated private intention."
+    },
+    "T8": {
+      "value": 3,
+      "rationale": "Applying the adopted anti-caste principle faithfully can reject the adopters' own inconsistent expectations."
+    },
+    "T9": {
+      "value": 2,
+      "rationale": "The morally justified general protection of parenthood deserves more weight than an inherited exclusion."
+    },
+    "T10": {
+      "value": 3,
+      "rationale": "Changing ordinary vocabulary does not by itself change the constitutional subject from insurrection to household abuse."
+    },
+    "T11": {
+      "value": -1,
+      "rationale": "Early practice is relevant but should not presumptively outweigh a later, better justified understanding merely because of age."
+    },
+    "T12": {
+      "value": 3,
+      "rationale": "Doctrine and experience can legitimately develop the application of broad guarantees."
+    },
+    "P2": {
+      "value": 1,
+      "rationale": "Settled statutory expectations and repeated legislative opportunities support leaving an ordinary interpretive correction to Congress."
+    },
+    "P3": {
+      "value": 2,
+      "rationale": "Accumulated doctrine is part of the legal practice that interpretation must fit and justify."
+    },
+    "P4": {
+      "value": 1,
+      "rationale": "Deep reliance can sometimes outweigh a constitutional error, provided fundamental injustice is not entrenched."
+    },
+    "P5": {
+      "value": 2,
+      "rationale": "A defeasible burden on overruling protects stability while preserving principled correction."
+    },
+    "P6": {
+      "value": -2,
+      "rationale": "Constitutional fidelity includes principled attention to precedent and reliance rather than automatic overruling."
+    },
+    "P7": {
+      "value": 2,
+      "rationale": "An impersonal continuing body of law is preferable to swings with each new judicial majority."
+    },
+    "P9": {
+      "value": 2,
+      "rationale": "An embedded rights-protecting safeguard can remain justified even if its protective margin exceeds the minimum constitutional command."
+    },
+    "P10": {
+      "value": -3,
+      "rationale": "Effective judicial remedies can be necessary to make a constitutional right real without express remedial wording."
+    },
+    "P11": {
+      "value": -3,
+      "rationale": "A principled judicial damages remedy can secure constitutional rights when legislative silence would leave victims without effective protection."
+    },
+    "P12": {
+      "value": 1,
+      "rationale": "Protecting many retirees from abrupt insolvency can justify preserving a settled statutory rule while seeking a legislative repair for the widows."
+    },
+    "R1": {
+      "value": 1,
+      "rationale": "An unlawful generally operating rule can warrant broader relief, though a single trial court's preliminary judgment requires caution."
+    },
+    "R2": {
+      "value": 1,
+      "rationale": "A generally unlawful wage rule can warrant broader relief under the same principle used for the environmental regulation."
+    },
+    "R3": {
+      "value": 3,
+      "rationale": "Courts must provide an effective remedy for persistent violations of prisoners' basic rights."
+    },
+    "R4": {
+      "value": 2,
+      "rationale": "Sustained supervision is justified when narrower orders repeatedly fail to stop unconstitutional conduct."
+    },
+    "R5": {
+      "value": 2,
+      "rationale": "Effective protection of children's established rights can require expensive structural measures, subject to careful implementation."
+    },
+    "R6": {
+      "value": 2,
+      "rationale": "Severing the unconstitutional provision is appropriate when the remainder operates independently."
+    },
+    "R7": {
+      "value": 2,
+      "rationale": "The same severability principle preserves a worker-protection package regardless of policy sympathy."
+    },
+    "R8": {
+      "value": 1,
+      "rationale": "A genuinely necessary regional remedy may be justified, but imposing duties on nonviolating districts requires special care."
+    },
+    "R9": {
+      "value": 3,
+      "rationale": "A protective deadline is justified when officials repeatedly evade a constitutional right, including gun rights."
+    },
+    "R10": {
+      "value": 3,
+      "rationale": "The same effective-remedy principle supports a deadline protecting voting rights."
+    },
+    "R11": {
+      "value": 2,
+      "rationale": "A complete narrow remedy can avoid unnecessary constitutional rulings without abandoning the injured party."
+    },
+    "O1": {
+      "value": -2,
+      "rationale": "A reasonable legislative view does not eliminate courts' independent responsibility to enforce the best justified understanding of rights."
+    },
+    "O2": {
+      "value": -1,
+      "rationale": "Representative politics matters, but good-faith disagreement alone should not give it final authority over constitutional rights."
+    },
+    "O3": {
+      "value": 3,
+      "rationale": "Judicial review can enforce the people's higher constitutional commitments against ordinary political decisions."
+    },
+    "O4": {
+      "value": 3,
+      "rationale": "Rights protection must remain effective precisely when a majority strongly wishes otherwise."
+    },
+    "O5": {
+      "value": 1,
+      "rationale": "Judges have no intrinsic moral superiority, although their institutional role can still justify independent rights review."
+    },
+    "O6": {
+      "value": -2,
+      "rationale": "Repeated legislative support does not ordinarily justify suspending an independently established freedom of expression."
+    },
+    "O7": {
+      "value": 1,
+      "rationale": "A genuine narrow procedural ground can appropriately defer a broad settlement, provided avoidance does not perpetuate urgent rights violations."
+    },
+    "O8": {
+      "value": -2,
+      "rationale": "The constitutional assignment of independent rights protection can justify judicial finality despite reasonable political disagreement."
+    },
+    "O9": {
+      "value": -2,
+      "rationale": "The same independent-review principle applies when the contested liberty concerns abortion."
+    },
+    "O10": {
+      "value": 3,
+      "rationale": "Majority support cannot override a constitutional gun right that the court reasonably identifies."
+    },
+    "O11": {
+      "value": 3,
+      "rationale": "Deliberation and repeated elections do not cure an actual violation of an unpopular group's speech right."
+    },
+    "O12": {
+      "value": -3,
+      "rationale": "Removing judges for unpopular constitutional decisions would undermine the independent protection of rights."
+    },
+    "O13": {
+      "value": 3,
+      "rationale": "Secure tenure helps courts protect unpopular people without subjecting rights to majority approval."
+    },
+    "E1": {
+      "value": -1,
+      "rationale": "A useful check does not readily justify a single chamber undoing what normally requires the full lawmaking process."
+    },
+    "E2": {
+      "value": 3,
+      "rationale": "A genuinely independent investigation requires protection from self-interested presidential dismissal."
+    },
+    "E3": {
+      "value": -2,
+      "rationale": "A meaningful statutory standard can legitimately allocate technically complex implementation to an expert agency."
+    },
+    "E4": {
+      "value": 2,
+      "rationale": "Efficiency alone does not authorize presidential rewriting of enacted legislative choices."
+    },
+    "E5": {
+      "value": 2,
+      "rationale": "Functional administrative arrangements can be legitimate when meaningful independent review and safeguards remain."
+    },
+    "E6": {
+      "value": 1,
+      "rationale": "Emergency necessity is not an automatic license to abandon assigned procedures, though limited lawful flexibility may exist."
+    },
+    "E7": {
+      "value": 1,
+      "rationale": "Functional independence and dangerous concentration are central concerns, but some specific constitutional limits also matter."
+    },
+    "F1": {
+      "value": -1,
+      "rationale": "Predictable general rules matter, but their claimed vast superiority understates the importance of principled contextual judgment."
+    },
+    "F3": {
+      "value": 2,
+      "rationale": "Rules must sometimes control despite local hardship, or they cease to provide reliable public guidance."
+    },
+    "F4": {
+      "value": -2,
+      "rationale": "Legal judgment often requires principled evaluation that cannot be reduced to assigning a category."
+    },
+    "F5": {
+      "value": 1,
+      "rationale": "Judges should own their reasoning and consider relevant context, though not every fact defeats genuine legal constraints."
+    },
+    "F6": {
+      "value": 3,
+      "rationale": "Government misinformation and severe reliance make equitable relief from the deadline especially justified."
+    },
+    "F7": {
+      "value": 1,
+      "rationale": "If the offered choice is biased discretion or a uniform deadline, equal treatment supports the latter while better safeguards should be developed."
+    },
+    "F8": {
+      "value": 3,
+      "rationale": "A protective juvenile ceiling limits severe punishment and discriminatory judgments about which children deserve adult treatment."
+    },
+    "F9": {
+      "value": 1,
+      "rationale": "Discretion should permit mitigation for the less culpable eighteen-year-old while preserving the protective juvenile ceiling, rather than increasing punishment for a child."
+    },
+    "D-SEP1": {
+      "value": 2,
+      "rationale": "Assigned subordinate judgment can be protected while the President remains responsible for lawful administration."
+    },
+    "D-SEP2": {
+      "value": -1,
+      "rationale": "A genuinely delegated ambiguity can justify deference to a reasonable expert interpretation, with courts retaining oversight of legal limits."
+    },
+    "D-SEP3": {
+      "value": -2,
+      "rationale": "Clear democratic authorization and meaningful standards can legitimate delegation of major implementation choices."
+    },
+    "D-MET1": {
+      "value": 2,
+      "rationale": "Accountable supervision need not entail presidential replacement of every lawful subordinate judgment."
+    },
+    "D-SEP4": {
+      "value": -1,
+      "rationale": "Serious penalties demand strong safeguards, but authorized agency adjudication with meaningful judicial review is not automatically invalid."
+    },
+    "D-MOR1": {
+      "value": -3,
+      "rationale": "A judge's personal moral opinion alone does not establish an objective moral legal principle."
+    },
+    "D-PREC1": {
+      "value": -2,
+      "rationale": "A long-standing principled protection for journalism should not be abolished solely because its text-based origin is disputed."
+    },
+    "D-RLS1": {
+      "value": 2,
+      "rationale": "Judges' actual choices can be influenced by background views even when a best principled legal answer exists."
+    },
+    "D-RLS2": {
+      "value": 2,
+      "rationale": "Understanding actual courts requires empirical attention to people and institutions as well as normative legal reasoning."
+    },
+    "D-RLS3": {
+      "value": 2,
+      "rationale": "Judges can mistake their own preferred reading for compulsion despite respectable opposing arguments."
+    },
+    "D-RLS4": {
+      "value": 2,
+      "rationale": "Factfinding and human credibility judgments can remain uncertain even under clear doctrine."
+    },
+    "D-RLS5": {
+      "value": 1,
+      "rationale": "Consequences and concrete relationships should inform abstract legal categories without eliminating principled concepts altogether."
+    },
+    "D-ORI1": {
+      "value": 3,
+      "rationale": "Public constitutional meaning deserves priority over undisclosed private intentions."
+    },
+    "D-ORI2": {
+      "value": -2,
+      "rationale": "Inherited interpretive techniques should not permanently exclude later justified understandings of constitutional principle."
+    },
+    "D-ORI3": {
+      "value": 3,
+      "rationale": "Unresolved space plainly allows legitimate doctrinal development."
+    },
+    "D-ORI4": {
+      "value": -2,
+      "rationale": "The governing inquiry is public legal principle and justification rather than recovering private authorial intention."
+    },
+    "D-ORI5": {
+      "value": 3,
+      "rationale": "The document's whole structure and coherent use of language are essential interpretive context."
+    },
+    "D-ORI6": {
+      "value": 1,
+      "rationale": "The original legal framework and lawful change mechanisms are relevant, but cannot exhaust constitutional interpretation."
+    },
+    "D-ORI7": {
+      "value": -2,
+      "rationale": "Original public meaning is important evidence without being the sole independently governing account of all current constitutional meaning."
+    },
+    "D-POS1": {
+      "value": 3,
+      "rationale": "A recognized constitutional commitment can expressly incorporate a moral standard into legal validity, even though morality can also matter more fundamentally."
+    },
+    "D-POS2": {
+      "value": -1,
+      "rationale": "Public settlement has value, but contested morality cannot generally be excluded from judicial legal reasoning."
+    },
+    "D-AUS1": {
+      "value": -3,
+      "rationale": "Commands, obedience, and sanctions do not capture principled legal obligation or the limits of authority."
+    },
+    "D-KEL1": {
+      "value": -1,
+      "rationale": "A hierarchy of authorization is useful but insufficient to explain legal validity without moral grounding."
+    },
+    "D-SHA1": {
+      "value": 0,
+      "rationale": "Shared planning captures an institutional function, but her beliefs do not establish that it is the best overall theory of law."
+    },
+    "D-NP1": {
+      "value": 3,
+      "rationale": "Positive law legitimately settles many questions on which practical morality leaves several permissible options."
+    },
+    "D-NL2": {
+      "value": 3,
+      "rationale": "Sufficiently grave moral defects can defeat legal status despite uniform institutional acceptance."
+    },
+    "D-NP2": {
+      "value": 3,
+      "rationale": "Principles that best fit and morally justify the legal practice can establish an existing legal right in a hard case."
+    },
+    "D-NP4": {
+      "value": -1,
+      "rationale": "Moral consequences matter to law, but identifying all law solely with institutions' actual moral effects overstates her view."
+    },
+    "D-NP5": {
+      "value": -1,
+      "rationale": "Ordinary unjust legal rules can create identifiable legal claims even when those claims do not correspond to a genuine moral right."
+    },
+    "D-NP6": {
+      "value": 3,
+      "rationale": "Ordinary injustice can coexist with legal validity, while extreme injustice can cross a disqualifying threshold."
+    },
+    "D-NP3": {
+      "value": 3,
+      "rationale": "Systematic secrecy, contradiction, and retroactivity undermine the reciprocal public guidance needed for law."
+    },
+    "D-MAJ1": {
+      "value": 1,
+      "rationale": "Other branches may form their own good-faith views, while respecting binding judgments and independent rights protection."
+    },
+    "D-MAJ2": {
+      "value": 2,
+      "rationale": "Democratic movements and sustained public argument contribute to constitutional understanding without monopolizing it."
+    },
+    "D-ELY1": {
+      "value": 2,
+      "rationale": "Exclusion from democratic bargaining is an especially strong reason for intervention, though courts also protect substantive rights in functioning democracies."
+    },
+    "D-WAL1": {
+      "value": -1,
+      "rationale": "Elected institutions have a democratic claim, but that claim does not generally settle final authority over rights."
+    },
+    "D-RESP1": {
+      "value": 2,
+      "rationale": "Judicial response should be effective and fitted to institutional capacity and the nature of democratic failure."
+    },
+    "D-TXT1": {
+      "value": 2,
+      "rationale": "The whole statute and ordinary contextual usage should guide selection among genuinely plausible readings."
+    },
+    "D-GRD1": {
+      "value": -1,
+      "rationale": "Limited dialogic mechanisms can have value, but an ordinary legislative override should not generally defeat independently established rights."
+    },
+    "D-MON1": {
+      "value": 3,
+      "rationale": "Implementing rules can be genuine law that secures constitutional guarantees without being identical to the guarantee itself."
+    },
+    "D-BRAY1": {
+      "value": -2,
+      "rationale": "Historic remedial forms should not categorically prevent effective relief against systemic rights violations."
+    },
+    "D-UNI1": {
+      "value": 3,
+      "rationale": "Appropriate generally protective relief can vindicate rights without requiring repetitive litigation by every victim."
+    },
+    "D-LEV1": {
+      "value": -2,
+      "rationale": "Administrative cost and judicial discomfort should not ordinarily shrink the underlying substantive right."
+    },
+    "D-TXT2": {
+      "value": 2,
+      "rationale": "Genuine categorical rights should constrain balancing, while difficult conflicts between rights still require principled interpretation."
+    },
+    "D-INT1": {
+      "value": -1,
+      "rationale": "Actual legislative intent is evidence, but coherent public meaning and objective purpose are not subordinate to it."
+    },
+    "D-INT2": {
+      "value": 1,
+      "rationale": "A disciplined counterfactual can illuminate purpose, provided it does not become unconstrained judicial preference."
+    },
+    "D-KAT1": {
+      "value": 1,
+      "rationale": "Reliable legislative materials can legitimately inform ambiguous language without overriding enacted law."
+    },
+    "D-CAL1": {
+      "value": 1,
+      "rationale": "An exceptional second look can help align obsolete statutes with the wider legal framework, with caution about legislative authority."
+    },
+    "D-PRAG1": {
+      "value": 1,
+      "rationale": "Workability and consequences are legitimate reasons in hard cases, although fundamental rights constrain them."
+    },
+    "D-LP1": {
+      "value": 2,
+      "rationale": "Institutional role and competence help determine what principled legal judgment requires."
+    },
+    "D-LP2": {
+      "value": 3,
+      "rationale": "A constitutional principle must apply consistently across politically different beneficiaries."
+    },
+    "D-MAS1": {
+      "value": 2,
+      "rationale": "Expert agencies can engage in genuine disciplined legal interpretation under public standards and review."
+    },
+    "D-ROM1": {
+      "value": 1,
+      "rationale": "Nonstate institutions can sustain genuine normative legal orders, subject to fundamental moral constraints."
+    },
+    "D-GENY1": {
+      "value": -1,
+      "rationale": "Disciplined inquiry is valuable, but the claimed construction of missing law understates principles that may already establish an answer."
+    },
+    "D-EHR1": {
+      "value": 1,
+      "rationale": "Socially operative norms are important to jurisprudence, though not every social practice automatically supplies an enforceable right."
+    },
+    "D-BLK1": {
+      "value": 3,
+      "rationale": "The Constitution's coherent architecture can entail binding principles not expressed in one isolated clause."
+    },
+    "D-LIV1": {
+      "value": 2,
+      "rationale": "Sustained public moral learning can shape constitutional meaning without eliminating judicial independence."
+    },
+    "D-ACK1": {
+      "value": 1,
+      "rationale": "Exceptional sustained constitutional settlement may matter beyond formal amendment, but ordinary political victory is not enough."
+    },
+    "D-LIV2": {
+      "value": 3,
+      "rationale": "Constitutional dignity and equality can require transformation of inherited institutions rather than mere preservation."
+    },
+    "D-HAR1": {
+      "value": 1,
+      "rationale": "Tradition and accumulated experience are valuable checks, though her approach also requires independent moral justification."
+    },
+    "D-CLC1": {
+      "value": 2,
+      "rationale": "Fundamental rights may limit ordinary legislative power even without an express written higher-law clause."
+    },
+    "D-PIL1": {
+      "value": 3,
+      "rationale": "Procedural access should adapt when poverty would otherwise make serious constitutional violations practically unreviewable."
+    },
+    "D-CGC1": {
+      "value": -1,
+      "rationale": "The common good matters, but it should not subordinate fundamental individual rights or equal dignity to collective purposes."
+    },
+    "D-PROP1": {
+      "value": 2,
+      "rationale": "Structured proportionality can discipline rights analysis, subject to inviolable moral floors."
+    },
+    "D-QC1": {
+      "value": -2,
+      "rationale": "Follow the explicit response-check instruction to select Disagree."
+    },
+    "D-QC2": {
+      "value": 1,
+      "rationale": "Follow the explicit response-check instruction to select Slightly Agree."
+    },
+    "D-SOC1": {
+      "value": 2,
+      "rationale": "Social effects and competing interests are relevant within principled legal limits, especially where doctrine leaves genuine room."
+    },
+    "D-PLU1": {
+      "value": 2,
+      "rationale": "Several legal modalities can inform the coherent moral justification of a case without one mechanical tool controlling every dispute."
+    },
+    "D-PLU2": {
+      "value": 1,
+      "rationale": "Their evidentiary weight can vary with context, although fundamental moral principles retain constraining force."
+    },
+    "D-OCO1": {
+      "value": -1,
+      "rationale": "Narrow decision has value, but she seeks a coherent principled account rather than avoiding comprehensive justification."
+    },
+    "D-PRI-source-time": {
+      "value": null,
+      "rationale": "The biography supplies positions relevant to source and/or time, but does not say which is more personally characteristic. Skip rather than invent a priority or assert equal centrality.",
+      "evidence": {
+        "source": "Public law makes a serious claim to legitimate authority only through its connection to human dignity, equal standing, and justice.",
+        "time": "Constitutional commitments can apply differently as circumstances and moral understanding develop."
+      }
+    },
+    "D-PRI-source-method": {
+      "value": null,
+      "rationale": "The biography supplies positions relevant to source and/or method, but does not say which is more personally characteristic. Skip rather than invent a priority or assert equal centrality.",
+      "evidence": {
+        "source": "Public law makes a serious claim to legitimate authority only through its connection to human dignity, equal standing, and justice.",
+        "method": "Interpretation seeks the most coherent morally justified account of legal practice and purpose, while respecting genuine textual limits and fair notice."
+      }
+    },
+    "D-PRI-source-posture": {
+      "value": null,
+      "rationale": "The biography supplies positions relevant to source and/or posture, but does not say which is more personally characteristic. Skip rather than invent a priority or assert equal centrality.",
+      "evidence": {
+        "source": "Public law makes a serious claim to legitimate authority only through its connection to human dignity, equal standing, and justice.",
+        "posture": "She is not an anarchist, does not demand perfect justice for every rule, and does not think judges can replace statutes whenever they personally dislike them."
+      }
+    },
+    "D-PRI-source-structure": {
+      "value": null,
+      "rationale": "The biography supplies positions relevant to source and/or structure, but does not say which is more personally characteristic. Skip rather than invent a priority or assert equal centrality.",
+      "evidence": {
+        "source": "Public law makes a serious claim to legitimate authority only through its connection to human dignity, equal standing, and justice.",
+        "structure": "Fair procedures and review matter, though they do not redeem a substantively monstrous rule."
+      }
+    },
+    "D-PRI-source-form": {
+      "value": null,
+      "rationale": "The biography supplies positions relevant to source and/or form, but does not say which is more personally characteristic. Skip rather than invent a priority or assert equal centrality.",
+      "evidence": {
+        "source": "Public law makes a serious claim to legitimate authority only through its connection to human dignity, equal standing, and justice.",
+        "form": "Rights constrain aggregate welfare; equality sometimes requires accommodating unequal starting positions."
+      }
+    },
+    "D-PRI-source-realism": {
+      "value": null,
+      "rationale": "The biography supplies positions relevant to source and/or realism, but does not say which is more personally characteristic. Skip rather than invent a priority or assert equal centrality.",
+      "evidence": {
+        "source": "Public law makes a serious claim to legitimate authority only through its connection to human dignity, equal standing, and justice.",
+        "realism": null
+      }
+    },
+    "D-PRI-time-method": {
+      "value": null,
+      "rationale": "The biography supplies positions relevant to time and/or method, but does not say which is more personally characteristic. Skip rather than invent a priority or assert equal centrality.",
+      "evidence": {
+        "time": "Constitutional commitments can apply differently as circumstances and moral understanding develop.",
+        "method": "Interpretation seeks the most coherent morally justified account of legal practice and purpose, while respecting genuine textual limits and fair notice."
+      }
+    },
+    "D-PRI-time-posture": {
+      "value": null,
+      "rationale": "The biography supplies positions relevant to time and/or posture, but does not say which is more personally characteristic. Skip rather than invent a priority or assert equal centrality.",
+      "evidence": {
+        "time": "Constitutional commitments can apply differently as circumstances and moral understanding develop.",
+        "posture": "She is not an anarchist, does not demand perfect justice for every rule, and does not think judges can replace statutes whenever they personally dislike them."
+      }
+    },
+    "D-PRI-time-structure": {
+      "value": null,
+      "rationale": "The biography supplies positions relevant to time and/or structure, but does not say which is more personally characteristic. Skip rather than invent a priority or assert equal centrality.",
+      "evidence": {
+        "time": "Constitutional commitments can apply differently as circumstances and moral understanding develop.",
+        "structure": "Fair procedures and review matter, though they do not redeem a substantively monstrous rule."
+      }
+    },
+    "D-PRI-time-form": {
+      "value": null,
+      "rationale": "The biography supplies positions relevant to time and/or form, but does not say which is more personally characteristic. Skip rather than invent a priority or assert equal centrality.",
+      "evidence": {
+        "time": "Constitutional commitments can apply differently as circumstances and moral understanding develop.",
+        "form": "Rights constrain aggregate welfare; equality sometimes requires accommodating unequal starting positions."
+      }
+    },
+    "D-PRI-time-realism": {
+      "value": null,
+      "rationale": "The biography supplies positions relevant to time and/or realism, but does not say which is more personally characteristic. Skip rather than invent a priority or assert equal centrality.",
+      "evidence": {
+        "time": "Constitutional commitments can apply differently as circumstances and moral understanding develop.",
+        "realism": null
+      }
+    },
+    "D-PRI-method-posture": {
+      "value": null,
+      "rationale": "The biography supplies positions relevant to method and/or posture, but does not say which is more personally characteristic. Skip rather than invent a priority or assert equal centrality.",
+      "evidence": {
+        "method": "Interpretation seeks the most coherent morally justified account of legal practice and purpose, while respecting genuine textual limits and fair notice.",
+        "posture": "She is not an anarchist, does not demand perfect justice for every rule, and does not think judges can replace statutes whenever they personally dislike them."
+      }
+    },
+    "D-PRI-method-structure": {
+      "value": null,
+      "rationale": "The biography supplies positions relevant to method and/or structure, but does not say which is more personally characteristic. Skip rather than invent a priority or assert equal centrality.",
+      "evidence": {
+        "method": "Interpretation seeks the most coherent morally justified account of legal practice and purpose, while respecting genuine textual limits and fair notice.",
+        "structure": "Fair procedures and review matter, though they do not redeem a substantively monstrous rule."
+      }
+    },
+    "D-PRI-method-form": {
+      "value": null,
+      "rationale": "The biography supplies positions relevant to method and/or form, but does not say which is more personally characteristic. Skip rather than invent a priority or assert equal centrality.",
+      "evidence": {
+        "method": "Interpretation seeks the most coherent morally justified account of legal practice and purpose, while respecting genuine textual limits and fair notice.",
+        "form": "Rights constrain aggregate welfare; equality sometimes requires accommodating unequal starting positions."
+      }
+    },
+    "D-PRI-method-realism": {
+      "value": null,
+      "rationale": "The biography supplies positions relevant to method and/or realism, but does not say which is more personally characteristic. Skip rather than invent a priority or assert equal centrality.",
+      "evidence": {
+        "method": "Interpretation seeks the most coherent morally justified account of legal practice and purpose, while respecting genuine textual limits and fair notice.",
+        "realism": null
+      }
+    },
+    "D-PRI-posture-structure": {
+      "value": null,
+      "rationale": "The biography supplies positions relevant to posture and/or structure, but does not say which is more personally characteristic. Skip rather than invent a priority or assert equal centrality.",
+      "evidence": {
+        "posture": "She is not an anarchist, does not demand perfect justice for every rule, and does not think judges can replace statutes whenever they personally dislike them.",
+        "structure": "Fair procedures and review matter, though they do not redeem a substantively monstrous rule."
+      }
+    },
+    "D-PRI-posture-form": {
+      "value": null,
+      "rationale": "The biography supplies positions relevant to posture and/or form, but does not say which is more personally characteristic. Skip rather than invent a priority or assert equal centrality.",
+      "evidence": {
+        "posture": "She is not an anarchist, does not demand perfect justice for every rule, and does not think judges can replace statutes whenever they personally dislike them.",
+        "form": "Rights constrain aggregate welfare; equality sometimes requires accommodating unequal starting positions."
+      }
+    },
+    "D-PRI-posture-realism": {
+      "value": null,
+      "rationale": "The biography supplies positions relevant to posture and/or realism, but does not say which is more personally characteristic. Skip rather than invent a priority or assert equal centrality.",
+      "evidence": {
+        "posture": "She is not an anarchist, does not demand perfect justice for every rule, and does not think judges can replace statutes whenever they personally dislike them.",
+        "realism": null
+      }
+    },
+    "D-PRI-structure-form": {
+      "value": null,
+      "rationale": "The biography supplies positions relevant to structure and/or form, but does not say which is more personally characteristic. Skip rather than invent a priority or assert equal centrality.",
+      "evidence": {
+        "structure": "Fair procedures and review matter, though they do not redeem a substantively monstrous rule.",
+        "form": "Rights constrain aggregate welfare; equality sometimes requires accommodating unequal starting positions."
+      }
+    },
+    "D-PRI-structure-realism": {
+      "value": null,
+      "rationale": "The biography supplies positions relevant to structure and/or realism, but does not say which is more personally characteristic. Skip rather than invent a priority or assert equal centrality.",
+      "evidence": {
+        "structure": "Fair procedures and review matter, though they do not redeem a substantively monstrous rule.",
+        "realism": null
+      }
+    },
+    "D-PRI-form-realism": {
+      "value": null,
+      "rationale": "The biography supplies positions relevant to form and/or realism, but does not say which is more personally characteristic. Skip rather than invent a priority or assert equal centrality.",
+      "evidence": {
+        "form": "Rights constrain aggregate welfare; equality sometimes requires accommodating unequal starting positions.",
+        "realism": null
+      }
+    }
+  },
+  "priorityExtension": {
+    "frozenAt": "2026-10-15T03:04:59.810Z",
+    "originalPlanSha256": "5e4e44cf3d7ecba94ec86019e5eb8168beb8e18b986211bf62caba35e9aa53da",
+    "method": "Frozen before revised production outputs. Original 157 answers unchanged. No primary-commitment ranking inferred from profession, paragraph order, compatible doctrinal positions, or desired label. Null means insufficient biographical evidence of comparative centrality; zero would assert a tie."
+  }
+}

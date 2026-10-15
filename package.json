@@ -1,6 +1,6 @@
 {
   "name": "lawvalues.github.io",
-  "version": "0.7.0",
+  "version": "0.8.0",
   "private": true,
   "description": "A legal-philosophy quiz across eight jurisprudential dimensions.",
   "scripts": {
@@ -9,6 +9,9 @@
     "audit:catalog": "node scripts/audit-result-catalog.mjs",
     "audit:routing": "node scripts/audit-diagnostic-routing.mjs",
     "audit:narrative": "node scripts/audit-result-narrative.mjs",
-    "audit:share": "node scripts/audit-result-share.mjs"
+    "audit:share": "node scripts/audit-result-share.mjs",
+    "audit:title": "node scripts/audit-title-contract.mjs",
+    "audit:primary": "node scripts/audit-primary-commitment.mjs",
+    "audit:whole-profile": "node scripts/audit-whole-profile.mjs"
   }
 }
