@@ -725,6 +725,8 @@
     dialogic_authority:["post"], low_theory:[]
   });
 
+  const CONTEXT_AXIS_IDS = Object.freeze(["sorc","cons","time","prec","remed","post","separ","form"]);
+
   function axisSalience(scores, id) {
     return Math.min(1, Math.abs(axis(scores,id)-50)/50);
   }
@@ -768,7 +770,7 @@
       ...(OPENING_AXES[openingId]||[])
     ]);
 
-    const candidates=AXIS_IDS
+    const candidates=CONTEXT_AXIS_IDS
       .filter(id=>!spent.has(id))
       .map(id=>({id,score:axis(scores,id),salience:axisSalience(scores,id)}))
       .filter(item=>item.salience>=0.38)
