@@ -575,20 +575,6 @@
     const originalist=isOriginalist(id)||has(t,"time.originalism_independent_authority",0.5);
     const developmental=id==="living_constitutionalist"||id==="common_law_constitutionalist";
 
-    const primaryAxes =
-      sourcePositive || sourceNonpositive || id==="natural_lawyer" ? ["sorc"] :
-      originalist || developmental ? ["time"] :
-      ["textualist","intentionalist","purposivist","legal_process_theorist","pragmatist","interpretive_pluralist"].includes(id) ? ["cons"] :
-      ["political_constitutionalist","waldronian","thayerian","popular_constitutionalist","departmentalist","political_process_jurist","elyan","minimalist","bickelian","weak_form_constitutionalist","legal_constitutionalist"].includes(id) ? ["post"] :
-      id==="formalist" ? ["form","separ"] :
-      id==="functionalist" ? ["separ"] :
-      id==="proportionalist"||id==="alexyan" ? ["form"] : [];
-    if(primaryAxes.length){
-      const secondary=Math.max(...["sorc","cons","time","prec","remed","post","separ","form"]
-        .filter(axisId=>!primaryAxes.includes(axisId))
-        .map(axisId=>Math.abs(axis(scores,axisId)-50)/50));
-      if(secondary<=0.22) return "profile_thin_beyond_noun";
-    }
 
     if(sourcePositive){
       if(axis(scores,"cons")>=82) return "profile_source_textual";
