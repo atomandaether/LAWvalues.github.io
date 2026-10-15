@@ -322,6 +322,11 @@
         if (classification.champions.length > 0) {
             params.set('c', classification.champions.map((item) => item.id).join(','));
         }
+        const championEvidenceIds = globalThis.LAW_CHAMPION_CARDS?.toIds(classification);
+        if (championEvidenceIds) {
+            params.set('cev', '1');
+            params.set('ce', championEvidenceIds);
+        }
         if (classification.resultTitle?.modifier?.id) params.set('m', classification.resultTitle.modifier.id);
         if (classification.resultTitle?.phrase?.id) params.set('p', classification.resultTitle.phrase.id);
         if (classification.resultTitle?.bridge?.id) params.set('b', classification.resultTitle.bridge.id);

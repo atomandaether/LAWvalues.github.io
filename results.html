@@ -22,7 +22,11 @@
 <main id="results-main" hidden>
 <section class="results-summary" aria-labelledby="result-title">
     <h2 class="result-title" id="result-title">No classification stored.</h2>
-    <p class="classification-champion" id="champion-line"></p>
+    <section class="champion-card" id="champion-card" aria-labelledby="champion-line" hidden>
+        <p class="classification-champion" id="champion-line"></p>
+        <p class="champion-tagline" id="champion-tagline"></p>
+        <p class="champion-portrait" id="champion-portrait"></p>
+    </section>
     <div class="result-narrative" id="result-narrative">
         <p class="result-opening" id="result-opening"></p>
         <p class="result-context" id="result-context"></p>
@@ -191,6 +195,8 @@
 <script src="result_catalog.js"></script>
 <script src="diagnostics.js"></script>
 <script src="profiles.js"></script>
+<script src="champion_content.js"></script>
+<script src="champion_cards.js"></script>
 <script src="champion_network.js"></script>
 <script src="result_content.js"></script>
 <script src="classification.js"></script>

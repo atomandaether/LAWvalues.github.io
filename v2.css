@@ -979,3 +979,36 @@ body.results-page {
     .results-page .axis-bars div.bar { padding: 0 1px; }
     .results-page .axis-bars div.text-wrapper { font-size: 12px; }
 }
+
+/* The named thinker is a separate, compact card above the respondent portrait. */
+.results-page .champion-card {
+    width: 100%;
+    margin: 14pt auto 18pt;
+    padding: 12pt;
+    border-radius: 8pt;
+    background: rgba(254, 252, 249, 0.45);
+    overflow-wrap: anywhere;
+}
+.results-page .champion-card .classification-champion {
+    margin: 0 0 5pt;
+    font-weight: 700;
+    font-size: clamp(19px, 2vw, 27px);
+    line-height: 1.25;
+}
+.results-page .champion-card .champion-tagline {
+    margin: 0 0 7pt;
+    font-size: clamp(16px, 1.35vw, 20px);
+    line-height: 1.35;
+    text-align: center;
+    font-weight: 400;
+}
+.results-page .champion-card .champion-portrait {
+    margin: 0;
+    font-size: clamp(15px, 1.2vw, 18px);
+    line-height: 1.45;
+    text-align: left;
+    font-weight: 400;
+}
+@media (max-width: 540px) {
+    .results-page .champion-card { padding: 12px; margin: 12px auto 18px; }
+}
