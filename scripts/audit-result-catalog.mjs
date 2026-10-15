@@ -34,6 +34,21 @@ assert.equal(resultContent.PHRASE_FEATURES.length, 18,
   "Public phrase pool should contain the sixteen axis poles plus objective morality and anti-discretion");
 assert.equal(resultContent.PHRASES.length, resultContent.PHRASE_FEATURES.length,
   "Every phrase feature needs exactly one public phrase rendering");
+const approvedPublicPhraseTexts = new Set(resultContent.PHRASES.map((item) => item.text));
+// The title assembler may omit the residual phrase when no approved phrase is
+// supported. It must never manufacture a public fallback phrase outside the
+// approved PHRASE_FEATURES pool.
+{
+  const identity = identities.find((item) => item.id === "thayerian");
+  const scores = {sorc:50,cons:50,time:50,prec:50,remed:50,post:97,separ:50,form:50};
+  const assembled = resultContent.assemble(
+    {identity,identityScore:.9,primaryStrength:.8,identityAlternatives:[]},
+    scores, {}, {}
+  );
+  assert.ok(assembled.phrase === null || approvedPublicPhraseTexts.has(assembled.phrase.text),
+    "Public title used an unauthorized residual phrase");
+}
+
 assert.ok(Array.isArray(resultContent.TWISTS) && resultContent.TWISTS.length >= 20,
   "Need a substantial noun-conditioned twist pool");
 assert.equal(resultContent.MODIFIERS.length, resultContent.TWISTS.length,
