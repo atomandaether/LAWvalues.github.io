@@ -424,6 +424,10 @@
     "opening": "Doctrine has to survive contact with institutions, incentives, and actual human behavior.",
     "context": "Rules can be justified pragmatically because predictability, coordination, administrability, and reduced bias are themselves consequences. A rigid rule may produce some unattractive individual outcomes while improving the legal system across a larger class of cases. The relevant comparison is between decision procedures, not between abstraction and practical judgment. Case-by-case balancing gives decisionmakers more information and more discretion; rules sacrifice some fit in exchange for stable expectations and cheaper administration. This profile is pragmatic about the value of constraint: the rule earns its authority through the institutional effects created by committing to it in advance."
   },
+  "profile_thin_beyond_noun": {
+    "opening": "One jurisprudential commitment is clear; the rest of the judicial philosophy is not yet comparably developed.",
+    "context": "A clear answer to one jurisprudential question does not by itself amount to a complete theory of judging. Here the primary commitment is real, but the answers on interpretation, precedent, judicial authority, remedies, institutional structure, and doctrinal form stay too close to the middle to generate a stable second-order method. That matters because hard cases usually force those dimensions into conflict. A judge needs some account of what happens when source fidelity collides with precedent, rights collide with deference, or rules collide with consequences. This profile has a recognizable center of gravity without a comparably definite theory for resolving those collisions."
+  },
   "profile_low_commitment": {
     "opening": "Your answers do not organize legal judgment around a stable hierarchy of reasons.",
     "context": "A near-center profile says less than it first appears to say. Moderate scores across text, history, precedent, remedies, judicial power, structure, and doctrinal form do not automatically combine into a sophisticated synthesis. They can instead reflect weak commitments, unresolved tensions, or a case-by-case style that lacks a stable rule for deciding which legal reason should prevail when several conflict. Direct contradiction is a separate problem and triggers a different result. Here the limitation is theoretical depth: the answers supply legal instincts, but they do not yet supply a durable second-order account of how those instincts fit together."
@@ -570,6 +574,21 @@
     const sourceNonpositive=["interpretivist","dworkinian","nonpositivist","moral_impact_theorist","radbruchian","fullerian"].includes(id);
     const originalist=isOriginalist(id)||has(t,"time.originalism_independent_authority",0.5);
     const developmental=id==="living_constitutionalist"||id==="common_law_constitutionalist";
+
+    const primaryAxes =
+      sourcePositive || sourceNonpositive || id==="natural_lawyer" ? ["sorc"] :
+      originalist || developmental ? ["time"] :
+      ["textualist","intentionalist","purposivist","legal_process_theorist","pragmatist","interpretive_pluralist"].includes(id) ? ["cons"] :
+      ["political_constitutionalist","waldronian","thayerian","popular_constitutionalist","departmentalist","political_process_jurist","elyan","minimalist","bickelian","weak_form_constitutionalist","legal_constitutionalist"].includes(id) ? ["post"] :
+      id==="formalist" ? ["form","separ"] :
+      id==="functionalist" ? ["separ"] :
+      id==="proportionalist"||id==="alexyan" ? ["form"] : [];
+    if(primaryAxes.length){
+      const secondary=Math.max(...["sorc","cons","time","prec","remed","post","separ","form"]
+        .filter(axisId=>!primaryAxes.includes(axisId))
+        .map(axisId=>Math.abs(axis(scores,axisId)-50)/50));
+      if(secondary<=0.22) return "profile_thin_beyond_noun";
+    }
 
     if(sourcePositive){
       if(axis(scores,"cons")>=82) return "profile_source_textual";
