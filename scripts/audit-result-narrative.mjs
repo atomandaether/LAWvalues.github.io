@@ -135,13 +135,30 @@ const cases = [
   ["political process responsive",
     { identity:{id:"political_process_jurist"}, traits:{"posture.responsive_review":1} },
     neutralScores, "political_process_responsive"],
-  ["traditional equity",
+  ["traditional equity remains secondary context",
     { identity:{id:"formalist"}, traits:{"remedies.traditional_equity":1} },
-    {...neutralScores,remed:90}, "traditional_equity"]
+    {...neutralScores,remed:90}, "formalist_rules"]
 ];
 
 for (const [name, classification, scores, expected] of cases) {
   assert.equal(engine.selectContextId(classification, scores), expected, name);
+}
+
+// Narrow specialist diagnostics may refine champion matching without taking over
+// the broad intellectual-context paragraph.
+{
+  const legalProcess = {
+    identity:{id:"legal_process_theorist"},
+    traits:{
+      "method.institutional_competence":1,
+      "method.agency_interpretive_autonomy":1,
+      "method.administrative_reason_giving":1,
+      "separation.interpretive_accommodation":1
+    }
+  };
+  assert.equal(engine.selectContextId(legalProcess, {...neutralScores,cons:36,prec:68}),
+    "legal_process_mainstream",
+    "Agency-autonomy evidence must not turn the whole Legal Process context into an administrative-law paragraph");
 }
 
 console.log("result narrative audit passed:", Object.keys(engine.ROUTES).length, "routes,", (globalThis.LAW_RESULT_IDENTITIES || []).length, "catalog identities");
