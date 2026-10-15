@@ -43,7 +43,8 @@ const bannedNarrativePhrases = [
   "not merely",
   "not simply",
   "not just",
-  "rather than"
+  "rather than",
+  "therefore"
 ];
 
 for (const [id, route] of Object.entries(engine.ROUTES)) {
