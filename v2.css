@@ -843,3 +843,97 @@ div.axis img {
         break-inside: avoid;
     }
 }
+
+
+/* Results use the available screen width; prose stays regular body text. */
+html.results-document {
+    height: auto;
+    min-height: 100%;
+    overflow: auto;
+}
+
+body.results-page {
+    width: calc(100% - 24px);
+    min-height: 100vh;
+    padding: clamp(10px, 2vw, 32px);
+    border-width: 8px;
+    overflow-wrap: anywhere;
+}
+
+.results-page .results-summary,
+.results-page .classification-placeholder,
+.results-page .champion-network-panel,
+.results-page .coverage-note {
+    width: 100%;
+    min-width: 0;
+}
+
+.results-page .results-summary {
+    margin: 16pt auto 18pt;
+}
+
+.results-page .result-title {
+    max-width: none;
+    margin: 4pt auto 8pt;
+    font-size: clamp(24px, 3vw, 40px);
+    line-height: 1.18;
+    font-weight: 400;
+    text-align: center;
+}
+
+.results-page .result-title strong {
+    font-weight: 700;
+}
+
+.results-page .classification-champion {
+    margin: 0 auto 16pt;
+    text-align: center;
+    font-weight: 400;
+}
+
+.results-page .result-narrative {
+    width: 100%;
+    margin: 0 auto;
+}
+
+.results-page .result-narrative p {
+    font-size: clamp(17px, 1.5vw, 24px);
+    line-height: 1.5;
+    font-weight: 400;
+    text-align: left;
+    margin: 0 0 12pt;
+}
+
+.results-page .champion-network-frame {
+    max-width: none;
+}
+
+.results-page .result-actions {
+    width: 100%;
+    min-width: 0;
+}
+
+@media (max-width: 540px) {
+    body.results-page {
+        width: 100%;
+        border-width: 4px;
+        padding: 10px;
+    }
+
+    .results-page .champion-network-panel,
+    .results-page .classification-placeholder {
+        padding: 6px;
+    }
+
+    .results-page .result-actions .small_button {
+        min-width: 0;
+    }
+}
+
+@media print {
+    body.results-page {
+        width: 100%;
+        border: 0;
+        padding: 0;
+    }
+}

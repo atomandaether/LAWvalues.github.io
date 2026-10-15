@@ -1,0 +1,51 @@
+import assert from 'node:assert/strict';
+import fs from 'node:fs';
+import vm from 'node:vm';
+const source = name => fs.readFileSync(new URL('../' + name, import.meta.url), 'utf8');
+const html = source('results.html');
+const css = source('v2.css');
+assert.ok(html.indexOf('id="result-title"') < html.indexOf('id="champion-line"'));
+assert.ok(html.indexOf('id="champion-line"') < html.indexOf('id="result-narrative"'));
+assert.ok(html.indexOf('id="result-narrative"') < html.indexOf('id="source-label"'));
+assert.ok(html.indexOf('id="form-label"') < html.indexOf('id="champion-network"'));
+assert.ok(html.indexOf('id="champion-network"') < html.indexOf('id="champion-description"'));
+for (const obsolete of ['Your jurisprudential profile', 'Your jurisprudential fit', 'id="result-summary"', 'id="classification-label"', 'id="champion-network-legend"', '<h2>Jurisprudential network</h2>']) {
+    assert.ok(!html.includes(obsolete), `Obsolete duplicate UI: ${obsolete}`);
+}
+assert.match(css, /html\.results-document\s*\{[^}]*overflow: auto/s);
+assert.match(css, /\.results-page \.result-title\s*\{[^}]*font-weight: 400/s);
+assert.match(css, /\.results-page \.result-narrative p\s*\{[^}]*font-weight: 400/s);
+class Element {
+    constructor() { this.textContent = ''; this.innerHTML = ''; this.style = {}; this.hidden = false; }
+    setAttribute() {}
+    addEventListener() {}
+}
+const nodes = new Map();
+const document = { getElementById(id) { if (!nodes.has(id)) nodes.set(id, new Element()); return nodes.get(id); } };
+const location = { search: '', href: '' };
+const context = vm.createContext({console, URLSearchParams, document, window: { location }, sessionStorage: { getItem() { return null; } }});
+for (const name of ['axes.js', 'questions.js', 'scoring.js', 'result_catalog.js', 'profiles.js', 'result_content.js', 'result_narrative.js']) vm.runInContext(source(name), context);
+function render(identity, modifier) {
+    nodes.clear();
+    const query = new URLSearchParams(Object.fromEntries(context.LAW_AXES.map(axis => [axis.id, 50])));
+    query.set('i', identity); query.set('c', 'hart'); query.set('v', '0.8');
+    if (modifier) query.set('m', modifier);
+    location.search = '?' + query;
+    vm.runInContext(source('results.js'), context);
+    return nodes.get('result-title');
+}
+for (const [id, expected] of [['public_meaning_originalist', 'Public-Meaning'], ['original_intent_originalist', 'Original-Intent']]) {
+    // Use catalog IDs rather than silently treating a missing fixture as a match.
+    assert.ok(context.LAW_RESULT_IDENTITIES.some(identity => identity.id === id), `Missing identity: ${id}`);
+    const title = render(id, 'new_originalism');
+    assert.match(title.innerHTML, new RegExp(`<strong>${expected}</strong> New <strong>Originalist</strong>`));
+    assert.equal(nodes.get('champion-line').textContent, 'Champion: H. L. A. Hart');
+    assert.ok(nodes.get('champion-description').textContent.length > 0);
+}
+const regular = render('positivist', 'fit_unmistakable');
+assert.match(regular.innerHTML, /<strong>Positivist<\/strong>/);
+assert.ok(!regular.innerHTML.includes('<strong>Unmistakable'));
+const legacy = render('');
+assert.match(legacy.textContent, /No jurisprudential classification/);
+assert.equal(nodes.get('results-main').hidden, false);
+console.log('Results layout audit passed: top hierarchy, noun-only emphasis, champion preservation, legacy fallback, and responsive scrolling.');

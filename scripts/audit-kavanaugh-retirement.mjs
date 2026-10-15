@@ -30,6 +30,6 @@ const barrettTraits={'time.public_meaning':1,'time.fixation':1,'time.originalism
 assert.equal(cl.resolveChampions({sorc:76,cons:86,time:90,prec:84,remed:72,post:60,separ:76,form:78},barrettTraits,originalist).matches[0].profile.id,'barrett');
 const params=new URLSearchParams({...scores,i:'textualist',c:'kavanaugh_barrett'});
 const rr=runtime(root,{search:'?'+params});rr.run('results.js');
-assert.equal(rr.nodes.get('champion-line').textContent,'Closest thinker: Brett Kavanaugh');
+assert.equal(rr.nodes.get('champion-line').textContent,'Champion: Brett Kavanaugh');
 rr.nodes.get('copy-link').click();assert.equal(new URL(rr.clipboard()).searchParams.get('c'),'kavanaugh_barrett');
 console.log('PASS: Kavanaugh historical replay, contextual Manning without forced transfer, Kagan gate, Barrett preserved');

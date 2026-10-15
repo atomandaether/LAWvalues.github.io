@@ -277,7 +277,7 @@ globalThis.LAW_RESULT_IDENTITIES = Object.freeze([
     public: false,
     parentId: "originalist",
     covers: ["time.fixation", "time.construction_zone", "time.framework"],
-    notes: "Internal/legacy theory label only. Public results use New Public-Meaning Originalist; framework evidence routes to Jack Balkin at champion level."
+    notes: "Internal/legacy theory label only. Public results use Public-Meaning New Originalist; framework evidence routes to Jack Balkin at champion level."
   },
   {
     id: "living_constitutionalist",

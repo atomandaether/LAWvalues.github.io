@@ -33,7 +33,10 @@ assert.match(dynamic.context,/precise statutory definition/);
 const wholeScores={...neutral,time:35,prec:80,post:20};
 const wholePlain=e.build(classification(plain),wholeScores);
 const wholeDynamic=e.build(classification(positive),wholeScores);
-assert.deepEqual(wholeDynamic,wholePlain,'Whole-profile portrait is preserved; no generic injected filler');
+assert.notEqual(wholeDynamic.id,wholePlain.id,'Confirmed dynamic statutory evidence must remain visible in a whole-profile portrait');
+assert.match(wholeDynamic.id,/dynamic_statutory_continuity/);
+assert.match(wholeDynamic.context,/unchanged meaning to new facts/);
+assert.match(wholeDynamic.context,/reliance/);
 assert.ok(wholeDynamic.id.startsWith('portrait_'));
 assert.doesNotMatch(wholeDynamic.id,/_dynamic_statutory$/);
 assert.deepEqual(e.build(classification(plain),neutral,practical.id,practical.openingId),practical);
@@ -71,3 +74,4 @@ for(const narrative of [practical,dynamic]){
 }
 console.log('PASS: separate dynamic evidence, practical-only/negative/unknown, optional affinity, live routing, priority ordering, 88+12 cap, unchanged axes, fresh-session old/new narrative replay.');
 console.log('Dynamic path:',order.join(' -> '));
+

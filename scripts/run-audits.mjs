@@ -15,7 +15,10 @@ const audits = [
   "audit-whole-profile.mjs",
   "audit-eskridge-dynamic.mjs",
   "audit-moral-consolidation.mjs",
-  "audit-kavanaugh-retirement.mjs"
+  "audit-kavanaugh-retirement.mjs",
+  "audit-results-layout.mjs",
+  "audit-result-title-rendering.mjs",
+  "audit-evidenced-result-narrative.mjs"
 ];
 const results = [];
 

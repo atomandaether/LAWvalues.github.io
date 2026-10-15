@@ -45,7 +45,7 @@ assert.equal(cl.MAX_TOTAL_QUESTIONS,100);
 for(const [champion,modifier] of [['greenberg','moral_impact_nonpositivism'],['hershovitz','moral_practice_nonpositivism'],[id,'moral_impact_nonpositivism'],[id,'moral_practice_nonpositivism']]){
  const params=new URLSearchParams({...scores,i:'nonpositivist',c:champion,m:modifier});
  const rr=runtime(root,{search:'?'+params});rr.run('results.js');
- assert.equal(rr.nodes.get('champion-line').textContent,'Closest thinker: '+profiles[champion].name);
+ assert.equal(rr.nodes.get('champion-line').textContent,'Champion: '+profiles[champion].name);
  assert.ok(rr.nodes.get('champion-description').textContent.startsWith(profiles[champion].description));
  rr.nodes.get('copy-link').click();
  const copied=new URL(rr.clipboard());
