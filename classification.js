@@ -3,7 +3,9 @@
   "use strict";
 
   const AXIS_IDS = ["sorc", "cons", "time", "prec", "remed", "post", "separ", "form"];
-  const MAX_DIAGNOSTICS = 12;
+  const MAX_TOTAL_QUESTIONS = 100;
+  const CORE_QUESTION_COUNT = Array.isArray(global.LAW_QUESTIONS) ? global.LAW_QUESTIONS.length : 88;
+  const MAX_DIAGNOSTICS = Math.max(0, MAX_TOTAL_QUESTIONS - CORE_QUESTION_COUNT);
 
   const EXTRA_DIAGNOSTICS = Object.freeze([
     {
@@ -1854,6 +1856,7 @@
 
   global.LAW_PROFILE_EXTRA_DIAGNOSTICS = EXTRA_DIAGNOSTICS;
   global.LAW_CLASSIFIER = Object.freeze({
+    MAX_TOTAL_QUESTIONS,
     MAX_DIAGNOSTICS,
     AXIS_IDS,
     diagnosticBank,
