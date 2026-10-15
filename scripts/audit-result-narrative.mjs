@@ -47,6 +47,18 @@ for (const [id, route] of Object.entries(engine.ROUTES)) {
   }
 }
 
+// Narrative prose must be champion-blind. Named theorists may appear when
+// necessary to explain a theory's intellectual content, but changing the
+// champion result cannot change the opening, context route, or context prose.
+{
+  const identity = (globalThis.LAW_RESULT_IDENTITIES || []).find((item) => item.id === "interpretivist");
+  const scores = { sorc:25, cons:50, time:50, prec:50, remed:50, post:40, separ:50, form:45 };
+  const traits = { "source.principles_are_law":1, "source.fit_and_justification":1 };
+  const a = engine.build({ identity, traits, champions:[{id:"dworkin_stavropoulos"}] }, scores);
+  const b = engine.build({ identity, traits, champions:[{id:"some_other_champion"}] }, scores);
+  assert.deepEqual(a, b, "Result narrative must not depend on champion selection");
+}
+
 for (const identity of globalThis.LAW_RESULT_IDENTITIES || []) {
   const result = engine.build({ identity, traits:{} }, neutralScores);
   assert.ok(result?.opening?.trim(), identity.id + " does not resolve to an opening");
