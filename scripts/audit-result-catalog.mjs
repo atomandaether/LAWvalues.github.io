@@ -34,19 +34,52 @@ assert.equal(resultContent.PHRASE_FEATURES.length, 18,
   "Public phrase pool should contain the sixteen axis poles plus objective morality and anti-discretion");
 assert.equal(resultContent.PHRASES.length, resultContent.PHRASE_FEATURES.length,
   "Every phrase feature needs exactly one public phrase rendering");
-const approvedPublicPhraseTexts = new Set(resultContent.PHRASES.map((item) => item.text));
-// The title assembler may omit the residual phrase when no approved phrase is
-// supported. It must never manufacture a public fallback phrase outside the
-// approved PHRASE_FEATURES pool.
+assert.equal(resultContent.FALLBACK_PHRASES.contradiction.text, "who is a walking contradiction");
+assert.equal(resultContent.FALLBACK_PHRASES.neutral.text, "who needs to stop fence sitting");
+const approvedPublicPhraseTexts = new Set([
+  ...resultContent.PHRASES.map((item) => item.text),
+  ...Object.values(resultContent.FALLBACK_PHRASES).map((item) => item.text)
+]);
+
+// If no directional residual clears the substantive-phrase threshold, preserve
+// the distinction between strong opposing answers that cancel and actual
+// neutrality. The contradiction fallback must also remain secondary: conflict
+// on the noun's own spent axis cannot generate it.
 {
-  const identity = identities.find((item) => item.id === "thayerian");
-  const scores = {sorc:50,cons:50,time:50,prec:50,remed:50,post:97,separ:50,form:50};
-  const assembled = resultContent.assemble(
-    {identity,identityScore:.9,primaryStrength:.8,identityAlternatives:[]},
-    scores, {}, {}
-  );
-  assert.ok(assembled.phrase === null || approvedPublicPhraseTexts.has(assembled.phrase.text),
-    "Public title used an unauthorized residual phrase");
+  const identity = identities.find((item) => item.id === "positivist");
+  const classification = {identity,identityScore:.9,primaryStrength:.8,identityAlternatives:[]};
+  const axis = (score=50,strength=0,conflict=0) => ({score,strength,conflict});
+
+  const neutralScores = {
+    sorc:axis(92,85,0), cons:axis(), time:axis(), prec:axis(),
+    remed:axis(), post:axis(), separ:axis(), form:axis()
+  };
+  const neutral = resultContent.assemble(classification, neutralScores, {}, {});
+  assert.equal(neutral.phrase.text, "who needs to stop fence sitting",
+    "Weak residual evidence should use the neutral phrase fallback");
+
+  const contradictoryScores = {
+    ...neutralScores,
+    prec:axis(50,78,61)
+  };
+  const contradictory = resultContent.assemble(classification, contradictoryScores, {}, {});
+  assert.equal(contradictory.phrase.text, "who is a walking contradiction",
+    "Strong opposing residual evidence should use the contradiction phrase fallback");
+  assert.equal(contradictory.phrase.axis, "prec",
+    "Contradiction fallback should identify the residual axis whose strong answers cancel");
+
+  const primaryConflictOnly = {
+    ...neutralScores,
+    sorc:axis(50,82,68)
+  };
+  const stillNeutral = resultContent.assemble(classification, primaryConflictOnly, {}, {});
+  assert.equal(stillNeutral.phrase.text, "who needs to stop fence sitting",
+    "Conflict on the noun-spent primary axis must not masquerade as the secondary phrase");
+
+  for (const assembled of [neutral, contradictory, stillNeutral]) {
+    assert.ok(approvedPublicPhraseTexts.has(assembled.phrase.text),
+      "Public title used an unauthorized residual phrase");
+  }
 }
 
 assert.ok(Array.isArray(resultContent.TWISTS) && resultContent.TWISTS.length >= 20,
