@@ -8,7 +8,7 @@
     "audit:questions": "node scripts/audit-questions.mjs",
     "audit:catalog": "node scripts/audit-result-catalog.mjs",
     "audit:routing": "node scripts/audit-diagnostic-routing.mjs",
-    "audit:narrative": "node scripts/audit-result-narrative.mjs"
+    "audit:narrative": "node scripts/audit-result-narrative.mjs",
+    "audit:share": "node scripts/audit-result-share.mjs"
   }
 }
-

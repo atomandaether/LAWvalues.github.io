@@ -8,7 +8,8 @@ const audits = [
   "audit-questions.mjs",
   "audit-result-catalog.mjs",
   "audit-diagnostic-routing.mjs",
-  "audit-result-narrative.mjs"
+  "audit-result-narrative.mjs",
+  "audit-result-share.mjs"
 ];
 const results = [];
 

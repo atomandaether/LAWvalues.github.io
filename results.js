@@ -158,6 +158,7 @@
             diagnosticCount: Number(params.get('d')) || 0,
             resultTitle,
             narrativeId: params.get('x') || null,
+            narrativeOpeningId: params.get('o') || null,
             calibration: 'theory-derived'
         };
     }
@@ -219,7 +220,7 @@
         );
         const narrative = result.narrative || (
             globalThis.LAW_RESULT_NARRATIVE?.build
-                ? globalThis.LAW_RESULT_NARRATIVE.build(result, scores, result.narrativeId || params.get('x'))
+                ? globalThis.LAW_RESULT_NARRATIVE.build(result, scores, result.narrativeId || params.get('x'), result.narrativeOpeningId || params.get('o'))
                 : null
         );
 
@@ -292,7 +293,7 @@
     function textSummary() {
         const summaryNarrative = classification?.narrative || (
             classification?.identity && globalThis.LAW_RESULT_NARRATIVE?.build
-                ? globalThis.LAW_RESULT_NARRATIVE.build(classification, scores, classification.narrativeId || params.get('x'))
+                ? globalThis.LAW_RESULT_NARRATIVE.build(classification, scores, classification.narrativeId || params.get('x'), classification.narrativeOpeningId || params.get('o'))
                 : null
         );
         const classificationLines = classification?.identity
