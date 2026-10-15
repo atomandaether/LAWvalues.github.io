@@ -33,9 +33,15 @@
     <button class="small_button" id="copy-summary" type="button">Copy Summary</button>
     <button class="small_button" id="download-record" type="button" hidden>Download JSON</button>
 </div>
+<p class="coverage-note" id="version-note" hidden></p>
 <p class="coverage-note" id="coverage-note" hidden></p>
 
 <h2>Source Axis: <span class="weight-300" id="source-label"></span></h2>
+<p class="axis-explanation" id="source-label-explanation"></p>
+<details class="axis-evidence" id="source-label-evidence" hidden>
+    <summary>How this score was clarified</summary>
+    <p id="source-label-evidence-text"></p>
+</details>
 <div class="axis">
     <img src="value_images/positivist.svg" alt="Positivist">
     <div class="axis-bars">
@@ -46,6 +52,11 @@
 </div>
 
 <h2>Constraint Axis: <span class="weight-300" id="constraint-label"></span></h2>
+<p class="axis-explanation" id="constraint-label-explanation"></p>
+<details class="axis-evidence" id="constraint-label-evidence" hidden>
+    <summary>How this score was clarified</summary>
+    <p id="constraint-label-evidence-text"></p>
+</details>
 <div class="axis">
     <img src="value_images/textualist.svg" alt="Textualist">
     <div class="axis-bars">
@@ -56,6 +67,11 @@
 </div>
 
 <h2>Time Axis: <span class="weight-300" id="time-label"></span></h2>
+<p class="axis-explanation" id="time-label-explanation"></p>
+<details class="axis-evidence" id="time-label-evidence" hidden>
+    <summary>How this score was clarified</summary>
+    <p id="time-label-evidence-text"></p>
+</details>
 <div class="axis">
     <img src="value_images/historical.svg" alt="Historical">
     <div class="axis-bars">
@@ -66,6 +82,11 @@
 </div>
 
 <h2>Precedent Axis: <span class="weight-300" id="precedent-label"></span></h2>
+<p class="axis-explanation" id="precedent-label-explanation"></p>
+<details class="axis-evidence" id="precedent-label-evidence" hidden>
+    <summary>How this score was clarified</summary>
+    <p id="precedent-label-evidence-text"></p>
+</details>
 <div class="axis">
     <img src="value_images/stability.svg" alt="Stability">
     <div class="axis-bars">
@@ -76,6 +97,11 @@
 </div>
 
 <h2>Remedies Axis: <span class="weight-300" id="remedies-label"></span></h2>
+<p class="axis-explanation" id="remedies-label-explanation"></p>
+<details class="axis-evidence" id="remedies-label-evidence" hidden>
+    <summary>How this score was clarified</summary>
+    <p id="remedies-label-evidence-text"></p>
+</details>
 <div class="axis">
     <img src="value_images/narrow.svg" alt="Narrow">
     <div class="axis-bars">
@@ -86,6 +112,11 @@
 </div>
 
 <h2>Posture Axis: <span class="weight-300" id="posture-label"></span></h2>
+<p class="axis-explanation" id="posture-label-explanation"></p>
+<details class="axis-evidence" id="posture-label-evidence" hidden>
+    <summary>How this score was clarified</summary>
+    <p id="posture-label-evidence-text"></p>
+</details>
 <div class="axis">
     <img src="value_images/majoritarian.svg" alt="Majoritarian">
     <div class="axis-bars">
@@ -96,6 +127,11 @@
 </div>
 
 <h2>Separation Axis: <span class="weight-300" id="separation-label"></span></h2>
+<p class="axis-explanation" id="separation-label-explanation"></p>
+<details class="axis-evidence" id="separation-label-evidence" hidden>
+    <summary>How this score was clarified</summary>
+    <p id="separation-label-evidence-text"></p>
+</details>
 <div class="axis">
     <img src="value_images/formalist.svg" alt="Formalist">
     <div class="axis-bars">
@@ -106,6 +142,11 @@
 </div>
 
 <h2>Form Axis: <span class="weight-300" id="form-label"></span></h2>
+<p class="axis-explanation" id="form-label-explanation"></p>
+<details class="axis-evidence" id="form-label-evidence" hidden>
+    <summary>How this score was clarified</summary>
+    <p id="form-label-evidence-text"></p>
+</details>
 <div class="axis">
     <img src="value_images/rules.svg" alt="Rules">
     <div class="axis-bars">
@@ -130,6 +171,7 @@
 <script src="axes.js"></script>
 <script src="questions.js"></script>
 <script src="scoring.js"></script>
+<script src="result_compatibility.js"></script>
 <script src="result_catalog.js"></script>
 <script src="diagnostics.js"></script>
 <script src="profiles.js"></script>
@@ -137,6 +179,7 @@
 <script src="result_content.js"></script>
 <script src="classification.js"></script>
 <script src="result_narrative.js"></script>
+<script src="axis_labels.js"></script>
 <script src="results.js"></script>
 </body>
 </html>

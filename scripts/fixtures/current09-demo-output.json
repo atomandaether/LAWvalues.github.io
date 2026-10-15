@@ -1,0 +1,3279 @@
+{
+  "fixtureId": "current09-casey",
+  "fictional": true,
+  "instrumentVersion": "0.9 Beta",
+  "fixtureSha256": "1258889ba1123459c033e188f53cd019bd1a0df0ff5e865d1ad7306a191895de",
+  "sourceHashes": {
+    "axes.js": "0a958e9d72d11c0db74f931f1712eecfeeefe9086bf8af9377ef6e4588a958d7",
+    "questions.js": "30dbe2c757b1cd5a8c265faf4f277f4d53370a2e895f6bf86d38869bed45bd97",
+    "scoring.js": "2158d3578a7b0ba0abd40c58f20d41eb5836308fd5149f302e80d8bdbe3a3734",
+    "result_compatibility.js": "1825b569019159f9aba20de57e047d804976daa91ff5caae81588ff78c32b23a",
+    "result_catalog.js": "5c9dabfd348e960bfa945453e38174590d1f5cbff444398371bff60dd6771b05",
+    "diagnostics.js": "6c62627b7bdcaee8fd64bc23b733340a0d1debbc1b6023ec1292e3d004c8a7b8",
+    "profiles.js": "1ae836befcdeeb08aea49bf67daa25cce428656c3dd251287cdd66328157e31e",
+    "result_content.js": "bb49ba75c86ec5a911d685f1cff6983ed0345637182e9aada8e785a9752c3a0e",
+    "classification.js": "703512abe6b903ee7ba69e3bd717bcc05c23c00249fb69e54a6f51e3b83e2855",
+    "result_narrative.js": "ef9fb879bf1fe68761acbcfac74c305f5deab910c8a539ab00358e6dce3220ce",
+    "axis_labels.js": "52c93157ab10b68fda2caa6217c2bdafdc69189f64e5baf532e7f243c79f6d6e",
+    "quiz.js": "b8eaa71d0689d490a092a025ab4c3c34e351752dc5a7c1f19ce1859e507b209a",
+    "results.js": "5829c8d8748822b218611ffb0f6de85ba2b411a11f5b6bd151996b84bd446e41"
+  },
+  "questionCount": 100,
+  "log": [
+    {
+      "id": "S7",
+      "phase": "core",
+      "value": 2,
+      "rationale": "Authoritative law can leave genuine gaps requiring judicial lawmaking."
+    },
+    {
+      "id": "F5",
+      "phase": "core",
+      "value": -3,
+      "rationale": "Unrestricted individualized weighing cannot replace legally binding rules."
+    },
+    {
+      "id": "E4",
+      "phase": "core",
+      "value": 3,
+      "rationale": "The executive cannot rewrite completed legislation merely because selective cancellation would be useful."
+    },
+    {
+      "id": "T1",
+      "phase": "core",
+      "value": 3,
+      "rationale": "The stipulated determinate original equality rule binds independently of current judges or public approval."
+    },
+    {
+      "id": "P3",
+      "phase": "core",
+      "value": 2,
+      "rationale": "Precedent is genuine law with institutional force, while remaining distinct from changing original constitutional meaning."
+    },
+    {
+      "id": "C11",
+      "phase": "core",
+      "value": 3,
+      "rationale": "Courts must respect a deliberate legislative omission."
+    },
+    {
+      "id": "O9",
+      "phase": "core",
+      "value": -1,
+      "rationale": "Reasonableness of the legislative interpretation alone does not displace independent judicial judgment."
+    },
+    {
+      "id": "R2",
+      "phase": "core",
+      "value": -2,
+      "rationale": "The same remedial limit applies to worker claims; convenience alone does not establish universal scope."
+    },
+    {
+      "id": "R3",
+      "phase": "core",
+      "value": 3,
+      "rationale": "A proven institution-wide violation requires the only remedy capable of curing it."
+    },
+    {
+      "id": "S3",
+      "phase": "core",
+      "value": 3,
+      "rationale": "An exhaustive legal list cannot be supplemented by personal moral preference."
+    },
+    {
+      "id": "F7",
+      "phase": "core",
+      "value": 2,
+      "rationale": "A demonstrated discriminatory exception system may need a strict rule unless reliable bounded standards replace it."
+    },
+    {
+      "id": "P11",
+      "phase": "core",
+      "value": -1,
+      "rationale": "A settled damages remedy should not be discarded merely because it originated judicially; institutional authority remains a genuine concern."
+    },
+    {
+      "id": "O6",
+      "phase": "core",
+      "value": -2,
+      "rationale": "Ordinary reenactment should not by itself override a binding constitutional right."
+    },
+    {
+      "id": "C18",
+      "phase": "core",
+      "value": 3,
+      "rationale": "The express compromise remains binding despite a particularly bad beneficiary."
+    },
+    {
+      "id": "T7",
+      "phase": "core",
+      "value": 3,
+      "rationale": "Publicly communicated ratified meaning prevails over contrary uncommunicated private intentions."
+    },
+    {
+      "id": "E1",
+      "phase": "core",
+      "value": -3,
+      "rationale": "Practical oversight does not authorize bypassing constitutionally prescribed lawmaking procedures."
+    },
+    {
+      "id": "C6",
+      "phase": "core",
+      "value": -2,
+      "rationale": "The better explanation is contextual meaning, rather than a free-standing purpose exception to clear coverage."
+    },
+    {
+      "id": "R9",
+      "phase": "core",
+      "value": 2,
+      "rationale": "A bounded protective deadline can be needed to stop persistent violations without redefining the underlying right."
+    },
+    {
+      "id": "O7",
+      "phase": "core",
+      "value": 1,
+      "rationale": "Legitimate narrow procedural grounds may warrant restraint, but not simply delay enforcement indefinitely."
+    },
+    {
+      "id": "T9",
+      "phase": "core",
+      "value": 0,
+      "rationale": "The premise does not establish which level of generality the original meaning adopted; neither tradition nor abstraction alone decides it."
+    },
+    {
+      "id": "F9",
+      "phase": "core",
+      "value": -2,
+      "rationale": "A difficult edge case alone does not justify reopening the protected categorical boundary."
+    },
+    {
+      "id": "P6",
+      "phase": "core",
+      "value": -2,
+      "rationale": "Following precedent is not automatically a betrayal of constitutional interpretation; settlement has independent legal weight."
+    },
+    {
+      "id": "E5",
+      "phase": "core",
+      "value": 3,
+      "rationale": "Administrative combination can be permissible with meaningful judicial review and accountability."
+    },
+    {
+      "id": "S10",
+      "phase": "core",
+      "value": -3,
+      "rationale": "Independent moral truth is not itself law without legal incorporation."
+    },
+    {
+      "id": "R11",
+      "phase": "core",
+      "value": 3,
+      "rationale": "Resolve the proven injury without unnecessary invalidation of unrelated provisions."
+    },
+    {
+      "id": "F1",
+      "phase": "core",
+      "value": 2,
+      "rationale": "Rules provide a strong baseline of predictability and equal treatment without eliminating every defined exception."
+    },
+    {
+      "id": "O4",
+      "phase": "core",
+      "value": 3,
+      "rationale": "Popularity does not reduce the legal force of a right."
+    },
+    {
+      "id": "E6",
+      "phase": "core",
+      "value": 2,
+      "rationale": "Emergencies do not dispense with prescribed constitutional procedures."
+    },
+    {
+      "id": "T4",
+      "phase": "core",
+      "value": -3,
+      "rationale": "Construction of open meaning cannot extend to reversing an expressly stipulated original exclusion."
+    },
+    {
+      "id": "S1",
+      "phase": "core",
+      "value": 3,
+      "rationale": "Valid enactment can remain legally valid despite grave moral wrong."
+    },
+    {
+      "id": "C4",
+      "phase": "core",
+      "value": 2,
+      "rationale": "Use the same reading rule regardless of the political beneficiary."
+    },
+    {
+      "id": "P12",
+      "phase": "core",
+      "value": 2,
+      "rationale": "Protecting substantial pension reliance favors legislative rather than abrupt judicial correction."
+    },
+    {
+      "id": "T6",
+      "phase": "core",
+      "value": -3,
+      "rationale": "Under the stipulated premise, changed dignity judgments do not themselves reverse an original legal permission."
+    },
+    {
+      "id": "O1",
+      "phase": "core",
+      "value": -1,
+      "rationale": "Courts should decide the best legal reading, although genuine construction space may support legislative choice."
+    },
+    {
+      "id": "E3",
+      "phase": "core",
+      "value": -1,
+      "rationale": "Clear delegations under meaningful standards may be permissible; major policy discretion is not invariably forbidden."
+    },
+    {
+      "id": "P9",
+      "phase": "core",
+      "value": 1,
+      "rationale": "Embedded implementing safeguards merit retention, though their revision may differ from revision of the underlying right."
+    },
+    {
+      "id": "F8",
+      "phase": "core",
+      "value": 3,
+      "rationale": "A clear juvenile boundary protects equal treatment against biased discretionary transfers."
+    },
+    {
+      "id": "C15",
+      "phase": "core",
+      "value": -2,
+      "rationale": "Begin with enacted meaning in context; do not make a reconstructed purpose control all wording."
+    },
+    {
+      "id": "S5",
+      "phase": "core",
+      "value": 3,
+      "rationale": "Settled recognition practice determines the authoritative legal copy."
+    },
+    {
+      "id": "R8",
+      "phase": "core",
+      "value": -2,
+      "rationale": "A more effective regional remedy alone does not justify imposing obligations on uninvolved districts."
+    },
+    {
+      "id": "C3",
+      "phase": "core",
+      "value": 2,
+      "rationale": "Use the reasonable statutory reading and decide its constitutionality openly."
+    },
+    {
+      "id": "F6",
+      "phase": "core",
+      "value": 2,
+      "rationale": "Government-induced lateness supplies a bounded equitable reason for relief, not a general power to ignore every deadline."
+    },
+    {
+      "id": "P5",
+      "phase": "core",
+      "value": 3,
+      "rationale": "The burden of displacing an established rule should exceed ordinary disagreement over first principles."
+    },
+    {
+      "id": "E7",
+      "phase": "core",
+      "value": -1,
+      "rationale": "Overlap alone is not fatal, but functional danger is not the only possible violation of an express procedural allocation."
+    },
+    {
+      "id": "S4",
+      "phase": "core",
+      "value": 3,
+      "rationale": "Foolish policy is not absence of legal validity."
+    },
+    {
+      "id": "T10",
+      "phase": "core",
+      "value": 3,
+      "rationale": "An accidental change in the ordinary modern meaning of a phrase cannot substitute a different original legal subject."
+    },
+    {
+      "id": "R1",
+      "phase": "core",
+      "value": -2,
+      "rationale": "A first plaintiff's win does not itself justify immediate relief for every nonparty."
+    },
+    {
+      "id": "O3",
+      "phase": "core",
+      "value": 3,
+      "rationale": "Judicial review can enforce the higher constitutional law rather than assert personal supremacy."
+    },
+    {
+      "id": "R7",
+      "phase": "core",
+      "value": 3,
+      "rationale": "Apply the same severability rule to a law with different political beneficiaries."
+    },
+    {
+      "id": "O8",
+      "phase": "core",
+      "value": -2,
+      "rationale": "Judges' authority comes from their assigned legal role and reasoning, not a claim that five votes are democratically superior."
+    },
+    {
+      "id": "T5",
+      "phase": "core",
+      "value": -3,
+      "rationale": "Under the stipulated premise, eliminating the original permission requires lawful constitutional change, not a new value judgment alone."
+    },
+    {
+      "id": "C5",
+      "phase": "core",
+      "value": 3,
+      "rationale": "Context determines ordinary enacted meaning; a bolted memorial is not a transport vehicle in this context."
+    },
+    {
+      "id": "S11",
+      "phase": "core",
+      "value": -3,
+      "rationale": "Even serious moral wrongdoing does not itself supply a legally recognized invalidity rule."
+    },
+    {
+      "id": "F4",
+      "phase": "core",
+      "value": 1,
+      "rationale": "Categories matter, but not every legal question is categorical."
+    },
+    {
+      "id": "E2",
+      "phase": "core",
+      "value": 2,
+      "rationale": "A limited removal protection can support the independent legal task Congress assigned."
+    },
+    {
+      "id": "P4",
+      "phase": "core",
+      "value": 2,
+      "rationale": "Deep reliance can justify retaining a mistaken constitutional rule without reclassifying its meaning as correct."
+    },
+    {
+      "id": "F3",
+      "phase": "core",
+      "value": 3,
+      "rationale": "A rule must sometimes withstand an individual claim of fairness or it ceases to constrain."
+    },
+    {
+      "id": "R10",
+      "phase": "core",
+      "value": 2,
+      "rationale": "The same protective deadline principle applies to voting rights."
+    },
+    {
+      "id": "T11",
+      "phase": "core",
+      "value": 3,
+      "rationale": "Independent original authority survives the disappearance of a judicial instruction to consult history."
+    },
+    {
+      "id": "S6",
+      "phase": "core",
+      "value": -2,
+      "rationale": "An unrecognized moral duty is not automatically an existing legal duty."
+    },
+    {
+      "id": "C7",
+      "phase": "core",
+      "value": 3,
+      "rationale": "Clear enacted words prevail over a conflicting sponsor report."
+    },
+    {
+      "id": "O2",
+      "phase": "core",
+      "value": -2,
+      "rationale": "Sincere public disagreement does not generally eliminate independent judicial enforcement of legal rights."
+    },
+    {
+      "id": "P10",
+      "phase": "core",
+      "value": -2,
+      "rationale": "A lawful implementing remedy can exceed the bare constitutional minimum when needed to enforce the right."
+    },
+    {
+      "id": "T8",
+      "phase": "core",
+      "value": 3,
+      "rationale": "A fixed general anti-caste principle can have applications its adopters did not expect."
+    },
+    {
+      "id": "O10",
+      "phase": "core",
+      "value": 3,
+      "rationale": "Apply the legal right independently despite strong contrary popular support."
+    },
+    {
+      "id": "P2",
+      "phase": "core",
+      "value": 2,
+      "rationale": "Longstanding statutory settlements deserve substantial reliance and legislative-correction weight."
+    },
+    {
+      "id": "S8",
+      "phase": "core",
+      "value": -2,
+      "rationale": "Fit and moral justification do not guarantee a preexisting legal answer in every gap."
+    },
+    {
+      "id": "R5",
+      "phase": "core",
+      "value": 2,
+      "rationale": "A structural caseload limit can be justified by the proven systemic violation despite budget consequences."
+    },
+    {
+      "id": "C12",
+      "phase": "core",
+      "value": -2,
+      "rationale": "Similar purpose does not make a tiger a dog in a specific enacted prohibition."
+    },
+    {
+      "id": "P7",
+      "phase": "core",
+      "value": 3,
+      "rationale": "Stable doctrine should not track each change in the Court's philosophical membership."
+    },
+    {
+      "id": "S2",
+      "phase": "core",
+      "value": -2,
+      "rationale": "Moral condemnation alone does not erase legal status when recognized sources supply no such test."
+    },
+    {
+      "id": "T3",
+      "phase": "core",
+      "value": 2,
+      "rationale": "The stipulated original twelve-person legal requirement controls despite functional equivalence and emergency inconvenience."
+    },
+    {
+      "id": "C10",
+      "phase": "core",
+      "value": 1,
+      "rationale": "A narrow ordinary-context accommodation is plausible, but the question does not establish a general power to rewrite coverage."
+    },
+    {
+      "id": "R4",
+      "phase": "core",
+      "value": 1,
+      "rationale": "Narrow ongoing supervision may become necessary, but the broad supervisory proposal warrants caution."
+    },
+    {
+      "id": "O12",
+      "phase": "core",
+      "value": -3,
+      "rationale": "Removing judges for unpopular good-faith rights enforcement threatens judicial independence."
+    },
+    {
+      "id": "T2",
+      "phase": "core",
+      "value": 3,
+      "rationale": "The hypothetical stipulates original legal permission, not merely old practice; changed attitudes alone do not amend it."
+    },
+    {
+      "id": "R6",
+      "phase": "core",
+      "value": 3,
+      "rationale": "Preserve independently workable lawful provisions after removing the proven defect."
+    },
+    {
+      "id": "C14",
+      "phase": "core",
+      "value": -3,
+      "rationale": "A genuinely distinct omitted category requires legislation even when avoidance was deliberate."
+    },
+    {
+      "id": "O13",
+      "phase": "core",
+      "value": 3,
+      "rationale": "Secure tenure enables independent protection of unpopular rights holders."
+    },
+    {
+      "id": "T12",
+      "phase": "core",
+      "value": -3,
+      "rationale": "Precedent may elaborate open meaning and implement rights, but cannot transform a clearly imposed original constraint into different constitutional meaning."
+    },
+    {
+      "id": "O11",
+      "phase": "core",
+      "value": 3,
+      "rationale": "Reenactment and electoral support do not cure a constitutional violation."
+    },
+    {
+      "id": "C17",
+      "phase": "core",
+      "value": 3,
+      "rationale": "Enacted text supplies the authoritative compromise while contextual evidence helps identify its meaning."
+    },
+    {
+      "id": "O5",
+      "phase": "core",
+      "value": 2,
+      "rationale": "Judicial authority does not depend on superior personal moral expertise."
+    },
+    {
+      "id": "C9",
+      "phase": "core",
+      "value": 2,
+      "rationale": "Unanticipated consequences do not defeat a clear statutory prohibition."
+    },
+    {
+      "id": "C8",
+      "phase": "core",
+      "value": 1,
+      "rationale": "The historical labor category may permit a contextual narrower reading, but purpose alone is not decisive."
+    },
+    {
+      "id": "C1",
+      "phase": "core",
+      "value": 3,
+      "rationale": "Ordinary enacted coverage controls over uncommunicated expectations about particular workers."
+    },
+    {
+      "id": "C13",
+      "phase": "core",
+      "value": -3,
+      "rationale": "The list limits other vehicles to the same road-vehicle context."
+    },
+    {
+      "id": "C2",
+      "phase": "core",
+      "value": 3,
+      "rationale": "A deliberate express exemption survives disagreement with its policy outcome."
+    },
+    {
+      "id": "D-QC1",
+      "phase": "diagnostic",
+      "value": -2,
+      "rationale": "Follow the explicit response-check instruction."
+    },
+    {
+      "id": "D-PRI-source-time",
+      "phase": "diagnostic",
+      "value": 2,
+      "rationale": "The predeclared defining-priority order is source, method, time, structure, posture, form, realism, then common good; these compatible commitments are compared with moderate strength."
+    },
+    {
+      "id": "D-PRI-source-method",
+      "phase": "diagnostic",
+      "value": 2,
+      "rationale": "The predeclared defining-priority order is source, method, time, structure, posture, form, realism, then common good; these compatible commitments are compared with moderate strength."
+    },
+    {
+      "id": "D-POS1",
+      "phase": "diagnostic",
+      "value": 3,
+      "rationale": "Socially recognized sources determine validity and can incorporate moral standards. Independent moral merit alone does not confer legal status; command, hierarchy, and planning are not the defining explanation."
+    },
+    {
+      "id": "D-PRI-source-realism",
+      "phase": "diagnostic",
+      "value": 2,
+      "rationale": "The predeclared defining-priority order is source, method, time, structure, posture, form, realism, then common good; these compatible commitments are compared with moderate strength."
+    },
+    {
+      "id": "D-AUS1",
+      "phase": "diagnostic",
+      "value": -3,
+      "rationale": "Socially recognized sources determine validity and can incorporate moral standards. Independent moral merit alone does not confer legal status; command, hierarchy, and planning are not the defining explanation."
+    },
+    {
+      "id": "D-KEL1",
+      "phase": "diagnostic",
+      "value": -2,
+      "rationale": "Socially recognized sources determine validity and can incorporate moral standards. Independent moral merit alone does not confer legal status; command, hierarchy, and planning are not the defining explanation."
+    },
+    {
+      "id": "D-SHA1",
+      "phase": "diagnostic",
+      "value": -1,
+      "rationale": "Socially recognized sources determine validity and can incorporate moral standards. Independent moral merit alone does not confer legal status; command, hierarchy, and planning are not the defining explanation."
+    },
+    {
+      "id": "D-MON1",
+      "phase": "diagnostic",
+      "value": 3,
+      "rationale": "Repair the proven violation with necessary and bounded measures; distinguish implementing rules from rights, avoid automatic universal scope, and do not redefine rights merely to cheapen remedies."
+    },
+    {
+      "id": "D-POS2",
+      "phase": "diagnostic",
+      "value": 2,
+      "rationale": "Socially recognized sources determine validity and can incorporate moral standards. Independent moral merit alone does not confer legal status; command, hierarchy, and planning are not the defining explanation."
+    },
+    {
+      "id": "D-BLK1",
+      "phase": "diagnostic",
+      "value": 2,
+      "rationale": "Use enacted text in legal context, respect deliberate compromises, and permit institution-sensitive elaboration only in genuine legal gaps; avoid an unrestricted hierarchy-free balancing method."
+    },
+    {
+      "id": "D-ORI3",
+      "phase": "diagnostic",
+      "value": 3,
+      "rationale": "Original public meaning independently binds; construction is legitimate only within genuinely unresolved meaning. Private intent or historically privileged methods do not automatically displace communicated meaning."
+    }
+  ],
+  "relativeResultUrl": "results.html?v=0.9+Beta&alv=1&al=sorc-inclusive-positivism%2Ccons-textualism%2Ctime-constitutional-construction%2Cprec-stare-decisis%2Cremed-remedial-tailoring%2Cpost-independent-rights-review%2Csepar-administrative-functionalism%2Cform-equitable-exceptions&sorc=93&cons=88&time=97&prec=84&remed=57&post=19&separ=55&form=79&n=10%2C20%2C13%2C12%2C14%2C27%2C10%2C24&i=positivist&c=coleman_waluchow_kramer&m=inclusive_positivism&p=fixed_meaning&x=portrait_historical_construction_continuity_normative_inclusive&o=portrait_historical_construction_continuity_normative_inclusive&d=12&cf=medium&ua=cons%2Ctime%2Cprec%2Cpost%2Cform",
+  "resultQuery": "?v=0.9+Beta&alv=1&al=sorc-inclusive-positivism%2Ccons-textualism%2Ctime-constitutional-construction%2Cprec-stare-decisis%2Cremed-remedial-tailoring%2Cpost-independent-rights-review%2Csepar-administrative-functionalism%2Cform-equitable-exceptions&sorc=93&cons=88&time=97&prec=84&remed=57&post=19&separ=55&form=79&n=10%2C20%2C13%2C12%2C14%2C27%2C10%2C24&i=positivist&c=coleman_waluchow_kramer&m=inclusive_positivism&p=fixed_meaning&x=portrait_historical_construction_continuity_normative_inclusive&o=portrait_historical_construction_continuity_normative_inclusive&d=12&cf=medium&ua=cons%2Ctime%2Cprec%2Cpost%2Cform",
+  "record": {
+    "version": "0.9 Beta",
+    "instrumentVersion": "0.9 Beta",
+    "resultQuery": "v=0.9+Beta&alv=1&al=sorc-inclusive-positivism%2Ccons-textualism%2Ctime-constitutional-construction%2Cprec-stare-decisis%2Cremed-remedial-tailoring%2Cpost-independent-rights-review%2Csepar-administrative-functionalism%2Cform-equitable-exceptions&sorc=93&cons=88&time=97&prec=84&remed=57&post=19&separ=55&form=79&n=10%2C20%2C13%2C12%2C14%2C27%2C10%2C24&i=positivist&c=coleman_waluchow_kramer&m=inclusive_positivism&p=fixed_meaning&x=portrait_historical_construction_continuity_normative_inclusive&o=portrait_historical_construction_continuity_normative_inclusive&d=12&cf=medium&ua=cons%2Ctime%2Cprec%2Cpost%2Cform",
+    "axisLabelVersion": 1,
+    "axisLabels": {
+      "sorc": {
+        "id": "sorc-inclusive-positivism",
+        "label": "Inclusive Positivism",
+        "explanation": "Recognized legal sources govern validity, and a system's own accepted rules can incorporate moral standards into its test of law.",
+        "status": "supported",
+        "evidenceIds": [
+          "D-POS1",
+          "S1",
+          "S7",
+          "S10",
+          "S11",
+          "S3",
+          "S4",
+          "S5"
+        ]
+      },
+      "cons": {
+        "id": "cons-textualism",
+        "label": "Textualism",
+        "explanation": "Enacted language and legislative choices constrain legal effect even when unenacted intentions or a broader purpose point elsewhere.",
+        "status": "supported",
+        "evidenceIds": [
+          "C5",
+          "C13",
+          "C2",
+          "C11",
+          "C18"
+        ]
+      },
+      "time": {
+        "id": "time-constitutional-construction",
+        "label": "New Originalism",
+        "explanation": "Original meaning remains independently binding while later doctrine may develop within questions that meaning genuinely leaves unresolved.",
+        "status": "conditional",
+        "evidenceIds": [
+          "D-ORI3",
+          "T1",
+          "T2",
+          "T3",
+          "T11"
+        ]
+      },
+      "prec": {
+        "id": "prec-stare-decisis",
+        "label": "Stare Decisis",
+        "explanation": "Reliance, continuity, and institutional settlement can justify retaining a precedent despite acknowledged interpretive error.",
+        "status": "supported",
+        "evidenceIds": [
+          "P4",
+          "P12",
+          "P2",
+          "P5",
+          "P7"
+        ]
+      },
+      "remed": {
+        "id": "remed-remedial-tailoring",
+        "label": "Remedial Tailoring",
+        "explanation": "Necessary structural repair is combined with preservation of severable lawful provisions and limits on orders against institutions not found responsible.",
+        "status": "conditional",
+        "evidenceIds": [
+          "R3",
+          "R5",
+          "R6",
+          "R7",
+          "R8"
+        ]
+      },
+      "post": {
+        "id": "post-independent-rights-review",
+        "label": "Independent Rights Review",
+        "explanation": "Courts should independently enforce constitutional rights even against sustained electoral support for the challenged measure.",
+        "status": "supported",
+        "evidenceIds": [
+          "O4",
+          "O10",
+          "O11"
+        ]
+      },
+      "separ": {
+        "id": "separ-administrative-functionalism",
+        "label": "Administrative Functionalism",
+        "explanation": "Administrative overlap can be permissible while the Constitution's prescribed lawmaking procedures remain binding.",
+        "status": "conditional",
+        "evidenceIds": [
+          "E5",
+          "E1",
+          "E4",
+          "E6"
+        ]
+      },
+      "form": {
+        "id": "form-equitable-exceptions",
+        "label": "Equitable Exceptions",
+        "explanation": "General rules remain the baseline, with a specifically supported good-cause exception rather than unrestricted case-by-case discretion.",
+        "status": "conditional",
+        "evidenceIds": [
+          "F6",
+          "F5",
+          "F1",
+          "F3",
+          "F7",
+          "F8"
+        ]
+      }
+    },
+    "coreScores": {
+      "sorc": 93,
+      "cons": 88,
+      "time": 97,
+      "prec": 84,
+      "remed": 57,
+      "post": 19,
+      "separ": 55,
+      "form": 79
+    },
+    "scoringDetails": {
+      "sorc": {
+        "instrumentVersion": "0.9",
+        "coreScore": 93,
+        "adjustment": 0,
+        "scoringPolicy": "reviewed-hints-20pct-v1",
+        "contributions": [
+          {
+            "id": "S1",
+            "kind": "direct",
+            "status": "answered",
+            "answer": 3,
+            "rawSignal": 1,
+            "budgetedSignal": 1,
+            "budgetScale": 1,
+            "coreContribution": 1,
+            "contribution": 1,
+            "normalizedContribution": 0.13157894736842105
+          },
+          {
+            "id": "S2",
+            "kind": "direct",
+            "status": "answered",
+            "answer": -2,
+            "rawSignal": 1,
+            "budgetedSignal": 1,
+            "budgetScale": 1,
+            "coreContribution": 0.6666666666666666,
+            "contribution": 0.6666666666666666,
+            "normalizedContribution": 0.08771929824561403
+          },
+          {
+            "id": "S3",
+            "kind": "hint",
+            "status": "answered",
+            "answer": 3,
+            "rawSignal": 0.4,
+            "budgetedSignal": 0.4,
+            "budgetScale": 1,
+            "coreContribution": 0.4,
+            "contribution": 0.4,
+            "normalizedContribution": 0.052631578947368425
+          },
+          {
+            "id": "S4",
+            "kind": "hint",
+            "status": "answered",
+            "answer": 3,
+            "rawSignal": 0.35,
+            "budgetedSignal": 0.35,
+            "budgetScale": 1,
+            "coreContribution": 0.35,
+            "contribution": 0.35,
+            "normalizedContribution": 0.046052631578947366
+          },
+          {
+            "id": "S5",
+            "kind": "hint",
+            "status": "answered",
+            "answer": 3,
+            "rawSignal": 0.5,
+            "budgetedSignal": 0.5,
+            "budgetScale": 1,
+            "coreContribution": 0.5,
+            "contribution": 0.5,
+            "normalizedContribution": 0.06578947368421052
+          },
+          {
+            "id": "S6",
+            "kind": "direct",
+            "status": "answered",
+            "answer": -2,
+            "rawSignal": 1,
+            "budgetedSignal": 1,
+            "budgetScale": 1,
+            "coreContribution": 0.6666666666666666,
+            "contribution": 0.6666666666666666,
+            "normalizedContribution": 0.08771929824561403
+          },
+          {
+            "id": "S7",
+            "kind": "direct",
+            "status": "answered",
+            "answer": 2,
+            "rawSignal": 1,
+            "budgetedSignal": 1,
+            "budgetScale": 1,
+            "coreContribution": 0.6666666666666666,
+            "contribution": 0.6666666666666666,
+            "normalizedContribution": 0.08771929824561403
+          },
+          {
+            "id": "S8",
+            "kind": "direct",
+            "status": "answered",
+            "answer": -2,
+            "rawSignal": 0.35,
+            "budgetedSignal": 0.35,
+            "budgetScale": 1,
+            "coreContribution": 0.2333333333333333,
+            "contribution": 0.2333333333333333,
+            "normalizedContribution": 0.03070175438596491
+          },
+          {
+            "id": "S10",
+            "kind": "direct",
+            "status": "answered",
+            "answer": -3,
+            "rawSignal": 1,
+            "budgetedSignal": 1,
+            "budgetScale": 1,
+            "coreContribution": 1,
+            "contribution": 1,
+            "normalizedContribution": 0.13157894736842105
+          },
+          {
+            "id": "S11",
+            "kind": "direct",
+            "status": "answered",
+            "answer": -3,
+            "rawSignal": 1,
+            "budgetedSignal": 1,
+            "budgetScale": 1,
+            "coreContribution": 1,
+            "contribution": 1,
+            "normalizedContribution": 0.13157894736842105
+          }
+        ],
+        "hintBudget": 0.2,
+        "conflictIsLogical": false,
+        "score": 93,
+        "answered": 10,
+        "total": 10,
+        "coverage": 1,
+        "strength": 85,
+        "conflict": 0,
+        "leftSupport": 85,
+        "rightSupport": 0,
+        "raw": 0.8530701754385963
+      },
+      "cons": {
+        "instrumentVersion": "0.9",
+        "coreScore": 88,
+        "adjustment": 0,
+        "scoringPolicy": "reviewed-hints-20pct-v1",
+        "contributions": [
+          {
+            "id": "S3",
+            "kind": "direct",
+            "status": "answered",
+            "answer": 3,
+            "rawSignal": 0.3,
+            "budgetedSignal": 0.3,
+            "budgetScale": 1,
+            "coreContribution": 0.3,
+            "contribution": 0.3,
+            "normalizedContribution": 0.02054794520547945
+          },
+          {
+            "id": "C1",
+            "kind": "direct",
+            "status": "answered",
+            "answer": 3,
+            "rawSignal": 1,
+            "budgetedSignal": 1,
+            "budgetScale": 1,
+            "coreContribution": 1,
+            "contribution": 1,
+            "normalizedContribution": 0.0684931506849315
+          },
+          {
+            "id": "C2",
+            "kind": "direct",
+            "status": "answered",
+            "answer": 3,
+            "rawSignal": 0.65,
+            "budgetedSignal": 0.65,
+            "budgetScale": 1,
+            "coreContribution": 0.65,
+            "contribution": 0.65,
+            "normalizedContribution": 0.04452054794520548
+          },
+          {
+            "id": "C3",
+            "kind": "direct",
+            "status": "answered",
+            "answer": 2,
+            "rawSignal": 0.5,
+            "budgetedSignal": 0.5,
+            "budgetScale": 1,
+            "coreContribution": 0.3333333333333333,
+            "contribution": 0.3333333333333333,
+            "normalizedContribution": 0.022831050228310498
+          },
+          {
+            "id": "C4",
+            "kind": "direct",
+            "status": "answered",
+            "answer": 2,
+            "rawSignal": 0.5,
+            "budgetedSignal": 0.5,
+            "budgetScale": 1,
+            "coreContribution": 0.3333333333333333,
+            "contribution": 0.3333333333333333,
+            "normalizedContribution": 0.022831050228310498
+          },
+          {
+            "id": "C5",
+            "kind": "direct",
+            "status": "answered",
+            "answer": 3,
+            "rawSignal": 0.35,
+            "budgetedSignal": 0.35,
+            "budgetScale": 1,
+            "coreContribution": 0.35,
+            "contribution": 0.35,
+            "normalizedContribution": 0.023972602739726023
+          },
+          {
+            "id": "C6",
+            "kind": "direct",
+            "status": "answered",
+            "answer": -2,
+            "rawSignal": 1,
+            "budgetedSignal": 1,
+            "budgetScale": 1,
+            "coreContribution": 0.6666666666666666,
+            "contribution": 0.6666666666666666,
+            "normalizedContribution": 0.045662100456620995
+          },
+          {
+            "id": "C7",
+            "kind": "direct",
+            "status": "answered",
+            "answer": 3,
+            "rawSignal": 1,
+            "budgetedSignal": 1,
+            "budgetScale": 1,
+            "coreContribution": 1,
+            "contribution": 1,
+            "normalizedContribution": 0.0684931506849315
+          },
+          {
+            "id": "C8",
+            "kind": "hint",
+            "status": "answered",
+            "answer": 1,
+            "rawSignal": -0.5,
+            "budgetedSignal": -0.5,
+            "budgetScale": 1,
+            "coreContribution": -0.16666666666666666,
+            "contribution": -0.16666666666666666,
+            "normalizedContribution": -0.013440860215053762
+          },
+          {
+            "id": "C9",
+            "kind": "direct",
+            "status": "answered",
+            "answer": 2,
+            "rawSignal": 0.6,
+            "budgetedSignal": 0.6,
+            "budgetScale": 1,
+            "coreContribution": 0.39999999999999997,
+            "contribution": 0.39999999999999997,
+            "normalizedContribution": 0.027397260273972598
+          },
+          {
+            "id": "C10",
+            "kind": "direct",
+            "status": "answered",
+            "answer": 1,
+            "rawSignal": -1,
+            "budgetedSignal": -1,
+            "budgetScale": 1,
+            "coreContribution": -0.3333333333333333,
+            "contribution": -0.3333333333333333,
+            "normalizedContribution": -0.026881720430107524
+          },
+          {
+            "id": "C11",
+            "kind": "direct",
+            "status": "answered",
+            "answer": 3,
+            "rawSignal": 1,
+            "budgetedSignal": 1,
+            "budgetScale": 1,
+            "coreContribution": 1,
+            "contribution": 1,
+            "normalizedContribution": 0.0684931506849315
+          },
+          {
+            "id": "C12",
+            "kind": "direct",
+            "status": "answered",
+            "answer": -2,
+            "rawSignal": 1,
+            "budgetedSignal": 1,
+            "budgetScale": 1,
+            "coreContribution": 0.6666666666666666,
+            "contribution": 0.6666666666666666,
+            "normalizedContribution": 0.045662100456620995
+          },
+          {
+            "id": "C13",
+            "kind": "direct",
+            "status": "answered",
+            "answer": -3,
+            "rawSignal": 1,
+            "budgetedSignal": 1,
+            "budgetScale": 1,
+            "coreContribution": 1,
+            "contribution": 1,
+            "normalizedContribution": 0.0684931506849315
+          },
+          {
+            "id": "C14",
+            "kind": "direct",
+            "status": "answered",
+            "answer": -3,
+            "rawSignal": 1,
+            "budgetedSignal": 1,
+            "budgetScale": 1,
+            "coreContribution": 1,
+            "contribution": 1,
+            "normalizedContribution": 0.0684931506849315
+          },
+          {
+            "id": "C15",
+            "kind": "direct",
+            "status": "answered",
+            "answer": -2,
+            "rawSignal": 1,
+            "budgetedSignal": 1,
+            "budgetScale": 1,
+            "coreContribution": 0.6666666666666666,
+            "contribution": 0.6666666666666666,
+            "normalizedContribution": 0.045662100456620995
+          },
+          {
+            "id": "C17",
+            "kind": "direct",
+            "status": "answered",
+            "answer": 3,
+            "rawSignal": 1,
+            "budgetedSignal": 1,
+            "budgetScale": 1,
+            "coreContribution": 1,
+            "contribution": 1,
+            "normalizedContribution": 0.0684931506849315
+          },
+          {
+            "id": "C18",
+            "kind": "direct",
+            "status": "answered",
+            "answer": 3,
+            "rawSignal": 0.65,
+            "budgetedSignal": 0.65,
+            "budgetScale": 1,
+            "coreContribution": 0.65,
+            "contribution": 0.65,
+            "normalizedContribution": 0.04452054794520548
+          },
+          {
+            "id": "T7",
+            "kind": "direct",
+            "status": "answered",
+            "answer": 3,
+            "rawSignal": 0.3,
+            "budgetedSignal": 0.3,
+            "budgetScale": 1,
+            "coreContribution": 0.3,
+            "contribution": 0.3,
+            "normalizedContribution": 0.02054794520547945
+          },
+          {
+            "id": "T10",
+            "kind": "direct",
+            "status": "answered",
+            "answer": 3,
+            "rawSignal": 0.25,
+            "budgetedSignal": 0.25,
+            "budgetScale": 1,
+            "coreContribution": 0.25,
+            "contribution": 0.25,
+            "normalizedContribution": 0.017123287671232876
+          }
+        ],
+        "hintBudget": 0.2,
+        "conflictIsLogical": false,
+        "score": 88,
+        "answered": 20,
+        "total": 20,
+        "coverage": 1,
+        "strength": 79,
+        "conflict": 4,
+        "leftSupport": 79,
+        "rightSupport": 4,
+        "raw": 0.7519148622772129
+      },
+      "time": {
+        "instrumentVersion": "0.9",
+        "coreScore": 97,
+        "adjustment": 0,
+        "scoringPolicy": "reviewed-hints-20pct-v1",
+        "contributions": [
+          {
+            "id": "T1",
+            "kind": "direct",
+            "status": "answered",
+            "answer": 3,
+            "rawSignal": 1,
+            "budgetedSignal": 1,
+            "budgetScale": 1,
+            "coreContribution": 1,
+            "contribution": 1,
+            "normalizedContribution": 0.1169590643274854
+          },
+          {
+            "id": "T2",
+            "kind": "direct",
+            "status": "answered",
+            "answer": 3,
+            "rawSignal": 1,
+            "budgetedSignal": 1,
+            "budgetScale": 1,
+            "coreContribution": 1,
+            "contribution": 1,
+            "normalizedContribution": 0.1169590643274854
+          },
+          {
+            "id": "T3",
+            "kind": "direct",
+            "status": "answered",
+            "answer": 2,
+            "rawSignal": 1,
+            "budgetedSignal": 1,
+            "budgetScale": 1,
+            "coreContribution": 0.6666666666666666,
+            "contribution": 0.6666666666666666,
+            "normalizedContribution": 0.07797270955165693
+          },
+          {
+            "id": "T4",
+            "kind": "direct",
+            "status": "answered",
+            "answer": -3,
+            "rawSignal": 1,
+            "budgetedSignal": 1,
+            "budgetScale": 1,
+            "coreContribution": 1,
+            "contribution": 1,
+            "normalizedContribution": 0.1169590643274854
+          },
+          {
+            "id": "T5",
+            "kind": "direct",
+            "status": "answered",
+            "answer": -3,
+            "rawSignal": 1,
+            "budgetedSignal": 1,
+            "budgetScale": 1,
+            "coreContribution": 1,
+            "contribution": 1,
+            "normalizedContribution": 0.1169590643274854
+          },
+          {
+            "id": "T6",
+            "kind": "direct",
+            "status": "answered",
+            "answer": -3,
+            "rawSignal": 1,
+            "budgetedSignal": 1,
+            "budgetScale": 1,
+            "coreContribution": 1,
+            "contribution": 1,
+            "normalizedContribution": 0.1169590643274854
+          },
+          {
+            "id": "T7",
+            "kind": "hint",
+            "status": "answered",
+            "answer": 3,
+            "rawSignal": 0.1,
+            "budgetedSignal": 0.1,
+            "budgetScale": 1,
+            "coreContribution": 0.1,
+            "contribution": 0.1,
+            "normalizedContribution": 0.01169590643274854
+          },
+          {
+            "id": "T8",
+            "kind": "hint",
+            "status": "answered",
+            "answer": 3,
+            "rawSignal": 0.25,
+            "budgetedSignal": 0.25,
+            "budgetScale": 1,
+            "coreContribution": 0.25,
+            "contribution": 0.25,
+            "normalizedContribution": 0.02923976608187135
+          },
+          {
+            "id": "T9",
+            "kind": "hint",
+            "status": "neutral",
+            "answer": 0,
+            "contribution": 0,
+            "normalizedContribution": 0
+          },
+          {
+            "id": "T10",
+            "kind": "hint",
+            "status": "answered",
+            "answer": 3,
+            "rawSignal": 0.1,
+            "budgetedSignal": 0.1,
+            "budgetScale": 1,
+            "coreContribution": 0.1,
+            "contribution": 0.1,
+            "normalizedContribution": 0.01169590643274854
+          },
+          {
+            "id": "T11",
+            "kind": "direct",
+            "status": "answered",
+            "answer": 3,
+            "rawSignal": 1,
+            "budgetedSignal": 1,
+            "budgetScale": 1,
+            "coreContribution": 1,
+            "contribution": 1,
+            "normalizedContribution": 0.1169590643274854
+          },
+          {
+            "id": "T12",
+            "kind": "direct",
+            "status": "answered",
+            "answer": -3,
+            "rawSignal": 1,
+            "budgetedSignal": 1,
+            "budgetScale": 1,
+            "coreContribution": 1,
+            "contribution": 1,
+            "normalizedContribution": 0.1169590643274854
+          },
+          {
+            "id": "P3",
+            "kind": "hint",
+            "status": "answered",
+            "answer": 2,
+            "rawSignal": -0.1,
+            "budgetedSignal": -0.1,
+            "budgetScale": 1,
+            "coreContribution": -0.06666666666666667,
+            "contribution": -0.06666666666666667,
+            "normalizedContribution": -0.00925925925925926
+          }
+        ],
+        "hintBudget": 0.2,
+        "conflictIsLogical": false,
+        "score": 97,
+        "answered": 13,
+        "total": 13,
+        "coverage": 1,
+        "strength": 95,
+        "conflict": 1,
+        "leftSupport": 95,
+        "rightSupport": 1,
+        "raw": 0.9400584795321638
+      },
+      "prec": {
+        "instrumentVersion": "0.9",
+        "coreScore": 84,
+        "adjustment": 0,
+        "scoringPolicy": "reviewed-hints-20pct-v1",
+        "contributions": [
+          {
+            "id": "S5",
+            "kind": "hint",
+            "status": "answered",
+            "answer": 3,
+            "rawSignal": 0.1,
+            "budgetedSignal": 0.1,
+            "budgetScale": 1,
+            "coreContribution": 0.1,
+            "contribution": 0.1,
+            "normalizedContribution": 0.011049723756906077
+          },
+          {
+            "id": "T12",
+            "kind": "hint",
+            "status": "answered",
+            "answer": -3,
+            "rawSignal": 0,
+            "budgetedSignal": 0,
+            "budgetScale": 1,
+            "coreContribution": 0,
+            "contribution": 0,
+            "normalizedContribution": 0
+          },
+          {
+            "id": "P2",
+            "kind": "direct",
+            "status": "answered",
+            "answer": 2,
+            "rawSignal": 1,
+            "budgetedSignal": 1,
+            "budgetScale": 1,
+            "coreContribution": 0.6666666666666666,
+            "contribution": 0.6666666666666666,
+            "normalizedContribution": 0.07366482504604051
+          },
+          {
+            "id": "P3",
+            "kind": "direct",
+            "status": "answered",
+            "answer": 2,
+            "rawSignal": 1,
+            "budgetedSignal": 1,
+            "budgetScale": 1,
+            "coreContribution": 0.6666666666666666,
+            "contribution": 0.6666666666666666,
+            "normalizedContribution": 0.07366482504604051
+          },
+          {
+            "id": "P4",
+            "kind": "direct",
+            "status": "answered",
+            "answer": 2,
+            "rawSignal": 1,
+            "budgetedSignal": 1,
+            "budgetScale": 1,
+            "coreContribution": 0.6666666666666666,
+            "contribution": 0.6666666666666666,
+            "normalizedContribution": 0.07366482504604051
+          },
+          {
+            "id": "P5",
+            "kind": "direct",
+            "status": "answered",
+            "answer": 3,
+            "rawSignal": 1,
+            "budgetedSignal": 1,
+            "budgetScale": 1,
+            "coreContribution": 1,
+            "contribution": 1,
+            "normalizedContribution": 0.11049723756906077
+          },
+          {
+            "id": "P6",
+            "kind": "direct",
+            "status": "answered",
+            "answer": -2,
+            "rawSignal": 1,
+            "budgetedSignal": 1,
+            "budgetScale": 1,
+            "coreContribution": 0.6666666666666666,
+            "contribution": 0.6666666666666666,
+            "normalizedContribution": 0.07366482504604051
+          },
+          {
+            "id": "P7",
+            "kind": "direct",
+            "status": "answered",
+            "answer": 3,
+            "rawSignal": 1,
+            "budgetedSignal": 1,
+            "budgetScale": 1,
+            "coreContribution": 1,
+            "contribution": 1,
+            "normalizedContribution": 0.11049723756906077
+          },
+          {
+            "id": "P9",
+            "kind": "direct",
+            "status": "answered",
+            "answer": 1,
+            "rawSignal": 1,
+            "budgetedSignal": 1,
+            "budgetScale": 1,
+            "coreContribution": 0.3333333333333333,
+            "contribution": 0.3333333333333333,
+            "normalizedContribution": 0.036832412523020254
+          },
+          {
+            "id": "P10",
+            "kind": "hint",
+            "status": "answered",
+            "answer": -2,
+            "rawSignal": 0.4,
+            "budgetedSignal": 0.4,
+            "budgetScale": 1,
+            "coreContribution": 0.26666666666666666,
+            "contribution": 0.26666666666666666,
+            "normalizedContribution": 0.029465930018416204
+          },
+          {
+            "id": "P11",
+            "kind": "hint",
+            "status": "answered",
+            "answer": -1,
+            "rawSignal": 0.4,
+            "budgetedSignal": 0.4,
+            "budgetScale": 1,
+            "coreContribution": 0.13333333333333333,
+            "contribution": 0.13333333333333333,
+            "normalizedContribution": 0.014732965009208102
+          },
+          {
+            "id": "P12",
+            "kind": "direct",
+            "status": "answered",
+            "answer": 2,
+            "rawSignal": 1,
+            "budgetedSignal": 1,
+            "budgetScale": 1,
+            "coreContribution": 0.6666666666666666,
+            "contribution": 0.6666666666666666,
+            "normalizedContribution": 0.07366482504604051
+          }
+        ],
+        "hintBudget": 0.2,
+        "conflictIsLogical": false,
+        "score": 84,
+        "answered": 12,
+        "total": 12,
+        "coverage": 1,
+        "strength": 68,
+        "conflict": 0,
+        "leftSupport": 68,
+        "rightSupport": 0,
+        "raw": 0.6813996316758748
+      },
+      "remed": {
+        "instrumentVersion": "0.9",
+        "coreScore": 57,
+        "adjustment": 0,
+        "scoringPolicy": "reviewed-hints-20pct-v1",
+        "contributions": [
+          {
+            "id": "P10",
+            "kind": "hint",
+            "status": "answered",
+            "answer": -2,
+            "rawSignal": 0,
+            "budgetedSignal": 0,
+            "budgetScale": 1,
+            "coreContribution": 0,
+            "contribution": 0,
+            "normalizedContribution": 0
+          },
+          {
+            "id": "P11",
+            "kind": "hint",
+            "status": "answered",
+            "answer": -1,
+            "rawSignal": 0,
+            "budgetedSignal": 0,
+            "budgetScale": 1,
+            "coreContribution": 0,
+            "contribution": 0,
+            "normalizedContribution": 0
+          },
+          {
+            "id": "R1",
+            "kind": "direct",
+            "status": "answered",
+            "answer": -2,
+            "rawSignal": 1,
+            "budgetedSignal": 1,
+            "budgetScale": 1,
+            "coreContribution": 0.6666666666666666,
+            "contribution": 0.6666666666666666,
+            "normalizedContribution": 0.05797101449275362
+          },
+          {
+            "id": "R2",
+            "kind": "direct",
+            "status": "answered",
+            "answer": -2,
+            "rawSignal": 1,
+            "budgetedSignal": 1,
+            "budgetScale": 1,
+            "coreContribution": 0.6666666666666666,
+            "contribution": 0.6666666666666666,
+            "normalizedContribution": 0.05797101449275362
+          },
+          {
+            "id": "R3",
+            "kind": "direct",
+            "status": "answered",
+            "answer": 3,
+            "rawSignal": -1,
+            "budgetedSignal": -1,
+            "budgetScale": 1,
+            "coreContribution": -1,
+            "contribution": -1,
+            "normalizedContribution": -0.09090909090909091
+          },
+          {
+            "id": "R4",
+            "kind": "direct",
+            "status": "answered",
+            "answer": 1,
+            "rawSignal": -1,
+            "budgetedSignal": -1,
+            "budgetScale": 1,
+            "coreContribution": -0.3333333333333333,
+            "contribution": -0.3333333333333333,
+            "normalizedContribution": -0.0303030303030303
+          },
+          {
+            "id": "R5",
+            "kind": "direct",
+            "status": "answered",
+            "answer": 2,
+            "rawSignal": -1,
+            "budgetedSignal": -1,
+            "budgetScale": 1,
+            "coreContribution": -0.6666666666666666,
+            "contribution": -0.6666666666666666,
+            "normalizedContribution": -0.0606060606060606
+          },
+          {
+            "id": "R6",
+            "kind": "direct",
+            "status": "answered",
+            "answer": 3,
+            "rawSignal": 1,
+            "budgetedSignal": 1,
+            "budgetScale": 1,
+            "coreContribution": 1,
+            "contribution": 1,
+            "normalizedContribution": 0.08695652173913043
+          },
+          {
+            "id": "R7",
+            "kind": "direct",
+            "status": "answered",
+            "answer": 3,
+            "rawSignal": 1,
+            "budgetedSignal": 1,
+            "budgetScale": 1,
+            "coreContribution": 1,
+            "contribution": 1,
+            "normalizedContribution": 0.08695652173913043
+          },
+          {
+            "id": "R8",
+            "kind": "direct",
+            "status": "answered",
+            "answer": -2,
+            "rawSignal": 1,
+            "budgetedSignal": 1,
+            "budgetScale": 1,
+            "coreContribution": 0.6666666666666666,
+            "contribution": 0.6666666666666666,
+            "normalizedContribution": 0.05797101449275362
+          },
+          {
+            "id": "R9",
+            "kind": "direct",
+            "status": "answered",
+            "answer": 2,
+            "rawSignal": -1,
+            "budgetedSignal": -1,
+            "budgetScale": 1,
+            "coreContribution": -0.6666666666666666,
+            "contribution": -0.6666666666666666,
+            "normalizedContribution": -0.0606060606060606
+          },
+          {
+            "id": "R10",
+            "kind": "direct",
+            "status": "answered",
+            "answer": 2,
+            "rawSignal": -1,
+            "budgetedSignal": -1,
+            "budgetScale": 1,
+            "coreContribution": -0.6666666666666666,
+            "contribution": -0.6666666666666666,
+            "normalizedContribution": -0.0606060606060606
+          },
+          {
+            "id": "R11",
+            "kind": "direct",
+            "status": "answered",
+            "answer": 3,
+            "rawSignal": 1,
+            "budgetedSignal": 1,
+            "budgetScale": 1,
+            "coreContribution": 1,
+            "contribution": 1,
+            "normalizedContribution": 0.08695652173913043
+          },
+          {
+            "id": "O7",
+            "kind": "hint",
+            "status": "answered",
+            "answer": 1,
+            "rawSignal": 0.3,
+            "budgetedSignal": 0.3,
+            "budgetScale": 1,
+            "coreContribution": 0.09999999999999999,
+            "contribution": 0.09999999999999999,
+            "normalizedContribution": 0.008695652173913044
+          }
+        ],
+        "hintBudget": 0.2,
+        "conflictIsLogical": false,
+        "score": 57,
+        "answered": 14,
+        "total": 14,
+        "coverage": 1,
+        "strength": 44,
+        "conflict": 30,
+        "leftSupport": 44,
+        "rightSupport": 30,
+        "raw": 0.14044795783926217
+      },
+      "post": {
+        "instrumentVersion": "0.9",
+        "coreScore": 19,
+        "adjustment": 0,
+        "scoringPolicy": "reviewed-hints-20pct-v1",
+        "contributions": [
+          {
+            "id": "C17",
+            "kind": "hint",
+            "status": "answered",
+            "answer": 3,
+            "rawSignal": 0.2,
+            "budgetedSignal": 0.0958904109589041,
+            "budgetScale": 0.4794520547945205,
+            "coreContribution": 0.0958904109589041,
+            "contribution": 0.0958904109589041,
+            "normalizedContribution": 0.010958904109589041
+          },
+          {
+            "id": "P2",
+            "kind": "hint",
+            "status": "answered",
+            "answer": 2,
+            "rawSignal": 0.3,
+            "budgetedSignal": 0.14383561643835616,
+            "budgetScale": 0.4794520547945205,
+            "coreContribution": 0.0958904109589041,
+            "contribution": 0.0958904109589041,
+            "normalizedContribution": 0.010958904109589041
+          },
+          {
+            "id": "P10",
+            "kind": "hint",
+            "status": "answered",
+            "answer": -2,
+            "rawSignal": 0,
+            "budgetedSignal": 0,
+            "budgetScale": 0.7608695652173914,
+            "coreContribution": 0,
+            "contribution": 0,
+            "normalizedContribution": 0
+          },
+          {
+            "id": "P11",
+            "kind": "hint",
+            "status": "answered",
+            "answer": -1,
+            "rawSignal": 0,
+            "budgetedSignal": 0,
+            "budgetScale": 0.7608695652173914,
+            "coreContribution": 0,
+            "contribution": 0,
+            "normalizedContribution": 0
+          },
+          {
+            "id": "P12",
+            "kind": "hint",
+            "status": "answered",
+            "answer": 2,
+            "rawSignal": 0.3,
+            "budgetedSignal": 0.14383561643835616,
+            "budgetScale": 0.4794520547945205,
+            "coreContribution": 0.0958904109589041,
+            "contribution": 0.0958904109589041,
+            "normalizedContribution": 0.010958904109589041
+          },
+          {
+            "id": "R1",
+            "kind": "hint",
+            "status": "answered",
+            "answer": -2,
+            "rawSignal": 0.1,
+            "budgetedSignal": 0.04794520547945205,
+            "budgetScale": 0.4794520547945205,
+            "coreContribution": 0.0319634703196347,
+            "contribution": 0.0319634703196347,
+            "normalizedContribution": 0.0036529680365296802
+          },
+          {
+            "id": "R2",
+            "kind": "hint",
+            "status": "answered",
+            "answer": -2,
+            "rawSignal": 0.1,
+            "budgetedSignal": 0.04794520547945205,
+            "budgetScale": 0.4794520547945205,
+            "coreContribution": 0.0319634703196347,
+            "contribution": 0.0319634703196347,
+            "normalizedContribution": 0.0036529680365296802
+          },
+          {
+            "id": "R3",
+            "kind": "hint",
+            "status": "answered",
+            "answer": 3,
+            "rawSignal": -0.1,
+            "budgetedSignal": -0.07608695652173914,
+            "budgetScale": 0.7608695652173914,
+            "coreContribution": -0.07608695652173914,
+            "contribution": -0.07608695652173914,
+            "normalizedContribution": -0.008695652173913044
+          },
+          {
+            "id": "R4",
+            "kind": "hint",
+            "status": "answered",
+            "answer": 1,
+            "rawSignal": -0.1,
+            "budgetedSignal": -0.07608695652173914,
+            "budgetScale": 0.7608695652173914,
+            "coreContribution": -0.025362318840579712,
+            "contribution": -0.025362318840579712,
+            "normalizedContribution": -0.002898550724637681
+          },
+          {
+            "id": "R5",
+            "kind": "hint",
+            "status": "answered",
+            "answer": 2,
+            "rawSignal": -0.1,
+            "budgetedSignal": -0.07608695652173914,
+            "budgetScale": 0.7608695652173914,
+            "coreContribution": -0.050724637681159424,
+            "contribution": -0.050724637681159424,
+            "normalizedContribution": -0.005797101449275362
+          },
+          {
+            "id": "R8",
+            "kind": "hint",
+            "status": "answered",
+            "answer": -2,
+            "rawSignal": 0.1,
+            "budgetedSignal": 0.04794520547945205,
+            "budgetScale": 0.4794520547945205,
+            "coreContribution": 0.0319634703196347,
+            "contribution": 0.0319634703196347,
+            "normalizedContribution": 0.0036529680365296802
+          },
+          {
+            "id": "R9",
+            "kind": "hint",
+            "status": "answered",
+            "answer": 2,
+            "rawSignal": -0.1,
+            "budgetedSignal": -0.07608695652173914,
+            "budgetScale": 0.7608695652173914,
+            "coreContribution": -0.050724637681159424,
+            "contribution": -0.050724637681159424,
+            "normalizedContribution": -0.005797101449275362
+          },
+          {
+            "id": "R10",
+            "kind": "hint",
+            "status": "answered",
+            "answer": 2,
+            "rawSignal": -0.1,
+            "budgetedSignal": -0.07608695652173914,
+            "budgetScale": 0.7608695652173914,
+            "coreContribution": -0.050724637681159424,
+            "contribution": -0.050724637681159424,
+            "normalizedContribution": -0.005797101449275362
+          },
+          {
+            "id": "O1",
+            "kind": "direct",
+            "status": "answered",
+            "answer": -1,
+            "rawSignal": -1,
+            "budgetedSignal": -1,
+            "budgetScale": 1,
+            "coreContribution": -0.3333333333333333,
+            "contribution": -0.3333333333333333,
+            "normalizedContribution": -0.03809523809523809
+          },
+          {
+            "id": "O2",
+            "kind": "direct",
+            "status": "answered",
+            "answer": -2,
+            "rawSignal": -1,
+            "budgetedSignal": -1,
+            "budgetScale": 1,
+            "coreContribution": -0.6666666666666666,
+            "contribution": -0.6666666666666666,
+            "normalizedContribution": -0.07619047619047618
+          },
+          {
+            "id": "O3",
+            "kind": "hint",
+            "status": "answered",
+            "answer": 3,
+            "rawSignal": -0.25,
+            "budgetedSignal": -0.19021739130434784,
+            "budgetScale": 0.7608695652173914,
+            "coreContribution": -0.19021739130434784,
+            "contribution": -0.19021739130434784,
+            "normalizedContribution": -0.02173913043478261
+          },
+          {
+            "id": "O4",
+            "kind": "direct",
+            "status": "answered",
+            "answer": 3,
+            "rawSignal": -1,
+            "budgetedSignal": -1,
+            "budgetScale": 1,
+            "coreContribution": -1,
+            "contribution": -1,
+            "normalizedContribution": -0.11428571428571428
+          },
+          {
+            "id": "O5",
+            "kind": "hint",
+            "status": "answered",
+            "answer": 2,
+            "rawSignal": 0.5,
+            "budgetedSignal": 0.23972602739726026,
+            "budgetScale": 0.4794520547945205,
+            "coreContribution": 0.1598173515981735,
+            "contribution": 0.1598173515981735,
+            "normalizedContribution": 0.0182648401826484
+          },
+          {
+            "id": "O6",
+            "kind": "hint",
+            "status": "answered",
+            "answer": -2,
+            "rawSignal": -0.35,
+            "budgetedSignal": -0.266304347826087,
+            "budgetScale": 0.7608695652173914,
+            "coreContribution": -0.17753623188405798,
+            "contribution": -0.17753623188405798,
+            "normalizedContribution": -0.02028985507246377
+          },
+          {
+            "id": "O7",
+            "kind": "hint",
+            "status": "answered",
+            "answer": 1,
+            "rawSignal": 0.35,
+            "budgetedSignal": 0.16780821917808217,
+            "budgetScale": 0.4794520547945205,
+            "coreContribution": 0.05593607305936072,
+            "contribution": 0.05593607305936072,
+            "normalizedContribution": 0.006392694063926939
+          },
+          {
+            "id": "O8",
+            "kind": "direct",
+            "status": "answered",
+            "answer": -2,
+            "rawSignal": -1,
+            "budgetedSignal": -1,
+            "budgetScale": 1,
+            "coreContribution": -0.6666666666666666,
+            "contribution": -0.6666666666666666,
+            "normalizedContribution": -0.07619047619047618
+          },
+          {
+            "id": "O9",
+            "kind": "direct",
+            "status": "answered",
+            "answer": -1,
+            "rawSignal": -1,
+            "budgetedSignal": -1,
+            "budgetScale": 1,
+            "coreContribution": -0.3333333333333333,
+            "contribution": -0.3333333333333333,
+            "normalizedContribution": -0.03809523809523809
+          },
+          {
+            "id": "O10",
+            "kind": "direct",
+            "status": "answered",
+            "answer": 3,
+            "rawSignal": -1,
+            "budgetedSignal": -1,
+            "budgetScale": 1,
+            "coreContribution": -1,
+            "contribution": -1,
+            "normalizedContribution": -0.11428571428571428
+          },
+          {
+            "id": "O11",
+            "kind": "direct",
+            "status": "answered",
+            "answer": 3,
+            "rawSignal": -1,
+            "budgetedSignal": -1,
+            "budgetScale": 1,
+            "coreContribution": -1,
+            "contribution": -1,
+            "normalizedContribution": -0.11428571428571428
+          },
+          {
+            "id": "O12",
+            "kind": "hint",
+            "status": "answered",
+            "answer": -3,
+            "rawSignal": -0.25,
+            "budgetedSignal": -0.19021739130434784,
+            "budgetScale": 0.7608695652173914,
+            "coreContribution": -0.19021739130434784,
+            "contribution": -0.19021739130434784,
+            "normalizedContribution": -0.02173913043478261
+          },
+          {
+            "id": "O13",
+            "kind": "hint",
+            "status": "answered",
+            "answer": 3,
+            "rawSignal": -0.25,
+            "budgetedSignal": -0.19021739130434784,
+            "budgetScale": 0.7608695652173914,
+            "coreContribution": -0.19021739130434784,
+            "contribution": -0.19021739130434784,
+            "normalizedContribution": -0.02173913043478261
+          },
+          {
+            "id": "E3",
+            "kind": "hint",
+            "status": "answered",
+            "answer": -1,
+            "rawSignal": 0,
+            "budgetedSignal": 0,
+            "budgetScale": 0.7608695652173914,
+            "coreContribution": 0,
+            "contribution": 0,
+            "normalizedContribution": 0
+          }
+        ],
+        "hintBudget": 0.2,
+        "conflictIsLogical": false,
+        "score": 19,
+        "answered": 27,
+        "total": 27,
+        "coverage": 1,
+        "strength": 69,
+        "conflict": 7,
+        "leftSupport": 7,
+        "rightSupport": 69,
+        "raw": -0.6174281743668283
+      },
+      "separ": {
+        "instrumentVersion": "0.9",
+        "coreScore": 55,
+        "adjustment": 0,
+        "scoringPolicy": "reviewed-hints-20pct-v1",
+        "contributions": [
+          {
+            "id": "P10",
+            "kind": "hint",
+            "status": "answered",
+            "answer": -2,
+            "rawSignal": 0,
+            "budgetedSignal": 0,
+            "budgetScale": 1,
+            "coreContribution": 0,
+            "contribution": 0,
+            "normalizedContribution": 0
+          },
+          {
+            "id": "P11",
+            "kind": "hint",
+            "status": "answered",
+            "answer": -1,
+            "rawSignal": 0,
+            "budgetedSignal": 0,
+            "budgetScale": 1,
+            "coreContribution": 0,
+            "contribution": 0,
+            "normalizedContribution": 0
+          },
+          {
+            "id": "R5",
+            "kind": "direct",
+            "status": "answered",
+            "answer": 2,
+            "rawSignal": -0.3,
+            "budgetedSignal": -0.3,
+            "budgetScale": 1,
+            "coreContribution": -0.19999999999999998,
+            "contribution": -0.19999999999999998,
+            "normalizedContribution": -0.0273972602739726
+          },
+          {
+            "id": "E1",
+            "kind": "direct",
+            "status": "answered",
+            "answer": -3,
+            "rawSignal": 1,
+            "budgetedSignal": 1,
+            "budgetScale": 1,
+            "coreContribution": 1,
+            "contribution": 1,
+            "normalizedContribution": 0.13333333333333333
+          },
+          {
+            "id": "E2",
+            "kind": "direct",
+            "status": "answered",
+            "answer": 2,
+            "rawSignal": -1,
+            "budgetedSignal": -1,
+            "budgetScale": 1,
+            "coreContribution": -0.6666666666666666,
+            "contribution": -0.6666666666666666,
+            "normalizedContribution": -0.091324200913242
+          },
+          {
+            "id": "E3",
+            "kind": "direct",
+            "status": "answered",
+            "answer": -1,
+            "rawSignal": -1,
+            "budgetedSignal": -1,
+            "budgetScale": 1,
+            "coreContribution": -0.3333333333333333,
+            "contribution": -0.3333333333333333,
+            "normalizedContribution": -0.045662100456621
+          },
+          {
+            "id": "E4",
+            "kind": "direct",
+            "status": "answered",
+            "answer": 3,
+            "rawSignal": 1,
+            "budgetedSignal": 1,
+            "budgetScale": 1,
+            "coreContribution": 1,
+            "contribution": 1,
+            "normalizedContribution": 0.13333333333333333
+          },
+          {
+            "id": "E5",
+            "kind": "direct",
+            "status": "answered",
+            "answer": 3,
+            "rawSignal": -1,
+            "budgetedSignal": -1,
+            "budgetScale": 1,
+            "coreContribution": -1,
+            "contribution": -1,
+            "normalizedContribution": -0.136986301369863
+          },
+          {
+            "id": "E6",
+            "kind": "direct",
+            "status": "answered",
+            "answer": 2,
+            "rawSignal": 1,
+            "budgetedSignal": 1,
+            "budgetScale": 1,
+            "coreContribution": 0.6666666666666666,
+            "contribution": 0.6666666666666666,
+            "normalizedContribution": 0.08888888888888888
+          },
+          {
+            "id": "E7",
+            "kind": "direct",
+            "status": "answered",
+            "answer": -1,
+            "rawSignal": 1,
+            "budgetedSignal": 1,
+            "budgetScale": 1,
+            "coreContribution": 0.3333333333333333,
+            "contribution": 0.3333333333333333,
+            "normalizedContribution": 0.04444444444444444
+          }
+        ],
+        "hintBudget": 0.2,
+        "conflictIsLogical": false,
+        "score": 55,
+        "answered": 10,
+        "total": 10,
+        "coverage": 1,
+        "strength": 40,
+        "conflict": 30,
+        "leftSupport": 40,
+        "rightSupport": 30,
+        "raw": 0.09863013698630137
+      },
+      "form": {
+        "instrumentVersion": "0.9",
+        "coreScore": 79,
+        "adjustment": 0,
+        "scoringPolicy": "reviewed-hints-20pct-v1",
+        "contributions": [
+          {
+            "id": "C2",
+            "kind": "hint",
+            "status": "answered",
+            "answer": 3,
+            "rawSignal": 0.3,
+            "budgetedSignal": 0.12244897959183676,
+            "budgetScale": 0.40816326530612257,
+            "coreContribution": 0.12244897959183676,
+            "contribution": 0.12244897959183676,
+            "normalizedContribution": 0.012244897959183676
+          },
+          {
+            "id": "C6",
+            "kind": "hint",
+            "status": "answered",
+            "answer": -2,
+            "rawSignal": 0.35,
+            "budgetedSignal": 0.14285714285714288,
+            "budgetScale": 0.40816326530612257,
+            "coreContribution": 0.09523809523809525,
+            "contribution": 0.09523809523809525,
+            "normalizedContribution": 0.009523809523809525
+          },
+          {
+            "id": "C9",
+            "kind": "hint",
+            "status": "answered",
+            "answer": 2,
+            "rawSignal": 0.35,
+            "budgetedSignal": 0.14285714285714288,
+            "budgetScale": 0.40816326530612257,
+            "coreContribution": 0.09523809523809525,
+            "contribution": 0.09523809523809525,
+            "normalizedContribution": 0.009523809523809525
+          },
+          {
+            "id": "C10",
+            "kind": "hint",
+            "status": "answered",
+            "answer": 1,
+            "rawSignal": -0.35,
+            "budgetedSignal": -0.14583333333333334,
+            "budgetScale": 0.41666666666666674,
+            "coreContribution": -0.04861111111111111,
+            "contribution": -0.04861111111111111,
+            "normalizedContribution": -0.004861111111111111
+          },
+          {
+            "id": "C11",
+            "kind": "hint",
+            "status": "answered",
+            "answer": 3,
+            "rawSignal": 0.3,
+            "budgetedSignal": 0.12244897959183676,
+            "budgetScale": 0.40816326530612257,
+            "coreContribution": 0.12244897959183676,
+            "contribution": 0.12244897959183676,
+            "normalizedContribution": 0.012244897959183676
+          },
+          {
+            "id": "C12",
+            "kind": "hint",
+            "status": "answered",
+            "answer": -2,
+            "rawSignal": 0.35,
+            "budgetedSignal": 0.14285714285714288,
+            "budgetScale": 0.40816326530612257,
+            "coreContribution": 0.09523809523809525,
+            "contribution": 0.09523809523809525,
+            "normalizedContribution": 0.009523809523809525
+          },
+          {
+            "id": "C14",
+            "kind": "hint",
+            "status": "answered",
+            "answer": -3,
+            "rawSignal": 0.3,
+            "budgetedSignal": 0.12244897959183676,
+            "budgetScale": 0.40816326530612257,
+            "coreContribution": 0.12244897959183676,
+            "contribution": 0.12244897959183676,
+            "normalizedContribution": 0.012244897959183676
+          },
+          {
+            "id": "C18",
+            "kind": "hint",
+            "status": "answered",
+            "answer": 3,
+            "rawSignal": 0.35,
+            "budgetedSignal": 0.14285714285714288,
+            "budgetScale": 0.40816326530612257,
+            "coreContribution": 0.14285714285714288,
+            "contribution": 0.14285714285714288,
+            "normalizedContribution": 0.014285714285714287
+          },
+          {
+            "id": "T3",
+            "kind": "hint",
+            "status": "answered",
+            "answer": 2,
+            "rawSignal": 0.3,
+            "budgetedSignal": 0.12244897959183676,
+            "budgetScale": 0.40816326530612257,
+            "coreContribution": 0.0816326530612245,
+            "contribution": 0.0816326530612245,
+            "normalizedContribution": 0.00816326530612245
+          },
+          {
+            "id": "T9",
+            "kind": "hint",
+            "status": "neutral",
+            "answer": 0,
+            "contribution": 0,
+            "normalizedContribution": 0
+          },
+          {
+            "id": "E1",
+            "kind": "hint",
+            "status": "answered",
+            "answer": -3,
+            "rawSignal": 0.35,
+            "budgetedSignal": 0.14285714285714288,
+            "budgetScale": 0.40816326530612257,
+            "coreContribution": 0.14285714285714288,
+            "contribution": 0.14285714285714288,
+            "normalizedContribution": 0.014285714285714287
+          },
+          {
+            "id": "E3",
+            "kind": "hint",
+            "status": "answered",
+            "answer": -1,
+            "rawSignal": 0,
+            "budgetedSignal": 0,
+            "budgetScale": 0.41666666666666674,
+            "coreContribution": 0,
+            "contribution": 0,
+            "normalizedContribution": 0
+          },
+          {
+            "id": "E4",
+            "kind": "hint",
+            "status": "answered",
+            "answer": 3,
+            "rawSignal": 0.3,
+            "budgetedSignal": 0.12244897959183676,
+            "budgetScale": 0.40816326530612257,
+            "coreContribution": 0.12244897959183676,
+            "contribution": 0.12244897959183676,
+            "normalizedContribution": 0.012244897959183676
+          },
+          {
+            "id": "E5",
+            "kind": "hint",
+            "status": "answered",
+            "answer": 3,
+            "rawSignal": -0.3,
+            "budgetedSignal": -0.12500000000000003,
+            "budgetScale": 0.41666666666666674,
+            "coreContribution": -0.12500000000000003,
+            "contribution": -0.12500000000000003,
+            "normalizedContribution": -0.012500000000000002
+          },
+          {
+            "id": "E6",
+            "kind": "hint",
+            "status": "answered",
+            "answer": 2,
+            "rawSignal": 0.35,
+            "budgetedSignal": 0.14285714285714288,
+            "budgetScale": 0.40816326530612257,
+            "coreContribution": 0.09523809523809525,
+            "contribution": 0.09523809523809525,
+            "normalizedContribution": 0.009523809523809525
+          },
+          {
+            "id": "E7",
+            "kind": "hint",
+            "status": "answered",
+            "answer": -1,
+            "rawSignal": 0.35,
+            "budgetedSignal": 0.14285714285714288,
+            "budgetScale": 0.40816326530612257,
+            "coreContribution": 0.04761904761904762,
+            "contribution": 0.04761904761904762,
+            "normalizedContribution": 0.004761904761904762
+          },
+          {
+            "id": "F1",
+            "kind": "direct",
+            "status": "answered",
+            "answer": 2,
+            "rawSignal": 1,
+            "budgetedSignal": 1,
+            "budgetScale": 1,
+            "coreContribution": 0.6666666666666666,
+            "contribution": 0.6666666666666666,
+            "normalizedContribution": 0.06666666666666667
+          },
+          {
+            "id": "F3",
+            "kind": "direct",
+            "status": "answered",
+            "answer": 3,
+            "rawSignal": 1,
+            "budgetedSignal": 1,
+            "budgetScale": 1,
+            "coreContribution": 1,
+            "contribution": 1,
+            "normalizedContribution": 0.1
+          },
+          {
+            "id": "F4",
+            "kind": "direct",
+            "status": "answered",
+            "answer": 1,
+            "rawSignal": 1,
+            "budgetedSignal": 1,
+            "budgetScale": 1,
+            "coreContribution": 0.3333333333333333,
+            "contribution": 0.3333333333333333,
+            "normalizedContribution": 0.03333333333333333
+          },
+          {
+            "id": "F5",
+            "kind": "direct",
+            "status": "answered",
+            "answer": -3,
+            "rawSignal": 1,
+            "budgetedSignal": 1,
+            "budgetScale": 1,
+            "coreContribution": 1,
+            "contribution": 1,
+            "normalizedContribution": 0.1
+          },
+          {
+            "id": "F6",
+            "kind": "direct",
+            "status": "answered",
+            "answer": 2,
+            "rawSignal": -1,
+            "budgetedSignal": -1,
+            "budgetScale": 1,
+            "coreContribution": -0.6666666666666666,
+            "contribution": -0.6666666666666666,
+            "normalizedContribution": -0.06666666666666667
+          },
+          {
+            "id": "F7",
+            "kind": "direct",
+            "status": "answered",
+            "answer": 2,
+            "rawSignal": 1,
+            "budgetedSignal": 1,
+            "budgetScale": 1,
+            "coreContribution": 0.6666666666666666,
+            "contribution": 0.6666666666666666,
+            "normalizedContribution": 0.06666666666666667
+          },
+          {
+            "id": "F8",
+            "kind": "direct",
+            "status": "answered",
+            "answer": 3,
+            "rawSignal": 1,
+            "budgetedSignal": 1,
+            "budgetScale": 1,
+            "coreContribution": 1,
+            "contribution": 1,
+            "normalizedContribution": 0.1
+          },
+          {
+            "id": "F9",
+            "kind": "direct",
+            "status": "answered",
+            "answer": -2,
+            "rawSignal": 1,
+            "budgetedSignal": 1,
+            "budgetScale": 1,
+            "coreContribution": 0.6666666666666666,
+            "contribution": 0.6666666666666666,
+            "normalizedContribution": 0.06666666666666667
+          }
+        ],
+        "hintBudget": 0.2,
+        "conflictIsLogical": false,
+        "score": 79,
+        "answered": 24,
+        "total": 24,
+        "coverage": 1,
+        "strength": 66,
+        "conflict": 8,
+        "leftSupport": 66,
+        "rightSupport": 8,
+        "raw": 0.5778769841269841
+      }
+    },
+    "startedAt": "2026-10-15T03:10:00.000Z",
+    "coreCompletedAt": "2026-10-15T03:39:20.000Z",
+    "scores": {
+      "sorc": 93,
+      "cons": 88,
+      "time": 97,
+      "prec": 84,
+      "remed": 57,
+      "post": 19,
+      "separ": 55,
+      "form": 79
+    },
+    "coverage": {
+      "sorc": 10,
+      "cons": 20,
+      "time": 13,
+      "prec": 12,
+      "remed": 14,
+      "post": 27,
+      "separ": 10,
+      "form": 24
+    },
+    "strength": {
+      "sorc": 85,
+      "cons": 79,
+      "time": 95,
+      "prec": 68,
+      "remed": 44,
+      "post": 69,
+      "separ": 40,
+      "form": 66
+    },
+    "conflict": {
+      "sorc": 0,
+      "cons": 4,
+      "time": 1,
+      "prec": 0,
+      "remed": 30,
+      "post": 7,
+      "separ": 30,
+      "form": 8
+    },
+    "poleSupport": {
+      "sorc": {
+        "left": 85,
+        "right": 0
+      },
+      "cons": {
+        "left": 79,
+        "right": 4
+      },
+      "time": {
+        "left": 95,
+        "right": 1
+      },
+      "prec": {
+        "left": 68,
+        "right": 0
+      },
+      "remed": {
+        "left": 44,
+        "right": 30
+      },
+      "post": {
+        "left": 7,
+        "right": 69
+      },
+      "separ": {
+        "left": 40,
+        "right": 30
+      },
+      "form": {
+        "left": 66,
+        "right": 8
+      }
+    },
+    "responses": {
+      "S7": 2,
+      "F5": -3,
+      "E4": 3,
+      "T1": 3,
+      "P3": 2,
+      "C11": 3,
+      "O9": -1,
+      "R2": -2,
+      "R3": 3,
+      "S3": 3,
+      "F7": 2,
+      "P11": -1,
+      "O6": -2,
+      "C18": 3,
+      "T7": 3,
+      "E1": -3,
+      "C6": -2,
+      "R9": 2,
+      "O7": 1,
+      "T9": 0,
+      "F9": -2,
+      "P6": -2,
+      "E5": 3,
+      "S10": -3,
+      "R11": 3,
+      "F1": 2,
+      "O4": 3,
+      "E6": 2,
+      "T4": -3,
+      "S1": 3,
+      "C4": 2,
+      "P12": 2,
+      "T6": -3,
+      "O1": -1,
+      "E3": -1,
+      "P9": 1,
+      "F8": 3,
+      "C15": -2,
+      "S5": 3,
+      "R8": -2,
+      "C3": 2,
+      "F6": 2,
+      "P5": 3,
+      "E7": -1,
+      "S4": 3,
+      "T10": 3,
+      "R1": -2,
+      "O3": 3,
+      "R7": 3,
+      "O8": -2,
+      "T5": -3,
+      "C5": 3,
+      "S11": -3,
+      "F4": 1,
+      "E2": 2,
+      "P4": 2,
+      "F3": 3,
+      "R10": 2,
+      "T11": 3,
+      "S6": -2,
+      "C7": 3,
+      "O2": -2,
+      "P10": -2,
+      "T8": 3,
+      "O10": 3,
+      "P2": 2,
+      "S8": -2,
+      "R5": 2,
+      "C12": -2,
+      "P7": 3,
+      "S2": -2,
+      "T3": 2,
+      "C10": 1,
+      "R4": 1,
+      "O12": -3,
+      "T2": 3,
+      "R6": 3,
+      "C14": -3,
+      "O13": 3,
+      "T12": -3,
+      "O11": 3,
+      "C17": 3,
+      "O5": 2,
+      "C9": 2,
+      "C8": 1,
+      "C1": 3,
+      "C13": -3,
+      "C2": 3
+    },
+    "diagnosticResponses": {
+      "D-QC1": -2,
+      "D-PRI-source-time": 2,
+      "D-PRI-source-method": 2,
+      "D-POS1": 3,
+      "D-PRI-source-realism": 2,
+      "D-AUS1": -3,
+      "D-KEL1": -2,
+      "D-SHA1": -1,
+      "D-MON1": 3,
+      "D-POS2": 2,
+      "D-BLK1": 2,
+      "D-ORI3": 3
+    },
+    "diagnosticOrder": [
+      "D-QC1",
+      "D-PRI-source-time",
+      "D-PRI-source-method",
+      "D-POS1",
+      "D-PRI-source-realism",
+      "D-AUS1",
+      "D-KEL1",
+      "D-SHA1",
+      "D-MON1",
+      "D-POS2",
+      "D-BLK1",
+      "D-ORI3"
+    ],
+    "classification": {
+      "identity": {
+        "id": "positivist",
+        "label": "Positivist",
+        "family": "source",
+        "status": "core"
+      },
+      "identityScore": 1,
+      "primaryStrength": 0.86,
+      "identityPriority": {
+        "evidence": 2,
+        "basis": "core-axis-support-plus-explicit-comparative-priority",
+        "conflictingComparisons": false,
+        "unresolved": false
+      },
+      "identityReason": "Positive-law grounding plus a distinctive Positivist branch.",
+      "identityAlternatives": [
+        {
+          "identity": {
+            "id": "formalist",
+            "label": "Formalist",
+            "family": "structure",
+            "status": "core"
+          },
+          "score": 0.7273212121212123,
+          "reason": "Rule-centered anti-discretion Formalism is the respondent's dominant jurisprudential commitment.",
+          "basis": 0.4921212121212121,
+          "focus": [
+            "separ",
+            "form"
+          ],
+          "compatibilityScore": 0.93,
+          "priorityFamily": "structure",
+          "priorityEvidence": 0,
+          "familyBasis": 0.4921212121212121,
+          "priorityDefeated": false
+        },
+        {
+          "identity": {
+            "id": "public_meaning_originalist",
+            "label": "Public-Meaning Originalist",
+            "family": "time",
+            "status": "adaptive"
+          },
+          "score": 0.7329333333333334,
+          "reason": "Public meaning at adoption.",
+          "basis": 0.94,
+          "focus": [
+            "time"
+          ],
+          "compatibilityScore": 0.9116,
+          "priorityFamily": "time",
+          "priorityEvidence": -0.6666666666666666,
+          "familyBasis": 0.94,
+          "priorityDefeated": true
+        },
+        {
+          "identity": {
+            "id": "textualist",
+            "label": "Textualist",
+            "family": "method",
+            "status": "core"
+          },
+          "score": 0.6717333333333333,
+          "reason": "Textual constraint is a dominant feature.",
+          "basis": 0.76,
+          "focus": [
+            "cons"
+          ],
+          "compatibilityScore": 0.8184,
+          "priorityFamily": "method",
+          "priorityEvidence": -0.6666666666666666,
+          "familyBasis": 0.76,
+          "priorityDefeated": true
+        }
+      ],
+      "champions": [
+        {
+          "id": "coleman_waluchow_kramer",
+          "name": "Jules Coleman / Matthew Kramer",
+          "tier": "specialist",
+          "score": 0.7980032792792792,
+          "evidence": {
+            "coverage": 0.19369369369369369,
+            "modeledAxes": [
+              "sorc"
+            ],
+            "supportedAxes": [
+              "sorc"
+            ],
+            "unknownAxes": [
+              "cons",
+              "time",
+              "prec",
+              "post",
+              "form"
+            ],
+            "knownDisagreements": [],
+            "traitDisagreements": [],
+            "supportedTraits": [
+              "source.morality_incorporated",
+              "source.positive_sources"
+            ],
+            "scope": "modeled-profile"
+          },
+          "description": "Inclusive Positivism: a source-grounded legal system can itself make genuine moral correctness a criterion of legal validity.",
+          "related": [
+            "H. L. A. Hart",
+            "Wil Waluchow",
+            "Kenneth Einar Himma"
+          ]
+        }
+      ],
+      "championConfidence": "medium",
+      "traits": {
+        "source.social_practice": 1,
+        "source.law_runs_out": 0.6666666666666665,
+        "source.principles_are_law": 0,
+        "source.extreme_injustice": 0,
+        "source.objective_morality": 0,
+        "source.independent_moral_validity": 0,
+        "source.independent_moral_validity_rejected": 1,
+        "constraint.purpose": 0.07619047619047618,
+        "constraint.textual": 0.9559748427672956,
+        "constraint.contextual_textualism": 1,
+        "constraint.enacted_bargain": 1,
+        "constraint.anti_evasion": 0,
+        "time.public_meaning": 1,
+        "time.principle_originalism": 1,
+        "time.semantic_fixation": 1,
+        "time.expected_applications": 0,
+        "time.early_practice": 0,
+        "time.common_law_development": 0.2222222222222222,
+        "precedent.reliance": 0.6666666666666666,
+        "precedent.settlement": 1,
+        "precedent.statutory": 0.6666666666666666,
+        "remedies.universal": 0,
+        "remedies.severability": 1,
+        "remedies.prophylactic": 1,
+        "remedies.structural": 0.5769230769230769,
+        "remedies.supervision": 0.3333333333333333,
+        "method.narrow_shallow": 1,
+        "posture.clear_error": 0,
+        "posture.democratic_legitimacy": 0.18867924528301888,
+        "posture.dialogic": 0,
+        "posture.passive_virtues": 0.3333333333333333,
+        "posture.rights_trumps": 1,
+        "posture.judicial_independence": 1,
+        "posture.electoral_accountability": 0,
+        "separation.nondelegation": 0,
+        "separation.unitary_executive": 0,
+        "separation.prescribed_process": 0.8933333333333333,
+        "separation.combined_functions": 1,
+        "form.predictability": 0.6666666666666666,
+        "form.anti_discretion": 0.8484848484848485,
+        "form.edge_case_tolerance": 1,
+        "form.categories": 0.3333333333333333,
+        "form.equitable_exception": 0.6666666666666666,
+        "form.cliff_skepticism": 0,
+        "time.originalism_independent_authority": 1,
+        "time.independent_fixation_core": 0.8888888888888888,
+        "time.independent_authority_rejected": 0,
+        "source.positive_sources": 0.86,
+        "source.nonpositive_sources": 0,
+        "constraint.textual_axis": 0.76,
+        "constraint.open_construction": 0,
+        "time.fixation": 0.94,
+        "time.living_content": 0,
+        "precedent.stability": 0.68,
+        "precedent.correction": 0,
+        "remedies.party_specific": 0.14,
+        "remedies.systemic": 0,
+        "posture.majoritarian": 0.6666666666666666,
+        "posture.countermajoritarian": 0.62,
+        "separation.formalist": 0.1,
+        "separation.functionalist": 0,
+        "form.rules": 0.58,
+        "form.balancing": 0,
+        "precedent.correctness_first": 0,
+        "remedies.incremental": 0.14,
+        "method.consequences": 0,
+        "method.workability": 0,
+        "method.pluralism": 0,
+        "method.low_theory_space": 0.06000000000000005,
+        "priority.source.over.time": 0.6666666666666666,
+        "priority.source.over.method": 0.6666666666666666,
+        "source.morality_incorporated": 1,
+        "priority.source.over.realism": 0.6666666666666666,
+        "remedies.constitutional_common_law": 1,
+        "source.normative_positivism": 0.6666666666666666,
+        "method.structural_inference": 0.6666666666666666,
+        "method.holistic_constitution": 0.6666666666666666,
+        "time.construction_zone": 1
+      },
+      "diagnosticCount": 12,
+      "calibration": "theory-derived",
+      "resultTitle": {
+        "title": "Inclusive Positivist who uses an Ouija board as a dictionary",
+        "noun": "Positivist",
+        "nounExplanation": "You treat recognized legal sources and social legal practice as what makes law legally valid, even when the resulting law is morally bad.",
+        "modifier": {
+          "id": "inclusive_positivism",
+          "text": "Inclusive",
+          "explanation": "You are a Positivist who thinks a socially grounded legal system can itself incorporate genuine moral criteria into its tests of legal validity."
+        },
+        "phrase": {
+          "id": "fixed_meaning",
+          "text": "who uses an Ouija board as a dictionary",
+          "axis": "time",
+          "direction": "left",
+          "adds": [
+            "time.fixation",
+            "time.semantic_fixation"
+          ],
+          "explanation": "You treat constitutional meaning as substantially fixed at adoption rather than updated by later usage or values."
+        },
+        "bridge": null,
+        "rankedPhrases": [
+          {
+            "id": "fixed_meaning",
+            "group": "time",
+            "evidence": 0.94,
+            "score": 0.94,
+            "confidence": 1,
+            "effectiveBreadth": 8,
+            "coreCount": null,
+            "diagnosticCount": null
+          },
+          {
+            "id": "anti_discretion",
+            "group": "form",
+            "evidence": 0.848,
+            "score": 0.775,
+            "confidence": 0.689,
+            "effectiveBreadth": 4.133,
+            "coreCount": 4,
+            "diagnosticCount": 1
+          },
+          {
+            "id": "textual_constraint",
+            "group": "constraint",
+            "evidence": 0.76,
+            "score": 0.76,
+            "confidence": 1,
+            "effectiveBreadth": 8,
+            "coreCount": null,
+            "diagnosticCount": null
+          },
+          {
+            "id": "precedent_stability",
+            "group": "precedent",
+            "evidence": 0.68,
+            "score": 0.68,
+            "confidence": 1,
+            "effectiveBreadth": 8,
+            "coreCount": null,
+            "diagnosticCount": null
+          },
+          {
+            "id": "countermajoritarian",
+            "group": "posture",
+            "evidence": 0.62,
+            "score": 0.62,
+            "confidence": 1,
+            "effectiveBreadth": 8,
+            "coreCount": null,
+            "diagnosticCount": null
+          },
+          {
+            "id": "rules",
+            "group": "form",
+            "evidence": 0.58,
+            "score": 0.58,
+            "confidence": 1,
+            "effectiveBreadth": 8,
+            "coreCount": null,
+            "diagnosticCount": null
+          },
+          {
+            "id": "narrow_remedies",
+            "group": "remedies",
+            "evidence": 0.14,
+            "score": 0.14,
+            "confidence": 1,
+            "effectiveBreadth": 8,
+            "coreCount": null,
+            "diagnosticCount": null
+          },
+          {
+            "id": "separation_formal",
+            "group": "separation",
+            "evidence": 0.1,
+            "score": 0.1,
+            "confidence": 1,
+            "effectiveBreadth": 8,
+            "coreCount": null,
+            "diagnosticCount": null
+          }
+        ],
+        "rankedTwists": [
+          {
+            "id": "inclusive_positivism",
+            "evidence": 1,
+            "score": 1
+          },
+          {
+            "id": "normative_positivism",
+            "evidence": 0.667,
+            "score": 1
+          }
+        ],
+        "rankedFeatures": [
+          {
+            "id": "fixed_meaning",
+            "group": "time",
+            "evidence": 0.94,
+            "score": 0.94,
+            "confidence": 1,
+            "effectiveBreadth": 8,
+            "coreCount": null,
+            "diagnosticCount": null
+          },
+          {
+            "id": "anti_discretion",
+            "group": "form",
+            "evidence": 0.848,
+            "score": 0.775,
+            "confidence": 0.689,
+            "effectiveBreadth": 4.133,
+            "coreCount": 4,
+            "diagnosticCount": 1
+          },
+          {
+            "id": "textual_constraint",
+            "group": "constraint",
+            "evidence": 0.76,
+            "score": 0.76,
+            "confidence": 1,
+            "effectiveBreadth": 8,
+            "coreCount": null,
+            "diagnosticCount": null
+          },
+          {
+            "id": "precedent_stability",
+            "group": "precedent",
+            "evidence": 0.68,
+            "score": 0.68,
+            "confidence": 1,
+            "effectiveBreadth": 8,
+            "coreCount": null,
+            "diagnosticCount": null
+          },
+          {
+            "id": "countermajoritarian",
+            "group": "posture",
+            "evidence": 0.62,
+            "score": 0.62,
+            "confidence": 1,
+            "effectiveBreadth": 8,
+            "coreCount": null,
+            "diagnosticCount": null
+          },
+          {
+            "id": "rules",
+            "group": "form",
+            "evidence": 0.58,
+            "score": 0.58,
+            "confidence": 1,
+            "effectiveBreadth": 8,
+            "coreCount": null,
+            "diagnosticCount": null
+          },
+          {
+            "id": "narrow_remedies",
+            "group": "remedies",
+            "evidence": 0.14,
+            "score": 0.14,
+            "confidence": 1,
+            "effectiveBreadth": 8,
+            "coreCount": null,
+            "diagnosticCount": null
+          },
+          {
+            "id": "separation_formal",
+            "group": "separation",
+            "evidence": 0.1,
+            "score": 0.1,
+            "confidence": 1,
+            "effectiveBreadth": 8,
+            "coreCount": null,
+            "diagnosticCount": null
+          }
+        ],
+        "special": false
+      },
+      "narrative": {
+        "id": "portrait_historical_construction_continuity_normative_inclusive",
+        "openingId": "portrait_historical_construction_continuity_normative_inclusive",
+        "opening": "You treat constitutional meaning as historically fixed while giving later decisions weight. If that fixed meaning genuinely leaves a question unresolved, you allow implementing doctrine within the remaining space. That permission does not say how often gaps occur. You defend source-based institutions that can incorporate moral validity criteria.",
+        "context": "The interpretation/construction distinction separates identifying fixed constitutional meaning from developing implementing law where that meaning does not supply a unique answer. New Originalism is an established name for scholarship that brought this distinction to the foreground, although its theorists disagree about how much work construction should do. Your answers support conditional permission, not a conclusion that a substantial construction zone exists. Historical legal methods, context, or further evidence might resolve an apparent gap before construction becomes necessary. Respect for precedent adds a different problem. A settled decision might operate within an unresolved space, but it might instead contradict the best historical interpretation. The first can be legitimate implementing law; the second raises questions about reliance, settlement, and the costs of correction. Keeping these problems separate prevents respect for precedent from silently changing the meaning that interpretation identifies. Developing implementing doctrine while respecting historical limits and precedent joins a normative defense of source-based institutions with inclusive positivism. Accepted legal standards can make moral acceptability a condition of validity; the separate normative claim concerns why institutions organized around public sources deserve support. The unresolved questions concern the boundaries of genuine uncertainty, which institutions may supply implementing law, and when reliance can justify retaining a mistaken decision. The construction answer alone does not settle them."
+      }
+    },
+    "order": [
+      "S7",
+      "F5",
+      "E4",
+      "T1",
+      "P3",
+      "C11",
+      "O9",
+      "R2",
+      "R3",
+      "S3",
+      "F7",
+      "P11",
+      "O6",
+      "C18",
+      "T7",
+      "E1",
+      "C6",
+      "R9",
+      "O7",
+      "T9",
+      "F9",
+      "P6",
+      "E5",
+      "S10",
+      "R11",
+      "F1",
+      "O4",
+      "E6",
+      "T4",
+      "S1",
+      "C4",
+      "P12",
+      "T6",
+      "O1",
+      "E3",
+      "P9",
+      "F8",
+      "C15",
+      "S5",
+      "R8",
+      "C3",
+      "F6",
+      "P5",
+      "E7",
+      "S4",
+      "T10",
+      "R1",
+      "O3",
+      "R7",
+      "O8",
+      "T5",
+      "C5",
+      "S11",
+      "F4",
+      "E2",
+      "P4",
+      "F3",
+      "R10",
+      "T11",
+      "S6",
+      "C7",
+      "O2",
+      "P10",
+      "T8",
+      "O10",
+      "P2",
+      "S8",
+      "R5",
+      "C12",
+      "P7",
+      "S2",
+      "T3",
+      "C10",
+      "R4",
+      "O12",
+      "T2",
+      "R6",
+      "C14",
+      "O13",
+      "T12",
+      "O11",
+      "C17",
+      "O5",
+      "C9",
+      "C8",
+      "C1",
+      "C13",
+      "C2"
+    ],
+    "completedAt": "2026-10-15T03:43:20.000Z"
+  },
+  "descriptions": {
+    "sorc": {
+      "id": "sorc-inclusive-positivism",
+      "label": "Inclusive Positivism",
+      "explanation": "Recognized legal sources govern validity, and a system's own accepted rules can incorporate moral standards into its test of law.",
+      "status": "supported",
+      "evidenceIds": [
+        "D-POS1",
+        "S1",
+        "S7",
+        "S10",
+        "S11",
+        "S3",
+        "S4",
+        "S5"
+      ]
+    },
+    "cons": {
+      "id": "cons-textualism",
+      "label": "Textualism",
+      "explanation": "Enacted language and legislative choices constrain legal effect even when unenacted intentions or a broader purpose point elsewhere.",
+      "status": "supported",
+      "evidenceIds": [
+        "C5",
+        "C13",
+        "C2",
+        "C11",
+        "C18"
+      ]
+    },
+    "time": {
+      "id": "time-constitutional-construction",
+      "label": "New Originalism",
+      "explanation": "Original meaning remains independently binding while later doctrine may develop within questions that meaning genuinely leaves unresolved.",
+      "status": "conditional",
+      "evidenceIds": [
+        "D-ORI3",
+        "T1",
+        "T2",
+        "T3",
+        "T11"
+      ]
+    },
+    "prec": {
+      "id": "prec-stare-decisis",
+      "label": "Stare Decisis",
+      "explanation": "Reliance, continuity, and institutional settlement can justify retaining a precedent despite acknowledged interpretive error.",
+      "status": "supported",
+      "evidenceIds": [
+        "P4",
+        "P12",
+        "P2",
+        "P5",
+        "P7"
+      ]
+    },
+    "remed": {
+      "id": "remed-remedial-tailoring",
+      "label": "Remedial Tailoring",
+      "explanation": "Necessary structural repair is combined with preservation of severable lawful provisions and limits on orders against institutions not found responsible.",
+      "status": "conditional",
+      "evidenceIds": [
+        "R3",
+        "R5",
+        "R6",
+        "R7",
+        "R8"
+      ]
+    },
+    "post": {
+      "id": "post-independent-rights-review",
+      "label": "Independent Rights Review",
+      "explanation": "Courts should independently enforce constitutional rights even against sustained electoral support for the challenged measure.",
+      "status": "supported",
+      "evidenceIds": [
+        "O4",
+        "O10",
+        "O11"
+      ]
+    },
+    "separ": {
+      "id": "separ-administrative-functionalism",
+      "label": "Administrative Functionalism",
+      "explanation": "Administrative overlap can be permissible while the Constitution's prescribed lawmaking procedures remain binding.",
+      "status": "conditional",
+      "evidenceIds": [
+        "E5",
+        "E1",
+        "E4",
+        "E6"
+      ]
+    },
+    "form": {
+      "id": "form-equitable-exceptions",
+      "label": "Equitable Exceptions",
+      "explanation": "General rules remain the baseline, with a specifically supported good-cause exception rather than unrestricted case-by-case discretion.",
+      "status": "conditional",
+      "evidenceIds": [
+        "F6",
+        "F5",
+        "F1",
+        "F3",
+        "F7",
+        "F8"
+      ]
+    }
+  },
+  "rendered": {
+    "result-title": {
+      "text": "Inclusive Positivist who uses an Ouija board as a dictionary",
+      "html": "Inclusive <strong>Positivist</strong> who uses an Ouija board as a dictionary"
+    },
+    "result-opening": {
+      "text": "You treat constitutional meaning as historically fixed while giving later decisions weight. If that fixed meaning genuinely leaves a question unresolved, you allow implementing doctrine within the remaining space. That permission does not say how often gaps occur. You defend source-based institutions that can incorporate moral validity criteria.",
+      "html": ""
+    },
+    "result-context": {
+      "text": "The interpretation/construction distinction separates identifying fixed constitutional meaning from developing implementing law where that meaning does not supply a unique answer. New Originalism is an established name for scholarship that brought this distinction to the foreground, although its theorists disagree about how much work construction should do. Your answers support conditional permission, not a conclusion that a substantial construction zone exists. Historical legal methods, context, or further evidence might resolve an apparent gap before construction becomes necessary. Respect for precedent adds a different problem. A settled decision might operate within an unresolved space, but it might instead contradict the best historical interpretation. The first can be legitimate implementing law; the second raises questions about reliance, settlement, and the costs of correction. Keeping these problems separate prevents respect for precedent from silently changing the meaning that interpretation identifies. Developing implementing doctrine while respecting historical limits and precedent joins a normative defense of source-based institutions with inclusive positivism. Accepted legal standards can make moral acceptability a condition of validity; the separate normative claim concerns why institutions organized around public sources deserve support. The unresolved questions concern the boundaries of genuine uncertainty, which institutions may supply implementing law, and when reliance can justify retaining a mistaken decision. The construction answer alone does not settle them.",
+      "html": ""
+    },
+    "champion-line": {
+      "text": "Champion: Jules Coleman / Matthew Kramer",
+      "html": ""
+    },
+    "champion-description": {
+      "text": "Inclusive Positivism: a source-grounded legal system can itself make genuine moral correctness a criterion of legal validity.",
+      "html": ""
+    },
+    "classification-note": {
+      "text": "The thinker match uses the eight-axis profile plus 12 adaptive tie-breaker questions. The axis scores combine core evidence with narrowly targeted diagnostic clarifications where present. Adaptive answers also refine the jurisprudential match. Thinker locations are theory-derived prototypes pending empirical calibration. Match confidence: medium (a model assessment, not a probability). The thinker profile leaves these important commitments unmodeled: interpretation, constitutional change, precedent, judicial role, rules and standards.",
+      "html": ""
+    },
+    "axis-results": {
+      "text": "",
+      "html": ""
+    }
+  }
+}

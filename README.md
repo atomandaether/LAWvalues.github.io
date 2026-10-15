@@ -12,7 +12,7 @@
 
 > Institutional-structure / doctrinal-form / remedies details are documented in [`STRUCTURE_FORM_ENGINE.md`](STRUCTURE_FORM_ENGINE.md): Formalist/Functionalist/Proportionalist plus thirteen selectable structure/form/remedies champion units, tightly gated cross-noun remedies specialists, and the exactly-one-champion rule.
 
-LAWvalues is a static, client-side legal-philosophy quiz. The current public label is **Version 0.8 Beta**. It maps respondents across eight bipolar dimensions:
+LAWvalues is a static, client-side legal-philosophy quiz. The current public label is **Version 0.9 Beta**. It maps respondents across eight bipolar dimensions:
 
 - Source: Positivist ↔ Non-positivist
 - Constraint: Textualist ↔ Open construction
@@ -33,7 +33,7 @@ The questions are written as plain-language legal problems rather than definitio
 
 ## Jurisprudential matching
 
-After the 88-question core, LAWvalues may ask up to twelve adaptive questions, with a hard maximum of 100 total. All eight displayed axes now use core answers only. Adaptive answers establish defining priorities, refine doctrinal distinctions, and distinguish compatible thinker matches. The earlier Separation-axis diagnostic refinement is retired for new results; old shared scores are preserved as saved.
+After the 88-question core, LAWvalues may ask up to twelve adaptive questions, with a hard maximum of 100 total. The core supplies all direct axis evidence. In 0.9, a narrowly gated diagnostic clarification can retract specific weak Time inferences without overriding direct answers or adding opposite-pole evidence. Other adaptive answers establish defining priorities, refine doctrines, and distinguish compatible thinker matches. Per-question ledgers retain score provenance; historical shared scores are preserved as saved. See [`AXIS_LABELS_AND_SCORING_09.md`](AXIS_LABELS_AND_SCORING_09.md) for the complete version and evidence contract.
 
 Public results retain the approved **[modifier] [noun] [phrase]** inventory. The noun names the best-supported primary commitment, rather than every belief the person holds. The modifier identifies a meaningful subtype within that noun or expresses strength of fit. The phrase reports the strongest remaining commitment after accounting for what the noun and its modifier already communicate. Catalog entries and their wording are unchanged; tests freeze their contents.
 
@@ -70,13 +70,13 @@ Then open `http://localhost:8000`.
 
 ## Audit
 
-The repository includes eight dependency-free audits covering questions/scoring, the result catalog, adaptive routing, result narratives, shared-result reconstruction, title-inventory preservation, defining-priority matching, and frozen full-quiz profiles. Use Node.js 22 or later (CI uses Node.js 22):
+The repository includes dependency-free audits covering questions/scoring, the result catalog, adaptive routing, result narratives, shared-result reconstruction, title-inventory preservation, defining-priority matching, and frozen full-quiz profiles. Use Node.js 22 or later (CI uses Node.js 22):
 
 ```bash
 npm test
 ```
 
-All eight run even if an earlier audit fails; the command reports each result and exits unsuccessfully if any audit fails. The same command runs in the Instrument audit GitHub Actions workflow. Individual checks are available as `npm run audit:questions`, `npm run audit:catalog`, `npm run audit:routing`, `npm run audit:narrative`, `npm run audit:share`, `npm run audit:title`, `npm run audit:primary`, and `npm run audit:whole-profile`.
+All registered audits run even if an earlier audit fails; the command reports each result and exits unsuccessfully if any audit fails. The same command runs in the Instrument audit GitHub Actions workflow. Individual checks are available as `npm run audit:questions`, `npm run audit:catalog`, `npm run audit:routing`, `npm run audit:narrative`, `npm run audit:share`, `npm run audit:title`, `npm run audit:primary`, and `npm run audit:whole-profile`.
 
 They check the 88-item core, asymmetric scoring, source references, local asset references, sparse profile validity, specialist gates, major jurisprudential-family coverage, literal-answer adaptive reachability (including unresolved Mixed-to-Source paths), phrase reachability, noun-conditioned twist assembly, the twelve-question diagnostic cap, explicit response-quality safeguards, narrative evidence consistency, fresh-session share-link reconstruction of both paragraphs, and several false-match tests such as preventing a positivist from winning a strong Natural Law profile.
 

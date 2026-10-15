@@ -10,7 +10,9 @@ for(const [id,prefix] of [['public_meaning_originalist','Public-Meaning'],['orig
  assert.equal(result.noun,identity.label);assert.equal(result.modifier.text,'New');
  assert.equal(c.LAW_RESULT_CONTENT.titleParts(identity,result.modifier,result.phrase).filter(x=>x.role==='noun').map(x=>x.text).join(' '),identity.label);
 }
-const r=runtime(root,{search:'?'+new URLSearchParams(scores)}), c=r.ctx;
+const r=runtime(root), c=r.ctx;
+r.location.search='?'+new URLSearchParams({...scores,v:c.LAW_VERSION});
+r.location.href='https://example.test/results.html'+r.location.search;
 const noun='<img src=x onerror=alert(1)> & "law"';
 const modifier='<script>alert(2)</script>',phrase='who <svg onload=alert(3)>';
 r.storage.setItem(`lawvalues-latest-${c.LAW_VERSION}`,JSON.stringify({version:c.LAW_VERSION,resultQuery:r.location.search,scores,responses:{},classification:{identity:{id:'positivist',label:noun},champions:[],traits:{},resultTitle:{title:`${modifier} ${noun} ${phrase}`,noun,modifier:{text:modifier},phrase:{text:phrase}}}}));

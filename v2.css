@@ -937,3 +937,12 @@ body.results-page {
         padding: 0;
     }
 }
+
+/* Contextual axis descriptions support the heading without competing with it. */
+.axis-explanation { max-width: 62ch; margin: .35rem auto .85rem; font-size: .95rem; line-height: 1.4; font-weight: normal; }
+
+.quiz-guidance { max-width: 75ch; margin: .35rem auto 0; font-size: .8rem; line-height: 1.2; font-weight: normal; }
+.axis-evidence { max-width: 62ch; margin: -.25rem auto .8rem; font-size: .85rem; text-align: left; }
+.axis-evidence summary { cursor: pointer; }
+.axis-evidence p { white-space: pre-line; font-size: .85rem; line-height: 1.4; font-weight: normal; }
+@media (max-width: 540px) { .quiz-guidance { font-size: .65rem; line-height: 1.1; margin-top: .2rem; } }

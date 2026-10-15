@@ -101,7 +101,10 @@ console.log('PASS: independent moral-validity phrase confirmation; no settlement
 // classifier's .12 live-rival window is wider than the old .07 fit-wording gate.
 {
   const scores={...neutral,sorc:95,time:80};
-  const resolution=context.LAW_CLASSIFIER.resolveIdentity(scores,{});
+  // Current Time scores alone cannot establish independent original authority.
+  // This synthetic priority test expressly supplies the competing commitment.
+  const rivalTraits=context.LAW_CLASSIFIER.buildTraits(scores,{T1:3,T11:3,T7:3},{});
+  const resolution=context.LAW_CLASSIFIER.resolveIdentity(scores,rivalTraits);
   const classified={...classification(resolution.best.identity.id),
     identityScore:resolution.best.score,
     identityAlternatives:resolution.candidates.filter(c=>c.priorityFamily!==resolution.best.priorityFamily),
