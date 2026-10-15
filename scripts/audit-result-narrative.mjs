@@ -17,6 +17,11 @@ const neutralScores = { sorc:50, cons:50, time:50, prec:50, remed:50, post:50, s
 for (const [id, opening] of Object.entries(engine.OPENINGS || {})) {
   assert.ok(opening?.trim(), id + " has no full-profile opening");
   assert.ok(engine.wordCount(opening) <= 70, id + " full-profile opening exceeds 70 words");
+  const lowerOpening = opening.toLowerCase();
+  for (const hedge of ["comparatively","generally","sometimes","usually","somewhat","relatively","typically","probably"]) {
+    assert.ok(!lowerOpening.includes(hedge),
+      id + " opening has softened hedge that should be stated more directly: " + hedge);
+  }
 }
 
 const bannedNarrativePhrases = [
@@ -31,7 +36,14 @@ const bannedNarrativePhrases = [
   "in that sense",
   "the attraction is",
   "the real fight",
-  "the practical consequence is important"
+  "the practical consequence is important",
+  "in other words",
+  "fundamentally",
+  "crucially",
+  "not merely",
+  "not simply",
+  "not just",
+  "rather than"
 ];
 
 for (const [id, route] of Object.entries(engine.ROUTES)) {
@@ -41,9 +53,36 @@ for (const [id, route] of Object.entries(engine.ROUTES)) {
   assert.ok(engine.wordCount(route.context) <= 230, id + " context exceeds 230 words");
   assert.ok(!route.context.includes("\n"), id + " context must remain one paragraph");
   const lowerContext = route.context.toLowerCase();
+  assert.ok(!/^you\b/i.test(route.context),
+    id + " context should add literature/context instead of restarting the opening in second person");
+  assert.ok(!/\bnot\b[^.!?]{0,90}\bbut\b/i.test(route.context),
+    id + " contains formulaic not-X-but-Y contrast");
   for (const phrase of bannedNarrativePhrases) {
     assert.ok(!lowerContext.includes(phrase),
       id + " contains banned meta-signposting phrase: " + phrase);
+  }
+}
+
+// The context paragraph should add theory/history instead of paraphrasing the
+// opening. This is only a lexical guardrail; substantive review still matters.
+{
+  const stop = new Set("the a an and or but to of in on for with as is are was were be been being that this it its your you from by at into than not can may will should do does did have has had more most much some any when where who which their they them one other itself because while through across".split(/\s+/));
+  const tokens = (text) => new Set(String(text).toLowerCase()
+    .replace(/[^a-z0-9-]/g, " ").split(/\s+/)
+    .filter((word) => word.length > 3 && !stop.has(word)));
+  const jaccard = (a, b) => {
+    let intersection = 0;
+    for (const word of a) if (b.has(word)) intersection += 1;
+    return intersection / (a.size + b.size - intersection || 1);
+  };
+  for (const [routeId, route] of Object.entries(engine.ROUTES)) {
+    const contextTokens = tokens(route.context);
+    for (const [openingId, opening] of Object.entries(engine.OPENINGS || {})) {
+      const overlapScore = jaccard(contextTokens, tokens(opening));
+      assert.ok(overlapScore < 0.20,
+        routeId + " context repeats too much opening language from " + openingId +
+        " (Jaccard " + overlapScore.toFixed(3) + ")");
+    }
   }
 }
 
