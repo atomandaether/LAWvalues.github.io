@@ -1182,11 +1182,22 @@
     const supportAxis=feature.supportAxis
       ? directionStrength(scores,feature.supportAxis.axis,feature.supportAxis.direction)
       : 0;
+    // Objective morality has two direct, independent core propositions about
+    // moral validity. Full endorsement of both confirms that commitment without
+    // requiring a third diagnostic about a different subject (D-NP1 establishes
+    // positive law's settlement role, not morally constitutive legal validity).
+    // This exception is tied to those actual core answers, not inflated trait
+    // strength or generic axis extremity; other narrow phrases retain their gates.
+    const independentMoralCore=traitEvidence?.["source.independent_moral_validity"]?.coreSupport||{};
+    const confirmedMoralCore=feature.id==="objective_morality" &&
+      Number(independentMoralCore.S10)>=1 && Number(independentMoralCore.S11)>=1;
+    const diagnosticConfirmation=
+      direct.diagnosticCount >= Number(feature.minDiagnosticCount||0) &&
+      direct.diagnosticUnits >= Number(feature.minDiagnosticUnits||0);
     const eligible=
       direct.coreCount >= Number(feature.minCoreCount||4) &&
       direct.coreUnits >= Number(feature.minCoreUnits||2.5) &&
-      direct.diagnosticCount >= Number(feature.minDiagnosticCount||0) &&
-      direct.diagnosticUnits >= Number(feature.minDiagnosticUnits||0) &&
+      (diagnosticConfirmation || confirmedMoralCore) &&
       (!feature.supportAxis || supportAxis>=0.25);
 
     const breadth=
@@ -1353,14 +1364,17 @@
       "sociological_jurist","proportionalist","common_good_constitutionalist"]);
     const needsMore=isolated.has(classification?.identity?.id) &&
       Number.isFinite(corroboration) && corroboration<0.6;
-    if(score>=0.82 && margin>=0.07 && !needsMore) {
+    // A numerically strong match cannot claim a settled primary commitment
+    // while the classifier explicitly reports a live priority ambiguity.
+    const unresolvedPriority=classification?.identityPriority?.unresolved===true;
+    if(score>=0.82 && margin>=0.07 && !needsMore && !unresolvedPriority) {
       return {
         id:"fit_unmistakable",
         text:`Unmistakably ${article}`,
         explanation:"Your answers form an unusually clean and well-separated match for this jurisprudential identity."
       };
     }
-    if(score<0.72 || margin<0.04) {
+    if(score<0.72 || margin<0.04 || unresolvedPriority) {
       return {
         id:"fit_some_kind",
         text:"Some kind of",
@@ -1488,6 +1502,23 @@
 
     const selectedTwist=modifier?.id ? TWISTS.find(twist=>twist.id===modifier.id)||null : null;
     const blockedPhraseIds=new Set(selectedTwist?.blockedPhraseIds||[]);
+    // A subtype also spends the exact concepts its own evidence describes.
+    // Some catalog entries express these through axis/traits rather than an
+    // explicit block list (e.g. Non-Positivist or Purposivist Proportionalism).
+    // Match exact concepts, not whole trait families: related but distinct
+    // commitments must remain eligible for the residual phrase.
+    if(selectedTwist) {
+      const spentTags=new Set([
+        ...(selectedTwist.traits||[]), ...(selectedTwist.allTraits||[])
+      ]);
+      for(const feature of PHRASE_FEATURES) {
+        const sameAxis=selectedTwist.axis && feature.axis===selectedTwist.axis &&
+          feature.direction===selectedTwist.direction;
+        if(sameAxis || (feature.tags||[]).some(tag=>spentTags.has(tag))) {
+          blockedPhraseIds.add(feature.id);
+        }
+      }
+    }
     const phrasePick=phraseRanking.find(item=>
       item.score>=0.18 && !blockedPhraseIds.has(item.feature.id))||null;
     const phrase=asPhrase(phrasePick?.feature||null) ||
@@ -1809,3 +1840,4 @@
     fromIds
   });
 })(globalThis);
+

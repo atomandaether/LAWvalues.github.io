@@ -311,7 +311,7 @@ globalThis.LAW_DIAGNOSTIC_QUESTIONS = Object.freeze([
     priority: "high",
     unlock: "Natural Lawyer and Interpretivist/other nonpositivist candidates remain competitive.",
     prompt: "Natural law does not give judges a general license to replace clear positive law with whichever result seems morally best. One important purpose of positive law is to authoritatively settle questions that practical morality itself leaves open.",
-    agreeTraits: ["source.positive_law_settlement", "source.objective_morality"],
+    agreeTraits: ["source.positive_law_settlement"],
     disagreeTraits: [],
     nextOnAgree: [],
     nextOnDisagree: ["D-NP2"],
@@ -822,3 +822,13 @@ globalThis.LAW_DIAGNOSTIC_QUESTIONS = Object.freeze([
     note: "Structured proportionality is narrower than generic case-by-case balancing."
   }
 ]);
+
+
+// Evidence roles are routing contracts, not weights or claims of measured importance.
+for (const item of globalThis.LAW_DIAGNOSTIC_QUESTIONS) {
+  item.evidenceRoles = Object.freeze(
+    ["D-POS1", "D-POS2", "D-LIV1", "D-LIV2", "D-ORI1", "D-ORI2"].includes(item.id)
+      ? ["subtype", "champion-discriminator"]
+      : ["compatibility", "champion-discriminator"]
+  );
+}

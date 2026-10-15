@@ -105,7 +105,11 @@
     function loadLocalRecord() {
         try {
             const record = JSON.parse(sessionStorage.getItem(LATEST_KEY));
-            const matches = record?.version === globalThis.LAW_VERSION &&
+            const storedParams = new URLSearchParams(record?.resultQuery || '');
+            const hasMatchingQuery = Boolean(record?.resultQuery) &&
+                [...storedParams.entries()].every(([key, value]) => params.get(key) === value) &&
+                ['v','i','c','m','p','b','x','o','d','u','cf','ua'].every(key => params.get(key) === storedParams.get(key));
+            const matches = hasMatchingQuery && record?.version === globalThis.LAW_VERSION &&
                 record.responses &&
                 globalThis.LAW_AXES.every((axis) => Number(record.scores?.[axis.id]) === scores[axis.id]);
             return matches ? record : null;
@@ -132,7 +136,7 @@
         const champions = (params.get('c') || '')
             .split(',')
             .filter(Boolean)
-            .map((id) => profileMap[id])
+            .map((id) => Object.hasOwn(profileMap, id) ? profileMap[id] : null)
             .filter(Boolean)
             .map((profile) => ({
                 id: profile.id,
@@ -153,8 +157,12 @@
         return {
             identity,
             identityReason: '',
+            identityPriority: { unresolved: params.get('u') === '1' },
             champions,
-            championConfidence: champions.length === 1 ? 'shared' : champions.length > 1 ? 'ambiguous' : 'low',
+            championConfidence: ['low', 'medium', 'high'].includes(params.get('cf'))
+                ? params.get('cf') : champions.length === 1 ? 'shared' : champions.length > 1 ? 'ambiguous' : 'low',
+            sharedUnknownAxes: [...new Set((params.get('ua') || '').split(','))]
+                .filter(id => globalThis.LAW_AXES.some(axis => axis.id === id)),
             diagnosticCount: Number(params.get('d')) || 0,
             resultTitle,
             narrativeId: params.get('x') || null,
@@ -243,10 +251,18 @@
             return;
         }
 
+        const resultVersion = Number.parseFloat(params.get('v') || record?.version || '');
+        const coreOnlyAxes = Number.isFinite(resultVersion) && resultVersion >= 0.8;
         const champions = Array.isArray(result.champions) ? result.champions : [];
         if (champions.length === 1) {
             championLine.textContent = `Closest thinker: ${champions[0].name}`;
             championDescription.textContent = champions[0].description || '';
+            const thinkerProfile = (globalThis.LAW_PROFILES || []).find(item => item.id === champions[0].id);
+            const specificAffinity = champions[0].evidence?.scope === 'specific-affinity' ||
+                (thinkerProfile && Object.keys(thinkerProfile.axisSignature || {}).length === 0);
+            if (coreOnlyAxes && specificAffinity) {
+                championDescription.textContent += ' This is a specific theoretical affinity; the available thinker profile does not establish a broad match across your other commitments.';
+            }
         } else if (champions.length > 1) {
             championLine.textContent = `Closest thinkers: ${champions.map((item) => item.name).join(' · ')}`;
             championDescription.textContent =
@@ -260,9 +276,27 @@
         relatedLine.textContent = related.length ? `Related reading: ${related.join(' · ')}` : '';
 
         const diagnosticCount = Number(result.diagnosticCount) || 0;
+        const axisExplanation = coreOnlyAxes
+            ? 'The eight axis scores come only from the core questions. Adaptive answers refine the jurisprudential match without changing axis scores.'
+            : 'These saved axis scores use the earlier scoring version; answered Separation diagnostics could modestly refine Separation.';
         note.textContent = diagnosticCount > 0
-            ? `The thinker match uses the eight-axis profile plus ${diagnosticCount} adaptive tie-breaker question${diagnosticCount === 1 ? '' : 's'}. The axis scores start with the 88-question core; answered Separation diagnostics can modestly refine the Separation score. Other follow-ups refine the jurisprudential match without changing axis scores. Thinker locations are theory-derived prototypes pending empirical calibration.`
-            : 'The thinker match uses sparse theory-derived signatures: unmodeled axes are ignored rather than treated as moderate. The eight axis scores themselves come from the 88-question core. Thinker locations remain provisional pending empirical calibration.';
+            ? `The thinker match uses the eight-axis profile plus ${diagnosticCount} adaptive tie-breaker question${diagnosticCount === 1 ? '' : 's'}. ${axisExplanation} Thinker locations are theory-derived prototypes pending empirical calibration.`
+            : 'The thinker match uses theory-derived profiles. Unmodeled commitments are unknown, not evidence of agreement. The eight axis scores come from the core questions. Thinker matches remain provisional pending empirical calibration.';
+        if (coreOnlyAxes && champions.length === 1) {
+            const matchConfidence = result.championConfidence;
+            const unknown = champions[0].evidence?.unknownAxes || result.sharedUnknownAxes || [];
+            const axisNames = {sorc:'legal authority',cons:'interpretation',time:'constitutional change',prec:'precedent',remed:'remedies',post:'judicial role',separ:'institutional structure',form:'rules and standards'};
+            const unknownNames = unknown.filter(id => Object.hasOwn(axisNames,id)).map(id => axisNames[id]);
+            if (['low','medium','high'].includes(matchConfidence)) {
+                note.textContent += ` Match confidence: ${matchConfidence} (a model assessment, not a probability).`;
+            }
+            if (unknownNames.length) {
+                note.textContent += ` The thinker profile leaves these important commitments unmodeled: ${unknownNames.join(', ')}.`;
+            }
+        }
+        if (coreOnlyAxes && result.identityPriority?.unresolved) {
+            note.textContent = 'Your leading commitments remain close; the headline is provisional. ' + note.textContent;
+        }
     }
 
     displayClassification(classification);

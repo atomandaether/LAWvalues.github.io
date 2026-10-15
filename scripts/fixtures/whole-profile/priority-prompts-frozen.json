@@ -1,0 +1,128 @@
+[
+  {
+    "id": "D-PRI-source-time",
+    "a": "source",
+    "b": "time",
+    "prompt": "Both commitments may be compatible. Thinking about what most characteristically defines your approach to law, your account of what makes a norm legally valid is more central than your account of constitutional meaning across time. Agree favors the first; disagree favors the second; neither means neither consistently defines you more."
+  },
+  {
+    "id": "D-PRI-source-method",
+    "a": "source",
+    "b": "method",
+    "prompt": "Both commitments may be compatible. Thinking about what most characteristically defines your approach to law, your account of what makes a norm legally valid is more central than your interpretive method for reading legal materials. Agree favors the first; disagree favors the second; neither means neither consistently defines you more."
+  },
+  {
+    "id": "D-PRI-source-posture",
+    "a": "source",
+    "b": "posture",
+    "prompt": "Both commitments may be compatible. Thinking about what most characteristically defines your approach to law, your account of what makes a norm legally valid is more central than your account of the proper judicial role. Agree favors the first; disagree favors the second; neither means neither consistently defines you more."
+  },
+  {
+    "id": "D-PRI-source-structure",
+    "a": "source",
+    "b": "structure",
+    "prompt": "Both commitments may be compatible. Thinking about what most characteristically defines your approach to law, your account of what makes a norm legally valid is more central than your account of institutional powers and their boundaries. Agree favors the first; disagree favors the second; neither means neither consistently defines you more."
+  },
+  {
+    "id": "D-PRI-source-form",
+    "a": "source",
+    "b": "form",
+    "prompt": "Both commitments may be compatible. Thinking about what most characteristically defines your approach to law, your account of what makes a norm legally valid is more central than your preferred form of legal rules and standards. Agree favors the first; disagree favors the second; neither means neither consistently defines you more."
+  },
+  {
+    "id": "D-PRI-source-realism",
+    "a": "source",
+    "b": "realism",
+    "prompt": "Both commitments may be compatible. Thinking about what most characteristically defines your approach to law, your account of what makes a norm legally valid is more central than your explanation of how judges actually decide cases. Agree favors the first; disagree favors the second; neither means neither consistently defines you more."
+  },
+  {
+    "id": "D-PRI-time-method",
+    "a": "time",
+    "b": "method",
+    "prompt": "Both commitments may be compatible. Thinking about what most characteristically defines your approach to law, your account of constitutional meaning across time is more central than your interpretive method for reading legal materials. Agree favors the first; disagree favors the second; neither means neither consistently defines you more."
+  },
+  {
+    "id": "D-PRI-time-posture",
+    "a": "time",
+    "b": "posture",
+    "prompt": "Both commitments may be compatible. Thinking about what most characteristically defines your approach to law, your account of constitutional meaning across time is more central than your account of the proper judicial role. Agree favors the first; disagree favors the second; neither means neither consistently defines you more."
+  },
+  {
+    "id": "D-PRI-time-structure",
+    "a": "time",
+    "b": "structure",
+    "prompt": "Both commitments may be compatible. Thinking about what most characteristically defines your approach to law, your account of constitutional meaning across time is more central than your account of institutional powers and their boundaries. Agree favors the first; disagree favors the second; neither means neither consistently defines you more."
+  },
+  {
+    "id": "D-PRI-time-form",
+    "a": "time",
+    "b": "form",
+    "prompt": "Both commitments may be compatible. Thinking about what most characteristically defines your approach to law, your account of constitutional meaning across time is more central than your preferred form of legal rules and standards. Agree favors the first; disagree favors the second; neither means neither consistently defines you more."
+  },
+  {
+    "id": "D-PRI-time-realism",
+    "a": "time",
+    "b": "realism",
+    "prompt": "Both commitments may be compatible. Thinking about what most characteristically defines your approach to law, your account of constitutional meaning across time is more central than your explanation of how judges actually decide cases. Agree favors the first; disagree favors the second; neither means neither consistently defines you more."
+  },
+  {
+    "id": "D-PRI-method-posture",
+    "a": "method",
+    "b": "posture",
+    "prompt": "Both commitments may be compatible. Thinking about what most characteristically defines your approach to law, your interpretive method for reading legal materials is more central than your account of the proper judicial role. Agree favors the first; disagree favors the second; neither means neither consistently defines you more."
+  },
+  {
+    "id": "D-PRI-method-structure",
+    "a": "method",
+    "b": "structure",
+    "prompt": "Both commitments may be compatible. Thinking about what most characteristically defines your approach to law, your interpretive method for reading legal materials is more central than your account of institutional powers and their boundaries. Agree favors the first; disagree favors the second; neither means neither consistently defines you more."
+  },
+  {
+    "id": "D-PRI-method-form",
+    "a": "method",
+    "b": "form",
+    "prompt": "Both commitments may be compatible. Thinking about what most characteristically defines your approach to law, your interpretive method for reading legal materials is more central than your preferred form of legal rules and standards. Agree favors the first; disagree favors the second; neither means neither consistently defines you more."
+  },
+  {
+    "id": "D-PRI-method-realism",
+    "a": "method",
+    "b": "realism",
+    "prompt": "Both commitments may be compatible. Thinking about what most characteristically defines your approach to law, your interpretive method for reading legal materials is more central than your explanation of how judges actually decide cases. Agree favors the first; disagree favors the second; neither means neither consistently defines you more."
+  },
+  {
+    "id": "D-PRI-posture-structure",
+    "a": "posture",
+    "b": "structure",
+    "prompt": "Both commitments may be compatible. Thinking about what most characteristically defines your approach to law, your account of the proper judicial role is more central than your account of institutional powers and their boundaries. Agree favors the first; disagree favors the second; neither means neither consistently defines you more."
+  },
+  {
+    "id": "D-PRI-posture-form",
+    "a": "posture",
+    "b": "form",
+    "prompt": "Both commitments may be compatible. Thinking about what most characteristically defines your approach to law, your account of the proper judicial role is more central than your preferred form of legal rules and standards. Agree favors the first; disagree favors the second; neither means neither consistently defines you more."
+  },
+  {
+    "id": "D-PRI-posture-realism",
+    "a": "posture",
+    "b": "realism",
+    "prompt": "Both commitments may be compatible. Thinking about what most characteristically defines your approach to law, your account of the proper judicial role is more central than your explanation of how judges actually decide cases. Agree favors the first; disagree favors the second; neither means neither consistently defines you more."
+  },
+  {
+    "id": "D-PRI-structure-form",
+    "a": "structure",
+    "b": "form",
+    "prompt": "Both commitments may be compatible. Thinking about what most characteristically defines your approach to law, your account of institutional powers and their boundaries is more central than your preferred form of legal rules and standards. Agree favors the first; disagree favors the second; neither means neither consistently defines you more."
+  },
+  {
+    "id": "D-PRI-structure-realism",
+    "a": "structure",
+    "b": "realism",
+    "prompt": "Both commitments may be compatible. Thinking about what most characteristically defines your approach to law, your account of institutional powers and their boundaries is more central than your explanation of how judges actually decide cases. Agree favors the first; disagree favors the second; neither means neither consistently defines you more."
+  },
+  {
+    "id": "D-PRI-form-realism",
+    "a": "form",
+    "b": "realism",
+    "prompt": "Both commitments may be compatible. Thinking about what most characteristically defines your approach to law, your preferred form of legal rules and standards is more central than your explanation of how judges actually decide cases. Agree favors the first; disagree favors the second; neither means neither consistently defines you more."
+  }
+]

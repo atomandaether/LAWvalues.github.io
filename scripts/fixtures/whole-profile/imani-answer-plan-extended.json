@@ -1,0 +1,807 @@
+{
+  "personaId": "imani",
+  "answers": {
+    "S1": {
+      "value": 2,
+      "rationale": "Cruelty does not by itself erase the legal status conferred by functioning public institutions."
+    },
+    "S2": {
+      "value": 1,
+      "rationale": "Excluding an entire racial group from every court undermines the nonarbitrary treatment and reciprocal legal protection that make governance function as law."
+    },
+    "S3": {
+      "value": 3,
+      "rationale": "A judge's unrecognized moral conviction cannot supply an additional legal licensing restriction."
+    },
+    "S4": {
+      "value": 3,
+      "rationale": "Harsh or foolish policy can remain valid law within a functioning institutional system."
+    },
+    "S5": {
+      "value": 3,
+      "rationale": "Settled interbranch practice gives the clerk's copy authority despite a more attractive result under the alternative."
+    },
+    "S6": {
+      "value": -1,
+      "rationale": "The destruction supplies powerful grounds for developing compensation law, but does not automatically create an existing legal duty without an institutional basis."
+    },
+    "S7": {
+      "value": 2,
+      "rationale": "Genuine gaps sometimes require limited constructive judicial choice rather than discovery of a preexisting entitlement."
+    },
+    "S8": {
+      "value": -2,
+      "rationale": "Principles aid legal reasoning, but do not guarantee that every novel dispute already has one legally correct answer."
+    },
+    "S10": {
+      "value": -2,
+      "rationale": "Even an objectively sound moral objection does not automatically become law outside recognized legal practice."
+    },
+    "S11": {
+      "value": -2,
+      "rationale": "The harmful lie gives a strong reason to change the rule, but morality alone does not make the contrary rule existing law."
+    },
+    "C1": {
+      "value": 2,
+      "rationale": "The enacted coverage and ordinary protective purpose support including farm workers despite narrower legislative assumptions."
+    },
+    "C2": {
+      "value": 1,
+      "rationale": "An express exemption deserves effect, although the serious harm creates a strong case for legislative correction."
+    },
+    "C3": {
+      "value": 1,
+      "rationale": "An honest constitutional ruling is preferable to a strained rewriting if the reasonable statutory reading is indeed unconstitutional."
+    },
+    "C4": {
+      "value": 1,
+      "rationale": "The same preference for honest constitutional review over strained rewriting applies to firearm legislation."
+    },
+    "C5": {
+      "value": 1,
+      "rationale": "Transportation context plausibly explains the memorial's exclusion, although she would not call that explanation uniquely clear."
+    },
+    "C6": {
+      "value": 2,
+      "rationale": "The ordinance's practical purpose strongly supports excluding a stationary memorial that creates none of the targeted harms."
+    },
+    "C7": {
+      "value": 2,
+      "rationale": "A sponsor's report cannot readily displace clear enacted words on which taxpayers can reasonably rely."
+    },
+    "C8": {
+      "value": 2,
+      "rationale": "Reading the prohibition in light of its anti-exploitation purpose avoids extending it mechanically to an unlike university appointment."
+    },
+    "C9": {
+      "value": 1,
+      "rationale": "A clear protection for the threatened species should ordinarily govern despite sunk costs and speculative legislative expectations."
+    },
+    "C10": {
+      "value": 3,
+      "rationale": "A controlled guide dog warrants an administrable accommodation consistent with the rule's purpose and inclusive access."
+    },
+    "C11": {
+      "value": 2,
+      "rationale": "Adding a deliberately omitted beneficiary group would disregard the legislature's negotiated institutional choice."
+    },
+    "C12": {
+      "value": -1,
+      "rationale": "Shared safety concerns alone do not make a tiger a dog under a specifically bounded prohibition."
+    },
+    "C13": {
+      "value": -2,
+      "rationale": "The road-vehicle examples supply a contextual boundary that a dictionary definition should not override."
+    },
+    "C14": {
+      "value": -1,
+      "rationale": "An expressly closed list limits judicial extension even when a new contract frustrates the broader policy."
+    },
+    "C15": {
+      "value": 2,
+      "rationale": "Statutory purpose should guide interpretation, while context and institutional limits still constrain the resulting reading."
+    },
+    "C17": {
+      "value": 1,
+      "rationale": "Enacted text is authoritative, but purpose and legislative materials remain useful evidence of its contextual meaning."
+    },
+    "C18": {
+      "value": 2,
+      "rationale": "The explicitly negotiated exemption is a legislative allocation that a court should not erase solely because its consequences are disastrous."
+    },
+    "T1": {
+      "value": 1,
+      "rationale": "The equality-securing adoption context deserves weight, without freezing every later application against experience."
+    },
+    "T2": {
+      "value": -1,
+      "rationale": "Early acceptance of official prayer informs interpretation but does not conclusively settle its constitutionality for all later circumstances."
+    },
+    "T3": {
+      "value": -1,
+      "rationale": "Functional equivalence and an exceptional practical need favor a cautious adaptation over mechanically fixing the historical jury count."
+    },
+    "T4": {
+      "value": 2,
+      "rationale": "Broad liberty guarantees can develop through considered judicial practice and changing social experience."
+    },
+    "T5": {
+      "value": 2,
+      "rationale": "Courts can develop equal protection to remove wealth barriers that impair inclusive democratic participation."
+    },
+    "T6": {
+      "value": 1,
+      "rationale": "A sustained development of dignity-based constitutional understanding could justify this change, though it demands exceptional institutional care."
+    },
+    "T7": {
+      "value": 2,
+      "rationale": "Publicly understood limits and reliance outweigh newly discovered private drafting intentions."
+    },
+    "T8": {
+      "value": 2,
+      "rationale": "Applying a general rule against arbitrary caste distinctions need not preserve discriminatory expectations about its applications."
+    },
+    "T9": {
+      "value": 1,
+      "rationale": "The established protection of parenthood provides a better starting point than a categorical historical exclusion, subject to the actual family circumstances."
+    },
+    "T10": {
+      "value": 3,
+      "rationale": "Modern linguistic coincidence cannot by itself transform an established constitutional allocation concerning internal disorder."
+    },
+    "T11": {
+      "value": 1,
+      "rationale": "Longstanding public practice carries reliance and institutional experience that ordinarily outweigh a recent opinion shift."
+    },
+    "T12": {
+      "value": 3,
+      "rationale": "Gradual development through precedent and practical experience is central to her understanding of constitutional law."
+    },
+    "P2": {
+      "value": 2,
+      "rationale": "Longstanding statutory precedent and legislative opportunities to revise it strongly favor leaving ordinary correction to Congress."
+    },
+    "P3": {
+      "value": 3,
+      "rationale": "Accumulated practice and precedent genuinely constitute constitutional law rather than merely obscure an independent ideal text."
+    },
+    "P4": {
+      "value": 2,
+      "rationale": "Deep institutional and private reliance can make preserving an erroneous precedent the sounder legal choice."
+    },
+    "P5": {
+      "value": 2,
+      "rationale": "Those seeking disruption should bear an additional burden when the competing constitutional positions remain reasonable."
+    },
+    "P6": {
+      "value": -2,
+      "rationale": "A current judge's constitutional theory should not automatically displace the legal authority and reliance created by precedent."
+    },
+    "P7": {
+      "value": 3,
+      "rationale": "Stable intergenerational doctrine should resist changing merely with the interpretive preferences of newly appointed judges."
+    },
+    "P9": {
+      "value": 1,
+      "rationale": "Entrenched procedural safeguards deserve preservation, although that does not establish absolute judicial control over every possible legislative revision."
+    },
+    "P10": {
+      "value": -2,
+      "rationale": "A workable judicial remedy can legitimately implement a right without appearing in the constitutional text itself."
+    },
+    "P11": {
+      "value": -2,
+      "rationale": "Courts may develop bounded remedies for constitutional violations rather than automatically leave injured people without redress."
+    },
+    "P12": {
+      "value": 1,
+      "rationale": "Protecting reliance across the pension system and allowing a funded legislative repair narrowly outweigh immediate judicial correction here."
+    },
+    "R1": {
+      "value": -1,
+      "rationale": "Nationwide relief needs a demonstrated remedial necessity that this unreviewed finding and its serious public costs do not establish."
+    },
+    "R2": {
+      "value": 1,
+      "rationale": "Relief extending to identically affected workers can be a workable and inclusive response to a uniformly unlawful rule."
+    },
+    "R3": {
+      "value": 2,
+      "rationale": "Repeated failure of narrower remedies justifies an effective and proportionate population remedy for continuing constitutional violations."
+    },
+    "R4": {
+      "value": 2,
+      "rationale": "Persistent unconstitutional conduct after failed narrow orders can warrant sustained supervision tailored to the demonstrated institutional failure."
+    },
+    "R5": {
+      "value": 2,
+      "rationale": "An enforceable caseload limit can be justified when necessary to protect vulnerable children from established systemic rights violations."
+    },
+    "R6": {
+      "value": 2,
+      "rationale": "Severing the independently workable unconstitutional provision respects both constitutional rights and the legislature's remaining choices."
+    },
+    "R7": {
+      "value": 2,
+      "rationale": "The same tailored severance principle preserves valid worker protections while removing unconstitutional searches."
+    },
+    "R8": {
+      "value": 1,
+      "rationale": "An effective regional remedy may be justified by otherwise irremediable segregation, with careful limits on burdens imposed on nonviolating districts."
+    },
+    "R9": {
+      "value": 2,
+      "rationale": "A reasonable deadline can implement established gun rights when officials repeatedly defeat narrower remedies."
+    },
+    "R10": {
+      "value": 2,
+      "rationale": "A reasonable deadline can likewise implement voting rights when repeated administrative obstruction defeats narrower remedies."
+    },
+    "R11": {
+      "value": 2,
+      "rationale": "Resolving the actual injury narrowly ordinarily avoids unnecessary constitutional decisions and institutional disruption."
+    },
+    "O1": {
+      "value": 1,
+      "rationale": "Reasonable democratic choices deserve deference, while courts retain a bounded responsibility to address exclusion and rights failures."
+    },
+    "O2": {
+      "value": 1,
+      "rationale": "Functioning representative politics ordinarily deserves room to resolve genuine disagreements about rights."
+    },
+    "O3": {
+      "value": 2,
+      "rationale": "Bounded judicial review can enforce the constitutional commitments through which the public structures its own government."
+    },
+    "O4": {
+      "value": 2,
+      "rationale": "Popular support does not cure an actual violation of the rights that courts are responsible for protecting."
+    },
+    "O5": {
+      "value": 2,
+      "rationale": "Judges have institutional legal responsibilities rather than a special claim to superior moral wisdom."
+    },
+    "O6": {
+      "value": 1,
+      "rationale": "A prescribed and temporary legislative reconsideration mechanism can support responsible constitutional dialogue, subject to adequate rights safeguards."
+    },
+    "O7": {
+      "value": 1,
+      "rationale": "A legitimate narrow disposition can allow further democratic and legal development before a sweeping constitutional settlement."
+    },
+    "O8": {
+      "value": 1,
+      "rationale": "Judicial headcount alone supplies no democratic superiority where institutions function and the constitutional alternatives are genuinely reasonable."
+    },
+    "O9": {
+      "value": 1,
+      "rationale": "On the stipulated genuine constitutional uncertainty, she would ordinarily give the elected institution room to choose."
+    },
+    "O10": {
+      "value": 2,
+      "rationale": "An established constitutional protection remains enforceable despite overwhelming electoral support for violating it."
+    },
+    "O11": {
+      "value": 2,
+      "rationale": "Repeated democratic approval does not justify an actual speech violation that undermines an unpopular group's participation."
+    },
+    "O12": {
+      "value": -2,
+      "rationale": "Removing judges for debatable unpopular rulings would compromise the independence needed for bounded rights protection."
+    },
+    "O13": {
+      "value": 2,
+      "rationale": "Secure tenure helps courts protect minorities and participation when majorities are hostile."
+    },
+    "E1": {
+      "value": -1,
+      "rationale": "Useful oversight does not alone justify bypassing the public procedures ordinarily required to change law."
+    },
+    "E2": {
+      "value": 2,
+      "rationale": "Limited removal protection can make an investigation credible without eliminating accountability for genuine misconduct."
+    },
+    "E3": {
+      "value": -1,
+      "rationale": "Expert agencies can reasonably make policy judgments within legislated public-health and economic standards."
+    },
+    "E4": {
+      "value": 2,
+      "rationale": "Efficiency alone does not justify allowing the President to rewrite a completed legislative compromise."
+    },
+    "E5": {
+      "value": 2,
+      "rationale": "Combined agency functions can be workable if meaningful independent review and procedural safeguards remain intact."
+    },
+    "E6": {
+      "value": 1,
+      "rationale": "Emergency necessity calls for using available constitutional flexibility rather than treating efficiency alone as authority to bypass assigned procedures."
+    },
+    "E7": {
+      "value": 1,
+      "rationale": "Functional independence and dangerous concentration matter more than rigid separation, although explicit procedural requirements also matter."
+    },
+    "F1": {
+      "value": -1,
+      "rationale": "General rules are valuable, but their sweeping superiority over fairly administered individualized discretion is unpersuasive."
+    },
+    "F3": {
+      "value": 2,
+      "rationale": "Rules need genuine constraining force even though limited, principled exceptions can remain appropriate."
+    },
+    "F4": {
+      "value": -2,
+      "rationale": "Context, practical consequences, and competing values often matter beyond assigning facts to an abstract category."
+    },
+    "F5": {
+      "value": 1,
+      "rationale": "Judges should own the consequences of contextual judgment, while still respecting legitimate rules and institutional limits."
+    },
+    "F6": {
+      "value": 3,
+      "rationale": "Reliance on official misinformation presents a compelling and administrable reason to excuse this vulnerable claimant's delay."
+    },
+    "F7": {
+      "value": 1,
+      "rationale": "Documented discriminatory administration favors a uniform rule over continuing that discretion unless effective safeguards can make it fair."
+    },
+    "F8": {
+      "value": 3,
+      "rationale": "A clear protective age boundary prevents serious punishment from turning on demonstrated racial and class biases."
+    },
+    "F9": {
+      "value": 1,
+      "rationale": "She would allow proportionate mitigation for the minimally culpable older teenager without treating discretion as permission to remove the younger one's protections."
+    },
+    "D-SEP1": {
+      "value": 2,
+      "rationale": "Statutory assignments can preserve a subordinate officer's independent judgment within an accountable executive system."
+    },
+    "D-SEP2": {
+      "value": -1,
+      "rationale": "Equally reasonable expert interpretation merits institutional weight rather than automatic displacement by a judge's preference."
+    },
+    "D-SEP3": {
+      "value": -2,
+      "rationale": "A clear legislative assignment of bounded policy discretion should not be invalid merely because an expert agency exercises it."
+    },
+    "D-MET1": {
+      "value": 2,
+      "rationale": "Accountable supervision need not entail presidential substitution for every lawful judgment assigned elsewhere."
+    },
+    "D-SEP4": {
+      "value": -1,
+      "rationale": "Agency adjudication can be legitimate with adequate safeguards and meaningful independent review, although serious penalties require particular care."
+    },
+    "D-MOR1": {
+      "value": -3,
+      "rationale": "A judge's personal moral disagreement alone cannot override every recognized legal source."
+    },
+    "D-PREC1": {
+      "value": -1,
+      "rationale": "An old rule's lack of original textual warrant is not alone sufficient to discard its reliance and participation-protecting role."
+    },
+    "D-RLS1": {
+      "value": 2,
+      "rationale": "Genuinely unsettled cases leave room for experience and practical judgments to influence a defensible choice."
+    },
+    "D-RLS2": {
+      "value": 2,
+      "rationale": "Understanding actual judging requires empirical attention to judges and institutions as well as doctrinal materials."
+    },
+    "D-RLS3": {
+      "value": 2,
+      "rationale": "A sincere doctrinal explanation can obscure the constructive choice and practical judgments involved in a difficult case."
+    },
+    "D-RLS4": {
+      "value": 2,
+      "rationale": "Her trial-court perspective makes contested facts, credibility, and decision-maker psychology important independent sources of uncertainty."
+    },
+    "D-RLS5": {
+      "value": 3,
+      "rationale": "Legal labels should be tested against the conduct and social effects they organize rather than mechanically decide outcomes."
+    },
+    "D-ORI1": {
+      "value": 2,
+      "rationale": "Publicly communicated meaning has stronger institutional authority than uncommunicated private intentions."
+    },
+    "D-ORI2": {
+      "value": -1,
+      "rationale": "Historical methods are useful evidence, but need not bind interpretation against later legal practice and experience."
+    },
+    "D-ORI3": {
+      "value": 2,
+      "rationale": "Genuinely unresolved constitutional space permits legitimate subsequent doctrinal development."
+    },
+    "D-ORI4": {
+      "value": -2,
+      "rationale": "Recovering authors' intentions cannot be the exclusive goal of interpreting an institutionally practiced and developing constitution."
+    },
+    "D-ORI5": {
+      "value": 2,
+      "rationale": "Structural and whole-document context are sound components of careful legal interpretation."
+    },
+    "D-ORI6": {
+      "value": 1,
+      "rationale": "An account of original law that includes institutional rules and lawful change is more useful than isolated ordinary wording alone."
+    },
+    "D-ORI7": {
+      "value": -2,
+      "rationale": "Contemporary legal meaning depends on accumulated legal practice as well as the founding text's public meaning."
+    },
+    "D-POS1": {
+      "value": 2,
+      "rationale": "Recognized constitutional standards can make moral reasoning part of the legal system's own validity inquiry."
+    },
+    "D-POS2": {
+      "value": 1,
+      "rationale": "Recognized sources generally deserve settling force, though courts also have a bounded constructive role when the law is unsettled."
+    },
+    "D-AUS1": {
+      "value": -2,
+      "rationale": "Public practices, reciprocal legal standards, and institutional development explain law better than sovereign commands and threatened sanctions alone."
+    },
+    "D-KEL1": {
+      "value": null,
+      "rationale": "Her practical institutional commitments do not settle whether a presupposed basic norm explains the ultimate unity of law."
+    },
+    "D-SHA1": {
+      "value": 1,
+      "rationale": "Shared institutional planning usefully describes law's coordination function, although she would not insist on one master-plan theory."
+    },
+    "D-NP1": {
+      "value": 2,
+      "rationale": "Positive law legitimately settles disputed practical questions and does not give judges a license for free-ranging moral replacement."
+    },
+    "D-NL2": {
+      "value": 1,
+      "rationale": "Serious defects in notice, consistency, or nonarbitrary governance can undermine legality even when ordinary authorities endorse the rules."
+    },
+    "D-NP2": {
+      "value": 1,
+      "rationale": "A principle grounded in the practice's best justification can sometimes be existing law, without eliminating genuine gaps requiring constructive choice."
+    },
+    "D-NP4": {
+      "value": -2,
+      "rationale": "Institutional law and its effects on moral obligations should not be collapsed into the same thing."
+    },
+    "D-NP5": {
+      "value": -2,
+      "rationale": "Existing legal rights can be identified through legal practice without resolving every dispute about genuine moral entitlement."
+    },
+    "D-NP6": {
+      "value": -1,
+      "rationale": "Extreme injustice alone does not settle legal status; failures of public and nonarbitrary governance provide the stronger legality objection."
+    },
+    "D-NP3": {
+      "value": 3,
+      "rationale": "Secrecy, contradiction, retroactivity, and instability can defeat the conditions needed for governance to function as law."
+    },
+    "D-MAJ1": {
+      "value": 1,
+      "rationale": "Other branches may contribute constitutional judgments, while institutional settlement and binding judgments constrain how they act on them."
+    },
+    "D-MAJ2": {
+      "value": 2,
+      "rationale": "Constitutional development properly includes democratic institutions and sustained public participation alongside judicial practice."
+    },
+    "D-ELY1": {
+      "value": 3,
+      "rationale": "Correcting political exclusion and distorted participation is a particularly strong justification for judicial intervention."
+    },
+    "D-WAL1": {
+      "value": 1,
+      "rationale": "Functioning elected institutions have substantial authority to settle reasonable disagreements without making every judicial role illegitimate."
+    },
+    "D-RESP1": {
+      "value": 3,
+      "rationale": "Judicial intervention should match the severity of the democratic failure and the court's actual remedial competence."
+    },
+    "D-TXT1": {
+      "value": 2,
+      "rationale": "Whole-statute context and actual usage should guide selection among linguistically plausible readings."
+    },
+    "D-GRD1": {
+      "value": 1,
+      "rationale": "A constitutionally prescribed dialogue can preserve meaningful judicial rights review without requiring an absolute judicial monopoly."
+    },
+    "D-MON1": {
+      "value": 3,
+      "rationale": "Workable rights protection can require genuine judicial implementing law that remains distinct from the underlying constitutional minimum."
+    },
+    "D-BRAY1": {
+      "value": -1,
+      "rationale": "Historical limits deserve weight but should not categorically foreclose broader relief needed to cure demonstrated systemic violations."
+    },
+    "D-UNI1": {
+      "value": 2,
+      "rationale": "Appropriately tailored relief may protect nonparties from a uniformly unlawful policy when separate litigation would be ineffective or wasteful."
+    },
+    "D-LEV1": {
+      "value": 1,
+      "rationale": "Institutional feasibility can inform the workable boundaries of a right, though cost alone should not erase its basic protection."
+    },
+    "D-TXT2": {
+      "value": 1,
+      "rationale": "A genuinely categorical constitutional command deserves force, while careful contextual interpretation must determine its actual scope."
+    },
+    "D-INT1": {
+      "value": -1,
+      "rationale": "Historical intention is evidence rather than an overriding goal that displaces statutory purpose and institutional context."
+    },
+    "D-INT2": {
+      "value": 1,
+      "rationale": "Considering how the legislative purpose would address a new problem can help, without pretending an actual historical intention existed."
+    },
+    "D-KAT1": {
+      "value": 2,
+      "rationale": "Reliable legislative materials can illuminate ambiguous law through the institution's real communication practices."
+    },
+    "D-CAL1": {
+      "value": 1,
+      "rationale": "Extreme obsolescence can warrant a cautious second-look approach informed by the later legal framework and institutional competence."
+    },
+    "D-PRAG1": {
+      "value": 3,
+      "rationale": "Practical consequences and workable development are legitimate independent considerations in genuinely unsettled cases."
+    },
+    "D-LP1": {
+      "value": 3,
+      "rationale": "Institutional responsibility and comparative competence should shape the court's reasoning from the outset."
+    },
+    "D-LP2": {
+      "value": 3,
+      "rationale": "Consistent treatment of materially similar cases is necessary to distinguish principled judgment from result-driven discretion."
+    },
+    "D-MAS1": {
+      "value": 2,
+      "rationale": "Agency expertise and disciplined reason-giving can contribute genuine legal interpretation within the assigned institutional role."
+    },
+    "D-ROM1": {
+      "value": 1,
+      "rationale": "Stable and sufficiently organized nonstate practices can plausibly constitute legal orders beyond formal state law."
+    },
+    "D-GENY1": {
+      "value": 3,
+      "rationale": "Judges should openly construct a missing rule through disciplined social inquiry rather than conceal their choice behind nonexistent textual certainty."
+    },
+    "D-EHR1": {
+      "value": 1,
+      "rationale": "Socially operative community norms deserve serious jurisprudential attention, while their relation to official law still matters."
+    },
+    "D-BLK1": {
+      "value": 2,
+      "rationale": "Institutional relationships and constitutional structure can supply legal implications beyond express individual clauses."
+    },
+    "D-LIV1": {
+      "value": 2,
+      "rationale": "Sustained public argument can shape developing constitutional practice without reducing judicial rights enforcement to majority preference."
+    },
+    "D-ACK1": {
+      "value": 1,
+      "rationale": "An extraordinary and durably institutionalized constitutional settlement can gain legal significance beyond the formal amendment process."
+    },
+    "D-LIV2": {
+      "value": 1,
+      "rationale": "Constitutional equality and participation can guide institutional transformation, but change should remain practically grounded and attentive to reliance."
+    },
+    "D-HAR1": {
+      "value": 3,
+      "rationale": "Historically embedded practice and accumulated experience offer the gradual, contextual development she favors."
+    },
+    "D-CLC1": {
+      "value": -1,
+      "rationale": "Common-law importance alone is insufficient to give courts an automatic power to invalidate ordinary legislation without an established constitutional basis."
+    },
+    "D-PIL1": {
+      "value": 2,
+      "rationale": "Adaptable filing and standing procedures can make rights protection genuinely accessible to vulnerable people while preserving fair adjudication."
+    },
+    "D-CGC1": {
+      "value": 1,
+      "rationale": "Inclusive public welfare is a legitimate constitutional aim, but should operate alongside procedural protection and institutional limits."
+    },
+    "D-PROP1": {
+      "value": 2,
+      "rationale": "Structured proportionality provides a transparent way to assess real consequences while protecting rights from unnecessary burdens."
+    },
+    "D-QC2": {
+      "value": 1,
+      "rationale": "She follows the response-check instruction to select Slightly Agree."
+    },
+    "D-QC1": {
+      "value": -2,
+      "rationale": "She follows the response-check instruction to select Disagree."
+    },
+    "D-SOC1": {
+      "value": 3,
+      "rationale": "Openly weighing social interests and actual effects is central to disciplined development within the available legal materials."
+    },
+    "D-PLU1": {
+      "value": 3,
+      "rationale": "Text, history, precedent, structure, consequences, and principles all contribute without one mechanical method deciding every hard case."
+    },
+    "D-PLU2": {
+      "value": 2,
+      "rationale": "The appropriate weight of interpretive tools depends on the concrete dispute and institutional setting."
+    },
+    "D-OCO1": {
+      "value": 3,
+      "rationale": "Narrow, contextual judgment fits her preference for careful practical development over comprehensive abstract theories."
+    },
+    "D-PRI-source-time": {
+      "value": null,
+      "rationale": "The biography supplies positions relevant to source and/or time, but does not say which is more personally characteristic. Skip rather than invent a priority or assert equal centrality.",
+      "evidence": {
+        "source": "Moral reasons and social effects guide development, but an unrecognized moral conviction is not automatically an existing legal rule.",
+        "time": "Strong but defeasible respect for precedent, reliance, and gradual evolution; willingness to distinguish or revise rules when experience exposes serious harm."
+      }
+    },
+    "D-PRI-source-method": {
+      "value": null,
+      "rationale": "The biography supplies positions relevant to source and/or method, but does not say which is more personally characteristic. Skip rather than invent a priority or assert equal centrality.",
+      "evidence": {
+        "source": "Moral reasons and social effects guide development, but an unrecognized moral conviction is not automatically an existing legal rule.",
+        "method": "Decide through careful analogy, statutory purpose, institutional competence, and real-world context rather than abstract grand principles or literal words alone."
+      }
+    },
+    "D-PRI-source-posture": {
+      "value": null,
+      "rationale": "The biography supplies positions relevant to source and/or posture, but does not say which is more personally characteristic. Skip rather than invent a priority or assert equal centrality.",
+      "evidence": {
+        "source": "Moral reasons and social effects guide development, but an unrecognized moral conviction is not automatically an existing legal rule.",
+        "posture": "Democratic choices matter, yet courts have a legitimate bounded role protecting participation and correcting failures."
+      }
+    },
+    "D-PRI-source-structure": {
+      "value": null,
+      "rationale": "The biography supplies positions relevant to source and/or structure, but does not say which is more personally characteristic. Skip rather than invent a priority or assert equal centrality.",
+      "evidence": {
+        "source": "Moral reasons and social effects guide development, but an unrecognized moral conviction is not automatically an existing legal rule.",
+        "structure": "Decide through careful analogy, statutory purpose, institutional competence, and real-world context rather than abstract grand principles or literal words alone."
+      }
+    },
+    "D-PRI-source-form": {
+      "value": null,
+      "rationale": "The biography supplies positions relevant to source and/or form, but does not say which is more personally characteristic. Skip rather than invent a priority or assert equal centrality.",
+      "evidence": {
+        "source": "Moral reasons and social effects guide development, but an unrecognized moral conviction is not automatically an existing legal rule.",
+        "form": "She values stable rules but accepts reasonable individualized discretion when institutions can administer it fairly."
+      }
+    },
+    "D-PRI-source-realism": {
+      "value": null,
+      "rationale": "The biography supplies positions relevant to source and/or realism, but does not say which is more personally characteristic. Skip rather than invent a priority or assert equal centrality.",
+      "evidence": {
+        "source": "Moral reasons and social effects guide development, but an unrecognized moral conviction is not automatically an existing legal rule.",
+        "realism": "Some legal questions are genuinely unsettled; judges should admit limited constructive choice."
+      }
+    },
+    "D-PRI-time-method": {
+      "value": null,
+      "rationale": "The biography supplies positions relevant to time and/or method, but does not say which is more personally characteristic. Skip rather than invent a priority or assert equal centrality.",
+      "evidence": {
+        "time": "Strong but defeasible respect for precedent, reliance, and gradual evolution; willingness to distinguish or revise rules when experience exposes serious harm.",
+        "method": "Decide through careful analogy, statutory purpose, institutional competence, and real-world context rather than abstract grand principles or literal words alone."
+      }
+    },
+    "D-PRI-time-posture": {
+      "value": null,
+      "rationale": "The biography supplies positions relevant to time and/or posture, but does not say which is more personally characteristic. Skip rather than invent a priority or assert equal centrality.",
+      "evidence": {
+        "time": "Strong but defeasible respect for precedent, reliance, and gradual evolution; willingness to distinguish or revise rules when experience exposes serious harm.",
+        "posture": "Democratic choices matter, yet courts have a legitimate bounded role protecting participation and correcting failures."
+      }
+    },
+    "D-PRI-time-structure": {
+      "value": null,
+      "rationale": "The biography supplies positions relevant to time and/or structure, but does not say which is more personally characteristic. Skip rather than invent a priority or assert equal centrality.",
+      "evidence": {
+        "time": "Strong but defeasible respect for precedent, reliance, and gradual evolution; willingness to distinguish or revise rules when experience exposes serious harm.",
+        "structure": "Decide through careful analogy, statutory purpose, institutional competence, and real-world context rather than abstract grand principles or literal words alone."
+      }
+    },
+    "D-PRI-time-form": {
+      "value": null,
+      "rationale": "The biography supplies positions relevant to time and/or form, but does not say which is more personally characteristic. Skip rather than invent a priority or assert equal centrality.",
+      "evidence": {
+        "time": "Strong but defeasible respect for precedent, reliance, and gradual evolution; willingness to distinguish or revise rules when experience exposes serious harm.",
+        "form": "She values stable rules but accepts reasonable individualized discretion when institutions can administer it fairly."
+      }
+    },
+    "D-PRI-time-realism": {
+      "value": null,
+      "rationale": "The biography supplies positions relevant to time and/or realism, but does not say which is more personally characteristic. Skip rather than invent a priority or assert equal centrality.",
+      "evidence": {
+        "time": "Strong but defeasible respect for precedent, reliance, and gradual evolution; willingness to distinguish or revise rules when experience exposes serious harm.",
+        "realism": "Some legal questions are genuinely unsettled; judges should admit limited constructive choice."
+      }
+    },
+    "D-PRI-method-posture": {
+      "value": null,
+      "rationale": "The biography supplies positions relevant to method and/or posture, but does not say which is more personally characteristic. Skip rather than invent a priority or assert equal centrality.",
+      "evidence": {
+        "method": "Decide through careful analogy, statutory purpose, institutional competence, and real-world context rather than abstract grand principles or literal words alone.",
+        "posture": "Democratic choices matter, yet courts have a legitimate bounded role protecting participation and correcting failures."
+      }
+    },
+    "D-PRI-method-structure": {
+      "value": null,
+      "rationale": "The biography supplies positions relevant to method and/or structure, but does not say which is more personally characteristic. Skip rather than invent a priority or assert equal centrality.",
+      "evidence": {
+        "method": "Decide through careful analogy, statutory purpose, institutional competence, and real-world context rather than abstract grand principles or literal words alone.",
+        "structure": "Decide through careful analogy, statutory purpose, institutional competence, and real-world context rather than abstract grand principles or literal words alone."
+      }
+    },
+    "D-PRI-method-form": {
+      "value": null,
+      "rationale": "The biography supplies positions relevant to method and/or form, but does not say which is more personally characteristic. Skip rather than invent a priority or assert equal centrality.",
+      "evidence": {
+        "method": "Decide through careful analogy, statutory purpose, institutional competence, and real-world context rather than abstract grand principles or literal words alone.",
+        "form": "She values stable rules but accepts reasonable individualized discretion when institutions can administer it fairly."
+      }
+    },
+    "D-PRI-method-realism": {
+      "value": null,
+      "rationale": "The biography supplies positions relevant to method and/or realism, but does not say which is more personally characteristic. Skip rather than invent a priority or assert equal centrality.",
+      "evidence": {
+        "method": "Decide through careful analogy, statutory purpose, institutional competence, and real-world context rather than abstract grand principles or literal words alone.",
+        "realism": "Some legal questions are genuinely unsettled; judges should admit limited constructive choice."
+      }
+    },
+    "D-PRI-posture-structure": {
+      "value": null,
+      "rationale": "The biography supplies positions relevant to posture and/or structure, but does not say which is more personally characteristic. Skip rather than invent a priority or assert equal centrality.",
+      "evidence": {
+        "posture": "Democratic choices matter, yet courts have a legitimate bounded role protecting participation and correcting failures.",
+        "structure": "Decide through careful analogy, statutory purpose, institutional competence, and real-world context rather than abstract grand principles or literal words alone."
+      }
+    },
+    "D-PRI-posture-form": {
+      "value": null,
+      "rationale": "The biography supplies positions relevant to posture and/or form, but does not say which is more personally characteristic. Skip rather than invent a priority or assert equal centrality.",
+      "evidence": {
+        "posture": "Democratic choices matter, yet courts have a legitimate bounded role protecting participation and correcting failures.",
+        "form": "She values stable rules but accepts reasonable individualized discretion when institutions can administer it fairly."
+      }
+    },
+    "D-PRI-posture-realism": {
+      "value": null,
+      "rationale": "The biography supplies positions relevant to posture and/or realism, but does not say which is more personally characteristic. Skip rather than invent a priority or assert equal centrality.",
+      "evidence": {
+        "posture": "Democratic choices matter, yet courts have a legitimate bounded role protecting participation and correcting failures.",
+        "realism": "Some legal questions are genuinely unsettled; judges should admit limited constructive choice."
+      }
+    },
+    "D-PRI-structure-form": {
+      "value": null,
+      "rationale": "The biography supplies positions relevant to structure and/or form, but does not say which is more personally characteristic. Skip rather than invent a priority or assert equal centrality.",
+      "evidence": {
+        "structure": "Decide through careful analogy, statutory purpose, institutional competence, and real-world context rather than abstract grand principles or literal words alone.",
+        "form": "She values stable rules but accepts reasonable individualized discretion when institutions can administer it fairly."
+      }
+    },
+    "D-PRI-structure-realism": {
+      "value": null,
+      "rationale": "The biography supplies positions relevant to structure and/or realism, but does not say which is more personally characteristic. Skip rather than invent a priority or assert equal centrality.",
+      "evidence": {
+        "structure": "Decide through careful analogy, statutory purpose, institutional competence, and real-world context rather than abstract grand principles or literal words alone.",
+        "realism": "Some legal questions are genuinely unsettled; judges should admit limited constructive choice."
+      }
+    },
+    "D-PRI-form-realism": {
+      "value": null,
+      "rationale": "The biography supplies positions relevant to form and/or realism, but does not say which is more personally characteristic. Skip rather than invent a priority or assert equal centrality.",
+      "evidence": {
+        "form": "She values stable rules but accepts reasonable individualized discretion when institutions can administer it fairly.",
+        "realism": "Some legal questions are genuinely unsettled; judges should admit limited constructive choice."
+      }
+    }
+  },
+  "preparedAt": "2026-10-15T02:13:15.263603+00:00",
+  "priorityExtension": {
+    "frozenAt": "2026-10-15T03:04:59.810Z",
+    "originalPlanSha256": "55d906dcfe33d59f24a8194c66ee0b7a726499905a8deda26becaebbbe61bf0b",
+    "method": "Frozen before revised production outputs. Original 157 answers unchanged. No primary-commitment ranking inferred from profession, paragraph order, compatible doctrinal positions, or desired label. Null means insufficient biographical evidence of comparative centrality; zero would assert a tie."
+  }
+}

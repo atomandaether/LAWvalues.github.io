@@ -128,18 +128,10 @@
     questions = global.LAW_QUESTIONS,
     diagnostics = global.LAW_DIAGNOSTIC_QUESTIONS
   ) {
-    const supplemental = (Array.isArray(diagnostics) ? diagnostics : []).filter(
-      (item) =>
-        item?.signals &&
-        hasResponse(diagnosticResponses, item.id) &&
-        diagnosticResponses[item.id] !== null
-    );
-    if (supplemental.length === 0) return scoreAll(responses, axes, questions);
-    return scoreAll(
-      { ...(responses || {}), ...(diagnosticResponses || {}) },
-      axes,
-      [...questions, ...supplemental]
-    );
+    // Kept as a compatibility API for callers that still pass diagnostics.
+    // Diagnostics establish identity/subtype/champion evidence only. All eight
+    // displayed axes use the same core evidence during routing and finalization.
+    return scoreAll(responses, axes, questions);
   }
 
   function axisLabel(axis, score) {
@@ -187,3 +179,4 @@
     profileDistance
   });
 })(globalThis);
+

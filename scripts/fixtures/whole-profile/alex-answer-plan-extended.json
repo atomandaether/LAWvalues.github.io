@@ -1,0 +1,807 @@
+{
+  "personaId": "alex",
+  "answers": {
+    "S1": {
+      "value": 3,
+      "rationale": "Cruelty can justify moral resistance or repeal without negating a law enacted through recognized procedures."
+    },
+    "S2": {
+      "value": -3,
+      "rationale": "Even this extreme injustice remains legally identifiable as law when all recognized legal sources support its validity."
+    },
+    "S3": {
+      "value": 3,
+      "rationale": "A judge's moral conviction cannot add an unauthorized ground to an exhaustive legal list."
+    },
+    "S4": {
+      "value": 3,
+      "rationale": "A tax's harshness or foolishness does not undo its valid enactment."
+    },
+    "S5": {
+      "value": 3,
+      "rationale": "Settled institutional recognition makes the clerk's version authoritative despite the alternative's greater fairness."
+    },
+    "S6": {
+      "value": -2,
+      "rationale": "Destruction alone creates no legal compensation duty without a recognized source, although compensation may be morally warranted."
+    },
+    "S7": {
+      "value": 2,
+      "rationale": "Genuine source-based gaps require limited judicial lawmaking, although the absence of a decisive answer does not erase every preexisting right."
+    },
+    "S8": {
+      "value": -3,
+      "rationale": "Recognized sources can leave genuine gaps that moral interpretation cannot always convert into preexisting legal answers."
+    },
+    "S10": {
+      "value": -3,
+      "rationale": "Even an objectively true moral prohibition is not itself law without recognition by the legal system."
+    },
+    "S11": {
+      "value": -3,
+      "rationale": "The harmful lie makes the agreement morally objectionable but cannot alone override every recognized legal source."
+    },
+    "C1": {
+      "value": 3,
+      "rationale": "The enacted phrase covers farm workers despite lawmakers' narrower expectations during debate."
+    },
+    "C2": {
+      "value": 3,
+      "rationale": "The express acreage exemption remains binding even when its application undermines the statute's broader purpose."
+    },
+    "C3": {
+      "value": 2,
+      "rationale": "If the reasonable reading violates the Constitution, the court should invalidate it rather than invent a strained saving construction."
+    },
+    "C4": {
+      "value": 2,
+      "rationale": "If the reasonable reading violates the constitutional right, the court should invalidate it rather than rewrite the firearm ban."
+    },
+    "C5": {
+      "value": 2,
+      "rationale": "Ordinary meaning in context can distinguish a permanent monument from a functioning transportation vehicle."
+    },
+    "C6": {
+      "value": -1,
+      "rationale": "Context can explain the memorial's exclusion, but purpose alone should not authorize an exception to words that genuinely cover it."
+    },
+    "C7": {
+      "value": 3,
+      "rationale": "The enacted deduction controls over a committee report that contradicts it."
+    },
+    "C8": {
+      "value": -2,
+      "rationale": "A narrower policy target does not ordinarily justify removing a professor from an otherwise clear statutory prohibition."
+    },
+    "C9": {
+      "value": 2,
+      "rationale": "If the fish is legally protected, unexpected expense does not authorize disregarding the enacted protection."
+    },
+    "C10": {
+      "value": -2,
+      "rationale": "With no other applicable law or authorized exception, a guide dog's harmlessness does not remove it from the prohibition."
+    },
+    "C11": {
+      "value": 3,
+      "rationale": "Courts should respect the enacted compromise and leave expansion of the eligible groups to lawmakers."
+    },
+    "C12": {
+      "value": -3,
+      "rationale": "A prohibition specifically addressing dogs cannot provide fair notice that tigers are prohibited by that same rule."
+    },
+    "C13": {
+      "value": -2,
+      "rationale": "The surrounding list supports a road-vehicle meaning rather than the broadest dictionary definition."
+    },
+    "C14": {
+      "value": -3,
+      "rationale": "Courts cannot extend an exhaustive prohibition to a genuinely different contract merely because it achieves an evasive result."
+    },
+    "C15": {
+      "value": -2,
+      "rationale": "Interpretation should begin with enacted language and context rather than allow a reconstructed purpose to dictate its meaning."
+    },
+    "C17": {
+      "value": 3,
+      "rationale": "Enacted text supplies the public legal commitment that competing legislative motives cannot replace."
+    },
+    "C18": {
+      "value": 3,
+      "rationale": "The negotiated exemption is part of the law even when its consequences urgently warrant legislative correction."
+    },
+    "T1": {
+      "value": 2,
+      "rationale": "The laws' original public equality commitments retain authority despite later changes in prevailing views."
+    },
+    "T2": {
+      "value": 2,
+      "rationale": "The stipulated original legal understanding cannot be displaced solely because public attitudes toward legislative prayer change."
+    },
+    "T3": {
+      "value": 3,
+      "rationale": "The stipulated historical twelve-person guarantee requires amendment rather than judicial revision for convenience."
+    },
+    "T4": {
+      "value": -2,
+      "rationale": "Later moral recognition alone cannot replace a constitutional meaning stipulated to have excluded that freedom."
+    },
+    "T5": {
+      "value": -2,
+      "rationale": "A newly persuasive objection to poll taxes calls for lawful change rather than treating changed opinion as changed constitutional meaning."
+    },
+    "T6": {
+      "value": -2,
+      "rationale": "Changed moral attitudes alone do not authorize courts to reverse the stipulated original constitutional permission for capital punishment."
+    },
+    "T7": {
+      "value": 3,
+      "rationale": "The publicly ratified two-term limit controls over private intentions never communicated to voters."
+    },
+    "T8": {
+      "value": 3,
+      "rationale": "Applying the original general prohibition on arbitrary caste distinctions can correct mistaken expected applications without changing its meaning."
+    },
+    "T9": {
+      "value": -1,
+      "rationale": "A broad principle of parenthood does not by itself overcome the specific historical exclusion without stronger support from legal sources."
+    },
+    "T10": {
+      "value": 3,
+      "rationale": "The provision's original public meaning cannot acquire a new federal power through a later linguistic shift."
+    },
+    "T11": {
+      "value": 2,
+      "rationale": "Longstanding official practice provides stronger source-based guidance than a recent change in public opinion."
+    },
+    "T12": {
+      "value": 1,
+      "rationale": "Doctrine can develop within genuine interpretive gaps while remaining constrained by original meaning and settled sources."
+    },
+    "P2": {
+      "value": 2,
+      "rationale": "Longstanding statutory precedent and Congress's opportunity to amend it favor leaving correction to lawmakers."
+    },
+    "P3": {
+      "value": 2,
+      "rationale": "Institutionally recognized precedent and practice contribute to constitutional law even though their authority remains defeasible."
+    },
+    "P4": {
+      "value": 1,
+      "rationale": "Deep reliance can justify retaining some mistaken precedent, although no error becomes automatically immune from correction."
+    },
+    "P5": {
+      "value": 2,
+      "rationale": "A challenger should bear an additional burden before unsettling law amid reasonable constitutional disagreement."
+    },
+    "P6": {
+      "value": -1,
+      "rationale": "Treating every perceived constitutional error as an immediate duty to overrule would disregard precedent's legitimate stabilizing role."
+    },
+    "P7": {
+      "value": 2,
+      "rationale": "Substantial respect for precedent protects predictable law from abrupt changes in judicial philosophy."
+    },
+    "P9": {
+      "value": -1,
+      "rationale": "Miranda's settled protective role deserves weight, but entrenchment alone does not establish exclusive judicial control over every safeguard."
+    },
+    "P10": {
+      "value": -1,
+      "rationale": "A recognized judicial remedy can merit retention without being textually compelled if courts have legitimate authority to maintain it."
+    },
+    "P11": {
+      "value": 1,
+      "rationale": "Creating a general damages action principally belongs to Congress, though settled precedent and effective rights protection weigh against abrupt abolition."
+    },
+    "P12": {
+      "value": 2,
+      "rationale": "Extensive pension reliance and repeated legislative opportunities to amend strongly favor legislative correction of the mistaken rule."
+    },
+    "R1": {
+      "value": -2,
+      "rationale": "One plaintiff's success ordinarily supports relief within the court's remedial authority rather than an immediate nationwide injunction."
+    },
+    "R2": {
+      "value": -2,
+      "rationale": "A meritorious worker's claim does not by itself establish authority to extend relief to every affected nonparty."
+    },
+    "R3": {
+      "value": 1,
+      "rationale": "A proven constitutional violation can justify necessary relief despite ordinary incarceration rules, provided the order stays closely bounded."
+    },
+    "R4": {
+      "value": 1,
+      "rationale": "Persistent violations after narrower orders can warrant targeted judicial supervision, with substantial caution about institutional overreach."
+    },
+    "R5": {
+      "value": 1,
+      "rationale": "Established constitutional rights may require costly effective relief, but a specific staffing mandate demands careful attention to judicial authority."
+    },
+    "R6": {
+      "value": 3,
+      "rationale": "Severing the invalid fee respects the remaining lawful legislative choices."
+    },
+    "R7": {
+      "value": 3,
+      "rationale": "Removing only the unlawful search power preserves the legislature's independent and valid worker protections."
+    },
+    "R8": {
+      "value": -2,
+      "rationale": "Greater effectiveness alone does not justify coercive remedies against districts not found responsible for the violation."
+    },
+    "R9": {
+      "value": 2,
+      "rationale": "A tailored deadline can legitimately implement an established gun right when repeated evasion defeats narrower orders."
+    },
+    "R10": {
+      "value": 2,
+      "rationale": "A tailored deadline can legitimately implement an established voting right when repeated evasion defeats narrower orders."
+    },
+    "R11": {
+      "value": 3,
+      "rationale": "Courts should resolve the actual injury through the narrowest sufficient constitutional ruling."
+    },
+    "O1": {
+      "value": 1,
+      "rationale": "Genuine constitutional uncertainty warrants some democratic deference, although courts retain responsibility for enforceable rights limits."
+    },
+    "O2": {
+      "value": 2,
+      "rationale": "Functioning representative institutions ordinarily have the better claim to resolve contested policy and moral choices."
+    },
+    "O3": {
+      "value": 3,
+      "rationale": "Judicial enforcement of a valid constitutional limit implements the people's higher legal command."
+    },
+    "O4": {
+      "value": 2,
+      "rationale": "Popularity cannot reduce the authority of an established constitutional right."
+    },
+    "O5": {
+      "value": 2,
+      "rationale": "Judges' institutional role does not give their personal moral judgments superior democratic authority."
+    },
+    "O6": {
+      "value": 0,
+      "rationale": "An expressly authorized override can be legitimate, but Alex also values dependable constitutional rights against temporary majorities."
+    },
+    "O7": {
+      "value": 2,
+      "rationale": "An adequate narrow procedural resolution generally respects judicial limits and avoids unnecessary constitutional lawmaking."
+    },
+    "O8": {
+      "value": 1,
+      "rationale": "An evenly debatable rights question supplies a democratic reason for legislative deference, though recognized constitutional authority still matters."
+    },
+    "O9": {
+      "value": 1,
+      "rationale": "On the stipulated genuinely reasonable competing readings, Alex would lean toward the legislature's authorized policy choice."
+    },
+    "O10": {
+      "value": 3,
+      "rationale": "An established individual handgun right limits government even when a large majority wants to override it."
+    },
+    "O11": {
+      "value": 3,
+      "rationale": "Once the law is found to violate the constitutional right, repeated democratic deliberation cannot make it valid."
+    },
+    "O12": {
+      "value": -2,
+      "rationale": "Removing judges for unpopular legal judgments threatens the independent procedural checks Alex values."
+    },
+    "O13": {
+      "value": 3,
+      "rationale": "Secure judicial tenure helps make constitutional protections reliable when protecting a minority is unpopular."
+    },
+    "E1": {
+      "value": -2,
+      "rationale": "A useful legislative check cannot bypass the constitutionally assigned process for changing federal law."
+    },
+    "E2": {
+      "value": 1,
+      "rationale": "Limited protection for a prosecutor supports meaningful checks, although independence must still fit the constitutional allocation of power."
+    },
+    "E3": {
+      "value": 1,
+      "rationale": "Democratic accountability favors Congress making major policy choices while leaving room for bounded administrative implementation."
+    },
+    "E4": {
+      "value": 3,
+      "rationale": "Administrative efficiency cannot authorize the President to rewrite enacted legislation outside the prescribed process."
+    },
+    "E5": {
+      "value": 0,
+      "rationale": "Expert administration and judicial review matter, but Alex needs more constitutional and procedural detail to endorse combining these functions."
+    },
+    "E6": {
+      "value": 3,
+      "rationale": "Emergency efficiency cannot by itself displace constitutionally assigned procedures."
+    },
+    "E7": {
+      "value": -1,
+      "rationale": "Institutional boundaries can impose legal limits before an arrangement produces a demonstrable dangerous concentration of power."
+    },
+    "F1": {
+      "value": 2,
+      "rationale": "General rules usually advance fair notice and equal treatment, although Alex does not consider every bright line superior to authorized discretion."
+    },
+    "F3": {
+      "value": 3,
+      "rationale": "A rule loses its constraining function if every attractive fairness argument creates an exception."
+    },
+    "F4": {
+      "value": 1,
+      "rationale": "Clear legal categories improve predictability, but some authorized standards and genuine gaps still require judgment."
+    },
+    "F5": {
+      "value": -2,
+      "rationale": "Judges remain responsible for applying legal limits rather than treating every case as unrestricted all-things-considered balancing."
+    },
+    "F6": {
+      "value": -2,
+      "rationale": "The official's mistake is troubling, but relief should ordinarily come from legally authorized discretion rather than an ad hoc deadline exception."
+    },
+    "F7": {
+      "value": 1,
+      "rationale": "Proven discriminatory discretion favors a uniform deadline, preferably through legislative revision of the exception."
+    },
+    "F8": {
+      "value": 2,
+      "rationale": "A fixed juvenile cutoff promotes predictable and equal punishment where subjective transfer decisions have produced serious disparities."
+    },
+    "F9": {
+      "value": -1,
+      "rationale": "The disproportionate result warrants correction, but ordinarily through legislated sentencing discretion rather than judicial suspension of the age rule."
+    },
+    "D-SEP1": {
+      "value": 1,
+      "rationale": "Congressional assignment of a lawful judgment deserves respect unless the Constitution independently requires presidential substitution power."
+    },
+    "D-SEP2": {
+      "value": 2,
+      "rationale": "Courts should independently enforce statutory limits while considering an agency's expertise as potentially persuasive."
+    },
+    "D-SEP3": {
+      "value": 0,
+      "rationale": "Alex favors bounded delegation but has no settled constitutional threshold for invalidating an explicit legislative assignment of major choices."
+    },
+    "D-MET1": {
+      "value": 1,
+      "rationale": "Accountable supervision can coexist with statutory limits on replacing a subordinate's lawful judgment."
+    },
+    "D-SEP4": {
+      "value": 1,
+      "rationale": "Serious penalties favor independent judicial adjudication, though Alex has not rejected every agency process with meaningful review."
+    },
+    "D-MOR1": {
+      "value": -3,
+      "rationale": "A judge's personal moral view cannot override a contract treated as valid by every authoritative legal source."
+    },
+    "D-PREC1": {
+      "value": 1,
+      "rationale": "An invented exception contradicting explicit constitutional text is a strong candidate for correction despite its precedential age."
+    },
+    "D-RLS1": {
+      "value": 1,
+      "rationale": "Genuine legal gaps permit judicial choice that background views and practical judgments can influence."
+    },
+    "D-RLS2": {
+      "value": 2,
+      "rationale": "Understanding actual judicial behavior requires institutional evidence as well as studying authoritative legal materials."
+    },
+    "D-RLS3": {
+      "value": 2,
+      "rationale": "A judge can mistake a discretionary choice in an unsettled case for a conclusion compelled by legal sources."
+    },
+    "D-RLS4": {
+      "value": 1,
+      "rationale": "Clearer rules cannot eliminate uncertainty arising from factual disputes and human factfinders."
+    },
+    "D-RLS5": {
+      "value": 1,
+      "rationale": "Concrete facts and consequences can clarify a category's application, although authoritative legal definitions still constrain the inquiry."
+    },
+    "D-ORI1": {
+      "value": 3,
+      "rationale": "Ratified public meaning controls over inconsistent private drafting intentions."
+    },
+    "D-ORI2": {
+      "value": 1,
+      "rationale": "Accepted historical legal conventions can inform original meaning, although Alex does not subordinate all public understanding to technical methods."
+    },
+    "D-ORI3": {
+      "value": 2,
+      "rationale": "Later doctrine may legitimately fill genuine gaps without altering settled original constitutional meaning."
+    },
+    "D-ORI4": {
+      "value": -1,
+      "rationale": "Communicated intentions can inform meaning, but Alex gives public legal meaning priority over authorial intention as such."
+    },
+    "D-ORI5": {
+      "value": 2,
+      "rationale": "Reading related provisions and constitutional structure together respects context instead of isolated dictionary literalism."
+    },
+    "D-ORI6": {
+      "value": 2,
+      "rationale": "The law originally enacted includes relevant legal context and authorized mechanisms of change as well as ordinary words."
+    },
+    "D-ORI7": {
+      "value": 1,
+      "rationale": "Original public meaning ordinarily follows from the authority of the ratified source itself, while institutional recognition still underlies that authority."
+    },
+    "D-POS1": {
+      "value": 2,
+      "rationale": "An accepted constitutional source can incorporate a moral standard without making unrecognized moral truth independently sufficient for law."
+    },
+    "D-POS2": {
+      "value": 3,
+      "rationale": "Source-based adjudication preserves predictable authority and leaves contested moral policy changes principally to accountable lawmakers."
+    },
+    "D-AUS1": {
+      "value": -2,
+      "rationale": "Recognized legal rules and institutional practices explain authority more fully than habitual obedience to a sovereign's threats."
+    },
+    "D-KEL1": {
+      "value": null,
+      "rationale": "Alex's beliefs do not settle whether a presupposed basic norm explains legal validity better than accepted institutional practices."
+    },
+    "D-SHA1": {
+      "value": null,
+      "rationale": "His institutional commitments do not establish a preference for shared-plan theory over other source-based accounts."
+    },
+    "D-NP1": {
+      "value": 2,
+      "rationale": "Whatever natural law's merits, positive law legitimately settles open questions and does not license judges to substitute personal moral preferences."
+    },
+    "D-NL2": {
+      "value": -3,
+      "rationale": "Even extreme moral defects do not negate legal existence when all recognized sources establish validity."
+    },
+    "D-NP2": {
+      "value": -2,
+      "rationale": "Moral reasoning can guide limited lawmaking in a genuine gap but does not ordinarily reveal an independently existing legal rule."
+    },
+    "D-NP4": {
+      "value": -3,
+      "rationale": "The legal effect of institutional action is distinct from the actual moral obligations it may produce."
+    },
+    "D-NP5": {
+      "value": -3,
+      "rationale": "A legal right can exist through recognized sources independently of a genuine moral entitlement."
+    },
+    "D-NP6": {
+      "value": -3,
+      "rationale": "Extreme injustice strengthens reasons to resist or change a law without automatically extinguishing its legal status."
+    },
+    "D-NP3": {
+      "value": 1,
+      "rationale": "Secret and unstable commands undermine law's notice and predictability, although their defects need not erase source-based legal existence."
+    },
+    "D-MAJ1": {
+      "value": 1,
+      "rationale": "Each branch can interpret the Constitution within its assigned role, while binding judgments and recognized institutional limits remain authoritative."
+    },
+    "D-MAJ2": {
+      "value": -1,
+      "rationale": "Public debate can shape legislation and lawful doctrinal development but cannot by itself replace fixed constitutional meaning."
+    },
+    "D-ELY1": {
+      "value": 2,
+      "rationale": "Judicial checks are especially important when exclusion undermines the representative institutions that usually deserve deference."
+    },
+    "D-WAL1": {
+      "value": 2,
+      "rationale": "Functioning elected institutions have a strong claim to settle reasonable rights disagreements within established constitutional limits."
+    },
+    "D-RESP1": {
+      "value": 1,
+      "rationale": "Tailoring intervention to institutional competence and the actual democratic defect fits Alex's preference for bounded checks."
+    },
+    "D-TXT1": {
+      "value": 3,
+      "rationale": "Whole-statute context and ordinary usage can identify the best enacted meaning without reducing interpretation to dictionary literalism."
+    },
+    "D-GRD1": {
+      "value": 1,
+      "rationale": "An expressly prescribed legislative reconsideration mechanism can be legitimate while courts independently enforce rights within that system."
+    },
+    "D-MON1": {
+      "value": 2,
+      "rationale": "Courts can create bounded implementing law without falsely treating every protective detail as an unchangeable constitutional command."
+    },
+    "D-BRAY1": {
+      "value": 2,
+      "rationale": "Historically grounded remedial limits protect predictable authority and restrain courts from assuming general legislative power."
+    },
+    "D-UNI1": {
+      "value": 1,
+      "rationale": "Properly authorized relief can sometimes benefit nonparties, even though efficiency alone does not justify universal injunctions."
+    },
+    "D-LEV1": {
+      "value": -2,
+      "rationale": "The cost of a remedy ordinarily should not determine whether an otherwise established constitutional right exists."
+    },
+    "D-TXT2": {
+      "value": 3,
+      "rationale": "A genuinely categorical constitutional command should constrain government rather than dissolve into discretionary interest balancing."
+    },
+    "D-INT1": {
+      "value": -1,
+      "rationale": "Historical intentions can supply evidence, but the task remains finding the best public legal meaning rather than recovering private legislative wishes."
+    },
+    "D-INT2": {
+      "value": -2,
+      "rationale": "Imagined legislative intentions risk disguising judicial lawmaking and should not replace textual context and acknowledged gap-filling."
+    },
+    "D-KAT1": {
+      "value": 1,
+      "rationale": "Reliable legislative materials may illuminate ambiguity but remain subordinate to enacted text and public meaning."
+    },
+    "D-CAL1": {
+      "value": -2,
+      "rationale": "An obsolete enacted rule generally requires legislative amendment rather than a judicial demand that lawmakers reenact it."
+    },
+    "D-PRAG1": {
+      "value": 1,
+      "rationale": "Workability and consequences may guide limited lawmaking where authoritative legal sources genuinely leave a gap."
+    },
+    "D-LP1": {
+      "value": 3,
+      "rationale": "Identifying the institution legally assigned a decision is central to respecting the allocation of public authority."
+    },
+    "D-LP2": {
+      "value": 3,
+      "rationale": "Consistent principles protect equal legal treatment and prevent results-driven constitutional judging."
+    },
+    "D-MAS1": {
+      "value": 2,
+      "rationale": "An agency can reason seriously about law within its assigned role while remaining subject to independent checks on statutory limits."
+    },
+    "D-ROM1": {
+      "value": null,
+      "rationale": "Alex's source-based beliefs do not establish whether nonstate associations themselves constitute independent legal orders."
+    },
+    "D-GENY1": {
+      "value": 2,
+      "rationale": "Openly constructing a bounded rule in a true gap is more candid than pretending the answer was always hidden in the text."
+    },
+    "D-EHR1": {
+      "value": -1,
+      "rationale": "Social norms matter practically, but their importance alone does not establish that they are law without recognized legal authority."
+    },
+    "D-BLK1": {
+      "value": 2,
+      "rationale": "Recognized structural implications can be legally binding without requiring a separately explicit clause for every rule."
+    },
+    "D-LIV1": {
+      "value": -2,
+      "rationale": "Political mobilization can motivate lawful change but should not itself revise the constitutional meaning courts enforce."
+    },
+    "D-ACK1": {
+      "value": -2,
+      "rationale": "Electoral success and institutional acquiescence do not by themselves supply a lawful substitute for constitutional amendment."
+    },
+    "D-LIV2": {
+      "value": -2,
+      "rationale": "Constitutional commitments constrain and guide lawful institutions rather than provide courts a general mandate for social transformation."
+    },
+    "D-HAR1": {
+      "value": 1,
+      "rationale": "Historical legal tradition and settled experience can guide liberty doctrine so long as they respect authoritative constitutional meaning."
+    },
+    "D-CLC1": {
+      "value": -2,
+      "rationale": "Fundamental common-law rights require recognized superior legal authority before courts may invalidate otherwise valid legislation."
+    },
+    "D-PIL1": {
+      "value": 0,
+      "rationale": "Meaningful access to justice matters, but procedural relaxation must remain authorized, predictable, and fairly administered."
+    },
+    "D-CGC1": {
+      "value": -2,
+      "rationale": "A broad conception of the common good cannot displace public constitutional meaning and dependable individual-rights limits."
+    },
+    "D-PROP1": {
+      "value": -1,
+      "rationale": "Proportionality can help where law authorizes balancing, but Alex resists subjecting categorical rights to a general public-benefit tradeoff."
+    },
+    "D-QC2": {
+      "value": 1,
+      "rationale": "Alex follows the explicit response-check instruction to select Slightly Agree."
+    },
+    "D-QC1": {
+      "value": -2,
+      "rationale": "Alex follows the explicit response-check instruction to select Disagree."
+    },
+    "D-SOC1": {
+      "value": 1,
+      "rationale": "In genuine legal gaps, openly considering social interests and effects can guide bounded judicial lawmaking."
+    },
+    "D-PLU1": {
+      "value": -1,
+      "rationale": "Alex accepts multiple interpretive tools, but enacted text and original public meaning retain priority over independent policy preferences."
+    },
+    "D-PLU2": {
+      "value": -2,
+      "rationale": "Context can clarify sources, but consequences and policy should not freely displace the authority of enacted text and public meaning."
+    },
+    "D-OCO1": {
+      "value": 0,
+      "rationale": "Narrow fact-sensitive decisions can respect judicial limits, but Alex still relies on general source-based interpretive commitments."
+    },
+    "D-PRI-source-time": {
+      "value": null,
+      "rationale": "The biography supplies positions relevant to source and/or time, but does not say which is more personally characteristic. Skip rather than invent a priority or assert equal centrality.",
+      "evidence": {
+        "source": "Legal existence is settled by recognized public sources and institutional practices, not objective moral truth or the judge’s assessment of justice.",
+        "time": "Judges should ordinarily honor enacted text, public meaning at enactment, fair notice, and the institutional allocation of authority."
+      }
+    },
+    "D-PRI-source-method": {
+      "value": null,
+      "rationale": "The biography supplies positions relevant to source and/or method, but does not say which is more personally characteristic. Skip rather than invent a priority or assert equal centrality.",
+      "evidence": {
+        "source": "Legal existence is settled by recognized public sources and institutional practices, not objective moral truth or the judge’s assessment of justice.",
+        "method": "Judges should ordinarily honor enacted text, public meaning at enactment, fair notice, and the institutional allocation of authority."
+      }
+    },
+    "D-PRI-source-posture": {
+      "value": null,
+      "rationale": "The biography supplies positions relevant to source and/or posture, but does not say which is more personally characteristic. Skip rather than invent a priority or assert equal centrality.",
+      "evidence": {
+        "source": "Legal existence is settled by recognized public sources and institutional practices, not objective moral truth or the judge’s assessment of justice.",
+        "posture": "Where sources leave genuine gaps they exercise limited lawmaking rather than discover an always-existing moral answer."
+      }
+    },
+    "D-PRI-source-structure": {
+      "value": null,
+      "rationale": "The biography supplies positions relevant to source and/or structure, but does not say which is more personally characteristic. Skip rather than invent a priority or assert equal centrality.",
+      "evidence": {
+        "source": "Legal existence is settled by recognized public sources and institutional practices, not objective moral truth or the judge’s assessment of justice.",
+        "structure": "Judges should ordinarily honor enacted text, public meaning at enactment, fair notice, and the institutional allocation of authority."
+      }
+    },
+    "D-PRI-source-form": {
+      "value": null,
+      "rationale": "The biography supplies positions relevant to source and/or form, but does not say which is more personally characteristic. Skip rather than invent a priority or assert equal centrality.",
+      "evidence": {
+        "source": "Legal existence is settled by recognized public sources and institutional practices, not objective moral truth or the judge’s assessment of justice.",
+        "form": "Personal hardship usually belongs in legislated discretion, not ad hoc judicial exceptions."
+      }
+    },
+    "D-PRI-source-realism": {
+      "value": null,
+      "rationale": "The biography supplies positions relevant to source and/or realism, but does not say which is more personally characteristic. Skip rather than invent a priority or assert equal centrality.",
+      "evidence": {
+        "source": "Legal existence is settled by recognized public sources and institutional practices, not objective moral truth or the judge’s assessment of justice.",
+        "realism": "Where sources leave genuine gaps they exercise limited lawmaking rather than discover an always-existing moral answer."
+      }
+    },
+    "D-PRI-time-method": {
+      "value": null,
+      "rationale": "The biography supplies positions relevant to time and/or method, but does not say which is more personally characteristic. Skip rather than invent a priority or assert equal centrality.",
+      "evidence": {
+        "time": "Judges should ordinarily honor enacted text, public meaning at enactment, fair notice, and the institutional allocation of authority.",
+        "method": "Judges should ordinarily honor enacted text, public meaning at enactment, fair notice, and the institutional allocation of authority."
+      }
+    },
+    "D-PRI-time-posture": {
+      "value": null,
+      "rationale": "The biography supplies positions relevant to time and/or posture, but does not say which is more personally characteristic. Skip rather than invent a priority or assert equal centrality.",
+      "evidence": {
+        "time": "Judges should ordinarily honor enacted text, public meaning at enactment, fair notice, and the institutional allocation of authority.",
+        "posture": "Where sources leave genuine gaps they exercise limited lawmaking rather than discover an always-existing moral answer."
+      }
+    },
+    "D-PRI-time-structure": {
+      "value": null,
+      "rationale": "The biography supplies positions relevant to time and/or structure, but does not say which is more personally characteristic. Skip rather than invent a priority or assert equal centrality.",
+      "evidence": {
+        "time": "Judges should ordinarily honor enacted text, public meaning at enactment, fair notice, and the institutional allocation of authority.",
+        "structure": "Judges should ordinarily honor enacted text, public meaning at enactment, fair notice, and the institutional allocation of authority."
+      }
+    },
+    "D-PRI-time-form": {
+      "value": null,
+      "rationale": "The biography supplies positions relevant to time and/or form, but does not say which is more personally characteristic. Skip rather than invent a priority or assert equal centrality.",
+      "evidence": {
+        "time": "Judges should ordinarily honor enacted text, public meaning at enactment, fair notice, and the institutional allocation of authority.",
+        "form": "Personal hardship usually belongs in legislated discretion, not ad hoc judicial exceptions."
+      }
+    },
+    "D-PRI-time-realism": {
+      "value": null,
+      "rationale": "The biography supplies positions relevant to time and/or realism, but does not say which is more personally characteristic. Skip rather than invent a priority or assert equal centrality.",
+      "evidence": {
+        "time": "Judges should ordinarily honor enacted text, public meaning at enactment, fair notice, and the institutional allocation of authority.",
+        "realism": "Where sources leave genuine gaps they exercise limited lawmaking rather than discover an always-existing moral answer."
+      }
+    },
+    "D-PRI-method-posture": {
+      "value": null,
+      "rationale": "The biography supplies positions relevant to method and/or posture, but does not say which is more personally characteristic. Skip rather than invent a priority or assert equal centrality.",
+      "evidence": {
+        "method": "Judges should ordinarily honor enacted text, public meaning at enactment, fair notice, and the institutional allocation of authority.",
+        "posture": "Where sources leave genuine gaps they exercise limited lawmaking rather than discover an always-existing moral answer."
+      }
+    },
+    "D-PRI-method-structure": {
+      "value": null,
+      "rationale": "The biography supplies positions relevant to method and/or structure, but does not say which is more personally characteristic. Skip rather than invent a priority or assert equal centrality.",
+      "evidence": {
+        "method": "Judges should ordinarily honor enacted text, public meaning at enactment, fair notice, and the institutional allocation of authority.",
+        "structure": "Judges should ordinarily honor enacted text, public meaning at enactment, fair notice, and the institutional allocation of authority."
+      }
+    },
+    "D-PRI-method-form": {
+      "value": null,
+      "rationale": "The biography supplies positions relevant to method and/or form, but does not say which is more personally characteristic. Skip rather than invent a priority or assert equal centrality.",
+      "evidence": {
+        "method": "Judges should ordinarily honor enacted text, public meaning at enactment, fair notice, and the institutional allocation of authority.",
+        "form": "Personal hardship usually belongs in legislated discretion, not ad hoc judicial exceptions."
+      }
+    },
+    "D-PRI-method-realism": {
+      "value": null,
+      "rationale": "The biography supplies positions relevant to method and/or realism, but does not say which is more personally characteristic. Skip rather than invent a priority or assert equal centrality.",
+      "evidence": {
+        "method": "Judges should ordinarily honor enacted text, public meaning at enactment, fair notice, and the institutional allocation of authority.",
+        "realism": "Where sources leave genuine gaps they exercise limited lawmaking rather than discover an always-existing moral answer."
+      }
+    },
+    "D-PRI-posture-structure": {
+      "value": null,
+      "rationale": "The biography supplies positions relevant to posture and/or structure, but does not say which is more personally characteristic. Skip rather than invent a priority or assert equal centrality.",
+      "evidence": {
+        "posture": "Where sources leave genuine gaps they exercise limited lawmaking rather than discover an always-existing moral answer.",
+        "structure": "Judges should ordinarily honor enacted text, public meaning at enactment, fair notice, and the institutional allocation of authority."
+      }
+    },
+    "D-PRI-posture-form": {
+      "value": null,
+      "rationale": "The biography supplies positions relevant to posture and/or form, but does not say which is more personally characteristic. Skip rather than invent a priority or assert equal centrality.",
+      "evidence": {
+        "posture": "Where sources leave genuine gaps they exercise limited lawmaking rather than discover an always-existing moral answer.",
+        "form": "Personal hardship usually belongs in legislated discretion, not ad hoc judicial exceptions."
+      }
+    },
+    "D-PRI-posture-realism": {
+      "value": null,
+      "rationale": "The biography supplies positions relevant to posture and/or realism, but does not say which is more personally characteristic. Skip rather than invent a priority or assert equal centrality.",
+      "evidence": {
+        "posture": "Where sources leave genuine gaps they exercise limited lawmaking rather than discover an always-existing moral answer.",
+        "realism": "Where sources leave genuine gaps they exercise limited lawmaking rather than discover an always-existing moral answer."
+      }
+    },
+    "D-PRI-structure-form": {
+      "value": null,
+      "rationale": "The biography supplies positions relevant to structure and/or form, but does not say which is more personally characteristic. Skip rather than invent a priority or assert equal centrality.",
+      "evidence": {
+        "structure": "Judges should ordinarily honor enacted text, public meaning at enactment, fair notice, and the institutional allocation of authority.",
+        "form": "Personal hardship usually belongs in legislated discretion, not ad hoc judicial exceptions."
+      }
+    },
+    "D-PRI-structure-realism": {
+      "value": null,
+      "rationale": "The biography supplies positions relevant to structure and/or realism, but does not say which is more personally characteristic. Skip rather than invent a priority or assert equal centrality.",
+      "evidence": {
+        "structure": "Judges should ordinarily honor enacted text, public meaning at enactment, fair notice, and the institutional allocation of authority.",
+        "realism": "Where sources leave genuine gaps they exercise limited lawmaking rather than discover an always-existing moral answer."
+      }
+    },
+    "D-PRI-form-realism": {
+      "value": null,
+      "rationale": "The biography supplies positions relevant to form and/or realism, but does not say which is more personally characteristic. Skip rather than invent a priority or assert equal centrality.",
+      "evidence": {
+        "form": "Personal hardship usually belongs in legislated discretion, not ad hoc judicial exceptions.",
+        "realism": "Where sources leave genuine gaps they exercise limited lawmaking rather than discover an always-existing moral answer."
+      }
+    }
+  },
+  "preparedAt": "2026-10-15T02:12:05.338032Z",
+  "priorityExtension": {
+    "frozenAt": "2026-10-15T03:04:59.810Z",
+    "originalPlanSha256": "3cb91a24632644d9794843b13d8f078614c7bfebfae907db578e50b5b768e4d9",
+    "method": "Frozen before revised production outputs. Original 157 answers unchanged. No primary-commitment ranking inferred from profession, paragraph order, compatible doctrinal positions, or desired label. Null means insufficient biographical evidence of comparative centrality; zero would assert a tie."
+  }
+}

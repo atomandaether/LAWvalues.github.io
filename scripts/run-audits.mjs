@@ -9,7 +9,10 @@ const audits = [
   "audit-result-catalog.mjs",
   "audit-diagnostic-routing.mjs",
   "audit-result-narrative.mjs",
-  "audit-result-share.mjs"
+  "audit-result-share.mjs",
+  "audit-title-contract.mjs",
+  "audit-primary-commitment.mjs",
+  "audit-whole-profile.mjs"
 ];
 const results = [];
 

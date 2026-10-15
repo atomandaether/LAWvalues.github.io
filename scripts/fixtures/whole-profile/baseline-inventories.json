@@ -1,0 +1,1258 @@
+{
+  "TWISTS": [
+    {
+      "id": "new_originalism",
+      "text": "New",
+      "appliesTo": [
+        "public_meaning_originalist",
+        "original_intent_originalist"
+      ],
+      "traits": [
+        "time.construction_zone"
+      ],
+      "min": 0.5,
+      "priority": 1.5,
+      "explanation": "You accept the New Originalist interpretation/construction distinction: fixed original meaning can genuinely underdetermine a case and leave legitimate room for constitutional construction."
+    },
+    {
+      "id": "democratic_living",
+      "text": "Democratic",
+      "appliesTo": [
+        "living_constitutionalist"
+      ],
+      "traits": [
+        "time.democratic_constitutionalism"
+      ],
+      "min": 0.5,
+      "priority": 1.6,
+      "explanation": "Your Living Constitutionalism treats sustained public constitutional contestation and political mobilization as legitimate participants in the development of enforceable constitutional meaning, while preserving a judicial role in rights enforcement."
+    },
+    {
+      "id": "transformative_living",
+      "text": "Transformative",
+      "appliesTo": [
+        "living_constitutionalist"
+      ],
+      "traits": [
+        "time.transformative_constitutionalism"
+      ],
+      "min": 0.5,
+      "priority": 1.62,
+      "explanation": "Your Living Constitutionalism treats the constitution as an ongoing legal project of transforming inherited institutions and power relations toward its democratic, participatory, egalitarian, and dignity-based commitments."
+    },
+    {
+      "id": "inclusive_positivism",
+      "text": "Inclusive",
+      "appliesTo": [
+        "positivist"
+      ],
+      "traits": [
+        "source.morality_incorporated"
+      ],
+      "min": 0.5,
+      "priority": 1.42,
+      "explanation": "You are a Positivist who thinks a socially grounded legal system can itself incorporate genuine moral criteria into its tests of legal validity."
+    },
+    {
+      "id": "exclusive_positivism",
+      "text": "Exclusive",
+      "appliesTo": [
+        "positivist"
+      ],
+      "traits": [
+        "source.source_thesis"
+      ],
+      "min": 0.5,
+      "priority": 1.42,
+      "explanation": "You are a Positivist who thinks legal validity must remain identifiable from source or social facts without making moral merits themselves a criterion of what law exists."
+    },
+    {
+      "id": "normative_positivism",
+      "text": "Normative",
+      "appliesTo": [
+        "positivist"
+      ],
+      "traits": [
+        "source.normative_positivism"
+      ],
+      "min": 0.5,
+      "priority": 1.5,
+      "explanation": "You defend source-based legality not merely as a conceptual account of law but as a desirable institutional discipline that limits contested merits-based judicial lawmaking."
+    },
+    {
+      "id": "moral_impact_nonpositivism",
+      "text": "Moral-Impact",
+      "appliesTo": [
+        "nonpositivist"
+      ],
+      "traits": [
+        "source.moral_impact"
+      ],
+      "min": 0.5,
+      "priority": 1.5,
+      "explanation": "You think institutional legal action changes the moral situation, and the resulting moral rights and obligations constitute the law."
+    },
+    {
+      "id": "moral_practice_nonpositivism",
+      "text": "Moral-Practice",
+      "appliesTo": [
+        "nonpositivist"
+      ],
+      "traits": [
+        "source.moral_practice"
+      ],
+      "min": 0.5,
+      "priority": 1.5,
+      "explanation": "You treat legal claims as claims about genuine moral rights and responsibilities rather than as claims inside a separate source-generated domain of legal obligation."
+    },
+    {
+      "id": "extreme_injustice_nonpositivism",
+      "text": "Extreme-Injustice",
+      "appliesTo": [
+        "nonpositivist"
+      ],
+      "traits": [
+        "source.extreme_injustice"
+      ],
+      "min": 0.5,
+      "priority": 1.48,
+      "explanation": "You think ordinary injustice can coexist with legal validity, but sufficiently extreme injustice can defeat a purported rule's legal status."
+    },
+    {
+      "id": "imaginative_reconstruction",
+      "text": "Imaginative-Reconstruction",
+      "appliesTo": [
+        "intentionalist"
+      ],
+      "traits": [
+        "constraint.imaginative_reconstruction"
+      ],
+      "min": 0.5,
+      "priority": 1.55,
+      "explanation": "When lawmakers never confronted the precise problem, you ask what they would have intended had the issue been presented to them."
+    },
+    {
+      "id": "practical_reasoning_pluralism",
+      "text": "Practical-Reasoning",
+      "appliesTo": [
+        "interpretive_pluralist"
+      ],
+      "traits": [
+        "method.practical_reasoning"
+      ],
+      "min": 0.5,
+      "priority": 1.55,
+      "explanation": "You treat multiple interpretive resources as legitimate and let their relative weight shift with the problem rather than imposing a fixed hierarchy."
+    },
+    {
+      "id": "fact_skeptical_realism",
+      "text": "Fact-Skeptical",
+      "appliesTo": [
+        "legal_realist"
+      ],
+      "traits": [
+        "realism.fact_skepticism"
+      ],
+      "min": 0.5,
+      "priority": 1.55,
+      "explanation": "Your Realism extends beyond indeterminate rules to the uncertainty of trial facts, witness credibility, factfinding, and judicial psychology."
+    },
+    {
+      "id": "hartian_gap",
+      "text": "Gap-friendly",
+      "appliesTo": [
+        "positivist",
+        "inclusive_positivist",
+        "exclusive_positivist"
+      ],
+      "traits": [
+        "source.law_runs_out"
+      ],
+      "min": 0.5,
+      "priority": 1.2,
+      "explanation": "Within a positivist framework, you are comparatively willing to say that existing law can genuinely run out in a hard case."
+    },
+    {
+      "id": "positive_law_settlement",
+      "text": "Settlement-minded",
+      "appliesTo": [
+        "natural_lawyer",
+        "common_good_constitutionalist"
+      ],
+      "traits": [
+        "source.positive_law_settlement"
+      ],
+      "min": 0.45,
+      "priority": 1.2,
+      "explanation": "Your higher-law commitments coexist with a strong view that positive law legitimately settles many questions morality leaves open."
+    },
+    {
+      "id": "contextual_textualism",
+      "text": "Dictionary-skeptical",
+      "appliesTo": [
+        "textualist",
+        "originalist",
+        "public_meaning_originalist",
+        "original_intent_originalist",
+        "original_methods_originalist"
+      ],
+      "traits": [
+        "constraint.contextual_textualism"
+      ],
+      "min": 0.5,
+      "priority": 1.12,
+      "explanation": "You are text-centered without treating isolated dictionary definitions as the whole interpretive enterprise."
+    },
+    {
+      "id": "enacted_bargain",
+      "text": "Fine-print",
+      "appliesTo": [
+        "textualist",
+        "positivist",
+        "inclusive_positivist",
+        "exclusive_positivist"
+      ],
+      "traits": [
+        "constraint.enacted_bargain"
+      ],
+      "min": 0.55,
+      "priority": 1.05,
+      "explanation": "You are especially willing to make the legal system live with enacted compromises, exceptions, and omissions."
+    },
+    {
+      "id": "precedent_skeptic",
+      "text": "Case-burning",
+      "appliesTo": [
+        "originalist",
+        "public_meaning_originalist",
+        "original_intent_originalist",
+        "original_methods_originalist",
+        "framework_originalist",
+        "textualist",
+        "formalist",
+        "positivist"
+      ],
+      "axis": "prec",
+      "direction": "right",
+      "min": 0.35,
+      "priority": 1,
+      "blockedPhraseIds": [
+        "precedent_correction"
+      ],
+      "explanation": "You combine your main methodology with unusual willingness to discard precedent you think is wrong."
+    },
+    {
+      "id": "precedent_loyal",
+      "text": "Error-hoarding",
+      "appliesTo": [
+        "originalist",
+        "public_meaning_originalist",
+        "original_intent_originalist",
+        "original_methods_originalist",
+        "framework_originalist",
+        "textualist",
+        "formalist"
+      ],
+      "axis": "prec",
+      "direction": "left",
+      "min": 0.35,
+      "priority": 1,
+      "blockedPhraseIds": [
+        "precedent_stability"
+      ],
+      "explanation": "You combine your main methodology with unusual respect for settlement, reliance, and continuity."
+    },
+    {
+      "id": "rights_aggressive",
+      "text": "Democracy-vetoing",
+      "appliesTo": [
+        "positivist",
+        "inclusive_positivist",
+        "exclusive_positivist",
+        "textualist",
+        "originalist",
+        "public_meaning_originalist",
+        "original_intent_originalist",
+        "original_methods_originalist",
+        "formalist"
+      ],
+      "axis": "post",
+      "direction": "right",
+      "min": 0.35,
+      "priority": 1,
+      "blockedPhraseIds": [
+        "countermajoritarian"
+      ],
+      "explanation": "You pair a usually constraint-oriented methodology with unusually aggressive judicial enforcement against majority will."
+    },
+    {
+      "id": "democracy_deferential",
+      "text": "Rights-on-honor-system",
+      "appliesTo": [
+        "dworkinian",
+        "moral_impact_theorist",
+        "natural_lawyer",
+        "living_constitutionalist",
+        "common_good_constitutionalist",
+        "proportionalist",
+        "pragmatist"
+      ],
+      "axis": "post",
+      "direction": "left",
+      "min": 0.35,
+      "priority": 1,
+      "blockedPhraseIds": [
+        "majoritarian"
+      ],
+      "explanation": "You pair a morality-, rights-, or adaptation-friendly methodology with unusually strong democratic deference."
+    },
+    {
+      "id": "narrow_enforcement",
+      "text": "Remedy-stingy",
+      "appliesTo": [
+        "dworkinian",
+        "natural_lawyer",
+        "living_constitutionalist",
+        "common_good_constitutionalist",
+        "proportionalist",
+        "political_process_jurist"
+      ],
+      "axis": "remed",
+      "direction": "left",
+      "min": 0.35,
+      "priority": 0.98,
+      "blockedPhraseIds": [
+        "narrow_remedies"
+      ],
+      "explanation": "You are willing to recognize strong rights or evolving legal obligations while remaining unusually cautious about the breadth of judicial relief."
+    },
+    {
+      "id": "systemic_enforcement",
+      "text": "Court-running",
+      "appliesTo": [
+        "political_constitutionalist",
+        "thayerian",
+        "weak_form_constitutionalist",
+        "popular_constitutionalist",
+        "departmentalist",
+        "originalist",
+        "public_meaning_originalist",
+        "textualist",
+        "formalist"
+      ],
+      "axis": "remed",
+      "direction": "right",
+      "min": 0.35,
+      "priority": 0.98,
+      "blockedPhraseIds": [
+        "structural_remedies"
+      ],
+      "explanation": "You combine a restraint-, democracy-, or constraint-oriented methodology with unusually sweeping remedial instincts once a violation is established."
+    },
+    {
+      "id": "rulebound_open",
+      "text": "Rule-worshipping",
+      "appliesTo": [
+        "purposivist",
+        "pragmatist",
+        "functionalist",
+        "living_constitutionalist",
+        "common_law_constitutionalist",
+        "legal_process_theorist",
+        "interpretive_pluralist",
+        "legal_realist"
+      ],
+      "axis": "form",
+      "direction": "left",
+      "min": 0.35,
+      "priority": 1,
+      "blockedPhraseIds": [
+        "rules",
+        "anti_discretion"
+      ],
+      "explanation": "You are comparatively open or pragmatic about finding the governing law but unusually rule-bound once doctrine is identified."
+    },
+    {
+      "id": "balancing_strict",
+      "text": "Vibes-balancing",
+      "appliesTo": [
+        "positivist",
+        "exclusive_positivist",
+        "textualist",
+        "originalist",
+        "public_meaning_originalist",
+        "original_intent_originalist",
+        "original_methods_originalist",
+        "formalist"
+      ],
+      "axis": "form",
+      "direction": "right",
+      "min": 0.35,
+      "priority": 1,
+      "blockedPhraseIds": [
+        "balancing"
+      ],
+      "explanation": "You combine a constraint-oriented main methodology with unusually contextual, balancing-oriented doctrinal form."
+    },
+    {
+      "id": "formal_structure",
+      "text": "Org-chart-worshipping",
+      "appliesTo": [
+        "dworkinian",
+        "natural_lawyer",
+        "pragmatist",
+        "purposivist",
+        "legal_process_theorist",
+        "interpretive_pluralist",
+        "living_constitutionalist"
+      ],
+      "axis": "separ",
+      "direction": "left",
+      "min": 0.4,
+      "priority": 0.96,
+      "blockedPhraseIds": [
+        "separation_formal"
+      ],
+      "explanation": "Your broader methodology is flexible in other domains, but you become unusually strict about institutional boundaries."
+    },
+    {
+      "id": "functional_structure",
+      "text": "Separation-“optional”",
+      "appliesTo": [
+        "positivist",
+        "exclusive_positivist",
+        "natural_lawyer",
+        "textualist",
+        "originalist",
+        "public_meaning_originalist",
+        "original_methods_originalist"
+      ],
+      "axis": "separ",
+      "direction": "right",
+      "min": 0.4,
+      "priority": 0.96,
+      "blockedPhraseIds": [
+        "separation_functional"
+      ],
+      "explanation": "Your broader methodology is constraint-oriented, but you tolerate unusually pragmatic overlap among governmental institutions."
+    },
+    {
+      "id": "source_bound_living",
+      "text": "Source-bound",
+      "appliesTo": [
+        "living_constitutionalist",
+        "common_law_constitutionalist",
+        "pragmatist",
+        "legal_realist"
+      ],
+      "axis": "sorc",
+      "direction": "left",
+      "min": 0.35,
+      "priority": 1.05,
+      "blockedPhraseIds": [
+        "source_positive"
+      ],
+      "explanation": "Your adaptive or pragmatic method remains grounded in socially recognized legal sources rather than freestanding moral validity."
+    },
+    {
+      "id": "inclusive_positivist_common_law",
+      "text": "Inclusive-Positivist",
+      "appliesTo": [
+        "common_law_constitutionalist"
+      ],
+      "allTraits": [
+        "source.morality_incorporated",
+        "time.common_law_development"
+      ],
+      "min": 0.45,
+      "priority": 1.35,
+      "blockedPhraseIds": [
+        "source_positive"
+      ],
+      "explanation": "Your Common-Law Constitutionalism is Waluchow-like: constitutional doctrine develops through precedent and practical judgment inside an inclusive-positivist account in which recognized legal sources may incorporate moral criteria."
+    },
+    {
+      "id": "higher_law_historical",
+      "text": "Higher-law",
+      "appliesTo": [
+        "textualist",
+        "originalist",
+        "public_meaning_originalist",
+        "original_methods_originalist",
+        "formalist"
+      ],
+      "axis": "sorc",
+      "direction": "right",
+      "min": 0.35,
+      "priority": 1.05,
+      "blockedPhraseIds": [
+        "source_nonpositive",
+        "objective_morality"
+      ],
+      "explanation": "You combine historical or textual constraint with a nonpositivist view that legal validity is not exhausted by positive sources."
+    },
+    {
+      "id": "higher_law_originalism",
+      "text": "Higher-law",
+      "appliesTo": [
+        "originalist",
+        "public_meaning_originalist",
+        "original_intent_originalist"
+      ],
+      "allTraits": [
+        "source.objective_morality",
+        "source.positive_law_settlement"
+      ],
+      "min": 0.35,
+      "priority": 1.35,
+      "blockedPhraseIds": [
+        "source_nonpositive",
+        "objective_morality"
+      ],
+      "explanation": "Your Originalism is grounded in a natural-law account in which objective morality matters to law while promulgated positive constitutional law retains genuine settlement authority."
+    },
+    {
+      "id": "common_law_growth",
+      "text": "Precedent-grown",
+      "appliesTo": [
+        "originalist",
+        "public_meaning_originalist",
+        "framework_originalist"
+      ],
+      "traits": [
+        "time.common_law_development"
+      ],
+      "min": 0.45,
+      "priority": 1.12,
+      "explanation": "Your account of constitutional change or construction leans unusually heavily on accumulated precedent and practice."
+    },
+    {
+      "id": "institutional_process",
+      "text": "Process-pilled",
+      "appliesTo": [
+        "purposivist",
+        "pragmatist",
+        "intentionalist",
+        "interpretive_pluralist"
+      ],
+      "traits": [
+        "method.institutional_competence",
+        "method.reasoned_elaboration"
+      ],
+      "min": 0.5,
+      "priority": 1.18,
+      "explanation": "What makes your broader interpretive method distinctive is a strong concern with institutional role, competence, and reasoned elaboration."
+    },
+    {
+      "id": "sociological",
+      "text": "Law-in-action",
+      "appliesTo": [
+        "purposivist",
+        "pragmatist",
+        "legal_process_theorist",
+        "interpretive_pluralist"
+      ],
+      "traits": [
+        "method.social_interests",
+        "method.law_in_action"
+      ],
+      "min": 0.5,
+      "priority": 1.15,
+      "explanation": "You put unusual weight on how doctrine actually operates in society and on the social interests legal rules organize."
+    },
+    {
+      "id": "low_theory",
+      "text": "Theory-light",
+      "appliesTo": [
+        "pragmatist",
+        "interpretive_pluralist",
+        "minimalist"
+      ],
+      "traits": [
+        "method.case_by_case",
+        "method.anti_grand_theory"
+      ],
+      "min": 0.5,
+      "priority": 1.12,
+      "explanation": "You resist turning your main approach into a comprehensive theory and prefer narrow, fact-sensitive judgment."
+    },
+    {
+      "id": "realist_tinge",
+      "text": "Doctrine-cynical",
+      "appliesTo": [
+        "positivist",
+        "textualist",
+        "originalist",
+        "pragmatist",
+        "interpretive_pluralist"
+      ],
+      "allTraits": [
+        "realism.underdetermination",
+        "realism.extra_doctrinal"
+      ],
+      "min": 0.3,
+      "priority": 1.08,
+      "explanation": "You retain your normative methodology while showing an unusually Realist suspicion that doctrine alone explains hard-case outcomes."
+    },
+    {
+      "id": "proportionality_tinge",
+      "text": "Balancing-with-homework",
+      "appliesTo": [
+        "dworkinian",
+        "natural_lawyer",
+        "living_constitutionalist",
+        "pragmatist",
+        "purposivist"
+      ],
+      "traits": [
+        "form.proportionality"
+      ],
+      "min": 0.5,
+      "priority": 1.18,
+      "blockedPhraseIds": [
+        "balancing"
+      ],
+      "explanation": "Your otherwise broader methodology has a distinctive preference for structured proportionality rather than free-form balancing."
+    },
+    {
+      "id": "proportionalist_purposivism",
+      "text": "Proportionalist",
+      "appliesTo": [
+        "purposivist"
+      ],
+      "traits": [
+        "form.proportionality"
+      ],
+      "min": 0.5,
+      "priority": 1.35,
+      "blockedPhraseIds": [
+        "balancing"
+      ],
+      "explanation": "Your Purposivism is Barak-like in pairing objective purposive interpretation with a genuine structured-proportionality method for rights conflicts."
+    },
+    {
+      "id": "responsive_process",
+      "text": "Responsive",
+      "appliesTo": [
+        "political_process_jurist"
+      ],
+      "traits": [
+        "posture.responsive_review"
+      ],
+      "min": 0.5,
+      "priority": 1.55,
+      "explanation": "Within Political Process Jurisprudence, you calibrate the timing, intensity, reasoning, and remedies of review to the specific democratic dysfunction and to judicial capacity."
+    },
+    {
+      "id": "passive_virtues_minimalism",
+      "text": "Passive-virtues",
+      "appliesTo": [
+        "minimalist"
+      ],
+      "traits": [
+        "posture.passive_virtues"
+      ],
+      "min": 0.55,
+      "priority": 1.2,
+      "explanation": "Within Judicial Minimalism, your restraint is especially Bickel-like: strategic avoidance and delay are themselves part of the judicial method, not merely a preference for narrow remedies."
+    },
+    {
+      "id": "nonpositivist_proportionality",
+      "text": "Non-Positivist",
+      "appliesTo": [
+        "proportionalist"
+      ],
+      "axis": "sorc",
+      "direction": "right",
+      "min": 0.3,
+      "priority": 1.2,
+      "explanation": "Your Proportionalism sits inside a non-positivist account of law in which legal principles and moral correctness are part of legal reasoning rather than merely external policy considerations."
+    },
+    {
+      "id": "purposive_proportionality",
+      "text": "Purposivist",
+      "appliesTo": [
+        "proportionalist"
+      ],
+      "traits": [
+        "constraint.purpose"
+      ],
+      "min": 0.45,
+      "priority": 1.15,
+      "explanation": "Your Proportionalism is Barak-like in embedding structured rights analysis inside a broader purposive approach to legal interpretation."
+    },
+    {
+      "id": "anti_discretion_tinge",
+      "text": "Judgment-allergic",
+      "appliesTo": [
+        "positivist",
+        "textualist",
+        "originalist",
+        "public_meaning_originalist",
+        "formalist"
+      ],
+      "traits": [
+        "form.anti_discretion"
+      ],
+      "min": 0.55,
+      "priority": 1.1,
+      "blockedPhraseIds": [
+        "rules",
+        "anti_discretion"
+      ],
+      "explanation": "Your main methodology is sharpened by an unusually strong distrust of discretionary judicial judgment."
+    },
+    {
+      "id": "archetypal",
+      "text": "Textbook",
+      "fallback": true,
+      "explanation": "No narrower measured subtype or cross-cutting twist clearly improves on the selected noun; this respondent is comparatively close to the noun's central package."
+    }
+  ],
+  "MODIFIERS": [
+    {
+      "id": "new_originalism",
+      "text": "New",
+      "explanation": "You accept the New Originalist interpretation/construction distinction: fixed original meaning can genuinely underdetermine a case and leave legitimate room for constitutional construction."
+    },
+    {
+      "id": "democratic_living",
+      "text": "Democratic",
+      "explanation": "Your Living Constitutionalism treats sustained public constitutional contestation and political mobilization as legitimate participants in the development of enforceable constitutional meaning, while preserving a judicial role in rights enforcement."
+    },
+    {
+      "id": "transformative_living",
+      "text": "Transformative",
+      "explanation": "Your Living Constitutionalism treats the constitution as an ongoing legal project of transforming inherited institutions and power relations toward its democratic, participatory, egalitarian, and dignity-based commitments."
+    },
+    {
+      "id": "inclusive_positivism",
+      "text": "Inclusive",
+      "explanation": "You are a Positivist who thinks a socially grounded legal system can itself incorporate genuine moral criteria into its tests of legal validity."
+    },
+    {
+      "id": "exclusive_positivism",
+      "text": "Exclusive",
+      "explanation": "You are a Positivist who thinks legal validity must remain identifiable from source or social facts without making moral merits themselves a criterion of what law exists."
+    },
+    {
+      "id": "normative_positivism",
+      "text": "Normative",
+      "explanation": "You defend source-based legality not merely as a conceptual account of law but as a desirable institutional discipline that limits contested merits-based judicial lawmaking."
+    },
+    {
+      "id": "moral_impact_nonpositivism",
+      "text": "Moral-Impact",
+      "explanation": "You think institutional legal action changes the moral situation, and the resulting moral rights and obligations constitute the law."
+    },
+    {
+      "id": "moral_practice_nonpositivism",
+      "text": "Moral-Practice",
+      "explanation": "You treat legal claims as claims about genuine moral rights and responsibilities rather than as claims inside a separate source-generated domain of legal obligation."
+    },
+    {
+      "id": "extreme_injustice_nonpositivism",
+      "text": "Extreme-Injustice",
+      "explanation": "You think ordinary injustice can coexist with legal validity, but sufficiently extreme injustice can defeat a purported rule's legal status."
+    },
+    {
+      "id": "imaginative_reconstruction",
+      "text": "Imaginative-Reconstruction",
+      "explanation": "When lawmakers never confronted the precise problem, you ask what they would have intended had the issue been presented to them."
+    },
+    {
+      "id": "practical_reasoning_pluralism",
+      "text": "Practical-Reasoning",
+      "explanation": "You treat multiple interpretive resources as legitimate and let their relative weight shift with the problem rather than imposing a fixed hierarchy."
+    },
+    {
+      "id": "fact_skeptical_realism",
+      "text": "Fact-Skeptical",
+      "explanation": "Your Realism extends beyond indeterminate rules to the uncertainty of trial facts, witness credibility, factfinding, and judicial psychology."
+    },
+    {
+      "id": "hartian_gap",
+      "text": "Gap-friendly",
+      "explanation": "Within a positivist framework, you are comparatively willing to say that existing law can genuinely run out in a hard case."
+    },
+    {
+      "id": "positive_law_settlement",
+      "text": "Settlement-minded",
+      "explanation": "Your higher-law commitments coexist with a strong view that positive law legitimately settles many questions morality leaves open."
+    },
+    {
+      "id": "contextual_textualism",
+      "text": "Dictionary-skeptical",
+      "explanation": "You are text-centered without treating isolated dictionary definitions as the whole interpretive enterprise."
+    },
+    {
+      "id": "enacted_bargain",
+      "text": "Fine-print",
+      "explanation": "You are especially willing to make the legal system live with enacted compromises, exceptions, and omissions."
+    },
+    {
+      "id": "precedent_skeptic",
+      "text": "Case-burning",
+      "explanation": "You combine your main methodology with unusual willingness to discard precedent you think is wrong."
+    },
+    {
+      "id": "precedent_loyal",
+      "text": "Error-hoarding",
+      "explanation": "You combine your main methodology with unusual respect for settlement, reliance, and continuity."
+    },
+    {
+      "id": "rights_aggressive",
+      "text": "Democracy-vetoing",
+      "explanation": "You pair a usually constraint-oriented methodology with unusually aggressive judicial enforcement against majority will."
+    },
+    {
+      "id": "democracy_deferential",
+      "text": "Rights-on-honor-system",
+      "explanation": "You pair a morality-, rights-, or adaptation-friendly methodology with unusually strong democratic deference."
+    },
+    {
+      "id": "narrow_enforcement",
+      "text": "Remedy-stingy",
+      "explanation": "You are willing to recognize strong rights or evolving legal obligations while remaining unusually cautious about the breadth of judicial relief."
+    },
+    {
+      "id": "systemic_enforcement",
+      "text": "Court-running",
+      "explanation": "You combine a restraint-, democracy-, or constraint-oriented methodology with unusually sweeping remedial instincts once a violation is established."
+    },
+    {
+      "id": "rulebound_open",
+      "text": "Rule-worshipping",
+      "explanation": "You are comparatively open or pragmatic about finding the governing law but unusually rule-bound once doctrine is identified."
+    },
+    {
+      "id": "balancing_strict",
+      "text": "Vibes-balancing",
+      "explanation": "You combine a constraint-oriented main methodology with unusually contextual, balancing-oriented doctrinal form."
+    },
+    {
+      "id": "formal_structure",
+      "text": "Org-chart-worshipping",
+      "explanation": "Your broader methodology is flexible in other domains, but you become unusually strict about institutional boundaries."
+    },
+    {
+      "id": "functional_structure",
+      "text": "Separation-“optional”",
+      "explanation": "Your broader methodology is constraint-oriented, but you tolerate unusually pragmatic overlap among governmental institutions."
+    },
+    {
+      "id": "source_bound_living",
+      "text": "Source-bound",
+      "explanation": "Your adaptive or pragmatic method remains grounded in socially recognized legal sources rather than freestanding moral validity."
+    },
+    {
+      "id": "inclusive_positivist_common_law",
+      "text": "Inclusive-Positivist",
+      "explanation": "Your Common-Law Constitutionalism is Waluchow-like: constitutional doctrine develops through precedent and practical judgment inside an inclusive-positivist account in which recognized legal sources may incorporate moral criteria."
+    },
+    {
+      "id": "higher_law_historical",
+      "text": "Higher-law",
+      "explanation": "You combine historical or textual constraint with a nonpositivist view that legal validity is not exhausted by positive sources."
+    },
+    {
+      "id": "higher_law_originalism",
+      "text": "Higher-law",
+      "explanation": "Your Originalism is grounded in a natural-law account in which objective morality matters to law while promulgated positive constitutional law retains genuine settlement authority."
+    },
+    {
+      "id": "common_law_growth",
+      "text": "Precedent-grown",
+      "explanation": "Your account of constitutional change or construction leans unusually heavily on accumulated precedent and practice."
+    },
+    {
+      "id": "institutional_process",
+      "text": "Process-pilled",
+      "explanation": "What makes your broader interpretive method distinctive is a strong concern with institutional role, competence, and reasoned elaboration."
+    },
+    {
+      "id": "sociological",
+      "text": "Law-in-action",
+      "explanation": "You put unusual weight on how doctrine actually operates in society and on the social interests legal rules organize."
+    },
+    {
+      "id": "low_theory",
+      "text": "Theory-light",
+      "explanation": "You resist turning your main approach into a comprehensive theory and prefer narrow, fact-sensitive judgment."
+    },
+    {
+      "id": "realist_tinge",
+      "text": "Doctrine-cynical",
+      "explanation": "You retain your normative methodology while showing an unusually Realist suspicion that doctrine alone explains hard-case outcomes."
+    },
+    {
+      "id": "proportionality_tinge",
+      "text": "Balancing-with-homework",
+      "explanation": "Your otherwise broader methodology has a distinctive preference for structured proportionality rather than free-form balancing."
+    },
+    {
+      "id": "proportionalist_purposivism",
+      "text": "Proportionalist",
+      "explanation": "Your Purposivism is Barak-like in pairing objective purposive interpretation with a genuine structured-proportionality method for rights conflicts."
+    },
+    {
+      "id": "responsive_process",
+      "text": "Responsive",
+      "explanation": "Within Political Process Jurisprudence, you calibrate the timing, intensity, reasoning, and remedies of review to the specific democratic dysfunction and to judicial capacity."
+    },
+    {
+      "id": "passive_virtues_minimalism",
+      "text": "Passive-virtues",
+      "explanation": "Within Judicial Minimalism, your restraint is especially Bickel-like: strategic avoidance and delay are themselves part of the judicial method, not merely a preference for narrow remedies."
+    },
+    {
+      "id": "nonpositivist_proportionality",
+      "text": "Non-Positivist",
+      "explanation": "Your Proportionalism sits inside a non-positivist account of law in which legal principles and moral correctness are part of legal reasoning rather than merely external policy considerations."
+    },
+    {
+      "id": "purposive_proportionality",
+      "text": "Purposivist",
+      "explanation": "Your Proportionalism is Barak-like in embedding structured rights analysis inside a broader purposive approach to legal interpretation."
+    },
+    {
+      "id": "anti_discretion_tinge",
+      "text": "Judgment-allergic",
+      "explanation": "Your main methodology is sharpened by an unusually strong distrust of discretionary judicial judgment."
+    },
+    {
+      "id": "archetypal",
+      "text": "Textbook",
+      "explanation": "No narrower measured subtype or cross-cutting twist clearly improves on the selected noun; this respondent is comparatively close to the noun's central package."
+    }
+  ],
+  "PUBLIC_SUBSTANTIVE_MODIFIER_IDS": [
+    "new_originalism",
+    "democratic_living",
+    "transformative_living",
+    "inclusive_positivism",
+    "exclusive_positivism",
+    "normative_positivism",
+    "moral_impact_nonpositivism",
+    "moral_practice_nonpositivism",
+    "extreme_injustice_nonpositivism",
+    "imaginative_reconstruction",
+    "practical_reasoning_pluralism",
+    "fact_skeptical_realism",
+    "inclusive_positivist_common_law",
+    "higher_law_originalism",
+    "proportionalist_purposivism",
+    "nonpositivist_proportionality",
+    "purposive_proportionality",
+    "responsive_process",
+    "passive_virtues_minimalism"
+  ],
+  "PUBLIC_MODIFIERS": [
+    {
+      "id": "new_originalism",
+      "text": "New",
+      "explanation": "You accept the New Originalist interpretation/construction distinction: fixed original meaning can genuinely underdetermine a case and leave legitimate room for constitutional construction."
+    },
+    {
+      "id": "democratic_living",
+      "text": "Democratic",
+      "explanation": "Your Living Constitutionalism treats sustained public constitutional contestation and political mobilization as legitimate participants in the development of enforceable constitutional meaning, while preserving a judicial role in rights enforcement."
+    },
+    {
+      "id": "transformative_living",
+      "text": "Transformative",
+      "explanation": "Your Living Constitutionalism treats the constitution as an ongoing legal project of transforming inherited institutions and power relations toward its democratic, participatory, egalitarian, and dignity-based commitments."
+    },
+    {
+      "id": "inclusive_positivism",
+      "text": "Inclusive",
+      "explanation": "You are a Positivist who thinks a socially grounded legal system can itself incorporate genuine moral criteria into its tests of legal validity."
+    },
+    {
+      "id": "exclusive_positivism",
+      "text": "Exclusive",
+      "explanation": "You are a Positivist who thinks legal validity must remain identifiable from source or social facts without making moral merits themselves a criterion of what law exists."
+    },
+    {
+      "id": "normative_positivism",
+      "text": "Normative",
+      "explanation": "You defend source-based legality not merely as a conceptual account of law but as a desirable institutional discipline that limits contested merits-based judicial lawmaking."
+    },
+    {
+      "id": "moral_impact_nonpositivism",
+      "text": "Moral-Impact",
+      "explanation": "You think institutional legal action changes the moral situation, and the resulting moral rights and obligations constitute the law."
+    },
+    {
+      "id": "moral_practice_nonpositivism",
+      "text": "Moral-Practice",
+      "explanation": "You treat legal claims as claims about genuine moral rights and responsibilities rather than as claims inside a separate source-generated domain of legal obligation."
+    },
+    {
+      "id": "extreme_injustice_nonpositivism",
+      "text": "Extreme-Injustice",
+      "explanation": "You think ordinary injustice can coexist with legal validity, but sufficiently extreme injustice can defeat a purported rule's legal status."
+    },
+    {
+      "id": "imaginative_reconstruction",
+      "text": "Imaginative-Reconstruction",
+      "explanation": "When lawmakers never confronted the precise problem, you ask what they would have intended had the issue been presented to them."
+    },
+    {
+      "id": "practical_reasoning_pluralism",
+      "text": "Practical-Reasoning",
+      "explanation": "You treat multiple interpretive resources as legitimate and let their relative weight shift with the problem rather than imposing a fixed hierarchy."
+    },
+    {
+      "id": "fact_skeptical_realism",
+      "text": "Fact-Skeptical",
+      "explanation": "Your Realism extends beyond indeterminate rules to the uncertainty of trial facts, witness credibility, factfinding, and judicial psychology."
+    },
+    {
+      "id": "inclusive_positivist_common_law",
+      "text": "Inclusive-Positivist",
+      "explanation": "Your Common-Law Constitutionalism is Waluchow-like: constitutional doctrine develops through precedent and practical judgment inside an inclusive-positivist account in which recognized legal sources may incorporate moral criteria."
+    },
+    {
+      "id": "higher_law_originalism",
+      "text": "Higher-law",
+      "explanation": "Your Originalism is grounded in a natural-law account in which objective morality matters to law while promulgated positive constitutional law retains genuine settlement authority."
+    },
+    {
+      "id": "proportionalist_purposivism",
+      "text": "Proportionalist",
+      "explanation": "Your Purposivism is Barak-like in pairing objective purposive interpretation with a genuine structured-proportionality method for rights conflicts."
+    },
+    {
+      "id": "responsive_process",
+      "text": "Responsive",
+      "explanation": "Within Political Process Jurisprudence, you calibrate the timing, intensity, reasoning, and remedies of review to the specific democratic dysfunction and to judicial capacity."
+    },
+    {
+      "id": "passive_virtues_minimalism",
+      "text": "Passive-virtues",
+      "explanation": "Within Judicial Minimalism, your restraint is especially Bickel-like: strategic avoidance and delay are themselves part of the judicial method, not merely a preference for narrow remedies."
+    },
+    {
+      "id": "nonpositivist_proportionality",
+      "text": "Non-Positivist",
+      "explanation": "Your Proportionalism sits inside a non-positivist account of law in which legal principles and moral correctness are part of legal reasoning rather than merely external policy considerations."
+    },
+    {
+      "id": "purposive_proportionality",
+      "text": "Purposivist",
+      "explanation": "Your Proportionalism is Barak-like in embedding structured rights analysis inside a broader purposive approach to legal interpretation."
+    }
+  ],
+  "PHRASES": [
+    {
+      "id": "source_positive",
+      "text": "who thinks evil just needs the right paperwork",
+      "axis": "sorc",
+      "direction": "left",
+      "adds": [
+        "source.positive_sources"
+      ],
+      "explanation": "You sharply separate legal validity from moral merit and give recognized social/legal sources the decisive role."
+    },
+    {
+      "id": "source_nonpositive",
+      "text": "who thinks the law is haunted, and the ghosts agree with them",
+      "axis": "sorc",
+      "direction": "right",
+      "adds": [
+        "source.nonpositive_sources"
+      ],
+      "explanation": "You reject the idea that recognized social sources exhaust what counts as law, allowing moral principles or higher-law considerations to contribute to legal validity."
+    },
+    {
+      "id": "objective_morality",
+      "text": "who says “of course I’m right, here’s an MLK quote”",
+      "axis": null,
+      "direction": null,
+      "adds": [
+        "source.objective_morality",
+        "source.moral_constraint"
+      ],
+      "explanation": "You treat objective morality as independently relevant to what the law legally requires."
+    },
+    {
+      "id": "textual_constraint",
+      "text": "who’d eat their own Grandma because Congress forgot a comma",
+      "axis": "cons",
+      "direction": "left",
+      "adds": [
+        "constraint.textual",
+        "constraint.textual_axis"
+      ],
+      "explanation": "Enacted wording puts unusually hard limits on what you think judges may do, even when a more purposive result seems sensible."
+    },
+    {
+      "id": "purposive",
+      "text": "who doesn’t let their inability to read hold them down",
+      "axis": "cons",
+      "direction": "right",
+      "adds": [
+        "constraint.purpose",
+        "constraint.open_construction",
+        "constraint.anti_evasion"
+      ],
+      "explanation": "You are comparatively willing to let purpose, practical sense, context, or anti-evasion principles overcome a rigid reading of enacted words."
+    },
+    {
+      "id": "fixed_meaning",
+      "text": "who uses an Ouija board as a dictionary",
+      "axis": "time",
+      "direction": "left",
+      "adds": [
+        "time.fixation",
+        "time.semantic_fixation"
+      ],
+      "explanation": "You treat constitutional meaning as substantially fixed at adoption rather than updated by later usage or values."
+    },
+    {
+      "id": "living_meaning",
+      "text": "who thinks amendments are for suckers",
+      "axis": "time",
+      "direction": "right",
+      "adds": [
+        "time.living_content"
+      ],
+      "explanation": "You accept genuine constitutional development without requiring every change in constitutional content to pass through formal amendment."
+    },
+    {
+      "id": "precedent_stability",
+      "text": "who thinks being wrong for 50 years makes it right",
+      "axis": "prec",
+      "direction": "left",
+      "adds": [
+        "precedent.stability",
+        "precedent.reliance",
+        "precedent.settlement"
+      ],
+      "explanation": "Reliance, settlement, and legal continuity make you unusually reluctant to discard an established decision even when it was mistaken."
+    },
+    {
+      "id": "precedent_correction",
+      "text": "who’ll tell you the opposite tomorrow",
+      "axis": "prec",
+      "direction": "right",
+      "adds": [
+        "precedent.correction",
+        "precedent.correctness_first"
+      ],
+      "explanation": "You put correcting legal error ahead of preserving precedent and are comparatively willing to overrule decisions you think are wrong."
+    },
+    {
+      "id": "narrow_remedies",
+      "text": "who brought a hand towel to a hurricane",
+      "axis": "remed",
+      "direction": "left",
+      "adds": [
+        "remedies.party_specific",
+        "remedies.incremental"
+      ],
+      "explanation": "You generally want judicial relief confined to the parties and violation actually before the court."
+    },
+    {
+      "id": "structural_remedies",
+      "text": "who let themselves in and started knocking down walls",
+      "axis": "remed",
+      "direction": "right",
+      "adds": [
+        "remedies.structural",
+        "remedies.supervision"
+      ],
+      "explanation": "Once a systemic violation is established, you are comparatively comfortable with restructuring institutions and continuing judicial supervision."
+    },
+    {
+      "id": "majoritarian",
+      "text": "who’d let two wolves and a sheep vote on dinner",
+      "axis": "post",
+      "direction": "left",
+      "adds": [
+        "posture.majoritarian",
+        "posture.democratic_legitimacy"
+      ],
+      "explanation": "You give elected government unusually broad room when constitutional meaning is reasonably contestable."
+    },
+    {
+      "id": "countermajoritarian",
+      "text": "who thinks 5 is more than 535",
+      "axis": "post",
+      "direction": "right",
+      "adds": [
+        "posture.countermajoritarian",
+        "posture.rights_trumps"
+      ],
+      "explanation": "You are unusually willing to have courts enforce constitutional rights against sustained majority opposition."
+    },
+    {
+      "id": "separation_formal",
+      "text": "who’d fire the lifeguard for getting in the pool",
+      "axis": "separ",
+      "direction": "left",
+      "adds": [
+        "separation.formalist",
+        "separation.prescribed_process",
+        "separation.nondelegation"
+      ],
+      "explanation": "You are unusually strict about constitutionally assigned institutional powers and prescribed procedures."
+    },
+    {
+      "id": "separation_functional",
+      "text": "who thinks the kitchen can never have too many cooks",
+      "axis": "separ",
+      "direction": "right",
+      "adds": [
+        "separation.functionalist",
+        "separation.combined_functions"
+      ],
+      "explanation": "You tolerate institutional overlap when the arrangement remains workable, accountable, and preserves each branch’s core role."
+    },
+    {
+      "id": "rules",
+      "text": "who’d rather be consistently wrong than occasionally right",
+      "axis": "form",
+      "direction": "left",
+      "adds": [
+        "form.rules",
+        "form.predictability",
+        "form.edge_case_tolerance"
+      ],
+      "explanation": "You accept ugly edge cases as the price of general rules that constrain decision-makers."
+    },
+    {
+      "id": "anti_discretion",
+      "text": "who doesn’t trust themselves to decide when to pee",
+      "axis": null,
+      "direction": null,
+      "adds": [
+        "form.anti_discretion"
+      ],
+      "explanation": "Your attraction to rules is especially driven by distrust of discretionary human judgment and its risks of arbitrariness, bias, or inconsistency."
+    },
+    {
+      "id": "balancing",
+      "text": "who does whatever they want",
+      "axis": "form",
+      "direction": "right",
+      "adds": [
+        "form.balancing"
+      ],
+      "explanation": "You prefer contextual weighing of competing considerations over categorical rules in hard cases."
+    }
+  ],
+  "FALLBACK_PHRASES": {
+    "contradiction": {
+      "id": "secondary_contradiction",
+      "text": "who is a walking contradiction",
+      "explanation": "Your strongest remaining dimension contains substantial support for opposing positions, so the apparent neutrality comes from strong answers cancelling rather than from indifference."
+    },
+    "neutral": {
+      "id": "secondary_neutral",
+      "text": "who needs to stop fence sitting",
+      "explanation": "After your main jurisprudential commitments are accounted for, the remaining dimensions do not show a strong enough directional commitment for a substantive phrase."
+    }
+  }
+}

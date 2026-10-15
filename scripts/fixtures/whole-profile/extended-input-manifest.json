@@ -1,0 +1,25 @@
+{
+  "frozenAt": "2026-10-15T03:04:59.810Z",
+  "method": "Frozen before revised production outputs. Original 157 answers unchanged. No primary-commitment ranking inferred from profession, paragraph order, compatible doctrinal positions, or desired label. Null means insufficient biographical evidence of comparative centrality; zero would assert a tie.",
+  "sourceBiographiesSha256": "887e00d0ba9f9ff588498795515c3b7ea5bd4e5e360993ab293eb8b060062a6c",
+  "files": {
+    "mara-answer-plan-extended.json": {
+      "sha256": "de5e4a6b3991ec113aceed55a6b7e863dc20d9c5f30e82c7f35938cc3f091a66",
+      "originalAnswers": 157,
+      "newPriorityAnswers": 21
+    },
+    "alex-answer-plan-extended.json": {
+      "sha256": "b20684aca23033fb23a376730682a50a072423233d1a6d3dac19415384ff9994",
+      "originalAnswers": 157,
+      "newPriorityAnswers": 21
+    },
+    "imani-answer-plan-extended.json": {
+      "sha256": "2feaa8bc545d4538824416bbac258588fc0eca06914a0c836de130da27697f4d",
+      "originalAnswers": 157,
+      "newPriorityAnswers": 21
+    },
+    "priority-prompts-frozen.json": {
+      "sha256": "2b467c0bfadafc7be9c23af7ebb2ed97e13d2baedf1740203232a3d312b9eed5"
+    }
+  }
+}

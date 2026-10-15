@@ -1,9 +1,9 @@
-/* Integrated public result narratives: <=70-word opening + one academic thread.
+/* Integrated public result narratives: <=70-word opening + one coherent portrait.
    Context target: roughly 180–300 words; 300 is a cap, not a reason to pad. */
 (function attachResultNarrative(global) {
   "use strict";
 
-  const ROUTES = Object.freeze({
+  const ROUTES = ({
   "special_unusable": {
     "opening": "The response pattern does not provide enough reliable evidence for a judicial portrait. The axis scores can still show individual tendencies, but LAWvalues is withholding the interpretive write-up rather than turning weak or inattentive evidence into a theory of judging.",
     "context": "LAWvalues only builds a jurisprudential narrative when the responses support relationships among legal propositions. The test looks for more than isolated axis scores: the same principle should survive changes in facts, adaptive questions should sharpen the pattern instead of undoing it, and enough evidence must exist to separate a theory from mechanical clicking. Here that foundation is missing. The axis scores still report the answers given, but a longer explanation would manufacture coherence the responses did not establish."
@@ -446,7 +446,7 @@
   const nearCenter = (scores) => ["sorc","cons","time","prec","remed","post","separ","form"]
     .every((id) => Math.abs(axis(scores,id)-50) <= 22);
 
-  const OPENINGS = Object.freeze({
+  const OPENINGS = ({
     constraint_correction: "You trust judges least when they preserve a rule they believe the law never authorized. Stability has value, but it cannot turn judicial repetition into a source superior to the Constitution or statute itself. Once the mistake is clear enough, you would rather absorb the disruption of correction than make fidelity depend on how long courts have been wrong.",
     constraint_settlement: "You think a legal system can be damaged by correction as well as by error. Judges inherit reliance, institutions, and settled expectations that did not exist when the original mistake was made. Fidelity includes knowing when legal continuity has become weightier than a fresh effort to get the underlying question exactly right.",
     constraint_general: "You want judges to have somewhere outside themselves to point. Text, fixed meaning, rules, and assigned powers matter because they deny the court an easy route from 'this result is bad' to 'the law must mean something else.' Your ideal judge can enforce hard limits without claiming a general license to improve the legal order.",
@@ -485,7 +485,7 @@
     low_theory: "You have legal instincts without a stable hierarchy telling you which one wins when they collide. Text, history, precedent, purpose, institutions, and consequences all matter, but your answers do not yet organize them into a durable theory of judicial choice. That can produce flexibility; it can also make hard cases depend heavily on case-specific judgment."
   });
 
-  function selectOpeningId(classification, scores = {}, explicitOpeningId = null) {
+  function legacySelectOpeningId(classification, scores = {}, explicitOpeningId = null) {
     const id = classification?.identity?.id || "mixed_jurisprudence";
     const t = classification?.traits || {};
     if (SPECIAL_IDS.has(id)) return null;
@@ -578,7 +578,7 @@
     return "low_theory";
   }
 
-  function buildOpening(classification, scores = {}, explicitOpeningId = null) {
+  function legacyBuildOpening(classification, scores = {}, explicitOpeningId = null) {
     const id = classification?.identity?.id || "mixed_jurisprudence";
     if (id === "unusable_response") return ROUTES.special_unusable.opening;
     if (id === "incoherent_response") return ROUTES.special_incoherent.opening;
@@ -591,7 +591,7 @@
   // theorist when the person's work is part of explaining the theory itself
   // (for example Dworkin, Fuller, Kelsen, or Ely), but route selection and prose
   // must never depend on which champion the matching layer selected.
-  function selectContextId(classification, scores = {}) {
+  function legacySelectContextId(classification, scores = {}) {
     const id=classification?.identity?.id||"mixed_jurisprudence";
     const t=classification?.traits||{};
     if(id==="unusable_response") return "special_unusable";
@@ -707,7 +707,7 @@
       return "intentionalist_mainstream";
     }
     if(id==="interpretive_pluralist"){
-      if(has(t,"method.practical_reasoning",0.5)) return "pluralist_practical";
+      if(has(t,"method.practical_reasoning",0.25)) return "pluralist_practical";
       return "pluralist_mainstream";
     }
     if(id==="sociological_jurist"){
@@ -761,6 +761,287 @@
     return "low_theory";
   }
 
+
+  // Each plan describes a relationship, its mechanism, and its unresolved case.
+  // Scores support tendencies; none licenses an invented life history or motive.
+  const PORTRAITS = {
+    realist_continuity: {
+      opening: "You want courts to develop inherited law with care, but you also think legal rules leave important parts of actual judging unexplained. Precedent constrains decisions without always determining them. Understanding hard cases requires looking at judges and their institutions as well as legal arguments. That makes the gap between legal justification and actual decision-making central to your outlook.",
+      context: "A commitment to precedent can coexist with a realistic account of its limits. Settled decisions supply authority, and development through cases can preserve continuity as law changes. Yet the materials may support several defensible answers in a hard dispute. Your empirical orientation asks what then explains the court's actual choice: institutional pressures, experience, background views, and other influences that legal arguments alone may not reveal. Legal realism studies that gap between the reasons available in doctrine and the forces shaping decisions. It does not require concluding that precedent is irrelevant or that judges should decide according to personal politics. In this combination, continuity remains a commitment about how courts should work, while realism cautions against assuming that stated legal reasons provide a complete account of how they do work.",
+      boundary: "The challenge is to evaluate and improve legal constraints using evidence about judicial behavior without treating every observed influence as a legitimate reason for a decision."
+    },
+    pluralist_rights_continuity: {
+      opening: "You want courts to protect rights while developing the law they inherit through several kinds of legal reasoning. Precedent gives continuity, but text, history, structure, and consequences also deserve attention. Courts must explain how those reasons support their decisions, especially when a new protection challenges an established rule or a popular policy.",
+      context: "A strong judicial role need not rest on one interpretive method. Your pluralist approach gives several forms of legal argument a legitimate place in deciding what a right requires. Precedent supplies an inherited body of principles and working rules; text, history, structure, and consequences can illuminate how that body of law should develop. This joins interpretive pluralism with constitutional development through cases. Respect for continuity gives courts reasons for caution, while support for judicial rights enforcement gives them responsibility for confronting failures of protection, including against elected institutions. A court must explain how its chosen combination of reasons warrants the protection it orders.",
+      boundary: "The recurring difficulty is deciding which reasons should carry the most weight when a claimed right, a settled precedent, and a democratic decision point in different directions."
+    },
+    pluralist_continuity: {
+      opening: "You want courts to develop inherited law through several kinds of legal reasoning. Precedent provides continuity, while text, history, structure, and consequences can also matter. No single method supplies every answer. Your outlook asks judges to explain how those reasons work together in a dispute and why departing from a settled decision is justified.",
+      context: "Pluralist reasoning gives continuity a place within a broader method. Earlier decisions supply established principles and reasons for caution, while text, history, structure, purpose, and practical considerations can illuminate different aspects of the same dispute. Interpretive pluralism treats these forms of argument as legitimate parts of legal reasoning without giving one permanent control over every hard case. Your support for development through precedent gives that flexibility an inherited legal setting: new decisions should work with a body of law that other courts and institutions already use. The competing forms of argument must be related to the particular problem the court must resolve. This is an affirmative account of using several methods, not evidence that the respondent has no commitments or chooses whichever result seems attractive.",
+      boundary: "The difficult case is one where the available methods point in different directions. A court must explain its priorities in that case and whether the same explanation would remain persuasive when the beneficiary changes."
+    },
+    continuity_rights: {
+      opening: "You want courts to make rights effective while building on the law they inherit. Earlier decisions deserve weight, yet they can also provide the starting point for broader protection. Your outlook gives courts responsibility for development and a reason to avoid abrupt reversals. The difficult question is when protecting a right requires leaving settled law behind.",
+      context: "Continuity and rights protection can reinforce each other. Earlier cases supply principles and working rules that later courts can extend to problems their predecessors did not resolve. This is a central idea of common-law constitutionalism: constitutional law develops through decisions, while settled decisions also limit how freely the next court can start over. Strong judicial review adds another responsibility, enforcing constitutional limits when elected institutions resist them. Respect for precedent does not settle every conflict between those responsibilities. A longstanding decision might organize public life while denying a protection the court now considers legally required.",
+      boundary: "The recurring test is whether extending protection can be justified through the inherited law, and when the reasons for departure outweigh the reasons for continuity."
+    },
+    continuity_development: {
+      opening: "You see courts as inheriting a body of law that can develop through use. Earlier decisions give later judges something to build on and a reason to avoid sudden reversals. New circumstances can justify growth in legal protection. Your outlook makes continuity part of legal change, while leaving a hard question about how far that change can go.",
+      context: "Treating precedent as a starting point for development connects stability with adaptation. Courts can reason from earlier cases, extend their principles, and work out how a protection operates in a new setting. Common-law constitutionalism gives this accumulated practice a role in shaping present constitutional law. The legal order is built across generations of decisions, which makes both inherited authority and the costs of reversing it relevant. This differs from an account in which later decisions only provide evidence of a meaning already fixed at adoption. It still leaves limits to judicial development: an established rule may resist the change a new case seems to invite.",
+      boundary: "The pressure point is deciding when a development remains grounded in existing legal authority and when it becomes a change that requires another institution's decision."
+    },
+    public_constraint_reliance: {
+      opening: "You want people to know the rules before officials use power against them. Enacted words, established constitutional meaning, and consistent standards constrain judicial choices. Yet settled decisions also deserve weight. Your outlook combines a demand for legal discipline with resistance to reopening every old ruling, especially when people and institutions have come to depend on it.",
+      context: "Public legal constraint joins several commitments here. Enacted language identifies the decision lawmakers made, historical interpretation anchors constitutional law in its adoption, and general rules extend that discipline across individual disputes. Textualism, originalism, and rule-oriented judging overlap in this outlook without eliminating the judgment needed for ambiguous language or genuine gaps. Respect for precedent adds a qualification: a later decision can generate reasons for continuity even if a fresh interpretation would reach a different answer. The legal order people actually use may depend on rules that a judge would not have adopted in the first place.",
+      boundary: "The hard case is a settled decision that seems wrong under the governing text or historical law. The answers support both correction and continuity as relevant concerns, without specifying a complete rule for choosing between them."
+    },
+    historical_reliance: {
+      opening: "You want constitutional judging tied to the law established at adoption, while giving settled decisions weight in the present. Recovering the original answer matters, but so does the legal order built around later rulings. Your outlook asks courts to respect both commitments. The hardest cases arise when correcting an old mistake would unsettle rules people have come to rely on.",
+      context: "Historical constraint and respect for precedent answer different questions. Originalism asks what constitutional law was established at adoption; precedent asks what authority a later decision has for today's court. Original meaning, lawmaking intention, and historical legal methods offer different ways to identify that original law. Reliance can give a later ruling weight even when the historical inquiry casts doubt on it. People and institutions may have organized important arrangements around the ruling, and other legal rules may depend on it. This produces a qualified approach to correction: recovering the original law remains important without automatically deciding when an existing decision must be overturned.",
+      boundary: "The unresolved question is how much certainty about historical error, and how much disruption from reversal, should be enough to overcome the authority of a settled decision."
+    },
+    historical_correction: {
+      opening: "You want courts to recover the constitutional law established at adoption, even when later decisions have moved away from it. Earlier rulings deserve consideration, but their age does not settle whether they should survive. Your outlook gives legal correction substantial weight and asks whether preserving an established rule would keep an unauthorized change in place.",
+      context: "Historical authority and correction reinforce each other in this outlook. Originalism identifies constitutional law through its adoption, whether the inquiry emphasizes public meaning, lawmaking intention, or historical legal methods. A later judicial decision can then be evaluated against a source of authority outside the decision itself. Giving correction substantial weight limits the ability of precedent to turn an error into a lasting constitutional settlement. The difficulty is institutional as well as interpretive. A court must decide how confidently it has identified an error and account for the legal arrangements that have grown around it.",
+      boundary: "The hard case involves a historically doubtful rule whose reversal would cause serious disruption. The answers establish a direction of judgment, without supplying a formula for every such conflict."
+    },
+    historical_rules: {
+      opening: "You want judges constrained by constitutional history and rules that carry across cases. A hard application does not by itself justify changing the governing standard. This joins a fixed legal starting point with a preference for predictable decisions. The challenge is deciding how much judgment remains when an old rule meets facts its makers never considered.",
+      context: "Historical authority can work alongside rule-based judging. The first identifies the law established at adoption; the second favors standards that constrain decisions across changing facts. Originalism and legal formalism overlap here without becoming the same theory. Historical law may contain a broad standard, while a clear rule may have a recent origin. Their combination asks a court to distinguish applying an inherited rule to new circumstances from replacing it with a preferred modern rule. Difficult cases remain because historical materials may be incomplete, legal language may be broad, and a rule can leave its application uncertain.",
+      boundary: "The practical difficulty is preserving an external legal constraint while acknowledging the choices needed to apply it. A commitment to rules does not establish that judging can be mechanical."
+    },
+    rules_rights: {
+      opening: "You want courts to protect legal rights through rules that remain dependable across cases. Rights should constrain popular decisions, and judges should also be constrained in how they enforce them. This makes consistent legal standards part of the protection you seek. The difficult case is one where a clear rule protects certainty but fits an individual claim poorly.",
+      context: "Judicial enforcement and rule-based constraint can serve the same project. Courts can stand against a popular measure while relying on a standard that also limits their own choices. The combination belongs within legal constitutionalism, which gives courts a substantial role in enforcing constitutional rights, with a comparatively rule-oriented method. It does not require treating every right as absolute or every legal question as already resolved. Rules still need interpretation, and choosing a remedy can require further judgment. The distinctive tension is between the protection a general standard gives across cases and the protection sought by someone whose circumstances fit that standard awkwardly.",
+      boundary: "A difficult dispute tests whether an exception would make the right more effective or weaken the dependable rule that gives it force."
+    },
+    purpose_restraint: {
+      opening: "You want legal interpretation to serve the purposes behind the law while leaving elected institutions substantial room to govern. Judges need to understand what a rule is trying to accomplish, yet that does not give them authority to choose public policy freely. Your outlook puts the boundary between interpreting a legislative decision and replacing it at the center of hard cases.",
+      context: "Attention to legislative purpose can coexist with judicial restraint. A court may read ambiguous language in light of the problem lawmakers addressed while respecting their authority to choose the policy itself. Purposivism supplies the interpretive method; a restrained account of judicial review limits the court's role in revisiting public decisions. The two commitments reinforce each other when understanding a statutory scheme helps implement the legislative choice. They come under pressure when an apparent drafting mistake, an unforeseen circumstance, or a frustrated purpose tempts a court to improve the scheme beyond the enacted decision.",
+      boundary: "The question is how much reconstruction remains faithful interpretation. A useful outcome alone cannot establish that lawmakers authorized the court to produce it."
+    },
+    text_restraint: {
+      opening: "You want enacted words to constrain judges and elected institutions to retain substantial responsibility for public policy. Reading the law carefully is part of respecting that division of authority. Your outlook makes judicial correction of an imperfect law a demanding choice. The difficult question is when enforcing a legal limit requires a court to resist the officials it otherwise leaves room to govern.",
+      context: "Textual constraint and institutional restraint can reinforce each other. Enacted language records the public decision that survived the lawmaking process, including compromises that a court might otherwise smooth away. Giving that language priority limits judicial reconstruction. Leaving elected bodies substantial room to govern supplies a related account of institutional responsibility. Textualism and democratic restraint nevertheless remain distinct: a clearly enacted constitutional limit may require a court to reject a popular policy. Their combination demands attention to both the authority of the public decision and the superior legal rules that bind its makers.",
+      boundary: "The difficult case is one in which restraint toward elected officials conflicts with faithful enforcement of a legal limit. These commitments do not determine that every such dispute must end in deference."
+    },
+    text_rules: {
+      opening: "You want public legal rules to give dependable guidance before a dispute reaches court. Enacted language and standards that apply across cases help constrain judicial choices. Your outlook makes a sympathetic exception something that needs a legal justification. The hard question is what courts should do when the words are incomplete or a clear rule fits a new problem badly.",
+      context: "Giving priority to enacted language can reinforce a preference for general rules. Textualism asks courts to work from the law's public wording; rule-oriented judging seeks standards that remain consistent across individual disputes. Together they restrict the freedom to reconstruct a law around the most attractive outcome in a particular case. Yet enacted wording can contain broad standards as well as precise commands. A court may still need to resolve ambiguity, fill a genuine gap, or identify the scope of an exception. The combination provides a disciplined starting point without proving that legal materials always dictate a single answer.",
+      boundary: "The recurring difficulty is distinguishing a legally grounded exercise of judgment from an exception that erodes the rule's authority in future cases."
+    },
+    adaptive_rights: {
+      opening: "You give courts room to develop constitutional protection as new problems arise, including when elected institutions resist. The law's capacity to protect people matters to how you understand its development. This outlook assigns judges substantial responsibility. Its difficult question is how they can justify a new protection as law while remaining accountable to limits on their own authority.",
+      context: "Constitutional development and strong rights enforcement reinforce each other when courts extend protection to circumstances earlier law did not adequately address. Living constitutionalism allows later legal developments to contribute to present constitutional meaning. Legal constitutionalism gives judicial enforcement an important place in holding public power to constitutional limits. Their combination leaves a demanding problem of justification. A court must explain why an expanded protection follows from legally relevant principles or developments, and why it has authority to impose that protection against a democratic decision. The importance of a desired result cannot by itself answer either question.",
+      boundary: "The pressure point is the boundary between developing an enforceable constitutional commitment and making a policy choice that requires democratic authorization."
+    },
+    adaptive_democracy: {
+      opening: "You allow constitutional law to develop over time while giving elected institutions substantial room to shape public decisions. Change need not belong to judges alone. Your outlook connects an adaptable Constitution with limits on judicial control. The hard question is how courts should protect a constitutional commitment when democratic judgment pushes its development in a different direction.",
+      context: "An evolving Constitution need not imply judicial supremacy. Constitutional understandings can change through legislation, public argument, institutional practice, and court decisions. Democratic constitutionalism emphasizes this interaction, while restrained judicial review leaves political institutions room to resolve disagreements. The commitments fit together when courts and elected bodies contribute to a developing legal settlement. They become harder to reconcile when a court regards a protection as legally required and the political process rejects it. Accepting legal development does not establish that every public demand changes the Constitution or that courts must accept every democratic answer.",
+      boundary: "The unresolved issue is which forms of change carry legal authority and when judicial intervention should interrupt, rather than follow, the political process."
+    },
+    practical_continuity: {
+      opening: "You want courts to make the law work without repeatedly unsettling the rules they inherit. Attention to purpose or practical effects gives judges room to respond to difficult cases; respect for precedent limits abrupt changes. Your outlook makes adaptation a task within an existing legal order. The recurring question is when improving that order justifies disturbing it.",
+      context: "Practical judgment and continuity can work together when courts improve legal rules incrementally. Precedent provides a stable starting point, while attention to a rule's purpose and operation can reveal where clarification or adjustment is needed. This connects pragmatic and common-law approaches to judging, though statutory purpose and practical consequences remain different reasons for a decision. A court can care about implementation without treating every desirable outcome as legally available. The difficulty comes when an inherited rule frustrates its apparent purpose or produces serious costs, yet people and institutions have arranged their affairs around it.",
+      boundary: "The difficult choice is between revising a rule to make it work better and preserving the settlement that gives the legal order continuity. Neither commitment supplies an automatic answer."
+    },
+    contextual_rights: {
+      opening: "You want courts to take rights seriously while examining the circumstances of a restriction. That combines a strong judicial role with a willingness to weigh competing legal claims. Your outlook asks for reasons that explain why a burden is justified in this case. The hard question is how that flexible judgment can remain consistent across cases.",
+      context: "Strong rights review can operate through contextual justification instead of a single categorical rule. Proportionality is one influential example: it examines the public objective, the connection between means and ends, the availability of less restrictive measures, and the burden imposed. Other contextual approaches use different tests. What joins this family of methods is a demand for reasons responsive to the circumstances. Coupled with an important judicial role, it gives courts substantial responsibility for testing public decisions. That responsibility raises questions about evidence, consistency, and the relative competence of courts and elected institutions.",
+      boundary: "The pressure point is whether a context-sensitive test disciplines judicial choice enough to protect rights predictably, especially when reasonable institutions disagree about the relevant costs."
+    }
+  };
+  // Authored combinations explain how a source commitment changes the actual
+  // mechanism of judging. These keys describe evidence, never a persona.
+  const AUTHORED = {
+    pluralist_rights_continuity_independent_extreme: {
+      opening: "You want courts to protect rights by drawing on several kinds of legal reasoning while building on inherited law. Precedent provides continuity, but independent principles of justice can also bind. Text, history, purpose, and practical judgment help courts work through their responsibilities. Your outlook demands reasons for changing settled law, especially when a new protection challenges a popular decision.",
+      context: "Several commitments shape your account of judicial development. Precedent supplies principles and working rules, while text, history, structure, and consequences can each illuminate what a right requires. Interpretive pluralism gives these forms of argument legitimate roles without assigning one permanent control over every dispute. Your strong support for judicial enforcement gives courts responsibility for acting on those reasons even against elected institutions. Independent moral principles add legal authority beyond protections officials have already recognized, while extreme injustice supplies a further limit on a rule's legal status. That moral dimension extends beyond the exceptional case of a radically unjust enactment. Respect for continuity still matters: an earlier decision can organize public life and provide reasons against overturning it. The difficult case asks the court to reconcile those demands, rather than merely collect arguments for a preferred answer. It must explain why the relevant methods support extending protection through existing law or justify departing from a settled rule, and whether that explanation remains credible when the result favors another side."
+    },
+    realist_continuity_qualified_positive: {
+      opening: "You want courts to build on inherited law, while recognizing that legal arguments do not fully explain how judges decide hard cases. Precedent supplies authority without always determining the answer. Public legal practice anchors your view, but understanding actual decisions also requires evidence about judges and their institutions. Your outlook keeps those two tasks connected without treating them as identical.",
+      context: "Respect for precedent and attention to judicial behavior answer different parts of the same problem. Earlier cases help make the law courts inherit, and gradual development can extend that law without repeatedly starting over. But legal materials may support several defensible answers in a difficult case. Your empirical orientation asks what explains the court's choice among them, including institutional pressures, experience, and background views. Legal realism studies those influences rather than assuming that the published legal argument tells the whole story. Your chiefly source-based view still gives recognized legal practice authority: discovering an influence on a decision does not make that influence a legitimate legal reason. You also leave an opening for extreme injustice to undermine legal status, without specifying exactly where that limit falls. The resulting outlook distinguishes what the law authorizes, how courts can develop it, and what actually moves judges to decide. Its practical challenge is using evidence about judicial behavior to assess legal constraints without concluding either that those constraints always determine decisions or that they have no force."
+    },
+    pluralist_continuity_qualified_positive: {
+      opening: "You want courts to develop inherited law using several kinds of legal reasoning. Precedent supplies continuity, while text, history, structure, and consequences can also matter. Recognized legal practice gives this work its authority. Your outlook asks judges to explain how these reasons fit together, especially when improving the law would disturb a settled answer.",
+      context: "Continuity gives your pluralist method an institutional starting point. Earlier cases supply principles and working rules, while other forms of legal argument can reveal why those rules should be extended, qualified, or preserved. Interpretive pluralism treats text, history, structure, purpose, and precedent as legitimate ways to reason about law without making one method govern every dispute. These forms of argument must be related to the concrete problem before the court. Your chiefly source-based view bounds this flexibility: recognized legal practice authorizes the inquiry, while a desirable outcome alone does not establish a legal right. That leaves room to use moral standards when the legal system incorporates them. Your answers also leave an opening for extreme injustice to defeat legal status; they do not supply a complete account of that exception. The central difficulty is explaining why a particular combination of reasons warrants changing or retaining an inherited rule. A persuasive account must do more than list several methods: it must show why they carry the weight assigned to them in this case and remain credible when the result favors a different side."
+    },
+    continuity_rights_natural_principles: {
+      opening: "You want courts to build on settled law while making rights more effective. Principles of justice can bind even before officials recognize them, but legitimate public decisions also deserve respect. Earlier cases help courts develop protection without starting over. Your outlook asks when a legal principle requires changing an inherited rule and when the existing settlement should stand.",
+      context: "Continuity gives rights development a starting point. Courts inherit decisions whose principles can support broader protection, along with settled rules that people and institutions depend on. Common-law constitutionalism describes this development through cases. Your commitment to independently binding moral principles adds a source of legal authority beyond what officials have already recognized. Yet moral reasoning can also support respecting a public settlement: some questions permit several legitimate answers, and lawmaking can choose among them. These two parts of natural-law thinking pull together when an established rule gives a workable form to a broad principle of justice. They pull apart when an inherited rule blocks a right the court regards as already legally binding. Your support for strong judicial enforcement gives courts substantial responsibility for confronting that conflict, including against popular legislation. The difficulty is distinguishing a settlement that courts should preserve from one that must yield to a legal principle. Neither the age of the decision nor the appeal of a proposed improvement supplies a complete answer."
+    },
+    continuity_rights_natural_principles_extreme: {
+      opening: "You want courts to build on settled law while making rights more effective. Principles of justice can bind even before officials recognize them, and extreme injustice can defeat a rule's authority. Legitimate public decisions still deserve respect. Your outlook asks when courts should extend protection through inherited law and when a legal principle requires them to depart from it.",
+      context: "Continuity gives rights development a starting point. Courts inherit decisions whose principles can support broader protection, along with settled rules that people and institutions depend on. Common-law constitutionalism describes this development through cases. Your commitment to independently binding moral principles adds legal reasons beyond what officials have already recognized. Yet moral reasoning can also support respecting a public settlement: some questions permit several legitimate answers, and lawmaking can choose among them. These parts of natural-law thinking reinforce each other when an established rule gives workable form to a broad principle of justice. They conflict when an inherited rule blocks a right the court regards as legally binding. Extreme injustice supplies a further limit on legal authority; it does not exhaust your acceptance of independent principles. Your support for strong judicial enforcement gives courts substantial responsibility for confronting these conflicts, including against popular legislation. The difficult judgment is when a public settlement deserves preservation, when its protections can grow through precedent, and when it must give way. The commitments establish reasons to consider each response without providing a complete rule for every case."
+    },
+    continuity_rights_strong_natural_principles: {
+      opening: "You want courts to make rights effective while preserving a body of law they can build on. Principles of justice can carry legal force beyond official adoption, and serious moral defects can undermine a rule's validity. Earlier decisions still deserve weight. Your outlook asks courts to reconcile that inherited authority with rights the existing rules may fail to recognize.",
+      context: "Constitutional development connects your respect for continuity with your commitment to rights. Earlier decisions supply principles and working rules that courts can extend as they confront new claims. Their authority also gives courts a reason to avoid starting over whenever judicial membership changes. Yet the existing record does not exhaust the legally relevant reasons: your answers allow moral principles to bind independently of official adoption and sufficiently serious moral defects to undermine a rule's validity. This places development through precedent alongside a demanding natural-law account of authority. Strong judicial review makes courts responsible for acting on these commitments even when elected institutions resist. The combination leaves a real conflict when an established decision organizes public life but falls short of a legally binding principle. Respecting precedent, extending protection through it, and departing from it are different responses. Your commitments give reasons for each in different circumstances, without establishing a complete test for choosing among them."
+    },
+    continuity_rights_independent_extreme: {
+      opening: "You want courts to make rights real while building on inherited law. Earlier decisions deserve respect, but they can also help constitutional protections grow. Principles of justice can carry legal force beyond official adoption, and extreme injustice can undermine a rule's authority. Your outlook asks when those commitments justify changing a settled decision.",
+      context: "Respect for precedent and independent rights can pull in different directions. Constitutional development offers one way to connect them: earlier decisions provide a starting point, while principles such as equal treatment can justify extending protection beyond what those decisions recognized. Continuity gives courts something to build on without freezing every old answer. Your strong support for judicial enforcement gives courts considerable responsibility for that development, including when a popular law stands in the way. The legal principles involved need not depend entirely on official adoption. That brings this outlook near the meeting point of common-law constitutionalism, which emphasizes development through cases, and theories that make justice part of law itself. Extreme injustice is another limit on authority, but your acceptance of independent principles is broader than that exceptional threshold. The difficulty is deciding when a principle warrants changing settled law. An inherited decision and a claim of fundamental right can both make demands on the court; the response pattern does not provide a complete ranking that resolves every conflict."
+    },
+    continuity_rights_independent: {
+      opening: "You want courts to build on inherited law while extending rights that existing decisions may not fully protect. Principles of justice can have legal authority beyond official adoption. Precedent still deserves weight, making continuity part of the task. Your outlook gives courts substantial responsibility for deciding when a legal principle warrants changing a settled answer.",
+      context: "Continuity can give rights development a legal structure. Earlier cases establish principles and working rules that later courts can extend, while also creating reasons against an abrupt reversal. Common-law constitutionalism emphasizes this development through decisions. Your acceptance of moral principles as law adds a further demand: the rights a court must consider need not be exhausted by the protections officials have already recognized. Strong judicial enforcement makes the court responsible for confronting that gap even against a popular decision. This combination is more demanding than either preserving precedent or improving outcomes in isolation. It requires a justification for the claimed legal principle and an explanation of its relationship to the inherited law. The difficult case is a settled decision that organizes public life while denying a protection the court considers legally required. Neither the authority of the old case nor the importance of the claimed right automatically settles how far the court should go."
+    },
+    continuity_development_qualified_positive: {
+      opening: "You see law as something courts inherit and develop through deciding disputes. Settled decisions provide authority as well as reasons for caution. Legal practice can support new protections, while a desirable outcome alone does not supply their legal basis. Your source-based outlook also leaves an opening for extreme injustice to undermine a rule's status as law.",
+      context: "Continuity and change belong to the same judicial task in this outlook. Precedent helps make the law present courts must work with, giving legal development an institutional starting point. That connects the common-law tradition of development through cases with a chiefly source-based understanding of law: recognized legal practice supplies authority for the work of adaptation. A court can extend a principle or develop its application without treating every morally attractive result as an existing legal right. The inherited legal order also constrains that work, especially when a proposed improvement would unsettle established rules. Your answers leave a qualification at the edge of this source-based position by allowing some force to the idea that extreme injustice can defeat legal status. They do not establish why you accept that exception or exactly where its threshold lies. The recurring difficulty is deciding when an adaptation remains authorized by existing practice and when it changes a settlement beyond what courts are entitled to do."
+    },
+    continuity_development_inclusive: {
+      opening: "You see courts as inheriting law that can develop through use. Settled decisions give judges both a starting point and reasons for caution. Moral standards can guide that development when recognized law gives them a role. Your outlook connects legal change to public practice, while asking courts to justify how far a new decision can carry it.",
+      context: "Precedent can be both a source of continuity and a means of development. Earlier cases establish principles that later courts apply and extend, so an evolving legal order need not depend on judges beginning afresh. This connects common-law constitutionalism with inclusive positivism. In plain terms, recognized public practice supplies legal authority, and that practice can itself make a moral standard part of law. A court interpreting a legal guarantee of equal treatment may thus need moral judgment to apply an institutionally recognized rule. That is different from assuming that every morally sound claim already has legal force. Respect for settled decisions constrains this development because later rulings operate within a system people already use and depend on. The hard case is one in which extending a recognized principle would displace an established rule. The court must explain both its authority to develop the protection and why the reasons for continuity should give way."
+    },
+    public_constraint_reliance_inclusive: {
+      opening: "You want people to know the rules before officials use power against them. Enacted words, established constitutional meaning, and consistent standards constrain judicial choice. Yet settled decisions also deserve weight. Your outlook allows judgment within recognized law, including moral standards it incorporates, while resisting repeated judicial revision of the legal order people rely on.",
+      context: "Dependable public rules connect your interpretive commitments. Enacted language identifies what lawmakers adopted, historical interpretation anchors constitutional law in its adoption, and general rules extend that discipline across disputes. Textualism and originalism describe different parts of this approach; neither requires pretending that every difficult case already has a clear answer. Your source-based position can also recognize moral standards when the legal system incorporates them. That permits judgment within the law without making a judge's preferred moral answer an independent source of authority. Respect for precedent qualifies the demand to recover the original answer. A later decision may have generated rules and arrangements that people and institutions depend on, giving continuity weight even when a fresh interpretation would go another way. The difficult case is a settled decision that appears wrong under the governing text or historical law. Your outlook makes both the authority of that law and the costs of reopening its settled application relevant, without supplying an automatic resolution."
+    }
+  };
+  const SOURCE_BOUNDARIES = {
+    positive: ["Recognized legal practice supplies the authority for that work.", "depends on authority supplied by recognized public legal sources. A good reason to improve a rule is not automatically a legal reason to change it"],
+    inclusive: ["Recognized law can give moral judgment a role in that work.", "can involve moral judgment when recognized law incorporates a moral standard. The court must connect that judgment to the legal practice giving it authority"],
+    exclusive: ["Public legal sources must supply the authority for that work.", "must remain anchored in identifiable public sources. Where those sources leave a choice open, moral judgment can guide that choice without becoming a new source of existing law"],
+    qualified_positive: ["Public sources anchor your view, with a qualification for extreme injustice.", "is chiefly grounded in recognized public sources, with an unresolved qualification for extreme injustice. That qualification prevents treating official adoption as conclusive in every imaginable case"],
+    independent: ["Principles of justice can supply legal authority beyond official adoption.", "can draw on legally binding principles of justice beyond official adoption. This enlarges the reasons a court must consider while making it responsible for establishing the claimed principle's legal force"],
+    independent_extreme: ["Independent principles and limits on extreme injustice also shape legal authority.", "can draw on principles with legal force beyond official adoption, alongside a limit on extreme injustice. The moral dimension extends beyond the exceptional case of a radically unjust enactment"],
+    extreme: ["Extreme injustice can put an outer limit on legal authority.", "operates with an outer limit: extreme injustice can defeat a rule's legal status. That exceptional limit does not establish that every morally preferable principle is already law"],
+    interpretive: ["Legal principles must both fit inherited practice and help justify it.", "requires principles that both fit the institutional record and morally justify it. Interpretivism connects legal authority to that combined inquiry, making the inherited practice a constraint on moral judgment"],
+    impact: ["Legal authority turns on the obligations institutions properly create or change.", "turns on the moral obligations institutions properly create or change. Moral-impact theory asks which institutional effects constitute law; an obligation to resist an oppressive act does not automatically become one of them"],
+    practice: ["Legal practice shapes genuine rights and responsibilities that officials must confront.", "concerns genuine moral rights and responsibilities shaped by legal institutions. On this moral-practice view, an official statement does not alone settle the obligations the court must recognize"],
+    legality: ["Authority depends on governing through public, intelligible, consistently applied law.", "depends on the conditions that make government through law possible. Public, intelligible rules and consistency between official conduct and announced standards constrain how the court can carry out that task"],
+    natural: ["Moral authority can support the binding force of public legal settlements.", "can respect public settlements because legitimate lawmaking gives concrete form to broader moral requirements. Natural-law reasoning can thus support the force of enacted rules while also explaining limits on their authority"],
+    natural_principles: ["Principles of justice can bind independently, while legitimate public settlements deserve respect.", "must reconcile independently binding principles of justice with the authority of legitimate public settlements. Moral principles may leave room for lawmakers to choose among acceptable rules, while also imposing legal limits on those choices"],
+    natural_principles_extreme: ["Independent principles constrain public settlements, with extreme injustice an additional limit.", "must reconcile independently binding principles with legitimate public settlements, while recognizing extreme injustice as an additional limit on legal authority. Independent principles can matter beyond that exceptional threshold; public lawmaking can still settle questions those principles leave open"],
+    strong_natural_principles: ["Independent moral principles and serious injustice can shape legal validity.", "must account for both independently binding moral principles and serious injustice capable of defeating legal validity. These commitments broaden the court's legal reasons beyond official adoption without specifying how every dispute between principle and settled practice must be resolved"],
+    strong_natural: ["A serious failure of justice can undermine a rule's legal authority.", "must confront a demanding moral test of legal validity. A serious failure of justice can undermine the legal status of the rule the court is being asked to apply"],
+    open: ["", "leaves a further question about the source of legal authority. The method alone cannot establish whether recognized institutions exhaust the legal reasons a court may use"]
+  };
+  const RELATION_SUBJECTS = {
+    realist_continuity:"Assessing how courts actually develop inherited law",
+    pluralist_continuity:"Developing inherited law through several legitimate methods",
+    pluralist_rights_continuity:"Developing enforceable rights through several legitimate methods and inherited decisions",
+    continuity_rights:"Extending rights through inherited decisions",
+    continuity_development:"Developing law through precedent",
+    public_constraint_reliance:"Reconciling public legal constraint with settled decisions",
+    historical_reliance:"Respecting historical authority alongside later precedent",
+    historical_correction:"Correcting later doctrine in the name of historical authority",
+    historical_rules:"Applying historically grounded rules to new circumstances",
+    rules_rights:"Protecting rights through dependable general standards",
+    purpose_restraint:"Implementing legislative purposes within a restrained judicial role",
+    text_restraint:"Enforcing enacted language while leaving room for elected judgment",
+    text_rules:"Using enacted words to discipline decisions across cases",
+    adaptive_rights:"Developing judicially enforceable constitutional protection",
+    adaptive_democracy:"Connecting constitutional development with democratic authority",
+    practical_continuity:"Adapting inherited rules to make them work",
+    contextual_rights:"Justifying rights decisions through the circumstances of a case"
+  };
+  for (const [plan, copy] of Object.entries(PORTRAITS)) {
+    for (const source of Object.keys(SOURCE_BOUNDARIES)) {
+      const id = `portrait_${plan}_${source}`;
+      const authored=AUTHORED[`${plan}_${source}`];
+      const [sourceOpening,sourceRelationship]=SOURCE_BOUNDARIES[source];
+      const opening=sourceOpening ? copy.opening.replace(/[^.!?]+[.!?]$/, "").trim()+" "+sourceOpening : copy.opening;
+      const route=authored || {opening,
+        context: `${copy.context} ${RELATION_SUBJECTS[plan]} ${sourceRelationship}. ${copy.boundary}`};
+      OPENINGS[id] = route.opening;
+      ROUTES[id] = Object.freeze(route);
+    }
+  }
+
+  function sourceFrame(c, scores={}) {
+    const id=c?.identity?.id, t=c?.traits||{};
+    const extreme=has(t,"source.extreme_injustice",0.25);
+    const independent=has(t,"source.independent_moral_validity",0.5) ||
+      (!Object.hasOwn(t,"source.independent_moral_validity") && axis(scores,"sorc")<62 && has(t,"source.objective_morality",0.5));
+    if (has(t,"source.strong_natural_law")) return independent ? "strong_natural_principles" : "strong_natural";
+    if (axis(scores,"sorc")<62 && has(t,"source.positive_law_settlement",0.4) && has(t,"source.objective_morality",0.4))
+      return independent ? (extreme ? "natural_principles_extreme" : "natural_principles") : "natural";
+    if (has(t,"source.moral_impact")) return "impact";
+    if (has(t,"source.moral_practice")) return "practice";
+    if (has(t,"source.internal_legality")) return "legality";
+    if (has(t,"source.fit_and_justification")) return "interpretive";
+    // S10/S11 address independent moral legality. D-CLC1 alone does not:
+    // unwritten common-law rights can still be institutionally grounded.
+    if (independent)
+      return extreme ? "independent_extreme" : "independent";
+    if (axis(scores,"sorc")>=62 || has(t,"source.morality_incorporated") || has(t,"source.source_thesis")) {
+      if (extreme) return "qualified_positive";
+      if (has(t,"source.source_thesis")) return "exclusive";
+      if (has(t,"source.morality_incorporated")) return "inclusive";
+      return "positive";
+    }
+    if (extreme) return "extreme";
+    // Identity is only a compatibility fallback when available evidence does
+    // not establish the source relationship. A low aggregate alone does not
+    // identify which independent source thesis a person accepts.
+    if (id==="natural_lawyer" || id==="common_good_constitutionalist") return "natural";
+    if (id==="moral_impact_theorist") return "impact";
+    if (id==="fullerian") return "legality";
+    if (["interpretivist","dworkinian"].includes(id)) return "interpretive";
+    if (id==="inclusive_positivist") return "inclusive";
+    if (id==="exclusive_positivist") return "exclusive";
+    if (id==="positivist") return "positive";
+    if (id==="radbruchian") return "extreme";
+    return "open";
+  }
+
+  function selectPortrait(c, scores={}) {
+    const id=c?.identity?.id||"mixed_jurisprudence", t=c?.traits||{};
+    if (SPECIAL_IDS.has(id) || id==="mixed_jurisprudence") return legacySelectContextId(c,scores);
+    const v=k=>axis(scores,k);
+    // Paired evidence, including moderate tendencies, outranks a source noun.
+    // Prefer relationships with an explicit mechanism over isolated loud scores.
+    const development=v("time")<=42 || (v("time")<55 && has(t,"time.common_law_development",0.67));
+    const history=v("time")>=64 || (v("time")>=50 && has(t,"time.originalism_independent_authority",0.67));
+    const stable=v("prec")>=62, correct=v("prec")<=38;
+    const rights=v("post")<=38, defer=v("post")>=62;
+    const rules=v("form")>=64, text=v("cons")>=64, purpose=v("cons")<=38;
+    let plan=null;
+    // Descriptive Realism and affirmative Pluralism need their own evidence,
+    // plus explicit priority: an ordinary mixed-method tendency is insufficient.
+    const realismPriority=Object.entries(t).some(([key,value])=>key.startsWith("priority.realism.over.") && Number(value)>=0.5);
+    const methodPriority=Object.entries(t).some(([key,value])=>key.startsWith("priority.method.over.") && Number(value)>=0.5);
+    const confirmedRealism=has(t,"realism.extra_doctrinal",0.5) && has(t,"realism.empirical_prediction",0.5);
+    const confirmedPluralism=has(t,"method.modal_pluralism",0.5);
+    if(development && stable && realismPriority && confirmedRealism && !has(t,"priority.method.over.realism")) plan="realist_continuity";
+    else if(development && stable && methodPriority && confirmedPluralism && !has(t,"priority.realism.over.method")) plan=rights ? "pluralist_rights_continuity" : "pluralist_continuity";
+    else if(development && stable) plan=rights ? "continuity_rights" : "continuity_development";
+    else if(history && stable) plan=text && rules ? "public_constraint_reliance" : "historical_reliance";
+    else if(history && correct) plan="historical_correction";
+    else if(history && rules) plan="historical_rules";
+    else if(development && rights) plan="adaptive_rights";
+    else if(development && defer) plan="adaptive_democracy";
+    else if(rules && rights) plan="rules_rights";
+    else if(purpose && defer) plan="purpose_restraint";
+    else if(text && defer) plan="text_restraint";
+    else if(text && rules) plan="text_rules";
+    else if(purpose && stable) plan="practical_continuity";
+    else if(v("form")<=38 && rights) plan="contextual_rights";
+    if(plan) return `portrait_${plan}_${sourceFrame(c,scores)}`;
+    // With insufficient relational evidence, keep the supported specialist
+    // account and its matching opening instead of fabricating a combination.
+    return legacySelectContextId(c,scores);
+  }
+  function selectContextId(c,scores={}) { return selectPortrait(c,scores); }
+  function selectOpeningId(c,scores={},explicit=null) {
+    if(SPECIAL_IDS.has(c?.identity?.id)) return null;
+    const plan=selectPortrait(c,scores);
+    if(plan.startsWith("portrait_")) return plan;
+    if(typeof explicit==="string" && Object.hasOwn(OPENINGS,explicit)) return explicit;
+    return `paired_${plan}`;
+  }
+  function buildOpening(c,scores={},explicit=null) {
+    if(SPECIAL_IDS.has(c?.identity?.id)) return ROUTES[selectPortrait(c,scores)].opening;
+    return OPENINGS[selectOpeningId(c,scores,explicit)] || ROUTES.low_theory.opening;
+  }
+  // Pair specialist fallback paragraphs too. Old opening IDs stay readable.
+  for(const [id,route] of Object.entries(ROUTES)) if(!id.startsWith("portrait_"))
+    OPENINGS[`paired_${id}`]=route.opening;
+  Object.freeze(ROUTES);
+  Object.freeze(OPENINGS);
+
   function fromId(id) {
     const valid = typeof id === "string" && Object.hasOwn(ROUTES, id);
     const route = valid ? ROUTES[id] : ROUTES.low_theory;
@@ -768,18 +1049,22 @@
   }
 
   function build(classification, scores = {}, explicitId = null, explicitOpeningId = null) {
-    // Share links preserve two independently selected paragraphs. Only catalog
-    // IDs are accepted; older links without an opening ID keep inferred prose.
-    const id = typeof explicitId === "string" && Object.hasOwn(ROUTES, explicitId)
-      ? explicitId : selectContextId(classification, scores);
-    const route = ROUTES[id] || ROUTES.low_theory;
-    const openingId = selectOpeningId(classification, scores, explicitOpeningId);
-    return {
-      id: Object.hasOwn(ROUTES, id) ? id : "low_theory",
-      openingId,
-      opening: buildOpening(classification, scores, openingId),
-      context: route.context
+    const selected = selectPortrait(classification, scores);
+    // Exceptional results cannot be overwritten by ordinary or legacy URL IDs.
+    if (SPECIAL_IDS.has(classification?.identity?.id)) return {
+      id: selected, openingId: null, ...ROUTES[selected]
     };
+    const id = typeof explicitId === "string" && Object.hasOwn(ROUTES, explicitId)
+      ? explicitId : selected;
+    const integrated = id.startsWith("portrait_");
+    // New plans are atomic. Legacy x/o pairs remain independently replayable.
+    const openingId = integrated ? id :
+      (typeof explicitOpeningId === "string" && Object.hasOwn(OPENINGS, explicitOpeningId)
+        ? explicitOpeningId :
+          (typeof explicitId === "string" && Object.hasOwn(ROUTES, explicitId)
+            ? legacySelectOpeningId(classification, scores) : selectOpeningId(classification, scores)));
+    return {id, openingId, opening: OPENINGS[openingId] || ROUTES[id].opening,
+      context: ROUTES[id].context};
   }
 
   function wordCount(text) {
@@ -789,6 +1074,8 @@
   global.LAW_RESULT_NARRATIVE = Object.freeze({
     ROUTES,
     OPENINGS,
+    selectPortrait,
+    sourceFrame,
     selectOpeningId,
     buildOpening,
     selectContextId,
