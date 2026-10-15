@@ -1091,6 +1091,19 @@
       if (byId[id] && !hasAsked(diagnosticResponses, id)) priorities.push({ id, priority });
     };
 
+    // Route from the live result landscape rather than from one axis threshold.
+    // A family is "live" when it is leading or close enough that one targeted
+    // diagnostic could reasonably move the noun/champion result.
+    const routingResolution = resolveIdentity(scores, traits);
+    const routingLeading = routingResolution.candidates.slice(0, 5).filter((candidate, index) =>
+      index === 0 || routingResolution.best.score - candidate.score <= 0.16
+    );
+    const routingIds = new Set(routingLeading.map((candidate) => candidate.identity.id));
+    const routingFamilies = new Set(routingLeading.map((candidate) => candidate.identity.family));
+    const bestRoutingId = routingResolution.best.identity.id;
+    const identityLive = (id) => routingIds.has(id);
+    const anyIdentityLive = (ids) => ids.some((id) => routingIds.has(id));
+
     const realismConfirmed =
       (traits["realism.underdetermination"] || 0) >= 0.45 &&
       (traits["realism.extra_doctrinal"] || 0) >= 0.45 &&
@@ -1127,10 +1140,10 @@
     // Structural jurisprudence should be diagnosed only when constitutional
     // allocation of institutional authority is a substantial commitment.
     // These questions DO NOT alter the common-core Separation percentage.
-    const structuralIdentity = resolveIdentity(scores, traits).best.identity.id;
+    const structuralIdentity = bestRoutingId;
     const structuralSalience = salience(scores, "separ");
     const structuralLive = structuralSalience >= 0.40 ||
-      ["formalist", "functionalist"].includes(structuralIdentity);
+      anyIdentityLive(["formalist", "functionalist"]);
     if (structuralLive) {
       // E2 asks about one especially sensitive special prosecutor. The
       // general Article II theory need not have the same answer.
@@ -1157,8 +1170,17 @@
         offer("D-SEP4", 76);
     }
 
-    const originalistZone = time >= 64 &&
-      resolveIdentity(scores,traits).candidates.some(c=>c.identity.id.includes("originalist"));
+    const originalistIds = [
+      "originalist", "public_meaning_originalist", "original_intent_originalist",
+      "original_methods_originalist", "framework_originalist"
+    ];
+    const originalistZone = time >= 60 &&
+      (anyIdentityLive(originalistIds) ||
+       (time >= 82 && Math.max(
+         traits["time.public_meaning"] || 0,
+         traits["time.original_intent"] || 0,
+         traits["time.originalism_independent_authority"] || 0
+       ) >= 0.45));
     if(originalistZone && (precedent >= 55 || precedent <= 38 || time >= 78) &&
        !hasAsked(diagnosticResponses,"D-PREC1")) offer("D-PREC1",75);
     const sourceNuanceZone = source <= 43 &&
@@ -1167,7 +1189,7 @@
        (traits["source.positive_law_settlement"]||0)>=0.4);
     if(sourceNuanceZone && !hasAsked(diagnosticResponses,"D-MOR1")) offer("D-MOR1",64);
 
-    if (time >= 60) {
+    if (originalistZone) {
       // Natural-law grounding is a genuine Originalist subtype rather than an
       // unrelated Source exploration. When objective-morality evidence is
       // already present, D-NP1 tests the positive-law settlement component
@@ -1215,7 +1237,7 @@
         offer("D-ORI3", 90);
       }
 
-      const provisional = resolveIdentity(scores, traits).best.identity.id;
+      const provisional = bestRoutingId;
       const looksOI = provisional === "original_intent_originalist" || originalIntent >= 0.45;
       const looksOPM = provisional === "public_meaning_originalist" || publicMeaning >= 0.45;
 
@@ -1286,11 +1308,12 @@
       }
     }
 
-    // When the Time axis already puts the respondent squarely in the Originalist
-    // refinement zone, do not let exploratory Source diagnostics consume the
-    // twelve-question budget. Originalist source-sensitive champions use the core
-    // Source evidence instead.
-    if (time < 60) {
+    // Source refinement is controlled by whether Source is actually live in the
+    // result race, not by an unrelated Time-axis cutoff. This prevents a strong
+    // Positivist from losing Austin/Kelsen/Shapiro-level discrimination merely
+    // because the same respondent also has a historical constitutional tilt.
+    const sourceFamilyLive = routingFamilies.has("source") || source >= 82 || source <= 18;
+    if (sourceFamilyLive) {
       const extremeSourcePlausible = (traits["source.extreme_injustice"] || 0) >= 0.35;
       if (extremeSourcePlausible &&
           (traits["source.objective_morality"] || 0) < 0.5 &&
@@ -1410,12 +1433,12 @@
       offer("D-ELY1", 54);
     }
 
-    const provisionalMethodIdentity = resolveIdentity(scores, traits).best.identity.id;
+    const provisionalMethodIdentity = bestRoutingId;
 
     const calabresiCompatible = new Set([
       "pragmatist", "common_law_constitutionalist", "interpretive_pluralist"
     ]);
-    if (calabresiCompatible.has(provisionalMethodIdentity) &&
+    if (routingLeading.some((candidate) => calabresiCompatible.has(candidate.identity.id)) &&
         (traits["method.statutory_obsolescence"] || 0) < 0.5 &&
         (constraint <= 45 || commonLawCore >= 0.4) &&
         !hasAsked(diagnosticResponses, "D-CAL1")) {
@@ -1430,14 +1453,14 @@
       salience(scores, "time"), salience(scores, "prec"),
       salience(scores, "post"), salience(scores, "separ")
     );
-    if (blackCompatible.has(provisionalMethodIdentity) &&
+    if (routingLeading.some((candidate) => blackCompatible.has(candidate.identity.id)) &&
         blackStructuralSalience >= 0.30 &&
         (traits["method.structural_inference"] || 0) < 0.5 &&
         !hasAsked(diagnosticResponses, "D-BLK1")) {
       offer("D-BLK1", 72);
     }
 
-    if (provisionalMethodIdentity === "textualist" && constraint >= 62) {
+    if (identityLive("textualist") && constraint >= 62) {
       if (!hasAsked(diagnosticResponses, "D-TXT1")) offer("D-TXT1", 74);
       if ((traits["constraint.best_reading_context"] || 0) >= 0.5 &&
           !hasAsked(diagnosticResponses, "D-SEP2")) {
@@ -1495,7 +1518,7 @@
     // Champion-only refinements: these are deliberately gated behind a
     // profile that is already plausible from the core bank, so they cannot
     // consume scarce adaptive slots merely to search for exotic names.
-    if (provisionalMethodIdentity === "functionalist" &&
+    if (identityLive("functionalist") &&
         (traits["method.agency_interpretive_autonomy"] || 0) < 0.5 &&
         !hasAsked(diagnosticResponses, "D-MAS1")) {
       offer("D-MAS1", 86);
@@ -1504,7 +1527,7 @@
     const gardbaumCompatible = new Set([
       "political_constitutionalist", "political_process_jurist", "minimalist", "mixed_jurisprudence"
     ]);
-    if (gardbaumCompatible.has(provisionalMethodIdentity) &&
+    if (routingLeading.some((candidate) => gardbaumCompatible.has(candidate.identity.id)) &&
         (traits["posture.dialogic"] || 0) >= 0.5 &&
         (traits["posture.structured_legislative_response"] || 0) < 0.5 &&
         !hasAsked(diagnosticResponses, "D-GRD1")) {
@@ -1514,7 +1537,7 @@
     const monaghanCompatible = new Set([
       "positivist", "legal_process_theorist", "common_law_constitutionalist", "mixed_jurisprudence"
     ]);
-    if (monaghanCompatible.has(provisionalMethodIdentity) &&
+    if (routingLeading.some((candidate) => monaghanCompatible.has(candidate.identity.id)) &&
         (traits["remedies.prophylactic"] || 0) >= 0.5 &&
         (traits["remedies.constitutional_common_law"] || 0) < 0.5 &&
         !hasAsked(diagnosticResponses, "D-MON1")) {
@@ -1563,7 +1586,7 @@
     }
 
     const commonLawDevelopment = traits["time.common_law_development"] || 0;
-    if (provisionalMethodIdentity === "common_law_constitutionalist" &&
+    if (identityLive("common_law_constitutionalist") &&
         precedent >= 70 && posture >= 58 &&
         (traits["time.ordered_liberty_tradition"] || 0) < 0.5) {
       offer("D-HAR1", 89);
@@ -1577,7 +1600,7 @@
     }
 
     const pilCompatible = new Set(["sociological_jurist", "living_constitutionalist", "purposivist"]);
-    if (pilCompatible.has(provisionalMethodIdentity) &&
+    if (routingLeading.some((candidate) => pilCompatible.has(candidate.identity.id)) &&
         remediesScore <= 25 && posture <= 32 && constraint <= 45 &&
         (traits["remedies.public_interest_litigation"] || 0) < 0.5) {
       offer("D-PIL1", 96);
@@ -1608,40 +1631,138 @@
       }
     }
 
-    // Rank a live, independently useful specialty distinction above a weak
-    // exploration of an unrelated jurisprudential family.
-    const resolution=resolveIdentity(scores,traits);
-    const leading=resolution.candidates.slice(0,3).filter((c,i)=>
-      i===0||resolution.best.score-c.score<=0.13);
-    const relevant=new Set(leading.map(c=>c.identity.id));
-    const targeted=priorities.map(p=>{
-      const diagnostic=byId[p.id],covers=diagnostic.relatedIdentityIds||[];
-      const direct=covers.some(id=>relevant.has(id)) ||
-        (resolution.best.identity.id.includes("originalist") && diagnostic.family==="originalism");
-      let bonus=direct?19:0;
-      if(resolution.best.score>=0.83&&resolution.best.basis>=0.34&&!direct)bonus-=12;
-      // Even a non-front-runner method question may expose a strong,
-      // untested rival noun (e.g. Sociological Jurisprudence) and must not
-      // be discarded solely because the current provisional winner is strong.
-      const outcomes=[3,-3].map(value=>{
-        const t=buildTraits(scores,responses,{...diagnosticResponses,[p.id]:value});
-        const noun=resolveIdentity(scores,t).best.identity;
-        return noun.id+"/"+(resolveChampions(scores,t,noun).matches[0]?.profile?.id||"none");
-      });
-      const material=outcomes[0]!==outcomes[1];
-      if(material)bonus+=direct?16:8;
-      return {...p,rank:p.priority+bonus,direct,material};
+    // Rank questions by expected information value. Hand-authored gates decide
+    // which distinctions are jurisprudentially plausible; the sorter decides
+    // which live distinction is most valuable *now*.
+    const resolution = routingResolution;
+    const leading = routingLeading;
+    const relevant = routingIds;
+    const currentChampion = resolveChampions(scores, traits, resolution.best.identity);
+    const currentChampionId = currentChampion.matches[0]?.profile?.id || "none";
+    const currentMargin = resolution.candidates.length > 1
+      ? resolution.best.score - resolution.candidates[1].score : 1;
+
+    const askedFamilyCounts = {};
+    for (const id of Object.keys(diagnosticResponses || {})) {
+      const family = byId[id]?.family;
+      if (family) askedFamilyCounts[family] = (askedFamilyCounts[family] || 0) + 1;
+    }
+
+    const triggeredFollowUp = (diagnosticId) => {
+      for (const [askedId, raw] of Object.entries(diagnosticResponses || {})) {
+        const prior = byId[askedId];
+        if (!prior || raw === null) continue;
+        const value = Number(raw);
+        const nextIds = value > 0 ? prior.nextOnAgree : value < 0 ? prior.nextOnDisagree : [];
+        if ((nextIds || []).includes(diagnosticId)) return true;
+      }
+      return false;
+    };
+
+    const hypothetical = (diagnosticId, value) => {
+      const hypotheticalTraits = buildTraits(
+        scores, responses, { ...diagnosticResponses, [diagnosticId]: value }
+      );
+      const identityResolution = resolveIdentity(scores, hypotheticalTraits);
+      const championResolution = resolveChampions(
+        scores, hypotheticalTraits, identityResolution.best.identity
+      );
+      const championId = championResolution.matches[0]?.profile?.id || "none";
+      const margin = identityResolution.candidates.length > 1
+        ? identityResolution.best.score - identityResolution.candidates[1].score : 1;
+      let modifierId = "none";
+      if (global.LAW_RESULT_CONTENT?.assemble) {
+        const assembled = global.LAW_RESULT_CONTENT.assemble({
+          identity: identityResolution.best.identity,
+          identityScore: identityResolution.best.score,
+          primaryStrength: identityResolution.best.basis,
+          identityAlternatives: identityResolution.candidates.slice(1, 4)
+        }, scores, hypotheticalTraits, {});
+        modifierId = assembled?.modifier?.id || "none";
+      }
+      return {
+        identityId: identityResolution.best.identity.id,
+        identityScore: identityResolution.best.score,
+        championId,
+        championConfidence: championResolution.confidence,
+        margin,
+        modifierId
+      };
+    };
+
+    const targeted = priorities.map((p) => {
+      const diagnostic = byId[p.id];
+      const covers = diagnostic.relatedIdentityIds || [];
+      const bestDirect =
+        covers.includes(resolution.best.identity.id) ||
+        (resolution.best.identity.id.includes("originalist") && diagnostic.family === "originalism");
+      const nearDirect = !bestDirect && covers.some((id) => relevant.has(id));
+      const followUp = triggeredFollowUp(p.id);
+
+      const agree = hypothetical(p.id, 3);
+      const disagree = hypothetical(p.id, -3);
+
+      let information = 0;
+      if (agree.identityId !== disagree.identityId) information += 22;
+      if (agree.championId !== disagree.championId) information += 16;
+      if (agree.modifierId !== disagree.modifierId) information += 8;
+      information += Math.min(7, Math.abs(agree.margin - disagree.margin) * 35);
+      information += Math.min(5, Math.abs(agree.identityScore - disagree.identityScore) * 18);
+
+      // If the noun is already clear but the thinker is not, questions that can
+      // separate champion outcomes remain worth asking.
+      if (currentChampion.confidence !== "high" &&
+          (agree.championId !== currentChampionId || disagree.championId !== currentChampionId)) {
+        information += 6;
+      }
+
+      let relevance = bestDirect ? 26 : nearDirect ? 13 : 0;
+      if (followUp) relevance += 22;
+      if (resolution.best.score >= 0.83 && resolution.best.basis >= 0.34 &&
+          !bestDirect && !nearDirect && !followUp) {
+        relevance -= 12;
+      }
+
+      // Avoid spending half the remaining bank on one family unless the answers
+      // themselves opened a chain or the question can still alter a public result.
+      const familyCount = askedFamilyCounts[diagnostic.family] || 0;
+      const repetitionPenalty =
+        familyCount >= 3 && !followUp && information < 16
+          ? (familyCount - 2) * 5
+          : 0;
+
+      const rank = p.priority + relevance + information - repetitionPenalty;
+      const material = information >= 8;
+      return {
+        ...p, rank, bestDirect, nearDirect, direct: bestDirect || nearDirect,
+        followUp, material, information
+      };
     });
-    targeted.sort((a,b)=>b.rank-a.rank||b.priority-a.priority||a.id.localeCompare(b.id));
-    // Do not spend the remaining specialist budget on a remote family merely
-    // because a diagnostic happens to be eligible under a broad axis window.
-    const margin=resolution.candidates.length>1
-      ? resolution.best.score-resolution.candidates[1].score : 1;
-    const champion=resolveChampions(scores,traits,resolution.best.identity);
-    const settled=askedCount>=4 && resolution.best.score>=0.84 &&
-      margin>=0.08 && champion.confidence==="high";
-    if(settled && !targeted.some(item=>item.direct||item.material))return null;
-    return targeted.length?byId[targeted[0].id]:null;
+
+    targeted.sort((a, b) =>
+      b.rank - a.rank ||
+      b.information - a.information ||
+      b.priority - a.priority ||
+      a.id.localeCompare(b.id)
+    );
+
+    // A clear result may stop early only when the remaining questions are both
+    // remote from the live result and unable to change any public-facing layer.
+    // Otherwise use the available 88+12 budget to refine the noun/champion.
+    const settled = askedCount >= 4 &&
+      resolution.best.score >= 0.84 &&
+      currentMargin >= 0.08 &&
+      currentChampion.confidence === "high";
+    const bestTarget = targeted[0];
+    if (!bestTarget) return null;
+    if (settled &&
+        !bestTarget.bestDirect &&
+        !bestTarget.nearDirect &&
+        !bestTarget.followUp &&
+        bestTarget.information < 8) {
+      return null;
+    }
+    return byId[bestTarget.id];
   }
 
   function classify(scored, responses = {}, diagnosticResponses = {}, meta = {}) {
