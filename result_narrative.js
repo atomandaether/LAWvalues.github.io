@@ -664,6 +664,9 @@
 
     if(id==="textualist"){
       if(has(t,"method.categorical_textual_rights",0.5)) return "textualist_categorical";
+      if(has(t,"constraint.contextual_textualism",0.5) &&
+         (has(t,"separation.interpretive_accommodation",0.5) || has(t,"precedent.settlement",0.55)))
+        return "textualist_institutional";
       if(has(t,"constraint.enacted_bargain",0.55)) return "textualist_bargain";
       return "textualist_mainstream";
     }
