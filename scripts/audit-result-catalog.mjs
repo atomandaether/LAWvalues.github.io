@@ -561,10 +561,10 @@ assert.equal(profileById.finnis_murphy_george.tier, "main",
   "Finnis/Murphy/George must remain the central modern Natural Law champion unit");
 assert.equal(profileById.dworkin_stavropoulos.tier, "main",
   "Dworkin/Stavropoulos must be the central Interpretivist champion unit");
-assert.equal(profileById.greenberg.tier, "specialist",
-  "Greenberg should be a diagnosable Moral-Impact Non-Positivist specialist");
-assert.equal(profileById.hershovitz.tier, "specialist",
-  "Hershovitz should be a diagnosable Moral-Practice Non-Positivist specialist");
+assert.equal(profileById.greenberg.tier, "lineage",
+  "Greenberg historical ID remains available for replay");
+assert.equal(profileById.hershovitz.tier, "lineage",
+  "Hershovitz historical ID remains available for replay");
 assert.equal(profileById.radbruch_soper.tier, "specialist",
   "Radbruch/Soper should be a diagnosable Extreme-Injustice Non-Positivist specialist");
 assert.equal(profileById.pound.tier, "main", "Pound should be the main Sociological Jurist champion");
@@ -1097,10 +1097,11 @@ assert.equal(greenberg.identity.id, "nonpositivist",
   "Direct Moral Impact evidence should keep the public noun Non-Positivist");
 assert.equal(greenberg.resultTitle.modifier.id, "moral_impact_nonpositivism",
   "Greenberg-like respondents should receive the descriptive Moral-Impact modifier");
-assert.ok(greenberg.champions.some((x) => x.id === "greenberg"),
+assert.ok(greenberg.champions.some((x) => x.id === "greenberg_hershovitz"),
   "Mark Greenberg should be the closest thinker for a clean Moral-Impact profile");
 
 // Locked Source champion units and literal-answer reachability.
+const sourceExpectedChampion = id => ["greenberg", "hershovitz"].includes(id) ? "greenberg_hershovitz" : id;
 const lockedSourceUnits = [
   "hart",
   "kelsen",
@@ -1118,7 +1119,7 @@ const lockedSourceUnits = [
   "radbruch_soper"
 ];
 for (const id of lockedSourceUnits) {
-  assert.ok(profileById[id] && profileById[id].selectable !== false,
+  assert.ok(profileById[sourceExpectedChampion(id)] && profileById[sourceExpectedChampion(id)].selectable !== false,
     `Locked Source champion unit ${id} must be selectable`);
 }
 
@@ -1237,7 +1238,7 @@ for (const id of lockedSourceUnits) {
   const { result, diagnosticOrder } = runLiteralSourceFixture(id);
   assert.equal(result.identity.id, sourceExpectedIdentity[id],
     `Literal Source path for ${id} must use the locked public noun`);
-  assert.equal(result.champions[0]?.id, id,
+  assert.equal(result.champions[0]?.id, sourceExpectedChampion(id),
     `Literal 88-answer + adaptive path must reach Source champion ${id}; got ${result.champions.map((x) => x.id).join(",")}`);
   assert.ok(diagnosticOrder.length <= classifier.MAX_DIAGNOSTICS,
     `${id} must remain reachable within the twelve-diagnostic cap`);
@@ -1272,7 +1273,7 @@ for (const id of unresolvedSourceUnits) {
       `${id} regression must start before a Source noun has been established`);
       assert.ok(diagnosticOrder.some(sourceProbe), `${id} must reach identifying Source diagnostics`);
       assert.equal(result.identity.id, sourceExpectedIdentity[id]);
-      assert.equal(result.champions[0]?.id, id,
+      assert.equal(result.champions[0]?.id, sourceExpectedChampion(id),
         `${id} must remain reachable with Source strength ${sourceCap} and mixed shell ${mixedShell}`);
       assert.equal(result.champions.length, 1);
       assert.ok(questions.length + diagnosticOrder.length <= classifier.MAX_TOTAL_QUESTIONS);
@@ -1360,7 +1361,6 @@ console.log("PASS: unresolved moderate Source profiles reach all five diagnostic
 const lockedMethodUnits = [
   "hugo_black",
   "scalia_manning_easterbrook",
-  "kavanaugh_barrett",
   "kagan",
   "ekins_intentionalism",
   "katzmann",
@@ -1400,10 +1400,8 @@ function literalMethodCore(id) {
     // without structured proportionality becoming the winning noun.
     if (id === "barak" && item.axis === "form") target = 34;
     if (id === "barak" && item.axis === "separ") target = 44;
-    // Kavanaugh is cross-cutting-compatible with Originalism as a whole-person
-    // match, but this Method fixture deliberately tests that the same champion
-    // remains reachable for a statutory Textualist whose constitutional Time
-    // commitments are neutral.
+    // Preserve the former Kavanaugh fixture unchanged for retirement regression:
+    // this statutory-only shell has neutral constitutional Time commitments.
     if (id === "kavanaugh_barrett" && item.axis === "time") target = 50;
 
     const agreeSignal = Number(item.signals?.agree?.[item.axis] || 0);
@@ -1484,6 +1482,15 @@ function runLiteralMethodFixture(id) {
     result: classifier.classify(scores, responses, diagnosticResponses, { coreElapsedMs: 10 * 60 * 1000 }),
     diagnosticOrder
   };
+}
+
+// Retirement regression uses the original statutory-only responses unchanged.
+{
+  const {result,diagnosticOrder}=runLiteralMethodFixture("kavanaugh_barrett");
+  assert.equal(result.identity.id,"textualist");
+  assert.equal(result.champions[0]?.id,"scalia_manning_easterbrook");
+  assert.ok(!result.champions.some(x=>["kavanaugh_barrett","kagan"].includes(x.id)));
+  assert.ok(diagnosticOrder.length<=12);
 }
 
 const methodExpectedIdentity = {
@@ -2104,7 +2111,7 @@ console.log("PASS: public titles split broad phrase ranking from noun-conditione
         "separation.independent_judicial_interpretation":1,
         "time.public_meaning":0.8,"time.fixation":0.8,"form.anti_discretion":0.65
       },
-      noun: "public_meaning_originalist", champion: "kavanaugh_barrett"
+      noun: "public_meaning_originalist", champion: "scalia_manning_easterbrook"
     },
     {
       name: "Waldron",

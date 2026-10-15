@@ -65,7 +65,7 @@ function unresolvedSourceCore() {
     const result = classifier.classify(scoring.scoreAllWithDiagnostics(responses, diagnosticResponses),
       responses, diagnosticResponses, { coreElapsedMs: 10 * 60 * 1000 });
     assert.equal(result.identity.id, acceptImpact ? "nonpositivist" : "mixed_jurisprudence");
-    assert.equal(result.champions[0]?.id, acceptImpact ? "greenberg" : "oconnor");
+    assert.equal(result.champions[0]?.id, acceptImpact ? "greenberg_hershovitz" : "oconnor");
     if (acceptImpact) {
       assert.ok(!order.includes("D-NP5") && !order.includes("D-NP3"),
         "An established Moral-Impact theory must stop competing Source probes");

@@ -526,23 +526,35 @@ globalThis.LAW_CHAMPIONS = Object.freeze([
     note: "Central Interpretivist champion unit: legal rights are determined through the morally best justification of institutional legal practice rather than source criteria alone."
   },
   {
+    id: "greenberg_hershovitz",
+    name: "Mark Greenberg / Scott Hershovitz",
+    kind: "people",
+    role: "subtype",
+    eligibleIdentityIds: ["nonpositivist"],
+    signatureTraits: ["source.one_system"],
+    antiTraits: ["source.source_thesis"],
+    note: "Shared moral-rights approach: either moral-impact or moral-practice evidence supports this combined unit. Greenberg's legally-proper-way account and Hershovitz's challenge to a distinct metaphysical account remain different views."
+  },
+  {
     id: "greenberg",
     name: "Mark Greenberg",
     kind: "person",
-    role: "subtype",
+    role: "historical",
+    supersededBy: "greenberg_hershovitz",
     eligibleIdentityIds: ["nonpositivist"],
     signatureTraits: ["source.moral_impact", "source.one_system"],
-    antiTraits: ["source.source_thesis", "source.fit_and_justification", "source.moral_practice"],
+    antiTraits: ["source.source_thesis", "source.fit_and_justification"],
     note: "Moral-Impact champion: institutional legal action changes the moral situation, and the resulting moral obligations constitute law."
   },
   {
     id: "hershovitz",
     name: "Scott Hershovitz",
     kind: "person",
-    role: "subtype",
+    role: "historical",
+    supersededBy: "greenberg_hershovitz",
     eligibleIdentityIds: ["nonpositivist"],
     signatureTraits: ["source.one_system", "source.moral_practice"],
-    antiTraits: ["source.source_thesis", "source.moral_impact"],
+    antiTraits: ["source.source_thesis"],
     note: "Moral-Practice champion: legal claims are ultimately claims about genuine moral rights and responsibilities rather than a distinct source-generated domain of legal obligation."
   },
   {
@@ -694,14 +706,14 @@ globalThis.LAW_CHAMPIONS = Object.freeze([
     role: "primary",
     eligibleIdentityIds: ["textualist"],
     signatureTraits: ["constraint.textual", "constraint.enacted_bargain", "form.anti_discretion"],
-    antiTraits: ["constraint.purpose", "constraint.best_reading_context"],
+    antiTraits: ["constraint.purpose"],
     note: "Mainline/New Textualist unit: enacted text, enacted compromise, anti-legislative-history instincts, and strong resistance to judicial repair."
   },
   {
     id: "kavanaugh_barrett",
     name: "Brett Kavanaugh",
     kind: "person",
-    role: "subtype",
+    role: "historical",
     eligibleIdentityIds: ["textualist", "public_meaning_originalist", "originalist"],
     signatureTraits: ["constraint.textual", "constraint.contextual_textualism", "constraint.best_reading_context", "separation.independent_judicial_interpretation"],
     antiTraits: ["constraint.intent"],
