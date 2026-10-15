@@ -912,7 +912,7 @@
 
     // Never rescue a noun by jumping to an incompatible thinker. If this is
     // empty, the noun/profile contracts are wrong and the audit should fail.
-    if (pool.length === 0) return { matches: [], confidence: "withheld" };
+    if (pool.length === 0) return { matches: [], confidence: "withheld", candidates: [] };
 
     const first = pool[0];
     const second = pool[1];
@@ -920,7 +920,7 @@
     const confidence =
       first.score >= 0.76 && margin >= 0.055 ? "high" :
       first.score >= 0.63 ? "medium" : "low";
-    return { matches: [first], confidence };
+    return { matches: [first], confidence, candidates: pool.slice(0, 5) };
   }
 
   function responseValue(responses, id) {
@@ -1085,7 +1085,13 @@
     const traits = buildTraits(scores, responses, diagnosticResponses);
     const priorities = [];
     const offer = (id, priority) => {
-      if (byId[id] && !hasAsked(diagnosticResponses, id)) priorities.push({ id, priority });
+      if (!byId[id] || hasAsked(diagnosticResponses, id)) return;
+      const existing = priorities.find((item) => item.id === id);
+      if (existing) {
+        existing.priority = Math.max(existing.priority, priority);
+      } else {
+        priorities.push({ id, priority });
+      }
     };
 
     // Route from the live result landscape rather than from one axis threshold.
@@ -1630,6 +1636,80 @@
         offer("D-OCO1", 76);
       }
     }
+
+    // If the hand-authored gates leave spare capacity, use the remaining
+    // 100-question budget to resolve an actually live noun/champion race rather
+    // than stopping merely because no family-specific branch happened to fire.
+    // This fallback is conservative: it excludes deferred/exotic diagnostics and
+    // only considers questions tied to a live identity or a trait that separates
+    // nearby compatible champions.
+    const fallbackCandidates = [];
+    const routingChampion = resolveChampions(scores, traits, routingResolution.best.identity);
+    const championPool = routingChampion.candidates || routingChampion.matches || [];
+    const championTop = championPool.slice(0, 3).filter((candidate, index) =>
+      index === 0 || (championPool[0]?.score ?? 0) - candidate.score <= 0.11
+    );
+
+    if (championTop.length >= 2 &&
+        (routingChampion.confidence !== "high" ||
+         championTop[0].score - championTop[1].score <= 0.09)) {
+      const traitCounts = new Map();
+      for (const candidate of championTop) {
+        const profileTraits = new Set([
+          ...(candidate.profile.signatureTraits || []),
+          ...(candidate.profile.antiTraits || [])
+        ]);
+        for (const trait of profileTraits) {
+          traitCounts.set(trait, (traitCounts.get(trait) || 0) + 1);
+        }
+      }
+      const differentiatingTraits = new Set(
+        [...traitCounts.entries()]
+          .filter(([, count]) => count > 0 && count < championTop.length)
+          .map(([trait]) => trait)
+      );
+
+      for (const diagnostic of Object.values(byId)) {
+        if (hasAsked(diagnosticResponses, diagnostic.id) ||
+            diagnostic.family === "quality" ||
+            diagnostic.priority === "deferred") continue;
+        const covers = diagnostic.relatedIdentityIds || [];
+        const identityRelevant =
+          covers.includes(routingResolution.best.identity.id) ||
+          covers.some((id) => routingIds.has(id));
+        if (!identityRelevant) continue;
+        const diagnosticTraits = [
+          ...(diagnostic.agreeTraits || []),
+          ...(diagnostic.disagreeTraits || [])
+        ];
+        if (diagnosticTraits.some((trait) => differentiatingTraits.has(trait))) {
+          fallbackCandidates.push({ id: diagnostic.id, priority: 62 });
+        }
+      }
+    }
+
+    const identityMargin = routingResolution.candidates.length > 1
+      ? routingResolution.best.score - routingResolution.candidates[1].score
+      : 1;
+    if (routingResolution.candidates.length > 1 &&
+        (identityMargin <= 0.10 || routingResolution.best.score < 0.78)) {
+      const topIds = routingResolution.candidates.slice(0, 2).map((candidate) => candidate.identity.id);
+      for (const diagnostic of Object.values(byId)) {
+        if (hasAsked(diagnosticResponses, diagnostic.id) ||
+            diagnostic.family === "quality" ||
+            diagnostic.priority === "deferred") continue;
+        const covers = diagnostic.relatedIdentityIds || [];
+        const coveredTop = topIds.filter((id) => covers.includes(id));
+        if (coveredTop.length === 1) {
+          fallbackCandidates.push({ id: diagnostic.id, priority: 57 });
+        }
+      }
+    }
+
+    fallbackCandidates
+      .sort((a, b) => b.priority - a.priority || a.id.localeCompare(b.id))
+      .slice(0, 8)
+      .forEach((candidate) => offer(candidate.id, candidate.priority));
 
     // Rank questions by expected information value. Hand-authored gates decide
     // which distinctions are jurisprudentially plausible; the sorter decides
