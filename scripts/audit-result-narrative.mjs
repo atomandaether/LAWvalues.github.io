@@ -87,6 +87,23 @@ for (const [id, route] of Object.entries(engine.ROUTES)) {
   }
 }
 
+// The same noun/subtype must still produce materially different context when
+// the respondent's other major judicial commitments are opposite.
+{
+  const classification = {
+    identity:{id:"positivist"},
+    traits:{"source.morality_incorporated":1}
+  };
+  const textual = engine.build(classification,
+    {sorc:92,cons:100,time:50,prec:50,remed:50,post:50,separ:50,form:50});
+  const purposive = engine.build(classification,
+    {sorc:92,cons:0,time:50,prec:50,remed:50,post:50,separ:50,form:50});
+  assert.notEqual(textual.context, purposive.context,
+    "Whole-profile context must distinguish opposite interpretive commitments inside the same noun/subtype");
+  assert.match(textual.context, /enacted wording/i);
+  assert.match(purposive.context, /purpose, context/i);
+}
+
 // Narrative prose must be champion-blind. Named theorists may appear when
 // necessary to explain a theory's intellectual content, but changing the
 // champion result cannot change the opening, context route, or context prose.
