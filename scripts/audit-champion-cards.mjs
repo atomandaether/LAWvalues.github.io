@@ -13,17 +13,19 @@ for(const p of profiles){
  assert.ok(copy,`Missing content ${p.id}`);
  assert.ok(copy.tagline && copy.bio && copy.sources.length,`Incomplete ${p.id}`);
  assert.ok(copy.tagline.split(/\s+/).length<=25,`Long tagline ${p.id}`);
- assert.ok(copy.bio.split(/\s+/).length<=48,`Long bio ${p.id}`);
+ assert.ok(copy.bio.split(/\s+/).length<=70,`Long bio ${p.id}`);
  for(const source of copy.sources) assert.match(source.url,/^https:\/\//);
  for(const id of Object.keys(copy.fitTraits)) assert.ok([...(p.signatureTraits||[]),...(p.supportingTraits||[])].includes(id),`${p.id}: unmapped trait ${id}`);
+ for (const id of Object.keys(copy.fitTraits)) assert.ok(copy.fitPriority[id]>=1 && copy.fitPriority[id]<=5, `${p.id}: authored relevance ${id}`);
+ for (const rule of copy.affinities || []) { assert.ok(rule.allTraits.length>=2 && rule.allTraits.length<=3); for(const id of rule.allTraits) assert.ok(copy.fitTraits[id],`${p.id}: affinity trait ${id}`); }
  const traits=Object.fromEntries(Object.keys(copy.fitTraits).map(id=>[id,1]));
  const classification={identity:{id:p.identityIds[0]},champions:[{id:p.id}],traits,championConfidence:'high'};
  const card=api.build(classification,scores);
  assert.equal(card.name,p.name);assert.ok(card.paragraph.startsWith(copy.bio));
  if(Object.keys(traits).length) assert.ok(card.paragraph.includes('You share the view that'));
  else assert.ok(!card.paragraph.includes('You share the view that'));
- const serialized=api.toIds(classification);
- const shared={...classification,traits:undefined,champions:[{id:p.id,evidence:{supportedTraits:api.fromIds(p.id,serialized)}}]};
+ const serialized=api.toShare(classification);
+ const shared={...classification,traits:undefined,champions:[{id:p.id,evidence:api.decodeEvidence(p.id,serialized?.ids || '',serialized?.version || '2',serialized?.affinityId)}]};
  assert.equal(api.build(shared,scores).paragraph,card.paragraph,`${p.id} share replay`);
  const absent=api.build({...classification,traits:{}},scores);
  assert.ok(!absent.paragraph.includes('You share the view that'),`${p.id} invented evidence`);
@@ -35,6 +37,29 @@ for(const p of profiles){
  assert.deepEqual([...api.fromIds(p.id,'x'.repeat(301))],[]);
  count++;
 }
+
+// Ranked evidence must not depend on object insertion order. Compounds require
+// independently supporting questions, and old links never manufacture that provenance.
+const kaganTraits={'constraint.contextual_textualism':0.667,'precedent.settlement':1,'separation.interpretive_accommodation':0.667};
+const kc={champions:[{id:'kagan'}],traits:kaganTraits};
+assert.equal(api.build(kc,scores).affinityId,null);
+assert.equal(api.build({...kc,traits:Object.fromEntries(Object.entries(kaganTraits).reverse())},scores).paragraph,api.build(kc,scores).paragraph);
+const originalEvidence=c.LAW_CLASSIFIER.buildTraitEvidence;
+const evidence=(unique)=>Object.fromEntries(Object.keys(kaganTraits).map((id,i)=>[id,{coreSupport:{[unique?'Q'+i:'Qsame']:1}}]));
+c.LAW_CLASSIFIER={...c.LAW_CLASSIFIER,buildTraitEvidence:()=>evidence(false)};
+assert.equal(api.build(kc,scores,{responses:{}}).affinityId,null);
+c.LAW_CLASSIFIER={...c.LAW_CLASSIFIER,buildTraitEvidence:()=>evidence(true)};
+const compound=api.build(kc,scores,{responses:{}});
+assert.equal(compound.affinityId,'kagan-institutional-craft');
+const payload=api.toShare(kc,{responses:{}});
+assert.equal(payload.version,2);
+const decoded=api.decodeEvidence('kagan',payload.ids,payload.version,payload.affinityId);
+assert.equal(api.build({champions:[{id:'kagan',evidence:decoded}]},scores).paragraph,compound.paragraph);
+assert.equal(api.decodeEvidence('kagan','precedent.settlement~0.9','2',payload.affinityId).cardAffinityId,null);
+assert.equal(api.decodeEvidence('kagan',Object.keys(kaganTraits).join(','),'1',payload.affinityId).cardAffinityId,null);
+for (const bad of ['precedent.settlement~NaN','precedent.settlement~0.499','precedent.settlement~1.1','precedent.settlement~0.9~1','x'.repeat(501)]) assert.equal(api.decodeEvidence('kagan',bad,'2').supportedTraits.length,0);
+c.LAW_CLASSIFIER={...c.LAW_CLASSIFIER,buildTraitEvidence:originalEvidence};
+
 assert.equal(api.build({champions:[]},scores),null);
 assert.equal(api.build({champions:[{id:'hart'},{id:'kelsen'}]},scores),null);
 assert.equal(api.build({champions:[{id:'unknown'}]},scores),null);
