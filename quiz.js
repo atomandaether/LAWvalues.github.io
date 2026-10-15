@@ -5,7 +5,7 @@
     const LATEST_KEY = `lawvalues-latest-${globalThis.LAW_VERSION}`;
     const CORE_TOTAL = globalThis.LAW_QUESTIONS.length;
     const MAX_DIAGNOSTICS = globalThis.LAW_CLASSIFIER?.MAX_DIAGNOSTICS ?? 12;
-    const DISPLAY_MAX = CORE_TOTAL + MAX_DIAGNOSTICS;
+    const DISPLAY_MAX = globalThis.LAW_CLASSIFIER?.MAX_TOTAL_QUESTIONS ?? (CORE_TOTAL + MAX_DIAGNOSTICS);
     const questionById = Object.fromEntries(globalThis.LAW_QUESTIONS.map((question) => [question.id, question]));
     const diagnosticById = Object.fromEntries(
         (globalThis.LAW_CLASSIFIER?.diagnosticBank?.() || []).map((question) => [question.id, question])
