@@ -974,3 +974,8 @@ body.results-page {
     overflow-wrap: anywhere;
 }
 .results-page div.axis { margin-top: 12px; margin-bottom: 12px; }
+@media (max-width: 540px) {
+    /* Keep visible 11–12% labels legible inside narrow colored segments. */
+    .results-page .axis-bars div.bar { padding: 0 1px; }
+    .results-page .axis-bars div.text-wrapper { font-size: 12px; }
+}
