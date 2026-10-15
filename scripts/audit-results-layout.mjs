@@ -17,7 +17,13 @@ assert.match(css, /\.results-page \.result-title\s*\{[^}]*font-weight: 700/s);
 assert.match(css, /\.results-page \.result-narrative p\s*\{[^}]*font-weight: 400/s);
 assert.match(html, /id="classification-panel" hidden/);
 assert.match(html, /id="version-note" hidden/);
-assert.equal((html.match(/class="axis-explanation" hidden/g) || []).length, 8);
+assert.equal((html.match(/class="axis-track"/g) || []).length, 8);
+assert.equal((html.match(/class="axis-explanation"/g) || []).length, 8);
+assert.ok(!html.includes('class="axis-explanation" hidden'));
+for (const axis of html.split('<div class="axis-track">').slice(1)) {
+    assert.ok(axis.indexOf('class="axis-bars"') < axis.indexOf('class="axis-explanation"'));
+    assert.ok(axis.indexOf('class="axis-explanation"') < axis.indexOf('<img'));
+}
 assert.equal((html.match(/class="axis-evidence"[^>]* hidden/g) || []).length, 8);
 class Element {
     constructor() { this.textContent = ''; this.innerHTML = ''; this.style = {}; this.hidden = false; }

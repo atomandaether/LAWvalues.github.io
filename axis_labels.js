@@ -48,8 +48,8 @@
   };
   const T = {
     original: entry("time", "originalism", "Originalism", "Original constitutional meaning has independent authority that constrains legitimate interpretation, rather than deriving authority only from current precedent."),
-    public: entry("time", "original-public-meaning", "Original Public Meaning", "Original constitutional meaning independently governs, and the public meaning at adoption prevails over the drafters' uncommunicated intent."),
-    intent: entry("time", "original-intent", "Original Intent", "Original constitutional meaning independently governs, with the original authors' communicative intention identifying that meaning."),
+    public: entry("time", "original-public-meaning", "Public-Meaning Originalism", "Original constitutional meaning independently governs, and the public meaning at adoption prevails over the drafters' uncommunicated intent."),
+    intent: entry("time", "original-intent", "Original-Intent Originalism", "Original constitutional meaning independently governs, with the original authors' communicative intention identifying that meaning."),
     methods: entry("time", "original-methods-originalism", "Original-Methods Originalism", "Independent original authority is implemented using the legal interpretive methods accepted when the Constitution was adopted."),
     law: entry("time", "original-law-originalism", "Original-Law Originalism", "The governing inquiry concerns the law originally made by the Constitution, including its background legal rules and lawful mechanisms of change."),
     construction: entry("time", "constitutional-construction", "New Originalism", "Original meaning remains independently binding while later doctrine may develop within questions that meaning genuinely leaves unresolved.", "conditional"),
@@ -59,7 +59,7 @@
     transformative: entry("time", "transformative-constitutionalism", "Transformative Constitutionalism", "Constitutional interpretation is an ongoing project of transforming institutions toward constitutional commitments such as democracy, equality, and dignity.")
   };
   const P = {
-    stability: entry("prec", "stare-decisis", "Stare Decisis", "Reliance, continuity, and institutional settlement can justify retaining a precedent despite acknowledged interpretive error."),
+    stability: entry("prec", "stare-decisis", "Precedential Stability", "Reliance, continuity, and institutional settlement can justify retaining a precedent despite acknowledged interpretive error."),
     reliance: entry("prec", "reliance-based-stare-decisis", "Reliance-Based Stare Decisis", "Embedded institutions, private rights, and established reliance can justify retaining an acknowledged error."),
     statutory: entry("prec", "statutory-stare-decisis", "Statutory Stare Decisis", "Mistaken statutory interpretations may remain in place while the legislature retains responsibility for correction."),
     correction: entry("prec", "precedent-correction", "Precedent Correction", "An independently established constitutional error weighs against adherence, rather than being overcome simply by a prior judicial decision."),
@@ -68,7 +68,7 @@
   const R = {
     party: entry("remed", "party-specific-relief", "Party-Specific Relief", "Relief ordinarily protects the litigants rather than automatically extending to every nonparty affected by the challenged policy."),
     systemic: entry("remed", "systemic-relief", "Systemic Relief", "Relief may extend beyond an individual order when necessary to cure institution-wide or recurring violations."),
-    severability: entry("remed", "severability", "Severability", "Invalid provisions should be removed while independently workable lawful provisions remain in force."),
+    severability: entry("remed", "severability", "Targeted Severance", "Invalid provisions should be removed while independently workable lawful provisions remain in force."),
     structural: entry("remed", "structural-reform", "Structural Reform", "Institution-wide violations can justify institution-wide changes; continuing judicial supervision is a separate question."),
     universal: entry("remed", "universal-relief", "Universal Relief", "A remedy for an unlawful generally applicable policy may also protect affected nonparties."),
     prophylactic: entry("remed", "prophylactic-relief", "Prophylactic Relief", "Protective requirements may exceed the constitutional minimum when necessary to stop recurring violations."),

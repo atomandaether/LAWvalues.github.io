@@ -85,10 +85,10 @@ label('sorc',{S3:3,S4:3,S5:3},{},'Limited Evidence');
 label('sorc',{...neutral(),S3:3,S4:3,S5:3},{},'Weak');
 label('time',{T11:-3},{},'Limited Evidence');
 label('time',{T1:3,T2:3},{},'Originalism');
-label('time',{T11:3,T1:3,T7:3},{},'Original Public Meaning');
+label('time',{T11:3,T1:3,T7:3},{},'Public-Meaning Originalism');
 label('time',{T1:3,T2:3,T7:3},{'D-ORI7':-3},'Originalism');
-label('time',{T11:3,T1:3,T7:3},{'D-ORI7':-3},'Original Public Meaning');
-label('time',{T1:3,T2:3,T7:-3},{'D-ORI1':-3,'D-ORI7':-3},'Original Intent');
+label('time',{T11:3,T1:3,T7:3},{'D-ORI7':-3},'Public-Meaning Originalism');
+label('time',{T1:3,T2:3,T7:-3},{'D-ORI1':-3,'D-ORI7':-3},'Original-Intent Originalism');
 label('time',{T1:3,T2:3},{'D-ORI2':3},'Original-Methods Originalism');
 label('time',{T1:3,T2:3},{'D-ORI6':3},'Original-Law Originalism');
 label('time',{T1:3,T2:3},{'D-ORI3':3},'New Originalism');
@@ -102,14 +102,14 @@ label('time',{T1:3,T2:3,T4:3,T5:3},{},'Varied');
 
 label('prec',{P4:3,P12:3},{},'Reliance-Based Stare Decisis');
 label('prec',{P2:3,P12:3},{},'Statutory Stare Decisis');
-label('prec',{P5:3,P7:3},{},'Stare Decisis');
+label('prec',{P5:3,P7:3},{},'Precedential Stability');
 label('prec',{P6:3,P4:-3},{},'Precedent Correction');
 label('prec',{P2:3,P12:3,P6:3},{},'Selective Stare Decisis');
 label('prec',{P10:3,P11:3},{},'Limited Evidence');
 
 label('remed',{R1:-3,R2:-3},{},'Party-Specific Relief');
 label('remed',{R1:-3,R2:-3,R6:3,R7:3},{},'Party-Specific Relief');
-label('remed',{R6:3,R7:3},{},'Severability');
+label('remed',{R6:3,R7:3},{},'Targeted Severance');
 label('remed',{R3:3,R5:3},{},'Structural Reform');
 label('remed',{R1:3,R2:3},{},'Universal Relief');
 label('remed',{R9:3,R10:3},{},'Prophylactic Relief');
@@ -147,7 +147,7 @@ label('form',{F5:0,F9:0},{'D-PROP1':3},'Limited Evidence');
 label('sorc',{S1:'3',S7:'3'},{'D-POS1':'3'},'Limited Evidence');
 label('time',{T1:3,T2:3,T4:3},{'D-ORI1':3},'Varied');
 label('time',{T1:1},{'D-ORI1':-3},'Limited Evidence');
-label('time',{T11:3},{'D-ORI1':-3},'Original Intent');
+label('time',{T11:3},{'D-ORI1':-3},'Original-Intent Originalism');
 label('time',{T11:3},{'D-ORI3':3},'New Originalism');
 label('time',{T11:3},{},'Limited Evidence');
 
@@ -180,6 +180,22 @@ assert.equal(engine.toIds({...baseline,sorc:{id:'form-rule-formalism'}}),null);
 assert.equal(engine.fromIds({ids:encoded,scores:{...scores,sorc:null},version:'0.9 Beta'}),null);
 const unavailable=describe({}, {}, {scores:{...scores,sorc:undefined}});
 assert.equal(engine.fromIds({ids:engine.toIds(unavailable),scores:{...scores,sorc:undefined},version:'0.9 Beta'}).sorc.status,'unavailable');
+
+// Display-copy refinements keep old shared identifiers and answer gates stable.
+const renamedCases = [
+ ['prec',{P5:3,P7:3},{},'prec-stare-decisis','Precedential Stability'],
+ ['time',{T11:3,T1:3,T7:3},{},'time-original-public-meaning','Public-Meaning Originalism'],
+ ['time',{T11:3},{'D-ORI1':-3},'time-original-intent','Original-Intent Originalism'],
+ ['remed',{R6:3,R7:3},{},'remed-severability','Targeted Severance']
+];
+for (const [axis,responses,diagnostics,id,expected] of renamedCases) {
+ const current=describe(responses,diagnostics);
+ assert.equal(current[axis].id,id);assert.equal(current[axis].label,expected);
+ const restored=engine.fromIds({ids:engine.toIds(current),scores,version:'0.9 Beta'});
+ assert.equal(restored[axis].id,id);assert.equal(restored[axis].label,expected);
+ assert.deepEqual(Array.from(restored[axis].evidenceIds),[]);checks++;
+}
+label('prec',{P2:3,P4:3,P12:3},{},'Precedential Stability');
 
 // Exercise complete-axis extremes with actual scoring; zero remains available.
 for(const axis of ctx.LAW_AXES) for(const sign of [1,-1]) {
