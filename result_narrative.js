@@ -373,6 +373,17 @@
     rule_formalist: "A rule that disappears in the sympathetic case is barely a rule. Predictability, equal treatment, and limits on official discretion justify hard edges, including outcomes a judge would reject if free to weigh everything from scratch. The whole point is to deny the decisionmaker that freedom.",
     realist: "Hard appellate cases are not solved by doctrine alone. Legal materials narrow the field, then judges, institutions, facts, incentives, politics, and practical consequences help explain what happens inside the remaining space. A serious account of judging has to describe that causal machinery instead of treating the opinion's formal reasoning as the whole story.",
     sociological: "Law lives in institutions and social practices before it reaches an appellate reporter. The rules people actually follow, the interests doctrine organizes, and the way officials enforce it matter at least as much as the rule's elegant formulation on paper. Jurisprudence should study that lived legal order directly.",
+    source_positive: "Law comes from legal institutions and recognized sources. Moral outrage, good policy, and judicial instinct do not create law on their own. The judge first identifies what the legal system actually made authoritative, then deals honestly with the gap between legal validity and moral judgment.",
+    principled_nonpositive: "Hard cases can contain legal answers beyond explicit rules. Principles of justice, fairness, and legal coherence can carry legal force through the practice itself, so a judge may discover law where a source-only account would announce a gap. That power is constrained by the legal history the principle must explain.",
+    extreme_injustice: "Positive law has a moral breaking point. Ordinary injustice can remain legally valid; extreme injustice can destroy the rule's claim to law altogether. Judges should almost never cross that line casually, but the legal system cannot make unlimited wrong lawful through procedure alone.",
+    legality_form: "A government that cannot issue public, stable, intelligible, and consistently administered rules is failing at legality itself. The defect lies in the way power is exercised. Secret, retroactive, contradictory, impossible, or routinely ignored commands do not earn the full authority of law.",
+    textual_constraint: "Congress gets the law it enacted, including the ugly compromises. Judges can use context, structure, and legal conventions to read the words well; they do not get to repair omissions or exceptions because the resulting policy looks irrational. Legislative imperfection is still legislation.",
+    intentional_method: "Interpretation aims at the legal choice the lawmakers meant to make. Text is the strongest evidence, joined by the actual legislative process when meaning remains uncertain. The judge is reconstructing an institutional decision, with less patience for readings that sever enacted words from the lawmaking intention behind them.",
+    originalist_fixed: "The Constitution does not update itself through judicial preference. Its governing meaning was fixed when it became law, and present courts are bound by that historical settlement. New facts can change the application; new judicial values cannot change the rule.",
+    pluralist_method: "Text, history, precedent, structure, purpose, and consequence are all legitimate legal arguments. No single mode owns every hard case. The judge has to explain why one mode carries more weight here and apply the same account when the political stakes change.",
+    minimalist_opening: "Courts should decide less. Resolve the dispute, write the narrow rule the case actually requires, and leave the rest of the constitutional fight open. Judicial power is most defensible when the court resists converting one case into a comprehensive settlement for everyone else.",
+    functional_structure: "Constitutional structure should keep power checked, accountable, and workable. Institutional overlap is acceptable when those safeguards hold. Courts should strike arrangements that concentrate power or cripple a branch, while leaving government room to design institutions that do not fit clean eighteenth-century boxes.",
+    dialogic_authority: "Courts should force government to confront constitutional rights without monopolizing the final word forever. A judicial ruling can carry immediate legal force while the constitutional system preserves a structured path for legislative response. Rights review becomes an institutional dialogue with rules for who may answer whom.",
     low_theory: "No master method gets permanent priority. Text, history, precedent, purpose, institutional competence, and consequences move in and out of the foreground with the case. The style is flexible and incremental, but when those materials conflict there is less theory telling the judge which one must win."
   });
 
@@ -383,30 +394,68 @@
     if (id === "mixed_jurisprudence") return "low_theory";
 
     if (id === "legal_realist") return "realist";
-    if (id === "sociological_jurist" || has(t,"method.law_in_action",0.65) || has(t,"source.institutional_legal_pluralism",0.5)) return "sociological";
+    if (id === "sociological_jurist" || has(t,"method.law_in_action",0.65) ||
+        has(t,"source.institutional_legal_pluralism",0.5)) return "sociological";
+
     if (id === "natural_lawyer" || id === "common_good_constitutionalist" ||
         (has(t,"source.objective_morality",0.5) && has(t,"source.positive_law_settlement",0.4)))
       return "moral_settlement";
+    if (id === "interpretivist" || id === "dworkinian" || id === "moral_impact_theorist" ||
+        id === "nonpositivist" || has(t,"source.fit_and_justification",0.5) ||
+        has(t,"source.principles_are_law",0.5))
+      return "principled_nonpositive";
+    if (id === "radbruchian" || has(t,"source.extreme_injustice",0.67)) return "extreme_injustice";
+    if (id === "fullerian" || has(t,"source.internal_legality",0.5)) return "legality_form";
+    if (["positivist","inclusive_positivist","exclusive_positivist"].includes(id))
+      return "source_positive";
+
     if (id === "political_process_jurist" || id === "elyan" || has(t,"posture.process_reinforcement",0.5))
       return "democratic_process";
-    if (id === "political_constitutionalist" || id === "thayerian" || id === "popular_constitutionalist" ||
-        id === "departmentalist" || axis(scores,"post") >= 72)
+    if (id === "weak_form_constitutionalist" || has(t,"posture.weak_form",0.65))
+      return "dialogic_authority";
+    if (id === "political_constitutionalist" || id === "thayerian" ||
+        id === "popular_constitutionalist" || id === "departmentalist" || id === "waldronian" ||
+        axis(scores,"post") >= 72)
       return "democratic_deferential";
+    if (id === "legal_constitutionalist") return "rights_structured";
+
     if (id === "legal_process_theorist" || has(t,"method.institutional_competence",0.5) ||
         has(t,"method.agency_interpretive_autonomy",0.5) ||
         (id === "textualist" && has(t,"separation.interpretive_accommodation",0.5)))
       return "institutional_process";
-    if (id === "proportionalist" || has(t,"form.proportionality",0.5) ||
+    if (id === "proportionalist" || id === "alexyan" || has(t,"form.proportionality",0.5) ||
         (axis(scores,"post") <= 30 && axis(scores,"form") <= 32))
       return "rights_structured";
-    if ((id === "living_constitutionalist" || id === "common_law_constitutionalist" || axis(scores,"time") <= 32) &&
-        axis(scores,"prec") >= 62)
+
+    if (id === "minimalist" || id === "bickelian" || has(t,"method.narrow_shallow",0.75))
+      return "minimalist_opening";
+
+    if ((id === "living_constitutionalist" || id === "common_law_constitutionalist" ||
+         axis(scores,"time") <= 32) && axis(scores,"prec") >= 62)
       return "developmental_settlement";
-    if (id === "living_constitutionalist" || id === "common_law_constitutionalist" || axis(scores,"time") <= 28)
+    if (id === "living_constitutionalist" || id === "common_law_constitutionalist" ||
+        axis(scores,"time") <= 28)
       return "developmental_rights";
+
+    if (["originalist","public_meaning_originalist","original_intent_originalist",
+         "original_methods_originalist","framework_originalist"].includes(id) ||
+        axis(scores,"time") >= 72) {
+      if (axis(scores,"prec") <= 32) return "constraint_correction";
+      if (axis(scores,"prec") >= 68) return "constraint_settlement";
+      return "originalist_fixed";
+    }
+
+    if (id === "textualist") {
+      if (axis(scores,"prec") <= 32) return "constraint_correction";
+      return "textual_constraint";
+    }
+    if (id === "intentionalist") return "intentional_method";
+    if (id === "interpretive_pluralist") return "pluralist_method";
     if (id === "pragmatist" || id === "purposivist" ||
         (axis(scores,"cons") <= 32 && axis(scores,"form") <= 38))
       return "adaptive_pragmatic";
+
+    if (id === "functionalist" || axis(scores,"separ") <= 28) return "functional_structure";
 
     const constrained = axis(scores,"cons") >= 66 || axis(scores,"time") >= 66 ||
       axis(scores,"separ") >= 66 || axis(scores,"form") >= 66;
