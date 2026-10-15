@@ -948,9 +948,11 @@ globalThis.LAW_PROFILES = Object.freeze([
     },
     axisSignature: { cons: { target: 36, weight: 0.35 } },
     signatureTraits: ["method.modal_pluralism", "method.practical_reasoning"],
+    // Optional direct affinity: absence never discounts the established match.
+    supportingTraits: ["method.dynamic_statutory"],
     requiredTraits: [{ all: ["method.practical_reasoning"], min: 0.5 }],
     antiTraits: [],
-    description: "Practical-Reasoning pluralism: text, history, purpose, legal context, consequences, and policy receive context-sensitive weight rather than a fixed hierarchy.",
+    description: "Practical-Reasoning pluralism: text, history, purpose, legal context, consequences, and policy receive context-sensitive weight rather than a fixed hierarchy. Its dynamic statutory branch also gives later legal and social developments interpretive weight.",
     related: ["William Eskridge", "Philip Frickey"]
   },
   {
@@ -1411,3 +1413,4 @@ globalThis.LAW_PROFILES = Object.freeze([
     related: []
   },
 ]);
+

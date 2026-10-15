@@ -1,0 +1,11 @@
+{
+  "reason": "New direct statutory-evolution question. No original fixture supplied an answer. Preserve old answers and treat this newly available evidence as unknown, never infer it from practical reasoning.",
+  "prompt": {
+    "id": "D-DYN1",
+    "prompt": "An old statute leaves a genuine choice between interpretations. Later legal developments and changes in social conditions may justify interpreting it differently today, even without an amendment. Those developments can help shape the statute's legal meaning, not merely provide new facts to which its fixed original meaning applies."
+  },
+  "answer": {
+    "value": null,
+    "rationale": "Not specified by the frozen answer plan; do not infer dynamic interpretation from practical pluralism."
+  }
+}

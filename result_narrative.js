@@ -987,7 +987,7 @@
     return "open";
   }
 
-  function selectPortrait(c, scores={}) {
+  function selectBasePortrait(c, scores={}) {
     const id=c?.identity?.id||"mixed_jurisprudence", t=c?.traits||{};
     if (SPECIAL_IDS.has(id) || id==="mixed_jurisprudence") return legacySelectContextId(c,scores);
     const v=k=>axis(scores,k);
@@ -1023,6 +1023,22 @@
     // With insufficient relational evidence, keep the supported specialist
     // account and its matching opening instead of fabricating a combination.
     return legacySelectContextId(c,scores);
+  }
+  // Only the practical-pluralist fallback has an authored dynamic variant.
+  // Existing whole-profile portraits retain priority and remain unchanged.
+  const DYNAMIC_SUFFIX = "_dynamic_statutory";
+  ROUTES.pluralist_practical_dynamic_statutory = {
+    opening: "You approach statutory interpretation as a continuing legal practice. Text, original expectations, purpose, precedent, and present legal context can carry different weight as a statute ages. Later developments may justify a changed interpretation, while the enacted law still limits the choices available to the court.",
+    context: "Practical reasoning becomes dynamic statutory interpretation when the statute's later life helps determine its legal meaning. Original language and legislative expectations remain important, but they do not exhaust the inquiry: intervening law, established interpretations, reliance, and changed social conditions may alter which reading is best justified. A precise statutory definition can settle a question; an open-ended provision may require a different balance of reasons. This account therefore goes beyond asking what the original legislature would have decided, or applying an unchanged meaning to a new factual situation. It also differs from treating a statute as obsolete and requiring lawmakers to reaffirm it. The court works within an ongoing interpretive practice, explaining why contemporary developments warrant its reading and how that reading remains accountable to the enacted law. The central difficulty is distinguishing justified evolution from a judge's preferred policy while giving sufficient weight to the stability people have built around earlier interpretations."
+  };
+  function selectPortrait(c, scores={}) {
+    const base = selectBasePortrait(c,scores);
+    const t = c?.traits || {};
+    if (base === "pluralist_practical" && c?.identity?.id === "interpretive_pluralist" &&
+        has(t,"method.practical_reasoning",0.5) &&
+        has(t,"method.dynamic_statutory",0.5) && ROUTES[base + DYNAMIC_SUFFIX])
+      return base + DYNAMIC_SUFFIX;
+    return base;
   }
   function selectContextId(c,scores={}) { return selectPortrait(c,scores); }
   function selectOpeningId(c,scores={},explicit=null) {

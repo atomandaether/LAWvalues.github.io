@@ -824,8 +824,9 @@ globalThis.LAW_CHAMPIONS = Object.freeze([
     role: "subtype",
     eligibleIdentityIds: ["interpretive_pluralist"],
     signatureTraits: ["method.pluralism", "method.practical_reasoning"],
+    supportingTraits: ["method.dynamic_statutory"],
     antiTraits: [],
-    note: "Practical-Reasoning pluralism: text, history, purpose, legal context, consequences, and policy receive context-sensitive weight rather than a fixed hierarchy."
+    note: "Practical-Reasoning pluralism: text, history, purpose, legal context, consequences, and policy receive context-sensitive weight rather than a fixed hierarchy. Its dynamic statutory branch also gives later legal and social developments interpretive weight."
   },
   {
     id: "pound",
@@ -1366,3 +1367,4 @@ globalThis.LAW_CHAMPION_MATCHING_RULES = Object.freeze({
   explanationRule: "A champion is the single thinker or grouped unit that best explains the respondent's whole jurisprudential phenotype. Noun compatibility is a strong preference, not an absolute bar for the exceptional Fiss structural-reform package.",
   marginalCoverageRule: "Do not add or select a champion merely because the figure is canonical. The champion must explain a measurable combination not already captured as well by the respondent's real identity and the existing champion pool. If another champion covers the same measured region more directly, keep the redundant figure as lineage rather than a selectable match."
 });
+
