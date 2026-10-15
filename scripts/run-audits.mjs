@@ -21,7 +21,8 @@ const audits = [
   "audit-evidenced-result-narrative.mjs",
   "audit-result-compatibility.mjs",
   "audit-time-construct.mjs",
-  "audit-axis-labels.mjs"
+  "audit-axis-labels.mjs",
+  "audit-champion-cards.mjs"
 ];
 const results = [];
 

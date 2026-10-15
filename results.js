@@ -157,7 +157,10 @@
                 name: profile.name,
                 tier: profile.tier,
                 description: profile.description,
-                related: profile.related || []
+                related: profile.related || [],
+                evidence: version.kind === 'current' && params.get('cev') === '1' && globalThis.LAW_CHAMPION_CARDS
+                    ? { supportedTraits: globalThis.LAW_CHAMPION_CARDS.fromIds(profile.id, params.get('ce')) }
+                    : undefined
             }));
 
         const resultTitle = version.kind === 'current' && globalThis.LAW_RESULT_CONTENT?.fromIds
@@ -321,6 +324,21 @@
     }
 
     displayClassification(classification);
+
+    // Keep the champion in its original position, with its own compact card.
+    // Biographical text is independent of the respondent's long-form portrait.
+    const championCard = document.getElementById('champion-card');
+    const championTagline = document.getElementById('champion-tagline');
+    const championPortrait = document.getElementById('champion-portrait');
+    const championLineText = document.getElementById('champion-line').textContent;
+    championCard.hidden = !championLineText;
+    const card = globalThis.LAW_CHAMPION_CARDS?.build(classification, scores, { legacy: version.kind !== 'current' });
+    if (card) document.getElementById('champion-line').textContent = `Champion: ${card.name}`;
+    championTagline.textContent = card?.tagline || '';
+    championTagline.hidden = !card?.tagline;
+    championPortrait.textContent = card?.paragraph || document.getElementById('champion-description').textContent || '';
+    championPortrait.hidden = !championPortrait.textContent;
+
 
     const networkContainer = document.getElementById('champion-network');
     const networkSelection = document.getElementById('champion-network-selection');

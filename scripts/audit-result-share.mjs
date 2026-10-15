@@ -41,7 +41,7 @@ function makeRuntime() {
     navigator:{clipboard:{async writeText(text){clipboard=text;}}}
   });
   const run=name=>vm.runInContext(source(name),ctx,{filename:name});
-  for (const file of ["axes.js","questions.js","scoring.js","result_compatibility.js","result_catalog.js","profiles.js","result_content.js","result_narrative.js","axis_labels.js"]) run(file);
+  for (const file of ["axes.js","questions.js","scoring.js","result_compatibility.js","result_catalog.js","profiles.js","champion_content.js","champion_cards.js","result_content.js","result_narrative.js","axis_labels.js"]) run(file);
   return {ctx,run,storage,location,clipboard:()=>clipboard};
 }
 
@@ -55,7 +55,7 @@ const {ctx,run,storage,location}=runtime;
 const scores={sorc:34,cons:59,time:31,prec:81,remed:34,post:18,separ:39,form:50};
 const identity=ctx.LAW_RESULT_IDENTITIES.find(x=>x.id==="common_law_constitutionalist");
 const champion=ctx.LAW_PROFILES.find(x=>x.id==="monaghan");
-const classification={identity,traits:{"source.extreme_injustice":1},champions:[champion],diagnosticCount:12};
+const classification={identity,traits:{"source.extreme_injustice":1,"remedies.constitutional_common_law":1},champions:[champion],diagnosticCount:12};
 classification.resultTitle=ctx.LAW_RESULT_CONTENT.fromIds(identity,scores,{},
   {modifierId:"fit_unmistakable",phraseId:"countermajoritarian",bridgeId:"living_stability"});
 const scored=Object.fromEntries(ctx.LAW_AXES.map(a=>[a.id,{score:scores[a.id],answered:1,strength:1,conflict:0,leftSupport:1,rightSupport:0}]));
@@ -70,12 +70,14 @@ run("quiz.js");
 await ctx.document.querySelectorAll("[data-response]")[0].click();
 const shareUrl=new URL(location.href);
 assert.equal(shareUrl.pathname,"/results.html");
+assert.equal(shareUrl.searchParams.get("cev"),"1");
+assert.ok(shareUrl.searchParams.get("ce").includes("remedies.constitutional_common_law"));
 assert.equal(shareUrl.searchParams.get("x"),"portrait_continuity_rights_extreme");
 assert.equal(shareUrl.searchParams.get("o"),"portrait_continuity_rights_extreme");
 const record=JSON.parse(storage.getItem("lawvalues-latest-"+ctx.LAW_VERSION));
 assert.equal(record.classification.narrative.openingId,"portrait_continuity_rights_extreme");
 run("results.js");
-const fields=["result-title","result-opening","result-context","champion-line"];
+const fields=["result-title","result-opening","result-context","champion-line","champion-tagline","champion-portrait"];
 const displayed=Object.fromEntries(fields.map(id=>[id,ctx.document.getElementById(id).textContent]));
 assert.match(displayed["result-opening"],/^You want courts to make rights effective/);
 

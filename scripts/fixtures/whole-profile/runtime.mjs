@@ -1,7 +1,7 @@
 import fs from 'node:fs';
 import vm from 'node:vm';
 import {selectLegacy08Instrument} from '../instrument-context.mjs';
-export const runtimeFiles=['axes.js','questions.js','scoring.js','result_compatibility.js','result_catalog.js','diagnostics.js','profiles.js','result_content.js','classification.js','result_narrative.js','axis_labels.js'];
+export const runtimeFiles=['axes.js','questions.js','scoring.js','result_compatibility.js','result_catalog.js','diagnostics.js','profiles.js','champion_content.js','champion_cards.js','result_content.js','classification.js','result_narrative.js','axis_labels.js'];
 class NodeStub {
   constructor(id='') {this.id=id;this.textContent='';this.innerHTML='';this.hidden=false;this.style={};this.dataset={};this.events={};this.attributes={};this.scrollHeight=0;this.clientHeight=1000;this.scrollWidth=0;this.clientWidth=1000;this.classList={toggle(){},add(){},remove(){}};}
   setAttribute(k,v){this.attributes[k]=v;}
