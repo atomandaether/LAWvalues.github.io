@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" class="results-document">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -9,7 +9,7 @@
 <title>LAWvalues Results</title>
 <link rel="icon" type="image/png" href="value_images/atomandaether.png">
 </head>
-<body>
+<body class="results-page">
 <h1>LAWvalues</h1>
 <hr>
 
@@ -20,11 +20,14 @@
 </section>
 
 <main id="results-main" hidden>
-<h1>Results</h1>
-<div class="center results-summary">
-    <h2>Your jurisprudential profile</h2>
-    <p id="result-summary"></p>
-</div>
+<section class="results-summary" aria-labelledby="result-title">
+    <h2 class="result-title" id="result-title">No classification stored.</h2>
+    <p class="classification-champion" id="champion-line"></p>
+    <div class="result-narrative" id="result-narrative">
+        <p class="result-opening" id="result-opening"></p>
+        <p class="result-context" id="result-context"></p>
+    </div>
+</section>
 <div class="result-actions">
     <button class="small_button" id="copy-link" type="button">Copy Link</button>
     <button class="small_button" id="copy-summary" type="button">Copy Summary</button>
@@ -112,27 +115,16 @@
     <img src="value_images/balancing.svg" alt="Balancing">
 </div>
 
+<section class="champion-network-panel" id="champion-network-panel" aria-label="Jurisprudential network">
+    <p class="champion-network-intro">Your closest champion is highlighted. Tap any circle to identify it; tap empty space to clear the highlight.</p>
+    <div class="champion-network-frame" id="champion-network"></div>
+    <p class="champion-network-selection" id="champion-network-selection" aria-live="polite"></p>
+</section>
 <div class="classification-placeholder" id="classification-panel">
-    <h2>Your jurisprudential fit</h2>
-    <p class="result-title" id="result-title">No classification stored.</p>
-    <p class="classification-identity" id="classification-label"></p>
-    <div class="result-narrative" id="result-narrative">
-        <p class="result-opening" id="result-opening"></p>
-        <p class="result-context" id="result-context"></p>
-    </div>
-    <p class="classification-champion" id="champion-line"></p>
     <p id="champion-description"></p>
     <p id="related-line"></p>
     <p class="classification-note" id="classification-note"></p>
 </div>
-
-<section class="champion-network-panel" id="champion-network-panel">
-    <h2>Jurisprudential network</h2>
-    <p class="champion-network-intro">Your closest champion is highlighted. Tap any circle to identify it; tap empty space to clear the highlight.</p>
-    <div class="champion-network-legend" id="champion-network-legend" aria-label="Jurisprudential camp colors"></div>
-    <div class="champion-network-frame" id="champion-network"></div>
-    <p class="champion-network-selection" id="champion-network-selection" aria-live="polite"></p>
-</section>
 </main>
 
 <script src="axes.js"></script>
@@ -148,3 +140,4 @@
 <script src="results.js"></script>
 </body>
 </html>
+

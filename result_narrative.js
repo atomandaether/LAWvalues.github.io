@@ -600,7 +600,8 @@
 
     const sourcePositive=["positivist","inclusive_positivist","exclusive_positivist"].includes(id);
     const sourceNonpositive=["interpretivist","dworkinian","nonpositivist","moral_impact_theorist","radbruchian","fullerian"].includes(id);
-    const originalist=isOriginalist(id)||has(t,"time.originalism_independent_authority",0.5);
+    const originalist=!has(t,"time.precedent_mediated_historicism",0.5) &&
+      (isOriginalist(id)||has(t,"time.originalism_independent_authority",0.5));
     const developmental=id==="living_constitutionalist"||id==="common_law_constitutionalist";
 
 
@@ -696,7 +697,7 @@
     if(id==="textualist"){
       if(has(t,"method.categorical_textual_rights",0.5)) return "textualist_categorical";
       if(has(t,"constraint.contextual_textualism",0.5) &&
-         (has(t,"separation.interpretive_accommodation",0.5) || has(t,"precedent.settlement",0.55)))
+         has(t,"separation.interpretive_accommodation",0.5))
         return "textualist_institutional";
       if(has(t,"constraint.enacted_bargain",0.55)) return "textualist_bargain";
       return "textualist_mainstream";
@@ -900,6 +901,9 @@
     }
   };
   const SOURCE_BOUNDARIES = {
+    normative: ["You also defend source-based legal institutions on normative grounds.", "includes a normative case for source-based institutions: public rules can serve values such as coordination, accountability, and restraint. That institutional argument goes beyond describing how existing law is identified; it does not by itself choose inclusive or exclusive positivism"],
+    normative_inclusive: ["You defend source-based institutions that can incorporate moral validity criteria.", "joins a normative defense of source-based institutions with inclusive positivism. Accepted legal standards can make moral acceptability a condition of validity; the separate normative claim concerns why institutions organized around public sources deserve support"],
+    normative_exclusive: ["You defend institutions whose existing law is identifiable through public sources.", "joins source-only identification of existing law with a normative defense of that institutional arrangement. Moral reasons can support designing and improving the system without themselves becoming criteria of existing legal validity"],
     positive: ["Recognized legal practice supplies the authority for that work.", "depends on authority supplied by recognized public legal sources. A good reason to improve a rule is not automatically a legal reason to change it"],
     inclusive: ["Recognized law can give moral judgment a role in that work.", "can involve moral judgment when recognized law incorporates a moral standard. The court must connect that judgment to the legal practice giving it authority"],
     exclusive: ["Public legal sources must supply the authority for that work.", "must remain anchored in identifiable public sources. Where those sources leave a choice open, moral judgment can guide that choice without becoming a new source of existing law"],
@@ -937,6 +941,84 @@
     practical_continuity:"Adapting inherited rules to make them work",
     contextual_rights:"Justifying rights decisions through the circumstances of a case"
   };
+  Object.assign(RELATION_SUBJECTS, {
+  "mediated_history_continuity": "Following historical methods through inherited legal practice",
+  "historical_construction_continuity": "Developing implementing doctrine while respecting historical limits and precedent",
+  "democratic_development": "Developing constitutional meaning through public contestation",
+  "transformative_development": "Transforming institutions through constitutional commitments",
+  "process_reinforcing_review": "Repairing failures of democratic representation",
+  "responsive_process_review": "Calibrating review to democratic dysfunction",
+  "dynamic_statutory_continuity": "Interpreting statutes through change and settled practice",
+  "fact_skeptical_continuity": "Assessing factual uncertainty within settled law",
+  "dynamic_statutory_context": "Interpreting statutes in their later legal setting",
+  "fact_skeptical_adjudication": "Assessing factual uncertainty in adjudication",
+  "historical_construction": "Developing implementing doctrine within historical limits"
+});
+  // Diagnostic refinements are complete relational portraits, not label glosses.
+  Object.assign(PORTRAITS, {
+  "mediated_history_continuity": {
+    "opening": "You give historical constitutional reasoning a place within a legal practice shaped by precedent. Earlier decisions can require courts to investigate original meaning, but that does not make history independently controlling whenever it conflicts with the law courts have inherited. Your respect for settled decisions makes the authority of the historical method itself part of what legal practice must explain.",
+    "context": "History can enter adjudication through more than one route. An originalist may regard the law established at adoption as independently binding on present judges. Precedent-mediated historicism instead follows historical methods because the existing legal practice calls for them. This difference matters when an established doctrine departs from the best historical reading. On the mediated account, fresh historical evidence does not automatically override the practice that gave that inquiry its legal significance. Your respect for continuity reinforces this institutional setting: prior decisions can establish both substantive rules and methods for interpreting constitutional provisions. History remains a serious form of legal argument, but its authority must be understood alongside the precedents that authorize and constrain its use. This is compatible with extensive historical research without treating every historical discovery as a reason to restore an original answer.",
+    "boundary": "The hard question is when the inherited practice authorizes changing its own interpretive methods, and how a court should justify that change without assuming the historical priority being disputed."
+  },
+  "historical_construction_continuity": {
+    "opening": "You treat constitutional meaning as historically fixed while giving later decisions weight. If that fixed meaning genuinely leaves a question unresolved, you allow implementing doctrine within the remaining space. That permission does not say how often gaps occur. Your outlook distinguishes developing law inside a genuine gap from preserving a precedent that conflicts with the original settlement.",
+    "context": "The interpretation/construction distinction separates identifying fixed constitutional meaning from developing implementing law where that meaning does not supply a unique answer. New Originalism is an established name for scholarship that brought this distinction to the foreground, although its theorists disagree about how much work construction should do. Your answers support conditional permission, not a conclusion that a substantial construction zone exists. Historical legal methods, context, or further evidence might resolve an apparent gap before construction becomes necessary. Respect for precedent adds a different problem. A settled decision might operate within an unresolved space, but it might instead contradict the best historical interpretation. The first can be legitimate implementing law; the second raises questions about reliance, settlement, and the costs of correction. Keeping these problems separate prevents respect for precedent from silently changing the meaning that interpretation identifies.",
+    "boundary": "The unresolved questions concern the boundaries of genuine uncertainty, which institutions may supply implementing law, and when reliance can justify retaining a mistaken decision. The construction answer alone does not settle them."
+  },
+  "democratic_development": {
+    "opening": "You understand constitutional development as a process in which public argument and democratic contestation help shape enforceable constitutional meaning. Courts retain a role in protecting rights, but their judgments belong to a wider exchange with citizens and institutions. Your outlook asks how that public participation can change constitutional law while maintaining constraints that remain effective against a current majority.",
+    "context": "Democratic constitutionalism explains constitutional development through interaction among public movements, elected institutions, and courts. Public contestation can influence how constitutional commitments are understood without making each election a referendum that erases judicial protection. This is a mechanism of constitutional change, not simply a preference for updating old language or allowing judges to reach attractive results. Courts must explain their interpretations as constitutional judgments while recognizing that the public participates in developing the principles those judgments enforce. That interaction may bring excluded claims into legal understanding and may also expose courts to pressure to retreat from unpopular protections. The central institutional question is how constitutional responsiveness and enforceable rights can coexist. Neither judicial insulation nor immediate majority preference alone describes this account. You endorse public participation in development, without thereby endorsing any particular movement, constitutional outcome, or replacement for formal amendment.",
+    "boundary": "The difficult case is sustained public disagreement with a judicial protection: when does contestation improve constitutional understanding, and when should the court maintain a limit despite that pressure?"
+  },
+  "transformative_development": {
+    "opening": "You see constitutional commitments as a continuing responsibility to change institutions that fall short of them. Constitutional development should help turn promises into durable social and institutional arrangements, rather than merely update the wording of old rules. Your outlook gives legal reasoning a forward-looking task while requiring an account of which changes the Constitution authorizes and which institutions should carry them out.",
+    "context": "Transformative constitutionalism treats a constitution as a framework for sustained institutional transformation toward its commitments. Its characteristic concern is the distance between a constitutional promise and the practices through which people actually live. Interpretation can therefore require changes in institutions and legal relationships, rather than treating existing arrangements as the natural baseline. This differs from democratic constitutionalism, whose distinctive mechanism is public contestation over constitutional meaning. Transformation can involve democratic participation, but participation alone does not specify the direction or depth of institutional reform. Nor does a transformative commitment establish that courts should control every part of the project. Legislatures, administrators, and other public bodies may have essential responsibilities, and legal remedies must contend with capacity and accountability. The relevant judgment concerns how constitutional commitments justify development without giving officials an unlimited mandate to pursue their preferred social programme.",
+    "boundary": "The hard case asks whether a proposed institutional change implements an existing constitutional commitment or instead requires a political decision that the constitutional text and practice have not authorized courts to make."
+  },
+  "process_reinforcing_review": {
+    "opening": "You give courts a particular reason to intervene when democratic decision-making fails to represent people fairly. The judicial role is to protect participation and repair exclusion rather than routinely replace political judgments with a court’s preferred outcome. That makes the condition of the decision-making process central to deciding when restraint should give way to constitutional review.",
+    "context": "Political-process theories connect judicial review to the requirements of representative democracy. Courts have a stronger case for intervention when officials obstruct political participation or when excluded groups cannot obtain fair consideration through ordinary politics. The justification is selective: correcting a democratic failure can strengthen self-government even though it requires invalidating an elected institution’s decision. This differs from a general theory that courts should enforce whichever substantive rights their best moral judgment identifies. A process account must explain why the problem before the court is a defect of representation, participation, or inclusion, and why the remedy addresses that defect. It also cannot escape every substantive judgment. Deciding which exclusions matter, how participation should work, and whether formally open channels offer meaningful access requires legal and political evaluation. The distinctive commitment concerns the reason for intervention, not an assumption that procedural judging is mechanically neutral.",
+    "boundary": "The difficult case is a harmful decision made through apparently open institutions: the court must identify an actual democratic failure rather than treating disagreement with the outcome as proof that the process failed."
+  },
+  "responsive_process_review": {
+    "opening": "You would calibrate judicial intervention to the democratic failure a case reveals. Political monopoly, exclusion, institutional blind spots, and inertia can justify different responses, and a court’s capacity matters to the remedy it chooses. Your outlook gives courts responsibility for repairing democratic dysfunction without assuming that the strongest available intervention is always the most legitimate or effective.",
+    "context": "Responsive judicial review develops the process-based case for constitutional intervention into a more differentiated institutional practice. A blocked channel of political participation, an entrenched monopoly, an overlooked group, and legislative inertia need not call for the same judicial response. The court should identify the failure and choose a form of review capable of addressing it, taking account of its own information, competence, and ability to sustain an effective remedy. This remains a theory of democracy-repair rather than a generic commitment to aggressive rights enforcement. Strong intervention can sometimes reopen politics; a narrower ruling or a response that leaves institutions room to act may sometimes do more. Calibration therefore concerns both the justification for intervention and its practical design. Institutional limits are part of that inquiry, without automatically defeating every right or requiring deference whenever another branch resists.",
+    "boundary": "The hard question is whether a proposed response actually addresses the identified democratic failure, or substitutes judicial policy preferences while leaving the underlying exclusion or institutional blockage intact."
+  },
+  "dynamic_statutory_continuity": {
+    "opening": "You see statutory interpretation as an ongoing practice in which later legal and social developments can affect meaning. Earlier readings and the arrangements built around them still deserve weight. Your outlook connects adaptation with continuity: a court must explain why changed circumstances justify a new interpretation and why that change remains accountable to the law the legislature enacted.",
+    "context": "Dynamic statutory interpretation treats a statute’s subsequent history as potentially relevant to its present legal meaning. Intervening law, established interpretations, and changed social conditions can affect which reading is best justified. This goes beyond applying an unchanged meaning to new facts. Respect for precedent makes the process more demanding: an interpretation can acquire authority and generate reliance even when a later court would read the statute differently. Practical reasoning must therefore explain both the proposed evolution and its costs to people entitled to depend on existing law. Enacted language remains a constraint; a dynamic approach does not create a general power to override a clear statutory command. Nor does accepting evolution in statutory interpretation establish a living-constitution theory. The two concern different legal materials and may carry different accounts of democratic revision, since legislatures ordinarily retain power to change statutes.",
+    "boundary": "The difficult case asks whether a later development changes the best legal interpretation or merely supplies a good policy reason for legislation, and whether settled reliance should nevertheless preserve the earlier reading."
+  },
+  "fact_skeptical_continuity": {
+    "opening": "You think uncertainty about what happened can shape legal outcomes even when the governing rule is relatively clear. Respect for settled law does not remove the difficulty of evaluating witnesses, evidence, and disputed facts. Your outlook makes the fact-finding process part of understanding legal predictability while keeping that empirical problem distinct from whether courts should preserve inherited doctrine.",
+    "context": "Fact skepticism identifies a limit of rule-centered accounts of adjudication. A clear legal standard cannot by itself determine a trial outcome if witnesses disagree, evidence is incomplete, or fact-finders assess credibility differently. This is different from rule skepticism, which emphasizes competing doctrinal arguments and underdetermination in hard appellate cases. A system can stabilize doctrine through precedent while remaining uncertain in its reconstruction of events. Your respect for continuity therefore operates alongside a concern with what legal rules can realistically predict. The empirical inquiry should attend to the institutions and procedures through which facts become legally established, not just the reasons printed in appellate opinions. Recognizing this uncertainty does not establish that every finding is arbitrary, that all evidence is equally good, or that judges ought to decide according to their political preferences. It identifies a distinct source of variation that a purely doctrinal account can overlook.",
+    "boundary": "The practical challenge is improving the reliability and transparency of fact-finding without assuming that clearer rules alone will eliminate uncertainty, or treating observed influences on a verdict as legitimate reasons for it."
+  },
+  "dynamic_statutory_context": {
+    "opening": "You allow later legal and social developments to affect the interpretation of statutes. Enacted words, original expectations, purpose, and present context remain reasons a court must assess. Your outlook asks judges to explain why evolution is warranted, rather than treating a statute’s age as permission to replace its limits with a preferred policy.",
+    "context": "Dynamic statutory interpretation treats a statute’s subsequent history as potentially relevant to its present legal meaning. Intervening law, established interpretations, and changed social conditions can affect which reading is best justified. This goes beyond applying an unchanged meaning to new facts. Precedent creates a further question: an interpretation can acquire authority and generate reliance even when a later court would read the statute differently. An account of dynamic interpretation must explain both the proposed evolution and any costs to people entitled to depend on existing law. Enacted language remains a constraint; a dynamic approach does not create a general power to override a clear statutory command. Nor does accepting evolution in statutory interpretation establish a living-constitution theory. The two concern different legal materials and may carry different accounts of democratic revision, since legislatures ordinarily retain power to change statutes.",
+    "boundary": "The difficult case asks whether a later development changes the best legal interpretation or merely supplies a good policy reason for legislation, and whether settled reliance should nevertheless preserve the earlier reading."
+  },
+  "fact_skeptical_adjudication": {
+    "opening": "You think uncertainty about what happened can shape legal outcomes even when the governing rule is relatively clear. Witnesses, evidence, and credibility judgments create problems that legal interpretation alone cannot resolve. Your outlook makes the fact-finding process central to understanding predictability, without turning uncertainty into a claim that all decisions are arbitrary or that judges should abandon legal constraints.",
+    "context": "Fact skepticism identifies a limit of rule-centered accounts of adjudication. A clear legal standard cannot by itself determine a trial outcome if witnesses disagree, evidence is incomplete, or fact-finders assess credibility differently. This is different from rule skepticism, which emphasizes competing doctrinal arguments and underdetermination in hard appellate cases. A system can stabilize doctrine through precedent while remaining uncertain in its reconstruction of events. Fact skepticism therefore concerns what legal rules can realistically predict even after the doctrinal question has been settled. The empirical inquiry should attend to the institutions and procedures through which facts become legally established, not just the reasons printed in appellate opinions. Recognizing this uncertainty does not establish that every finding is arbitrary, that all evidence is equally good, or that judges ought to decide according to their political preferences. It identifies a distinct source of variation that a purely doctrinal account can overlook.",
+    "boundary": "The practical challenge is improving the reliability and transparency of fact-finding without assuming that clearer rules alone will eliminate uncertainty, or treating observed influences on a verdict as legitimate reasons for it."
+  },
+  "historical_construction": {
+    "opening": "You treat constitutional meaning as historically fixed while allowing later implementing doctrine if that meaning genuinely leaves a question unresolved. The permission is conditional: further historical interpretation might settle an apparent gap. Your outlook separates identifying what the Constitution already requires from choosing among answers it leaves available, without assuming how much unresolved space exists.",
+    "context": "The interpretation/construction distinction separates identifying fixed constitutional meaning from developing implementing law where that meaning does not supply a unique answer. New Originalism is an established name for scholarship that brought this distinction to the foreground, although its theorists disagree about how much work construction should do. Your answers support conditional permission, not a conclusion that a substantial construction zone exists. Historical legal methods, context, or further evidence might resolve an apparent gap before construction becomes necessary. The authority of precedent presents a different problem. A settled decision might operate within an unresolved space, but it might instead contradict the best historical interpretation. The first can be legitimate implementing law; the second raises questions about reliance, settlement, and the costs of correction. Keeping these problems separate prevents respect for precedent from silently changing the meaning that interpretation identifies.",
+    "boundary": "The unresolved questions concern the boundaries of genuine uncertainty, which institutions may supply implementing law, and when reliance can justify retaining a mistaken decision. The construction answer alone does not settle them."
+  }
+});
+  // The authority of history is distinct from the strength of stare decisis.
+  PORTRAITS.mediated_history_practice = {
+    opening: "You use historical constitutional reasoning because the legal practice you inherit gives it a role. That is different from treating the law at adoption as independently controlling whenever it conflicts with later doctrine. Your outlook asks what authorizes a historical inquiry and what weight that inquiry should have, rather than inferring historical supremacy from frequent use of history.",
+    context: "Historical interpretation can derive authority from contemporary legal practice rather than from a freestanding duty to restore founding law. Precedent-mediated historicism treats an instruction to investigate original meaning as part of the legal methods the existing system supplies. This distinction remains important even for a judge willing to reconsider many precedents. Rejecting one old decision does not by itself establish that history must control every constitutional dispute. A court instead needs an account of which practices authorize its interpretive methods and how those practices can be revised. Historical evidence may be extensive and persuasive while leaving that question of legal authority unresolved. Originalism, by contrast, gives historical law an independent claim against later practice. The contrast concerns why history binds, not whether historical research is valuable or whether later decisions can ever be corrected.",
+    boundary: "The difficult case is a historical conclusion that conflicts with the method current doctrine requires. The court must justify its choice without assuming the independent authority of history that the account has declined to establish."
+  };
+  RELATION_SUBJECTS.mediated_history_practice = "Following historical methods through existing legal practice";
   for (const [plan, copy] of Object.entries(PORTRAITS)) {
     for (const source of Object.keys(SOURCE_BOUNDARIES)) {
       const id = `portrait_${plan}_${source}`;
@@ -955,17 +1037,22 @@
     const extreme=has(t,"source.extreme_injustice",0.25);
     const independent=has(t,"source.independent_moral_validity",0.5) ||
       (!Object.hasOwn(t,"source.independent_moral_validity") && axis(scores,"sorc")<62 && has(t,"source.objective_morality",0.5));
+    if (has(t,"source.moral_impact")) return "impact";
+    if (has(t,"source.moral_practice")) return "practice";
     if (has(t,"source.strong_natural_law")) return independent ? "strong_natural_principles" : "strong_natural";
     if (axis(scores,"sorc")<62 && has(t,"source.positive_law_settlement",0.4) && has(t,"source.objective_morality",0.4))
       return independent ? (extreme ? "natural_principles_extreme" : "natural_principles") : "natural";
-    if (has(t,"source.moral_impact")) return "impact";
-    if (has(t,"source.moral_practice")) return "practice";
     if (has(t,"source.internal_legality")) return "legality";
     if (has(t,"source.fit_and_justification")) return "interpretive";
     // S10/S11 address independent moral legality. D-CLC1 alone does not:
     // unwritten common-law rights can still be institutionally grounded.
     if (independent)
       return extreme ? "independent_extreme" : "independent";
+    if (has(t,"source.normative_positivism")) {
+      if (has(t,"source.source_thesis")) return "normative_exclusive";
+      if (has(t,"source.morality_incorporated")) return "normative_inclusive";
+      return "normative";
+    }
     if (axis(scores,"sorc")>=62 || has(t,"source.morality_incorporated") || has(t,"source.source_thesis")) {
       if (extreme) return "qualified_positive";
       if (has(t,"source.source_thesis")) return "exclusive";
@@ -987,6 +1074,74 @@
     return "open";
   }
 
+  // Full-profile prose is selected by the conjunction of measured commitments.
+  // Names, champion matches, labels, and exact score fingerprints are never gates.
+  const EVIDENCED_PROFILES = {
+  "independent_common_law_safeguards": {
+    "opening": "You think a legal order can owe people more than its rulers have agreed to give them. Judges should uncover those obligations through principle and accumulated experience, then enforce them against elected lawmakers without express constitutional authorization. Past decisions deserve respect because they help constitute that order; they cannot exhaust its moral obligations. You would give courts responsibility for developing rights, and accept the cost of letting judges enforce them.",
+    "context": "Your view makes legal argument a continuing inquiry into what people are already entitled to. When reasoning from earlier decisions, you would seek an interpretation that fits the legal record and makes moral sense of its principles. That reasoning can carry the law beyond its earlier conclusions. The Constitution’s arrangement of powers and institutions can also imply binding rules that no single clause states. A judge who treats accepted legal practice as the ultimate test of law will see an unauthorized addition where you see an obligation finally understood. The disagreement concerns whether official acceptance finally determines what can count as law. Your answer leaves public institutions substantial work to do, settling questions on which morality permits several reasonable arrangements. Ordinary unfairness therefore leaves much law intact; extreme injustice can destroy its claim to legal validity. Courts must explain how new conclusions belong to the legal order they inherit, without casually undoing arrangements people made in reliance on old decisions. They can create additional legal safeguards to make a right effective, while distinguishing those safeguards from the right itself. You would ordinarily make practical difficulties shape the remedy rather than reduce the right itself. People who reject the judges' moral reasoning must nevertheless live under the resulting law."
+  },
+  "inclusive_textual_settlement_safeguards": {
+    "opening": "You think public power should answer to commitments that survive the preferences of whoever holds office. Enacted language, constitutional meaning and general rules bind judges as well as lawmakers. Established decisions can acquire authority of their own, so a better interpretation is not always sufficient reason to start again. You would enforce recognized rights firmly, while requiring legal authority for both judicial intervention and the changes made in its name.",
+    "context": "The strength of this outlook is that a judge must explain where a claimed power comes from before explaining why its use would be good. Your inclusive positivism allows accepted legal standards to make moral acceptability a condition of legal validity. A judge applying those standards is determining existing law. Even a sound moral objection cannot supply a missing legal basis. Textualism and originalism carry the same discipline into interpretation. A statute’s wording records how far lawmakers agreed to pursue its aims. Whole-text context and ordinary usage help recover that bargain, including limits that its broader purpose would erase. An adopted principle can reach circumstances its authors misunderstood; its content remains a commitment to be interpreted rather than a proposal to be improved. Your respect for precedent makes this more accommodating than a programme of restoring every original answer. Judicial decisions can become part of the law people legitimately depend on, giving some mistakes continuing legal authority. You would tolerate that cost rather than let every change in judicial philosophy reopen settled arrangements. Courts can fill genuine gaps and create safeguards beyond a constitutional guarantee’s minimum requirements. Those safeguards can be binding law while remaining open to legislative revision that respects the underlying right."
+  },
+  "inclusive_development_structural_safeguards": {
+    "opening": "You think judges inherit responsibility for the legal order people have learned to depend on. Its enacted rules, developed rights and settled decisions deserve to be carried forward through improvement. A new court's conviction that an old decision was mistaken is therefore insufficient by itself. You would normally preserve it when serious reliance is at stake, while developing the law through its existing commitments and making its protections practically effective.",
+    "context": "For you, legal history changes what justice now requires of a court. An earlier ruling may have been wrong when made, yet undoing it can wrong people whose arrangements the law itself encouraged. This gives continuity an independent claim against theoretical tidiness. It also explains how constitutional law can grow through precedent. Each generation works with an accumulated body of decisions that supplies both reasons for development and limits on it. Your inclusive positivism lets recognized legal practices make moral acceptability a condition of legal validity. Constitutional obligations can also follow from the relationships the document establishes, without any single clause stating them. Courts can genuinely make new law where existing standards leave a choice, and should distinguish that work from enforcing a right already owed. You would give purpose and practical judgment room in interpretation while respecting deliberate legislative limits. Courts may create binding safeguards beyond a right’s constitutional minimum. Separating those safeguards from the guarantee itself makes room to revise the protection while continuing to honor the right. Change proceeds through inherited law, with a heavy burden on disruption. People disadvantaged by an entrenched mistake may have to wait for a correction that protects others' reliance, even when the intellectual case against the old rule is strong."
+  },
+  "inclusive_categorical_textual_settlement": {
+    "opening": "You want judicial power disciplined by commitments a judge cannot simply improve away. The words lawmakers enacted, the Constitution's adopted meaning and rules that apply across cases give that discipline substance. Settled decisions also create obligations to people who have relied on them. You would protect legal rights against political pressure while resisting judicial freedom to redesign the law, accepting imperfect outcomes as a serious cost of dependable, bounded authority.",
+    "context": "Lawmakers decide how far to pursue an aim, through which institutions, and at what cost to competing interests. Your textualism preserves those choices inside the enacted language. Reading a statute in context should recover the decision that was made, including its limits; pursuing its purpose further would require authority to make a different decision. Your constitutional originalism follows the same logic. Adopted principles can govern applications their authors failed to recognize, while retaining the meaning that gave them authority. Accepted legal standards can make moral requirements part of what determines legal validity. Your preference for general rules and prescribed governmental procedures extends this restraint across public power. When constitutional text states a right categorically, you would enforce that prohibition rather than weigh the right against governmental interests. Defining its scope remains an interpretive task; once it applies, judges cannot reopen the balance because the law they must invalidate is popular. Judges retain responsibility for choosing the best statutory reading, including when an agency disagrees. Earlier judicial decisions can acquire authority through settled practice and the reliance they invite. You would preserve some interpretive mistakes for that reason, especially where legislation can repair them. You would sometimes leave the resulting harm in place because correction would disrupt obligations built around the old rule."
+  },
+  "inclusive_empirical_development_remedies": {
+    "opening": "You see a legal order shaped by judicial choices and sustained by the expectations those choices create. Understanding it requires evidence about how judges actually decide, alongside attention to the rules they invoke. You would carry that realism into a cautious, institutionally grounded practice of judging. Established rights deserve effective protection, and deeply relied-on decisions deserve continuity, even when closer examination exposes the judgment and human influences behind their creation.",
+    "context": "Your interest in how judges decide reaches beyond the reasons printed in an opinion. In hard appeals, several outcomes can have defensible legal support. You would investigate whether judges’ outlooks, experience or institutional pressures help explain and predict which they choose. A decision’s legal authority remains a separate question. Recognized practices can make moral requirements part of the law, including conditions of legal validity. Explaining a decision’s origins does not settle what later judges ought to do with it. You give inherited decisions legal authority of their own. Constitutional principles can develop through accumulated decisions, and genuine gaps leave courts responsible for making some new law. Those decisions organize lives and institutions, so a fresh judicial theory is insufficient by itself to justify dismantling them. Serious reliance would normally lead you to preserve even a mistaken ruling. Correction must take account of obligations created by the law people were previously entitled to follow. You would work within that inheritance, giving purpose and practical judgment room in interpretation while respecting deliberate legislative limits. Courts should make established rights effective, using stronger remedies when narrower measures have failed and tailoring relief to the violation."
+  },
+  "inclusive_intratextual_construction_settlement": {
+    "opening": "You think changing the judge should not change the commitments a legal system owes its people. Constitutional meaning, enacted compromises and general rules should survive shifts in judicial conviction. Settled decisions have acquired authority too, so returning to first principles can itself require justification. You would enforce rights firmly within that inherited order, developing its protections where needed while keeping judicial reform tied to the authority judges have actually received.",
+    "context": "Your originalism reads constitutional language as part of a connected document. When a phrase is ambiguous, repeated or related wording elsewhere and the Constitution’s overall structure can outweigh an isolated reading. These connections help recover the public meaning adopted, including principles whose applications their adopters misunderstood. That gives constitutional reasoning room to produce unfamiliar conclusions without treating present approval as permission to change the Constitution's content. If that meaning genuinely leaves a question unresolved, you allow later doctrine to develop within the remaining space. The first task is still to determine what the text, read as a whole, has already settled. Your textualism, insistence on recognized legal authority and preference for general rules reinforce its demand that judges respect commitments established before they took office. Moral reasoning enters through standards the legal system accepts. Precedent then complicates what fidelity requires. A court inherits a functioning legal order as well as an original text, and serious reliance can give an erroneous ruling reasons to survive. You would give those reasons weight instead of making historical error decisive. You would sometimes leave a ruling in force while acknowledging that it misread the Constitution. That protects existing arrangements while leaving people harmed by the original mistake with a harder route to correction."
+  }
+};
+  for (const [key, route] of Object.entries(EVIDENCED_PROFILES)) {
+    const id = `portrait_evidenced_${key}`;
+    ROUTES[id] = Object.freeze(route);
+    OPENINGS[id] = route.opening;
+  }
+  function selectEvidencedProfile(c, scores) {
+    const t=c?.traits||{}, v=k=>axis(scores,k);
+    const all=(...keys)=>keys.every(key=>has(t,key,0.5));
+    const inclusive=sourceFrame(c,scores)==="inclusive" ||
+      (sourceFrame(c,scores)==="qualified_positive" && has(t,"source.morality_incorporated",0.5) && !has(t,"source.extreme_injustice",0.5));
+    const stable=v("prec")>=62 && has(t,"precedent.settlement",0.5);
+    const historical=v("time")>=64 && !has(t,"time.precedent_mediated_historicism") &&
+      all("time.public_meaning","time.semantic_fixation","time.principle_originalism");
+    const textual=historical && stable && inclusive && v("cons")>=64 && v("form")>=64 &&
+      all("constraint.contextual_textualism","constraint.enacted_bargain","posture.rights_trumps");
+    const development=stable && v("time")<=42 && all("time.common_law_development");
+    let key=null;
+    if (textual && all("method.categorical_textual_rights","separation.independent_judicial_interpretation",
+        "separation.prescribed_process","precedent.statutory"))
+      key="inclusive_categorical_textual_settlement";
+    else if (textual && all("time.intratextualism","time.construction_zone"))
+      key="inclusive_intratextual_construction_settlement";
+    else if (textual && all("source.law_runs_out","remedies.constitutional_common_law"))
+      key="inclusive_textual_settlement_safeguards";
+    else if (development && inclusive && all("realism.underdetermination","realism.extra_doctrinal",
+        "realism.empirical_prediction","source.law_runs_out","remedies.structural","remedies.supervision",
+        "constraint.enacted_bargain","posture.rights_trumps") &&
+        Object.entries(t).some(([k,value])=>k.startsWith("priority.realism.over.") && value>=0.5))
+      key="inclusive_empirical_development_remedies";
+    else if (development && inclusive && all("source.law_runs_out","method.structural_inference",
+        "remedies.constitutional_common_law","constraint.enacted_bargain","posture.rights_trumps"))
+      key="inclusive_development_structural_safeguards";
+    else if (development && v("post")<=38 && v("remed")<=38 &&
+        all("source.independent_moral_validity","source.extreme_injustice","source.positive_law_settlement",
+        "source.common_law_fundamental_rights","source.fit_and_justification",
+        "method.structural_inference","remedies.constitutional_common_law"))
+      key="independent_common_law_safeguards";
+    return key ? `portrait_evidenced_${key}` : null;
+  }
+
   function selectBasePortrait(c, scores={}) {
     const id=c?.identity?.id||"mixed_jurisprudence", t=c?.traits||{};
     if (SPECIAL_IDS.has(id) || id==="mixed_jurisprudence") return legacySelectContextId(c,scores);
@@ -994,7 +1149,8 @@
     // Paired evidence, including moderate tendencies, outranks a source noun.
     // Prefer relationships with an explicit mechanism over isolated loud scores.
     const development=v("time")<=42 || (v("time")<55 && has(t,"time.common_law_development",0.67));
-    const history=v("time")>=64 || (v("time")>=50 && has(t,"time.originalism_independent_authority",0.67));
+    const history=!has(t,"time.precedent_mediated_historicism",0.5) &&
+      (v("time")>=64 || (v("time")>=50 && has(t,"time.originalism_independent_authority",0.67)));
     const stable=v("prec")>=62, correct=v("prec")<=38;
     const rights=v("post")<=38, defer=v("post")>=62;
     const rules=v("form")>=64, text=v("cons")>=64, purpose=v("cons")<=38;
@@ -1024,21 +1180,71 @@
     // account and its matching opening instead of fabricating a combination.
     return legacySelectContextId(c,scores);
   }
-  // Only the practical-pluralist fallback has an authored dynamic variant.
-  // Existing whole-profile portraits retain priority and remain unchanged.
+  // Retain the established practical-pluralist route for legacy links; other
+  // supported relationships now also have authored dynamic variants.
   const DYNAMIC_SUFFIX = "_dynamic_statutory";
   ROUTES.pluralist_practical_dynamic_statutory = {
     opening: "You approach statutory interpretation as a continuing legal practice. Text, original expectations, purpose, precedent, and present legal context can carry different weight as a statute ages. Later developments may justify a changed interpretation, while the enacted law still limits the choices available to the court.",
     context: "Practical reasoning becomes dynamic statutory interpretation when the statute's later life helps determine its legal meaning. Original language and legislative expectations remain important, but they do not exhaust the inquiry: intervening law, established interpretations, reliance, and changed social conditions may alter which reading is best justified. A precise statutory definition can settle a question; an open-ended provision may require a different balance of reasons. This account therefore goes beyond asking what the original legislature would have decided, or applying an unchanged meaning to a new factual situation. It also differs from treating a statute as obsolete and requiring lawmakers to reaffirm it. The court works within an ongoing interpretive practice, explaining why contemporary developments warrant its reading and how that reading remains accountable to the enacted law. The central difficulty is distinguishing justified evolution from a judge's preferred policy while giving sufficient weight to the stability people have built around earlier interpretations."
   };
+  // A diagnostic can refine a broad relationship without changing the source
+  // account. Multiple refinements are ranked by explanatory specificity; the
+  // coverage report records any supported mechanism not represented in prose.
+  const DISTINCTIVE_EVIDENCE = {
+    "time.precedent_mediated_historicism": /mediated_history/,
+    "time.construction_zone": /construction/,
+    "time.democratic_constitutionalism": /democratic_development/,
+    "time.transformative_constitutionalism": /transformative_development/,
+    "posture.process_reinforcement": /process/,
+    "posture.responsive_review": /responsive_process/,
+    "source.normative_positivism": /normative/,
+    "method.dynamic_statutory": /dynamic_statutory/,
+    "realism.fact_skepticism": /fact_skeptical/
+  };
   function selectPortrait(c, scores={}) {
-    const base = selectBasePortrait(c,scores);
-    const t = c?.traits || {};
-    if (base === "pluralist_practical" && c?.identity?.id === "interpretive_pluralist" &&
-        has(t,"method.practical_reasoning",0.5) &&
-        has(t,"method.dynamic_statutory",0.5) && ROUTES[base + DYNAMIC_SUFFIX])
-      return base + DYNAMIC_SUFFIX;
+    const base=selectBasePortrait(c,scores), t=c?.traits||{};
+    if (SPECIAL_IDS.has(c?.identity?.id) || c?.identity?.id==="mixed_jurisprudence") return base;
+    const stable=axis(scores,"prec")>=62;
+    const history=axis(scores,"time")>=64 || has(t,"time.originalism_independent_authority",0.67);
+    const supported=key=>has(t,key,0.5);
+    const specialMechanism=["time.democratic_constitutionalism","time.transformative_constitutionalism",
+      "posture.process_reinforcement","posture.responsive_review","method.dynamic_statutory",
+      "realism.fact_skepticism","source.normative_positivism"].some(supported);
+    const evidenced=specialMechanism ? null : selectEvidencedProfile(c,scores);
+    if (evidenced) return evidenced;
+    let plan=null;
+    // A direct rejection of independent historical authority takes priority
+    // over a high aggregate Time score. No contradictory originalist opening.
+    if (supported("time.precedent_mediated_historicism"))
+      plan=stable ? "mediated_history_continuity" : "mediated_history_practice";
+    else if (supported("posture.responsive_review")) plan="responsive_process_review";
+    else if (supported("posture.process_reinforcement")) plan="process_reinforcing_review";
+    else if (supported("time.democratic_constitutionalism")) plan="democratic_development";
+    else if (supported("time.transformative_constitutionalism")) plan="transformative_development";
+    else if (supported("realism.fact_skepticism")) plan=stable ? "fact_skeptical_continuity" : "fact_skeptical_adjudication";
+    else if (supported("method.dynamic_statutory")) {
+      if (base==="pluralist_practical" && supported("method.practical_reasoning")) return base+DYNAMIC_SUFFIX;
+      plan=stable ? "dynamic_statutory_continuity" : "dynamic_statutory_context";
+    }
+    else if (history && !supported("time.precedent_mediated_historicism") && supported("time.construction_zone"))
+      plan=stable ? "historical_construction_continuity" : "historical_construction";
+    if (plan) return `portrait_${plan}_${sourceFrame(c,scores)}`;
     return base;
+  }
+  function evidenceCoverage(c, scores={}) {
+    const route=selectPortrait(c,scores), t=c?.traits||{};
+    const focus=/mediated_history/.test(route) ? "The portrait first resolves evidence rejecting independent historical authority" :
+      /responsive_process|process_reinforcing/.test(route) ? "The portrait prioritizes the specific institutional justification for judicial intervention" :
+      /democratic_development|transformative_development/.test(route) ? "The portrait prioritizes the identified mechanism of constitutional development" :
+      /fact_skeptical/.test(route) ? "The portrait prioritizes the distinct trial-level source of uncertainty" :
+      /dynamic_statutory/.test(route) ? "The portrait prioritizes the identified mechanism of statutory evolution" :
+      "The portrait requires a supported relationship, rather than promoting an isolated diagnostic into a complete outlook";
+    return Object.entries(DISTINCTIVE_EVIDENCE).filter(([key])=>has(t,key,0.5)).map(([key,pattern])=>({
+      trait:key, represented:pattern.test(route), route,
+      reason:pattern.test(route) ? "Explained by the selected authored relationship." :
+        SPECIAL_IDS.has(c?.identity?.id) ? "Reliability result withholds an ordinary portrait." :
+        `${focus}; this additional diagnostic is deferred, not negated or inferred away. Its coexistence is not exhaustively explained by this portrait.`
+    }));
   }
   function selectContextId(c,scores={}) { return selectPortrait(c,scores); }
   function selectOpeningId(c,scores={},explicit=null) {
@@ -1091,6 +1297,7 @@
     ROUTES,
     OPENINGS,
     selectPortrait,
+    evidenceCoverage,
     sourceFrame,
     selectOpeningId,
     buildOpening,

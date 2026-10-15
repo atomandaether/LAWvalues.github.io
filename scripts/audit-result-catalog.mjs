@@ -667,8 +667,10 @@ const assembled = resultContent.assemble(
   syntheticTraits,
   syntheticEvidence
 );
-assert.ok(assembled.title.includes("Public-Meaning Originalist"),
-  "Assembled title must preserve the real jurisprudential noun");
+assert.equal(assembled.noun,"Public-Meaning Originalist",
+  "Catalog noun remains unchanged by title word ordering");
+assert.ok(assembled.title.startsWith("Public-Meaning New Originalist "),
+  "New Originalism must retain coherent movement wording");
 assert.equal(assembled.phrase.id, "precedent_stability",
   "The strongest broad residual characteristic should become the phrase");
 assert.equal(assembled.modifier.id, "new_originalism",

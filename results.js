@@ -81,18 +81,6 @@
         setBarValue(entry.rightId, right);
     });
 
-    const ranked = globalThis.LAW_AXES.map((axis) => {
-        const pole = globalThis.LAW_SCORING.dominantPole(axis, scores[axis.id]);
-        return { axis, pole, distance: Math.abs(scores[axis.id] - 50) };
-    }).sort((a, b) => b.distance - a.distance || a.axis.name.localeCompare(b.axis.name));
-
-    const top = ranked.slice(0, 3).map(({ axis, pole }) => {
-        if (pole.direction === 'mixed') return `mixed on ${axis.name.toLowerCase()}`;
-        return `${pole.percent}% ${pole.name}`;
-    });
-    document.getElementById('result-summary').textContent =
-        `Your most distinctive results are ${top.join(', ').replace(/, ([^,]*)$/, ', and $1')}.`;
-
     const incomplete = globalThis.LAW_AXES.filter(
         (axis) => coverage[axis.id] < axisContributingCounts[axis.id]
     );
@@ -201,7 +189,6 @@
 
     function displayClassification(result) {
         const title = document.getElementById('result-title');
-        const label = document.getElementById('classification-label');
         const opening = document.getElementById('result-opening');
         const context = document.getElementById('result-context');
         const championLine = document.getElementById('champion-line');
@@ -211,7 +198,6 @@
 
         if (!result?.identity) {
             title.textContent = 'No jurisprudential classification is stored with this result.';
-            label.textContent = '';
             opening.textContent = '';
             context.textContent = '';
             championLine.textContent = '';
@@ -233,7 +219,28 @@
         );
 
         title.textContent = assembled?.title || result.identity.label;
-        label.textContent = assembled?.special ? '' : `Core identity: ${result.identity.label}`;
+        // Keep the complete saved title, emphasizing only its identity noun.
+        // Escape all content: shared-link and saved-record data are plain text.
+        const escapeHtml = (text) => String(text).replace(/[&<>"']/g, (character) => ({
+            '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'
+        })[character]);
+        const parts = !assembled?.special && globalThis.LAW_RESULT_CONTENT?.titleParts
+            ? globalThis.LAW_RESULT_CONTENT.titleParts(result.identity, assembled?.modifier, assembled?.phrase)
+            : null;
+        if (parts && parts.map((part) => part.text).join(' ') === title.textContent) {
+            title.innerHTML = parts.map((part) => part.role === 'noun'
+                ? '<strong>' + escapeHtml(part.text) + '</strong>'
+                : escapeHtml(part.text)).join(' ');
+        } else {
+            const noun = assembled?.noun || result.identity.label;
+            const nounIndex = title.textContent.indexOf(noun);
+            if (noun && nounIndex >= 0) {
+                const fullTitle = title.textContent;
+                title.innerHTML = escapeHtml(fullTitle.slice(0, nounIndex)) +
+                    '<strong>' + escapeHtml(noun) + '</strong>' +
+                    escapeHtml(fullTitle.slice(nounIndex + noun.length));
+            }
+        }
         opening.textContent = narrative?.opening || '';
         context.textContent = narrative?.context || '';
 
@@ -255,7 +262,7 @@
         const coreOnlyAxes = Number.isFinite(resultVersion) && resultVersion >= 0.8;
         const champions = Array.isArray(result.champions) ? result.champions : [];
         if (champions.length === 1) {
-            championLine.textContent = `Closest thinker: ${champions[0].name}`;
+            championLine.textContent = `Champion: ${champions[0].name}`;
             championDescription.textContent = champions[0].description || '';
             const thinkerProfile = (globalThis.LAW_PROFILES || []).find(item => item.id === champions[0].id);
             const specificAffinity = champions[0].evidence?.scope === 'specific-affinity' ||
@@ -264,7 +271,7 @@
                 championDescription.textContent += ' This is a specific theoretical affinity; the available thinker profile does not establish a broad match across your other commitments.';
             }
         } else if (champions.length > 1) {
-            championLine.textContent = `Closest thinkers: ${champions.map((item) => item.name).join(' · ')}`;
+            championLine.textContent = `Champions: ${champions.map((item) => item.name).join(' · ')}`;
             championDescription.textContent =
                 'The measured evidence does not justify forcing one of these nearby jurisprudential personalities over the other.';
         } else {
@@ -303,7 +310,6 @@
 
     const networkContainer = document.getElementById('champion-network');
     const networkSelection = document.getElementById('champion-network-selection');
-    const networkLegend = document.getElementById('champion-network-legend');
     if (networkContainer && globalThis.LAW_CHAMPION_NETWORK?.render) {
         const championId = classification?.champions?.length === 1
             ? classification.champions[0].id
@@ -313,14 +319,6 @@
             selectionElement: networkSelection,
             championId
         });
-
-        if (networkLegend) {
-            const colors = globalThis.LAW_CHAMPION_NETWORK.colors || {};
-            networkLegend.innerHTML = (globalThis.LAW_CHAMPION_NETWORK.camps || []).map((camp) => {
-                const swatch = '<span class="champion-network-swatch" style="background:' + colors[camp] + '"></span>';
-                return '<span class="champion-network-legend-item">' + swatch + camp + '</span>';
-            }).join('');
-        }
     }
 
 

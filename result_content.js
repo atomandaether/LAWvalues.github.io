@@ -1442,6 +1442,19 @@
     return null;
   }
 
+  // Presentation order changes only: catalog identity and modifier IDs remain
+  // stable for saved results, classification, and inventory contracts.
+  function titleParts(identity, modifier, phrase) {
+    const subtype = {public_meaning_originalist:"Public-Meaning", original_intent_originalist:"Original-Intent"}[identity?.id];
+    const parts = modifier?.id === "new_originalism" && subtype
+      ? [{text:subtype,role:"noun"},{text:"New",role:"modifier"},{text:"Originalist",role:"noun"}]
+      : [{text:modifier?.text,role:"modifier"},{text:identity?.label,role:"noun"}];
+    return [...parts,{text:phrase?.text,role:"phrase"}].filter(part=>part.text);
+  }
+  function composeTitle(identity, modifier, phrase) {
+    return titleParts(identity,modifier,phrase).map(part=>part.text).join(" ");
+  }
+
   function assemble(classification,scores,traits={},traitEvidence={}) {
     const special=specialTitle(classification);
     if(special) {
@@ -1524,7 +1537,7 @@
     const phrase=asPhrase(phrasePick?.feature||null) ||
       fallbackPhrase(identity,scores,blockedPhraseIds);
 
-    const title=[modifier?.text,identity.label,phrase?.text].filter(Boolean).join(" ");
+    const title=composeTitle(identity,modifier,phrase);
     const bridge=BRIDGES.find(item=>item.when(scores,traits,identity))||null;
 
     const rankedPhrases=phraseRanking.slice(0,8).map(item=>({
@@ -1813,7 +1826,7 @@
         : twist?asModifier(twist):legacyRendering(ids.modifierId,"modifier")||assembled.modifier;
     }
     if(ids.bridgeId) assembled.bridge=BRIDGES.find(x=>x.id===ids.bridgeId)||assembled.bridge;
-    assembled.title=[assembled.modifier?.text,identity.label,assembled.phrase?.text].filter(Boolean).join(" ");
+    assembled.title=composeTitle(identity,assembled.modifier,assembled.phrase);
     return assembled;
   }
 
@@ -1837,6 +1850,8 @@
     rankTwists,
     // Backward-compatible alias for older debug/test callers.
     rankFeatures:rankPhrases,
+    titleParts,
+    composeTitle,
     assemble,
     fromIds
   });
