@@ -18,6 +18,7 @@ const audits = [
   "audit-eskridge-dynamic.mjs",
   "audit-moral-consolidation.mjs",
   "audit-kavanaugh-retirement.mjs",
+  "audit-mobile-page-layout.mjs",
   "audit-results-layout.mjs",
   "audit-results-actions.mjs",
   "audit-result-title-rendering.mjs",
