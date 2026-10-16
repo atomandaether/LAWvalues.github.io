@@ -1,7 +1,9 @@
 import { fileURLToPath } from 'node:url';
 import fs from 'node:fs';import assert from 'node:assert/strict';import crypto from 'node:crypto';import{runtime,runtimeFiles}from './fixtures/whole-profile/runtime.mjs';
 const out=fileURLToPath(new URL('./fixtures/whole-profile/',import.meta.url)),root=fileURLToPath(new URL('../',import.meta.url)).replace(/\/$/,'');
-const hash=x=>crypto.createHash('sha256').update(x).digest('hex');const manifest=JSON.parse(fs.readFileSync(out+'extended-input-manifest.json'));for(const[file,{sha256}]of Object.entries(manifest.files))assert.equal(hash(fs.readFileSync(out+file)),sha256);
+// Git may materialize these frozen JSON fixtures with CRLF on Windows. Their
+// semantic bytes remain locked after canonical newline normalization.
+const hash=x=>crypto.createHash('sha256').update(x.toString().replace(/\r\n/g,'\n')).digest('hex');const manifest=JSON.parse(fs.readFileSync(out+'extended-input-manifest.json'));for(const[file,{sha256}]of Object.entries(manifest.files))assert.equal(hash(fs.readFileSync(out+file)),sha256);
 const legacyScoreBytes=fs.readFileSync(out+'legacy-08-score-baseline.json');
 assert.equal(hash(legacyScoreBytes),'af26d8032e6a882506dac2e22eff1a597c31d3aac0dbd3bbef29a35e8f98d0f9','Historical score baseline changed');
 const legacyScores=Object.fromEntries(JSON.parse(legacyScoreBytes).fixtures.map(f=>[f.id,f.scores]));

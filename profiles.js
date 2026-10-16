@@ -113,6 +113,7 @@ globalThis.LAW_PROFILES = Object.freeze([
     signatureTraits: ["source.principles_are_law", "source.fit_and_justification", "source.right_answer"],
     requiredTraits: [{ any: ["source.principles_are_law", "source.fit_and_justification"], min: 0.45 }],
     antiTraits: ["source.law_runs_out", "method.subjective_moral_override"],
+    definingConflicts: [{ any: ["source.interpretivism_rejected"], min: 0.67 }],
     description: "Central legal Interpretivism: institutional practice bears on legal rights through the principles that best fit and justify that practice.",
     related: ["Nicos Stavropoulos", "T.R.S. Allan"]
   },
@@ -230,6 +231,7 @@ globalThis.LAW_PROFILES = Object.freeze([
     signatureTraits: ["constraint.textual", "form.anti_discretion", "posture.rights_trumps", "method.categorical_textual_rights"],
     requiredTraits: [{ all: ["method.categorical_textual_rights"], min: 0.5 }],
     antiTraits: ["form.proportionality", "constraint.purpose"],
+    definingConflicts: [{ any: ["form.proportionality"], min: 0.67 }],
     description: "Black-like textualism: unusually categorical, text-centered judging paired with aggressive enforcement of expressly protected rights and deep skepticism of balancing.",
     related: ["Hugo Black", "Antonin Scalia"]
   },
@@ -281,7 +283,8 @@ globalThis.LAW_PROFILES = Object.freeze([
     axisSignature: { time: { target: 90, weight: 1 } },
     signatureTraits: ["time.public_meaning", "time.semantic_fixation", "time.construction_zone", "time.principle_originalism"],
     requiredTraits: [{ all: ["time.construction_zone"], min: 0.5 }],
-    antiTraits: ["time.original_intent", "time.original_methods", "time.common_law_development"],
+    antiTraits: ["time.original_intent", "time.original_methods", "time.common_law_development", "time.independent_authority_rejected"],
+    definingConflicts: [{ any: ["time.precedent_mediated_historicism"], min: 0.67 }],
     description: "New public-meaning originalism centered on semantic fixation and a genuine but constrained interpretation/construction distinction.",
     related: ["Randy Barnett", "Jack Balkin", "Keith Whittington"]
   },
@@ -336,7 +339,8 @@ globalThis.LAW_PROFILES = Object.freeze([
     },
     signatureTraits: ["time.public_meaning", "constraint.textual", "form.anti_discretion"],
     requiredTraits: [],
-    antiTraits: ["constraint.purpose", "time.construction_zone"],
+    antiTraits: ["constraint.purpose", "time.construction_zone", "time.independent_authority_rejected"],
+    definingConflicts: [{ any: ["time.precedent_mediated_historicism", "time.living_content"], min: 0.67 }],
     description: "Mainline text-and-rule public-meaning originalism: text, legal context, rules, and anti-discretion do most of the work.",
     related: ["John Manning"]
   },
@@ -572,17 +576,19 @@ globalThis.LAW_PROFILES = Object.freeze([
     id: "barak",
     name: "Aharon Barak",
     tier: "main",
-    identityIds: ["purposivist", "proportionalist"],
+    identityIds: ["purposivist", "proportionalist", "living_constitutionalist"],
     crossCuttingIdentityIds: ["legal_constitutionalist"],
     axisSignature: {
       cons: { target: 10, weight: 0.8 },
+      time: { target: 8, weight: 0.9 },
       post: { target: 10, weight: 0.75 },
       form: { target: 6, weight: 1 },
       remed: { target: 24, weight: 0.4 }
     },
-    signatureTraits: ["constraint.purpose", "form.proportionality", "posture.rights_trumps"],
+    signatureTraits: ["constraint.purpose", "time.living_content", "form.proportionality", "posture.rights_trumps"],
     requiredTraits: [],
     antiTraits: ["form.rules"],
+    definingConflicts: [{ any: ["time.originalism_independent_authority"], min: 0.67 }],
     description: "Systematic objective-purpose judging combined with structured proportionality, balancing, and strong judicial responsibility for rights.",
     related: ["Robert Alexy", "Stephen Breyer"]
   },
@@ -897,6 +903,7 @@ globalThis.LAW_PROFILES = Object.freeze([
       { all: ["separation.interpretive_accommodation"], min: 0.5 }
     ],
     antiTraits: ["separation.independent_judicial_interpretation", "separation.strong_nondelegation"],
+    definingConflicts: [{ all: ["separation.independent_judicial_interpretation", "separation.strong_nondelegation"], min: 0.67 }],
     specificityBonus: 0.025,
     description: "Institutionalist contextual Textualism: text and whole-statute context remain central while precedent, delegated institutional responsibility, expertise, and administrability retain substantial weight.",
     related: ["Henry Hart / Albert Sacks", "Stephen Breyer", "Robert Katzmann"]
@@ -1012,6 +1019,7 @@ globalThis.LAW_PROFILES = Object.freeze([
     signatureTraits: ["posture.clear_error"],
     requiredTraits: [{ all: ["posture.clear_error"], min: 0.5 }],
     antiTraits: ["posture.rights_trumps", "posture.reasonable_disagreement"],
+    definingConflicts: [{ any: ["posture.clear_error_rejected"], min: 0.67 }],
     description: "The clear-error deference specialist: courts retain judicial review but uphold any legislative constitutional judgment within the range of reasonable interpretation.",
     related: ["Learned Hand", "Felix Frankfurter", "Oliver Wendell Holmes Jr."]
   },
@@ -1154,6 +1162,7 @@ globalThis.LAW_PROFILES = Object.freeze([
     id: "charles_black",
     name: "Charles L. Black Jr.",
     tier: "specialist",
+    globalSpecialist: true,
     identityIds: ["mixed_jurisprudence"],
     crossCuttingIdentityIds: ["positivist", "interpretive_pluralist", "common_law_constitutionalist", "living_constitutionalist"],
     crossCuttingRequirements: {
@@ -1200,7 +1209,8 @@ globalThis.LAW_PROFILES = Object.freeze([
     minAxisSalience: { remed: 0.75 },
     signatureTraits: ["remedies.structural", "remedies.supervision", "posture.countermajoritarian"],
     requiredTraits: [
-      { all: ["remedies.structural", "remedies.supervision"], min: 0.65 }
+      { all: ["remedies.structural", "remedies.supervision"], min: 0.65 },
+      { all: ["posture.countermajoritarian"], min: 0.55 }
     ],
     antiTraits: ["remedies.party_specific"],
     description: "The structural-remedies specialist: adjudication can vindicate public values through institutional reform and continuing judicial supervision.",
@@ -1235,9 +1245,9 @@ globalThis.LAW_PROFILES = Object.freeze([
     globalSpecialist: true,
     identityIds: [],
     axisSignature: { remed: { target: 97, weight: 1 } },
-    minAxisSalience: { remed: 0.70 },
+    minAxisSalience: { remed: 0.75 },
     signatureTraits: ["remedies.party_specific", "remedies.incremental", "remedies.traditional_equity"],
-    requiredTraits: [{ all: ["remedies.traditional_equity"], min: 0.5 }],
+    requiredTraits: [{ all: ["remedies.traditional_equity", "remedies.party_specific"], min: 0.65 }],
     antiTraits: ["remedies.structural", "remedies.universal"],
     description: "Traditional-equity remedialism: judicial remedial authority is bounded by historically grounded equitable forms and ordinarily remains party-specific rather than expanding to whatever systemic relief seems most effective.",
     related: ["John Harrison", "Mila Sohoni", "Amanda Frost"]
@@ -1249,9 +1259,9 @@ globalThis.LAW_PROFILES = Object.freeze([
     globalSpecialist: true,
     identityIds: [],
     axisSignature: { remed: { target: 6, weight: 1 } },
-    minAxisSalience: { remed: 0.70 },
+    minAxisSalience: { remed: 0.75 },
     signatureTraits: ["remedies.universal", "remedies.universal_relief_theory"],
-    requiredTraits: [{ all: ["remedies.universal_relief_theory"], min: 0.5 }],
+    requiredTraits: [{ all: ["remedies.universal_relief_theory"], min: 0.65 }, { all: ["remedies.universal"], min: 0.6 }],
     antiTraits: ["remedies.party_specific"],
     description: "Universal-relief specialist: courts may in appropriate cases restrain unlawful government action beyond the named plaintiff when broader relief is justified by the nature of the legal violation and the remedial authority being exercised.",
     related: ["Samuel Bray"]
@@ -1273,6 +1283,7 @@ globalThis.LAW_PROFILES = Object.freeze([
     id: "monaghan",
     name: "Henry Monaghan",
     tier: "specialist",
+    globalSpecialist: true,
     identityIds: ["mixed_jurisprudence"],
     crossCuttingIdentityIds: ["positivist", "legal_process_theorist", "common_law_constitutionalist"],
     crossCuttingRequirements: {
@@ -1296,7 +1307,7 @@ globalThis.LAW_PROFILES = Object.freeze([
     identityIds: [],
     axisSignature: {},
     signatureTraits: ["remedies.equilibration"],
-    requiredTraits: [{ all: ["remedies.equilibration"], min: 0.5 }],
+    requiredTraits: [{ all: ["remedies.equilibration"], min: 0.65 }],
     antiTraits: [],
     specificityBonus: 0.03,
     description: "Remedial equilibration: the anticipated costs and institutional consequences of remedies can feed back into how courts define the scope of the underlying constitutional right itself.",
@@ -1310,7 +1321,7 @@ globalThis.LAW_PROFILES = Object.freeze([
     axisSignature: { separ: { target: 3, weight: 1 } },
     minAxisSalience: { separ: 0.55 },
     signatureTraits: ["separation.functionalist", "separation.assigned_independence", "separation.interpretive_accommodation", "separation.administrative_adjudication"],
-    requiredTraits: [],
+    requiredTraits: [{ all: ["separation.assigned_independence"], min: 0.5 }],
     antiTraits: ["separation.formalist"],
     description: "The specialist for functional separation-of-powers analysis: institutional overlap can be legitimate when accountability and each branch's core capacities remain workable.",
     related: ["Stephen Breyer"]
@@ -1329,6 +1340,7 @@ globalThis.LAW_PROFILES = Object.freeze([
       post: { target: 48, weight: 0.2 }
     },
     signatureTraits: ["separation.supervisory_duty", "separation.administrative_constitutionalism", "separation.functionalist"],
+    supportingTraits: ["separation.assigned_independence"],
     requiredTraits: [{ all: ["separation.supervisory_duty"], min: 0.5 }],
     antiTraits: ["separation.unitary_executive", "separation.strong_nondelegation"],
     specificityBonus: 0.08,

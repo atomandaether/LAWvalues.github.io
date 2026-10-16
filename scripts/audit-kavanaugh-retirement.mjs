@@ -13,7 +13,8 @@ const scores={sorc:72,cons:92,time:86,prec:68,remed:58,post:48,separ:78,form:78}
 const traits={'constraint.textual':1,'constraint.contextual_textualism':1,'constraint.best_reading_context':1,'separation.independent_judicial_interpretation':1,'time.public_meaning':.8,'time.fixation':.8,'form.anti_discretion':.65};
 const resolution=cl.resolveIdentity(scores,traits);
 const match=cl.resolveChampions(scores,traits,resolution.best.identity);
-assert.equal(match.matches[0].profile.id,'scalia_manning_easterbrook');
+assert.equal(match.matches[0].profile.id,'scalia_manning',
+ 'Strong public-meaning Time evidence must remain substantive even under the Textualist noun');
 assert.ok(!match.candidates.some(x=>['kavanaugh_barrett','kagan'].includes(x.profile.id)));
 console.log('Frozen former-Kavanaugh vector:',resolution.best.identity.id,JSON.stringify(match.candidates.map(x=>[x.profile.id,x.score])));
 const get=(t,s=scores,i=textualist)=>cl.resolveChampions(s,t,i).candidates.find(x=>x.profile.id==='scalia_manning_easterbrook');
@@ -32,4 +33,4 @@ const params=new URLSearchParams({...scores,v:'0.8',i:'textualist',c:'kavanaugh_
 const rr=runtime(root,{search:'?'+params});rr.run('results.js');
 assert.equal(rr.nodes.get('champion-line').textContent,'Champion: Brett Kavanaugh');
 rr.nodes.get('copy-link').click();assert.equal(new URL(rr.clipboard()).searchParams.get('c'),'kavanaugh_barrett');
-console.log('PASS: Kavanaugh historical replay, contextual Manning without forced transfer, Kagan gate, Barrett preserved');
+console.log('PASS: Kavanaugh historical replay, substantive Scalia/Manning distinction, Kagan gate, Barrett preserved');

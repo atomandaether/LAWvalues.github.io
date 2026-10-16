@@ -1221,7 +1221,13 @@
     else if (supported("posture.process_reinforcement")) plan="process_reinforcing_review";
     else if (supported("time.democratic_constitutionalism")) plan="democratic_development";
     else if (supported("time.transformative_constitutionalism")) plan="transformative_development";
-    else if (supported("realism.fact_skepticism")) plan=stable ? "fact_skeptical_continuity" : "fact_skeptical_adjudication";
+    else if (supported("realism.fact_skepticism")) {
+      // When Realism has been expressly ranked as defining, preserve the
+      // authored whole-profile relationship instead of letting one subtype
+      // diagnostic erase that priority from the portrait.
+      if (/realist_continuity/.test(base)) return base;
+      plan=stable ? "fact_skeptical_continuity" : "fact_skeptical_adjudication";
+    }
     else if (supported("method.dynamic_statutory")) {
       if (base==="pluralist_practical" && supported("method.practical_reasoning")) return base+DYNAMIC_SUFFIX;
       plan=stable ? "dynamic_statutory_continuity" : "dynamic_statutory_context";

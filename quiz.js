@@ -3,6 +3,12 @@
 
     const STORAGE_KEY = `lawvalues-quiz-${globalThis.LAW_VERSION}`;
     const LATEST_KEY = `lawvalues-latest-${globalThis.LAW_VERSION}`;
+    if (new URLSearchParams(window.location.search).get('fresh') === '1') {
+        // Start a new attempt without deleting the last completed result, which
+        // remains available for download until the new quiz is completed.
+        sessionStorage.removeItem(STORAGE_KEY);
+        if (window.history?.replaceState) window.history.replaceState({}, '', 'quiz.html');
+    }
     const CORE_TOTAL = globalThis.LAW_QUESTIONS.length;
     const MAX_DIAGNOSTICS = globalThis.LAW_CLASSIFIER?.MAX_DIAGNOSTICS ?? 12;
     const DISPLAY_MAX = globalThis.LAW_CLASSIFIER?.MAX_TOTAL_QUESTIONS ?? (CORE_TOTAL + MAX_DIAGNOSTICS);

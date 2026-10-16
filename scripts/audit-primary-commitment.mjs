@@ -111,7 +111,8 @@ for(const family of ['method','realism']) for(const confirm of [true,false,null]
  console.log(`Discovery ${family}/${confirm}: max next-question ${Math.round(Math.max(...durations))} ms`);
 }
 console.log('PASS: bounded missing-family discovery, rejected/skip controls, no priority-only school creation.');
-// An explicit primary commitment constrains the single whole-profile analogue.
+// An explicit priority weights the actual commitment a profile models without
+// turning the noun or catalog membership into an eligibility gate.
 {
  const scores={...neutral,sorc:94,cons:91,time:80,prec:69,remed:62,post:45,separ:70,form:83};
  const traits=cl.buildTraits(scores,{T7:3,S5:3,S7:3},{'D-PRI-source-time':-3});
@@ -119,12 +120,14 @@ console.log('PASS: bounded missing-family discovery, rejected/skip controls, no 
  assert.ok(identity.id.includes('originalist'));
  const match=cl.resolveChampions(scores,traits,identity).matches[0];
  assert.ok(match,'Explicit primary still needs a supported champion');
- assert.notEqual(cl.championIdentityCompatibility(match.profile,identity),'incompatible',
-  'A Source-only match must not override explicitly primary Originalism');
  assert.ok(match.profile.axisSignature.time || (match.profile.signatureTraits||[]).some(t=>t.startsWith('time.')),
-  'The champion must represent the explicitly primary commitment with actual catalog evidence');
+  'The winning profile should represent the preferred Time commitment in substantive evidence');
+ const relabeled=cl.resolveChampions(scores,traits,c.LAW_RESULT_IDENTITIES.find(x=>x.id==='positivist'));
+ assert.deepEqual(relabeled.candidates.map(x=>[x.profile.id,x.score]),
+  cl.resolveChampions(scores,traits,identity).candidates.map(x=>[x.profile.id,x.score]),
+  'Changing only the resolved noun cannot change the whole-profile analogue');
 }
-console.log('PASS: explicit primary commitment remains represented in whole-profile champion selection.');
+console.log('PASS: explicit priority weights modeled evidence while noun relabeling is inert.');
 {
  const scores={...neutral,sorc:100,time:65,cons:90};
  const traits=cl.buildTraits(scores,{T7:3},{'D-PRI-source-time':-3,'D-PRI-source-method':3});
@@ -167,7 +170,11 @@ console.log('PASS: weak, neutral, and skipped priority preserve proportional evi
  const methodPrimary={...traits,'priority.method.over.common_good':1,'priority.method.over.source':1,'priority.method.over.structure':1,'priority.method.over.posture':1};
  const method=cl.resolveIdentity(s,methodPrimary);
  assert.equal(method.best.identity.id,'purposivist');
- assert.notEqual(cl.resolveChampions(s,methodPrimary,method.best.identity,method).matches[0]?.profile.id,'vermeule','Explicit primary still excludes an unmodeled secondary-only identity');
+ const methodMatch=cl.resolveChampions(s,methodPrimary,method.best.identity,method);
+ const baseGap=broad.candidates[0].score-broad.candidates.find(x=>x.profile.id==='breyer').score;
+ const methodGap=methodMatch.candidates.find(x=>x.profile.id==='vermeule').score-
+  methodMatch.candidates.find(x=>x.profile.id==='breyer').score;
+ assert.ok(methodGap<baseGap,'Strong Method priority must narrow the advantage of a profile defined by subordinated common-good evidence');
  const cgPrimary={...traits,'priority.common_good.over.method':1,'priority.common_good.over.source':1,'priority.common_good.over.structure':1,'priority.common_good.over.posture':1};
  assert.equal(cl.resolveIdentity(s,cgPrimary).best.identity.id,'common_good_constitutionalist');
  const timeOnly={...traits,'priority.time.over.method':1,'priority.time.over.source':1};

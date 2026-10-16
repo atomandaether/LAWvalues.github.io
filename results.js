@@ -17,14 +17,14 @@
     const main = document.getElementById('results-main');
 
     const display = [
-        { axisId: 'sorc', label: 'source-label', leftId: 'positivist', rightId: 'nonpositivist' },
-        { axisId: 'cons', label: 'constraint-label', leftId: 'textualist', rightId: 'openconstruction' },
-        { axisId: 'time', label: 'time-label', leftId: 'historical', rightId: 'living' },
-        { axisId: 'prec', label: 'precedent-label', leftId: 'stability', rightId: 'overruling' },
-        { axisId: 'remed', label: 'remedies-label', leftId: 'narrow', rightId: 'systemic' },
-        { axisId: 'post', label: 'posture-label', leftId: 'majoritarian', rightId: 'countermajoritarian' },
-        { axisId: 'separ', label: 'separation-label', leftId: 'formalist', rightId: 'functionalist' },
-        { axisId: 'form', label: 'form-label', leftId: 'rules', rightId: 'balancing' }
+        { axisId: 'sorc', label: 'source-label', leftId: 'positivist', rightId: 'nonpositivist', leftImage: 'positivist.svg', rightImage: 'non-positivist.svg' },
+        { axisId: 'cons', label: 'constraint-label', leftId: 'textualist', rightId: 'openconstruction', leftImage: 'textualist.svg', rightImage: 'open-construction.svg' },
+        { axisId: 'time', label: 'time-label', leftId: 'historical', rightId: 'living', leftImage: 'historical.svg', rightImage: 'living.svg' },
+        { axisId: 'prec', label: 'precedent-label', leftId: 'stability', rightId: 'overruling', leftImage: 'stability.svg', rightImage: 'overruling.svg' },
+        { axisId: 'remed', label: 'remedies-label', leftId: 'narrow', rightId: 'systemic', leftImage: 'narrow.svg', rightImage: 'systemic.svg' },
+        { axisId: 'post', label: 'posture-label', leftId: 'majoritarian', rightId: 'countermajoritarian', leftImage: 'majoritarian.svg', rightImage: 'counter-majoritarian.svg' },
+        { axisId: 'separ', label: 'separation-label', leftId: 'formalist', rightId: 'functionalist', leftImage: 'formalist.svg', rightImage: 'functionalist.svg' },
+        { axisId: 'form', label: 'form-label', leftId: 'rules', rightId: 'balancing', leftImage: 'rules.svg', rightImage: 'balancing.svg' }
     ];
 
     function parseCoverage() {
@@ -251,11 +251,19 @@
         );
 
         title.textContent = assembled?.title || result.identity.label;
-        // The full title is emphasized; saved/share text is always escaped.
+        // The title grammar already exposes noun roles. Use those structured
+        // parts so only the jurisprudential identity receives contrast color.
         const escapeHtml = (text) => String(text).replace(/[&<>"']/g, (character) => ({
             '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'
         })[character]);
-        title.innerHTML = '<strong>' + escapeHtml(title.textContent) + '</strong>';
+        const titleParts = !assembled?.special && globalThis.LAW_RESULT_CONTENT?.titleParts
+            ? globalThis.LAW_RESULT_CONTENT.titleParts(result.identity, assembled?.modifier, assembled?.phrase)
+            : [{ text: title.textContent, role: 'title' }];
+        title.innerHTML = '<strong>' + titleParts.map((part) =>
+            part.role === 'noun'
+                ? '<span class="result-title-noun">' + escapeHtml(part.text) + '</span>'
+                : escapeHtml(part.text)
+        ).join(' ') + '</strong>';
         opening.textContent = narrative?.opening || '';
         context.textContent = narrative?.context || '';
 
@@ -325,6 +333,48 @@
 
     displayClassification(classification);
 
+    function renderCommitmentIcons(result) {
+        const container = document.getElementById('commitment-icons');
+        const championEvidence = result?.champions?.length === 1 ? result.champions[0].evidence : null;
+        const supportedAxes = new Set(championEvidence?.supportedAxes || []);
+        const supportedTraits = championEvidence?.supportedTraits || [];
+        const traitAxis = trait => trait.startsWith('source.') ? 'sorc' :
+            trait.startsWith('time.') ? 'time' :
+            (trait.startsWith('constraint.') || trait.startsWith('method.')) ? 'cons' :
+            trait.startsWith('precedent.') ? 'prec' : trait.startsWith('remedies.') ? 'remed' :
+            trait.startsWith('posture.') ? 'post' : trait.startsWith('separation.') ? 'separ' :
+            trait.startsWith('form.') ? 'form' : null;
+        const traitAxes = new Set(supportedTraits.map(traitAxis).filter(Boolean));
+        const priorityDomain = {sorc:'source',time:'time',cons:'method',post:'posture',separ:'structure',form:'form'};
+        const supportedStatuses = new Set(['supported','conditional']);
+        const ranked = display.map(entry => {
+            const score = Number(scores[entry.axisId]);
+            const salience = Math.abs(score-50)/50;
+            const status = axisDescriptions?.[entry.axisId]?.status;
+            const domain = priorityDomain[entry.axisId];
+            const priority = domain ? Object.entries(result?.traits || {}).some(([trait,value]) =>
+                Number(value) >= 0.5 && trait.startsWith(`priority.${domain}.over.`)) : false;
+            const importance = 0.55*salience + (supportedAxes.has(entry.axisId)?0.25:0) +
+                (traitAxes.has(entry.axisId)?0.15:0) + (priority?0.15:0);
+            return {entry,score,salience,status,importance};
+        }).filter(item => Number.isFinite(item.score) && item.salience >= 0.16 && supportedStatuses.has(item.status))
+          .sort((a,b) => b.importance-a.importance || b.salience-a.salience || a.entry.axisId.localeCompare(b.entry.axisId))
+          .slice(0,3);
+        container.innerHTML = '';
+        for (const item of ranked) {
+            const axis = resultAxisMap[item.entry.axisId];
+            const left = item.score >= 50;
+            const image = document.createElement('img');
+            image.src = `value_images/${left ? item.entry.leftImage : item.entry.rightImage}`;
+            image.alt = left ? axis.left : axis.right;
+            image.title = `${axis.name}: ${image.alt}`;
+            container.appendChild(image);
+        }
+        container.hidden = ranked.length === 0;
+    }
+
+    renderCommitmentIcons(classification);
+
     // Keep the champion in its original position, with its own compact card.
     // Biographical text is independent of the respondent's long-form portrait.
     const championCard = document.getElementById('champion-card');
@@ -338,6 +388,19 @@
     championTagline.hidden = !card?.tagline;
     championPortrait.textContent = card?.paragraph || document.getElementById('champion-description').textContent || '';
     championPortrait.hidden = !championPortrait.textContent;
+    let championExpanded = false;
+    const setChampionExpanded = expanded => {
+        championExpanded = expanded;
+        championCard.classList?.toggle('is-expanded',expanded);
+        championCard.setAttribute('aria-expanded',String(expanded));
+    };
+    setChampionExpanded(false);
+    championCard.addEventListener('click',() => setChampionExpanded(!championExpanded));
+    championCard.addEventListener('keydown',(event) => {
+        if (event.key !== 'Enter' && event.key !== ' ') return;
+        event.preventDefault?.();
+        setChampionExpanded(!championExpanded);
+    });
 
 
     const networkContainer = document.getElementById('champion-network');
@@ -403,27 +466,37 @@
     }
 
     const download = document.getElementById('download-record');
-    if (record) {
-        download.hidden = false;
-        download.addEventListener('click', () => {
-            // Keep the original raw answers, numbers, and classification intact.
-            // In particular, a 0.8 record must never be exported as version 0.9.
-            const exportRecord = {
+    download.hidden = false;
+    download.addEventListener('click', () => {
+        // A local completed session preserves its real answers. A URL-only view
+        // exports an explicit summary and never manufactures absent responses.
+        const exportRecord = record ? {
                 ...record,
                 instrument: 'LAWvalues',
-                instrumentVersion: record.instrumentVersion || record.version
+                instrumentVersion: record.instrumentVersion || record.version,
+                exportKind: 'completed-session',
+                answersIncluded: true
+            } : {
+                instrument: 'LAWvalues',
+                instrumentVersion: version.version,
+                exportKind: 'shared-result-summary',
+                answersIncluded: false,
+                scores,
+                axisDescriptions,
+                classification,
+                shareUrl: window.location.href,
+                note: 'This shared result URL does not contain answer-level responses.'
             };
-            const blob = new Blob([JSON.stringify(exportRecord, null, 2)], { type: 'application/json' });
-            const url = URL.createObjectURL(blob);
-            const link = document.createElement('a');
-            link.href = url;
-            link.download = 'lawvalues-results.json';
-            document.body.appendChild(link);
-            link.click();
-            link.remove();
-            URL.revokeObjectURL(url);
-        });
-    }
+        const blob = new Blob([JSON.stringify(exportRecord, null, 2)], { type: 'application/json' });
+        const url = URL.createObjectURL(blob);
+        const link = document.createElement('a');
+        link.href = url;
+        link.download = 'lawvalues-results.json';
+        document.body.appendChild(link);
+        link.click();
+        link.remove();
+        URL.revokeObjectURL(url);
+    });
 
     document.getElementById('copy-link').addEventListener('click', (event) =>
         copyText(window.location.href, event.currentTarget, 'Copied')

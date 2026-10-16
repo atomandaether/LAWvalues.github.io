@@ -10,25 +10,21 @@ The eight public axes remain the instrument. Jurisprudential identities and thin
 
 ## Sparse signatures, not eight-number caricatures
 
-### Noun-conditioned champion compatibility
+### Substantive champion matching independent of the public noun
 
-The public noun is resolved from the respondent's **primary jurisprudential commitment**. Agreement with a subtype does not by itself establish the importance of its parent family. Conditional priority comparisons supply separate evidence when multiple supported families compete. Champion matching uses the whole profile: the winning noun has a compatibility advantage, while independently supported secondary commitments can preserve other compatible thinkers without inheriting that full advantage.
+The public noun is resolved from the respondent's **primary jurisprudential commitment**. Agreement with a subtype does not by itself establish the importance of its parent family. Conditional priority comparisons supply separate evidence when multiple supported families compete. Champion matching is a separate whole-profile calculation across every selectable thinker. It uses modeled axes, affirmative signature and prerequisite traits, direct comparative-priority answers, soft anti-trait evidence, coverage uncertainty, and documented defining conflicts. It does not use the resolved noun, `identityIds`, `crossCuttingIdentityIds`, or display metadata as a gate or bonus.
 
-Profiles may declare:
+Profile identity lists remain useful catalog and explanatory metadata, but their absence is not opposition. Missing profile axes likewise mean unknown or non-diagnostic, never disagreement. A strong comparative-priority answer can modestly favor a thinker who actually models that preferred commitment and disfavor one who affirmatively models a subordinated commitment; priority evidence alone cannot supply missing doctrine or satisfy a specialist prerequisite.
 
-- **primary compatibility** in `identityIds`: the thinker directly exemplifies that noun. This receives the full champion compatibility bonus.
-- **cross-cutting compatibility** in `crossCuttingIdentityIds`: the thinker can honestly sit beneath that noun only when an explicit `crossCuttingRequirements` bridge is affirmatively evidenced. Merely listing the noun is not enough. This receives a smaller compatibility bonus.
-- a thinker with no compatibility through the primary or independently supported secondary commitments is excluded. Axis proximity cannot rescue an intellectually misleading pairing. Secondary compatibility does not carry the winning noun's full canonicality bonus. When comparative answers establish primary importance, an incompatible secondary-family match cannot override it; a cross-cutting match needs actual evidence covering the primary domain.
-
-Public child identities inherit compatibility from their public parent where appropriate. Thus a champion eligible for generic Originalism can remain eligible beneath Public-Meaning or Original-Intent Originalism, while an unrelated thinker cannot leak into those results.
+Hard exclusion is reserved for `definingConflicts`: an expressly documented incompatibility between a thinker's defining theory and a strongly expressed respondent belief. Ordinary `antiTraits` remain distinctions and score penalties rather than blanket vetoes. This makes the causal direction explicit: **respondent evidence → noun and champion in separate calculations**, with both outputs reflecting the same answers without one becoming input to the other.
 
 Examples:
-- Hugo Black is primarily **Textualist**, cross-cutting-compatible with **Formalist**, and incompatible with **Public-Meaning Originalist**.
+- Hugo Black is cataloged primarily under **Textualism** and cross-cutting under **Formalism**; those labels describe lineage but do not decide his match.
 - Scalia is primarily an **Originalist** champion; Manning separately represents mainline **Textualism** rather than being welded into the same default unit.
 - Stephen Breyer is primarily **Purposivist** while remaining cross-cutting-compatible with **Pragmatist** and **Functionalist**.
 - Benjamin Cardozo is primarily **Pragmatist** while remaining cross-cutting-compatible with **Common-Law Constitutionalist**.
 
-This keeps the causal direction explicit: **respondent → strongest jurisprudential claim → compatible noun → best whole-profile champion**. The system never chooses a noun merely to reach a preferred champion.
+The system never chooses a noun merely to reach a preferred champion, and changing only a noun label or a profile's catalog memberships cannot change the substantive champion score.
 
 A thinker is not assigned a position on every axis. Each selectable thinker has:
 
@@ -83,7 +79,7 @@ Examples:
 - Steven Calabresi / Saikrishna Prakash: unitary-executive Formalism when E2 directly supplies the presidential-control proposition
 - James Bradley Thayer: clear-error judicial deference
 - Robert Alexy: champion-level fit for Proportionalism when non-positivist correctness claims accompany structured proportionality
-- Owen Fiss: exceptional cross-noun champion only when extreme structural remedies, continuing supervision, and strong judicial role form the respondent's most explanatory whole-profile package
+- Owen Fiss: global remedies specialist only when extreme structural remedies, continuing supervision, and strong judicial role form the respondent's most explanatory whole-profile package
 - Roscoe Pound: sociological jurisprudence—law in action, competing social interests, and practical social operation
 - Henry Hart & Albert Sacks: Legal Process—purpose plus institutional competence, settlement, and reasoned elaboration
 - François Gény: Free Scientific Research only after Sociological Jurisprudence is already plausible
@@ -94,7 +90,7 @@ Examples:
 - Robert Post / Reva Siegel: Democratic Living modifier/champion only after a public-contestation constitutional-development diagnostic
 - Karl Klare / Pius Langa: Transformative Living modifier/champion only after a continuing constitutional-transformation diagnostic
 - Wil Waluchow: Common-Law champion only when Inclusive Positivism and common-law constitutional development are both independently established
-- Stephen Gardbaum: retained as weak-form/New Commonwealth lineage; dialogic-review evidence no longer creates a public noun or champion endpoint
+- Stephen Gardbaum: retained as a direct-evidence weak-form/New Commonwealth champion while dialogic review remains an internal authority descriptor rather than a public noun
 - Kevin Walsh: Departmentalism only after branch-specific independent-interpretation evidence
 - Rosalind Dixon: Responsive Political Process Jurisprudence only after representation reinforcement is established and the responsive-review diagnostic is affirmed
 - Alexander Bickel: Passive-virtues Judicial Minimalism only when strategic avoidance is directly evidenced; generic narrow/shallow Minimalism remains Sunsteinian
@@ -119,9 +115,9 @@ Philip Bobbitt covers a different case entirely: **affirmative** methodological 
 
 ## Single champion cardinality
 
-Every valid classified result returns exactly one champion unit. Noun-compatible profiles receive the normal compatibility advantage. Close scores lower confidence rather than creating co-champions. Fiss, Bray, Sohoni/Frost, and Levinson have tightly gated cross-noun remedial routes; other alternatives require independently supported compatible commitments. Narrow agreement is not treated as complete profile coverage.
+Every valid classified result returns exactly one champion unit. Close scores lower confidence rather than creating co-champions. Fiss, Bray, Sohoni/Frost, and Levinson use the same scored pool, coverage discount, uniqueness rule, and confidence calculation as every other thinker, with tightly justified affirmative prerequisites. Narrow agreement is not treated as complete profile coverage.
 
-There is **no global incompatible champion fallback**. If a public noun cannot produce a compatible champion, that is an architecture error for the audit suite to catch, not permission to return the least-wrong thinker from another school. The only no-school path is the explicit internal Mixed Jurisprudence fallback with its designated O'Connor catch-all.
+There is **no noun-compatibility fallback or filter**. A champion may sit outside the displayed noun's catalog family when the whole substantive evidence makes that thinker the strongest analogue. The explicit internal Mixed Jurisprudence path still retains O'Connor as its low-theory catch-all, but the noun label itself never creates champion eligibility.
 
 ## Adaptive diagnostics
 
