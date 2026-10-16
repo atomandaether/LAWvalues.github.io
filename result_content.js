@@ -1172,10 +1172,29 @@
     return clamp01(direct+0.08*corroboration);
   }
 
-  function phraseQuality(feature,scores,traits,traitEvidence={}) {
+  function phraseQuality(feature,scores,traits,traitEvidence={},axisDescriptions={}) {
     const evidence=phraseEvidence(feature,scores,traits);
     if(feature.axis) {
-      return {eligible:evidence>0,confidence:1,effectiveBreadth:8,coreCount:null,diagnosticCount:null};
+      const status=axisDescriptions?.[feature.axis]?.status||null;
+      const detail=scores?.[feature.axis];
+      const hasDetail=typeof detail==="object" && detail!==null;
+      const answered=hasDetail ? Number(detail.answered)||0 : 8;
+      const coverage=typeof detail==="object" && detail!==null ? clamp01(detail.coverage) : 1;
+      const strength=typeof detail==="object" && detail!==null ? clamp01((Number(detail.strength)||0)/100) : 1;
+      // A percentage is an aggregate location, not proof of a confident
+      // proposition. Current results therefore require the independent
+      // answer-grounded axis label to report actual supported doctrine before a
+      // directional joke can appear. Weak, limited, varied, and conflicting
+      // evidence must fall through to the residual fallback instead.
+      const eligibleStatus=status===null || status==="supported" || status==="conditional";
+      return {
+        eligible:evidence>0 && eligibleStatus,
+        confidence:eligibleStatus ? clamp01(strength*Math.max(coverage,0.25)) : 0,
+        effectiveBreadth:answered,
+        coreCount:hasDetail ? answered : null,
+        diagnosticCount:null,
+        status
+      };
     }
 
     const direct=aggregateEvidence(feature.tags,traitEvidence);
@@ -1222,8 +1241,8 @@
     return (feature.tags||[]).some(tag=>coverage.has(tag));
   }
 
-  function phraseScore(feature,scores,traits,identity,traitEvidence={}) {
-    const quality=phraseQuality(feature,scores,traits,traitEvidence);
+  function phraseScore(feature,scores,traits,identity,traitEvidence={},axisDescriptions={}) {
+    const quality=phraseQuality(feature,scores,traits,traitEvidence,axisDescriptions);
     if(!quality.eligible) return 0;
     let score=phraseEvidence(feature,scores,traits);
     if(nounSpendsPhrase(identity,feature)) score*=0.04;
@@ -1231,15 +1250,15 @@
     return clamp01(score);
   }
 
-  function rankPhrases(identity,scores,traits,traitEvidence={}) {
+  function rankPhrases(identity,scores,traits,traitEvidence={},axisDescriptions={}) {
     return PHRASE_FEATURES
       .map(feature=>{
-        const quality=phraseQuality(feature,scores,traits,traitEvidence);
+        const quality=phraseQuality(feature,scores,traits,traitEvidence,axisDescriptions);
         return {
           feature,
           evidence:phraseEvidence(feature,scores,traits),
           quality,
-          score:phraseScore(feature,scores,traits,identity,traitEvidence)
+          score:phraseScore(feature,scores,traits,identity,traitEvidence,axisDescriptions)
         };
       })
       .filter(item=>item.score>0)
@@ -1299,7 +1318,7 @@
     } : null;
   }
 
-  function fallbackPhrase(identity,scores,blockedPhraseIds=new Set()) {
+  function fallbackPhrase(identity,scores,blockedPhraseIds=new Set(),axisDescriptions={}) {
     const byAxis=new Map();
     for(const feature of PHRASE_FEATURES) {
       if(!feature.axis) continue;
@@ -1322,10 +1341,14 @@
         return {
           axis,
           strength:Number(detail?.strength)||0,
-          conflict:Number(detail?.conflict)||0
+          conflict:Number(detail?.conflict)||0,
+          logical:axisDescriptions?.[axis]?.status==="conflicting" || detail?.conflictIsLogical===true
         };
       })
-      .filter(item=>item.conflict>=45)
+      // Opposing support can reflect a nuanced or varied view. Only an
+      // independently reviewed logical-conflict status earns the contradiction
+      // fallback; generic cancellation is not enough.
+      .filter(item=>item.logical)
       .sort((a,b)=>b.conflict-a.conflict || b.strength-a.strength || a.axis.localeCompare(b.axis))[0]||null;
 
     const chosen=conflict ? FALLBACK_PHRASES.contradiction : FALLBACK_PHRASES.neutral;
@@ -1367,14 +1390,15 @@
     // A numerically strong match cannot claim a settled primary commitment
     // while the classifier explicitly reports a live priority ambiguity.
     const unresolvedPriority=classification?.identityPriority?.unresolved===true;
-    if(score>=0.82 && margin>=0.07 && !needsMore && !unresolvedPriority) {
+    const primaryConflict=classification?.primaryConflict===true;
+    if(score>=0.82 && margin>=0.07 && !needsMore && !unresolvedPriority && !primaryConflict) {
       return {
         id:"fit_unmistakable",
         text:`Unmistakably ${article}`,
         explanation:"Your answers form an unusually clean and well-separated match for this jurisprudential identity."
       };
     }
-    if(score<0.72 || margin<0.04 || unresolvedPriority) {
+    if(score<0.72 || margin<0.04 || unresolvedPriority || primaryConflict) {
       return {
         id:"fit_some_kind",
         text:"Some kind of",
@@ -1455,7 +1479,7 @@
     return titleParts(identity,modifier,phrase).map(part=>part.text).join(" ");
   }
 
-  function assemble(classification,scores,traits={},traitEvidence={}) {
+  function assemble(classification,scores,traits={},traitEvidence={},axisDescriptions={}) {
     const special=specialTitle(classification);
     if(special) {
       return {
@@ -1477,7 +1501,7 @@
     // chosen only after the modifier, so a genuine subtype/hybrid can spend the
     // concept it already communicates rather than being suppressed by a phrase
     // that happened to rank first.
-    const phraseRanking=rankPhrases(identity,scores,traits,traitEvidence);
+    const phraseRanking=rankPhrases(identity,scores,traits,traitEvidence,axisDescriptions);
 
     // Substantive modifiers beat generic fit language. Fit quality is otherwise
     // expressed as Unmistakably / blank / Some kind of.
@@ -1535,7 +1559,7 @@
     const phrasePick=phraseRanking.find(item=>
       item.score>=0.18 && !blockedPhraseIds.has(item.feature.id))||null;
     const phrase=asPhrase(phrasePick?.feature||null) ||
-      fallbackPhrase(identity,scores,blockedPhraseIds);
+      fallbackPhrase(identity,scores,blockedPhraseIds,axisDescriptions);
 
     const title=composeTitle(identity,modifier,phrase);
     const bridge=BRIDGES.find(item=>item.when(scores,traits,identity))||null;
@@ -1808,8 +1832,16 @@
       : {id:resolved,text:old.modifier,explanation:old.explanation};
   }
 
-  function fromIds(identity,scores,traits,ids={}) {
-    const assembled=assemble({identity},scores,traits||{},{});
+  function fromIds(identity,scores,traits,ids={},axisDescriptions={}) {
+    // A URL without an explicit stored phrase does not contain answer-level
+    // evidence. Treat absent axis descriptions as score-only uncertainty rather
+    // than regenerating a confident phrase from percentages alone. A valid
+    // historical phrase ID below still replays verbatim.
+    const replayDescriptions=Object.fromEntries(
+      [...new Set(PHRASE_FEATURES.map(feature=>feature.axis).filter(Boolean))]
+        .map(axis=>[axis,axisDescriptions?.[axis]||{status:"score-only"}])
+    );
+    const assembled=assemble({identity},scores,traits||{},{},replayDescriptions);
     if(ids.phraseId) {
       const feature=phraseByAnyId(ids.phraseId);
       const fallback=Object.values(FALLBACK_PHRASES).find(phrase=>phrase.id===ids.phraseId);

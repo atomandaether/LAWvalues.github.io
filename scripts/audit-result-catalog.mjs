@@ -78,7 +78,9 @@ const approvedPublicPhraseTexts = new Set([
     ...neutralScores,
     prec:axis(50,78,61)
   };
-  const contradictory = resultContent.assemble(classification, contradictoryScores, {}, {});
+  const contradictory = resultContent.assemble(
+    classification, contradictoryScores, {}, {}, {prec:{status:"conflicting"}}
+  );
   assert.equal(contradictory.phrase.text, "who is a walking contradiction",
     "Strong opposing residual evidence should use the contradiction phrase fallback");
   assert.equal(contradictory.phrase.axis, "prec",
@@ -88,7 +90,9 @@ const approvedPublicPhraseTexts = new Set([
     ...neutralScores,
     sorc:axis(50,82,68)
   };
-  const stillNeutral = resultContent.assemble(classification, primaryConflictOnly, {}, {});
+  const stillNeutral = resultContent.assemble(
+    classification, primaryConflictOnly, {}, {}, {sorc:{status:"conflicting"}}
+  );
   assert.equal(stillNeutral.phrase.text, "who needs to stop fence sitting",
     "Conflict on the noun-spent primary axis must not masquerade as the secondary phrase");
 

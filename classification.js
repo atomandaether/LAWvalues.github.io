@@ -849,6 +849,28 @@
     return null;
   }
 
+  function profileModelsPriorityDomain(profile, domain) {
+    if ((PRIORITY_DOMAIN_AXES[domain] || []).some(axisId => profile.axisSignature?.[axisId])) return true;
+    const traits = [
+      ...(profile.signatureTraits || []),
+      ...(profile.supportingTraits || []),
+      ...(profile.requiredTraits || []).flatMap(rule => [...(rule.all || []), ...(rule.any || [])]),
+      ...(profile.definingConflicts || []).flatMap(rule => [
+        ...(rule.all || []), ...(rule.any || []), ...(rule.trait ? [rule.trait] : [])
+      ])
+    ];
+    return traits.some(trait => traitPriorityDomain(trait) === domain);
+  }
+
+  function profileTouchesConflictingAxis(profile, conflictAxes) {
+    return [...conflictAxes].some(axisId => {
+      if (profile.axisSignature?.[axisId]) return true;
+      const domain = Object.keys(PRIORITY_DOMAIN_AXES).find(key =>
+        PRIORITY_DOMAIN_AXES[key].includes(axisId));
+      return domain ? profileModelsPriorityDomain(profile, domain) : false;
+    });
+  }
+
   function profilePriorityDomainStrength(profile, domain, scores, traits) {
     const axisStrength = Math.max(0, ...(PRIORITY_DOMAIN_AXES[domain] || []).map(axisId => {
       const spec = profile.axisSignature?.[axisId];
@@ -1150,9 +1172,11 @@
     };
   }
 
-  function finalizeResult(result, scores, traits, traitEvidence) {
+  function finalizeResult(result, scores, traits, traitEvidence, titleScores=scores, axisDescriptions={}) {
     if (global.LAW_RESULT_CONTENT?.assemble) {
-      result.resultTitle = global.LAW_RESULT_CONTENT.assemble(result, scores, traits, traitEvidence);
+      result.resultTitle = global.LAW_RESULT_CONTENT.assemble(
+        result, titleScores, traits, traitEvidence, axisDescriptions
+      );
     }
     return result;
   }
@@ -2031,6 +2055,13 @@
     const scores = Object.fromEntries(AXIS_IDS.map((id) => [id, axisValue(scored, id)]));
     const traits = buildTraits(scores, responses, diagnosticResponses);
     const traitEvidence = buildTraitEvidence(responses, diagnosticResponses);
+    const axisDescriptions = global.LAW_AXIS_LABELS?.describeAll?.({
+      scores: scored,
+      responses,
+      diagnosticResponses,
+      version: global.LAW_VERSION
+    }) || {};
+    const conflictAxes = new Set(AXIS_IDS.filter(id => axisDescriptions?.[id]?.status === "conflicting"));
 
     const mechanical = detectMechanicalPattern(responses, meta);
     const qualityCheckFailed =
@@ -2053,7 +2084,7 @@
         diagnosticCount: Object.keys(diagnosticResponses || {}).length,
         responseQuality: mechanical || "attention-check-failed",
         calibration: "theory-derived"
-      }, scores, traits, traitEvidence);
+      }, scores, traits, traitEvidence, scored, axisDescriptions);
     }
 
     if (detectBroadIncoherence(responses, diagnosticResponses)) {
@@ -2068,7 +2099,7 @@
         diagnosticCount: Object.keys(diagnosticResponses || {}).length,
         responseQuality: "broad-incoherence",
         calibration: "theory-derived"
-      }, scores, traits, traitEvidence);
+      }, scores, traits, traitEvidence, scored, axisDescriptions);
     }
 
 
@@ -2088,11 +2119,17 @@
         diagnosticCount: Object.keys(diagnosticResponses || {}).length,
         responseQuality: "partisan-outcome-selection",
         calibration: "conservative-mirror-heuristic"
-      }, scores, traits, traitEvidence);
+      }, scores, traits, traitEvidence, scored, axisDescriptions);
     }
 
     const identityResolution = resolveIdentity(scores, traits);
     const championResolution = resolveChampions(scores, traits, identityResolution.best.identity,identityResolution);
+    const primaryConflict = (identityResolution.best.focus || [])
+      .some(axisId => conflictAxes.has(axisId));
+    const championConflict = !!championResolution.matches[0]?.profile &&
+      profileTouchesConflictingAxis(championResolution.matches[0].profile, conflictAxes);
+    const championConfidence = championConflict && championResolution.confidence === "high"
+      ? "medium" : championResolution.confidence;
     return finalizeResult({
       identity: identityResolution.best.identity,
       identityScore: identityResolution.best.score,
@@ -2109,11 +2146,14 @@
         description: profile.description,
         related: profile.related || []
       })),
-      championConfidence: championResolution.confidence,
+      championConfidence,
+      evidenceConflicts: [...conflictAxes],
+      primaryConflict,
+      championConflict,
       traits,
       diagnosticCount: Object.keys(diagnosticResponses || {}).length,
       calibration: "theory-derived"
-    }, scores, traits, traitEvidence);
+    }, scores, traits, traitEvidence, scored, axisDescriptions);
   }
 
   global.LAW_PROFILE_EXTRA_DIAGNOSTICS = EXTRA_DIAGNOSTICS;

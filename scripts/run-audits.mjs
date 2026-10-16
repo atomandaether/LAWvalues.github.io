@@ -11,6 +11,7 @@ const audits = [
   "audit-result-narrative.mjs",
   "audit-result-share.mjs",
   "audit-title-contract.mjs",
+  "audit-title-evidence.mjs",
   "audit-primary-commitment.mjs",
   "audit-substantive-champion-matching.mjs",
   "audit-whole-profile.mjs",

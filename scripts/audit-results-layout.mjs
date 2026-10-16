@@ -8,8 +8,13 @@ const resultsJs = source('results.js');
 assert.ok(html.indexOf('id="result-title"') < html.indexOf('id="champion-line"'));
 assert.ok(html.indexOf('id="result-title"') < html.indexOf('id="commitment-icons"'));
 assert.ok(html.indexOf('id="champion-line"') < html.indexOf('id="result-narrative"'));
-assert.ok(html.indexOf('id="result-narrative"') < html.indexOf('id="source-label"'));
-assert.ok(html.indexOf('id="form-label"') < html.indexOf('id="champion-network"'));
+assert.ok(html.indexOf('id="result-opening"') < html.indexOf('id="results-axes"'),
+    'The complete axis profile must follow diagnosis paragraph one');
+assert.ok(html.indexOf('id="results-axes"') < html.indexOf('id="source-label"'));
+assert.ok(html.indexOf('id="form-label"') < html.indexOf('id="result-context"'),
+    'Legal-context paragraph two must follow all eight axes');
+assert.ok(html.indexOf('id="result-context"') < html.indexOf('id="copy-link"'));
+assert.ok(html.indexOf('id="copy-link"') < html.indexOf('id="champion-network"'));
 assert.ok(html.indexOf('id="champion-network"') < html.indexOf('id="champion-description"'));
 for (const obsolete of ['Your jurisprudential profile', 'Your jurisprudential fit', 'id="result-summary"', 'id="classification-label"', 'id="champion-network-legend"', '<h2>Jurisprudential network</h2>']) {
     assert.ok(!html.includes(obsolete), `Obsolete duplicate UI: ${obsolete}`);
