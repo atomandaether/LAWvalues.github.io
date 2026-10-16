@@ -10,7 +10,7 @@
 <link rel="icon" type="image/png" href="value_images/atomandaether.png">
 </head>
 <body class="results-page">
-<h1>LAWvalues</h1>
+<h1><a class="brand-home" href="index.html">LAWvalues</a></h1>
 <hr>
 
 <section class="error-box" id="results-error" hidden>
@@ -22,10 +22,11 @@
 <main id="results-main" hidden>
 <section class="results-summary" aria-labelledby="result-title">
     <h2 class="result-title" id="result-title">No classification stored.</h2>
-    <section class="champion-card" id="champion-card" aria-labelledby="champion-line" hidden>
+    <div class="commitment-icons" id="commitment-icons" aria-label="Most distinctive supported commitments" hidden></div>
+    <section class="champion-card" id="champion-card" aria-labelledby="champion-line" role="button" tabindex="0" aria-expanded="false" aria-controls="champion-portrait" hidden>
         <p class="classification-champion" id="champion-line"></p>
         <p class="champion-tagline" id="champion-tagline"></p>
-        <p class="champion-portrait" id="champion-portrait"></p>
+        <div class="champion-portrait-preview"><p class="champion-portrait" id="champion-portrait"></p></div>
     </section>
     <div class="result-narrative" id="result-narrative">
         <p class="result-opening" id="result-opening"></p>
@@ -35,7 +36,8 @@
 <div class="result-actions">
     <button class="small_button" id="copy-link" type="button">Copy Link</button>
     <button class="small_button" id="copy-summary" type="button">Copy Summary</button>
-    <button class="small_button" id="download-record" type="button" hidden>Download JSON</button>
+    <button class="small_button" id="download-record" type="button">Download JSON</button>
+    <a class="small_button" id="retake-quiz" href="quiz.html?fresh=1">Retake quiz</a>
 </div>
 <p class="coverage-note" id="version-note" hidden></p>
 <p class="coverage-note" id="coverage-note" hidden></p>

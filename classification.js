@@ -122,6 +122,7 @@
     "remedies.supervision": [["R4", 1, 1]],
     "method.narrow_shallow": [["R11", 1, 1], ["R6", 1, 0.6], ["R7", 1, 0.6]],
     "posture.clear_error": [["O1", 1, 1]],
+    "posture.clear_error_rejected": [["O1", -1, 1]],
     "posture.democratic_legitimacy": [["O2", 1, 0.9], ["O5", 1, 0.75], ["O8", 1, 1]],
     "posture.dialogic": [["O6", 1, 1]],
     "posture.passive_virtues": [["O7", 1, 1]],
@@ -753,6 +754,19 @@
     return tags.reduce((sum, trait) => sum + (traits[trait] || 0), 0) / tags.length;
   }
 
+  function profileRequiredEvidence(profile, traits) {
+    const rules = profile.requiredTraits || [];
+    if (!rules.length) return 0;
+    const strengths = rules.map(rule => {
+      const all = (rule.all || []).map(trait => traits[trait] || 0);
+      const any = (rule.any || []).map(trait => traits[trait] || 0);
+      const allStrength = all.length ? Math.min(...all) : 1;
+      const anyStrength = any.length ? Math.max(...any) : 1;
+      return Math.min(allStrength, anyStrength);
+    });
+    return strengths.reduce((sum, strength) => sum + strength, 0) / strengths.length;
+  }
+
   function profileEvidenceCoverage(profile, scores, traits) {
     const modeled = new Set(Object.keys(profile.axisSignature || {}));
     const important = AXIS_IDS.filter(id => salience(scores, id) >= 0.35);
@@ -812,14 +826,74 @@
     return "incompatible";
   }
 
+  const PRIORITY_DOMAIN_AXES = Object.freeze({
+    source: ["sorc"],
+    time: ["time"],
+    method: ["cons"],
+    posture: ["post", "remed"],
+    structure: ["separ"],
+    form: ["form"],
+    realism: [],
+    common_good: []
+  });
+
+  function traitPriorityDomain(trait) {
+    if (trait === "method.common_good" || trait === "time.classical_tradition") return "common_good";
+    if (trait.startsWith("source.")) return "source";
+    if (trait.startsWith("time.")) return "time";
+    if (trait.startsWith("constraint.") || trait.startsWith("method.")) return "method";
+    if (trait.startsWith("posture.") || trait.startsWith("remedies.")) return "posture";
+    if (trait.startsWith("separation.")) return "structure";
+    if (trait.startsWith("form.")) return "form";
+    if (trait.startsWith("realism.")) return "realism";
+    return null;
+  }
+
+  function profilePriorityDomainStrength(profile, domain, scores, traits) {
+    const axisStrength = Math.max(0, ...(PRIORITY_DOMAIN_AXES[domain] || []).map(axisId => {
+      const spec = profile.axisSignature?.[axisId];
+      if (!spec) return 0;
+      const fit = 1 - Math.min(1, Math.abs(axisValue(scores,axisId)-Number(spec.target)) / 60);
+      return fit * salience(scores,axisId);
+    }));
+    const profileTraits = [
+      ...(profile.signatureTraits || []),
+      ...(profile.supportingTraits || []),
+      ...(profile.requiredTraits || []).flatMap(rule => [...(rule.all || []), ...(rule.any || [])])
+    ].filter(trait => traitPriorityDomain(trait) === domain);
+    const traitStrength = Math.max(0, ...profileTraits.map(trait => traits[trait] || 0));
+    return Math.max(axisStrength, traitStrength);
+  }
+
+  function profilePriorityAdjustment(profile, scores, traits) {
+    const comparisons = [];
+    for (const [trait, value] of Object.entries(traits || {})) {
+      const match = /^priority\.([^.]+)\.over\.([^.]+)$/.exec(trait);
+      const strength = Number(value) || 0;
+      if (!match || strength < 0.5) continue;
+      const preferred = profilePriorityDomainStrength(profile,match[1],scores,traits);
+      const subordinated = profilePriorityDomainStrength(profile,match[2],scores,traits);
+      comparisons.push(strength * (preferred - subordinated));
+    }
+    if (!comparisons.length) return 0;
+    // Comparative priority weights commitments the profile actually models. A
+    // missing domain is uncertainty, not opposition; it contributes zero.
+    return 0.08 * comparisons.reduce((sum,value)=>sum+value,0) / comparisons.length;
+  }
+
+  function definingConflictSatisfied(profile, traits) {
+    for (const rule of profile.definingConflicts || []) {
+      const min = Number(rule.min ?? 0.67);
+      if (Array.isArray(rule.all) && rule.all.every(trait => (traits[trait] || 0) >= min)) return true;
+      if (Array.isArray(rule.any) && rule.any.some(trait => (traits[trait] || 0) >= min)) return true;
+    }
+    return false;
+  }
+
   function scoreProfile(profile, scores, traits, identity) {
     if (profile.selectable === false || profile.tier === "lineage") return null;
     if (!requiredTraitsSatisfied(profile, traits)) return null;
-
-    const compatibility = championIdentityCompatibility(profile, identity);
-    if (compatibility === "incompatible") return null;
-    if (compatibility === "cross-cutting" &&
-        !crossCuttingRequirementsSatisfied(profile, identity, traits)) return null;
+    if (definingConflictSatisfied(profile,traits)) return null;
 
     for (const [axisId, minimum] of Object.entries(profile.minAxisSalience || {})) {
       if (salience(scores, axisId) < Number(minimum)) return null;
@@ -827,29 +901,27 @@
 
     const { fit, shape, modeledAxes } = axisProfileFit(profile, scores);
     const traitFit = profileTraitFit(profile, traits);
+    const requiredEvidence = profileRequiredEvidence(profile, traits);
     const anti = Math.max(0, ...(profile.antiTraits || []).map((trait) => traits[trait] || 0));
     const unexplained = profileUnexplainedSalience(profile, scores);
-    // The noun is already resolved from the respondent's primary jurisprudential
-    // fixation. Champion matching is then conditioned on that noun: a thinker
-    // who directly exemplifies it receives the full compatibility bonus, while
-    // a genuinely cross-cutting but less canonical fit remains eligible at a
-    // smaller bonus. Everyone else is excluded rather than rescued by vector
-    // proximity.
-    const identityBonus = compatibility === "primary" ? 0.09 : 0.025;
-
     let score;
     if (modeledAxes === 0) {
-      score = 0.5 + 0.34 * traitFit + identityBonus - 0.22 * anti - unexplained;
+      score = 0.5 + 0.34 * traitFit - 0.22 * anti - unexplained;
     } else {
-      score = 0.62 * fit + 0.18 * shape + 0.15 * traitFit + identityBonus - 0.22 * anti - unexplained;
+      score = 0.62 * fit + 0.18 * shape + 0.15 * traitFit - 0.22 * anti - unexplained;
     }
     if (profile.tier === "main") score += 0.015;
+    // A directly affirmed defining proposition is more informative than a
+    // generic axis resemblance. Eligibility prevents unsupported specialists;
+    // this bounded term lets strong actual evidence outrank a nearby broad fit.
+    score += 0.05 * requiredEvidence;
     score += Number(profile.specificityBonus || 0);
     // Optional refinements add affinity only on direct affirmative evidence.
     // They neither dilute old signature scores nor create new eligibility.
     const support = Math.max(0, ...(profile.supportingTraits || [])
       .map(trait => (traits[trait] || 0) >= 0.5 ? traits[trait] : 0));
     score += 0.025 * support;
+    score += profilePriorityAdjustment(profile,scores,traits);
     // A proposition-only affinity cannot claim broad agreement from absent data.
     return clamp01(modeledAxes ? score : Math.min(0.69, score));
   }
@@ -858,51 +930,15 @@
     const profiles = Array.isArray(global.LAW_PROFILES) ? global.LAW_PROFILES : [];
     const normal = [];
     const catchalls = [];
-    const resolution = identityResolution || resolveIdentity(scores, traits);
-    const primaryChoice = resolution.candidates.find(candidate => candidate.identity.id === identity.id);
-    // Hard representation guards require material doctrine and priority evidence;
-    // a weak tilt can still have its best whole-person fit in an adjacent school.
-    const explicitPrimary = (primaryChoice?.priorityEvidence || 0) >= 0.5 &&
-      (primaryChoice?.basis || 0) >= 0.35;
-    const primaryTraits = new Set((IDENTITY_CATALOG.get(identity.id)?.covers || []));
-    const representsPrimary = profile => {
-      const compatibility = championIdentityCompatibility(profile,identity);
-      if (compatibility === "primary") return true;
-      if (compatibility !== "cross-cutting" || !crossCuttingRequirementsSatisfied(profile,identity,traits)) return false;
-      // A bridge can establish affinity without representing the explicitly
-      // defining doctrine. Require actual modeled primary-domain or signature
-      // coverage, not just an unrelated specialty tagged onto the noun.
-      return (primaryChoice?.focus || []).some(axis => profile.axisSignature?.[axis]) ||
-        (profile.signatureTraits || []).some(trait => primaryTraits.has(trait));
-    };
-    const supportedIdentities = resolution.candidates.filter(candidate =>
-      candidate.score >= 0.62 && candidate.basis >= 0.2).map(candidate => candidate.identity);
-    // A provisional noun should not outweigh a better supported whole-profile
-    // match merely through canonicality. Keep only the small compatibility
-    // distinction while defining priority remains unresolved.
-    const primaryUnresolved = identityPrioritySummary(resolution).unresolved;
-    const bestDirect = primaryUnresolved ? profiles.map(profile => ({profile,
-      score: scoreProfile(profile,scores,traits,identity)}))
-      .filter(item=>item.score!==null).sort((a,b)=>b.score-a.score)[0] : null;
-    const directCoverage = bestDirect ? profileEvidenceCoverage(bestDirect.profile,scores,traits).coverage : 0;
-    const profileScore = profile => {
-      const evidence = profileEvidenceCoverage(profile,scores,traits);
-      const clearerBroadEvidence = primaryUnresolved && evidence.coverage > directCoverage + 0.15 &&
-        evidence.knownDisagreements.length === 0 && evidence.traitDisagreements.length === 0;
-      const secondaryPenalty = clearerBroadEvidence ? 0.025 : 0.09;
-      if (explicitPrimary && !representsPrimary(profile)) return null;
-      const direct = scoreProfile(profile, scores, traits, identity);
-      // A primary label is not an exhaustive worldview. Independently evidenced
-      // compatible commitments retain their thinkers; no invented identity maps.
-      const secondary = supportedIdentities.filter(other => !explicitPrimary && supportedIdentities.some(primary => primary.id === identity.id) && other.id !== identity.id)
-        .map(other => scoreProfile(profile, scores, traits, other))
-        .filter(value => value !== null).map(value => value - secondaryPenalty);
-      return direct === null && !secondary.length ? null : Math.max(direct ?? -1, ...secondary);
-    };
+    // The public noun and profile identity metadata are presentation/catalog
+    // information. Champion eligibility and scoring derive only from substantive
+    // axes, affirmative traits, direct priority comparisons, and documented
+    // defining conflicts.
+    const profileScore = profile => scoreProfile(profile,scores,traits,null);
 
     for (const profile of profiles) {
       if (profile.tier === "catchall") {
-        if (championIdentityCompatibility(profile, identity) !== "incompatible") catchalls.push(profile);
+        catchalls.push(profile);
         continue;
       }
       const score = profileScore(profile);
@@ -918,124 +954,14 @@
     let pool = normal;
     const topNormal = normal[0]?.score ?? 0;
 
-    const fiss = profiles.find((profile) => profile.id === "fiss" && profile.selectable !== false);
-    if (fiss && requiredTraitsSatisfied(fiss, traits)) {
-      const remedialSalience = salience(scores, "remed");
-      const strongestOtherAxis = Math.max(
-        ...AXIS_IDS.filter((axisId) => axisId !== "remed").map((axisId) => salience(scores, axisId))
-      );
-      const structural = traits["remedies.structural"] || 0;
-      const supervision = traits["remedies.supervision"] || 0;
-      const strongJudicialRole = traits["posture.countermajoritarian"] || 0;
-      const fissMayDisplace =
-        remedialSalience >= 0.75 &&
-        structural >= 0.65 &&
-        supervision >= 0.65 &&
-        strongJudicialRole >= 0.55 &&
-        (topNormal < 0.72 || remedialSalience >= strongestOtherAxis + 0.12);
-
-      if (fissMayDisplace) {
-        const { fit, shape } = axisProfileFit(fiss, scores);
-        const traitFit = profileTraitFit(fiss, traits);
-        const anti = Math.max(0, ...(fiss.antiTraits || []).map((trait) => traits[trait] || 0));
-        const fissScore = clamp01(0.58 * fit + 0.17 * shape + 0.20 * traitFit - 0.20 * anti - 0.03);
-        pool = [...pool, { profile: fiss, score: fissScore }].sort((a, b) =>
-          b.score - a.score ||
-          Number(b.profile.specificityBonus || 0) - Number(a.profile.specificityBonus || 0) ||
-          a.profile.id.localeCompare(b.profile.id)
-        );
-      }
-    }
-
-    const bray = profiles.find((profile) => profile.id === "bray" && profile.selectable !== false);
-    if (bray && requiredTraitsSatisfied(bray, traits)) {
-      const remedialSalience = salience(scores, "remed");
-      const strongestOtherAxis = Math.max(
-        ...AXIS_IDS.filter((axisId) => axisId !== "remed").map((axisId) => salience(scores, axisId))
-      );
-      const partySpecific = traits["remedies.party_specific"] || 0;
-      const traditionalEquity = traits["remedies.traditional_equity"] || 0;
-      const brayMayDisplace =
-        remedialSalience >= 0.75 &&
-        partySpecific >= 0.65 &&
-        traditionalEquity >= 0.65 &&
-        (topNormal < 0.72 || remedialSalience >= strongestOtherAxis + 0.12);
-
-      if (brayMayDisplace) {
-        const { fit, shape } = axisProfileFit(bray, scores);
-        const traitFit = profileTraitFit(bray, traits);
-        const anti = Math.max(0, ...(bray.antiTraits || []).map((trait) => traits[trait] || 0));
-        const brayScore = clamp01(0.58 * fit + 0.17 * shape + 0.20 * traitFit - 0.20 * anti - 0.03);
-        pool = [...pool, { profile: bray, score: brayScore }].sort((a, b) =>
-          b.score - a.score ||
-          Number(b.profile.specificityBonus || 0) - Number(a.profile.specificityBonus || 0) ||
-          a.profile.id.localeCompare(b.profile.id)
-        );
-      }
-    }
-
-    const universal = profiles.find((profile) => profile.id === "sohoni_frost" && profile.selectable !== false);
-    if (universal && requiredTraitsSatisfied(universal, traits)) {
-      const remedialSalience = salience(scores, "remed");
-      const strongestOtherAxis = Math.max(
-        ...AXIS_IDS.filter((axisId) => axisId !== "remed").map((axisId) => salience(scores, axisId))
-      );
-      const universalSupport = traits["remedies.universal"] || 0;
-      const theory = traits["remedies.universal_relief_theory"] || 0;
-      const universalMayDisplace =
-        remedialSalience >= 0.75 &&
-        universalSupport >= 0.60 &&
-        theory >= 0.65 &&
-        (topNormal < 0.72 || remedialSalience >= strongestOtherAxis + 0.12);
-
-      if (universalMayDisplace) {
-        const { fit, shape } = axisProfileFit(universal, scores);
-        const traitFit = profileTraitFit(universal, traits);
-        const anti = Math.max(0, ...(universal.antiTraits || []).map((trait) => traits[trait] || 0));
-        const universalScore = clamp01(0.58 * fit + 0.17 * shape + 0.20 * traitFit - 0.20 * anti - 0.03);
-        pool = [...pool, { profile: universal, score: universalScore }].sort((a, b) =>
-          b.score - a.score ||
-          Number(b.profile.specificityBonus || 0) - Number(a.profile.specificityBonus || 0) ||
-          a.profile.id.localeCompare(b.profile.id)
-        );
-      }
-    }
-
-    const levinson = profiles.find((profile) => profile.id === "levinson" && profile.selectable !== false);
-    if (levinson && requiredTraitsSatisfied(levinson, traits)) {
-      const equilibration = traits["remedies.equilibration"] || 0;
-      const remedialSalience = salience(scores, "remed");
-      const prophylactic = traits["remedies.prophylactic"] || 0;
-      const strongestOtherAxis = Math.max(
-        ...AXIS_IDS.filter((axisId) => axisId !== "remed").map((axisId) => salience(scores, axisId))
-      );
-      const levinsonMayDisplace =
-        equilibration >= 0.65 &&
-        (remedialSalience >= 0.45 || prophylactic >= 0.65) &&
-        (topNormal < 0.72 || strongestOtherAxis <= 0.55);
-
-      if (levinsonMayDisplace) {
-        const traitFit = profileTraitFit(levinson, traits);
-        const levinsonScore = clamp01(0.68 + 0.22 * traitFit + Number(levinson.specificityBonus || 0));
-        pool = [...pool, { profile: levinson, score: levinsonScore }].sort((a, b) =>
-          b.score - a.score ||
-          Number(b.profile.specificityBonus || 0) - Number(a.profile.specificityBonus || 0) ||
-          a.profile.id.localeCompare(b.profile.id)
-        );
-      }
-    }
-
     for (const profile of catchalls) {
-      if (explicitPrimary && identity.id !== "mixed_jurisprudence" &&
-          Math.max(traits["method.case_by_case"]||0,traits["method.anti_grand_theory"]||0) < 0.5) continue;
       const lowTheoryEvidence = Math.max(
         traits["method.case_by_case"] || 0,
         traits["method.anti_grand_theory"] || 0,
         traits["method.low_theory_space"] || 0
       );
-      if (identity?.id === "mixed_jurisprudence" ||
-          maxSalience <= 0.52 || topNormal < 0.61 || lowTheoryEvidence >= 0.5) {
-        const base = scoreProfile(profile, scores, traits, identity) ?? 0;
+      if (maxSalience <= 0.52 || topNormal < 0.61 || lowTheoryEvidence >= 0.5) {
+        const base = scoreProfile(profile, scores, traits, null) ?? 0;
         const score = clamp01(base + 0.16 * lowTheoryEvidence);
         pool = [...pool, { profile, score }].sort((a, b) =>
           b.score - a.score ||
@@ -1045,11 +971,12 @@
       }
     }
 
-    if (explicitPrimary) pool = pool.filter(item => representsPrimary(item.profile));
-
-    // Never rescue a noun by jumping to an incompatible thinker. If this is
-    // empty, the noun/profile contracts are wrong and the audit should fail.
     if (pool.length === 0) return { matches: [], confidence: "withheld", candidates: [] };
+
+    // A specialist can enter through the ordinary pool and a catch-all through
+    // its conservative fallback path. Keep one score per champion before margin
+    // and confidence calculations.
+    pool = [...new Map(pool.map(item => [item.profile.id,item])).values()];
 
     // Apply evidence limits to every route, including special remedial overrides.
     pool = pool.map(item => {
@@ -1059,10 +986,19 @@
     const first = pool[0];
     const second = pool[1];
     const margin = second ? first.score - second.score : 1;
-    const confidence =
+    let confidence =
       first.score >= 0.76 && margin >= 0.055 && first.evidence.coverage >= 0.70 &&
       !first.evidence.knownDisagreements.length && !first.evidence.traitDisagreements.length ? "high" :
       first.score >= 0.63 ? "medium" : "low";
+    const strongPriorities=Object.entries(traits||{}).flatMap(([trait,value])=>{
+      const match=/^priority\.([^.]+)\.over\.([^.]+)$/.exec(trait);
+      return match&&Number(value)>=0.5?[[match[1],match[2]]]:[];
+    });
+    const subordinatedDomains=new Set(strongPriorities.map(([,subordinated])=>subordinated));
+    const primaryDomains=[...new Set(strongPriorities.map(([preferred])=>preferred))]
+      .filter(domain=>!subordinatedDomains.has(domain));
+    if(primaryDomains.some(domain=>profilePriorityDomainStrength(first.profile,domain,scores,traits)<0.45))
+      confidence="low";
     return { matches: [first], confidence, candidates: pool.slice(0, 5) };
   }
 
@@ -1639,26 +1575,17 @@
 
     const provisionalMethodIdentity = bestRoutingId;
 
-    const calabresiCompatible = new Set([
-      "pragmatist", "common_law_constitutionalist", "interpretive_pluralist"
-    ]);
-    if (routingLeading.some((candidate) => calabresiCompatible.has(candidate.identity.id)) &&
-        (traits["method.statutory_obsolescence"] || 0) < 0.5 &&
+    if ((traits["method.statutory_obsolescence"] || 0) < 0.5 &&
         (constraint <= 45 || commonLawCore >= 0.4) &&
         !hasAsked(diagnosticResponses, "D-CAL1")) {
       offer("D-CAL1", 76);
     }
 
-    const blackCompatible = new Set([
-      "positivist", "interpretive_pluralist", "common_law_constitutionalist",
-      "living_constitutionalist", "mixed_jurisprudence"
-    ]);
     const blackStructuralSalience = Math.max(
       salience(scores, "time"), salience(scores, "prec"),
       salience(scores, "post"), salience(scores, "separ")
     );
-    if (routingLeading.some((candidate) => blackCompatible.has(candidate.identity.id)) &&
-        blackStructuralSalience >= 0.30 &&
+    if (blackStructuralSalience >= 0.30 &&
         (traits["method.structural_inference"] || 0) < 0.5 &&
         !hasAsked(diagnosticResponses, "D-BLK1")) {
       offer("D-BLK1", 72);
@@ -1722,27 +1649,19 @@
     // Champion-only refinements: these are deliberately gated behind a
     // profile that is already plausible from the core bank, so they cannot
     // consume scarce adaptive slots merely to search for exotic names.
-    if (identityLive("functionalist") &&
+    if (separ <= 35 &&
         (traits["method.agency_interpretive_autonomy"] || 0) < 0.5 &&
         !hasAsked(diagnosticResponses, "D-MAS1")) {
       offer("D-MAS1", 86);
     }
 
-    const gardbaumCompatible = new Set([
-      "political_constitutionalist", "political_process_jurist", "minimalist", "mixed_jurisprudence"
-    ]);
-    if (routingLeading.some((candidate) => gardbaumCompatible.has(candidate.identity.id)) &&
-        (traits["posture.dialogic"] || 0) >= 0.5 &&
+    if ((traits["posture.dialogic"] || 0) >= 0.5 &&
         (traits["posture.structured_legislative_response"] || 0) < 0.5 &&
         !hasAsked(diagnosticResponses, "D-GRD1")) {
       offer("D-GRD1", 92);
     }
 
-    const monaghanCompatible = new Set([
-      "positivist", "legal_process_theorist", "common_law_constitutionalist", "mixed_jurisprudence"
-    ]);
-    if (routingLeading.some((candidate) => monaghanCompatible.has(candidate.identity.id)) &&
-        (traits["remedies.prophylactic"] || 0) >= 0.5 &&
+    if ((traits["remedies.prophylactic"] || 0) >= 0.5 &&
         (traits["remedies.constitutional_common_law"] || 0) < 0.5 &&
         !hasAsked(diagnosticResponses, "D-MON1")) {
       offer("D-MON1", 89);
@@ -1790,8 +1709,7 @@
     }
 
     const commonLawDevelopment = traits["time.common_law_development"] || 0;
-    if (identityLive("common_law_constitutionalist") &&
-        precedent >= 70 && posture >= 58 &&
+    if (commonLawDevelopment >= 0.4 && precedent >= 70 && posture >= 58 &&
         (traits["time.ordered_liberty_tradition"] || 0) < 0.5) {
       offer("D-HAR1", 89);
     }
@@ -1803,9 +1721,7 @@
       offer("D-CLC1", 97);
     }
 
-    const pilCompatible = new Set(["sociological_jurist", "living_constitutionalist", "purposivist"]);
-    if (routingLeading.some((candidate) => pilCompatible.has(candidate.identity.id)) &&
-        remediesScore <= 25 && posture <= 32 && constraint <= 45 &&
+    if (remediesScore <= 25 && posture <= 32 && constraint <= 45 &&
         (traits["remedies.public_interest_litigation"] || 0) < 0.5) {
       offer("D-PIL1", 96);
     }
@@ -1843,12 +1759,29 @@
     // nearby compatible champions.
     // Missing required evidence is an unanswered question, not negative evidence.
     // Offer affordable prerequisite chains for compatible, plausible thinkers.
-    const remainingSlots = MAX_DIAGNOSTICS - askedCount;
-    for (const profile of global.LAW_PROFILES || []) {
-      if (profile.selectable === false || profile.tier === "lineage" || profile.tier === "catchall") continue;
-      if (!routingLeading.some(c => championIdentityCompatibility(profile,c.identity) !== "incompatible")) continue;
-      const fit = axisProfileFit(profile,scores);
-      if (fit.modeledAxes && fit.fit < 0.55) continue;
+    const routingProfileLandscape=(global.LAW_PROFILES || []).filter(profile =>
+      profile.selectable !== false && profile.tier !== "lineage" && profile.tier !== "catchall"
+    ).map(profile => {
+      const fit=axisProfileFit(profile,scores);
+      const profileSalience=Math.max(0,...Object.keys(profile.axisSignature||{}).map(axisId=>salience(scores,axisId)));
+      const partialTrait=Math.max(0,...(profile.signatureTraits||[]).map(trait=>traits[trait]||0));
+      return {profile,fit,profileSalience,partialTrait,
+        routingScore:fit.fit+0.2*profileSalience+0.15*partialTrait};
+    });
+    const axisRoutingProfiles=routingProfileLandscape.filter(item=>item.fit.modeledAxes&&item.fit.fit>=0.62&&
+      (item.profileSalience>=0.25||item.partialTrait>=0.35))
+      .sort((a,b)=>b.routingScore-a.routingScore||a.profile.id.localeCompare(b.profile.id)).slice(0,12);
+    // A very small catalog-marked set of proposition-only specialists has no
+    // honest axis location. When the broad profile is still uncertain, their
+    // defining propositions remain askable without consulting noun metadata.
+    const globalRoutingProfiles=maxSalience<=0.52&&!realismConfirmed?routingProfileLandscape.filter(item=>
+      !item.fit.modeledAxes&&item.profile.globalSpecialist===true):[];
+    const routingProfiles=[...new Map([...axisRoutingProfiles,...globalRoutingProfiles]
+      .map(item=>[item.profile.id,item])).values()];
+    for (const {profile} of routingProfiles) {
+      // The hand-authored routes already cover proposition-only specialists.
+      // This bounded generic shortlist is for an axis-plausible thinker whose
+      // missing affirmative prerequisite can still be collected within budget.
       const missing = (profile.requiredTraits || []).filter(rule =>
         !requiredTraitsSatisfied({requiredTraits:[rule]},traits));
       if (!missing.length) continue;
@@ -1859,20 +1792,23 @@
         (!(q.relatedIdentityIds || []).some(id =>
           ["natural_lawyer","nonpositivist","interpretivist","fullerian"].includes(id)) ||
           priorities.some(item => item.id === q.id)));
-      const after = (base,q,positive) => {
-        const hypothetical = {...base};
-        for (const trait of (positive ? q.agreeTraits : q.disagreeTraits) || []) setMax(hypothetical,trait,1);
-        return hypothetical;
-      };
-      const feasible = new Map();
-      for (const q of questions) for (const positive of [true,false]) {
-        const one = after(traits,q,positive);
-        if (requiredTraitsSatisfied(profile,one)) { feasible.set(q.id,1); continue; }
-        if (remainingSlots < 2 || feasible.get(q.id) === 1) continue;
-        if (questions.some(second => second.id !== q.id && [true,false].some(sign =>
-          requiredTraitsSatisfied(profile,after(one,second,sign))))) feasible.set(q.id,2);
+      for (const q of questions) {
+        const feasible = [q.agreeTraits || [],q.disagreeTraits || []].some(answerTraits => {
+          const hypothetical={...traits};
+          for (const trait of answerTraits) setMax(hypothetical,trait,1);
+          return requiredTraitsSatisfied(profile,hypothetical);
+        });
+        if (feasible) offer(q.id,76);
       }
-      for (const [id,cost] of feasible) offer(id,76 - 5*(cost-1));
+      // Some defining evidence is deliberately sequenced behind one neutral
+      // precursor. Preserve a bounded two-question path without reopening a
+      // noun-based discovery search.
+      const directIds=new Set(questions.map(q=>q.id));
+      for(const precursor of Object.values(byId)) {
+        if(hasAsked(diagnosticResponses,precursor.id)||precursor.family==="quality") continue;
+        const next=[...(precursor.nextOnAgree||[]),...(precursor.nextOnDisagree||[])];
+        if(next.some(id=>directIds.has(id))) offer(precursor.id,profile.globalSpecialist===true?75:75);
+      }
     }
     const fallbackCandidates = [];
     const routingChampion = resolveChampions(scores, traits, routingResolution.best.identity,routingResolution);
@@ -1912,11 +1848,6 @@
             diagnostic.priority === "deferred") continue;
         if (/^D-(NP[1-6]|NL2)$/.test(diagnostic.id) &&
             !priorities.some(item => item.id === diagnostic.id)) continue;
-        const covers = diagnostic.relatedIdentityIds || [];
-        const identityRelevant =
-          covers.includes(routingResolution.best.identity.id) ||
-          covers.some((id) => routingIds.has(id));
-        if (!identityRelevant) continue;
         const diagnosticTraits = [
           ...(diagnostic.agreeTraits || []),
           ...(diagnostic.disagreeTraits || [])
@@ -2199,6 +2130,9 @@
     detectOutcomeSelection,
     resolveIdentity,
     championIdentityCompatibility,
+    scoreProfile,
+    profilePriorityAdjustment,
+    definingConflictSatisfied,
     profileEvidenceCoverage,
     resolveChampions,
     nextDiagnostic,

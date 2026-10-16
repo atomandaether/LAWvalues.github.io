@@ -871,6 +871,9 @@ body.results-page {
 .results-page .results-summary {
     margin: 16pt auto 18pt;
 }
+.results-page .brand-home { color: inherit; text-decoration: none; }
+.results-page .brand-home:focus-visible { outline: 3px solid #8A2F24; outline-offset: 4px; }
+.results-page .result-actions a.small_button { display: inline-flex; align-items: center; justify-content: center; text-decoration: none; }
 
 .results-page .result-title {
     max-width: none;
@@ -883,6 +886,22 @@ body.results-page {
 
 .results-page .result-title strong {
     font-weight: 700;
+}
+.results-page .result-title .result-title-noun {
+    color: #8A2F24;
+}
+.results-page .commitment-icons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: clamp(8px, 2vw, 18px);
+    margin: 2px auto 10px;
+    min-height: 44px;
+}
+.results-page .commitment-icons img {
+    width: clamp(42px, 6vw, 70px);
+    height: clamp(42px, 6vw, 70px);
+    object-fit: contain;
 }
 
 .results-page .classification-champion {
@@ -950,9 +969,24 @@ body.results-page {
 /* Hidden results metadata must never become visible through component styles. */
 .results-page [hidden] { display: none !important; }
 
-/* Keep each description directly below its central bar, between the symbols. */
-.results-page .axis-track { flex: 1 1 auto; min-width: 0; }
+/* Keep the heading, bar, and explanation centered as one track. The endpoint
+   symbols occupy the bar row, so wrapped headings or larger text cannot move
+   them away from the bar they label. */
+.results-page div.axis {
+    display: grid;
+    grid-template-columns: minmax(40px, 18%) minmax(0, 1fr) minmax(40px, 18%);
+    grid-template-rows: auto auto auto;
+    align-items: center;
+}
+.results-page .axis-track { display: contents; }
+.results-page div.axis > img { width: min(128px, 100%); max-width: 100%; height: auto; }
+.results-page div.axis > img:first-child { grid-column: 1; grid-row: 2; justify-self: end; }
+.results-page div.axis > img:last-child { grid-column: 3; grid-row: 2; justify-self: start; }
+.results-page .axis-track h2 { grid-column: 2; grid-row: 1; }
+.results-page .axis-track .axis-bars { grid-column: 2; grid-row: 2; width: 100%; }
 .results-page .axis-track .axis-explanation {
+    grid-column: 2;
+    grid-row: 3;
     max-width: none;
     margin: 4px 0 0;
     padding: 0;
@@ -961,8 +995,10 @@ body.results-page {
     font-weight: 400;
     text-align: center;
 }
-.results-page div.axis { align-items: flex-start; }
 @media (max-width: 540px) {
+    .results-page div.axis {
+        grid-template-columns: minmax(36px, 15%) minmax(0, 1fr) minmax(36px, 15%);
+    }
     .results-page .axis-track .axis-explanation { font-size: .7rem; }
 }
 
@@ -972,6 +1008,7 @@ body.results-page {
     font-size: clamp(14px, 1.8vw, 24px);
     line-height: 1.15;
     overflow-wrap: anywhere;
+    text-align: center;
 }
 .results-page div.axis { margin-top: 12px; margin-bottom: 12px; }
 @media (max-width: 540px) {
@@ -988,6 +1025,14 @@ body.results-page {
     border-radius: 8pt;
     background: rgba(254, 252, 249, 0.45);
     overflow-wrap: anywhere;
+    cursor: pointer;
+    border: 2px solid transparent;
+    transition: background-color 160ms ease, border-color 160ms ease;
+}
+.results-page .champion-card:hover { background: rgba(254, 252, 249, 0.72); }
+.results-page .champion-card:focus-visible {
+    outline: 3px solid #8A2F24;
+    outline-offset: 3px;
 }
 .results-page .champion-card .classification-champion {
     margin: 0 0 5pt;
@@ -1008,6 +1053,26 @@ body.results-page {
     line-height: 1.45;
     text-align: left;
     font-weight: 400;
+}
+.results-page .champion-card .champion-portrait-preview {
+    position: relative;
+    max-height: 4.35em;
+    overflow: hidden;
+    transition: max-height 220ms ease;
+}
+.results-page .champion-card .champion-portrait-preview::after {
+    content: "";
+    position: absolute;
+    inset: auto 0 0;
+    height: 2.5em;
+    pointer-events: none;
+    background: linear-gradient(to bottom, rgba(254,252,249,0), rgba(254,252,249,.98));
+}
+.results-page .champion-card.is-expanded .champion-portrait-preview { max-height: 80em; }
+.results-page .champion-card.is-expanded .champion-portrait-preview::after { display: none; }
+@media (prefers-reduced-motion: reduce) {
+    .results-page .champion-card,
+    .results-page .champion-card .champion-portrait-preview { transition: none; }
 }
 @media (max-width: 540px) {
     .results-page .champion-card { padding: 12px; margin: 12px auto 18px; }

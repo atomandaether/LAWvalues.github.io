@@ -20,7 +20,7 @@
     common[axis] = {
       limited: entry(axis, "limited", "Limited Evidence", "There is not enough current, answer-level evidence to identify a method on this axis; a saved percentage alone cannot establish one.", "limited"),
       unavailable: entry(axis, "unavailable", "Limited Evidence", "This axis has no valid available score, so no substantive description can be assigned.", "unavailable"),
-      weak: entry(axis, "weak", "Weak", "The relevant answers express little directional commitment; this is an evidence description, not a deduction from a midpoint percentage.", "weak"),
+      weak: entry(axis, "weak", "Weak", "Your answers show little commitment either way.", "weak"),
       varied: entry(axis, "varied", "Varied", "Substantial commitments differ across the measured situations, without enough evidence for a single method or a specific contradiction.", "varied")
     };
   }
