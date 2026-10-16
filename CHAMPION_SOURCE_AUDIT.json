@@ -1,0 +1,1425 @@
+{
+  "reviewDate": "2026-10-16",
+  "scope": "83 selectable champion units. Authored portraits describe intellectual approaches; they do not claim that historical proposals or judicial opinions state current law.",
+  "cards": [
+    {
+      "id": "hart",
+      "name": "H. L. A. Hart",
+      "thesis": "Law exists through shared practices for recognizing and using rules, while its moral authority remains a further question people must answer.",
+      "primaryEvidence": "Hart’s 1958 essay supports the separation of legal existence from moral merit and the limits of settled language. The Concept of Law supplies the primary/secondary-rule account and internal viewpoint.",
+      "limits": "Article and indexed book extracts consulted, not a complete rereading of The Concept of Law. Does not imply that every validity criterion must exclude morality.",
+      "sources": [
+        {
+          "url": "https://global.oup.com/academic/product/the-concept-of-law-9780199644704",
+          "title": "The Concept of Law"
+        },
+        {
+          "url": "https://www.law.nyu.edu/sites/default/files/Hart%2C%20H.%20L.%20A.%20%281958%29%20%27Positivism%20and%20the%20Separation%20of%20Law%20and%20Morals%27%20Harvard%20Law%20Review%20Vol.%2071%2C%20No.%204%20%281958%29%20pp.%20593-629.pdf",
+          "title": "Positivism and the Separation of Law and Morals"
+        }
+      ]
+    },
+    {
+      "id": "kelsen",
+      "name": "Hans Kelsen",
+      "thesis": "A legal rule receives its authority from an ordered system of authorizations whose ultimate starting point must be assumed.",
+      "primaryEvidence": "On the Basic Norm (1959), pp. 107–110, distinguishes norms from the acts creating them and legal validity from moral approval. Pure Theory of Law, interpretation chapter, pp. 350–352, distinguishes identifying a frame of possible applications from choosing within it.",
+      "limits": "Primary passages were checked through indexed article and book excerpts; the full monograph was not reread. The basic norm is presupposed, not a voted-on rule or an independent moral justification. The card summarizes the mature theory without tracing changes across editions.",
+      "sources": [
+        {
+          "url": "https://lawcat.berkeley.edu/record/1109608",
+          "title": "On the Basic Norm"
+        },
+        {
+          "url": "https://www.ucpress.edu/books/pure-theory-of-law/epub-pdf",
+          "title": "Pure Theory of Law"
+        }
+      ]
+    },
+    {
+      "id": "austin",
+      "name": "John Austin",
+      "thesis": "Understanding law begins with the general commands of a sovereign, leaving their wisdom and justice open to separate moral judgment.",
+      "primaryEvidence": "Lectures I and VI establish commands, sanctions, sovereign independence, and delegated/customary law; selected lectures distinguish existence from merit and discuss utility.",
+      "limits": "Selected lectures, not the entire course; the card presents Austin’s explanatory model, not an endorsement or a claim that it adequately explains every modern institution.",
+      "sources": [
+        {
+          "url": "https://persweb.wabash.edu/facstaff/helmang/phi213-1314S/phi213-txtbrwsr/AustinPJD/pjdlctr1.html",
+          "title": "The Province of Jurisprudence Determined, Lecture I"
+        },
+        {
+          "url": "https://persweb.wabash.edu/facstaff/helmang/phi213-1314S/phi213-txtbrwsr/AustinPJD/pjdlctr6.html",
+          "title": "The Province of Jurisprudence Determined, Lecture VI"
+        },
+        {
+          "url": "https://www.nlnrac.org/node/255.html",
+          "title": "The Province of Jurisprudence Determined: selected lectures"
+        }
+      ]
+    },
+    {
+      "id": "shapiro",
+      "name": "Scott Shapiro",
+      "thesis": "Legal institutions make shared plans that let a divided society coordinate action without having to resolve every moral disagreement first.",
+      "primaryEvidence": "Shapiro’s chapters explain shared plans, authority, and the circumstances requiring legal planning; his 2017 account identifies compulsory planning organizations with a moral aim.",
+      "limits": "Two draft chapters and author abstract consulted, not every chapter of Legality. Moral aim is not claimed to guarantee moral legitimacy.",
+      "sources": [
+        {
+          "url": "https://www.law.berkeley.edu/files/SShapiro_Howtodothingswithplans_031810.pdf",
+          "title": "Legality: planning-theory chapters"
+        },
+        {
+          "url": "https://papers.ssrn.com/sol3/Delivery.cfm/SSRN_ID2937990_code234075.pdf?abstractid=2937990&mirid=1",
+          "title": "The Planning Theory of Law"
+        }
+      ]
+    },
+    {
+      "id": "coleman_waluchow_kramer",
+      "name": "Jules Coleman / Matthew Kramer",
+      "thesis": "Shared legal practices can make moral standards binding law, even when officials disagree about what those standards actually require.",
+      "primaryEvidence": "Coleman’s extract frames agreement and controversy in official practice; Kramer’s abstract expressly defends moral principles among officials’ criteria of law.",
+      "limits": "Author extracts/abstracts consulted; does not equate all details of their versions of inclusive positivism. Equality example is explanatory, not a claim about a specified constitution.",
+      "sources": [
+        {
+          "url": "https://www.cambridge.org/core/journals/legal-theory/article/abs/incorporationism-conventionality-and-the-practical-difference-thesis/F0BD703EC7F21C222A4369EEDAF9A4D1",
+          "title": "Coleman: Incorporationism, Conventionality, and the Practical Difference Thesis"
+        },
+        {
+          "url": "https://www.cambridge.org/core/services/aop-cambridge-core/content/view/F92E20A4990094CD3E48E70DA0B41F19/S1352325200061036a.pdf/how_moral_principles_can_enter_into_the_law.pdf",
+          "title": "Kramer: How Moral Principles Can Enter into the Law"
+        }
+      ]
+    },
+    {
+      "id": "raz_shapiro_marmor",
+      "name": "Joseph Raz",
+      "thesis": "Law claims to guide people authoritatively, so its directives must be identifiable without redeciding the reasons they are meant to settle.",
+      "primaryEvidence": "Raz’s chapter ties the sources thesis to authority; The Authority of Law separately examines law’s moral claim, citizens’ obligations, and dissent.",
+      "limits": "Primary chapter abstract and book description checked; the service-conception explanation is a synthesis of Raz’s position, not a quotation from the accessible abstract. The card concerns Raz’s account of legal authority, not every part of his wider political philosophy.",
+      "sources": [
+        {
+          "url": "https://academic.oup.com/book/3434/chapter-abstract/144577406",
+          "title": "Authority, Law, and Morality"
+        },
+        {
+          "url": "https://scholarship.law.columbia.edu/books/251/",
+          "title": "The Authority of Law: Essays on Law and Morality"
+        }
+      ]
+    },
+    {
+      "id": "campbell_waldron_schauer",
+      "name": "Tom Campbell",
+      "thesis": "Citizens should settle moral disputes through democratic lawmaking, then govern officials through clear rules that keep those settlements publicly accountable.",
+      "primaryEvidence": "Campbell’s Ethical Positivism and Prescriptive Legal Positivism connect rule governance, constrained application, rights, and democratic control.",
+      "limits": "Publisher descriptions and an accessible authored collection excerpt consulted, not the complete monographs. Prescriptive ideal is not misrepresented as a claim that existing law is always determinate.",
+      "sources": [
+        {
+          "url": "https://www.routledge.com/The-Legal-Theory-of-Ethical-Positivism/Campbell/p/book/9781855211711",
+          "title": "The Legal Theory of Ethical Positivism"
+        },
+        {
+          "url": "https://www.routledge.com/Prescriptive-Legal-Positivism-Law-Rights-and-Democracy-1st-Edition/Campbell/p/book/9781844720231",
+          "title": "Campbell on law, rights, and democratic control"
+        }
+      ]
+    },
+    {
+      "id": "dworkin_stavropoulos",
+      "name": "Ronald Dworkin",
+      "thesis": "Government must justify its treatment of each person through principles that make its legal history a coherent expression of equal concern.",
+      "primaryEvidence": "The Model of Rules develops the role of principles in legal obligation. Law’s Empire, especially chapters 6–7, connects integrity, equal concern, fit, and justification; indexed passages on equal protection and coherent principle support the card’s organizing account.",
+      "limits": "Primary book excerpts and article publication details were checked; the repository article PDF could not be retrieved. The card focuses on law as integrity rather than treating every phase of Dworkin’s later theory as identical.",
+      "sources": [
+        {
+          "url": "https://chicagounbound.uchicago.edu/uclrev/vol35/iss1/3/",
+          "title": "The Model of Rules"
+        },
+        {
+          "url": "https://www.filosoficas.unam.mx/~cruzparc/empire.pdf",
+          "title": "Law’s Empire"
+        }
+      ]
+    },
+    {
+      "id": "greenberg_hershovitz",
+      "name": "Mark Greenberg / Scott Hershovitz",
+      "thesis": "Legal institutions matter because their actions change what people genuinely owe one another, making legal reasoning inseparable from moral responsibility.",
+      "primaryEvidence": "Greenberg’s essay introduction and theory distinguish moral impact from best ex ante rules; Hershovitz’s essay questions separate legal normativity and critiques Greenberg’s boundary-drawing project.",
+      "limits": "Both full texts accessible and relevant passages read. Their projects are paired but not collapsed: Hershovitz does not simply adopt Greenberg’s account of which moral effects count as law.",
+      "sources": [
+        {
+          "url": "https://yalelawjournal.org/article/the-moral-impact-theory-of-law",
+          "title": "Greenberg: The Moral Impact Theory of Law"
+        },
+        {
+          "url": "https://yalelawjournal.org/essay/the-end-of-jurisprudence",
+          "title": "Hershovitz: The End of Jurisprudence"
+        }
+      ]
+    },
+    {
+      "id": "finnis_murphy_george",
+      "name": "John Finnis",
+      "thesis": "Law serves the common good by coordinating people’s pursuit of genuine human goods through authoritative choices among morally reasonable alternatives.",
+      "primaryEvidence": "Natural Law and Natural Rights develops basic goods/common good; Natural Law and Legal Reasoning expressly defends authoritative settlement where reason supplies no unique answer.",
+      "limits": "Author abstract directly checked; article PDF fetch failed, and full book not reread. Distinguishes systemic validity from moral obligation, avoiding the claim that Finnis denies legal status to every unjust law.",
+      "sources": [
+        {
+          "url": "https://scholarship.law.nd.edu/law_books/188/",
+          "title": "Natural Law and Natural Rights"
+        },
+        {
+          "url": "https://scholarship.law.nd.edu/law_faculty_scholarship/79/",
+          "title": "Finnis: Natural Law and Legal Reasoning"
+        }
+      ]
+    },
+    {
+      "id": "moore_strong_natural_law",
+      "name": "Michael S. Moore",
+      "thesis": "Objective moral truth helps determine what the law requires, making moral judgment part of a judge’s responsibility to decide legally.",
+      "primaryEvidence": "Moral Reality Revisited (1992), opening discussion and author abstract, joins moral realism with the dependence of legal truth on moral truth. Moore’s 2012 retrospective abstract expressly argues that morality forms part of judges’ legal obligations and that accepting this improves judging.",
+      "limits": "Author abstracts and indexed introductory passages were consulted. The card is confined to these directly supported commitments; it does not specify a threshold of injustice, summarize the inaccessible functional-kind chapter, or infer that every moral defect invalidates an enactment.",
+      "sources": [
+        {
+          "url": "https://repository.law.umich.edu/mlr/vol90/iss8/6/",
+          "title": "Moral Reality Revisited"
+        },
+        {
+          "url": "https://onlinelibrary.wiley.com/doi/abs/10.1111/j.1467-9337.2012.00522.x",
+          "title": "The Various Relations between Law and Morality in Contemporary Legal Philosophy"
+        }
+      ]
+    },
+    {
+      "id": "fuller",
+      "name": "Lon Fuller",
+      "thesis": "Governing through law requires a reciprocal commitment: people must be able to follow public rules, and officials must honor them.",
+      "primaryEvidence": "Fuller’s primary-text selections discuss the eight legality failures and reciprocity between lawgiver and subject, including the distinction from managerial command.",
+      "limits": "Selections rather than complete volume read; the card does not claim that procedural legality guarantees substantive justice.",
+      "sources": [
+        {
+          "url": "https://yalebooks.yale.edu/book/9780300010701/the-morality-of-law/",
+          "title": "The Morality of Law"
+        },
+        {
+          "url": "https://www.stephankinsella.com/wp-content/uploads/texts/fuller_morality.pdf",
+          "title": "The Morality of Law: primary-text selections"
+        }
+      ]
+    },
+    {
+      "id": "radbruch_soper",
+      "name": "Gustav Radbruch / Philip Soper",
+      "thesis": "Legal certainty deserves respect, but law’s claim to authority can fail when its moral justification becomes impossible to sustain.",
+      "primaryEvidence": "Radbruch’s translated essay distinguishes ordinary injustice, intolerable injustice, and deliberate denial of equality. Soper’s book summaries and indexed text distinguish justified coercion claims from a claim to an unconditional duty of obedience.",
+      "limits": "Radbruch translation excerpts and Soper summaries/indexed book passages consulted. Soper is not assigned Radbruch’s precise threshold; moral authority is not equated with officials merely asserting it.",
+      "sources": [
+        {
+          "url": "https://is.muni.cz/el/law/jaro2008/MP218Zk/um/Radbruch_-_Statutory_Lawlessness.pdf",
+          "title": "Radbruch: Statutory Lawlessness and Supra-Statutory Law"
+        },
+        {
+          "url": "https://www.cambridge.org/core/books/abs/ethics-of-deference/claiming-authority/93A82A526D3FFCA23BFF099CB6170F27",
+          "title": "Soper: Claiming Authority"
+        },
+        {
+          "url": "https://repository.law.umich.edu/mlr/vol84/iss1/3/",
+          "title": "Soper: The Moral Value of Law"
+        }
+      ]
+    },
+    {
+      "id": "hugo_black",
+      "name": "Hugo Black",
+      "thesis": "Written guarantees secure liberty by constraining courts as well as legislatures; strong enumerated rights and rejection of free-ranging judicial fairness are connected commitments.",
+      "primaryEvidence": "Adamson dissent pp. 68–75: historical incorporation argument and explicit judicial constraints. Griswold dissent pp. 507–510, 525–527: specific constitutional protections, rejection of a general judicial privacy guarantee, and distinction between disliking a law and judicial authority to invalidate it.",
+      "limits": "User-approved copy retained verbatim. Black did interpret the scope of guarantees; the portrait does not claim literal mechanical application or absence of interpretive judgment.",
+      "sources": [
+        {
+          "url": "https://www.hugoblacklibrary.org/research/u-s-supreme-court-opinions/adamson-v-california/",
+          "title": "Black, dissent in Adamson v. California (1947)"
+        },
+        {
+          "url": "https://www.hugoblacklibrary.org/research/u-s-supreme-court-opinions/griswold-v-connecticut/",
+          "title": "Black, dissent in Griswold v. Connecticut (1965)"
+        }
+      ]
+    },
+    {
+      "id": "bork_berger",
+      "name": "Robert Bork / Raoul Berger",
+      "thesis": "Judicial review is justified by enforcing the Constitution’s historically adopted limits, leaving other political choices to the people and their representatives.",
+      "primaryEvidence": "Bork’s 1971 lecture supports neutral derivation/application and the democratic dilemma; Berger’s book and authored excerpts connect historical intention, amendment, and limits on judicial policymaking.",
+      "limits": "Lecture record and indexed passages plus Berger excerpts consulted. Berger’s disputed historical conclusions are presented as his argument, not established historical consensus; Bork’s later formulations are not conflated with every detail of his early essay.",
+      "sources": [
+        {
+          "url": "https://www.repository.law.indiana.edu/ilj/vol47/iss1/1/",
+          "title": "Bork: Neutral Principles and Some First Amendment Problems"
+        },
+        {
+          "url": "https://oll.libertyfund.org/titles/mcdonald-government-by-judiciary-the-transformation-of-the-fourteenth-amendment",
+          "title": "Berger: Government by Judiciary"
+        }
+      ]
+    },
+    {
+      "id": "alexander_kay_prakash",
+      "name": "Larry Alexander / Richard Kay",
+      "thesis": "A legal text carries the authority of a human decision, so interpretation must recover the meaning its authorized makers intended.",
+      "primaryEvidence": "Alexander’s author abstract connects recognition and intended meaning; Kay’s author abstract explicitly links intent to founding authority, judicial-review legitimacy, clarity, and stability.",
+      "limits": "Author abstracts consulted, not complete articles. Communicative intention is not equated with every private motive or policy hope. The shared account preserves Kay’s emphasis on constitutional legitimacy and Alexander’s general argument about legal authority.",
+      "sources": [
+        {
+          "url": "https://digitalcommons.lib.uconn.edu/law_review/494/",
+          "title": "Alexander: Connecting the Rule of Recognition and Intentionalist Interpretation"
+        },
+        {
+          "url": "https://digitalcommons.lib.uconn.edu/law_papers/5/",
+          "title": "Kay: Original Intention and Public Meaning in Constitutional Interpretation"
+        }
+      ]
+    },
+    {
+      "id": "whittington",
+      "name": "Keith Whittington",
+      "thesis": "The Constitution binds political actors through its original commitments while leaving them responsibility for building arrangements its text does not settle.",
+      "primaryEvidence": "Whittington’s own book page states the dual interpretation/construction framework and political-actor role; his article abstract discusses construction and courts.",
+      "limits": "Author descriptions/abstracts checked rather than full books. Does not assert that construction is exclusively nonjudicial or that political actors may override clear original meaning.",
+      "sources": [
+        {
+          "url": "https://www.princeton.edu/~kewhitt/construction.html",
+          "title": "Constitutional Construction"
+        },
+        {
+          "url": "https://kewhitt.scholar.princeton.edu/publications/constructing-new-american-constitution",
+          "title": "Constructing a New American Constitution"
+        },
+        {
+          "url": "https://www.princeton.edu/~kewhitt/tocinterp.html",
+          "title": "Constitutional Interpretation: contents"
+        }
+      ]
+    },
+    {
+      "id": "solum",
+      "name": "Lawrence Solum",
+      "thesis": "The Constitution’s original public meaning constrains government, while translating that meaning into workable legal rules requires a further, openly justified task.",
+      "primaryEvidence": "Solum’s abstracts expressly distinguish semantic meaning from legal effect, and identify fixation and constraint as originalism’s core commitments.",
+      "limits": "Author abstracts read. The distinction essay itself is expressly neutral among particular theories of interpretation and construction; the card’s originalist commitments come from the separate originalism work.",
+      "sources": [
+        {
+          "url": "https://scholarship.law.georgetown.edu/facpub/676/",
+          "title": "The Interpretation-Construction Distinction"
+        },
+        {
+          "url": "https://scholarship.law.georgetown.edu/facpub/1353/",
+          "title": "What Is Originalism? The Evolution of Contemporary Originalist Theory"
+        }
+      ]
+    },
+    {
+      "id": "barnett_bernick",
+      "name": "Randy Barnett / Evan Bernick",
+      "thesis": "Judges entrusted with constitutional power must implement both the text’s original meaning and its purpose without exploiting the discretion that remains.",
+      "primaryEvidence": "Published joint article’s author summary specifies fiduciary duty, original public meaning, original function, and good-faith implementing rules.",
+      "limits": "Published author summary read; earlier Georgetown repository draft is withdrawn and is not used as the linked authority. Joint method is described without assuming all of the authors’ other political commitments coincide.",
+      "sources": [
+        {
+          "url": "https://www.law.georgetown.edu/georgetown-law-journal/in-print/volume-107/volume-107-issue-1-oct-2018/the-letter-and-the-spirit-a-unified-theory-of-originalism/",
+          "title": "The Letter and the Spirit: A Unified Theory of Originalism"
+        }
+      ]
+    },
+    {
+      "id": "balkin",
+      "name": "Jack Balkin",
+      "thesis": "Constitutional fidelity preserves an enduring framework of rules and principles that later generations develop through political struggle and institutional practice.",
+      "primaryEvidence": "Balkin’s author abstract establishes construction as doctrines/institutions/practices built over time and distinguishes mandatory interpretation from historical resources for construction; Living Originalism supplies the framework account.",
+      "limits": "Article abstract and indexed book information consulted, not full book reread. Does not imply that original expected applications or adoption history dictate all later construction.",
+      "sources": [
+        {
+          "url": "https://ir.lawnet.fordham.edu/flr/vol82/iss2/11/",
+          "title": "The New Originalism and the Uses of History"
+        },
+        {
+          "url": "https://www.jstor.org/stable/j.ctt24hh8x",
+          "title": "Living Originalism"
+        }
+      ]
+    },
+    {
+      "id": "scalia_manning",
+      "name": "Antonin Scalia",
+      "thesis": "Judges preserve democratic government by applying enacted words in their established meaning through rules that constrain their own future decisions.",
+      "primaryEvidence": "Scalia’s 1989 essay supports general-rule constraint and predictability; his reported law-school explanation supports original meaning and outcomes contrary to personal preference.",
+      "limits": "Primary essay and reported remarks consulted; not an exhaustive synthesis of opinions or exceptions for precedent. Textualism is not presented as literalism or a ban on contextual reading.",
+      "sources": [
+        {
+          "url": "https://chicagounbound.uchicago.edu/uclrev/vol56/iss4/1/",
+          "title": "The Rule of Law as a Law of Rules"
+        },
+        {
+          "url": "https://logic.stanford.edu/complaw/readings/scalia.pdf",
+          "title": "The Rule of Law as a Law of Rules: full text"
+        },
+        {
+          "url": "https://www.law.uchicago.edu/news/justice-scalia-comes-home-law-school",
+          "title": "Scalia on original meaning and personally unwelcome results"
+        }
+      ]
+    },
+    {
+      "id": "mcginnis_rappaport",
+      "name": "John McGinnis / Michael Rappaport",
+      "thesis": "The Constitution’s authority rests on broadly agreed settlements whose benefits are preserved by recovering the legal methods through which they were adopted.",
+      "primaryEvidence": "Joint author abstracts support historical legal language/methods and the consequentialist supermajority justification, including their explicit discussion of exclusions and supermajoritarian failure.",
+      "limits": "Author abstracts read, not full book. Broad-consensus benefits are attributed arguments, not empirical certainties; the card does not claim that every ambiguity disappears.",
+      "sources": [
+        {
+          "url": "https://scholarship.law.wm.edu/wmlr/vol59/iss4/4/",
+          "title": "The Constitution and the Language of the Law"
+        },
+        {
+          "url": "https://papers.ssrn.com/sol3/papers.cfm?abstract_id=1109247",
+          "title": "Originalism and the Good Constitution"
+        }
+      ]
+    },
+    {
+      "id": "baude_sachs",
+      "name": "William Baude / Stephen Sachs",
+      "thesis": "Original-law originalism grounds authority in legal continuity, not merely linguistic fixation.",
+      "primaryEvidence": "Joint article abstract identifies inherited legal doctrines, interpretive conventions and evidentiary defaults; Baude article and Sachs text explain present practice and lawful change.",
+      "limits": "A synthesis of their original-law account; does not claim that every current precedent is lawful or that their descriptive account is uncontested.",
+      "sources": [
+        {
+          "url": "https://www.cambridge.org/core/journals/law-and-history-review/article/abs/originalism-and-the-law-of-the-past/4F4BBBD4E103C621AE4C15F65058BD05",
+          "title": "Originalism and the Law of the Past"
+        },
+        {
+          "url": "https://columbialawreview.org/content/is-originalism-our-law/",
+          "title": "Baude: Is Originalism Our Law?"
+        },
+        {
+          "url": "https://journals.law.harvard.edu/jlpp/wp-content/uploads/sites/90/2010/01/Sachs_4.pdf",
+          "title": "Sachs: Originalism as a Theory of Legal Change"
+        }
+      ]
+    },
+    {
+      "id": "amar",
+      "name": "Akhil Reed Amar",
+      "thesis": "Holistic popular-sovereignty constitutionalism links text, structure, ratification and amendment.",
+      "primaryEvidence": "Intratextualism compares repeated language across clauses; The Creation and Reconstruction of the Bill of Rights explains the change from founding protections to Reconstruction rights; America’s Unwritten Constitution describes complementary practices.",
+      "limits": "Direct PDF fetch was forbidden; used indexed article content and institutional book description. Summary is a synthesis, not a claim that textual parallels always determine outcomes.",
+      "sources": [
+        {
+          "url": "https://openyls.law.yale.edu/bitstreams/9a4af15b-6750-48d3-b310-04107a1851de/download",
+          "title": "Intratextualism"
+        },
+        {
+          "url": "https://politicalscience.yale.edu/publications/americas-unwritten-constitution-precedents-and-principles-we-live",
+          "title": "America’s Unwritten Constitution"
+        },
+        {
+          "url": "https://openyls.law.yale.edu/bitstream/handle/20.500.13051/225/The_Creation_and_Reconstruction_of_the_Bill_of_Rights.pdf",
+          "title": "The Creation and Reconstruction of the Bill of Rights"
+        }
+      ]
+    },
+    {
+      "id": "thomas_paulsen",
+      "name": "Clarence Thomas / Michael Stokes Paulsen",
+      "thesis": "Constitutional supremacy limits precedent, with materially different thresholds.",
+      "primaryEvidence": "Thomas concurrence expressly distinguishes demonstrable error from textually permissible interpretations; Paulsen abstract rejects adherence to precedents contrary to original public meaning.",
+      "limits": "Thomas concurrence is a methodological statement, not an exhaustive account of his voting record. Paulsen article dates to 2005 despite its recent SSRN posting.",
+      "sources": [
+        {
+          "url": "https://www.supremecourt.gov/opinions/18pdf/17-646_d18e.pdf",
+          "title": "Gamble v. United States: Thomas concurrence"
+        },
+        {
+          "url": "https://scholarship.law.umn.edu/concomm/776/",
+          "title": "Paulsen: The Intrinsically Corrupting Influence of Precedent"
+        }
+      ]
+    },
+    {
+      "id": "barrett",
+      "name": "Amy Coney Barrett",
+      "thesis": "Qualified precedent mediates jurisprudential disagreement within an originalist account of duty.",
+      "primaryEvidence": "Her article describes precedent as a mediator among incompatible interpretive commitments; the Scalia essay explores the originalism–precedent tension.",
+      "limits": "Based on methodological scholarship, not an assertion that every later judicial decision follows this model. Full excerpt PDF failed; repository abstract and indexed excerpt were available.",
+      "sources": [
+        {
+          "url": "https://scholarship.law.nd.edu/law_faculty_scholarship/293/",
+          "title": "Precedent and Jurisprudential Disagreement"
+        },
+        {
+          "url": "https://scholarship.law.nd.edu/ndlr/vol92/iss5/2/",
+          "title": "Originalism and Stare Decisis"
+        }
+      ]
+    },
+    {
+      "id": "natural_law_originalists",
+      "name": "Jeffrey Pojanowski / Kevin Walsh",
+      "thesis": "A jointly developed moral justification for original-law fidelity.",
+      "primaryEvidence": "Enduring Originalism’s author abstract expressly grounds the positive turn in classical natural-law reasons; later joint article affirms positive law while rejecting positivism.",
+      "limits": "Jointly authored theory supports a unified card; no unsupported disagreement between the coauthors is invented. Accessible abstracts and indexed passages, rather than a complete reading of both articles.",
+      "sources": [
+        {
+          "url": "https://scholarship.law.edu/scholar/1080/",
+          "title": "Enduring Originalism"
+        },
+        {
+          "url": "https://ndlawreview.org/wp-content/uploads/2022/11/NDL107_PojanowskiWalsh-cropped.pdf",
+          "title": "Recovering Classical Legal Constitutionalism"
+        }
+      ]
+    },
+    {
+      "id": "owen_dixon",
+      "name": "Sir Owen Dixon",
+      "thesis": "Internal development of principle supplies the discipline for independent review.",
+      "primaryEvidence": "Dixon’s judgment examines the scope of constitutional powers and identifies the rule of law as a constitutional assumption. Bell reproduces his methodological statements and discusses his rejection of the House of Lords’ reasoning in Parker.",
+      "limits": "The original judgment is read alongside later judicial lectures quoting his methodological address. The synthesis does not equate legalism with mechanical deduction or automatic precedent-following.",
+      "sources": [
+        {
+          "url": "https://en.wikisource.org/wiki/Australian_Communist_Party_v_The_Commonwealth_%281951%2C_HCA%29/Dixon_J",
+          "title": "Australian Communist Party v. Commonwealth: Dixon judgment"
+        },
+        {
+          "url": "https://www.hcourt.gov.au/sites/default/files/assets/publications/speeches/former-justices/bellj/bellj4aug16.pdf",
+          "title": "Virginia Bell: Judicial Activists or Champions of Self-Restraint"
+        },
+        {
+          "url": "https://classic.austlii.edu.au/au/journals/MonashULawRw/2006/11.pdf",
+          "title": "Concerning Judicial Method: Fifty Years On"
+        }
+      ]
+    },
+    {
+      "id": "schauer",
+      "name": "Frederick Schauer",
+      "thesis": "Rule-bound decision making is a defensible allocation of authority under human fallibility.",
+      "primaryEvidence": "Formalism argues that language can and sometimes should restrict choice; Playing by the Rules explains entrenchment of generalizations against their underlying purposes.",
+      "limits": "Article indexed text and book chapter abstract support the account; not a claim that Schauer endorses exceptionless rules in every domain.",
+      "sources": [
+        {
+          "url": "https://philarchive.org/archive/SCHF-48",
+          "title": "Formalism"
+        },
+        {
+          "url": "https://academic.oup.com/book/4020/chapter-abstract/145661624",
+          "title": "Playing by the Rules: The Sources of Entrenchment"
+        }
+      ]
+    },
+    {
+      "id": "alexy",
+      "name": "Robert Alexy",
+      "thesis": "Optimization of rights and argumentative representation explain proportionality and judicial review together.",
+      "primaryEvidence": "Alexy’s article sets out suitability, necessity, balancing, argumentative representation and legislative discretion in stalemate; Dual Nature abstract connects authority and justification.",
+      "limits": "Concentrates on constitutional adjudication, not a complete account of his nonpositivism. Weight formula is not presented as an objective measuring machine.",
+      "sources": [
+        {
+          "url": "https://academic.oup.com/icon/article/3/4/572/792008",
+          "title": "Balancing, Constitutional Review, and Representation"
+        },
+        {
+          "url": "https://doi.org/10.1111/j.1467-9337.2010.00449.x",
+          "title": "The Dual Nature of Law"
+        }
+      ]
+    },
+    {
+      "id": "guido_calabresi",
+      "name": "Guido Calabresi",
+      "thesis": "Statutory obsolescence requires institutionally authorized reconsideration rather than concealed updating.",
+      "primaryEvidence": "Book description and chapter structure support judicial reconsideration; interview explicitly distinguishes his scholarly proposal from powers available to him as a judge.",
+      "limits": "Not a claim that courts currently possess general authority to strike down obsolete statutes; focuses on his jurisprudential proposal, not all of his economic scholarship.",
+      "sources": [
+        {
+          "url": "https://www.jstor.org/stable/j.ctvjnrv5p",
+          "title": "A Common Law for the Age of Statutes"
+        },
+        {
+          "url": "https://annualsurveyofamericanlaw.org/wp-content/uploads/2015/04/70-1_full_issue.pdf",
+          "title": "Interview with Guido Calabresi, NYU Annual Survey of American Law 70"
+        }
+      ]
+    },
+    {
+      "id": "cardozo",
+      "name": "Benjamin Cardozo",
+      "thesis": "Constrained judicial creativity integrates continuity with social welfare.",
+      "primaryEvidence": "Cardozo’s original lectures explain the four methods, the judge’s interstitial legislative role and the social interest in stability.",
+      "limits": "The 1921 lectures supply a methodological synthesis rather than an exhaustive description of all later decisions; paragraph paraphrases rather than reproduces his formulations.",
+      "sources": [
+        {
+          "url": "https://constitution.org/1-Constitution/cmt/cardozo/jud_proc.htm",
+          "title": "The Nature of the Judicial Process"
+        }
+      ]
+    },
+    {
+      "id": "posner",
+      "name": "Richard Posner",
+      "thesis": "Consequential institutional pragmatism differs from both doctrinal gradualism and purpose-centered interpretation.",
+      "primaryEvidence": "Posner’s interview directly describes discretion and occasional legislation; Pragmatic Adjudication and book preview anchor the normative practical approach.",
+      "limits": "Interview partly describes what judges do rather than what they should do; card explicitly joins descriptive and normative strands without reducing his mature pragmatism to wealth maximization.",
+      "sources": [
+        {
+          "url": "https://larc.cardozo.yu.edu/clr/vol18/iss1/3/",
+          "title": "Pragmatic Adjudication"
+        },
+        {
+          "url": "https://www.law.uchicago.edu/news/how-judges-think-conversation-judge-richard-posner",
+          "title": "How Judges Think: A Conversation with Judge Richard Posner"
+        },
+        {
+          "url": "https://books.google.com/books/about/Law_Pragmatism_and_Democracy.html?hl=en&id=A543N977rS0C&output=html_text",
+          "title": "Law, Pragmatism, and Democracy"
+        }
+      ]
+    },
+    {
+      "id": "breyer",
+      "name": "Stephen Breyer",
+      "thesis": "Democratic purpose gives direction to pragmatic interpretation and institutional restraint.",
+      "primaryEvidence": "Breyer’s own speeches link active participation to purposes and consequences, identify other constitutional values and defend modesty.",
+      "limits": "A synthesis of the stated method rather than a survey of votes; active liberty supplements, and does not erase, protection against government interference.",
+      "sources": [
+        {
+          "url": "https://www.supremecourt.gov/publicinfo/speeches/viewspeech/sp_10-22-01",
+          "title": "Stephen Breyer: Our Democratic Constitution"
+        },
+        {
+          "url": "https://www.supremecourt.gov/publicinfo/speeches/viewspeech/sp_11-17-04",
+          "title": "Stephen Breyer: Active Liberty"
+        }
+      ]
+    },
+    {
+      "id": "barak",
+      "name": "Aharon Barak",
+      "thesis": "Purposive interpretation connects textual possibility, objective democratic values and rights review.",
+      "primaryEvidence": "Barak’s book text distinguishes subjective/objective purpose and directs judges to the community’s fundamental values; Judge in a Democracy supplies the institutional framing.",
+      "limits": "Does not imply rights are absolute or that his theory authorizes any desired result; public/private document weighting is deliberately stated generally.",
+      "sources": [
+        {
+          "url": "https://www.jstor.org/stable/j.ctt7pg5z",
+          "title": "Purposive Interpretation in Law"
+        },
+        {
+          "url": "https://constitutionalist.com.ua/wp-content/uploads/2020/10/Aharon-Barak-A-Purposive-Interpretation-in-Law.pdf",
+          "title": "Purposive Interpretation in Law: full text"
+        },
+        {
+          "url": "https://www.jstor.org/stable/j.ctt7szb4",
+          "title": "The Judge in a Democracy"
+        }
+      ]
+    },
+    {
+      "id": "david_strauss",
+      "name": "David Strauss",
+      "thesis": "Accumulated common-law experience explains both constitutional change and restraint.",
+      "primaryEvidence": "Author excerpt explicitly describes precedents, fairness, policy, Burkean humility and exceptions for accumulated injustice.",
+      "limits": "Card describes Strauss’s defended theory, not an empirical claim that original meaning never matters or that the written Constitution is dispensable.",
+      "sources": [
+        {
+          "url": "https://www.law.uchicago.edu/news/living-constitution",
+          "title": "The Living Constitution: author excerpt"
+        },
+        {
+          "url": "https://chicagounbound.uchicago.edu/journal_articles/2000/",
+          "title": "Common Law Constitutional Interpretation"
+        }
+      ]
+    },
+    {
+      "id": "harlan_ii",
+      "name": "John Marshall Harlan II",
+      "thesis": "Living tradition supplies both the substance and discipline of due-process liberty.",
+      "primaryEvidence": "Original dissent explains liberty as a rational continuum, traditions preserved and rejected, and scrutiny of the state’s rationale for invading marital privacy.",
+      "limits": "A dissent articulating a distinctive approach; not a claim that it was then the Court’s holding or that all of Harlan’s jurisprudence favored expansive rights.",
+      "sources": [
+        {
+          "url": "https://en.wikisource.org/wiki/Poe_v._Ullman/Dissent_Harlan",
+          "title": "Poe v. Ullman: Harlan dissent"
+        }
+      ]
+    },
+    {
+      "id": "robin_cooke",
+      "name": "Lord Cooke of Thorndon",
+      "thesis": "Common-law foundations may impose ultimate limits on legislative authority.",
+      "primaryEvidence": "Cooke’s Fundamentals author abstract frames the question beyond interpretation; judicial lectures quote and assess his fundamental-rights dicta and their contested status.",
+      "limits": "Cooke’s original full paper could not be fetched reliably; direct statements accessed through judicial discussion. The claimed ultimate limit is expressly a suggestion, not settled New Zealand doctrine.",
+      "sources": [
+        {
+          "url": "https://papers.ssrn.com/sol3/Delivery.cfm/SSRN_ID2946798_code1959347.pdf?abstractid=2231021&mirid=1",
+          "title": "Cooke: Fundamentals"
+        },
+        {
+          "url": "https://www.hcourt.gov.au/sites/default/files/assets/publications/speeches/former-justices/kirbyj/kirbyj_cooke.htm",
+          "title": "Michael Kirby: Lord Cooke and Fundamental Rights"
+        },
+        {
+          "url": "https://www.hcourt.gov.au/assets/publications/speeches/former-justices/frenchcj/frenchcj27nov2014.pdf",
+          "title": "Robert French: Common Law Constitutionalism"
+        }
+      ]
+    },
+    {
+      "id": "brennan",
+      "name": "William J. Brennan Jr.",
+      "thesis": "Contemporary application of enduring dignity commitments explains rights-protective living constitutionalism.",
+      "primaryEvidence": "Brennan’s original 1985 address links current interpretation, text, history, human dignity and judicial protection against majoritarian disregard.",
+      "limits": "Speech states his constitutional philosophy; does not claim all changes in public opinion become constitutional law or attempt to summarize every doctrinal position.",
+      "sources": [
+        {
+          "url": "https://teachingamericanhistory.org/document/the-constitution-of-the-united-states-contemporary-ratification/?swcfpc=1",
+          "title": "The Constitution of the United States: Contemporary Ratification"
+        }
+      ]
+    },
+    {
+      "id": "post_siegel",
+      "name": "Robert Post / Reva Siegel",
+      "thesis": "Joint theory connects judicial independence and democratic constitutional ownership.",
+      "primaryEvidence": "Joint white paper and Roe Rage explain the reciprocal dependence of constitutional law and politics and reject automatic avoidance of backlash.",
+      "limits": "A genuinely coauthored account, not an assertion that their individual scholarly projects are identical. Does not characterize all backlash as benign or prescribe automatic deference to movements.",
+      "sources": [
+        {
+          "url": "https://constitutioncenter.org/the-constitution/white-papers/democratic-constitutionalism",
+          "title": "Post and Siegel: Democratic Constitutionalism"
+        },
+        {
+          "url": "https://law.yale.edu/sites/default/files/documents/pdf/Faculty/Siegel_RoeRageDemocraticConstitutionalismAndBacklash.pdf",
+          "title": "Roe Rage: Democratic Constitutionalism and Backlash"
+        }
+      ]
+    },
+    {
+      "id": "klare_langa",
+      "name": "Karl Klare / Pius Langa",
+      "thesis": "Transformation joins substantive equality to changed legal culture, with distinct critical and institutional emphases.",
+      "primaryEvidence": "Klare article indexed abstract explains participatory egalitarian change and conservative legal culture; Langa full lecture expressly discusses access, justification, text, separation of powers and partnership.",
+      "limits": "Klare original text was available through indexed excerpts and repository description; Langa read directly. Distinctions are differences of emphasis, not a fabricated theoretical disagreement.",
+      "sources": [
+        {
+          "url": "https://www.tandfonline.com/doi/abs/10.1080/02587203.1998.11834974",
+          "title": "Klare: Legal Culture and Transformative Constitutionalism"
+        },
+        {
+          "url": "https://files.su.ac.za/public/documents/2025-09/transformative-constitutionalism.pdf",
+          "title": "Langa: Transformative Constitutionalism"
+        }
+      ]
+    },
+    {
+      "id": "waluchow_common_law",
+      "name": "Wil Waluchow",
+      "thesis": "Community constitutional morality explains how revisable common-law rights review can serve democracy.",
+      "primaryEvidence": "Living Tree article addresses intergenerational and judicial-discretion problems; author’s reply distinguishes constitutional morality from both aggregated opinion and ideal moral truth.",
+      "limits": "Focuses on the living-tree account; incorporation thesis does not mean every moral principle is automatically law or that judges have special access to moral truth.",
+      "sources": [
+        {
+          "url": "https://drakelawreview.org/wp-content/uploads/2015/06/irvol59-4_waluchow-final.pdf",
+          "title": "Democracy and the Living Tree Constitution"
+        },
+        {
+          "url": "https://biblat.unam.mx/hevila/ProblemaAnuariodefilosofiayteoriadelderecho/2009/no3/7.pdf",
+          "title": "A Living Tree Constitutionalist Replies"
+        },
+        {
+          "url": "https://academic.oup.com/book/50442",
+          "title": "Inclusive Legal Positivism"
+        }
+      ]
+    },
+    {
+      "id": "sunstein",
+      "name": "Cass Sunstein",
+      "thesis": "Minimalism joins pluralist agreement, institutional fallibility, and democratic learning.",
+      "primaryEvidence": "Incompletely Theorized Agreements abstract supports agreement on outcomes and low-level reasons; Beyond Judicial Minimalism abstract expressly connects narrow/shallow rulings to costs, civic respect, democracy, and exceptions.",
+      "limits": "Abstracts and opening text inspected, not full books. Minimalism is contextual, not an absolute injunction against broad decisions.",
+      "sources": [
+        {
+          "url": "https://papers.ssrn.com/sol3/papers.cfm?abstract_id=2995488",
+          "title": "Sunstein: Incompletely Theorized Agreements"
+        },
+        {
+          "url": "https://citeseerx.ist.psu.edu/document?doi=25ee182620ec10f842c1abd24a14125353ca2a90&repid=rep1&type=pdf",
+          "title": "Cass Sunstein, Beyond Judicial Minimalism"
+        }
+      ]
+    },
+    {
+      "id": "hart_sacks",
+      "name": "Henry Hart / Albert Sacks",
+      "thesis": "Institutional settlement and reasoned elaboration form a connected account of lawful cooperation.",
+      "primaryEvidence": "The Legal Process excerpts reproduced in Harvard’s teaching essay support institutional allocation, purpose, and reasoned elaboration; The Making of the Legal Process quotes the original settlement principle.",
+      "limits": "Original materials consulted through quotations and scholarly reconstruction, not complete treatise. Joint authorship warrants one account; no speculative individual divergence.",
+      "sources": [
+        {
+          "url": "https://cyber.harvard.edu/bridge/LegalProcess/essay2.txt.htm",
+          "title": "Harvard: The Legal Process tradition"
+        },
+        {
+          "url": "https://openyls.law.yale.edu/bitstreams/afd036f8-ff57-455f-a404-51966eed19c3/download",
+          "title": "Eskridge and Frickey, The Making of The Legal Process, quoting Hart and Sacks"
+        }
+      ]
+    },
+    {
+      "id": "mashaw",
+      "name": "Jerry L. Mashaw",
+      "thesis": "Administrative legitimacy combines autonomous implementation and accountable institutional design.",
+      "primaryEvidence": "Between Facts and Norms frames agency interpretation around constitutional role and practical administration; Why Reasons? identifies reason-giving as a basis of administrative legitimacy.",
+      "limits": "The agency article was consulted in indexed excerpts, together with Cambridge’s chapter summary and Yale’s description of Bureaucratic Justice. This is a normative institutional theory, not an account of current judicial deference doctrine.",
+      "sources": [
+        {
+          "url": "https://openyls.law.yale.edu/bitstream/handle/20.500.13051/380/Between_Facts_and_Norms___Agency_Statutory_Interpretation_as_an_Autonomous_Enterprise.pdf?isAllowed=y&sequence=2",
+          "title": "Jerry Mashaw, Between Facts and Norms: Agency Statutory Interpretation as an Autonomous Enterprise"
+        },
+        {
+          "url": "https://www.cambridge.org/core/books/abs/reasoned-administration-and-democratic-legitimacy/why-reasons/1CE647577B98AE29C79D75732A4857AD",
+          "title": "Mashaw: Why Reasons?"
+        },
+        {
+          "url": "https://yalebooks.yale.edu/book/9780300034035/bureaucratic-justice/",
+          "title": "Yale University Press: Bureaucratic Justice"
+        }
+      ]
+    },
+    {
+      "id": "pound",
+      "name": "Roscoe Pound",
+      "thesis": "Sociological jurisprudence uses observed effects to improve accommodation of interests.",
+      "primaryEvidence": "A Survey of Social Interests, excerpt pp. 69–81, explicitly warns against comparing individual and social interests on different planes and describes adjustment with least sacrifice.",
+      "limits": "Read a substantial authorized educational excerpt, not all 39 original pages. Avoids attributing a quantitative utility formula or blanket collectivism.",
+      "sources": [
+        {
+          "url": "https://personal.utdallas.edu/~mjleaf/poundsocialinterests.pdf",
+          "title": "Roscoe Pound, A Survey of Social Interests (excerpt)"
+        }
+      ]
+    },
+    {
+      "id": "ehrlich",
+      "name": "Eugen Ehrlich",
+      "thesis": "Living law explains socially generated ordering beyond official decisional rules.",
+      "primaryEvidence": "Fundamental Principles preview includes detailed chapter analyses and original passages quoted in the introduction on associations, social sanctions, and observation of living law.",
+      "limits": "Preview is mainly front matter and later editorial introduction with quoted primary passages; not the whole monograph. Normative judicial conclusions are deliberately limited.",
+      "sources": [
+        {
+          "url": "https://api.pageplace.de/preview/DT0400.9781351518352_A30457246/preview-9781351518352_A30457246.pdf",
+          "title": "Ehrlich: Fundamental Principles of the Sociology of Law"
+        }
+      ]
+    },
+    {
+      "id": "santi_romano",
+      "name": "Santi Romano",
+      "thesis": "Institutional ontology grounds legal pluralism; mere customary regularity is insufficient.",
+      "primaryEvidence": "The Legal Order publisher description and original analytical contents identify institution/order equivalence, unity, and non-state institutions, including illegal organizations.",
+      "limits": "Publisher summary and table of contents inspected; full translated argument unavailable. Avoids equating pluralism with moral approval or unlimited sovereignty.",
+      "sources": [
+        {
+          "url": "https://www.routledge.com/The-Legal-Order/Romano/p/book/9781315164519",
+          "title": "Routledge: Romano's The Legal Order"
+        },
+        {
+          "url": "https://www.gbv.de/dms/spk/sbb/toc/1000436535.pdf",
+          "title": "Santi Romano, The Legal Order: analytical contents"
+        }
+      ]
+    },
+    {
+      "id": "geny",
+      "name": "François Gény",
+      "thesis": "Bounded authoritative interpretation yields to disciplined, openly creative gap-filling.",
+      "primaryEvidence": "Gény’s Judicial Freedom of Decision selections in Science of Legal Method identify necessity, objective factors, practical reason, and nature of things; academic review verifies formal-law priority.",
+      "limits": "Primary translated selections available through indexed passages; full French volumes not read. Scientific includes normative reasoning, not only empirical measurement.",
+      "sources": [
+        {
+          "url": "https://upload.wikimedia.org/wikipedia/commons/7/7c/Science_of_legal_method%3B_select_essays_by_various_authors_%3B_%28IA_cu31924017793278%29.pdf",
+          "title": "François Gény, Judicial Freedom of Decision: Its Necessity and Method"
+        },
+        {
+          "url": "https://revistaseug.ugr.es/index.php/acfs/en/article/view/27031",
+          "title": "University of Granada: Gény's free scientific research"
+        }
+      ]
+    },
+    {
+      "id": "scalia_manning_easterbrook",
+      "name": "John Manning",
+      "thesis": "Enacted compromise unifies statutory textualism and clause-specific structural interpretation.",
+      "primaryEvidence": "Separation of Powers as Ordinary Interpretation introduction explicitly connects textual specificity, indeterminacy, statutory compromises, and constitutional arrangements. Absurdity Doctrine abstract supplies statutory context.",
+      "limits": "This card addresses John Manning. The cited 2011 Harvard Law Review article is Separation of Powers as Ordinary Interpretation; it is distinct from The New Purposivism.",
+      "sources": [
+        {
+          "url": "https://hls.harvard.edu/bibliography/the-absurdity-doctrine/",
+          "title": "Manning: The Absurdity Doctrine"
+        },
+        {
+          "url": "https://harvardlawreview.org/wp-content/uploads/2011/06/vol124_manning.pdf",
+          "title": "John Manning, Separation of Powers as Ordinary Interpretation"
+        }
+      ]
+    },
+    {
+      "id": "ekins_intentionalism",
+      "name": "Richard Ekins",
+      "thesis": "Group agency grounds actual legislative intention and contextual communication.",
+      "primaryEvidence": "The Nature of Legislative Intent abstract states common plans, irreducible joint intention, rational lawmaking, and intention in language.",
+      "limits": "Book abstract and contents inspected, not full chapters. Does not claim every defective assembly realizes the well-formed legislature model.",
+      "sources": [
+        {
+          "url": "https://academic.oup.com/book/4690",
+          "title": "Ekins: The Nature of Legislative Intent"
+        },
+        {
+          "url": "https://www.law.ox.ac.uk/research-and-subject-groups/jurisprudence-oxford/richard-ekins",
+          "title": "Oxford: Richard Ekins"
+        }
+      ]
+    },
+    {
+      "id": "katzmann",
+      "name": "Robert A. Katzmann",
+      "thesis": "Institutionally informed communication justifies discriminating use of legislative history.",
+      "primaryEvidence": "Judging Statutes abstract expressly links congressional authority to actual practices, text, reliable accompanying materials, and interpreting ambiguity.",
+      "limits": "Book abstract inspected; detailed source hierarchy is summarized generally rather than asserted as a complete mechanical ranking.",
+      "sources": [
+        {
+          "url": "https://academic.oup.com/book/2417",
+          "title": "Katzmann: Judging Statutes"
+        }
+      ]
+    },
+    {
+      "id": "hand_posner_imaginative",
+      "name": "Learned Hand / early Richard Posner",
+      "thesis": "Shared reconstruction with Hand’s purposive emphasis distinguished from early Posner’s counterfactual historical method.",
+      "primaryEvidence": "Hand’s Cabell opinion directly articulates purpose and imaginative interpretation; Posner’s 1983 article § III introduces imaginative reconstruction against mechanical canons.",
+      "limits": "Limited to the identified interpretive affinity and early Posner, not their whole careers or later pragmatic theory.",
+      "sources": [
+        {
+          "url": "https://law.justia.com/cases/federal/appellate-courts/F2/148/737/1503769/",
+          "title": "Learned Hand, Cabell v. Markham, 148 F.2d 737 (1945)"
+        },
+        {
+          "url": "https://lawreview.uchicago.edu/sites/default/files/Statutory%20Interpretation-%20In%20the%20Classroom%20and%20in%20the%20Courtroom.pdf",
+          "title": "Richard Posner, Statutory Interpretation: In the Classroom and in the Courtroom"
+        }
+      ]
+    },
+    {
+      "id": "wechsler",
+      "name": "Herbert Wechsler",
+      "thesis": "Judicial legitimacy rests on generalizable reasons; neutral principle need not mean value-free judgment.",
+      "primaryEvidence": "Toward Neutral Principles opening and pp. 15–17 support reasoned adjudication; concluding desegregation discussion frames competing association claims and acknowledges his unresolved justification.",
+      "limits": "Selected passages were consulted, including the controversial desegregation discussion. His application there has been criticized for treating unequal social relationships as symmetrical association claims; the card explains his general theory without endorsing that application.",
+      "sources": [
+        {
+          "url": "https://www.cooperative-individualism.org/wechsler-herbert_toward-neutral-principles-of-constitutional-law-1959-nov.pdf",
+          "title": "Wechsler: Toward Neutral Principles of Constitutional Law"
+        }
+      ]
+    },
+    {
+      "id": "eskridge_frickey",
+      "name": "William Eskridge / Philip Frickey",
+      "thesis": "Coauthored practical reasoning provides accountable pluralism, distinguished from Eskridge’s solo dynamic theory.",
+      "primaryEvidence": "Statutory Interpretation as Practical Reasoning, opening and p. 353, presents eclectic evidence and a hierarchy giving strong textual arguments priority over equally strong purpose arguments. Eskridge’s bibliography identifies his separate Dynamic Statutory Interpretation.",
+      "limits": "Primary article accessed via indexed text after direct-fetch failure; no claim of identical individual jurisprudence.",
+      "sources": [
+        {
+          "url": "https://openyls.law.yale.edu/bitstream/20.500.13051/3257/2/Statutory_Interpretation.pdf",
+          "title": "Eskridge and Frickey: Statutory Interpretation as Practical Reasoning"
+        },
+        {
+          "url": "https://law.yale.edu/william-eskridge-jr?page=0",
+          "title": "Yale Law School, William Eskridge bibliography"
+        }
+      ]
+    },
+    {
+      "id": "felix_cohen",
+      "name": "Felix S. Cohen",
+      "thesis": "Functional realism separates empirical explanation from ethical justification while linking both to legal critique.",
+      "primaryEvidence": "Transcendental Nonsense discusses corporate personality, trade-name property circularity, economic power, and the need for factual and ethical inquiry.",
+      "limits": "Selected substantive passages inspected, not a complete account of Cohen’s ethical system or federal Indian law scholarship.",
+      "sources": [
+        {
+          "url": "https://moglen.law.columbia.edu/LCS/cohen-transcendental.pdf",
+          "title": "Felix Cohen, Transcendental Nonsense and the Functional Approach"
+        }
+      ]
+    },
+    {
+      "id": "frank",
+      "name": "Jerome Frank",
+      "thesis": "Fact skepticism exposes the limits of appellate-rule-centered accounts of law.",
+      "primaryEvidence": "Cardozo and the Upper-Court Myth addresses trial-level factual uncertainty. Legal Thinking in Three Dimensions, p. 23, directly connects fallible witnesses and fact-finding to trial reform and specialized training.",
+      "limits": "Selected indexed primary passages and repository records were consulted; complete PDFs were not available through the research interface. The account distinguishes avoidable mistakes from irreducible human fallibility.",
+      "sources": [
+        {
+          "url": "https://scholarship.law.duke.edu/lcp/vol13/iss2/10/",
+          "title": "Jerome Frank, Cardozo and the Upper-Court Myth"
+        },
+        {
+          "url": "https://openyls.law.yale.edu/server/api/core/bitstreams/c29e5730-175a-4d7b-9060-e53385fee576/content",
+          "title": "Jerome Frank, Legal Thinking in Three Dimensions"
+        }
+      ]
+    },
+    {
+      "id": "thayer",
+      "name": "James Bradley Thayer",
+      "thesis": "Clear-error review protects legislative constitutional responsibility and political development.",
+      "primaryEvidence": "Origin and Scope pp. 17–26 distinguishes judicial preference from permissible legislative judgment, institutional boundaries, and consequences of invalidation.",
+      "limits": "Historical argument concerns review of coordinate legislatures; does not universalize the same deference to every federal-state or other judicial relationship.",
+      "sources": [
+        {
+          "url": "https://tile.loc.gov/storage-services/service/gdc/gdclccn/a1/20/00/16/4/a12000164/a12000164.pdf",
+          "title": "Thayer: The Origin and Scope of the American Doctrine of Constitutional Law"
+        }
+      ]
+    },
+    {
+      "id": "waldron",
+      "name": "Jeremy Waldron",
+      "thesis": "Political equality grounds a conditional challenge to strong-form rights review.",
+      "primaryEvidence": "The Core of the Case Against Judicial Review sets out the institutional, rights-commitment, and disagreement assumptions; Five to Four examines judicial majoritarian decision-making.",
+      "limits": "Core article read through indexed primary passages after fetch failure. Preserves non-core cases and distinction between strong review and all judicial activity.",
+      "sources": [
+        {
+          "url": "https://openyls.law.yale.edu/bitstream/handle/20.500.13051/9638/54_115YaleLJ1346_April2006_.pdf",
+          "title": "Jeremy Waldron, The Core of the Case Against Judicial Review"
+        },
+        {
+          "url": "https://yalelawjournal.org/article/five-to-four-why-do-bare-majorities-rule-on-courts",
+          "title": "Jeremy Waldron, Five to Four: Why Do Bare Majorities Rule on Courts?"
+        }
+      ]
+    },
+    {
+      "id": "kramer",
+      "name": "Larry Kramer",
+      "thesis": "Continuing popular constitutional authority is distinct from rejecting courts or merely favoring legislative majorities.",
+      "primaryEvidence": "The People Themselves abstract establishes active popular sovereignty and public constitutional contestation; Stanford interview presents Kramer’s own explanation of judicial review versus supremacy.",
+      "limits": "Book abstract and interview accessed, not full historical monograph. Historical claims presented as his account, not uncontested consensus.",
+      "sources": [
+        {
+          "url": "https://academic.oup.com/book/50563",
+          "title": "Kramer: The People Themselves"
+        },
+        {
+          "url": "https://law.stanford.edu/wp-content/uploads/2015/07/sl70_articles.pdf",
+          "title": "Stanford interview with Larry Kramer"
+        }
+      ]
+    },
+    {
+      "id": "walsh_departmentalism",
+      "name": "Kevin Walsh",
+      "thesis": "Judicial departmentalism derives binding effects from three defined legal mechanisms.",
+      "primaryEvidence": "Judicial Departmentalism author abstract expressly identifies judgments, remedies, and precedent as exclusive direct sources of binding constitutional adjudication.",
+      "limits": "Author abstract inspected. Does not imply officials may disregard injunctions or that all judgments bind only formally named parties regardless of remedial law.",
+      "sources": [
+        {
+          "url": "https://scholarship.law.wm.edu/wmlr/vol58/iss5/8/",
+          "title": "Walsh: Judicial Departmentalism: An Introduction"
+        }
+      ]
+    },
+    {
+      "id": "gardbaum",
+      "name": "Stephen Gardbaum",
+      "thesis": "Structured shared rights responsibility joins pre-enactment scrutiny, judicial review, and legislative reconsideration.",
+      "primaryEvidence": "Gardbaum’s Reassessing the New Commonwealth Model discusses twin goals, jurisdictional differences and institutional performance; Case for the New Commonwealth Model supports normative allocation of authority.",
+      "limits": "Reassessment article abstract/opening and article summaries inspected. Not a statement that all Commonwealth systems share identical powers or currently work equally well.",
+      "sources": [
+        {
+          "url": "https://academic.oup.com/icon/article/8/2/167/700011",
+          "title": "Stephen Gardbaum, Reassessing the New Commonwealth Model of Constitutionalism"
+        },
+        {
+          "url": "https://www.cambridge.org/core/journals/german-law-journal/article/case-for-the-new-commonwealth-model-of-constitutionalism/14595E9FC0327A41A2EBFDB924811156",
+          "title": "Stephen Gardbaum, The Case for the New Commonwealth Model of Constitutionalism"
+        }
+      ]
+    },
+    {
+      "id": "ely",
+      "name": "John Hart Ely",
+      "thesis": "Judicial review repairs failures of participation and representation.",
+      "primaryEvidence": "Ely’s 1978 article and book identify participation-oriented review; the account connects exclusion from political change with prejudice in representation.",
+      "limits": "Repository record and indexed material consulted; no claim of full-book reading. This summarizes his general justification of review, not every express constitutional guarantee.",
+      "sources": [
+        {
+          "url": "https://digitalcommons.law.umaryland.edu/mlr/vol37/iss3/3/",
+          "title": "John Hart Ely, Toward a Representation-reinforcing Mode of Judicial Review"
+        },
+        {
+          "url": "https://www.jstor.org/stable/j.ctv102bj77",
+          "title": "John Hart Ely, Democracy and Distrust"
+        }
+      ]
+    },
+    {
+      "id": "dixon_responsive",
+      "name": "Rosalind Dixon",
+      "thesis": "Different democratic dysfunctions require different forms and strengths of judicial intervention.",
+      "primaryEvidence": "Author’s article explains monopoly power, blind spots, inertia, and combinations of strong and weak review; book abstract supports framing, timing, and legitimacy.",
+      "limits": "Article excerpts and book abstract read; no full-book claim. Judicial dialogue does not mean every ruling must be weak or reversible.",
+      "sources": [
+        {
+          "url": "https://academic.oup.com/book/45587",
+          "title": "Rosalind Dixon, Responsive Judicial Review"
+        },
+        {
+          "url": "https://onlinelibrary.wiley.com/doi/full/10.1111/1468-2230.12853",
+          "title": "Rosalind Dixon, The New Responsive Constitutionalism"
+        }
+      ]
+    },
+    {
+      "id": "bickel",
+      "name": "Alexander Bickel",
+      "thesis": "Prudential avoidance protects a principled judicial role within democratic politics.",
+      "primaryEvidence": "Bickel article identified in Yale repository; quoted passages from The Least Dangerous Branch explain the third option between validation and invalidation and the compromise/principle tension.",
+      "limits": "Primary article full-text open failed; indexed text and book passages reproduced in scholarly review support this account. Final sentence identifies an implication, not a claim that Bickel resolved the objection.",
+      "sources": [
+        {
+          "url": "https://openyls.law.yale.edu/bitstream/handle/20.500.13051/3410/75HarvLRev40.pdf?sequence=2",
+          "title": "Alexander Bickel, The Supreme Court, 1960 Term: Foreword, The Passive Virtues"
+        },
+        {
+          "url": "https://openyls.law.yale.edu/bitstreams/f22c144a-5495-4eb4-952c-d680050e291a/download",
+          "title": "Contemporaneous review of The Least Dangerous Branch, with passages from Bickel"
+        }
+      ]
+    },
+    {
+      "id": "ackerman",
+      "name": "Bruce Ackerman",
+      "thesis": "Exceptional higher lawmaking binds ordinary politics and requires intergenerational constitutional synthesis.",
+      "primaryEvidence": "Book description explains normal and constitutional politics; Ackerman’s own essay states the two-track system and judicial preservation of higher lawmaking.",
+      "limits": "Book description and indexed author essay consulted. The contested criteria for a successful constitutional moment are compressed, not presented as a mechanical test.",
+      "sources": [
+        {
+          "url": "https://politicalscience.yale.edu/publications/we-people-vol-1",
+          "title": "Bruce Ackerman, We the People, Volume 1"
+        },
+        {
+          "url": "https://www.wiko-berlin.de/fileadmin/Jahrbuchberichte/1991/1991_92_Ackerman_Bruce_Aufsatz_Jahrbuchbericht.pdf",
+          "title": "Bruce Ackerman, account of dualist democracy"
+        }
+      ]
+    },
+    {
+      "id": "bobbitt",
+      "name": "Philip Bobbitt",
+      "thesis": "Constitutional legitimacy is internal to a plural practice of recognized legal arguments.",
+      "primaryEvidence": "Bobbitt’s 2018 essay explicitly identifies six modalities, extends them beyond judicial precedent, and requires consistent principles.",
+      "limits": "Primary essay passages read; original book not read in full. Ethos means constitutional identity/commitments, not unrestricted personal moral judgment.",
+      "sources": [
+        {
+          "url": "https://yalelawjournal.org/essay/impeachment-a-handbook",
+          "title": "Philip Bobbitt, Impeachment: A Handbook"
+        },
+        {
+          "url": "https://scholarship.law.columbia.edu/books/55/",
+          "title": "Philip Bobbitt, Constitutional Fate"
+        }
+      ]
+    },
+    {
+      "id": "charles_black",
+      "name": "Charles L. Black Jr.",
+      "thesis": "Inference from constituted relationships is a legal method distinct from generic textual holism.",
+      "primaryEvidence": "Black’s book identified; his definition is reproduced in scholarly sources. Dorf’s close analysis specifically distinguishes structural relationships from merely reading the whole text.",
+      "limits": "Full primary book unavailable; this card relies on reproduced primary definition and scholarly methodological analysis. No particular implied right is attributed without direct support.",
+      "sources": [
+        {
+          "url": "https://books.google.com/books/about/Structure_and_Relationship_in_Constituti.html?id=WbT9QwAACAAJ",
+          "title": "Charles L. Black Jr., Structure and Relationship in Constitutional Law"
+        },
+        {
+          "url": "https://papers.ssrn.com/sol3/Delivery.cfm/SSRN_ID2213879_code1992470.pdf?abstractid=2213879&mirid=1",
+          "title": "Michael Dorf, Interpretive Holism and the Structural Method"
+        }
+      ]
+    },
+    {
+      "id": "vermeule",
+      "name": "Adrian Vermeule",
+      "thesis": "Positive law gives institutional form to reasoned commitments to common flourishing.",
+      "primaryEvidence": "Author interview defines community flourishing; author’s article places the rule of law in a rationally ordered constitutional system rather than a required institutional technology.",
+      "limits": "Interview and article abstract/indexed passages read, not the entire book. This describes Vermeule’s proposed standard, not endorsement or consensus about natural law.",
+      "sources": [
+        {
+          "url": "https://hls.harvard.edu/today/a-blast-from-the-past/",
+          "title": "Adrian Vermeule, Harvard Law interview on Common Good Constitutionalism"
+        },
+        {
+          "url": "https://papers.ssrn.com/sol3/Delivery.cfm/SSRN_ID4587125_code231075.pdf?abstractid=4587125&mirid=1&type=2",
+          "title": "Adrian Vermeule, The Rule of Law Without Separation of Powers"
+        }
+      ]
+    },
+    {
+      "id": "monaghan",
+      "name": "Henry Monaghan",
+      "thesis": "Constitutionally authorized implementation can be binding without being constitutionally indispensable.",
+      "primaryEvidence": "Author’s abstract explicitly describes substantive, procedural, and remedial rules inspired and authorized, but not required, by the Constitution and subject to congressional revision.",
+      "limits": "Author abstract read; no full-article claim. Not all constitutional doctrine is revisable, and Congress cannot remove the constitutional floor.",
+      "sources": [
+        {
+          "url": "https://scholarship.law.columbia.edu/faculty_scholarship/794/",
+          "title": "Henry Monaghan, Constitutional Common Law"
+        }
+      ]
+    },
+    {
+      "id": "fiss",
+      "name": "Owen Fiss",
+      "thesis": "Public-value interpretation justifies structural remedies against organizational sources of constitutional injury.",
+      "primaryEvidence": "Opening of Fiss’s essay expressly links interpretation, rights, bureaucratic threats, and reconstruction through injunctions.",
+      "limits": "Primary opening and indexed text read; no full-book claim. Fiss does not make courts the exclusive interpreters of public values.",
+      "sources": [
+        {
+          "url": "https://law.yale.edu/sites/default/files/documents/faculty/papers/twomodels.pdf",
+          "title": "Owen Fiss, Two Models of Adjudication"
+        }
+      ]
+    },
+    {
+      "id": "bhagwati_iyer",
+      "name": "P. N. Bhagwati / V. R. Krishna Iyer",
+      "thesis": "Effective access connects social justice with procedural innovation, with distinct emphases in the two judges’ opinions.",
+      "primaryEvidence": "Bhagwati’s opinion links public-interest proceedings to social and economic entitlements; Krishna Iyer converts a prisoner’s letter about another prisoner’s abuse into proceedings protecting liberty.",
+      "limits": "Selected primary opinion passages read. The synthesis concerns this shared strand, not their entire records or an invented unified judicial school.",
+      "sources": [
+        {
+          "url": "https://indiankanoon.org/doc/595099/",
+          "title": "P. N. Bhagwati, opinion in Bandhua Mukti Morcha v. Union of India"
+        },
+        {
+          "url": "https://indiankanoon.org/doc/778810/?type=print",
+          "title": "V. R. Krishna Iyer, opinion in Sunil Batra v. Delhi Administration"
+        }
+      ]
+    },
+    {
+      "id": "bray",
+      "name": "Samuel Bray",
+      "thesis": "Historically grounded, plaintiff-protective remedies preserve a decentralized judicial system.",
+      "primaryEvidence": "Article abstract and indexed text connect national injunctions with equity history, forum shopping, conflicting injunctions, and decision quality.",
+      "limits": "Primary abstract and selected text read. Geography is not the decisive limitation: relief protecting plaintiffs can have nationwide practical effects. Card describes his scholarly theory.",
+      "sources": [
+        {
+          "url": "https://harvardlawreview.org/wp-content/uploads/2017/12/417-482_Online.pdf",
+          "title": "Samuel Bray, Multiple Chancellors: Reforming the National Injunction"
+        }
+      ]
+    },
+    {
+      "id": "sohoni_frost",
+      "name": "Mila Sohoni / Amanda Frost",
+      "thesis": "Historical authority and practical enforcement needs support preserving appropriately justified nonparty relief.",
+      "primaryEvidence": "Sohoni’s introduction identifies historical nonparty injunctions. Frost’s introduction, remedial analysis, and conclusion explain complete relief, nonparty protection, practical necessity, and a presumption against issuing nationwide relief without case-specific justification.",
+      "limits": "The cited primary introductions and selected substantive passages were consulted. This card presents their defended theory; it does not describe the current scope of judicial authority after Trump v. CASA (2025).",
+      "sources": [
+        {
+          "url": "https://harvardlawreview.org/print/vol-133/the-lost-history-of-the-universal-injunction/",
+          "title": "Mila Sohoni, The Lost History of the Universal Injunction"
+        },
+        {
+          "url": "https://nyulawreview.org/wp-content/uploads/2018/11/NYULawReview-93-5-Frost.pdf",
+          "title": "Amanda Frost, In Defense of Nationwide Injunctions"
+        }
+      ]
+    },
+    {
+      "id": "levinson",
+      "name": "Daryl Levinson",
+      "thesis": "Rights and remedies are mutually constitutive rather than sequential and independent.",
+      "primaryEvidence": "Author’s extended abstract describes the illusion of pure rights, functional interdependence, and implications for institutional authority and over-/under-enforcement.",
+      "limits": "Extended primary abstract read, not all 85 pages. This is an explanatory critique, not a recommendation to reduce rights whenever enforcement is costly.",
+      "sources": [
+        {
+          "url": "https://papers.ssrn.com/sol3/papers.cfm?abstract_id=155564",
+          "title": "Daryl Levinson, Rights Essentialism and Remedial Equilibration"
+        }
+      ]
+    },
+    {
+      "id": "peter_strauss",
+      "name": "Peter Strauss",
+      "thesis": "Functional checks coexist with legally assigned agency responsibility and presidential oversight.",
+      "primaryEvidence": "Overseer abstract explicitly grounds agency decisional responsibility in faithful execution of Congress’s allocations; separation-of-powers article supplies the functional framework.",
+      "limits": "Extended author abstract and repository materials consulted. The claim concerns ordinary domestic administration; Strauss recognizes stronger presidential decisional arguments in some other settings.",
+      "sources": [
+        {
+          "url": "https://papers.ssrn.com/sol3/papers.cfm?abstract_id=949649",
+          "title": "Peter Strauss, Overseer, or the Decider? The President in Administrative Law"
+        },
+        {
+          "url": "https://scholarship.law.columbia.edu/faculty_scholarship/435/",
+          "title": "Peter Strauss, Formal and Functional Approaches to Separation-of-Powers Questions"
+        }
+      ]
+    },
+    {
+      "id": "metzger",
+      "name": "Gillian E. Metzger",
+      "thesis": "Administration is a site of constitutional obligation and interpretation, with supervision as a prerequisite of delegated authority.",
+      "primaryEvidence": "Author abstracts expressly connect supervision to Article II, due process and delegation, and identify agency interpretation/implementation as administrative constitutionalism.",
+      "limits": "Primary abstracts read; no full-article claim. Recognition of the duty does not entail judicial enforcement of every managerial failure.",
+      "sources": [
+        {
+          "url": "https://scholarship.law.columbia.edu/faculty_scholarship/578/",
+          "title": "Gillian Metzger, The Constitutional Duty to Supervise"
+        },
+        {
+          "url": "https://scholarship.law.columbia.edu/faculty_scholarship/817/",
+          "title": "Gillian Metzger, Administrative Constitutionalism"
+        }
+      ]
+    },
+    {
+      "id": "lawson",
+      "name": "Gary Lawson",
+      "thesis": "Original allocations of power constrain administration despite practical convenience.",
+      "primaryEvidence": "Lawson’s article explicitly distinguishes permissible implementing discretion from delegation of distinctively legislative power and challenges administrative combinations.",
+      "limits": "Repository and selected primary text read. Card avoids equating every discretionary choice with legislation and does not assume a position on every current removal dispute.",
+      "sources": [
+        {
+          "url": "https://scholarship.law.bu.edu/faculty_scholarship/948/",
+          "title": "Gary Lawson, The Rise and Rise of the Administrative State"
+        },
+        {
+          "url": "https://assets-us-01.kc-usercontent.com/c7bb3f89-eb78-007e-971a-d5864cf7a236/5d27150d-603a-4e2b-9c89-58d42d3a56a3/Lawson-The-Rise-and-Rise-of-the-Administrative-State.pdf",
+          "title": "Gary Lawson, full article text"
+        }
+      ]
+    },
+    {
+      "id": "calabresi_prakash",
+      "name": "Steven Calabresi / Saikrishna Prakash",
+      "thesis": "The president’s constitutionally vested law-execution authority entails control over executive subordinates.",
+      "primaryEvidence": "The joint author abstract grounds executive control in text and founding history. Calabresi’s 1995 argument, quoted in scholarly analysis, emphasizes energy and public accountability; Prakash’s book description identifies reconstruction of founding-era presidential powers.",
+      "limits": "The joint article abstract, reproduced passages from Calabresi, and Prakash’s publisher description were consulted. Different emphases are identified without suggesting disagreement on the joint thesis or identical positions across their wider scholarship.",
+      "sources": [
+        {
+          "url": "https://papers.ssrn.com/sol3/Delivery.cfm/SSRN_ID2857494_code158595.pdf?abstractid=2857494&mirid=1",
+          "title": "Steven Calabresi and Saikrishna Prakash, The President’s Power to Execute the Laws"
+        },
+        {
+          "url": "https://www.law.virginia.edu/scholarship/publication/saikrishna-prakash/884081",
+          "title": "University of Virginia record of the joint article"
+        },
+        {
+          "url": "https://yalebooks.yale.edu/book/9780300194562/imperial-from-the-beginning/",
+          "title": "Saikrishna Prakash, Imperial from the Beginning"
+        },
+        {
+          "url": "https://www.cambridge.org/core/journals/american-political-science-review/article/new-unitary-executive-and-democratic-theory-the-problem-of-alexander-hamilton/2393D71EFA44427015D978922D91EEBF",
+          "title": "The New Unitary Executive and Democratic Theory, reproducing Calabresi’s normative argument"
+        }
+      ]
+    },
+    {
+      "id": "leiter",
+      "name": "Brian Leiter",
+      "thesis": "Naturalistic explanation of locally underdetermined adjudication is compatible with a positivist theory of legal validity.",
+      "primaryEvidence": "Author book materials identify realism and naturalism; his Cambridge chapter summary explicitly distinguishes conceptual and empirical realism and identifies partial indeterminacy.",
+      "limits": "Primary book/chapter abstracts consulted. Card avoids global indeterminacy and does not reduce all law to predictions of court decisions.",
+      "sources": [
+        {
+          "url": "https://academic.oup.com/book/6364",
+          "title": "Brian Leiter, Naturalizing Jurisprudence"
+        },
+        {
+          "url": "https://www.cambridge.org/core/books/abs/cambridge-companion-to-legal-positivism/legal-positivism-as-a-realist-theory-of-law/AA6ACB3748F974980FD8A16EE28C3195",
+          "title": "Brian Leiter, Legal Positivism as a Realist Theory of Law"
+        }
+      ]
+    },
+    {
+      "id": "llewellyn",
+      "name": "Karl Llewellyn",
+      "thesis": "Law in action includes stabilizing professional practices as well as doctrinal flexibility.",
+      "primaryEvidence": "Common Law Tradition preview identifies steadying factors and situation-sense; its passage on reasoned opinions reproduced in judicial materials explains how justification disciplines outcomes.",
+      "limits": "Book preview and reproduced primary passages consulted; original 1931 article identified but not fully read. Avoids the caricature that judges simply decide however they please.",
+      "sources": [
+        {
+          "url": "https://books.google.com/books/about/The_Common_Law_Tradition.html?id=sMozDAAAQBAJ",
+          "title": "Karl Llewellyn, The Common Law Tradition: Deciding Appeals"
+        },
+        {
+          "url": "https://www.degruyterbrill.com/document/doi/10.1515/9780691186429-007/html?lang=de",
+          "title": "Karl Llewellyn, Some Realism About Realism"
+        },
+        {
+          "url": "https://supreme.justia.com/cases/federal/us/474/936/",
+          "title": "County of Los Angeles v. Kling, Stevens dissent, reproducing Llewellyn on reasoned opinions"
+        }
+      ]
+    },
+    {
+      "id": "oconnor",
+      "name": "Sandra Day O'Connor",
+      "thesis": "Context-sensitive standards, reliance, and institutional boundaries form a practical judicial approach.",
+      "primaryEvidence": "Grutter supports contextual scrutiny and individual consideration; the joint Casey opinion discusses reliance and continuity; New York enforces a structural limit on compelling state governments to administer federal policy.",
+      "limits": "Selected historical opinion passages were consulted. This is an interpretive synthesis, not a self-declared complete theory. The abortion and admissions opinions cited do not state current law.",
+      "sources": [
+        {
+          "url": "https://www.law.cornell.edu/supremecourt/text/02-241",
+          "title": "Sandra Day O’Connor, opinion in Grutter v. Bollinger"
+        },
+        {
+          "url": "https://library.oconnorinstitute.org/supreme-court/planned-parenthood-of-southeastern-pa-v-casey-1991/",
+          "title": "O’Connor, Kennedy, and Souter, joint opinion in Planned Parenthood v. Casey"
+        },
+        {
+          "url": "https://library.oconnorinstitute.org/supreme-court/new-york-v-united-states-1991/",
+          "title": "Sandra Day O’Connor, opinion in New York v. United States"
+        }
+      ]
+    },
+    {
+      "id": "kagan",
+      "name": "Elena Kagan",
+      "thesis": "Contextual statutory interpretation and precedent-mediated constitutional development combine constructive judgment with obligations to other institutions and prior legal decisions.",
+      "primaryEvidence": "Pulsifer: text interpreted through statutory structure and practical operation. Loper Bright dissent: delegated policymaking and institutional competence. Dobbs joint dissent: general constitutional guarantees extend beyond original applications through reasoned precedent.",
+      "limits": "User-approved copy retained verbatim. The constitutional source is a joint dissent, not Kagan’s sole-authored opinion. This is a synthesis across distinct domains, not a claim that statutory purpose authorizes judicial modernization.",
+      "sources": [
+        {
+          "url": "https://www.supremecourt.gov/opinions/23pdf/22-340_3e04.pdf",
+          "title": "Kagan, opinion of the Court in Pulsifer v. United States (2024)"
+        },
+        {
+          "url": "https://supreme.justia.com/cases/federal/us/603/22-451/",
+          "title": "Kagan, dissent in Loper Bright Enterprises v. Raimondo (2024)"
+        },
+        {
+          "url": "https://www.law.cornell.edu/supremecourt/text/19-1392",
+          "title": "Breyer, Sotomayor and Kagan, joint dissent in Dobbs (2022)"
+        }
+      ]
+    }
+  ]
+}

@@ -136,9 +136,9 @@
         ? `Your saved scores suggest a connection through ${axes.join(' and ')}; they do not establish agreement with the whole theory.`
         : 'This is the thinker match saved with your result; a more specific connection needs the original answer evidence.';
     }
-    // The text identifies a specific shared intellectual streak, never a claim
-    // that the respondent shares every position of the named thinker.
-    return { id: champion.id, name: profile.name, tagline: copy.tagline, paragraph: `${copy.bio} ${fit}`, supportedTraits: affinity ? affinity.allTraits : supported.slice(0, 2), affinityId: affinity?.id || null, sources: copy.sources || [] };
+    // Preserve the authored intellectual portrait exactly. Evidence-specific fit
+    // remains available to API consumers without being appended to public prose.
+    return { id: champion.id, name: profile.name, tagline: copy.tagline, paragraph: copy.bio, fit, supportedTraits: affinity ? affinity.allTraits : supported.slice(0, 2), affinityId: affinity?.id || null, sources: copy.sources || [] };
   }
   global.LAW_CHAMPION_CARDS = Object.freeze({build, toShare, toIds, fromIds, decodeEvidence, supportedTraits, selectedEvidence});
 })(globalThis);
