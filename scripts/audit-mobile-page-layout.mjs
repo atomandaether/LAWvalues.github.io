@@ -40,6 +40,25 @@ assert.doesNotMatch(index, /LAW_QUESTIONS\.length/,
 assert.equal((index.match(/class="spacer"/g) || []).length, 8);
 assert.equal((index.match(/class="blurb-text"/g) || []).length, 16);
 
+// Entry prose must not inherit the large, fixed-size quiz question treatment.
+assert.match(instructions, /<body class="instructions-page">/);
+assert.match(instructions, /<p class="instructions-copy">/);
+assert.doesNotMatch(instructions, /class="question"/);
+assert.match(css, /\.instructions-page h1\s*\{[^}]*font-size:\s*clamp\(32px,\s*10vw,\s*96px\)/s,
+    'The entry heading must fit narrow phones');
+assert.match(css, /\.instructions-page \.instructions-copy\s*\{[^}]*font-size:\s*clamp\(18px,\s*2\.5vw,\s*24px\);[^}]*line-height:\s*1\.45/s);
+assert.match(css, /\.instructions-page \.button\s*\{[^}]*width:\s*min\(100%,\s*680px\);[^}]*min-width:\s*0/s);
+assert.match(css, /@media \(max-width: 900px\) and \(max-height: 420px\)\s*\{\s*html\.quiz-document,\s*body\.quiz-page\s*\{[^}]*height:\s*auto;[^}]*overflow:\s*visible/s,
+    'Short landscape screens must allow document scrolling');
+assert.match(css, /\.quiz-page \.quiz-question-slot p\.question\s*\{[^}]*height:\s*auto;[^}]*max-height:\s*none;[^}]*overflow:\s*visible/s,
+    'The short-landscape prompt must be fully readable');
+assert.match(quizJs, /width <= 900 \? 11 : 14;/,
+    'Desktop text fitting must accommodate the longest prompt without clipping');
+for (const content of [instructions, quiz, css]) {
+    assert.doesNotMatch(content, /quiz-guidance|Answer for your own legal approach|Unless a question specifically asks about precedent/,
+        'Removed quiz guidance must not return on the entry or question pages');
+}
+
 // Protect the real document route from landing page through a completed quiz.
 assert.match(index, /location\.href='instructions\.html'/);
 assert.match(instructions, /location\.href='quiz\.html'/);
