@@ -26,6 +26,20 @@ assert.equal((index.match(/<div class="center">/g) || []).length, 2);
 assert.equal((index.match(/class="axis_name quadcolumn"/g) || []).length, 8);
 assert.equal((index.match(/<a href="#[^"]+"><img[^>]+class="quadcolumn"/g) || []).length, 16);
 
+// The lower explanations keep their left / axis / right relationship on mobile.
+assert.match(css, /body\.home-page \.explanation_bg \.spacer\s*\{[^}]*display:\s*grid;[^}]*grid-template-columns:\s*minmax\(0,\s*1fr\) clamp\(54px,\s*16vw,\s*110px\) minmax\(0,\s*1fr\)/s,
+    'Mobile explanations must retain three explicit columns');
+assert.doesNotMatch(css, /\.spacer\s*\{[^}]*display:\s*block/s,
+    'Phone rules must not stack the two opposing explanations');
+assert.match(css, /body\.home-page \.explanation_bg \.blurb-text\s*\{[^}]*font-size:\s*clamp\(13px,\s*2\.9vw,\s*18px\)/s,
+    'Mobile explanation text must shrink while retaining a readable minimum');
+assert.match(index, /id="numOfQuestions">100<\/span>/,
+    'The homepage advertises 100 questions');
+assert.doesNotMatch(index, /LAW_QUESTIONS\.length/,
+    'The 88-question core must not overwrite the homepage total');
+assert.equal((index.match(/class="spacer"/g) || []).length, 8);
+assert.equal((index.match(/class="blurb-text"/g) || []).length, 16);
+
 // Protect the real document route from landing page through a completed quiz.
 assert.match(index, /location\.href='instructions\.html'/);
 assert.match(instructions, /location\.href='quiz\.html'/);
@@ -35,4 +49,4 @@ assert.match(results, /<html lang="en" class="results-document">/);
 assert.match(results, /id="copy-link"/);
 assert.match(results, /id="champion-card"[^>]*aria-expanded="false"/);
 
-console.log('PASS: mobile document scoping, four-column homepage overview, and home-to-results route.');
+console.log('PASS: mobile document scoping, four-column homepage overview, three-column explanations, 100-question copy, and home-to-results route.');
