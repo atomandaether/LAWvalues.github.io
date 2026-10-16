@@ -168,7 +168,7 @@
                 modifierId: params.get('m'),
                 phraseId: params.get('p'),
                 bridgeId: params.get('b')
-            })
+            }, axisDescriptions)
             : compatibility.legacyTitleFromIds(identity, params);
 
         return {

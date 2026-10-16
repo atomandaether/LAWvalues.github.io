@@ -168,6 +168,8 @@ Thinker matching is conservative. Numerical closeness is only the start.
 
 A result must not hand someone a thinker when the respondent rejects the proposition that makes that thinker distinctive. Required traits and anti-traits operate as eligibility/falsification checks. A valid classification returns one thinker unit. Close matches and incomplete evidence reduce confidence; response-quality safeguards can withhold the personalized classification. No co-champions are introduced.
 
+An answer-level logical conflict is also certainty evidence. It does not automatically disqualify the otherwise best noun or thinker, because a genuine conflict is not proof that a different prototype fits better. When the reviewed axis label identifies a logical conflict in the primary identity domain, generic fit language cannot say `Unmistakably`; when that conflict touches the winning champion's modeled or defining domain, champion confidence is capped below `high`. Ordinary varied answers, opposing support, and nuanced mixed positions do not trigger this cap.
+
 This is particularly important where the eight axes compress disputes that are large in substantive philosophy but outside LAWvalues' subject. The quiz does not add separate dimensions for capabilities, hierarchy/domination, distributive justice, equality theory, or political ideology merely to separate people who happen to share adjudicative methods.
 
 ## Calibration
