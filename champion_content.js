@@ -1,8 +1,8 @@
 /* Source-grounded intellectual portraits; profile selection is unchanged. */
 globalThis.LAW_CHAMPION_CONTENT = Object.freeze({
   "hart": {
-    "tagline": "A legal system is more than threats, and calling something law does not make it morally right.",
-    "bio": "Oxford philosopher H. L. A. Hart transformed legal theory by explaining how shared rules create institutions, powers, and obligations that threats alone cannot explain. His distinctions had public stakes: he challenged the use of criminal law to enforce conventional morality in private life. Understanding what the law is, he insisted, leaves open whether we should obey it.",
+    "tagline": "Law exists through shared practices for recognizing and using rules, while its moral authority remains a further question people must answer.",
+    "bio": "Hart explains a legal system by joining rules governing conduct with rules that identify, change, and enforce those rules. Officials must treat these standards as reasons for criticizing and justifying decisions; a pattern of obedience alone cannot explain their practice. This makes law a social institution whose existence can be studied without assuming its justice. It also explains why legal reasoning has limits: general language leaves unforeseen cases unsettled, requiring judges to exercise constrained choice. Recognizing those limits preserves both the ordinary authority of settled rules and the responsibility to decide whether even perfectly valid law deserves obedience.",
     "fitTraits": {
       "source.social_practice": "what counts as law depends on the rules a legal community actually recognizes",
       "source.law_runs_out": "judges sometimes face real choices because the existing rules do not settle everything"
@@ -13,24 +13,8 @@ globalThis.LAW_CHAMPION_CONTENT = Object.freeze({
         "title": "The Concept of Law"
       },
       {
-        "url": "https://www.law.cam.ac.uk/node/268891",
-        "title": "H. L. A. Hart: Key Contemporary Thinkers"
-      },
-      {
-        "url": "https://www.repository.cam.ac.uk/items/14f7bbba-774a-40c2-8152-fd706bd0bd59",
-        "title": "Hart’s secondary rules and official practice"
-      },
-      {
-        "url": "https://academic.oup.com/book/25479/chapter-abstract/192681000?login=false",
-        "title": "Hart and the open texture of language"
-      },
-      {
-        "url": "https://www.law.ox.ac.uk/research-and-subject-groups/jurisprudence-oxford/hla-hart",
-        "title": "Hart: life, work, and public debates"
-      },
-      {
-        "url": "https://ohrh.law.ox.ac.uk/equality-v-human-rights-same-sex-marriage-and-religious-liberty/",
-        "title": "Oxford Human Rights Hub on the Hart–Devlin debate"
+        "url": "https://www.law.nyu.edu/sites/default/files/Hart%2C%20H.%20L.%20A.%20%281958%29%20%27Positivism%20and%20the%20Separation%20of%20Law%20and%20Morals%27%20Harvard%20Law%20Review%20Vol.%2071%2C%20No.%204%20%281958%29%20pp.%20593-629.pdf",
+        "title": "Positivism and the Separation of Law and Morals"
       }
     ],
     "fitPriority": {
@@ -39,24 +23,20 @@ globalThis.LAW_CHAMPION_CONTENT = Object.freeze({
     }
   },
   "kelsen": {
-    "tagline": "Even a constitution needs an explanation: where does the authority behind the highest legal rule come from?",
-    "bio": "Hans Kelsen helped shape Austria’s 1920 Constitution while pursuing an extraordinarily abstract question: what makes any legal rule valid? His answer traced authority through a hierarchy of rules to an assumed foundation. The constitutional architect wanted a theory that could explain law without disguising political preferences or moral approval as legal science.",
+    "tagline": "A legal rule receives its authority from an ordered system of authorizations whose ultimate starting point must be assumed.",
+    "bio": "Kelsen asks what makes an official act legally binding rather than merely an exercise of power. A judgment derives authority from legislation, legislation from a constitution, and the chain ultimately rests on a presupposed basic norm authorizing the constitutional order. The resulting account explains legal validity in its own terms, without making it depend on the theorist’s moral approval. The system must be broadly effective, but effectiveness and validity remain different questions. This separation also exposes the limits of legal science: it can identify the framework of authorized choices, while political decisions within that framework cannot acquire scientific certainty simply by being called interpretation.",
     "fitTraits": {
       "source.basic_norm": "explaining legal authority requires a starting point beyond another ordinary legal rule",
       "source.normative_hierarchy": "a rule’s authority should be traced through the rules that authorize its creation"
     },
     "sources": [
       {
-        "url": "https://www.ucpress.edu/flyer/books/pure-theory-of-law/hardcover",
+        "url": "https://lawcat.berkeley.edu/record/1109608",
+        "title": "On the Basic Norm"
+      },
+      {
+        "url": "https://www.ucpress.edu/books/pure-theory-of-law/epub-pdf",
         "title": "Pure Theory of Law"
-      },
-      {
-        "url": "https://geschichte.univie.ac.at/de/personen/hans-kelsen",
-        "title": "University of Vienna: Hans Kelsen"
-      },
-      {
-        "url": "https://ucrisportal.univie.ac.at/en/publications/hans-kelsen-und-die-bundesverfassung-2/",
-        "title": "Kelsen and Austria’s Federal Constitution"
       }
     ],
     "fitPriority": {
@@ -65,16 +45,24 @@ globalThis.LAW_CHAMPION_CONTENT = Object.freeze({
     }
   },
   "austin": {
-    "tagline": "Strip away law’s grandeur and ask who gives the orders, who obeys, and what happens to those who refuse.",
-    "bio": "John Austin, a nineteenth-century English legal philosopher, gave legal theory a stark starting point: commands backed by sanctions from a sovereign whom people habitually obey. His insistence on separating law’s existence from its merits made room to describe a wicked law without endorsing it. Later thinkers built their theories partly by challenging what this picture leaves out.",
+    "tagline": "Understanding law begins with the general commands of a sovereign, leaving their wisdom and justice open to separate moral judgment.",
+    "bio": "Austin identifies positive law through a definite political relationship: a sovereign habitually obeyed by the community, who does not habitually obey another human superior, issues general commands backed by sanctions. Courts and subordinate lawmakers exercise powers traceable to that sovereign, so even customary law becomes law through authoritative adoption. This account gives jurisprudence a distinct subject that can be described without first deciding which commands are good. Austin’s separate moral evaluation draws on utility, understood within his religious outlook. The distinction matters because calling a rule unjust does not establish that it lacks legal force, and identifying its force does not settle whether it should be obeyed.",
     "fitTraits": {
       "source.command_theory": "law is fundamentally a matter of commands backed by the threat of sanctions",
       "source.sovereign": "understanding legal authority starts with identifying the power people habitually obey"
     },
     "sources": [
       {
-        "url": "https://www.cambridge.org/core/books/austin-the-province-of-jurisprudence-determined/930093B7F0872F4CE799C6A5326DE724",
-        "title": "The Province of Jurisprudence Determined"
+        "url": "https://persweb.wabash.edu/facstaff/helmang/phi213-1314S/phi213-txtbrwsr/AustinPJD/pjdlctr1.html",
+        "title": "The Province of Jurisprudence Determined, Lecture I"
+      },
+      {
+        "url": "https://persweb.wabash.edu/facstaff/helmang/phi213-1314S/phi213-txtbrwsr/AustinPJD/pjdlctr6.html",
+        "title": "The Province of Jurisprudence Determined, Lecture VI"
+      },
+      {
+        "url": "https://www.nlnrac.org/node/255.html",
+        "title": "The Province of Jurisprudence Determined: selected lectures"
       }
     ],
     "fitPriority": {
@@ -83,20 +71,20 @@ globalThis.LAW_CHAMPION_CONTENT = Object.freeze({
     }
   },
   "shapiro": {
-    "tagline": "Law helps people act together when arguing everything out from scratch would make collective life impossible.",
-    "bio": "Yale philosopher Scott Shapiro sees legal systems as elaborate forms of shared planning. That moves the question beyond who has power: how can people coordinate when they disagree about what should happen? His theory treats laws and institutions as plans that organize cooperation while assigning some people, rather than everyone, responsibility for settling particular questions.",
+    "tagline": "Legal institutions make shared plans that let a divided society coordinate action without having to resolve every moral disagreement first.",
+    "bio": "Shapiro starts from a practical difficulty: complex communities need cooperation even when people disagree, distrust one another, or lack time to deliberate together. Legal systems respond by creating shared plans, assigning offices, and distributing responsibility for future decisions. Their authority within the system comes from this organized planning activity, rather than from another command requiring an endless chain of commanders. Because a plan must settle questions to guide action, identifying its content cannot require reopening the moral disputes it was meant to resolve. Law therefore has a moral purpose of improving collective life, while particular legal plans can still fail that purpose or be deeply unjust.",
     "fitTraits": {
       "source.planning_theory": "law helps people coordinate by settling shared plans instead of reopening every question",
       "source.source_thesis": "people should be able to identify the law without first resolving its moral merits"
     },
     "sources": [
       {
-        "url": "https://library.law.yale.edu/news/watch-book-talk-legality",
-        "title": "Legality: Yale author discussion"
+        "url": "https://www.law.berkeley.edu/files/SShapiro_Howtodothingswithplans_031810.pdf",
+        "title": "Legality: planning-theory chapters"
       },
       {
-        "url": "https://law.yale.edu/scott-j-shapiro",
-        "title": "Scott J. Shapiro"
+        "url": "https://papers.ssrn.com/sol3/Delivery.cfm/SSRN_ID2937990_code234075.pdf?abstractid=2937990&mirid=1",
+        "title": "The Planning Theory of Law"
       }
     ],
     "fitPriority": {
@@ -105,19 +93,19 @@ globalThis.LAW_CHAMPION_CONTENT = Object.freeze({
     }
   },
   "coleman_waluchow_kramer": {
-    "tagline": "A society can write moral tests into its law without turning every moral conviction into a legal rule.",
-    "bio": "Legal philosophers Jules Coleman and Matthew Kramer defend a surprisingly flexible version of law grounded in social practice. A constitution can make fairness or equality a legal requirement because the community’s legal arrangements give it that role. Their shared challenge is to explain how moral reasoning can operate inside law without erasing the distinction between law and morality.",
+    "tagline": "Shared legal practices can make moral standards binding law, even when officials disagree about what those standards actually require.",
+    "bio": "Coleman and Kramer defend a version of positivism in which a legal system’s accepted tests can make moral truth relevant to legal validity. A constitutional equality requirement, for example, may demand genuine moral judgment because the system has given equality that role. Coleman emphasizes how shared official conventions establish the criteria within which substantive disagreement becomes possible. Kramer develops the case that moral principles can themselves enter those criteria, including as requirements a valid rule must satisfy. Their common point is conditional: morality can help determine law where social practice authorizes it. Neither treats every sound moral principle as automatically part of every legal system.",
     "fitTraits": {
       "source.morality_incorporated": "fairness or equality can become legal tests when a legal system gives them that role",
       "source.positive_sources": "law has to be grounded in recognized social sources, even when those sources include moral tests"
     },
     "sources": [
       {
-        "url": "https://academic.oup.com/book/4445",
-        "title": "Coleman: The Practice of Principle"
+        "url": "https://www.cambridge.org/core/journals/legal-theory/article/abs/incorporationism-conventionality-and-the-practical-difference-thesis/F0BD703EC7F21C222A4369EEDAF9A4D1",
+        "title": "Coleman: Incorporationism, Conventionality, and the Practical Difference Thesis"
       },
       {
-        "url": "https://academic.oup.com/book/8608/chapter-abstract/154538853",
+        "url": "https://www.cambridge.org/core/services/aop-cambridge-core/content/view/F92E20A4990094CD3E48E70DA0B41F19/S1352325200061036a.pdf/how_moral_principles_can_enter_into_the_law.pdf",
         "title": "Kramer: How Moral Principles Can Enter into the Law"
       }
     ],
@@ -127,8 +115,8 @@ globalThis.LAW_CHAMPION_CONTENT = Object.freeze({
     }
   },
   "raz_shapiro_marmor": {
-    "tagline": "Authority earns its place when following it helps people act better than deciding everything for themselves.",
-    "bio": "Joseph Raz, an influential legal and political philosopher, made authority answer to the people it claims to guide. His striking test asks whether following an authority helps us better meet reasons that already apply to us. This helps explain why law must be identifiable without reopening every moral dispute it was meant to settle.",
+    "tagline": "Law claims to guide people authoritatively, so its directives must be identifiable without redeciding the reasons they are meant to settle.",
+    "bio": "Raz understands legitimate authority as a service: following it should help people better conform to reasons that already apply to them. An authoritative directive can therefore replace some of the deliberation each person would otherwise undertake, rather than merely adding another consideration to the balance. This explains his insistence that law be identifiable through social sources: people could not use it as an intermediary if discovering its content required independently resolving the underlying merits. Yet law’s claim to authority can fail, and authority may extend only to particular people or matters. Legal validity consequently supplies neither automatic moral legitimacy nor a general duty to obey everything the state commands.",
     "fitTraits": {
       "source.source_thesis": "identifying the law should not require settling the very moral disputes it is meant to guide",
       "source.positive_sources": "recognized social sources, rather than moral merit alone, determine what the law is"
@@ -139,8 +127,8 @@ globalThis.LAW_CHAMPION_CONTENT = Object.freeze({
         "title": "Authority, Law, and Morality"
       },
       {
-        "url": "https://www.philosophy.ox.ac.uk/article/memoriam-joseph-raz-1931-2022",
-        "title": "Oxford: Raz’s service conception of authority"
+        "url": "https://scholarship.law.columbia.edu/books/251/",
+        "title": "The Authority of Law: Essays on Law and Morality"
       }
     ],
     "fitPriority": {
@@ -149,8 +137,8 @@ globalThis.LAW_CHAMPION_CONTENT = Object.freeze({
     }
   },
   "campbell_waldron_schauer": {
-    "tagline": "Keeping judges out of moral battles can itself be a moral commitment to democratic self-government.",
-    "bio": "Tom Campbell turned a familiar legal distinction into an ambitious democratic proposal. Rather than simply describing law as separate from morality, the legal philosopher argued that clear, publicly settled rules should limit judges’ choices. His concern was who controls rights: citizens and elected lawmakers should retain responsibility for contested moral decisions instead of surrendering them to courts.",
+    "tagline": "Citizens should settle moral disputes through democratic lawmaking, then govern officials through clear rules that keep those settlements publicly accountable.",
+    "bio": "Campbell treats the separation of law and morality as an institutional ideal worth building. Moral judgment belongs centrally in deciding what legislation should say; laws should then be drafted and administered so people can identify their requirements without depending on officials’ contested moral views. Clear rules make power predictable, enable criticism of departures, and preserve citizens’ control over decisions that affect them. This includes rights: their importance strengthens the case for democratic debate and effective legislation rather than automatically transferring responsibility to courts. His positivism is therefore an ethical proposal about how law should work, with reduced judicial discretion serving equality and democratic accountability.",
     "fitTraits": {
       "source.normative_positivism": "keeping law tied to publicly identifiable sources is an ideal worth defending",
       "form.anti_discretion": "giving judges less room for personal choice can be an important safeguard",
@@ -173,8 +161,8 @@ globalThis.LAW_CHAMPION_CONTENT = Object.freeze({
     }
   },
   "dworkin_stavropoulos": {
-    "tagline": "Individual rights can defeat the majority’s preferred outcome, even when no tidy rule settles the dispute.",
-    "bio": "Ronald Dworkin reshaped legal philosophy by arguing that rights and moral principles belong at the heart of legal reasoning. His famous image of rights as trump cards challenged the idea that collective benefit always wins. Judges, on his account, must interpret their legal inheritance in its best moral light rather than treat hard cases as invitations to personal choice.",
+    "tagline": "Government must justify its treatment of each person through principles that make its legal history a coherent expression of equal concern.",
+    "bio": "Dworkin sees legal argument as an effort to interpret a community’s institutions in their best moral light. Statutes and precedents matter because a judge must explain the legal history actually inherited; principles matter because that history does not interpret itself. The strongest account both fits the record and justifies the rights and responsibilities it assigns. This demand for integrity connects decisions across cases, preventing government from offering incompatible principles to different citizens merely because doing so is convenient. Individual rights can consequently defeat policies favored by a majority. Hard cases still call for judgments about existing rights, and disagreement alone does not turn those judgments into unrestricted lawmaking.",
     "fitTraits": {
       "source.fit_and_justification": "a good interpretation should both respect legal practice and give it a convincing moral justification",
       "source.principles_are_law": "legal rights can rest on principles as well as explicitly written rules",
@@ -186,16 +174,8 @@ globalThis.LAW_CHAMPION_CONTENT = Object.freeze({
         "title": "The Model of Rules"
       },
       {
-        "url": "https://books.google.com/books/about/Law_s_Empire.html?id=8TCx_UbbI3AC",
+        "url": "https://www.filosoficas.unam.mx/~cruzparc/empire.pdf",
         "title": "Law’s Empire"
-      },
-      {
-        "url": "https://www.law.nyu.edu/sites/default/files/DworkinBalzan.pdf",
-        "title": "Dworkin’s interpretive theory: fit and justification"
-      },
-      {
-        "url": "https://www.law.nyu.edu/news/RONALD_DWORKIN_MEMORIAM",
-        "title": "NYU: Dworkin’s defense of rights"
       }
     ],
     "fitPriority": {
@@ -205,8 +185,8 @@ globalThis.LAW_CHAMPION_CONTENT = Object.freeze({
     }
   },
   "greenberg_hershovitz": {
-    "tagline": "Legal obligations should connect to what we genuinely owe each other, rather than inhabit a separate moral universe.",
-    "bio": "Mark Greenberg and Scott Hershovitz are legal philosophers who challenge the idea of a self-contained realm of legal obligation. Greenberg asks how institutions change our actual moral responsibilities; Hershovitz questions why a separate kind of legal obligation is needed at all. Their distinct projects put the stakes of law back into the relationships between real people.",
+    "tagline": "Legal institutions matter because their actions change what people genuinely owe one another, making legal reasoning inseparable from moral responsibility.",
+    "bio": "Greenberg and Hershovitz connect legal obligation to the moral effects of institutions, while giving different accounts of that connection. Greenberg argues that legislation and adjudication alter morally relevant circumstances, such as expectations and opportunities for cooperation; legal obligations are the moral obligations produced in the appropriate way. The words enacted matter through their contribution to those effects. Hershovitz questions the need to identify a separate domain of distinctively legal obligations at all, redirecting inquiry toward the responsibilities created by legal practices. Both approaches make the institution’s actual intervention essential. Neither simply licenses a judge to select whichever rule would have been morally best before the institution acted.",
     "fitTraits": {
       "source.one_system": "legal obligations ultimately concern what people genuinely owe one another morally"
     },
@@ -225,8 +205,8 @@ globalThis.LAW_CHAMPION_CONTENT = Object.freeze({
     }
   },
   "finnis_murphy_george": {
-    "tagline": "Law should help people flourish together, while settling practical questions that moral reasoning alone cannot answer.",
-    "bio": "John Finnis revived natural-law philosophy by asking what makes human lives go well and how law can support a common good. Yet his account does not promise that morality supplies a ready-made answer to every lawsuit. Shared life also needs authoritative choices among reasonable alternatives, making ordinary, human-made law indispensable to his moral vision.",
+    "tagline": "Law serves the common good by coordinating people’s pursuit of genuine human goods through authoritative choices among morally reasonable alternatives.",
+    "bio": "Finnis begins with goods that make human life worthwhile, such as knowledge, friendship, and practical reason, and asks what cooperation among people pursuing those goods requires. The common good is the set of conditions that lets members of a community flourish, giving law a moral point and authority a demanding purpose. Yet basic moral principles rarely determine one complete legal arrangement. Legislators must choose among reasonable alternatives, and those choices give judges and citizens grounds for action they did not previously possess. Unjust enactments can remain legally valid within the system while losing their normal moral authority. This makes respect for positive law part of practical reason itself.",
     "fitTraits": {
       "source.objective_morality": "law should be understood against moral standards that go beyond official opinion",
       "source.positive_law_settlement": "even people who take morality seriously need enacted law to settle shared practical questions"
@@ -257,24 +237,20 @@ globalThis.LAW_CHAMPION_CONTENT = Object.freeze({
     ]
   },
   "moore_strong_natural_law": {
-    "tagline": "Questions about law ultimately reach questions about moral truth, human responsibility, and what people really deserve.",
-    "bio": "Michael S. Moore is a philosopher of law who brings unusually large questions into the courtroom: what causes an action, what makes someone responsible, and whether moral judgments can be objectively true. His influential defense of punishment based on desert makes the stakes concrete. His legal theory likewise takes moral reality seriously, rather than reducing it to official opinion.",
+    "tagline": "Objective moral truth helps determine what the law requires, making moral judgment part of a judge’s responsibility to decide legally.",
+    "bio": "Moore joins two commitments: moral claims can be objectively true, and legal claims depend in part on those moral truths. Justice therefore reaches into the content of law, rather than functioning solely as a standard for criticizing it afterward. A judge’s legal responsibility includes reasoning about what is genuinely right, even when accepted opinion points elsewhere. This gives moral disagreement practical stakes without making truth depend on agreement. His approach also treats the consequences for legal institutions seriously: judges should understand moral reasoning as part of their office because that understanding can improve their decisions. The challenge is to reason accurately about morality while exercising legal power.",
     "fitTraits": {
       "source.strong_natural_law": "a sufficiently serious moral failure can undermine a rule’s legal status itself",
       "source.objective_morality": "moral truth is something legal reasoning must confront, not merely a matter of preference"
     },
     "sources": [
       {
-        "url": "https://academic.oup.com/book/50100/chapter-abstract/422028313",
-        "title": "Law as a Functional Kind"
+        "url": "https://repository.law.umich.edu/mlr/vol90/iss8/6/",
+        "title": "Moral Reality Revisited"
       },
       {
-        "url": "https://law.illinois.edu/faculty-research/faculty-profiles/michael-s-moore/",
-        "title": "Michael S. Moore"
-      },
-      {
-        "url": "https://www.tandfonline.com/doi/full/10.1080/20403313.2019.1620000",
-        "title": "Functions, Validity and the Strong Natural Law Thesis"
+        "url": "https://onlinelibrary.wiley.com/doi/abs/10.1111/j.1467-9337.2012.00522.x",
+        "title": "The Various Relations between Law and Morality in Contemporary Legal Philosophy"
       }
     ],
     "fitPriority": {
@@ -283,8 +259,8 @@ globalThis.LAW_CHAMPION_CONTENT = Object.freeze({
     }
   },
   "fuller": {
-    "tagline": "A ruler who keeps changing secret, impossible rules has failed at making law, however powerful the ruler becomes.",
-    "bio": "Lon Fuller explored law through the disastrous reign of an imaginary King Rex, whose attempts to govern fail in eight different ways. Secret rules, contradictions, and impossible demands reveal what governing through law requires. Fuller’s memorable argument was that these practical disciplines embody a kind of morality: people must be able to understand and follow the rules governing them.",
+    "tagline": "Governing through law requires a reciprocal commitment: people must be able to follow public rules, and officials must honor them.",
+    "bio": "Fuller understands law as an activity of guiding human conduct through rules. That activity can succeed only if rules are public, intelligible, broadly prospective, consistent, possible to follow, and sufficiently stable, with official action matching what has been announced. These requirements form an internal morality because they treat people as responsible agents capable of organizing their own lives. Citizens’ compliance and officials’ fidelity sustain a reciprocal relationship; secret commands or arbitrary departures undermine it. Legal excellence therefore involves the quality of this continuing practice, as well as the substance of particular policies. Procedural legality does not answer every question of justice, but abandoning it destroys a distinctive way of governing together.",
     "fitTraits": {
       "source.internal_legality": "people must be able to know, understand, and follow rules before those rules can properly govern them"
     },
@@ -294,8 +270,8 @@ globalThis.LAW_CHAMPION_CONTENT = Object.freeze({
         "title": "The Morality of Law"
       },
       {
-        "url": "https://www.jstor.org/stable/j.ctt1cc2mds.6",
-        "title": "Fuller: The Morality That Makes Law Possible"
+        "url": "https://www.stephankinsella.com/wp-content/uploads/texts/fuller_morality.pdf",
+        "title": "The Morality of Law: primary-text selections"
       }
     ],
     "fitPriority": {
@@ -303,31 +279,23 @@ globalThis.LAW_CHAMPION_CONTENT = Object.freeze({
     }
   },
   "radbruch_soper": {
-    "tagline": "When official rules become instruments of extreme injustice, their claim to be law itself comes under challenge.",
-    "bio": "German jurist Gustav Radbruch confronted the legal legacy of Nazism by arguing that unbearable injustice can defeat a statute’s authority as law. Philip Soper approached law’s moral authority through a different philosophical route. This pairing marks a shared concern about law’s moral limits, without suggesting that Soper adopted Radbruch’s precise threshold or historical argument.",
+    "tagline": "Legal certainty deserves respect, but law’s claim to authority can fail when its moral justification becomes impossible to sustain.",
+    "bio": "Radbruch gives legal certainty substantial moral weight: enacted law ordinarily prevails even when unjust. But injustice can become intolerable, and a deliberate betrayal of equality can deprive an enactment of legal character altogether. This makes the boundary exceptional while denying that official form excuses atrocity. Soper approaches the issue through law’s claim that its coercion is morally defensible. A legal order must be able to make that claim in good faith; an order too unjust to sustain it loses an essential basis for being law. His further account of deference asks why sincere institutional judgment can deserve respect despite error. These are distinct arguments about law’s moral limits.",
     "fitTraits": {
       "source.extreme_injustice": "extreme injustice can destroy a rule’s claim to count as law"
     },
     "sources": [
       {
-        "url": "https://academic.oup.com/ojls/article-abstract/26/1/1/1505665",
-        "title": "Radbruch: Statutory Lawlessness and Supra-Statutory Law"
-      },
-      {
-        "url": "https://michigan.law.umich.edu/faculty-and-scholarship/our-faculty/philip-soper",
-        "title": "Philip Soper"
-      },
-      {
-        "url": "https://michiganlawreview.org/journal/the-moral-value-of-law/",
-        "title": "Soper: The Moral Value of Law"
-      },
-      {
         "url": "https://is.muni.cz/el/law/jaro2008/MP218Zk/um/Radbruch_-_Statutory_Lawlessness.pdf",
-        "title": "Radbruch: original essay in translation"
+        "title": "Radbruch: Statutory Lawlessness and Supra-Statutory Law"
       },
       {
         "url": "https://www.cambridge.org/core/books/abs/ethics-of-deference/claiming-authority/93A82A526D3FFCA23BFF099CB6170F27",
         "title": "Soper: Claiming Authority"
+      },
+      {
+        "url": "https://repository.law.umich.edu/mlr/vol84/iss1/3/",
+        "title": "Soper: The Moral Value of Law"
       }
     ],
     "fitPriority": {
@@ -335,8 +303,8 @@ globalThis.LAW_CHAMPION_CONTENT = Object.freeze({
     }
   },
   "hugo_black": {
-    "tagline": "If a constitutional freedom can always be outweighed, how secure is the promise that government cannot take it away?",
-    "bio": "U.S. Supreme Court justice Hugo Black feared that balancing rights against government interests could gradually balance freedom out of existence. His hard-edged reading of the Bill of Rights gave constitutional wording real bite. In a case involving a would-be lawyer questioned about Communist associations, he argued that political freedom should not depend on judges’ weighing of state interests.",
+    "tagline": "Written constitutional guarantees protect liberty by binding judges as firmly as lawmakers to the rights the people have already secured.",
+    "bio": "Black believed putting rights into a written Constitution settled choices that officials should no longer be free to reconsider. Judges must determine those guarantees’ meaning through text and history, then enforce them even when they consider the results unwise. That conviction drove both his resistance to balancing away freedom of speech and his insistence that the Bill of Rights bind state governments. It also explains his rejection of judges creating broader rights from their own ideas of fairness. Outside the Constitution’s restrictions, elected lawmakers could make choices he disliked. His distrust of judicial discretion was itself a theory of how to keep liberty secure.",
     "fitTraits": {
       "method.categorical_textual_rights": "explicit constitutional freedoms need firm boundaries against open-ended balancing",
       "constraint.textual": "the words actually enacted should put real limits on interpretation",
@@ -345,8 +313,12 @@ globalThis.LAW_CHAMPION_CONTENT = Object.freeze({
     },
     "sources": [
       {
-        "url": "https://www.hugoblacklibrary.org/research/u-s-supreme-court-opinions/konigsberg-v-state-bar-california-366-u-s-36/",
-        "title": "Hugo Black: opinion on constitutional freedoms"
+        "url": "https://www.hugoblacklibrary.org/research/u-s-supreme-court-opinions/adamson-v-california/",
+        "title": "Black, dissent in Adamson v. California (1947)"
+      },
+      {
+        "url": "https://www.hugoblacklibrary.org/research/u-s-supreme-court-opinions/griswold-v-connecticut/",
+        "title": "Black, dissent in Griswold v. Connecticut (1965)"
       }
     ],
     "fitPriority": {
@@ -357,8 +329,8 @@ globalThis.LAW_CHAMPION_CONTENT = Object.freeze({
     }
   },
   "bork_berger": {
-    "tagline": "The power to interpret a constitution should not become a quiet power to rewrite its political settlement.",
-    "bio": "Robert Bork and Raoul Berger helped make originalism a major challenge to expansive judicial power. Bork asked how unelected judges could justify overriding democratic decisions; Berger attacked the Court’s treatment of the Fourteenth Amendment as a departure from its historical design. Their answers were controversial precisely because they put familiar constitutional achievements back on trial.",
+    "tagline": "Judicial review is justified by enforcing the Constitution’s historically adopted limits, leaving other political choices to the people and their representatives.",
+    "bio": "Bork and Berger see constitutional interpretation as a question of who is entitled to govern. Bork argues that judges need principles grounded in the Constitution and capable of consistent application to justify setting aside democratic decisions. Where that grounding is absent, judges have no warrant to elevate their own preferred values. Berger presses the historical argument, especially over the Fourteenth Amendment: the commitments actually adopted limit what courts may claim in its name, and constitutional revision belongs to the amendment process. They differ in emphasis, between a theory of legitimate judicial principle and a historical indictment of judicial revision. Both make fidelity to an adopted settlement the condition of judicial power.",
     "fitTraits": {
       "time.original_intent": "the intentions behind an adopted constitution should constrain its later interpretation",
       "time.no_construction": "interpreters should have little latitude to add constitutional rules beyond recovered meaning",
@@ -366,7 +338,7 @@ globalThis.LAW_CHAMPION_CONTENT = Object.freeze({
     },
     "sources": [
       {
-        "url": "https://openyls.law.yale.edu/bitstream/handle/20.500.13051/2533/Neutral_Principles_and_Some_First_Amendment_Problems.pdf?sequence=2",
+        "url": "https://www.repository.law.indiana.edu/ilj/vol47/iss1/1/",
         "title": "Bork: Neutral Principles and Some First Amendment Problems"
       },
       {
@@ -381,8 +353,8 @@ globalThis.LAW_CHAMPION_CONTENT = Object.freeze({
     }
   },
   "alexander_kay_prakash": {
-    "tagline": "Before asking what words could mean to us, ask what someone was trying to communicate by using them.",
-    "bio": "Larry Alexander and Richard Kay defend a deceptively simple idea with radical implications for interpretation: meaningful legal texts are acts of communication by people. Their intentionalist approach asks what those people meant to say, not what a later reader can creatively make the words say. That turns disagreements about constitutional interpretation into questions about authorship, communication, and authority.",
+    "tagline": "A legal text carries the authority of a human decision, so interpretation must recover the meaning its authorized makers intended.",
+    "bio": "Alexander and Kay ground interpretation in communication by people empowered to make law. Words acquire their legally relevant meaning through what those people intended to communicate, while the legal system’s accepted foundations determine whose intentions count. Alexander emphasizes this link between the source of authority and the object of interpretation: choosing an authorized lawmaker also gives a reason to identify that lawmaker’s meaning. Kay emphasizes constitutional legitimacy and stability, arguing that public-meaning approaches can loosen the connection to the founding decision and enlarge judicial choice. Their account therefore distinguishes interpreting an existing decision from making a new one, even when later readers find a different reading more attractive.",
     "fitTraits": {
       "time.intent_as_meaning": "understanding a legal text means recovering what its authors intended to communicate",
       "time.original_intent": "constitutional interpretation should recover the intended commitments of the people who adopted the text"
@@ -390,7 +362,11 @@ globalThis.LAW_CHAMPION_CONTENT = Object.freeze({
     "sources": [
       {
         "url": "https://digitalcommons.lib.uconn.edu/law_review/494/",
-        "title": "Connecting the Rule of Recognition and Intentionalist Interpretation"
+        "title": "Alexander: Connecting the Rule of Recognition and Intentionalist Interpretation"
+      },
+      {
+        "url": "https://digitalcommons.lib.uconn.edu/law_papers/5/",
+        "title": "Kay: Original Intention and Public Meaning in Constitutional Interpretation"
       }
     ],
     "fitPriority": {
@@ -399,20 +375,24 @@ globalThis.LAW_CHAMPION_CONTENT = Object.freeze({
     }
   },
   "whittington": {
-    "tagline": "Courts do not build a constitutional order alone; political actors make consequential choices where the text leaves room.",
-    "bio": "Constitutional scholar Keith Whittington brings presidents, legislators, and political conflict into a story often told entirely through judges. He distinguishes recovering constitutional meaning from building working arrangements where that meaning does not settle everything. His account gives political actors a serious constitutional role while preserving a separate task of interpretation constrained by the document’s historical commitments.",
+    "tagline": "The Constitution binds political actors through its original commitments while leaving them responsibility for building arrangements its text does not settle.",
+    "bio": "Whittington gives a written constitution two connected roles. It establishes binding commitments that interpretation seeks to recover, and it provides a framework within which political actors construct a workable constitutional order. Presidents, legislators, and movements must sometimes settle institutional questions that the text leaves unresolved; those settlements develop through political conflict and can change as circumstances change. Recognizing construction explains how constitutional development can occur without pretending every institutional practice was already encoded in the document. Original commitments still constrain that process. The account therefore combines historical discipline with a substantial constitutional role for politics, challenging the assumption that courts alone determine how a constitution governs.",
     "fitTraits": {
       "time.construction_zone": "applying a constitution can require legitimate choices beyond recovering its meaning",
       "time.original_intent": "constitutional interpretation should recover the commitments its adopters intended to make"
     },
     "sources": [
       {
-        "url": "https://kansaspress.ku.edu/9780700611416/",
-        "title": "Constitutional Interpretation"
-      },
-      {
         "url": "https://www.princeton.edu/~kewhitt/construction.html",
         "title": "Constitutional Construction"
+      },
+      {
+        "url": "https://kewhitt.scholar.princeton.edu/publications/constructing-new-american-constitution",
+        "title": "Constructing a New American Constitution"
+      },
+      {
+        "url": "https://www.princeton.edu/~kewhitt/tocinterp.html",
+        "title": "Constitutional Interpretation: contents"
       }
     ],
     "fitPriority": {
@@ -421,8 +401,8 @@ globalThis.LAW_CHAMPION_CONTENT = Object.freeze({
     }
   },
   "solum": {
-    "tagline": "Knowing what an old sentence meant does not necessarily tell a modern court exactly what to do.",
-    "bio": "Legal philosopher Lawrence Solum helped sharpen an important division within originalism: discovering a text’s meaning and deciding how to implement it are different tasks. That distinction makes room for difficult modern applications without claiming that the words themselves have changed. His work turns a political slogan about following the Constitution into a more precise account of what interpretation can accomplish.",
+    "tagline": "The Constitution’s original public meaning constrains government, while translating that meaning into workable legal rules requires a further, openly justified task.",
+    "bio": "Solum separates discovering what constitutional language communicated from deciding how that language should operate as law. Its communicative meaning is fixed in its historical setting, and later officials should remain constrained by it. But a fixed meaning may still be vague or leave choices among implementing rules. Constitutional construction addresses those choices, and needs justification beyond the linguistic inquiry itself. This distinction allows originalism to acknowledge new circumstances and difficult applications without assuming that historical research answers every practical question. It also clarifies disagreement: interpreters can contest the evidence of original meaning, the rules for implementing it, or the reasons it should constrain them, rather than treating all three as one issue.",
     "fitTraits": {
       "time.construction_zone": "working out what words mean and deciding how to implement them are different jobs",
       "time.public_meaning": "historical public meaning should anchor constitutional interpretation",
@@ -436,7 +416,7 @@ globalThis.LAW_CHAMPION_CONTENT = Object.freeze({
       },
       {
         "url": "https://scholarship.law.georgetown.edu/facpub/1353/",
-        "title": "Solum: What Is Originalism? The Evolution of Contemporary Originalist Theory"
+        "title": "What Is Originalism? The Evolution of Contemporary Originalist Theory"
       }
     ],
     "fitPriority": {
@@ -447,8 +427,8 @@ globalThis.LAW_CHAMPION_CONTENT = Object.freeze({
     }
   },
   "barnett_bernick": {
-    "tagline": "A judge entrusted with constitutional power should honor both the words and the purpose of that trust.",
-    "bio": "Randy Barnett and Evan Bernick treat a judge’s constitutional oath as a relationship of trust with citizens. Their joint theory draws on the duties of people who exercise power for others: discretion must be used faithfully, not opportunistically. When the text’s original meaning leaves a choice, they ask judges to carry forward its original purpose as well as its wording.",
+    "tagline": "Judges entrusted with constitutional power must implement both the text’s original meaning and its purpose without exploiting the discretion that remains.",
+    "bio": "Barnett and Bernick understand the judicial oath as accepting a position of trust toward citizens. Because judges exercise power over people who depend on their fidelity, they owe duties of good faith when applying the Constitution. Historical public meaning supplies the instructions they must follow, but sometimes leaves a choice about implementing rules. In those cases, judges should recover the original function of the relevant provision and design doctrine that carries it out. The Constitution’s purpose thus disciplines discretion within the boundaries of its words. Their joint theory makes construction an accountable exercise of entrusted power, with faithfulness measured by the constitutional commitment rather than the judge’s preferred political outcome.",
     "fitTraits": {
       "time.construction_zone": "some constitutional disputes require implementing choices that the words alone cannot settle",
       "time.public_meaning": "those choices should start from what the text publicly meant when adopted",
@@ -458,10 +438,6 @@ globalThis.LAW_CHAMPION_CONTENT = Object.freeze({
       {
         "url": "https://www.law.georgetown.edu/georgetown-law-journal/in-print/volume-107/volume-107-issue-1-oct-2018/the-letter-and-the-spirit-a-unified-theory-of-originalism/",
         "title": "The Letter and the Spirit: A Unified Theory of Originalism"
-      },
-      {
-        "url": "https://scholarship.law.georgetown.edu/facpub/1946/",
-        "title": "Barnett and Bernick: The Letter and the Spirit"
       }
     ],
     "fitPriority": {
@@ -471,8 +447,8 @@ globalThis.LAW_CHAMPION_CONTENT = Object.freeze({
     }
   },
   "balkin": {
-    "tagline": "An old constitution can set a durable framework for political projects its authors could never have imagined.",
-    "bio": "Yale scholar Jack Balkin challenges the familiar choice between original meaning and a living Constitution. His framework approach combines fidelity to the adopted text with later generations’ work in developing its principles. Political movements, lawmakers, and courts all participate. The provocative possibility is that constitutional change can express fidelity to the founding framework rather than a departure from it.",
+    "tagline": "Constitutional fidelity preserves an enduring framework of rules and principles that later generations develop through political struggle and institutional practice.",
+    "bio": "Balkin combines original meaning with constitutional development by distinguishing the framework adopted from the institutions built within it. Specific rules remain binding, while broad principles such as equality invite later generations to work out their implications in circumstances the adopters did not anticipate. Courts participate alongside lawmakers, political parties, and social movements, whose arguments can transform what the community understands those commitments to require. Precedent and historical experience become resources for this continuing construction. Fidelity therefore involves sustaining and improving a shared constitutional project through its existing commitments. Original meaning supplies boundaries and a common vocabulary, while constitutional practice does much of the work of making those commitments effective.",
     "fitTraits": {
       "time.common_law_development": "constitutional law can grow through precedents and practices built over time",
       "time.public_meaning": "a developing constitution should remain anchored in its original public meaning",
@@ -485,12 +461,8 @@ globalThis.LAW_CHAMPION_CONTENT = Object.freeze({
         "title": "The New Originalism and the Uses of History"
       },
       {
-        "url": "https://jackbalkin.yale.edu/",
-        "title": "Jack M. Balkin"
-      },
-      {
         "url": "https://www.jstor.org/stable/j.ctt24hh8x",
-        "title": "Balkin: Living Originalism"
+        "title": "Living Originalism"
       }
     ],
     "fitPriority": {
@@ -511,8 +483,8 @@ globalThis.LAW_CHAMPION_CONTENT = Object.freeze({
     ]
   },
   "scalia_manning": {
-    "tagline": "A good interpretive method should sometimes force a judge to reach a result the judge personally dislikes.",
-    "bio": "U.S. Supreme Court justice Antonin Scalia made close reading and original meaning central to modern legal debate. A revealing part of his argument was his defense of criminal defendants’ trial rights despite his law-and-order instincts. He presented such uncomfortable results as evidence that a method constrains judges, rather than merely dressing their political preferences in legal language.",
+    "tagline": "Judges preserve democratic government by applying enacted words in their established meaning through rules that constrain their own future decisions.",
+    "bio": "Scalia connects textual interpretation to the limited authority of courts. Legislatures enact words, and constitutional provisions retain the meaning they carried when adopted; judges must work within those commitments even when their consequences are unwelcome. Reading text in context respects the public lawmaking act and limits appeals to unexpressed legislative purposes or evolving judicial preferences. His preference for general rules extends the same discipline into adjudication: a judge who announces a rule accepts constraints in later cases and gives other people a more predictable standard. The method leaves difficult questions and imperfect results, but treats those costs as part of keeping legal change accountable to institutions authorized to make it.",
     "fitTraits": {
       "time.public_meaning": "the Constitution should be read through its original public meaning",
       "constraint.textual": "enacted words should constrain an interpreter even when another result seems attractive",
@@ -520,12 +492,16 @@ globalThis.LAW_CHAMPION_CONTENT = Object.freeze({
     },
     "sources": [
       {
-        "url": "https://www.supremecourt.gov/opinions/boundvolumes/580bv.pdf",
-        "title": "U.S. Reports: memorial proceedings for Justice Scalia"
+        "url": "https://chicagounbound.uchicago.edu/uclrev/vol56/iss4/1/",
+        "title": "The Rule of Law as a Law of Rules"
+      },
+      {
+        "url": "https://logic.stanford.edu/complaw/readings/scalia.pdf",
+        "title": "The Rule of Law as a Law of Rules: full text"
       },
       {
         "url": "https://www.law.uchicago.edu/news/justice-scalia-comes-home-law-school",
-        "title": "Scalia on method and personally unwelcome results"
+        "title": "Scalia on original meaning and personally unwelcome results"
       }
     ],
     "fitPriority": {
@@ -535,8 +511,8 @@ globalThis.LAW_CHAMPION_CONTENT = Object.freeze({
     }
   },
   "mcginnis_rappaport": {
-    "tagline": "The Constitution may look like ordinary English while quietly speaking the specialized language of eighteenth-century lawyers.",
-    "bio": "John McGinnis and Michael Rappaport counted roughly one hundred legal terms in the Constitution, turning an interpretive dispute into a concrete investigation. Even familiar phrases, they argue, can carry technical legal meanings. Their distinctive claim is that recovering the document requires its original legal reading conventions, not just a historical dictionary or modern common sense.",
+    "tagline": "The Constitution’s authority rests on broadly agreed settlements whose benefits are preserved by recovering the legal methods through which they were adopted.",
+    "bio": "McGinnis and Rappaport defend originalism partly through the quality of constitution-making. Requiring broad agreement, they argue, tends to produce more durable and beneficial rules than allowing a small judicial majority to revise them. Preserving that achievement requires recovering the meaning approved through the adoption process, including the legal vocabulary and interpretive conventions used at the time. Historical legal methods can resolve ambiguities that ordinary dictionaries leave open, reducing the need for judges to supply new constitutional rules. Their defense acknowledges defects in the original process, especially the exclusion of women and African Americans, while arguing that constitutional amendment better preserves the advantages of broad agreement than judicial updating.",
     "fitTraits": {
       "time.original_methods": "recovering constitutional meaning requires the interpretive conventions used when it was adopted",
       "time.no_construction": "interpreters should exhaust historical meaning before claiming room to add new constitutional rules",
@@ -546,6 +522,10 @@ globalThis.LAW_CHAMPION_CONTENT = Object.freeze({
       {
         "url": "https://scholarship.law.wm.edu/wmlr/vol59/iss4/4/",
         "title": "The Constitution and the Language of the Law"
+      },
+      {
+        "url": "https://papers.ssrn.com/sol3/papers.cfm?abstract_id=1109247",
+        "title": "Originalism and the Good Constitution"
       }
     ],
     "fitPriority": {
@@ -555,8 +535,8 @@ globalThis.LAW_CHAMPION_CONTENT = Object.freeze({
     }
   },
   "baude_sachs": {
-    "tagline": "The past binds us through law’s own rules of continuity and change, not simply because it is old.",
-    "bio": "William Baude and Stephen Sachs shifted the originalism debate toward a surprising question: is originalism already part of our law? Their approach includes inherited legal rules beyond the Constitution’s words and asks how those rules have lawfully changed. On this account, using old constitutional law resembles an everyday legal task: applying an existing rule to new facts.",
+    "tagline": "Constitutional authority travels through an unbroken chain of law, including the rules that authorize each generation to make legitimate changes.",
+    "bio": "For Baude and Sachs, originalism begins with a claim about the law Americans already recognize: the founding legal order remains authoritative except where legally authorized changes have replaced it. This includes background legal rules and accepted methods of interpretation, so reading constitutional words requires more than recovering ordinary eighteenth-century speech. Sachs emphasizes the chain of lawful change; Baude examines whether American legal practice actually supports that account. Their joint approach treats historical research as part of identifying present legal obligations. New circumstances can require new applications, but a court must explain how its authority descends from law rather than treating an attractive result as sufficient authorization.",
     "fitTraits": {
       "time.original_law": "constitutional fidelity includes inherited legal rules and lawful ways of changing them",
       "time.fixation": "constitutional interpretation remains anchored in the law established at adoption"
@@ -565,6 +545,14 @@ globalThis.LAW_CHAMPION_CONTENT = Object.freeze({
       {
         "url": "https://www.cambridge.org/core/journals/law-and-history-review/article/abs/originalism-and-the-law-of-the-past/4F4BBBD4E103C621AE4C15F65058BD05",
         "title": "Originalism and the Law of the Past"
+      },
+      {
+        "url": "https://columbialawreview.org/content/is-originalism-our-law/",
+        "title": "Baude: Is Originalism Our Law?"
+      },
+      {
+        "url": "https://journals.law.harvard.edu/jlpp/wp-content/uploads/sites/90/2010/01/Sachs_4.pdf",
+        "title": "Sachs: Originalism as a Theory of Legal Change"
       }
     ],
     "fitPriority": {
@@ -573,8 +561,8 @@ globalThis.LAW_CHAMPION_CONTENT = Object.freeze({
     }
   },
   "amar": {
-    "tagline": "Read the Constitution as a whole, and original meaning can reveal an expansive democratic project.",
-    "bio": "Yale scholar Akhil Reed Amar reads the Constitution as a connected story about who governs America. His work shows how its democratic ambitions coexisted with protections for slavery, and how later amendments transformed it. His signature move is to follow repeated words across the document, uncovering connections that a clause-by-clause reading misses.",
+    "tagline": "Reading the Constitution as a historical whole reveals how Reconstruction reshaped the relationship between popular government, individual liberty and equal citizenship.",
+    "bio": "Amar reads the Constitution as an interconnected act of popular government. Repeated words, structural relationships and the circumstances of ratification help explain what particular provisions accomplish. Later amendments can transform the significance of earlier guarantees: protections originally directed against national power may acquire a new role in securing individuals against their states. This makes close attention to original meaning compatible with a far-reaching account of democratic citizenship. He also recognizes practices and principles that supplement the written document. The organizing discipline is to show how those understandings belong to the constitutional whole, including its historical transformations, rather than extract isolated phrases from that larger design.",
     "fitTraits": {
       "time.intratextualism": "repeated constitutional words can reveal connections that isolated clauses conceal",
       "method.holistic_constitution": "a constitutional provision makes better sense when read as part of the whole document",
@@ -586,12 +574,12 @@ globalThis.LAW_CHAMPION_CONTENT = Object.freeze({
         "title": "Intratextualism"
       },
       {
-        "url": "https://law.yale.edu/akhil-reed-amar",
-        "title": "Akhil Reed Amar"
+        "url": "https://politicalscience.yale.edu/publications/americas-unwritten-constitution-precedents-and-principles-we-live",
+        "title": "America’s Unwritten Constitution"
       },
       {
-        "url": "https://politicalscience.yale.edu/publications/americas-constitution-biography",
-        "title": "Amar on democracy and slavery in the Constitution"
+        "url": "https://openyls.law.yale.edu/bitstream/handle/20.500.13051/225/The_Creation_and_Reconstruction_of_the_Bill_of_Rights.pdf",
+        "title": "The Creation and Reconstruction of the Bill of Rights"
       }
     ],
     "fitPriority": {
@@ -611,8 +599,8 @@ globalThis.LAW_CHAMPION_CONTENT = Object.freeze({
     ]
   },
   "thomas_paulsen": {
-    "tagline": "A court’s past mistake should not gain authority simply because later judges keep repeating it.",
-    "bio": "U.S. Supreme Court justice Clarence Thomas and scholar Michael Stokes Paulsen press a disruptive question: why should judicial precedent outrank the Constitution judges swear to support? Thomas urges rejection of demonstrably erroneous decisions; Paulsen’s critique is especially sweeping. Their shared priority is constitutional fidelity, even when correcting an inherited error unsettles expectations built around it.",
+    "tagline": "Judicial decisions earn authority by remaining faithful to the Constitution; repetition cannot turn an unconstitutional rule into a legitimate exercise of power.",
+    "bio": "Thomas and Paulsen connect original meaning to a demanding account of judicial duty: judges swear to uphold the Constitution, and their own decisions cannot displace its superior authority. That makes correcting inherited error part of respecting the separation of powers. Their positions differ in reach. Thomas rejects precedents demonstrably outside the range of permissible interpretation, while allowing courts to retain a permissible reading they would not independently choose. Paulsen attacks more broadly the practice of giving an erroneous constitutional precedent independent weight. Both challenge stability purchased by perpetuating judicial departures from enacted law, but Thomas leaves a more explicit place for precedent where the law permits interpretive choice.",
     "fitTraits": {
       "precedent.correctness_first": "correcting a legal mistake can matter more than preserving the stability it has created",
       "time.fixation": "constitutional meaning is fixed when the text is adopted",
@@ -620,12 +608,12 @@ globalThis.LAW_CHAMPION_CONTENT = Object.freeze({
     },
     "sources": [
       {
-        "url": "https://papers.ssrn.com/sol3/papers.cfm?abstract_id=5359564",
-        "title": "Paulsen: The Intrinsically Corrupting Influence of Precedent"
+        "url": "https://www.supremecourt.gov/opinions/18pdf/17-646_d18e.pdf",
+        "title": "Gamble v. United States: Thomas concurrence"
       },
       {
-        "url": "https://www.law.cornell.edu/supct/pdf/17-646.pdf",
-        "title": "Thomas: concurring opinion on precedent"
+        "url": "https://scholarship.law.umn.edu/concomm/776/",
+        "title": "Paulsen: The Intrinsically Corrupting Influence of Precedent"
       }
     ],
     "fitPriority": {
@@ -635,8 +623,8 @@ globalThis.LAW_CHAMPION_CONTENT = Object.freeze({
     }
   },
   "barrett": {
-    "tagline": "Precedent can referee deep constitutional disagreements without requiring every judge to surrender a competing view of the law.",
-    "bio": "Before joining the U.S. Supreme Court, Amy Coney Barrett examined a problem that simple calls for consistency miss: judges can disagree about the very method for interpreting the Constitution. Her scholarship treats precedent partly as a referee among those rival commitments. Requiring reasons before overruling can discipline disagreement without making every earlier decision permanently binding.",
+    "tagline": "Original meaning governs constitutional judgment, while a qualified respect for precedent lets a divided court decide cases without constantly reopening every disagreement.",
+    "bio": "Barrett starts from the authority of the Constitution’s original meaning, but asks how that commitment can operate in a court whose members disagree about interpretation itself. Precedent supplies a working settlement: judges can accept earlier decisions without accepting the theories that produced them. Its force remains qualified because an entrenched methodological mistake can prevent a justice from applying what she understands to be governing law. Requiring an explanation for overruling, and deciding the issues litigants actually present, helps manage that tension. Her account therefore joins interpretive fidelity to institutional restraint, while treating constitutional precedent as a rebuttable obligation rather than an irreversible transfer of authority to earlier judges.",
     "fitTraits": {
       "precedent.settlement": "precedent helps courts manage continuing disagreements instead of endlessly starting over",
       "precedent.stability": "established decisions deserve some weight beyond whether they were originally correct",
@@ -644,16 +632,12 @@ globalThis.LAW_CHAMPION_CONTENT = Object.freeze({
     },
     "sources": [
       {
-        "url": "https://scholarship.law.nd.edu/ndlr/vol92/iss5/2/",
-        "title": "Originalism and Stare Decisis"
-      },
-      {
-        "url": "https://scholarship.law.nd.edu/law_faculty_scholarship/1166/",
+        "url": "https://scholarship.law.nd.edu/law_faculty_scholarship/293/",
         "title": "Precedent and Jurisprudential Disagreement"
       },
       {
-        "url": "https://scholarship.law.nd.edu/law_faculty_scholarship/293/",
-        "title": "Barrett: Precedent and Jurisprudential Disagreement"
+        "url": "https://scholarship.law.nd.edu/ndlr/vol92/iss5/2/",
+        "title": "Originalism and Stare Decisis"
       }
     ],
     "fitPriority": {
@@ -663,8 +647,8 @@ globalThis.LAW_CHAMPION_CONTENT = Object.freeze({
     }
   },
   "natural_law_originalists": {
-    "tagline": "An argument for following the Constitution should explain why its authority is morally worth preserving today.",
-    "bio": "Jeffrey Pojanowski and Kevin Walsh give originalism a moral foundation rather than resting its case entirely on current legal practice. Their joint work asks why a constitution should continue to bind later generations. Drawing on classical natural-law thought, they connect fidelity to original law with the goods that a durable constitutional order can help people achieve together.",
+    "tagline": "Constitutional fidelity has moral force because a durable legal settlement enables people to pursue common goods under publicly established rules.",
+    "bio": "Pojanowski and Walsh jointly defend originalism by asking why an inherited constitution deserves allegiance. Human communities need authoritative arrangements that settle questions moral reasoning alone leaves open, including who may govern and how power changes hands. A constitution can supply that coordination across generations, giving people moral reasons to preserve its legal identity and follow its authorized procedures for change. Their natural-law account therefore supports fidelity to enacted law while insisting that legal authority has a moral purpose. It also leaves room to confront injustice and departures from original law honestly. Their distinctive question is whether continued constitutional fidelity serves a worthwhile common order, not merely whether officials currently practice it.",
     "fitTraits": {
       "source.objective_morality": "the authority of law must be understood in light of objective moral reasons",
       "source.positive_law_settlement": "enacted law does valuable work by settling questions people need to answer together",
@@ -674,6 +658,10 @@ globalThis.LAW_CHAMPION_CONTENT = Object.freeze({
       {
         "url": "https://scholarship.law.edu/scholar/1080/",
         "title": "Enduring Originalism"
+      },
+      {
+        "url": "https://ndlawreview.org/wp-content/uploads/2022/11/NDL107_PojanowskiWalsh-cropped.pdf",
+        "title": "Recovering Classical Legal Constitutionalism"
       }
     ],
     "fitPriority": {
@@ -683,52 +671,40 @@ globalThis.LAW_CHAMPION_CONTENT = Object.freeze({
     }
   },
   "owen_dixon": {
-    "tagline": "Disciplined legal reasoning can be a powerful check on government without turning judges into rival political leaders.",
-    "bio": "Sir Owen Dixon, an Australian High Court chief justice, became identified with exceptionally rigorous legal reasoning. Yet his celebrated legalism was compatible with developing new principles, rather than mechanically repeating old decisions. Its political stakes were real: he joined the Court’s rejection of legislation banning the Communist Party, insisting that government remain within its constitutional powers.",
+    "tagline": "Courts preserve their authority by developing legal principle from within the law, keeping both governments and judges subject to disciplined reasoning.",
+    "bio": "Dixon’s legalism rests on a division of responsibility: political institutions choose policies within their powers, while courts determine those powers through legal reasoning they can publicly defend. Judges inherit a body of principles whose relationships must guide new decisions. Development is possible when it grows from those principles, and even an authoritative precedent can be rejected when its reasoning cannot withstand examination. This explains how restraint can coexist with forceful constitutional review. The court need not approve a government’s objectives or substitute its own preferred program; it must establish whether the government has legal authority to act. Judicial independence is sustained by that disciplined justification of power.",
     "fitTraits": {},
     "sources": [
       {
+        "url": "https://en.wikisource.org/wiki/Australian_Communist_Party_v_The_Commonwealth_%281951%2C_HCA%29/Dixon_J",
+        "title": "Australian Communist Party v. Commonwealth: Dixon judgment"
+      },
+      {
         "url": "https://www.hcourt.gov.au/sites/default/files/assets/publications/speeches/former-justices/bellj/bellj4aug16.pdf",
-        "title": "High Court of Australia: judicial restraint and Dixon"
+        "title": "Virginia Bell: Judicial Activists or Champions of Self-Restraint"
       },
       {
-        "url": "https://www.hcourt.gov.au/sites/default/files/assets/publications/speeches/lecture-series/Cameron-Judges-Justice-and-Public-Power-Oct17.pdf",
-        "title": "Judges, Justice and Public Power"
-      },
-      {
-        "url": "https://www.hcourt.gov.au/assets/publications/speeches/current-justices/bellj/bellj4aug16.pdf",
-        "title": "Justice Bell on Dixon’s legalism"
-      },
-      {
-        "url": "https://www.hcourt.gov.au/sites/default/files/assets/publications/speeches/former-justices/kirbyj/kirbyj_kitto.htm",
-        "title": "Justice Kirby on the Communist Party decision"
+        "url": "https://classic.austlii.edu.au/au/journals/MonashULawRw/2006/11.pdf",
+        "title": "Concerning Judicial Method: Fifty Years On"
       }
     ],
     "fitPriority": {}
   },
   "schauer": {
-    "tagline": "Following a rule can sometimes mean accepting a worse result today to protect a better system tomorrow.",
-    "bio": "Frederick Schauer was a legal philosopher and free-speech scholar who became a provocative defender of rules. He argued that sometimes a judge should accept an imperfect result because bending the rule invites bias or overconfidence. His work asks when the freedom to make a better decision becomes a danger, and when restraint is a form of intellectual humility.",
+    "tagline": "Rules improve legal judgment when their constraints prevent decision makers from repeatedly replacing shared standards with their own assessment of each case.",
+    "bio": "Schauer explains the value of rules through the imperfections of the people who apply them. A rule generalizes, so it will sometimes capture a case its purpose would exclude or miss one its purpose would include. Letting every official repair that mismatch also lets bias, limited information and overconfidence reshape the law. Rules can therefore deserve weight even when a particular departure looks beneficial. Their language allocates decision-making authority and makes conduct more predictable by excluding some otherwise relevant considerations. The justification is institutional and comparative: choose how much discretion people should have by examining the costs of rule-bound mistakes alongside the costs of individualized judgment.",
     "fitTraits": {
       "form.rules": "sticking to a rule can be justified even when an exception would improve this particular outcome",
       "form.anti_discretion": "limiting a judge’s freedom of choice can protect the quality of legal decisions"
     },
     "sources": [
       {
-        "url": "https://academic.oup.com/book/4020",
-        "title": "Playing by the Rules"
+        "url": "https://philarchive.org/archive/SCHF-48",
+        "title": "Formalism"
       },
       {
-        "url": "https://www.law.virginia.edu/news/200901/national-jurist-names-schauer-among-countrys-most-influential-legal-educators",
-        "title": "Schauer on rules and constrained decision-making"
-      },
-      {
-        "url": "https://www.law.virginia.edu/news/201101/schauer-virtue-following-rules",
-        "title": "Schauer on humility, bias, and following rules"
-      },
-      {
-        "url": "https://www.law.virginia.edu/news/200902/schauer-charges-students-ponder-nature-legal-reasoning",
-        "title": "Schauer on accepting an imperfect result for systemic reasons"
+        "url": "https://academic.oup.com/book/4020/chapter-abstract/145661624",
+        "title": "Playing by the Rules: The Sources of Entrenchment"
       }
     ],
     "fitPriority": {
@@ -737,16 +713,20 @@ globalThis.LAW_CHAMPION_CONTENT = Object.freeze({
     }
   },
   "alexy": {
-    "tagline": "If courts weigh competing rights, they should expose the reasoning rather than hide behind an unexplained sense of balance.",
-    "bio": "German legal philosopher Robert Alexy took on a central objection to balancing rights: that it is just subjective preference in respectable clothing. He developed an explicit framework, even a weight formula, to reveal the structure of the argument. His ambition was to make courts’ tradeoffs open to rational criticism and justify their role through the quality of their reasons.",
+    "tagline": "Constitutional rights demand the fullest protection circumstances permit, and courts must justify every competing demand through reasons open to public challenge.",
+    "bio": "Alexy treats constitutional principles as requirements to realize important goods as fully as the legal and practical situation allows. When rights conflict, courts must explain whether a restriction helps achieve its aim, whether a less restrictive alternative is available, and whether the benefit warrants the burden. The seriousness of a rights infringement raises the strength of justification required. This structure connects his theory of rights to his defense of judicial review: courts can represent citizens through publicly defensible argument as legislatures represent them electorally. His approach also preserves room for legislative choice where constitutional reasons do not settle the balance. The method organizes contested judgments; it does not eliminate them.",
     "fitTraits": {
       "form.proportionality": "restrictions on rights should survive an explicit, structured examination of their justification",
       "source.principles_are_law": "legal principles are part of the law that judges must apply"
     },
     "sources": [
       {
-        "url": "https://doi.org/10.1093/icon/moi040",
+        "url": "https://academic.oup.com/icon/article/3/4/572/792008",
         "title": "Balancing, Constitutional Review, and Representation"
+      },
+      {
+        "url": "https://doi.org/10.1111/j.1467-9337.2010.00449.x",
+        "title": "The Dual Nature of Law"
       }
     ],
     "fitPriority": {
@@ -755,8 +735,8 @@ globalThis.LAW_CHAMPION_CONTENT = Object.freeze({
     }
   },
   "guido_calabresi": {
-    "tagline": "A statute can outlive the world that made it sensible; must courts keep applying it until lawmakers notice?",
-    "bio": "Judge and former Yale dean Guido Calabresi proposed a provocative response to obsolete legislation. Courts, he argued, should sometimes treat aging statutes more like judge-made law, identifying when they no longer fit the surrounding legal order. His proposal turns judges into participants in a conversation that can push lawmakers to reconsider rules whose original justification has faded.",
+    "tagline": "A legal system should be able to reconsider obsolete statutes through a principled dialogue between courts and the lawmakers who remain democratically accountable.",
+    "bio": "Calabresi asks how law can remain responsive when legislation accumulates faster than legislatures can revise it. Courts continually reconsider judge-made rules, yet an old statute may survive through inertia long after it has lost support in the surrounding legal order. He proposes extending common-law methods to that problem: judges would assess a statute’s fit with other law and help force renewed legislative attention, while lawmakers could reaffirm their choice. This combines concern for practical consequences with attention to which institution should decide. His proposal is a theory of better institutional design; he distinguishes it from the powers a judge actually possesses under existing law.",
     "fitTraits": {
       "method.statutory_obsolescence": "a statute’s growing mismatch with the rest of the legal system matters to how courts should treat it",
       "method.second_look": "courts can legitimately prompt lawmakers to reconsider outdated legislation",
@@ -769,8 +749,8 @@ globalThis.LAW_CHAMPION_CONTENT = Object.freeze({
         "title": "A Common Law for the Age of Statutes"
       },
       {
-        "url": "https://www.fjc.gov/history/judges/calabresi-guido",
-        "title": "Guido Calabresi: Federal Judicial Center biography"
+        "url": "https://annualsurveyofamericanlaw.org/wp-content/uploads/2015/04/70-1_full_issue.pdf",
+        "title": "Interview with Guido Calabresi, NYU Annual Survey of American Law 70"
       }
     ],
     "fitPriority": {
@@ -781,8 +761,8 @@ globalThis.LAW_CHAMPION_CONTENT = Object.freeze({
     }
   },
   "cardozo": {
-    "tagline": "Judges help make law, and honesty about their choices is the beginning of discipline rather than its abandonment.",
-    "bio": "Benjamin Cardozo, a New York judge who later joined the U.S. Supreme Court, opened the judicial workshop to public view. He described how precedent, logic, custom, social welfare, and even unconscious influences shape decisions. His candor about judicial creativity came with limits: judges work within an inherited legal tradition while helping it respond to changing life.",
+    "tagline": "Judges develop law responsibly by drawing practical judgments about social welfare from the precedents, customs and principles that give legal change continuity.",
+    "bio": "Cardozo understands judging as a craft in which inherited law resolves most disputes but sometimes leaves a genuine choice. Logic and analogy extend existing principles; history and custom explain their direction; considerations of justice and social welfare help decide which path to take when those methods diverge. Stability itself serves social needs, so a judge must weigh the costs of changing a rule alongside the harm of preserving it. Creativity belongs in the spaces the legal order leaves open and must answer to the community’s standards. Acknowledging those choices makes judicial development more accountable, because the reasons for choosing among competing principles can then be examined.",
     "fitTraits": {
       "time.common_law_development": "law should develop through accumulated decisions rather than be rebuilt from scratch",
       "precedent.settlement": "earlier decisions help settle disagreements that would otherwise keep returning",
@@ -791,16 +771,8 @@ globalThis.LAW_CHAMPION_CONTENT = Object.freeze({
     },
     "sources": [
       {
-        "url": "https://yalebooks.co.uk/book/9780300173352/the-nature-of-the-judicial-process/",
-        "title": "The Nature of the Judicial Process"
-      },
-      {
         "url": "https://constitution.org/1-Constitution/cmt/cardozo/jud_proc.htm",
-        "title": "The Nature of the Judicial Process: original text"
-      },
-      {
-        "url": "https://yalebooks.yale.edu/book/9780300000337/the-nature-of-the-judicial-process/",
-        "title": "Cardozo on conscious and unconscious judicial reasoning"
+        "title": "The Nature of the Judicial Process"
       }
     ],
     "fitPriority": {
@@ -811,8 +783,8 @@ globalThis.LAW_CHAMPION_CONTENT = Object.freeze({
     }
   },
   "posner": {
-    "tagline": "Look behind the judicial ceremony and ask what decisions will actually do in the world.",
-    "bio": "Richard Posner, a federal appellate judge and pioneer of law and economics, turned a skeptical eye on his own profession. He described judges as occasional lawmakers working amid uncertainty, influenced by ordinary human motives as well as legal reasoning. His practical challenge was to evaluate consequences openly instead of pretending that inherited formulas always dictate an answer.",
+    "tagline": "Good judging confronts the likely effects of a decision, including the practical value of maintaining reliable rules and a credible legal system.",
+    "bio": "Posner treats hard cases as practical problems that inherited legal materials often fail to resolve uniquely. Judges should investigate consequences, incentives and institutional capacities, drawing on economics and other knowledge about how people behave. Precedent still matters because predictable law, settled expectations and judicial credibility have real benefits; its importance belongs inside the assessment of consequences. This produces a more openly experimental approach than theories that seek answers chiefly in historical meaning or abstract moral coherence. His account of judicial behavior reinforces the method: acknowledging that judges exercise discretion under uncertainty creates a reason to test their assumptions against evidence rather than conceal choices behind professional formulas.",
     "fitTraits": {
       "method.workability": "an interpretation should be tested against how it would actually work",
       "method.consequences": "the real-world effects of a decision belong inside legal reasoning",
@@ -820,12 +792,16 @@ globalThis.LAW_CHAMPION_CONTENT = Object.freeze({
     },
     "sources": [
       {
-        "url": "https://www.jstor.org/stable/j.ctv2d7x4rs",
-        "title": "Law, Pragmatism, and Democracy"
+        "url": "https://larc.cardozo.yu.edu/clr/vol18/iss1/3/",
+        "title": "Pragmatic Adjudication"
       },
       {
         "url": "https://www.law.uchicago.edu/news/how-judges-think-conversation-judge-richard-posner",
-        "title": "How Judges Think: A Conversation with Richard Posner"
+        "title": "How Judges Think: A Conversation with Judge Richard Posner"
+      },
+      {
+        "url": "https://books.google.com/books/about/Law_Pragmatism_and_Democracy.html?hl=en&id=A543N977rS0C&output=html_text",
+        "title": "Law, Pragmatism, and Democracy"
       }
     ],
     "fitPriority": {
@@ -835,16 +811,20 @@ globalThis.LAW_CHAMPION_CONTENT = Object.freeze({
     }
   },
   "breyer": {
-    "tagline": "A constitution succeeds when its institutions work for real people, so interpretation must reckon with purpose and consequences.",
-    "bio": "Retired U.S. Supreme Court justice Stephen Breyer offers a practical account of judging grounded in making democratic government function. His approach asks what a law is trying to accomplish and how competing interpretations would work. He treats constitutional interpretation as a demanding institutional task, using experience and consequences alongside text, history, and precedent.",
+    "tagline": "Constitutional interpretation should make democratic self-government work, applying enduring commitments through a careful assessment of legal purpose and present-day consequences.",
+    "bio": "Breyer sees the Constitution as creating a workable democratic order in which people can participate in governing themselves while enjoying protected liberties. That purpose helps guide interpretation when text, history and precedent leave competing possibilities. Judges should ask what a provision is meant to accomplish and how a proposed reading would affect actual institutions and citizens. Consequences matter in relation to constitutional aims, including participation, equality and limits on concentrated power. The same outlook supports judicial modesty: elected bodies and expert institutions often have better tools for making policy. His practical method seeks to preserve constitutional values by making their application effective in circumstances the founding generation could not anticipate.",
     "fitTraits": {
       "constraint.purpose": "understanding a legal rule requires asking what it is trying to accomplish",
       "method.workability": "judges should care whether their interpretations produce workable institutions"
     },
     "sources": [
       {
-        "url": "https://www.simonandschuster.com/books/Reading-the-Constitution/Stephen-Breyer/9781668021545",
-        "title": "Reading the Constitution"
+        "url": "https://www.supremecourt.gov/publicinfo/speeches/viewspeech/sp_10-22-01",
+        "title": "Stephen Breyer: Our Democratic Constitution"
+      },
+      {
+        "url": "https://www.supremecourt.gov/publicinfo/speeches/viewspeech/sp_11-17-04",
+        "title": "Stephen Breyer: Active Liberty"
       }
     ],
     "fitPriority": {
@@ -853,8 +833,8 @@ globalThis.LAW_CHAMPION_CONTENT = Object.freeze({
     }
   },
   "barak": {
-    "tagline": "Democracy needs rights as well as votes, and judges have a responsibility to connect legal language with those values.",
-    "bio": "Aharon Barak, a former president of Israel’s Supreme Court, made the judicial protection of democracy and rights central to his work. His theory of purposive interpretation spans constitutions, statutes, contracts, and wills. It asks how a text’s creators’ aims relate to the legal system’s broader values, giving judges a demanding and controversial role in bridging law and social change.",
+    "tagline": "Legal interpretation should connect enacted words to democratic purpose, protecting the rights and institutions that allow a society to govern itself legitimately.",
+    "bio": "Barak understands a judge’s task as bridging law and changing social life while preserving constitutional democracy. Interpretation begins with meanings the text can bear, then identifies its purpose through both its authors’ aims and the legal system’s fundamental values. Their relative weight depends on the kind of document: a private arrangement and an enduring constitution need different treatment. Democracy gives this method its direction because majority rule depends on rights, equality and independent courts as well as elections. Proportionality tests whether restrictions on rights can be justified. Judicial development thus carries a substantive responsibility to sustain democratic legality, while remaining answerable to text and publicly explained legal reasons.",
     "fitTraits": {
       "constraint.purpose": "legal language should be read in light of the purposes it serves",
       "form.proportionality": "limits on rights need a structured justification proportionate to their costs",
@@ -866,8 +846,12 @@ globalThis.LAW_CHAMPION_CONTENT = Object.freeze({
         "title": "Purposive Interpretation in Law"
       },
       {
-        "url": "https://www.cambridge.org/core/journals/german-law-journal/article/conversation-with-aharon-barak/A882F2FAA2F1DE7A44F9FBBE2F49540D",
-        "title": "A Conversation with Aharon Barak"
+        "url": "https://constitutionalist.com.ua/wp-content/uploads/2020/10/Aharon-Barak-A-Purposive-Interpretation-in-Law.pdf",
+        "title": "Purposive Interpretation in Law: full text"
+      },
+      {
+        "url": "https://www.jstor.org/stable/j.ctt7szb4",
+        "title": "The Judge in a Democracy"
       }
     ],
     "fitPriority": {
@@ -877,19 +861,19 @@ globalThis.LAW_CHAMPION_CONTENT = Object.freeze({
     }
   },
   "david_strauss": {
-    "tagline": "Constitutional change can grow from accumulated experience, without handing each generation of judges a blank slate.",
-    "bio": "University of Chicago scholar David Strauss argues that America’s working Constitution lives partly in precedents and practices beyond the document under glass. His defense of constitutional evolution draws on a conservative instinct: trust experience accumulated across generations more than any individual’s grand theory. Courts can adapt the law, but they must work with that inheritance rather than start over.",
+    "tagline": "Constitutional law gains authority through generations of tested judgments, allowing adaptation while requiring each court to work with what its predecessors have learned.",
+    "bio": "Strauss defends constitutional development through the habits of the common law. Courts begin with precedents and established practices, treating accumulated experience as a source of authority that no individual interpreter should casually discard. When that inheritance leaves questions open, judgments about fairness and workable policy can guide the next step. The resulting Constitution changes through successive decisions and social experience, even without formal amendment. Its restraint comes from continuity: new conclusions must engage the body of law already built. This combines a capacity for reform with skepticism about any judge’s confidence in a comprehensive theory, while recognizing that inherited injustice can justify departures from the past.",
     "fitTraits": {
       "time.common_law_development": "constitutional law can adapt through the accumulated experience of earlier decisions"
     },
     "sources": [
       {
-        "url": "https://chicagounbound.uchicago.edu/uclrev/vol63/iss3/1/",
-        "title": "Common Law Constitutional Interpretation"
+        "url": "https://www.law.uchicago.edu/news/living-constitution",
+        "title": "The Living Constitution: author excerpt"
       },
       {
-        "url": "https://www.law.uchicago.edu/news/living-constitution",
-        "title": "Strauss: The Living Constitution, author excerpt"
+        "url": "https://chicagounbound.uchicago.edu/journal_articles/2000/",
+        "title": "Common Law Constitutional Interpretation"
       }
     ],
     "fitPriority": {
@@ -897,8 +881,8 @@ globalThis.LAW_CHAMPION_CONTENT = Object.freeze({
     }
   },
   "harlan_ii": {
-    "tagline": "A tradition of liberty can keep growing while still giving judges a discipline stronger than personal preference.",
-    "bio": "U.S. Supreme Court justice John Marshall Harlan II combined judicial restraint with an influential defense of personal liberty. In challenging Connecticut’s ban on contraceptive use, he treated liberty as a historical tradition that develops, not a closed list of protections. His approach offered a way to recognize constitutional freedom without either freezing history or ignoring it.",
+    "tagline": "Constitutional liberty develops through a living tradition that disciplines judicial judgment while protecting people against arbitrary intrusions into the private sphere.",
+    "bio": "Harlan understands constitutional liberty as a connected body of protections whose reach cannot be exhausted by a list of specifically named rights. Courts must examine the balance between individual freedom and organized society that American experience has developed, including traditions the country has rejected. That inquiry permits the recognition of protections for intimate life while demanding reasons rooted in legal history and principled judgment. Judicial restraint therefore requires careful evaluation of a government’s justification, not automatic acceptance of its moral preferences. The tradition continues to grow through reasoned decisions, but its accumulated limits keep the judge’s own ideal society from becoming the constitutional measure.",
     "fitTraits": {
       "time.ordered_liberty_tradition": "the meaning of constitutional liberty grows within a living historical tradition",
       "precedent.settlement": "established decisions help keep constitutional disagreement manageable",
@@ -906,8 +890,8 @@ globalThis.LAW_CHAMPION_CONTENT = Object.freeze({
     },
     "sources": [
       {
-        "url": "https://www.law.nyu.edu/sites/default/files/upload_documents/Madison%20Lecture%202011.pdf",
-        "title": "Madison Lecture: Harlan’s living tradition"
+        "url": "https://en.wikisource.org/wiki/Poe_v._Ullman/Dissent_Harlan",
+        "title": "Poe v. Ullman: Harlan dissent"
       }
     ],
     "fitPriority": {
@@ -917,19 +901,23 @@ globalThis.LAW_CHAMPION_CONTENT = Object.freeze({
     }
   },
   "robin_cooke": {
-    "tagline": "Some rights may run so deep that even Parliament cannot simply erase them by passing a statute.",
-    "bio": "Robin Cooke, a leading New Zealand judge and Court of Appeal president, challenged the apparent limitlessness of parliamentary power. He suggested that fundamental rights rooted in judge-made law might survive even a legislature’s attempt to destroy them. That placed an unsettling question inside an uncodified constitutional tradition: can the law itself set boundaries for its most powerful lawmaker?",
+    "tagline": "Parliament’s authority operates within a legal order whose deepest commitments to rights and lawful government may limit even an explicitly enacted command.",
+    "bio": "Cooke treats the common law as a source of constitutional principle capable of shaping the limits of public power. Courts ordinarily give effect to legislation, while requiring clarity before reading it to remove fundamental protections. His more radical suggestion is that some rights may be so basic that even unmistakable statutory language cannot lawfully abolish them. That possibility follows from seeing judicial responsibility for the rule of law as deeper than implementing each new legislative instruction. His argument therefore links interpretation, review of official action and the ultimate foundations of legislative authority. It remains a contested constitutional position, rather than a general judicial license to invalidate objectionable legislation.",
     "fitTraits": {
       "source.common_law_fundamental_rights": "fundamental rights in judge-made law can place limits even on a legislature’s power"
     },
     "sources": [
       {
-        "url": "https://www.hkcfa.hk/en/about/who/judges/former/index_id_37.html",
-        "title": "Lord Cooke of Thorndon"
+        "url": "https://papers.ssrn.com/sol3/Delivery.cfm/SSRN_ID2946798_code1959347.pdf?abstractid=2231021&mirid=1",
+        "title": "Cooke: Fundamentals"
       },
       {
-        "url": "https://www.courtsofnz.govt.nz/publications/speeches-and-papers/the-challenges-and-possibilities-of-common-law-constitutionalism",
-        "title": "The Challenges and Possibilities of Common Law Constitutionalism"
+        "url": "https://www.hcourt.gov.au/sites/default/files/assets/publications/speeches/former-justices/kirbyj/kirbyj_cooke.htm",
+        "title": "Michael Kirby: Lord Cooke and Fundamental Rights"
+      },
+      {
+        "url": "https://www.hcourt.gov.au/assets/publications/speeches/former-justices/frenchcj/frenchcj27nov2014.pdf",
+        "title": "Robert French: Common Law Constitutionalism"
       }
     ],
     "fitPriority": {
@@ -937,8 +925,8 @@ globalThis.LAW_CHAMPION_CONTENT = Object.freeze({
     }
   },
   "brennan": {
-    "tagline": "The Constitution’s promise of human dignity has to matter to people living now, not only to its eighteenth-century authors.",
-    "bio": "U.S. Supreme Court justice William Brennan defended a Constitution whose broad commitments gain meaning in contemporary life. His appeal to human dignity made interpretation an ongoing responsibility rather than a purely historical exercise. He also urged lawyers to look to state constitutions for stronger rights protections, showing that constitutional possibility need not end with the federal Supreme Court.",
+    "tagline": "The Constitution’s enduring commitment to human dignity requires each generation to give its broad guarantees practical meaning in the lives of people now.",
+    "bio": "Brennan reads the Constitution’s open-ended guarantees as commitments whose application must respond to contemporary experience. Historical understanding informs interpretation but cannot settle every question a society’s expanding awareness of human dignity brings into view. Courts have a special responsibility to protect people whom ordinary political majorities may disregard, making rights a condition of legitimate government. This approach connects constitutional development to the individual’s status as a person entitled to respect, including in punishment and exclusion from civic life. Interpretation remains an engagement with the constitutional text and its accumulated history, but fidelity requires asking what its promises demand of present institutions and present treatment of human beings.",
     "fitTraits": {
       "time.living_content": "broad constitutional promises must acquire meaning responsive to contemporary life",
       "posture.rights_trumps": "individual rights can justify overriding what a majority has decided"
@@ -947,10 +935,6 @@ globalThis.LAW_CHAMPION_CONTENT = Object.freeze({
       {
         "url": "https://teachingamericanhistory.org/document/the-constitution-of-the-united-states-contemporary-ratification/?swcfpc=1",
         "title": "The Constitution of the United States: Contemporary Ratification"
-      },
-      {
-        "url": "https://teachingamericanhistory.org/document/state-constitutions-and-the-protection-of-individual-rights/",
-        "title": "Brennan on state constitutions and individual rights"
       }
     ],
     "fitPriority": {
@@ -959,23 +943,19 @@ globalThis.LAW_CHAMPION_CONTENT = Object.freeze({
     }
   },
   "post_siegel": {
-    "tagline": "Public fights over constitutional meaning can sustain a shared constitution, even when they never produce complete agreement.",
-    "bio": "Yale scholars Robert Post and Reva Siegel challenge the idea that political conflict merely contaminates constitutional law. Their work on rights struggles and backlash asks how citizens come to see the Constitution as their own. Courts matter, but so do movements, elections, and public argument: disagreement can help renew constitutional commitments rather than simply destroy their authority.",
+    "tagline": "Constitutional authority grows through a continuing exchange between legal judgment and public struggle over what a community’s shared commitments should require.",
+    "bio": "Post and Siegel’s jointly developed democratic constitutionalism explains how courts and citizens sustain a constitution together despite persistent disagreement. Legal institutions need professional standards and independence, yet their interpretations draw meaning and authority from public argument, political movements and changing understandings of equal citizenship. Citizens can challenge a decision while continuing to claim the Constitution as their own. Backlash can therefore become part of constitutional development, rather than conclusive evidence that courts should retreat. Their account preserves a role for judicial protection of rights while recognizing that durable constitutional change requires engagement beyond the courtroom. It does not promise harmony: conflict can renew constitutional allegiance, but its consequences require judgment.",
     "fitTraits": {
       "time.democratic_constitutionalism": "public argument and political mobilization help shape constitutional meaning"
     },
     "sources": [
-      {
-        "url": "https://law.yale.edu/sites/default/files/documents/faculty/papers/post_and_siegel_democratic_constitutionalism.pdf",
-        "title": "Democratic Constitutionalism"
-      },
       {
         "url": "https://constitutioncenter.org/the-constitution/white-papers/democratic-constitutionalism",
         "title": "Post and Siegel: Democratic Constitutionalism"
       },
       {
         "url": "https://law.yale.edu/sites/default/files/documents/pdf/Faculty/Siegel_RoeRageDemocraticConstitutionalismAndBacklash.pdf",
-        "title": "Post and Siegel on backlash and constitutional disagreement"
+        "title": "Roe Rage: Democratic Constitutionalism and Backlash"
       }
     ],
     "fitPriority": {
@@ -983,27 +963,19 @@ globalThis.LAW_CHAMPION_CONTENT = Object.freeze({
     }
   },
   "klare_langa": {
-    "tagline": "Replacing an unjust constitution is only the beginning if legal habits and everyday power remain unchanged.",
-    "bio": "Scholar Karl Klare and South African chief justice Pius Langa developed transformative constitutionalism from different positions. In the aftermath of apartheid, their work pressed beyond celebrating a new text to ask what must change in institutions, inequality, and legal culture. The challenge is to make constitutional commitments alter lived conditions, including the habits through which lawyers and judges reproduce the past.",
+    "tagline": "A transformative constitution requires legal reasoning and public institutions to confront inherited inequality, making equal citizenship a practical project rather than a formal declaration.",
+    "bio": "Klare and Langa approach South Africa’s Constitution as a mandate to change the social relations apartheid left behind. Klare emphasizes how lawyers’ habitual assumptions can narrow an egalitarian constitution, and argues for interpretation candid about its political choices and redistributive possibilities. Langa develops the institutional demands: public power must be justified through constitutional values, people need meaningful access to justice, and courts must work alongside elected branches. He also stresses limits imposed by legal text and the separation of powers. Their shared project connects changes in legal culture to material equality, while their different emphases show why transformation requires both critical interpretation and sustained institutional cooperation.",
     "fitTraits": {
       "time.transformative_constitutionalism": "constitutional interpretation should help change inherited inequalities and institutions"
     },
     "sources": [
       {
-        "url": "https://law.northeastern.edu/faculty/klare/",
-        "title": "Karl Klare"
-      },
-      {
-        "url": "https://journals.co.za/doi/10.10520/EJC54606",
-        "title": "Langa: Transformative Constitutionalism"
-      },
-      {
         "url": "https://www.tandfonline.com/doi/abs/10.1080/02587203.1998.11834974",
         "title": "Klare: Legal Culture and Transformative Constitutionalism"
       },
       {
-        "url": "https://studynotesunisa.co.za/wp-content/uploads/2019/01/1238154663PiusLangaSpeech.pdf",
-        "title": "Langa: Transformative Constitutionalism lecture"
+        "url": "https://files.su.ac.za/public/documents/2025-09/transformative-constitutionalism.pdf",
+        "title": "Langa: Transformative Constitutionalism"
       }
     ],
     "fitPriority": {
@@ -1011,28 +983,24 @@ globalThis.LAW_CHAMPION_CONTENT = Object.freeze({
     }
   },
   "waluchow_common_law": {
-    "tagline": "A charter of rights can grow like a living tree while remaining rooted in a community’s considered commitments.",
-    "bio": "Canadian legal philosopher Wil Waluchow defends judicial review against the objection that it freezes disputed rights beyond democratic reach. His living-tree account sees rights becoming clearer through cases and experience. Courts should work with a community’s constitutional commitments, while recognizing that its deeper principles can differ from the prejudices or passing wishes of a current majority.",
+    "tagline": "A charter protects democratic self-government when courts develop its rights through experience and the community’s considered commitments, correcting prejudice without claiming moral infallibility.",
+    "bio": "Waluchow defends rights review as a way for a democratic community to act on commitments it may imperfectly understand or inconsistently honor. A charter’s abstract guarantees become more definite through particular disputes, precedent and reflection on experience. Judges should seek the community’s constitutional morality: the principles implicit in its considered commitments, which may conflict with its immediate preferences or prejudices. This grounds evolving rights in a shared legal practice while leaving room for correction. His inclusive legal positivism explains how a legal system can incorporate moral standards into binding law. The challenge is to distinguish those public commitments from a judge’s personal convictions through disciplined, revisable reasoning.",
     "fitTraits": {
       "time.common_law_development": "constitutional rights become clearer through particular cases and accumulated experience",
       "source.morality_incorporated": "a legal system can make moral standards part of its binding law"
     },
     "sources": [
       {
-        "url": "https://www.cambridge.org/core/books/common-law-theory-of-judicial-review/2284A623D05E1A41BABF9F5321B20ABC",
-        "title": "A Common Law Theory of Judicial Review"
+        "url": "https://drakelawreview.org/wp-content/uploads/2015/06/irvol59-4_waluchow-final.pdf",
+        "title": "Democracy and the Living Tree Constitution"
+      },
+      {
+        "url": "https://biblat.unam.mx/hevila/ProblemaAnuariodefilosofiayteoriadelderecho/2009/no3/7.pdf",
+        "title": "A Living Tree Constitutionalist Replies"
       },
       {
         "url": "https://academic.oup.com/book/50442",
         "title": "Inclusive Legal Positivism"
-      },
-      {
-        "url": "https://www.cambridge.org/core/books/abs/common-law-theory-of-judicial-review/common-law-constitutionalism/41D41014B91A1F22277326ECB03B3B43",
-        "title": "Waluchow on rights, minorities, and democratic precommitment"
-      },
-      {
-        "url": "https://drakelawreview.org/wp-content/uploads/2015/06/irvol59-4_waluchow-final.pdf",
-        "title": "Waluchow: Democracy and the Living Tree Constitution"
       }
     ],
     "fitPriority": {
@@ -1041,8 +1009,8 @@ globalThis.LAW_CHAMPION_CONTENT = Object.freeze({
     }
   },
   "sunstein": {
-    "tagline": "People can agree on a just outcome without first agreeing on the meaning of justice.",
-    "bio": "Harvard scholar Cass Sunstein made an unexpected virtue of leaving big questions unanswered. His judicial minimalism explains how people with conflicting worldviews can agree on a concrete result without settling their deepest disagreements. Courts can use that overlap to decide cases while leaving space for democratic debate.",
+    "tagline": "Courts can protect constitutional commitments through limited decisions that let people cooperate despite deep disagreement and leave room for democratic learning.",
+    "bio": "Sunstein asks how constitutional law can work when citizens disagree about its deepest moral foundations and judges cannot confidently predict the effects of sweeping rulings. People may nevertheless agree that a particular practice is unlawful, supported by reasons that stop short of a complete theory of justice. Deciding on that basis can protect rights while reducing the damage of judicial mistakes and preserving opportunities for public deliberation. His minimalism therefore favors decisions limited both in reach and in theoretical ambition. This is a practical judgment about institutional limits: broader rules become appropriate when narrow decisions would create greater uncertainty, shift excessive burdens to others, or obstruct democratic commitments.",
     "fitTraits": {
       "method.narrow_shallow": "people can agree on a legal result without settling every underlying moral dispute",
       "remedies.incremental": "courts should leave room to learn and adjust rather than settle everything at once"
@@ -1057,14 +1025,14 @@ globalThis.LAW_CHAMPION_CONTENT = Object.freeze({
         "title": "Sunstein: Incompletely Theorized Agreements"
       },
       {
-        "url": "https://hls.harvard.edu/bibliography/one-case-at-a-time-judicial-minimalism-on-the-supreme-court/",
-        "title": "Sunstein: One Case at a Time"
+        "url": "https://citeseerx.ist.psu.edu/document?doi=25ee182620ec10f842c1abd24a14125353ca2a90&repid=rep1&type=pdf",
+        "title": "Cass Sunstein, Beyond Judicial Minimalism"
       }
     ]
   },
   "hart_sacks": {
-    "tagline": "Before asking what the best legal answer is, ask who has the responsibility to decide.",
-    "bio": "Harvard professors Henry Hart and Albert Sacks taught generations of lawyers to see law as a working arrangement among institutions. Their influential teaching materials asked why a court should respect a decision it might not have made itself. Their answer connected legitimate procedures, institutional responsibilities, and reasoned interpretation to the possibility of governing together despite disagreement.",
+    "tagline": "Law makes collective life possible by assigning decisions to responsible institutions and requiring each to develop the purposes entrusted to it.",
+    "bio": "Hart and Sacks understand law as an arrangement for settling the questions people must resolve to live together. Decisions reached through established procedures deserve acceptance until properly changed, even by people who would have chosen differently. Courts, legislatures, agencies, and private agreements contribute different capacities to that arrangement. Judges interpret their work by identifying its purposes and explaining how particular outcomes follow from them, within the limits of enacted language and institutional responsibility. Their jointly developed account connects authority with reason: allocating a decision settles who may act, while reasoned explanation disciplines how that authority is exercised. Its confidence depends on institutions being capable of pursuing intelligible public purposes.",
     "fitTraits": {
       "method.institutional_competence": "the right decision-maker matters as well as the desired outcome",
       "method.reasoned_elaboration": "judges should explain how a decision develops the purposes and principles already embedded in law",
@@ -1081,8 +1049,8 @@ globalThis.LAW_CHAMPION_CONTENT = Object.freeze({
         "title": "Harvard: The Legal Process tradition"
       },
       {
-        "url": "https://link.springer.com/chapter/10.1007/978-3-032-02307-0_10",
-        "title": "Institutional Settlement: Hart and Sacks"
+        "url": "https://openyls.law.yale.edu/bitstreams/afd036f8-ff57-455f-a404-51966eed19c3/download",
+        "title": "Eskridge and Frickey, The Making of The Legal Process, quoting Hart and Sacks"
       }
     ],
     "affinities": [
@@ -1097,8 +1065,8 @@ globalThis.LAW_CHAMPION_CONTENT = Object.freeze({
     ]
   },
   "mashaw": {
-    "tagline": "Justice happens at the benefits counter and inside government agencies, not only in a courtroom.",
-    "bio": "Yale scholar Jerry Mashaw studied how large bureaucracies can deliver fair decisions, including the everyday administration of disability benefits. He treats agencies as institutions capable of their own disciplined legal reasoning. His work asks how expertise, internal procedures, and public explanations can make government both effective and accountable to the people it serves.",
+    "tagline": "Government earns legitimacy when its everyday administration turns public purposes into workable decisions through expertise, fair procedures, and reasons people can challenge.",
+    "bio": "Mashaw locates much of law’s practical authority inside the agencies that administer public programs. Their continuing responsibility for implementation gives them knowledge and obligations different from those of courts reviewing isolated disputes. Interpreting a statute therefore includes making its program work, coordinating decisions, and responding responsibly to changing circumstances. That autonomy needs discipline from within: procedures, professional standards, and explanations must connect administrative choices to lawful purposes and make them answerable to others. Fairness also has to function across large numbers of ordinary decisions. His approach asks how institutional design can combine competent government with democratic accountability, rather than assuming that more courtroom procedure invariably produces more justice.",
     "fitTraits": {
       "method.agency_interpretive_autonomy": "agencies can develop disciplined interpretations of law through their own responsibilities and expertise",
       "method.administrative_reason_giving": "government agencies owe people intelligible reasons for their decisions",
@@ -1113,16 +1081,16 @@ globalThis.LAW_CHAMPION_CONTENT = Object.freeze({
     },
     "sources": [
       {
-        "url": "https://yalebooks.yale.edu/book/9780300034035/bureaucratic-justice/",
-        "title": "Yale University Press: Bureaucratic Justice"
-      },
-      {
-        "url": "https://law.yale.edu/jerry-l-mashaw",
-        "title": "Yale: Mashaw's scholarship on agency interpretation"
+        "url": "https://openyls.law.yale.edu/bitstream/handle/20.500.13051/380/Between_Facts_and_Norms___Agency_Statutory_Interpretation_as_an_Autonomous_Enterprise.pdf?isAllowed=y&sequence=2",
+        "title": "Jerry Mashaw, Between Facts and Norms: Agency Statutory Interpretation as an Autonomous Enterprise"
       },
       {
         "url": "https://www.cambridge.org/core/books/abs/reasoned-administration-and-democratic-legitimacy/why-reasons/1CE647577B98AE29C79D75732A4857AD",
         "title": "Mashaw: Why Reasons?"
+      },
+      {
+        "url": "https://yalebooks.yale.edu/book/9780300034035/bureaucratic-justice/",
+        "title": "Yale University Press: Bureaucratic Justice"
       }
     ],
     "affinities": [
@@ -1137,8 +1105,8 @@ globalThis.LAW_CHAMPION_CONTENT = Object.freeze({
     ]
   },
   "pound": {
-    "tagline": "A beautiful rule on paper means little if it fails the people who must live under it.",
-    "bio": "Roscoe Pound, a Harvard law dean and pioneer of sociological jurisprudence, made the gap between law on paper and law in practice impossible to ignore. He urged lawyers to examine the interests a rule actually serves and the conflicts it creates. Legal reform, in this view, requires studying society as carefully as studying judgments.",
+    "tagline": "Law should reconcile competing human demands through institutions whose actual effects preserve social cooperation while minimizing unnecessary sacrifice.",
+    "bio": "Pound treats legal order as a practical effort to accommodate the many demands people make on one another. Security, freedom, family life, and economic activity can conflict, so legal rules must be judged by the interests they protect and the costs they impose. Studying how rules operate reveals where inherited doctrines frustrate their social purposes and where reform is needed. His emphasis on social interests also changes how conflicts are described: individual freedom itself has social value, so invoking society against an individual does not settle the balance. The jurist’s task is to develop workable adjustments that satisfy competing claims with as little damage as possible to their wider setting.",
     "fitTraits": {
       "method.social_interests": "legal rules should be evaluated against the competing human interests they affect",
       "method.law_in_action": "what law does in people's lives matters as much as its formal statement"
@@ -1149,18 +1117,14 @@ globalThis.LAW_CHAMPION_CONTENT = Object.freeze({
     },
     "sources": [
       {
-        "url": "https://en.wikisource.org/wiki/Page%3AThe_Green_Bag_%281889%E2%80%931914%29%2C_Volume_20.pdf/528",
-        "title": "Pound: Enforcement of Law"
-      },
-      {
-        "url": "https://us.sagepub.com/sites/default/files/upm-assets/109680_book_item_109680.pdf",
-        "title": "SAGE: Pound and law in action"
+        "url": "https://personal.utdallas.edu/~mjleaf/poundsocialinterests.pdf",
+        "title": "Roscoe Pound, A Survey of Social Interests (excerpt)"
       }
     ]
   },
   "ehrlich": {
-    "tagline": "To discover the rules that govern a community, watch how people live before opening the statute book.",
-    "bio": "Eugen Ehrlich, a pioneering sociologist of law, looked for law in the habits and relationships of everyday communities. His idea of living law shifts attention toward the working rules of families, businesses, and associations. A state's official rules may tell only part of the story of how people organize their lives and settle expectations.",
+    "tagline": "Legal order grows from the expectations organizing everyday relationships, so understanding law requires investigating the communities that continually make it work.",
+    "bio": "Ehrlich begins with the working order of social life: how families, businesses, and other associations allocate responsibilities and sustain expectations. Much of this order operates without litigation or explicit legislation. The rules courts use to decide disputes capture only part of it, and official commands gain effectiveness through the social relationships into which they enter. His living law must therefore be investigated through actual practices and documents as well as legal texts. This is primarily an account of where law develops and how it functions. It does not establish that every established custom is just, or that a judge should automatically enforce whatever a community happens to do.",
     "fitTraits": {
       "method.living_law": "a community's operative rules can matter more in daily life than official legal texts",
       "method.law_in_action": "understanding law requires observing how people actually organize their lives",
@@ -1179,8 +1143,8 @@ globalThis.LAW_CHAMPION_CONTENT = Object.freeze({
     ]
   },
   "santi_romano": {
-    "tagline": "A church, a business, even an outlaw organization can have a legal order of its own.",
-    "bio": "Italian jurist Santi Romano challenged the state's claim to a monopoly on law. For him, organized institutions can themselves constitute legal orders, including churches, associations, and even illegal organizations. That unsettling last example exposes the stakes: recognizing that a group has its own law does not mean approving it or requiring the state to recognize it.",
+    "tagline": "An organized institution embodies a legal order, making law a relationship among enduring social organizations as well as a system of rules.",
+    "bio": "Romano understands law through the institutions that give rules their place and authority. An organized body has a continuing identity, internal relationships, and ways of maintaining its order; its legal character cannot be explained simply by collecting its commands. Because many bodies possess that organization, the state exists among multiple legal orders, including churches and associations. Their relationships may involve recognition, dependence, conflict, or exclusion. Even an organization prohibited by the state can have an internal legal order on this account. Calling it legal identifies how it is constituted and operates; it does not endorse its aims or establish that state courts must enforce its demands.",
     "fitTraits": {
       "source.institutional_legal_pluralism": "organized institutions can constitute genuine legal orders of their own",
       "source.nonstate_legal_orders": "the state is not the only possible source of legal order"
@@ -1195,14 +1159,14 @@ globalThis.LAW_CHAMPION_CONTENT = Object.freeze({
         "title": "Routledge: Romano's The Legal Order"
       },
       {
-        "url": "https://www.tandfonline.com/doi/abs/10.1080/16544951.2018.1498697",
-        "title": "Santi Romano against the state?"
+        "url": "https://www.gbv.de/dms/spk/sbb/toc/1000436535.pdf",
+        "title": "Santi Romano, The Legal Order: analytical contents"
       }
     ]
   },
   "geny": {
-    "tagline": "When the code runs out of answers, honest investigation beats pretending the missing answer was there all along.",
-    "bio": "French jurist François Gény challenged the dream that a civil code could supply every answer through logic alone. He kept respect for authoritative written law while opening genuine gaps to research into social life and justice. His lasting provocation is that legal creativity should be disciplined and acknowledged, rather than disguised as mechanical deduction.",
+    "tagline": "Judges should respect the reach of authoritative law and openly use disciplined inquiry into social conditions and justice where its answers end.",
+    "bio": "Gény argues that a legal code cannot anticipate every problem, and that ingenious deductions cannot make its authors decide questions they never addressed. Interpretation should establish what legislation actually directs, alongside the authority of other recognized sources such as custom. When those sources leave a genuine gap, the judge must construct a solution through inquiry into social relationships, practical needs, and principles of justice. His free scientific research is free from a missing authoritative answer, but constrained by the demand for objective reasons. It joins respect for enacted law with acknowledged creativity, making the grounds of a new legal solution available for criticism instead of concealing them inside inherited formulas.",
     "fitTraits": {
       "method.free_scientific_research": "genuine gaps in written law call for disciplined inquiry into social facts and justice",
       "method.law_in_action": "legal interpretation must stay open to the realities of social life"
@@ -1213,8 +1177,8 @@ globalThis.LAW_CHAMPION_CONTENT = Object.freeze({
     },
     "sources": [
       {
-        "url": "https://revistas.pucp.edu.pe/index.php/derechopucp/en/article/view/31619",
-        "title": "Derecho PUCP: From Exegesis to Free Scientific Enquiry"
+        "url": "https://upload.wikimedia.org/wikipedia/commons/7/7c/Science_of_legal_method%3B_select_essays_by_various_authors_%3B_%28IA_cu31924017793278%29.pdf",
+        "title": "François Gény, Judicial Freedom of Decision: Its Necessity and Method"
       },
       {
         "url": "https://revistaseug.ugr.es/index.php/acfs/en/article/view/27031",
@@ -1223,8 +1187,8 @@ globalThis.LAW_CHAMPION_CONTENT = Object.freeze({
     ]
   },
   "scalia_manning_easterbrook": {
-    "tagline": "An awkward law may preserve a democratic compromise that a well-meaning judge would accidentally undo.",
-    "bio": "Harvard scholar John Manning gave textualism a powerful institutional argument: legislation emerges from bargaining, so its awkward details can be part of the deal. A judge who repairs a statute to better serve its apparent purpose may erase the concessions that made passage possible. His work turns fidelity to enacted wording into respect for democratic compromise.",
+    "tagline": "Fidelity to enacted language preserves the compromises through which lawmakers exercise authority, including the limits they place on their own purposes.",
+    "bio": "Manning grounds textual interpretation in the way lawmaking distributes power. A legislature must agree on means as well as goals, often through concessions that leave a statute uneven or incomplete. A court that improves the law by pursuing its broad purpose more consistently may undo the agreement required for enactment. Judges should therefore read language in its legal and linguistic context while respecting the level of precision the lawmakers chose. Specific rules remain specific, and open-ended provisions retain their flexibility. This also shapes his constitutional reasoning: the allocation of governmental powers rests on particular textual arrangements whose compromises cannot be displaced by a judge’s preferred overarching institutional design.",
     "fitTraits": {
       "constraint.textual": "judges should respect enacted words even when they would have preferred a different law",
       "constraint.enacted_bargain": "awkward statutory details may embody compromises judges have no authority to erase",
@@ -1244,13 +1208,13 @@ globalThis.LAW_CHAMPION_CONTENT = Object.freeze({
       },
       {
         "url": "https://harvardlawreview.org/wp-content/uploads/2011/06/vol124_manning.pdf",
-        "title": "Manning: The New Purposivism"
+        "title": "John Manning, Separation of Powers as Ordinary Interpretation"
       }
     ]
   },
   "ekins_intentionalism": {
-    "tagline": "A roomful of disagreeing lawmakers can still make a genuine shared decision about what a law means.",
-    "bio": "Oxford legal philosopher Richard Ekins takes on a familiar objection: how can hundreds of lawmakers have one intention? His answer draws on how people act together through shared plans. A legislature can choose a reasoned proposal even when its members have different motives, making legislative intention something interpreters can investigate rather than dismiss as a fiction.",
+    "tagline": "Legislation is a reasoned act of collective choice, and interpretation should recover the change in law that lawmakers jointly communicated.",
+    "bio": "Ekins explains legislative authority through the capacity of people to act together. Legislators can accept common procedures and adopt a proposal as a shared plan even when their personal motives and political preferences differ. The resulting intention belongs to the lawmaking body; it is not an average of private wishes or a demand for unanimity. Because legislation intentionally changes the law for reasons, understanding the enacted words requires attention to that communicative undertaking and its context. This account makes intention central to respecting legislative responsibility. It also distinguishes the body’s actual choice from a judge’s reconstruction of what an ideally reasonable legislature ought to have wanted.",
     "fitTraits": {
       "constraint.actual_group_intent": "a legislature can form a genuine shared lawmaking intention despite disagreement among its members",
       "constraint.intent": "interpreting legislation includes identifying the choice lawmakers communicated through it"
@@ -1271,8 +1235,8 @@ globalThis.LAW_CHAMPION_CONTENT = Object.freeze({
     ]
   },
   "katzmann": {
-    "tagline": "To understand Congress's laws, learn how Congress actually works and how its members communicate.",
-    "bio": "Federal appeals judge Robert Katzmann brought a political scientist's knowledge of Congress to statutory interpretation. He argued that courts should understand committee work, legislative procedures, and reliable explanatory materials instead of imagining how lawmakers ought to behave. His approach treats institutional listening as part of respecting the branch entrusted with making the law.",
+    "tagline": "Courts respect legislative authority by reading laws through the institutional practices Congress uses to develop, explain, and communicate its choices.",
+    "bio": "Katzmann treats statutory interpretation as communication between institutions whose working methods differ. Congress relies on committees, staff expertise, and accompanying explanations to produce legislation and convey what it seeks to accomplish. Judges trying to understand an ambiguous provision should learn how those materials function and distinguish dependable explanations from opportunistic statements. The enacted text remains central, but reliable legislative history can clarify the choices expressed through it. This approach connects purpose with institutional respect: courts should listen to Congress as it actually works. Its discipline comes from evaluating the source and role of legislative materials, rather than collecting quotations that happen to support a preferred result.",
     "fitTraits": {
       "method.congress_aware_interpretation": "judges should understand Congress's actual working practices before interpreting its laws",
       "method.reliable_legislative_history": "reliable legislative explanations can help establish what Congress meant",
@@ -1291,8 +1255,8 @@ globalThis.LAW_CHAMPION_CONTENT = Object.freeze({
     ]
   },
   "hand_posner_imaginative": {
-    "tagline": "When lawmakers never imagined today's problem, ask what answer would fit the project they actually undertook.",
-    "bio": "Federal judges Learned Hand and the early Richard Posner shared an approach often called imaginative reconstruction. In an unforeseen case, an interpreter tries to work out how the original lawmakers would have resolved it. This is a demanding historical act of imagination: the judge must reconstruct someone else's priorities rather than simply impose a preferred modern result.",
+    "tagline": "Interpreting an unforeseen problem requires reconstructing the lawmakers’ undertaking closely enough to carry their choices into circumstances they did not anticipate.",
+    "bio": "Hand and the early Posner understand statutes as purposeful human undertakings whose application can demand informed imagination. The interpreter starts with the enacted language, then asks how the originating lawmakers’ project bears on a problem the words do not satisfactorily resolve. Hand emphasizes sympathetic understanding of the statutory scheme, including avoiding readings that defeat its evident operation. Posner gives the reconstruction a more explicit historical and political cast, asking what the enacting legislators would have decided in light of their purposes and constraints. Their shared approach requires the judge to work within another institution’s undertaking, while acknowledging that applying it can require judgment beyond a literal reading.",
     "fitTraits": {
       "constraint.imaginative_reconstruction": "unforeseen cases may require reconstructing what the original lawmakers would have decided",
       "constraint.intent": "interpretation should remain anchored in the lawmakers' project"
@@ -1303,22 +1267,18 @@ globalThis.LAW_CHAMPION_CONTENT = Object.freeze({
     },
     "sources": [
       {
-        "url": "https://chicagounbound.uchicago.edu/journal_articles/1874/",
-        "title": "Posner: Statutory Interpretation in the Classroom and Courtroom"
+        "url": "https://law.justia.com/cases/federal/appellate-courts/F2/148/737/1503769/",
+        "title": "Learned Hand, Cabell v. Markham, 148 F.2d 737 (1945)"
       },
       {
-        "url": "https://www.armfor.uscourts.gov/opinions/2005Term/02-0623.pdf",
-        "title": "U.S. v. Martinelli: Hand on interpretive imagination"
-      },
-      {
-        "url": "https://lawreview.uchicago.edu/print-archive/simplifying-patent-venue",
-        "title": "Chicago Law Review: Posner's imaginative reconstruction, quoted with sources"
+        "url": "https://lawreview.uchicago.edu/sites/default/files/Statutory%20Interpretation-%20In%20the%20Classroom%20and%20in%20the%20Courtroom.pdf",
+        "title": "Richard Posner, Statutory Interpretation: In the Classroom and in the Courtroom"
       }
     ]
   },
   "wechsler": {
-    "tagline": "A principle must still make sense when it helps the side you would rather see lose.",
-    "bio": "Columbia scholar Herbert Wechsler demanded constitutional reasons that extend beyond the result a judge wants today. His argument became especially controversial when he questioned the reasoning behind school desegregation decisions. The lasting challenge is uncomfortable and useful: can a court explain its judgment through a principle it would also apply when the parties or politics change?",
+    "tagline": "Constitutional judgment earns its authority through reasons that govern beyond the immediate dispute and remain binding when their political beneficiaries change.",
+    "bio": "Wechsler grounds the legitimacy of constitutional adjudication in the distinctive responsibility to decide through general reasons. A court must explain why its principle governs this dispute and accept that principle’s implications in other cases, including politically unwelcome ones. Constitutional text, history, and precedent matter within that reasoned inquiry; the desirability of a particular outcome cannot by itself justify judicial power. Neutrality here demands consistency in selecting and applying principles, rather than the absence of value judgments. A durable principle makes judicial authority answerable to something beyond the judges’ immediate preferences: it commits them to a reason that others can examine, challenge, and invoke when a later dispute changes whose interests are at stake.",
     "fitTraits": {
       "method.neutral_principles": "constitutional principles should apply consistently even when they produce an unwelcome result",
       "method.reasoned_elaboration": "judicial decisions need reasons that reach beyond the immediate dispute"
@@ -1335,8 +1295,8 @@ globalThis.LAW_CHAMPION_CONTENT = Object.freeze({
     ]
   },
   "eskridge_frickey": {
-    "tagline": "Good interpretation resembles skilled problem-solving: several kinds of evidence can converge without one master formula.",
-    "bio": "Legal scholars William Eskridge and Philip Frickey challenged theories that give one interpretive tool the answer to every case. They looked instead at the practical craft of lawyers, who consider wording, history, legal context, and consequences together. Their shared contribution makes this flexible reasoning an accountable method, rather than treating it as an embarrassing departure from theory.",
+    "tagline": "Statutory meaning emerges from disciplined judgment across text, history, purpose, and present circumstances, with each source tested against the others.",
+    "bio": "Eskridge and Frickey present interpretation as practical reasoning within a legal tradition. Statutory language, legislative understandings, the surrounding legal order, and present consequences can reinforce or challenge one another; no single theory reliably resolves every conflict among them. Their method gives strong textual evidence presumptive priority while testing an initial reading against increasingly broader considerations. Eskridge places particular emphasis in his separate work on how statutory meaning develops as society changes. Their shared approach accommodates that possibility without making present policy the answer to every case. Its discipline lies in explaining why the relevant sources together support a reading, and confronting the evidence that resists it.",
     "fitTraits": {
       "method.practical_reasoning": "sound interpretation can combine several kinds of evidence without relying on one master theory",
       "method.modal_pluralism": "text, history, purpose, and consequences can each contribute to a legal judgment",
@@ -1351,12 +1311,16 @@ globalThis.LAW_CHAMPION_CONTENT = Object.freeze({
       {
         "url": "https://openyls.law.yale.edu/bitstream/20.500.13051/3257/2/Statutory_Interpretation.pdf",
         "title": "Eskridge and Frickey: Statutory Interpretation as Practical Reasoning"
+      },
+      {
+        "url": "https://law.yale.edu/william-eskridge-jr?page=0",
+        "title": "Yale Law School, William Eskridge bibliography"
       }
     ]
   },
   "felix_cohen": {
-    "tagline": "Calling something property does not explain who should control it, or whose interests the law should protect.",
-    "bio": "American legal realist Felix Cohen punctured legal arguments that seemed to explain everything while going in circles. Courts might protect a trade name because it was property, then call it property because courts protected it. He demanded an account of the actual conduct, social effects, and value choices hidden behind impressive legal abstractions.",
+    "tagline": "Legal concepts become useful explanations only when connected to the human conduct they organize, the power they distribute, and the values they serve.",
+    "bio": "Cohen argues that legal reasoning becomes circular when it treats categories such as property or corporate personality as self-sufficient reasons for decisions. Those categories often summarize choices courts have already made about whose conduct to permit and whose interests to protect. A functional approach asks what officials actually do, how their decisions affect social relationships, and which ethical judgments could justify the resulting allocation of power. Evidence about consequences is essential, but it cannot itself decide which consequences deserve approval. His realism therefore joins empirical investigation to explicit moral criticism: uncovering the choices concealed by legal language makes those choices more intelligible, accountable, and open to reform.",
     "fitTraits": {
       "realism.functional_anti_conceptual": "legal labels must be unpacked into their practical effects and underlying value choices",
       "realism.underdetermination": "abstract legal concepts do not settle every difficult case by themselves"
@@ -1367,18 +1331,14 @@ globalThis.LAW_CHAMPION_CONTENT = Object.freeze({
     },
     "sources": [
       {
-        "url": "https://cyber.harvard.edu/people/tfisher/IP/Cohen_Tradename.pdf",
-        "title": "Cohen: What's in a Trade Name?"
-      },
-      {
         "url": "https://moglen.law.columbia.edu/LCS/cohen-transcendental.pdf",
-        "title": "Cohen: Transcendental Nonsense and the Functional Approach"
+        "title": "Felix Cohen, Transcendental Nonsense and the Functional Approach"
       }
     ]
   },
   "frank": {
-    "tagline": "Even a perfectly clear rule cannot guarantee justice when a trial gets the human story wrong.",
-    "bio": "Federal judge Jerome Frank pushed legal realism into the trial courtroom. Uncertainty comes from more than ambiguous rules: witnesses remember imperfectly, and judges and juries must decide whom to believe. His challenge to legal certainty directs attention to the fragile process of finding facts, where a person's fate can turn long before an appeals court discusses doctrine.",
+    "tagline": "Justice depends on confronting the uncertainty of human fact-finding, because legal rules operate through fallible witnesses, advocates, judges, and juries.",
+    "bio": "Frank locates a fundamental source of legal uncertainty in the trial’s reconstruction of events. Witnesses perceive and remember selectively; advocates shape their accounts; judges and juries evaluate credibility through their own experiences and reactions. Even an agreed legal rule cannot reliably predict a result when these processes determine the facts to which it applies. Studying appellate opinions alone therefore gives a misleading picture of law’s operation, since their factual record has already been produced below. His skepticism redirects reform toward how evidence is gathered and assessed, and how legal education prepares lawyers for that work. Acknowledging uncertainty is a condition of improving justice, rather than a reason to abandon it.",
     "fitTraits": {
       "realism.fact_skepticism": "uncertain fact-finding can shape a case as decisively as uncertain legal rules",
       "realism.extra_doctrinal": "human perception and judgment affect what happens in court"
@@ -1389,22 +1349,18 @@ globalThis.LAW_CHAMPION_CONTENT = Object.freeze({
     },
     "sources": [
       {
-        "url": "https://openyls.law.yale.edu/bitstreams/cdeea967-8fd9-4919-b3c6-d74c9459dd6b/download",
-        "title": "Frank: Cardozo and the Upper-Court Myth"
+        "url": "https://scholarship.law.duke.edu/lcp/vol13/iss2/10/",
+        "title": "Jerome Frank, Cardozo and the Upper-Court Myth"
       },
       {
-        "url": "https://ingramacademic.com/products/courts-on-trial-9780691027555",
-        "title": "Princeton University Press: Frank's Courts on Trial"
-      },
-      {
-        "url": "https://law.yale.edu/yls-today/news/historical-profile-jerome-n-frank",
-        "title": "Yale: Historical Profile of Jerome Frank"
+        "url": "https://openyls.law.yale.edu/server/api/core/bitstreams/c29e5730-175a-4d7b-9060-e53385fee576/content",
+        "title": "Jerome Frank, Legal Thinking in Three Dimensions"
       }
     ]
   },
   "thayer": {
-    "tagline": "A judge's conviction that a law is mistaken is not enough to take the decision away from voters.",
-    "bio": "Harvard scholar James Bradley Thayer became a foundational voice for judicial restraint. He argued that courts should invalidate legislation only when its unconstitutionality lies beyond reasonable doubt. The stakes extend beyond judicial modesty: if judges routinely rescue citizens from legislative mistakes, democratic institutions can lose the habit of taking constitutional responsibility themselves.",
+    "tagline": "Courts should preserve democratic responsibility by enforcing constitutional boundaries only when legislation falls outside every reasonably defensible understanding of them.",
+    "bio": "Thayer distinguishes a judge’s best interpretation of the Constitution from the question that justifies overturning legislation. Lawmakers have their own duty to understand and obey constitutional limits, and their judgment may remain permissible even when a court would decide differently. Judicial intervention is warranted when the legislature’s error is clear beyond reasonable doubt. This demanding threshold reflects both respect for a coordinate institution and concern about what expansive review does to political life. Citizens and representatives may neglect their own constitutional responsibilities if courts routinely supply the final correction. Restraint therefore preserves a sphere of democratic judgment while retaining judicial enforcement at its outer constitutional boundary.",
     "fitTraits": {
       "posture.clear_error": "courts should strike down legislation only when its constitutional defect is unmistakable"
     },
@@ -1419,8 +1375,8 @@ globalThis.LAW_CHAMPION_CONTENT = Object.freeze({
     ]
   },
   "waldron": {
-    "tagline": "People who take rights seriously can still disagree, and their disagreement does not automatically belong to judges.",
-    "bio": "Legal philosopher Jeremy Waldron challenges the assumption that defending rights means giving courts the final word. Where democratic institutions work and citizens take rights seriously, disagreement about rights can be settled through representative politics. His argument asks why a majority vote among a handful of judges should necessarily outrank the voices of the people governed.",
+    "tagline": "When people conscientiously disagree about rights, equal participation in representative politics gives collective decisions an authority that judicial expertise alone cannot supply.",
+    "bio": "Waldron begins with disagreement among citizens who genuinely care about one another’s rights. A commitment to rights does not settle their meaning, and judges confront the same disputed questions as everyone else. In a reasonably functioning democracy, representative institutions give citizens an equal stake in choosing among competing answers. Transferring the final decision to a small judicial majority diminishes that political equality without guaranteeing better rights protection. His argument against strong judicial review is conditional: it assumes functioning democratic and judicial institutions, a serious commitment to rights, and good-faith disagreement. Where those conditions fail, the case requires a different assessment rather than automatic deference to whatever a majority wants.",
     "fitTraits": {
       "posture.reasonable_disagreement": "sincere disagreement about rights does not by itself justify transferring decisions to judges",
       "posture.democratic_legitimacy": "functioning democratic institutions deserve authority over contested rights questions"
@@ -1431,14 +1387,18 @@ globalThis.LAW_CHAMPION_CONTENT = Object.freeze({
     },
     "sources": [
       {
-        "url": "https://www.humanities.mcmaster.ca/~walucho/3Q3/Waldron.Core%20Case%20Judicial%20Review%20Yale%20LJ.pdf",
-        "title": "Waldron: The Core of the Case Against Judicial Review"
+        "url": "https://openyls.law.yale.edu/bitstream/handle/20.500.13051/9638/54_115YaleLJ1346_April2006_.pdf",
+        "title": "Jeremy Waldron, The Core of the Case Against Judicial Review"
+      },
+      {
+        "url": "https://yalelawjournal.org/article/five-to-four-why-do-bare-majorities-rule-on-courts",
+        "title": "Jeremy Waldron, Five to Four: Why Do Bare Majorities Rule on Courts?"
       }
     ]
   },
   "kramer": {
-    "tagline": "The Constitution belongs to ordinary citizens, and its meaning need not be surrendered to a legal elite.",
-    "bio": "Constitutional scholar Larry Kramer recovered an American tradition in which ordinary people actively contested the meaning of their Constitution. His historical account challenges the assumption that Supreme Court interpretations must always be the last word for everyone. It invites citizens to see constitutional argument as part of self-government, rather than a specialist service they simply receive.",
+    "tagline": "Constitutional self-government requires citizens to retain authority over constitutional meaning through political action, public argument, and continuing engagement with government.",
+    "bio": "Kramer’s popular constitutionalism treats the people’s constitutional authority as an ongoing practice. Citizens express and contest constitutional understandings through elections, movements, public debate, and their influence on government, rather than exercising their role only at the moment a constitution is adopted. His historical account challenges the assumption that judicial review necessarily gives the Supreme Court final interpretive authority over the entire political community. Courts can decide cases within a constitutional system whose ultimate authority remains popular. The important question is how a public sustains the capacity and confidence to hold its institutions constitutionally accountable, instead of treating constitutional judgment as work permanently delegated to legal specialists.",
     "fitTraits": {
       "posture.popular_authority": "ordinary citizens retain an active role in shaping constitutional meaning",
       "posture.anti_judicial_supremacy": "the Supreme Court need not have the exclusive final word on the Constitution"
@@ -1459,8 +1419,8 @@ globalThis.LAW_CHAMPION_CONTENT = Object.freeze({
     ]
   },
   "walsh_departmentalism": {
-    "tagline": "Obeying a court's judgment does not require treating its constitutional reasoning as everyone else's final answer.",
-    "bio": "Legal scholar Kevin Walsh draws a sharp distinction between the authority of a judgment and the authority of a constitutional interpretation. Courts can bind parties and guide other courts through established legal rules without becoming the sole constitutional voice of government. His argument preserves enforceable adjudication while making room for the other branches' own constitutional responsibilities.",
+    "tagline": "Judicial decisions bind through the law governing judgments, remedies, and precedent, while constitutional responsibility continues beyond the courts’ institutional authority.",
+    "bio": "Walsh separates the force of constitutional adjudication from a claim that the Supreme Court defines the Constitution for everyone. Judgments settle disputes, remedies impose enforceable obligations, and precedent directs later judicial decisions. Those legal mechanisms determine who is bound and how; a court’s reasoning does not acquire unlimited authority simply because it interprets the Constitution. Other officials retain responsibilities to assess constitutional meaning in carrying out their own duties, while respecting the judgments and legal constraints that actually apply to them. This judicial departmentalism preserves effective courts through ordinary rules of adjudication and makes their boundaries clearer, without requiring constitutional agreement across all branches of government.",
     "fitTraits": {
       "posture.branch_interpretation": "each branch has constitutional responsibilities that are not exhausted by repeating judicial opinions",
       "posture.anti_judicial_supremacy": "binding court judgments do not make judicial constitutional reasoning universally supreme"
@@ -1477,8 +1437,8 @@ globalThis.LAW_CHAMPION_CONTENT = Object.freeze({
     ]
   },
   "gardbaum": {
-    "tagline": "Protecting rights need not mean choosing between an all-powerful parliament and an all-powerful supreme court.",
-    "bio": "UCLA scholar Stephen Gardbaum identified a constitutional experiment in countries including Canada, New Zealand, and the United Kingdom. Courts scrutinize laws for rights violations, while elected institutions retain structured ways to respond. His work asks whether this sharing of authority can combine meaningful rights protection with democratic responsibility, instead of concentrating the final decision in one institution.",
+    "tagline": "Rights protection can combine independent judicial scrutiny with democratic responsibility by giving legislatures a structured opportunity to reconsider and answer judicial conclusions.",
+    "bio": "Gardbaum asks how constitutional institutions can secure rights while preserving meaningful responsibility for elected lawmakers. His Commonwealth model assigns courts a serious role in examining legislation, but provides legally recognized ways for the political branches to reconsider the outcome. The arrangements differ: some permit legislative overrides, while others allow courts to identify incompatibility without invalidating the law. Political scrutiny of rights before enactment also matters. The aim is a sequence of informed judgments in which neither judicial expertise nor democratic authority is treated as sufficient alone. Its success depends on institutions actually using their responsibilities, including legislators offering considered responses instead of routinely surrendering to courts or dismissing their objections.",
     "fitTraits": {
       "posture.structured_legislative_response": "rights review can include a formal opportunity for elected lawmakers to respond",
       "posture.weak_form": "courts can protect rights without always having the legally final word",
@@ -1491,18 +1451,18 @@ globalThis.LAW_CHAMPION_CONTENT = Object.freeze({
     },
     "sources": [
       {
-        "url": "https://escholarship.org/uc/item/7xj1k36j",
-        "title": "Gardbaum: The Case for the New Commonwealth Model"
+        "url": "https://academic.oup.com/icon/article/8/2/167/700011",
+        "title": "Stephen Gardbaum, Reassessing the New Commonwealth Model of Constitutionalism"
       },
       {
-        "url": "https://academic.oup.com/icon/article/8/2/167/700011",
-        "title": "Gardbaum: Reassessing the new Commonwealth model"
+        "url": "https://www.cambridge.org/core/journals/german-law-journal/article/case-for-the-new-commonwealth-model-of-constitutionalism/14595E9FC0327A41A2EBFDB924811156",
+        "title": "Stephen Gardbaum, The Case for the New Commonwealth Model of Constitutionalism"
       }
     ]
   },
   "ely": {
-    "tagline": "Courts should intervene when those already in power rig the democratic game or shut others out.",
-    "bio": "American constitutional scholar John Hart Ely gave judicial intervention a democratic purpose: keep the political process open. Judges are especially useful when insiders entrench themselves or exclude minorities from effective representation. His influential theory asks courts to repair the conditions of self-government, rather than use constitutional law to install their own preferred vision of a good society.",
+    "tagline": "Judicial review earns its democratic authority by keeping political competition open and ensuring that prejudice does not deny minorities effective representation.",
+    "bio": "Ely starts with the difficulty of letting unelected judges overrule representative government. His answer locates their special responsibility in the conditions that make representation trustworthy. Officials may protect their own power by obstructing political change; a majority may also systematically disregard minorities whose interests it refuses to recognize. Courts should protect participation and examine those failures of representation because the ordinary political process cannot reliably repair them itself. This explains why his approach joins voting and speech protections to scrutiny of discriminatory laws. Constitutional judgment becomes a way to make self-government work for everyone, while leaving most choices among competing social policies to democratic decision-making.",
     "fitTraits": {
       "posture.process_reinforcement": "courts should protect political participation and representation against exclusion and entrenchment",
       "posture.conditional_intervention": "judicial intervention is especially justified when the democratic process cannot correct its own failures"
@@ -1513,18 +1473,18 @@ globalThis.LAW_CHAMPION_CONTENT = Object.freeze({
     },
     "sources": [
       {
-        "url": "https://www.jstor.org/stable/j.ctv102bj77",
-        "title": "Ely: Democracy and Distrust"
+        "url": "https://digitalcommons.law.umaryland.edu/mlr/vol37/iss3/3/",
+        "title": "John Hart Ely, Toward a Representation-reinforcing Mode of Judicial Review"
       },
       {
-        "url": "https://academic.oup.com/icon/article/19/2/427/6275480",
-        "title": "Oxford: Ely in the world, quoting his two forms of democratic malfunction"
+        "url": "https://www.jstor.org/stable/j.ctv102bj77",
+        "title": "John Hart Ely, Democracy and Distrust"
       }
     ]
   },
   "dixon_responsive": {
-    "tagline": "A court should ask what is blocking democracy, then choose an intervention strong enough to help.",
-    "bio": "Australian constitutional scholar Rosalind Dixon develops a theory of how courts can address democratic failures. Her targets include entrenched power, overlooked problems, and political inertia. She argues that judges must calibrate their response to local conditions, including their own capacity and legitimacy. Sometimes a firm ruling helps; sometimes a more open-ended remedy gives democratic institutions room to respond.",
+    "tagline": "Courts should strengthen democratic responsiveness by matching their decisions to the particular blockages that prevent government from hearing and answering people.",
+    "bio": "Dixon treats democracy as an ongoing capacity to respond to people, including minorities whose needs repeatedly go unattended. That capacity can fail through entrenched power, overlooked consequences, or political institutions that cannot make time for necessary change. Courts can help, but their intervention must fit the failure. Threats to basic democratic competition can demand strong protection; neglected rights may be better served by decisions that prompt lawmakers to reconsider and respond. Judicial legitimacy, practical capacity, and the risk of backlash therefore matter to the choice of remedy and timing. Her approach makes constitutional review a context-sensitive partnership in sustaining responsive government.",
     "fitTraits": {
       "posture.responsive_review": "courts should tailor the strength and form of intervention to the democratic blockage they face",
       "posture.process_reinforcement": "judicial review should help democratic institutions respond to people they overlook or exclude"
@@ -1536,13 +1496,17 @@ globalThis.LAW_CHAMPION_CONTENT = Object.freeze({
     "sources": [
       {
         "url": "https://academic.oup.com/book/45587",
-        "title": "Dixon: Responsive Judicial Review"
+        "title": "Rosalind Dixon, Responsive Judicial Review"
+      },
+      {
+        "url": "https://onlinelibrary.wiley.com/doi/full/10.1111/1468-2230.12853",
+        "title": "Rosalind Dixon, The New Responsive Constitutionalism"
       }
     ]
   },
   "bickel": {
-    "tagline": "Sometimes a court's most responsible use of power is knowing when a constitutional question should wait.",
-    "bio": "Yale scholar Alexander Bickel made judicial restraint into an art of timing. Faced with the tension between unelected judges and democracy, he emphasized courts' ability to avoid premature constitutional decisions. Waiting can allow public debate and political judgment to develop before the Court commits the country to a rule meant to express enduring values.",
+    "tagline": "Courts preserve their authority to articulate lasting constitutional principles by judging carefully when a dispute is ready for a definitive answer.",
+    "bio": "Bickel sees a tension between constitutional principle and the compromises through which democratic societies govern themselves. Courts have a distinctive responsibility to explain enduring principles, yet an immediate ruling may either impose them prematurely or give constitutional approval to an unsatisfactory political settlement. Procedural restraint supplies a third possibility: leaving the constitutional question open while experience and public debate develop. His account therefore connects judicial independence with prudence about timing, institutional authority, and the practical acceptance of decisions. Avoiding a ruling can help a court protect its eventual ability to speak convincingly, although that discretion also makes the costs of waiting a serious concern.",
     "fitTraits": {
       "posture.passive_virtues": "courts should sometimes leave constitutional questions undecided so politics and public judgment can develop"
     },
@@ -1551,14 +1515,18 @@ globalThis.LAW_CHAMPION_CONTENT = Object.freeze({
     },
     "sources": [
       {
-        "url": "https://law.yale.edu/yls-today/news/alexander-bickel-who-defined-supreme-court-paradox-gets-new-consideration",
-        "title": "Yale: Alexander Bickel and the passive virtues"
+        "url": "https://openyls.law.yale.edu/bitstream/handle/20.500.13051/3410/75HarvLRev40.pdf?sequence=2",
+        "title": "Alexander Bickel, The Supreme Court, 1960 Term: Foreword, The Passive Virtues"
+      },
+      {
+        "url": "https://openyls.law.yale.edu/bitstreams/f22c144a-5495-4eb4-952c-d680050e291a/download",
+        "title": "Contemporaneous review of The Least Dangerous Branch, with passages from Bickel"
       }
     ]
   },
   "ackerman": {
-    "tagline": "A nation's constitutional rules can change through extraordinary democratic struggles, even when the written amendment process stands still.",
-    "bio": "Yale scholar Bruce Ackerman argues that American constitutional history cannot be understood by counting formal amendments alone. Episodes such as the New Deal transformed the constitutional order through sustained political conflict and public authorization. His theory distinguishes ordinary elections from exceptional periods in which citizens mobilize to remake the basic terms of government.",
+    "tagline": "Constitutional authority belongs to a people who sometimes mobilize beyond ordinary politics to establish commitments that later governments must respect.",
+    "bio": "Ackerman distinguishes everyday governing from the extraordinary democratic work of remaking a constitutional order. An election normally authorizes officials to act within existing commitments. A sustained period of public mobilization, institutional conflict, and repeated political endorsement can instead establish new foundational commitments, even when change does not follow the formal amendment procedure. Courts then have a responsibility to preserve and reconcile the achievements of these different constitutional periods. His account gives popular sovereignty a history: the people act with special authority through demanding episodes of collective decision. It also limits ordinary officials, who cannot treat every electoral victory as permission to rewrite the constitutional settlement.",
     "fitTraits": {
       "time.constitutional_moments": "exceptional, sustained democratic mobilization can produce constitutional change beyond formal amendment"
     },
@@ -1567,14 +1535,18 @@ globalThis.LAW_CHAMPION_CONTENT = Object.freeze({
     },
     "sources": [
       {
-        "url": "https://www.jstor.org/stable/j.ctvjk2z0k",
-        "title": "Ackerman: We the People, Volume 2: Transformations"
+        "url": "https://politicalscience.yale.edu/publications/we-people-vol-1",
+        "title": "Bruce Ackerman, We the People, Volume 1"
+      },
+      {
+        "url": "https://www.wiko-berlin.de/fileadmin/Jahrbuchberichte/1991/1991_92_Ackerman_Bruce_Aufsatz_Jahrbuchbericht.pdf",
+        "title": "Bruce Ackerman, account of dualist democracy"
       }
     ]
   },
   "bobbitt": {
-    "tagline": "Constitutional argument has several legitimate languages, and no single one can say everything the law needs.",
-    "bio": "American constitutional scholar Philip Bobbitt mapped six recurring ways lawyers argue about the Constitution: text, history, structure, precedent, practical judgment, and national commitments. His contribution offers a way to understand constitutional reasoning without requiring every case to submit to one grand theory. The discipline lies in recognizable forms of argument, rather than allegiance to a single interpretive tool.",
+    "tagline": "Constitutional law gains its discipline from established forms of argument that let citizens and officials reason together without one controlling theory.",
+    "bio": "Bobbitt asks how constitutional claims become recognizable as legal arguments. Lawyers appeal to words, historical understandings, institutional relationships, precedent, practical consequences, and the commitments expressed by the constitutional order. Each form has its own standards, and together they make constitutional reasoning possible even where no court has supplied an answer. Their authority comes from their place in constitutional practice, so a theory that makes one form exclusively legitimate misdescribes that practice. Conflicts still require judgment; the framework does not promise a formula that decides every case. Its discipline lies in giving publicly intelligible reasons that others can test and apply consistently.",
     "fitTraits": {
       "method.modal_pluralism": "several established forms of constitutional argument can legitimately contribute to a decision"
     },
@@ -1583,18 +1555,18 @@ globalThis.LAW_CHAMPION_CONTENT = Object.freeze({
     },
     "sources": [
       {
-        "url": "https://scholarship.law.columbia.edu/books/55/",
-        "title": "Columbia: Bobbitt's Constitutional Fate"
+        "url": "https://yalelawjournal.org/essay/impeachment-a-handbook",
+        "title": "Philip Bobbitt, Impeachment: A Handbook"
       },
       {
-        "url": "https://www.yalelawjournal.org/pdf/Bobbitt_maizb3m9.pdf",
-        "title": "Bobbitt: Impeachment, preface explaining six forms of argument"
+        "url": "https://scholarship.law.columbia.edu/books/55/",
+        "title": "Philip Bobbitt, Constitutional Fate"
       }
     ]
   },
   "charles_black": {
-    "tagline": "The Constitution's architecture can tell you what it requires even when no isolated sentence supplies the answer.",
-    "bio": "Yale scholar Charles Black urged lawyers to read the Constitution as an interconnected design. The relationships it creates among citizens, states, and the national government can support conclusions that no single clause states outright. His structural approach gives interpreters a disciplined way to reason from the whole constitutional arrangement, rather than hunting for a solitary decisive phrase.",
+    "tagline": "Constitutional rights and limits emerge from the relationships a constitution establishes among people and institutions, even where no clause states them explicitly.",
+    "bio": "Black treats the Constitution as an arrangement of governing relationships whose implications carry legal force. Creating a national government, allocating powers, and placing citizens in relation to that government can entail protections and restrictions that no isolated sentence announces. An interpreter should ask what those arrangements require if they are to function coherently. This method reaches beyond collecting similar words from different clauses: it reasons from the institutions and relationships the document establishes. It also brings practical questions into view, because the consequences of a proposed interpretation can reveal whether it undermines that design. Structural reasoning thus offers a grounded way to address constitutional silence.",
     "fitTraits": {
       "method.structural_inference": "constitutional relationships can imply legal requirements that no single clause spells out",
       "method.holistic_constitution": "the Constitution should be read as an interconnected design"
@@ -1605,14 +1577,18 @@ globalThis.LAW_CHAMPION_CONTENT = Object.freeze({
     },
     "sources": [
       {
-        "url": "https://openyls.law.yale.edu/bitstream/20.500.13051/5266/2/An_Open_Letter_to_Professors_Paulsen_and_Powell.pdf",
-        "title": "Amar on Black's Structure and Relationship"
+        "url": "https://books.google.com/books/about/Structure_and_Relationship_in_Constituti.html?id=WbT9QwAACAAJ",
+        "title": "Charles L. Black Jr., Structure and Relationship in Constitutional Law"
+      },
+      {
+        "url": "https://papers.ssrn.com/sol3/Delivery.cfm/SSRN_ID2213879_code1992470.pdf?abstractid=2213879&mirid=1",
+        "title": "Michael Dorf, Interpretive Holism and the Structural Method"
       }
     ]
   },
   "vermeule": {
-    "tagline": "Law should deliberately cultivate a flourishing community, and an older legal tradition can guide that ambition.",
-    "bio": "Harvard scholar Adrian Vermeule challenges both conservative originalism and progressive constitutionalism with a return to classical ideas of the common good. He argues that law should promote the conditions for a flourishing community, including public health and social order. His provocative claim is that individual flourishing depends on those shared goods, giving government an openly moral purpose.",
+    "tagline": "Law should direct public authority toward the common good, interpreting enacted rules through principles of reason that make communal flourishing possible.",
+    "bio": "Vermeule understands law as a reasoned ordering of communal life toward shared goods such as peace, justice, and public welfare. Enacted rules give those goods concrete form, while an older natural-law tradition supplies principles for interpreting and evaluating them. Individual flourishing depends on a well-ordered community, so government may have affirmative responsibilities to protect social conditions and cultivate sound conduct. This gives authority a moral purpose and supports substantial room for reasonable legislative and administrative choices. Courts should interpret law within that framework, respecting legitimate determinations while testing their rational relation to the common good. His theory therefore makes substantive moral judgment part of ordinary legal interpretation.",
     "fitTraits": {
       "method.common_good": "law should deliberately promote the shared conditions of a flourishing community",
       "time.classical_tradition": "classical legal principles can guide modern constitutional interpretation"
@@ -1624,17 +1600,17 @@ globalThis.LAW_CHAMPION_CONTENT = Object.freeze({
     "sources": [
       {
         "url": "https://hls.harvard.edu/today/a-blast-from-the-past/",
-        "title": "Harvard interview: Vermeule's common good constitutionalism"
+        "title": "Adrian Vermeule, Harvard Law interview on Common Good Constitutionalism"
       },
       {
-        "url": "https://www.wiley-vch.de/en/areas-interest/humanities-social-sciences/common-good-constitutionalism-978-1-5095-4887-3",
-        "title": "Publisher: Common Good Constitutionalism"
+        "url": "https://papers.ssrn.com/sol3/Delivery.cfm/SSRN_ID4587125_code231075.pdf?abstractid=4587125&mirid=1&type=2",
+        "title": "Adrian Vermeule, The Rule of Law Without Separation of Powers"
       }
     ]
   },
   "monaghan": {
-    "tagline": "Judicial safeguards can be binding law without being constitutionally untouchable or beyond democratic revision.",
-    "bio": "Columbia scholar Henry Monaghan challenged the idea that every Supreme Court constitutional rule has the same status as the Constitution itself. Judges also build practical safeguards around constitutional rights, he argued, and some can be revised by Congress. His distinction preserves enforceable protections while opening a space for democratic correction of court-made rules.",
+    "tagline": "Constitutional government needs enforceable judicial safeguards whose authority can exceed ordinary policy while still leaving room for responsible legislative revision.",
+    "bio": "Monaghan distinguishes the Constitution’s requirements from the body of rules courts develop to put them into practice. Judges often must construct procedures and remedies that draw authority from constitutional guarantees without being the only arrangements those guarantees permit. Recognizing this constitutional common law explains how such rules can bind officials while remaining open to modification by Congress. The distinction makes room for institutional cooperation: courts provide workable protections, and lawmakers can supply alternatives consistent with the underlying Constitution. It also demands precision about judicial authority. Calling every implementation rule constitutionally inevitable conceals choices and unnecessarily removes them from democratic reconsideration.",
     "fitTraits": {
       "remedies.constitutional_common_law": "some court-made constitutional safeguards should remain open to legislative revision",
       "remedies.prophylactic": "protecting a constitutional right can require safeguards broader than its bare minimum"
@@ -1646,7 +1622,7 @@ globalThis.LAW_CHAMPION_CONTENT = Object.freeze({
     "sources": [
       {
         "url": "https://scholarship.law.columbia.edu/faculty_scholarship/794/",
-        "title": "Monaghan: Constitutional Common Law"
+        "title": "Henry Monaghan, Constitutional Common Law"
       }
     ],
     "affinities": [
@@ -1661,8 +1637,8 @@ globalThis.LAW_CHAMPION_CONTENT = Object.freeze({
     ]
   },
   "fiss": {
-    "tagline": "Winning a constitutional right means little if the school, prison, or police department keeps working the same way.",
-    "bio": "Owen Fiss made the struggle to desegregate American schools central to a bigger theory of judging. This Yale scholar defended courts that reorganize institutions and keep supervising them until constitutional promises become real. His provocative claim: a lawsuit can be a vehicle for public justice, far beyond settling a quarrel between two people.",
+    "tagline": "Courts give constitutional values practical meaning by changing the institutional arrangements that repeatedly deny people the rights those values require.",
+    "bio": "Fiss understands adjudication as a public process for interpreting and enforcing constitutional values. Many violations arise from the ordinary operation of large institutions, so resolving an individual dispute or awarding damages may leave their source intact. Courts may therefore need to restructure schools, prisons, or other public organizations and supervise compliance over time. This remedial ambition follows from his account of the judicial role: a constitutional judgment should make equality or liberty real within the institution that governs people’s lives. Judicial independence and reasoned participation support that role, while the remedy must remain connected to the public values the court is responsible for enforcing.",
     "fitTraits": {
       "remedies.structural": "a constitutional victory may require changing how an entire school system, prison, or public agency operates",
       "remedies.supervision": "judges may need to stay involved until an institution actually delivers the rights it has been ordered to respect",
@@ -1676,17 +1652,13 @@ globalThis.LAW_CHAMPION_CONTENT = Object.freeze({
     "sources": [
       {
         "url": "https://law.yale.edu/sites/default/files/documents/faculty/papers/twomodels.pdf",
-        "title": "Owen Fiss: Two Models of Adjudication"
-      },
-      {
-        "url": "https://openyls.law.yale.edu/bitstreams/e69c95f0-f4b8-413f-9e27-cec07b21fc0d/download",
-        "title": "Owen Fiss: The History of an Idea"
+        "title": "Owen Fiss, Two Models of Adjudication"
       }
     ]
   },
   "bhagwati_iyer": {
-    "tagline": "A postcard from someone without power should sometimes open the same courthouse doors as an expensive legal petition.",
-    "bio": "Indian Supreme Court judges P. N. Bhagwati and V. R. Krishna Iyer helped transform access to justice through public interest litigation. Courts accepted letters and allowed others to sue for people too poor or disadvantaged to get there themselves. Their shared legacy puts prisoners, bonded laborers, and excluded communities at the center of constitutional enforcement.",
+    "tagline": "Constitutional justice requires courts to adapt their procedures so that poverty, confinement, and social exclusion cannot keep enforceable rights beyond reach.",
+    "bio": "Bhagwati and Krishna Iyer connect constitutional rights to the practical ability of disadvantaged people to claim them. If conventional litigation assumes money, freedom, and legal assistance that people lack, courts should accept other routes to a hearing and investigate conditions directly. Bhagwati develops this approach through public-interest representation, fact-finding, and enforcement of social and economic entitlements. Krishna Iyer’s prison decisions emphasize the dignity and surviving liberties of people under coercive state control, using flexible procedure to expose abuse. Their approaches converge on a demanding view of access: a court’s responsibility extends to making constitutional protection effective for people whom ordinary legal processes leave unheard.",
     "fitTraits": {
       "remedies.public_interest_litigation": "courts should hear public-interest cases brought for people who cannot realistically defend their own rights",
       "remedies.access_relaxation": "formal filing and standing rules should give way when they shut disadvantaged people out of justice"
@@ -1697,18 +1669,18 @@ globalThis.LAW_CHAMPION_CONTENT = Object.freeze({
     },
     "sources": [
       {
-        "url": "https://www.presidentofindia.gov.in/shri-pranab-mukherjee/speeches/speech-president-india-shri-pranab-mukherjee-during-ceremony-release",
-        "title": "President of India: Bhagwati, Krishna Iyer, and access to justice"
+        "url": "https://indiankanoon.org/doc/595099/",
+        "title": "P. N. Bhagwati, opinion in Bandhua Mukti Morcha v. Union of India"
       },
       {
-        "url": "https://future.indiankanoon.org/docfragment/778810/?formInput=krishna+iyer",
-        "title": "Krishna Iyer's opinion in Sunil Batra v. Delhi Administration"
+        "url": "https://indiankanoon.org/doc/778810/?type=print",
+        "title": "V. R. Krishna Iyer, opinion in Sunil Batra v. Delhi Administration"
       }
     ]
   },
   "bray": {
-    "tagline": "Even a justified lawsuit should not automatically give one judge the power to freeze government policy for everyone.",
-    "bio": "Samuel Bray became a prominent critic of nationwide injunctions, the orders that let one federal judge halt a policy far beyond the people suing. His historical work argues that this shortcut encourages shopping for sympathetic judges and disrupts careful review. He grounds judicial restraint in the older traditions governing courts' power to order relief.",
+    "tagline": "Judicial remedies should fully protect the people entitled to relief while respecting the historical limits that keep many courts working together.",
+    "bio": "Bray treats remedial limits as part of the constitutional and institutional discipline of judging. An injunction directs a defendant’s conduct, and its proper scope ordinarily follows the protection the plaintiffs need. Extending relief automatically to everyone affected by a policy changes that relationship and gives a single trial court exceptional power over national government. His historical account connects traditional equity with practical concerns about choosing sympathetic courts, conflicting orders, and preventing legal questions from developing through multiple cases. Restraint here concerns the court’s remedy even when its legal conclusion is correct. Broader protection needs an appropriate procedural or legal basis, rather than following simply from finding a policy unlawful.",
     "fitTraits": {
       "remedies.party_specific": "winning a lawsuit should ordinarily protect the people who sued rather than settle government policy for everyone",
       "remedies.traditional_equity": "a judge's power to order a remedy needs grounding in established equitable traditions",
@@ -1721,12 +1693,8 @@ globalThis.LAW_CHAMPION_CONTENT = Object.freeze({
     },
     "sources": [
       {
-        "url": "https://scholarship.law.nd.edu/law_faculty_scholarship/1359/",
-        "title": "Samuel Bray: Multiple Chancellors: Reforming the National Injunction"
-      },
-      {
-        "url": "https://hls.harvard.edu/today/do-universal-injunctions-lead-to-national-rule-by-one-judge/",
-        "title": "Harvard Law: Bray and Sohoni debate universal injunctions"
+        "url": "https://harvardlawreview.org/wp-content/uploads/2017/12/417-482_Online.pdf",
+        "title": "Samuel Bray, Multiple Chancellors: Reforming the National Injunction"
       }
     ],
     "affinities": [
@@ -1741,8 +1709,8 @@ globalThis.LAW_CHAMPION_CONTENT = Object.freeze({
     ]
   },
   "sohoni_frost": {
-    "tagline": "Stopping an unlawful government policy may need to protect everyone harmed, including people who never made it to court.",
-    "bio": "Mila Sohoni and Amanda Frost have defended nationwide injunctions against calls to abolish them. Sohoni challenges the claim that broad relief has no historical roots; Frost emphasizes people who cannot rush to court before a policy harms them. Their shared position makes the reach of judicial protection a central question in checking government power.",
+    "tagline": "Courts need the capacity to protect people beyond a lawsuit when effective control of unlawful government action requires relief of wider scope.",
+    "bio": "Sohoni and Frost defend broad injunctions as a legitimate tool whose use requires justification in the particular dispute. Sohoni’s historical work challenges accounts that treat protection of nonparties as alien to federal judicial power, recovering earlier examples of relief extending beyond named plaintiffs. Frost concentrates on institutional need: national policies can cause widespread harm, and requiring every affected person to sue can leave unlawful action effectively unchecked. Their arguments support preserving judicial capacity while addressing concerns about competing courts and excessive reach. They offer distinct historical and practical grounds for broad relief, rather than a general entitlement to halt any challenged policy for everyone.",
     "fitTraits": {
       "remedies.universal": "a court may sometimes need to stop an unlawful policy for people beyond those named in the lawsuit",
       "remedies.universal_relief_theory": "the kind of harm and the court's legal authority can justify protection extending beyond individual plaintiffs"
@@ -1753,18 +1721,18 @@ globalThis.LAW_CHAMPION_CONTENT = Object.freeze({
     },
     "sources": [
       {
-        "url": "https://hls.harvard.edu/today/do-universal-injunctions-lead-to-national-rule-by-one-judge/",
-        "title": "Harvard Law: Mila Sohoni on the history and purpose of universal injunctions"
+        "url": "https://harvardlawreview.org/print/vol-133/the-lost-history-of-the-universal-injunction/",
+        "title": "Mila Sohoni, The Lost History of the Universal Injunction"
       },
       {
         "url": "https://nyulawreview.org/wp-content/uploads/2018/11/NYULawReview-93-5-Frost.pdf",
-        "title": "Amanda Frost: In Defense of Nationwide Injunctions"
+        "title": "Amanda Frost, In Defense of Nationwide Injunctions"
       }
     ]
   },
   "levinson": {
-    "tagline": "What a court can afford to enforce helps determine what it is willing to call a constitutional right.",
-    "bio": "Daryl Levinson challenged a comforting picture of constitutional law: first discover the right, then decide how to enforce it. His work argues that the process runs both ways. The cost and difficulty of a remedy can reshape the right itself, making constitutional principle inseparable from the machinery that puts it into practice.",
+    "tagline": "The meaning of a constitutional right develops together with its remedies, because the consequences of enforcement shape what courts recognize and protect.",
+    "bio": "Levinson challenges the assumption that judges first identify a complete constitutional right and only afterward decide how to enforce it. In practice, remedies influence the scope of rights: the institutional disruption, financial consequences, and practical difficulty of enforcement can affect how courts describe the underlying guarantee. Conversely, changing the remedy can alter the protection a right actually provides. His account asks constitutional theory to confront that interdependence openly. It changes how we assess judicial restraint, legislative involvement, and claims that a right has been inadequately enforced. A persuasive account of constitutional protection must explain the whole arrangement through which a right acquires practical meaning.",
     "fitTraits": {
       "remedies.equilibration": "the costs and institutional consequences of enforcing a right can change how courts define the right itself"
     },
@@ -1774,13 +1742,13 @@ globalThis.LAW_CHAMPION_CONTENT = Object.freeze({
     "sources": [
       {
         "url": "https://papers.ssrn.com/sol3/papers.cfm?abstract_id=155564",
-        "title": "Daryl Levinson: Rights Essentialism and Remedial Equilibration"
+        "title": "Daryl Levinson, Rights Essentialism and Remedial Equilibration"
       }
     ]
   },
   "peter_strauss": {
-    "tagline": "The president can oversee government without personally owning every decision that Congress entrusted to someone else.",
-    "bio": "Peter Strauss, a Columbia scholar and the Nuclear Regulatory Commission's first general counsel, asks how constitutional government actually works inside agencies. His memorable distinction between presidential overseer and presidential decider challenges automatic White House control. He defends overlapping institutions when their practical checks preserve accountability and the responsibilities Congress assigned them.",
+    "tagline": "Administrative government remains constitutionally accountable when each institution respects the responsibilities law assigns while participating in a practical system of mutual checks.",
+    "bio": "Strauss starts from the working arrangements of modern government. Agencies exercise several kinds of authority, but their legitimacy depends on how Congress, the president, and courts constrain and supervise them. A statute that assigns a decision to an agency official also limits who may make that decision. Presidential responsibility for faithful execution therefore includes respecting Congress’s allocation of duties while providing oversight and coordination. This approach joins practical institutional analysis to fidelity to law: expertise and distributed responsibility can coexist with political accountability. The constitutional question is whether the arrangement preserves the relevant checks and responsibilities, rather than whether every administrative function fits a rigid institutional category.",
     "fitTraits": {
       "separation.assigned_independence": "presidential oversight can coexist with decision-making responsibilities that Congress assigned to agency officials",
       "separation.functionalist": "the real balance of power and accountability matters more than sorting every government task into a rigid box",
@@ -1793,22 +1761,18 @@ globalThis.LAW_CHAMPION_CONTENT = Object.freeze({
     },
     "sources": [
       {
-        "url": "https://www.law.columbia.edu/index.php/faculty/peter-l-strauss",
-        "title": "Columbia Law: Peter L. Strauss"
-      },
-      {
         "url": "https://papers.ssrn.com/sol3/papers.cfm?abstract_id=949649",
-        "title": "Peter Strauss: Overseer, or 'the Decider'? The President in Administrative Law"
+        "title": "Peter Strauss, Overseer, or the Decider? The President in Administrative Law"
       },
       {
         "url": "https://scholarship.law.columbia.edu/faculty_scholarship/435/",
-        "title": "Peter Strauss: Formal and Functional Approaches to Separation-of-Powers Questions"
+        "title": "Peter Strauss, Formal and Functional Approaches to Separation-of-Powers Questions"
       }
     ]
   },
   "metzger": {
-    "tagline": "Constitutional accountability depends on who is watching the machinery of government, even when no dramatic courtroom battle is happening.",
-    "bio": "Gillian Metzger brings constitutional law down to the level of agency management. Her work treats failures such as falsified veterans' hospital waiting lists as questions about government's duty to supervise. A defender of modern administration, she argues that constitutional safeguards also live inside agencies, in the systems that make officials answer for their power.",
+    "tagline": "Constitutional accountability depends on building supervision and rights protection into the everyday systems through which government actually exercises its power.",
+    "bio": "Metzger argues that constitutional law must reach the administrative arrangements where governing happens. Delegating authority creates a responsibility to supervise its exercise, because unmanaged discretion can threaten both lawful administration and individual rights. That responsibility extends beyond presidential control to the internal structures, procedures, and oversight practices that make agencies answerable for their work. Agencies also interpret and implement constitutional commitments themselves, often before any court becomes involved. Her account connects effective government with constitutional constraint: management can be part of the protection the Constitution requires. Courts should recognize and support these responsibilities while acknowledging that much constitutional enforcement occurs through political and administrative institutions.",
     "fitTraits": {
       "separation.supervisory_duty": "government has a constitutional responsibility to build meaningful supervision into the way delegated power is exercised",
       "separation.administrative_constitutionalism": "constitutional protections are implemented through agencies' everyday structures and practices as well as court decisions",
@@ -1822,17 +1786,17 @@ globalThis.LAW_CHAMPION_CONTENT = Object.freeze({
     "sources": [
       {
         "url": "https://scholarship.law.columbia.edu/faculty_scholarship/578/",
-        "title": "Gillian Metzger: The Constitutional Duty to Supervise"
+        "title": "Gillian Metzger, The Constitutional Duty to Supervise"
       },
       {
-        "url": "https://harvardlawreview.org/print/vol-131/1930s-redux-the-administrative-state-under-siege/",
-        "title": "Gillian Metzger: 1930s Redux: The Administrative State Under Siege"
+        "url": "https://scholarship.law.columbia.edu/faculty_scholarship/817/",
+        "title": "Gillian Metzger, Administrative Constitutionalism"
       }
     ]
   },
   "lawson": {
-    "tagline": "If modern government crossed the Constitution's boundaries, decades of convenience do not turn that violation into permission.",
-    "bio": "Gary Lawson's attack on the administrative state starts with an explosive claim: much of the government built after the New Deal conflicts with the Constitution. He challenges agencies that combine rulemaking, enforcement, and judging, and Congress's transfer of legislative choices. For this originalist scholar, a useful institution can still rest on unconstitutional foundations.",
+    "tagline": "The Constitution’s original allocation of governmental powers remains binding even when modern administrative arrangements make concentrating those powers seem useful.",
+    "bio": "Lawson treats the Constitution as a legally binding assignment of different powers to different institutions. Congress must make legislative choices within its authority, executive officials must carry law into effect, and judicial power must remain within its constitutional boundaries. Administrative arrangements become suspect when they transfer the essential responsibility of one branch to another or combine powers the Constitution separates. Historical meaning supplies the standard for evaluating those arrangements; their usefulness or longevity cannot alone establish constitutional permission. His argument allows genuine discretion in implementing law, while insisting that implementation has limits. The central task is identifying when administration crosses from executing authorized choices into exercising a power constitutionally assigned elsewhere.",
     "fitTraits": {
       "separation.strong_nondelegation": "Congress cannot hand its legislative responsibility to administrators just because modern government finds that convenient",
       "separation.judicial_power_boundary": "agency adjudication must respect the Constitution's assignment of judicial power to courts",
@@ -1846,17 +1810,17 @@ globalThis.LAW_CHAMPION_CONTENT = Object.freeze({
     "sources": [
       {
         "url": "https://scholarship.law.bu.edu/faculty_scholarship/948/",
-        "title": "Gary Lawson: The Rise and Rise of the Administrative State"
+        "title": "Gary Lawson, The Rise and Rise of the Administrative State"
       },
       {
-        "url": "https://papers.ssrn.com/sol3/papers.cfm?abstract_id=288433",
-        "title": "Gary Lawson: Delegation and Original Meaning"
+        "url": "https://assets-us-01.kc-usercontent.com/c7bb3f89-eb78-007e-971a-d5864cf7a236/5d27150d-603a-4e2b-9c89-58d42d3a56a3/Lawson-The-Rise-and-Rise-of-the-Administrative-State.pdf",
+        "title": "Gary Lawson, full article text"
       }
     ]
   },
   "calabresi_prakash": {
-    "tagline": "Executive power needs a clear chain of command ending with the president the public can hold responsible.",
-    "bio": "Steven Calabresi and Saikrishna Prakash helped build the modern scholarly case for the unitary executive. Their joint 1994 article argued that constitutional text and founding history place federal law execution under presidential control. The stakes are concrete: whether Congress can protect executive officials from the president's direction and removal, and who ultimately controls the bureaucracy.",
+    "tagline": "A single president must control the execution of federal law so that executive authority follows the Constitution’s assignment of responsibility.",
+    "bio": "Calabresi and Prakash jointly ground presidential control in the Constitution’s grant of executive power and its founding-era understanding. Officials who execute federal law act within a branch whose ultimate responsibility belongs to the president, making direction and removal central to their account. Congress can establish offices and prescribe legal duties, but it cannot simply redistribute the president’s constitutional control over execution. Their wider work brings different emphases: Calabresi develops the structural and accountability case for a unified executive, while Prakash closely reconstructs the historical powers of the office. The shared claim concerns control of executive administration within a government whose legislative and judicial powers remain separately assigned.",
     "fitTraits": {
       "separation.unitary_executive": "officials exercising executive power must remain subject to presidential direction and supervision",
       "separation.formalist": "the Constitution's assignment of executive power limits Congress's freedom to redesign control of the executive branch"
@@ -1867,18 +1831,26 @@ globalThis.LAW_CHAMPION_CONTENT = Object.freeze({
     },
     "sources": [
       {
-        "url": "https://papers.ssrn.com/sol3/papers.cfm?abstract_id=2857494",
-        "title": "Calabresi and Prakash: The President's Power to Execute the Laws"
+        "url": "https://papers.ssrn.com/sol3/Delivery.cfm/SSRN_ID2857494_code158595.pdf?abstractid=2857494&mirid=1",
+        "title": "Steven Calabresi and Saikrishna Prakash, The President’s Power to Execute the Laws"
       },
       {
         "url": "https://www.law.virginia.edu/scholarship/publication/saikrishna-prakash/884081",
-        "title": "UVA Law: Calabresi and Prakash's joint 1994 article"
+        "title": "University of Virginia record of the joint article"
+      },
+      {
+        "url": "https://yalebooks.yale.edu/book/9780300194562/imperial-from-the-beginning/",
+        "title": "Saikrishna Prakash, Imperial from the Beginning"
+      },
+      {
+        "url": "https://www.cambridge.org/core/journals/american-political-science-review/article/new-unitary-executive-and-democratic-theory-the-problem-of-alexander-hamilton/2393D71EFA44427015D978922D91EEBF",
+        "title": "The New Unitary Executive and Democratic Theory, reproducing Calabresi’s normative argument"
       }
     ]
   },
   "leiter": {
-    "tagline": "When legal arguments leave several answers open, investigate what actually causes judges to choose among them.",
-    "bio": "Brian Leiter gave American legal realism a new philosophical engine: study judging with the help of empirical inquiry. In Naturalizing Jurisprudence, he recast the realists as early allies of a scientific approach to philosophy. His challenge is to explain how decisions happen when legal reasons run out, while keeping that question distinct from what makes something law.",
+    "tagline": "Understanding judicial choice requires evidence about how judges decide when accepted legal reasons leave more than one outcome available.",
+    "bio": "Leiter brings legal realism into a naturalistic account of jurisprudence: explanations of law and judging should answer to evidence about the world. In difficult litigated cases, recognized sources and methods may support competing outcomes, so identifying legal reasons alone cannot explain the result. Inquiry should then examine the psychological and social factors that actually influence judges. This project remains compatible with identifying law through social sources and with recognizing that many legal questions are settled. His distinctive move connects those ideas: a theory of what counts as law can clarify where legal reasons run out, allowing empirical explanation to investigate the remaining judicial choices.",
     "fitTraits": {
       "realism.empirical_prediction": "explaining judicial decisions requires evidence about what actually drives judges' choices",
       "realism.underdetermination": "accepted legal arguments can leave more than one answer available in a hard case",
@@ -1892,17 +1864,17 @@ globalThis.LAW_CHAMPION_CONTENT = Object.freeze({
     "sources": [
       {
         "url": "https://academic.oup.com/book/6364",
-        "title": "Oxford University Press: Brian Leiter's Naturalizing Jurisprudence"
+        "title": "Brian Leiter, Naturalizing Jurisprudence"
       },
       {
-        "url": "https://www.law.uchicago.edu/faculty/leiter",
-        "title": "University of Chicago: Brian Leiter"
+        "url": "https://www.cambridge.org/core/books/abs/cambridge-companion-to-legal-positivism/legal-positivism-as-a-realist-theory-of-law/AA6ACB3748F974980FD8A16EE28C3195",
+        "title": "Brian Leiter, Legal Positivism as a Realist Theory of Law"
       }
     ]
   },
   "llewellyn": {
-    "tagline": "Rules do not apply themselves: discover the craft, habits, and real situations that make legal decisions happen.",
-    "bio": "Karl Llewellyn helped lead American legal realism and draft the Uniform Commercial Code, bringing a critic's eye to law and a builder's hand to commerce. He studied how judges actually decide, including the professional craft that makes decisions predictable despite room for choice. His curiosity also took him into collaborative studies of Cheyenne and Pueblo law.",
+    "tagline": "Legal judgment becomes dependable through professional craft that connects inherited rules to the practical situations and expectations those rules must govern.",
+    "bio": "Llewellyn investigates how law works when rules and precedents permit more than one plausible answer. He finds guidance in the concrete situation, the purposes of legal institutions, and the professional habits through which judges recognize and explain an appropriate result. Those habits matter because discretion need not produce chaos: established techniques, collective deliberation, and the obligation to justify decisions can make outcomes reasonably predictable. His realism therefore supports a constructive account of legal craft. Lawyers should understand both the flexibility of doctrine and the forces that discipline its use, shaping rules that respond intelligently to the recurring problems of social and commercial life.",
     "fitTraits": {
       "realism.law_in_action": "understanding law means studying what judges and legal institutions actually do",
       "realism.extra_doctrinal": "judges' professional habits and sense of the practical situation help explain decisions that doctrine alone cannot settle",
@@ -1915,18 +1887,22 @@ globalThis.LAW_CHAMPION_CONTENT = Object.freeze({
     },
     "sources": [
       {
-        "url": "https://www.lib.uchicago.edu/e/scrc/findingaids/view.php?eadid=ICU.SPCL.LLEWELLYNK",
-        "title": "University of Chicago: Karl N. Llewellyn's life and papers"
+        "url": "https://books.google.com/books/about/The_Common_Law_Tradition.html?id=sMozDAAAQBAJ",
+        "title": "Karl Llewellyn, The Common Law Tradition: Deciding Appeals"
       },
       {
-        "url": "https://books.google.com/books/about/The_Common_Law_Tradition.html?id=sMozDAAAQBAJ",
-        "title": "Quid Pro Books: The Common Law Tradition: Deciding Appeals"
+        "url": "https://www.degruyterbrill.com/document/doi/10.1515/9780691186429-007/html?lang=de",
+        "title": "Karl Llewellyn, Some Realism About Realism"
+      },
+      {
+        "url": "https://supreme.justia.com/cases/federal/us/474/936/",
+        "title": "County of Los Angeles v. Kling, Stevens dissent, reproducing Llewellyn on reasoned opinions"
       }
     ]
   },
   "oconnor": {
-    "tagline": "You can change the direction of the Supreme Court through careful judgment without buying into one all-purpose theory.",
-    "bio": "Sandra Day O'Connor became the first woman on the U.S. Supreme Court in 1981 and often held its pivotal vote. Her practical, case-sensitive judging shaped issues from affirmative action to abortion; she coauthored the 1992 ruling preserving constitutional protection for abortion. Her distinctive approach made consequential decisions without committing every future case to a grand philosophical system.",
+    "tagline": "Constitutional judgment should preserve workable protections by attending closely to institutional context, practical burdens, and the commitments people have come to rely on.",
+    "bio": "O’Connor’s opinions often pursue constitutional principles through carefully specified standards that leave room for differences among real situations. Protecting liberty or equality requires examining how a policy operates, how heavily it burdens individuals, and what legitimate responsibilities government must still perform. Precedent matters partly because people organize their lives around legal commitments and courts depend on continuity to sustain public authority. This approach can preserve a governing principle while revising the test used to apply it. Her judging also recognizes firm structural boundaries, particularly for state autonomy. The connecting concern is a workable constitutional settlement, developed through concrete disputes and sensitive to the consequences of judicial choices.",
     "fitTraits": {
       "method.case_by_case": "a difficult legal question deserves close attention to its particular facts rather than an automatic ideological answer",
       "method.anti_grand_theory": "sound judging can draw on practical judgment without requiring one comprehensive theory of law"
@@ -1937,22 +1913,22 @@ globalThis.LAW_CHAMPION_CONTENT = Object.freeze({
     },
     "sources": [
       {
-        "url": "https://www.supremecourt.gov/visiting/exhibitions/SOCExhibit/Section3.aspx",
-        "title": "U.S. Supreme Court: Sandra Day O'Connor, first woman on the Court"
+        "url": "https://www.law.cornell.edu/supremecourt/text/02-241",
+        "title": "Sandra Day O’Connor, opinion in Grutter v. Bollinger"
       },
       {
         "url": "https://library.oconnorinstitute.org/supreme-court/planned-parenthood-of-southeastern-pa-v-casey-1991/",
-        "title": "O'Connor Institute: Planned Parenthood v. Casey"
+        "title": "O’Connor, Kennedy, and Souter, joint opinion in Planned Parenthood v. Casey"
       },
       {
-        "url": "https://review.law.stanford.edu/wp-content/uploads/sites/3/2024/10/Ryb-76-Stan.-L.-Rev.-1855.pdf",
-        "title": "Stanford Law Review: Justice Sandra Day O'Connor"
+        "url": "https://library.oconnorinstitute.org/supreme-court/new-york-v-united-states-1991/",
+        "title": "Sandra Day O’Connor, opinion in New York v. United States"
       }
     ]
   },
   "kagan": {
-    "tagline": "Read Congress faithfully, protect settled law, and recognize expertise beyond the bench.",
-    "bio": "A former Harvard Law School dean and U.S. Solicitor General, Elena Kagan brings an institutional lawyer’s instinct to the Supreme Court. A recurring concern in her opinions is that judges can overreach even when they think they have a better answer: settled law protects people’s plans, and agencies sometimes know more than courts. That still leaves room for forceful protection of constitutional rights.",
+    "tagline": "Careful interpretation gives democratic government room to work and constitutional rights room to develop, with existing law setting the terms.",
+    "bio": "Kagan reads law as the product of institutions making decisions together over time. Understanding a statute means understanding the practical arrangement its words establish, including choices Congress left for others to make. Constitutional guarantees also acquire substance through generations of judicial decisions; their earliest applications don’t exhaust their reach. Judges can draw out further implications, but must justify them through that accumulated legal work. This explains her combination of contextual textualism and an evolving Constitution: legal judgment has a constructive role, while the authority to exercise it comes with obligations to decisions beyond the judge’s own.",
     "fitTraits": {
       "constraint.contextual_textualism": "reading Congress faithfully means understanding how its words work together, not isolating a convenient phrase",
       "precedent.settlement": "settled law deserves respect because people and institutions have built their lives around it",
@@ -1986,28 +1962,16 @@ globalThis.LAW_CHAMPION_CONTENT = Object.freeze({
     ],
     "sources": [
       {
-        "url": "https://www.supremecourt.gov/about/biographies.aspx",
-        "title": "Supreme Court: Elena Kagan biography"
+        "url": "https://www.supremecourt.gov/opinions/23pdf/22-340_3e04.pdf",
+        "title": "Kagan, opinion of the Court in Pulsifer v. United States (2024)"
       },
       {
-        "url": "https://www.law.cornell.edu/supct/pdf/13-720.pdf",
-        "title": "Kagan on settled law, reliance and institutional responsibility"
+        "url": "https://supreme.justia.com/cases/federal/us/603/22-451/",
+        "title": "Kagan, dissent in Loper Bright Enterprises v. Raimondo (2024)"
       },
       {
-        "url": "https://www.supremecourt.gov/opinions/23pdf/22-451_7m58.pdf",
-        "title": "Kagan dissent on agency expertise and judicial limits"
-      },
-      {
-        "url": "https://www.unodc.org/cld/uploads/res/case-law-doc/wildlifecrimetype/usa/2015/united_states_v_yates_html/13-7451_Yates_v._United_States_02_25_2015.pdf",
-        "title": "Kagan dissent on statutory text and context"
-      },
-      {
-        "url": "https://www.supremecourt.gov/opinions/18pdf/18-422_9ol1.pdf",
-        "title": "Kagan dissent on courts and democratic participation"
-      },
-      {
-        "url": "https://www.supremecourt.gov/opinions/21pdf/19-1392_6j37.pdf",
-        "title": "Joint Breyer–Sotomayor–Kagan dissent on liberty and constitutional development"
+        "url": "https://www.law.cornell.edu/supremecourt/text/19-1392",
+        "title": "Breyer, Sotomayor and Kagan, joint dissent in Dobbs (2022)"
       }
     ]
   }
