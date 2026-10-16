@@ -21,7 +21,8 @@ for (const obsolete of ['Your jurisprudential profile', 'Your jurisprudential fi
 }
 assert.match(css, /html\.results-document\s*\{[^}]*overflow: auto/s);
 assert.match(css, /\.results-page \.result-title\s*\{[^}]*font-weight: 700/s);
-assert.match(css, /\.results-page \.result-title \.result-title-noun\s*\{[^}]*color:/s);
+assert.match(css, /\.results-page \.result-title \.result-title-noun\s*\{[^}]*color:\s*#365F78/s,
+    'Result nouns should use the readable steel-blue title color');
 assert.match(css, /\.results-page \.result-narrative p\s*\{[^}]*font-weight: 400/s);
 assert.match(html, /id="champion-card"[^>]*role="button"[^>]*aria-expanded="false"/);
 assert.match(html, /class="brand-home" href="index\.html"/);
